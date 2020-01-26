@@ -1,0 +1,493 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jan 20 11:28:31 2020
+
+@author: Axel
+"""
+
+
+import basicLogic
+
+import copy
+
+
+ 
+        
+        
+        
+        
+
+class scp (object):
+    def __init__ (self):
+        self.state1 = None
+        self.M = []
+        self.initialKB = []
+        self.initialV = []
+        self.lastState = self.getLastState
+
+    def addNext (self,nxt):
+        """
+        oldHead = self.lastState
+        newNxt = copy.copy(nxt)
+        self.lastState = newNxt
+        self.lastState.prev = oldHead
+        oldHead.next = self.lastState  
+        """
+        self.insertAtPos(nxt,len(self))      
+    def getLastState(self):
+        node = self.state1
+        if node == None:
+            return None
+        while node.next!=None:
+            node = node.next
+        return node
+    #@TODO needs to be implemented
+    def checkPrecondition ():
+        print ("Checking precondition")
+
+
+    def insertAtPos (self, m, pos):
+        m=copy.deepcopy(m) 
+        #CREATE NEW FIRST STATE
+        if pos == 0:
+            if self.state1!=None:
+                m.next=self.state1
+                if self.state1.next != None:
+                    self.state1.next.prev=m
+                    self.state1 = m
+            else:
+                self.state1=m
+            return True
+        #CYCLE TO THE DESIRED POSITON
+        node = self.state1
+        prev = None
+        for i in range (0, pos):
+            if node == None:
+                return False
+            prev=node
+            node = node.next
+        if node == None:
+            m.prev=prev
+            prev.next=m
+            return True
+            
+        m.prev=node
+        if node.next==None:
+            node.next = m            
+            return True
+        else:
+            m.next = node.next
+            node.next.prev=m
+            node.next=m
+            return True
+        return False
+    
+    def setState1 (self, state):
+        """
+        state = copy.deepcopy(state)
+        self.state1 = state
+        self.lastState = state
+        """
+        self.insertAtPos(state,0)
+        self.state1.kb=self.initialKB
+        self.state1.v=self.initialV
+    def addComplexOperation (self, m):
+        mcopy = copy.copy(m)
+        self.M.append(mcopy)
+    def addM (self, M):
+        for m in M:
+            self.addComplexOperation(m)
+
+        
+    def addKnowledge (self, knowledge):
+        newKnowledge = copy.copy(knowledge)
+        self.initialKB.append(newKnowledge)
+    def addVariable (self, variable):
+        newVariable = copy.copy(variable)
+        for v in self.initialV:
+            #prevents adding duplicate variables (at the start at least)
+            if v.name == newVariable.name:
+                return
+        self.initialV.append(newVariable)
+    
+        
+    def strKnowledge(self, kb):
+        k = "{"
+        for i in range (0, len(kb)):
+            k = k + str(kb[i]) + (", " if i<len(kb)-1 else "") 
+        k=k+"}"
+        return k        
+    def strVariables(self, v):
+        vs = "{"
+        for i in range (0, len(v)):
+            vs = vs + str(v[i]) + ":" + str(v[i].value) + (", " if i<len(v)-1 else "") 
+        vs=vs+"}"
+        return vs
+    def strInitialKB (self):
+        return self.strKnowledge(copy.deepcopy(self.initialKB))
+    def strInitialV (self):
+        return self.strVariables(copy.deepcopy(self.initialV))    
+    def __str__(self):
+        s=""
+        m = self.state1
+        while m != None:
+            s = s + m.name + (" >> " if m.next!= None else "")
+            m = m.next
+        return s
+    def strDetailed (self):
+        node = self.state1
+        s = ""
+        while node != None:
+            s = s+"===="+str(node.name)+"====\n"
+            s=s + str(node) + "\n"
+            node = node.next
+        return s
+    def evaluateV (self):
+        if self.lastState == None:
+            return []
+        return self.getLastState().evaluatev()
+    def evaluateKB (self):
+        if self.getLastState() == None:
+            return []
+        return self.getLastState().evaluatekb()
+    def __len__(self):
+        if self.state1==None:
+            return 0
+        i = 0
+        node = self.state1
+        while True:
+            node = node.next
+            i=i+1
+            if (node==None):
+                return i
+        
+        
+        
+        
+            
+   
+            
+    
+    
+    
+    
+    
+
+class complexOperation (object):
+    def __init__(self, name=""):
+        self.name = name
+        self.next = None
+        self.prev = None
+        self.prev = None
+    
+    def addknowledge (self, knowledge):
+        self.kb.append(knowledge)
+    def addVariable (self, variable):
+        self.v.append(variable)
+        
+    def act (self):
+        print("I am acting")
+    def setNext(self, nex):
+        self.next=nex
+        nex.prev = self
+    def evaluatekb (self):
+        print("I evaluate this specific KB")
+    def evaluatev (self):
+        print("I evaluate these specific variables")
+        
+    def strKnowledge(self, kb):
+        k = "{"
+        if kb == None:
+            return "{}"
+        for i in range (0, len(kb)):
+            k = k + str(kb[i]) + (", " if i<len(kb)-1 else "") 
+        k=k+"}"
+        return k
+        
+    def strVariables(self, v):
+        vs = "{"
+        if v == None:
+            return "{}"
+        for i in range (0, len(v)):
+            vs = vs + str(v[i]) + ":" + str(v[i].value) + (", " if i<len(v)-1 else "") 
+        vs=vs+"}"
+        return vs
+    
+    def __str__(self):
+        outputkb  =self.evaluatekb()
+        outputv = self.evaluatev()
+        
+        inputkb = (self.prev.evaluatekb() if self.prev!=None else None)
+        inputv = (self.prev.evaluatev() if self.prev!=None else None)
+        
+        s = ("-"*10) + "\n"
+        s = s + ("-"*5) + "\n"
+        s = s + ">>>Input" + "\n"
+        s = s + self.name + "\n"
+        s = s + "KB = " + self.strKnowledge(inputkb) + "\n"
+        s = s + "V = " + self.strVariables(inputv) + "\n"
+        
+        s = s + ("-"*10) + "\n"
+        s = s + ("-"*5) + "\n"
+        s = s + ">>>Output" + "\n"
+        s = s + self.name + "\n"
+        s = s + "KB = " + self.strKnowledge(outputkb) + "\n"
+        s = s + "V = " + self.strVariables(outputv) + "\n"
+        s = s + ("-"*10) + "\n"
+        
+        return s
+    
+    def initKBfromPrevOperation (self):
+        self.kb = self.prev.evaluatekb()
+    def initVfromPrevOperation (self):
+        self.v = self.prev.evaluatev()    
+    
+class complexOperation_init (complexOperation):
+    def __init__ (self):
+        complexOperation.__init__(self, "init")
+    def evaluatekb (self):
+        return copy.deepcopy(self.kb)
+    def evaluatev (self):
+        return copy.deepcopy(self.v)
+    
+    def initKBfromPrevOperation (self):
+        print ("initKBfromPrevOperation is not definited for init")
+    def initVfromPrevOperation (self):
+        print ("initVfromPrevOperation is not definited for init")
+
+class complexOperation_addAB (complexOperation):
+    def __init__ (self):
+        complexOperation.__init__(self, "addAB")
+
+    def trueEvaluation (self):
+        tempABs = []
+        kb2 = []
+        usedatoms = []
+        kb = self.prev.evaluatekb()
+        for i in kb:
+            if i.name == "IMPLICATION":
+                #atom in head
+                if isinstance(i.clause2, basicLogic.atom ):
+                    #check that it is not a ground truth value
+                    #abnormality needs to be added
+                    if not basicLogic.isGroundAtom(i.clause1):
+                        if len(usedatoms)==0 or not i.clause1 in usedatoms[0]:
+                            # Note that this atom/clause has an attached abnormality
+                            usedatoms.append([i.clause1,i.clause2])
+                            newAbnormality = basicLogic.atom("ab"+str(len(usedatoms)))
+                            negativeAbnormality = basicLogic.operator_monotonic_negation(newAbnormality)
+                            newclause = basicLogic.operator_bitonic_and(i.clause1, negativeAbnormality)
+                            kb2.append(basicLogic.operator_bitonic_implication(newclause, i.clause2))
+                            #used for the evlauatev()
+                            tempABs.append(newAbnormality)
+                            
+                        else:
+                            kb2.append (i)
+                    #No abnormality needs to be added
+                    else:
+                        kb2.append(i)
+                else:
+                    kb2.append(i)  
+                    
+        #add the rule for the abnormality
+        #this adds the appropriate abnormality assignments to the kb
+        #This loop handles cases where multiple non-ground clauses can affect the same head
+        for pos in range (0, len(usedatoms)):
+            for pos2 in range (0, len(usedatoms)):
+                #they share a head
+                if usedatoms[pos2][1] == usedatoms[pos][1]:
+                    #the bodies are different
+                    if not usedatoms[pos2][0] == usedatoms[pos][0]:
+                        abnormality =  basicLogic.atom("ab"+str(pos+1))
+                        negatom = basicLogic.operator_monotonic_negation(usedatoms[pos2][0])
+                        newclause = basicLogic.operator_bitonic_implication(negatom, abnormality)   
+                        kb2.append(newclause)
+            terminate = False
+            #This loop handles cases where only one non-ground clause affects a head
+            for atom in usedatoms:
+                for atom2 in usedatoms:
+                    if atom != atom2 and atom[1]==atom2[1]:
+                        terminate=True
+                if not terminate:
+                    abnormality =  basicLogic.atom("ab"+str(pos+1))    
+                    newclause = basicLogic.operator_bitonic_implication(basicLogic.FALSE, abnormality)  
+                    kb2.append(newclause)
+                        
+        
+        return kb2, tempABs
+        
+    # kb is extended with abnormalities
+    # add abnormality to non-ground rules
+    # introduce truth value for ab to kb   
+    def evaluatekb (self):
+        trueEval = self.trueEvaluation()
+        return trueEval[0]
+
+    # v values are extended by this operation @TODO
+    # self.tempABs requires evaluatekb to be called first (@TODO FIX THIS)
+    def evaluatev (self):
+        trueEval = self.trueEvaluation()
+        tempABs = trueEval[1]
+        v = self.prev.evaluatev()
+        for i in tempABs:
+            v.append(i)        
+        return v   
+        
+        
+class complexOperation_weaklyComplete (complexOperation):
+    def __init__ (self):
+        complexOperation.__init__(self, "weaklyComplete")
+        
+    def evaluatekb (self):
+        
+        oldkb = self.prev.evaluatekb()
+        newKB = []
+        
+        #find duplicate heads
+        #assumes kb is in terms of rules
+        for pos in range (0, len(oldkb)):
+            if isinstance (oldkb[0], basicLogic.operator_bitonic_implication):
+                head = oldkb[pos].clause2
+                bodies=[]
+                for i in range (pos, len(oldkb)):
+                    if (head==oldkb[i].clause2):
+                        bodies.append(oldkb[i].clause1)
+                body = bodies[0]
+                    
+                for nbody in bodies:
+                    if body!=nbody:
+                        body = basicLogic.operator_bitonic_or(body,nbody)
+                newKB.append(basicLogic.operator_bitonic_bijection(body, head))
+                            
+                        
+        return newKB
+    
+    def evaluatev (self):
+        return self.prev.evaluatev()
+
+
+
+
+                
+class complexOperation_semanticOperator (complexOperation):
+    def __init__ (self):
+        complexOperation.__init__(self, "semanticOperator")
+        
+    def evaluatekb (self):
+        return self.prev.evaluatekb()
+
+    
+    
+    
+    def setkbfromv (self, kb, v):
+        for var in v:
+            for rule in kb:
+                rule.deepSet(var.name, var.value)
+        return kb
+    #@TODO fix, doesn't do FOR ALL CALUSES A <- body I(body) = false
+    def initGroundAtoms(self, kb, v):
+        for rule in kb:
+            if isinstance (rule, basicLogic.operator_bitonic_bijection):
+                if rule.clause1.evaluate() == False or isinstance(rule.clause1, basicLogic.atom_false):
+                    for var in v:
+                        if rule.clause2.name == var.name:
+                            var.setValue(False)
+        
+        for rule in kb:
+            if isinstance (rule, basicLogic.operator_bitonic_bijection):
+                if rule.clause1.evaluate() == True or isinstance(rule.clause1, basicLogic.atom_truth):
+                    for var in v:
+                        if rule.clause2.name == var.name:
+                            var.setValue(True)   
+        return v
+        
+    def evaluatev (self):
+        #@TODO THIS MUST BE FIXED
+        kb = self.prev.evaluatekb()
+        newV = self.prev.evaluatev()
+        tempkb = self.setkbfromv(kb,newV)
+        newV = self.initGroundAtoms(tempkb, newV)
+        return newV
+
+
+
+class complexOperation_deleteVariable (complexOperation):
+    def __init__ (self, variableName):
+        complexOperation.__init__(self, "deleteVariable" + str(variableName))
+        self.toDelete = variableName
+    
+    def evaluatev (self):
+        oldv = self.prev.evaluatev()
+        newv = []
+        for old in oldv:
+            if not old.name == self.toDelete:
+                newv.append(old)
+        return newv
+
+    def toDeleteIsHead (self, rule):
+        if rule.clause2.name == self.toDelete:
+            return True
+        return False
+    def toDeleteIsBody (self, rule):
+        if rule.clause1.name == self.toDelete:
+            return True
+        return False
+    
+    #@TODO must be extended for more cases
+    def evaluatekb (self):
+        oldkb =  self.prev.evaluatekb()
+        newkb =[]
+        for old in oldkb:
+            if isinstance(old, basicLogic.operator_bitonic_implication):
+                if not self.toDeleteIsBody(old) and not self.toDeleteIsHead(old):
+                    newkb.append(old)      
+        return newkb
+    
+class complexOperation_fixVariable (complexOperation):
+    def __init__ (self, variableName, value):
+        complexOperation.__init__(self, "fixVariable" + str(variableName))
+        self.toFix = variableName
+        self.fixValue = value
+        
+    def evaluatekb (self):
+        return self.prev.evaluatekb()
+    def evaluatev (self):
+        oldV = self.prev.evaluatev()
+        for v in oldV:
+            if v.name == self.toFix:
+                v.setValue(self.fixValue)
+                v.fixed=True
+        return oldV
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
