@@ -13,10 +13,13 @@ SETVAL = True
 class scp (object):
     
     def __init__ (self):
-        self.state1 = None
+        
         self.M = []
         self.initialKB = []
         self.initialV = []
+        self.state1 = complexOperation_init ()
+        self.state1.kb = self.initialKB
+        self.state1.v = self.initialV
         self.lastState = self.getLastState
 
     def addNext (self,nxt):
@@ -39,7 +42,8 @@ class scp (object):
     def checkPrecondition ():
         print ("Checking precondition")
 
-
+    def length (self):
+        return self.__len__()
     def insertAtPos (self, m, pos):
         m=copy.deepcopy(m) 
         #CREATE NEW FIRST STATE

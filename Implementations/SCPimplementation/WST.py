@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jan 20 14:23:02 2020
-
+HEREIN IS AN IMPLEMENTATION OF SCPS USING THE WASON SELECTION TASK
 @author: Axel
 """
 
@@ -9,9 +9,6 @@ import basicLogic
 import scp
 import copy
 
-
-
-print ("=================THE WASON SELECTION TASK=========================")
 #CARDS THAT CAN BE OBSERVED
 card_d = basicLogic.atom("p", setValue=False)
 card_k = basicLogic.atom("p'", setValue=False)
@@ -20,21 +17,22 @@ card_7 = basicLogic.atom("q'", setValue=False)
 
 
 #STARTING RULES, FACTS
+# the rule d -> 3 which participants are asked to vericy
 knowledge_dimp3 = basicLogic.operator_bitonic_implication(card_d,card_3)
+# rules for if each card is seen
 knowledge_d = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, card_d)
 knowledge_3 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, card_3)
 knowledge_k = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, card_k)
 knowledge_7 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, card_7)
-
+# the extra fact that 7->not(3)
 pPrime = basicLogic.operator_monotonic_negation(card_3)
-knowledge_primeRelationp = basicLogic.operator_bitonic_implication(pPrime ,card_7, immutable=True)
-
+knowledge_primeRelationp = basicLogic.operator_bitonic_implication(card_7,pPrime, immutable=True)
+# the extra fact that K->not(D)
 qPrime = basicLogic.operator_monotonic_negation(card_k)
-knowledge_primeRelationq = basicLogic.operator_bitonic_implication(qPrime ,card_d, immutable=True)
-#INITIALISE THE SET OF COMPLEX OPERATORS M
+knowledge_primeRelationq = basicLogic.operator_bitonic_implication(card_d,qPrime , immutable=True)
 
-# create the initial state of the SCP
-comp_initialise = scp.complexOperation_init ()
+
+#INITIALISE THE SET OF COMPLEX OPERATORS M
 # create the complex operation to add abnormalities
 comp_addAB = scp.complexOperation_addAB ()
 # create the complex operation to delete a named variable
@@ -48,8 +46,10 @@ comp_semantic = scp.complexOperation_semanticOperator()
 
 comp_modusTolens = scp.complexOperation_modusTolens()
 
- 
+ """
+CREATE AN SCP CONTAING THE RULE D->3 AS WELL AS THE CARD OBSERVED
 
+"""
 def createwst_card (variable, knowledge, fix=False, varToFix = None, valueToFix = None):
     wst =  scp.scp()
     print ("The new SCP is made")
@@ -73,7 +73,6 @@ def createwst_card (variable, knowledge, fix=False, varToFix = None, valueToFix 
     print ("The initial KB is ")
     print (u"{}".format(wst.strInitialKB()))
     
-    wst.setState1(comp_initialise)
     wst.addNext(comp_addAB)
 
     if fix:

@@ -38,8 +38,6 @@ knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, o)
 
 #INITIALISE THE SET OF COMPLEX OPERATORS M
 
-# create the initial state of the SCP
-comp_initialise = scp.complexOperation_init ()
 # create the complex operation to add abnormalities
 comp_addAB = scp.complexOperation_addAB ()
 # create the complex operation to delete a named variable
@@ -69,7 +67,6 @@ def createsuppressionTask_standard():
     suppressionTask.addVariable(l)
     suppressionTask.addVariable(o)
     
-    suppressionTask.setState1(comp_initialise)
     suppressionTask.addNext(comp_addAB)
     suppressionTask.addNext(comp_weak)
     suppressionTask.addNext(comp_semantic)
@@ -92,7 +89,6 @@ def createsuppressionTask_noSuppression():
     suppressionTask.addVariable(l)
     #suppressionTask.addVariable(o)
     
-    suppressionTask.setState1(comp_initialise)
     suppressionTask.addNext(comp_addAB)
     suppressionTask.addNext(comp_weak)
     suppressionTask.addNext(comp_semantic)
@@ -115,7 +111,6 @@ def createsuppressionTask_fixVariableab1():
     suppressionTask.addVariable(l)
     suppressionTask.addVariable(o)
     
-    suppressionTask.setState1(comp_initialise)
     suppressionTask.addNext(comp_addAB)
     suppressionTask.addNext(comp_fixab1)
     suppressionTask.addNext(comp_weak)
@@ -138,8 +133,7 @@ def createsuppressionTask_deleteVariableo():
     suppressionTask.addVariable(e)
     suppressionTask.addVariable(l)
     suppressionTask.addVariable(o)
-    
-    suppressionTask.setState1(comp_initialise)
+
     suppressionTask.addNext(comp_deleteo)
     suppressionTask.addNext(comp_addAB)
     suppressionTask.addNext(comp_weak)

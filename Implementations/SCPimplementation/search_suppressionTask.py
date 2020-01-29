@@ -30,9 +30,6 @@ knowledge3 = basicLogic.operator_bitonic_implication(o, l)
 knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, o)
 
 #INITIALISE THE SET OF COMPLEX OPERATORS M
-
-# create the initial state of the SCP
-comp_initialise = scp.complexOperation_init ()
 # create the complex operation to add abnormalities
 comp_addAB = scp.complexOperation_addAB ()
 # create the complex operation to delete a named variable
@@ -49,7 +46,7 @@ M = []
 # create the list containing all comple operations which should be considered during search.
 # the paper @TODO describes the procedure and best practices for choosing these.
 # note that comp_initialise is exluded from this list, as the de-facto start variable, it is only used once in an SCP.
-M.append(comp_addAB)
+#M.append(comp_addAB)
 M.append(comp_deleteo) 
 M.append(comp_fixab1)
 M.append(comp_semantic)
@@ -72,7 +69,11 @@ def scpDeNovoSearch (p, iteration, solutions = [], goalV = None, limit = LIMIT, 
     # the final epistemic state of the agent after the SCP is run
     kb = p.evaluateKB()
     # the final epistemic variable assignments of the agent after the SCP is run
-    v = p.evaluateV()
+    v=[]
+    try:
+        v = p.evaluateV()
+    except scp.NotBijectionError:
+        return []
     # check goal condition
     # at present goals are limitted to variable assignments @TODO extend
     # duplicate solutions are removed
@@ -139,62 +140,6 @@ def remove (m,M):
             alreadyRemoved=True
     return newM
 
-"""
-DETERMINE ALL SCPS THAT CAN BE MADE BY INSERTING M' INTO THE ORGINAL SCP, AND RETURN THOSE THAT SATISFY THE GOAL CONDITION
-@param M': the subset of actions in M which must be inserted into the scp
-@param _scp: the SCP to be evaluated or extended to meet the new goal criteria
-@param goalV: the set of variable assignments which constitute a success, in the form (string:variableName,bool:truthValue=True/False/None)
-@return returns a list of all scps which ,when the complex operation M' are inserted in the original scp, satisfy the goal
-"""
-def randomisedInsert (Mprime,_scp, goalV, solutions):
-    # if M' is the empty set, check if the current scp, when evluated, leads to variable assignments that satisfy the goal
-    # if the final epistemic state satisfies the goal, return the scp, else return the empty set
-    if len(Mprime)==0:
-        v = _scp.evaluateV()
-        for var in v:
-            if var.name == goalV[0] and var.value == goalV[1]:
-                return [_scp]
-        return []
-    # combination(...) already generates every possible combination, so we are only concerned with inserting them
-    # we insert the first m in every position in the scp, then we remove that m from Mprime and repreat the process with the shortened list
-    # we ignore position 0 as this is the init operation in the SCP
-    for pos in range (1, len(_scp)):      
-        # insert the first m in M' into the position pos
-        newscp = insert(Mprime[0],_scp, pos)
-        # remove the first complex operation in M' from the list
-        newMprime = remove(Mprime[0],Mprime)
-        # repeat this operation using the extended SCP and the shortened M'
-        insertAndEvaluate = randomisedInsert(Mprime=newMprime,_scp=newscp, goalV=goalV, solutions=solutions)
-        # add any solutions that can use this scp as a base and then add some m in newM' to it to satisfy the goal
-        solutions = solutions + insertAndEvaluate
-    #return the solutions without any duplicates
-    return list(dict.fromkeys(solutions))
-"""
-FINDS THE LIST OF ALL SCPS WHICH CAN BE MADE BY ADDING depth NUMBER OF OPERATIONS FROM M (ALLOWING REPEATS) TO EXISTING SCP _scp.
-_scp IS ASSUMED INITIALLY TO BE A WELL FOUNDED SCP THAT DESCRIBES A GENERAL PHENOMENON IN SUBJECTS. USING THIS SEARCH EXTENSIONS
-TO _scp CAN BE FOUND WHICH NOW MODEL OTHER REASONER CASES BUT STILL ASSUME THAT THEY ARE FOUNDED ON THE ORIGINAL SCP. 
-Note: this is a fairly intensive search procedure and search depths > 3 are very computationally slow, use with care.
-@param M': the subset of actions in M which must be inserted into the scp
-@param M: the list of allowable complex actions
-@param depth: the maximum number of complex operations to instert into the scp
-@param _scp: the SCP which represents the general case of the porblem we are trying solve for the individual case
-@param goalV: the set of variable assignments which constitute a success, in the form (string:variableName,bool:truthValue=True/False/None)
-@param solutions: the set of scps which, when evaluated, satsify the goal conditions (before the new action is added on this iteration)
-@return a list of all scps which when evaluated, satisfy the goal conditions (after the new action is added on this iteration)
-"""
-def scpCombinationSearch (Mprime, depth, _scp, goalV, solutions=[]):
-    # copy the scp so that pointers are not shared
-    _scp =copy.deepcopy(_scp)
-    # randomly inserts all m in M' into the initial
-    solutions = randomisedInsert(Mprime, _scp, goalV, solutions=solutions)
-    # return all solutions if maximum search depth is reached
-    if depth==0: 
-        return solutions
-    # repeat this method, extending Mprime with the complex action m
-    for m in _scp.M:    
-        solutions= scpCombinationSearch(Mprime+[m], depth-1, _scp, goalV, solutions)
-    return list(dict.fromkeys(solutions))
-        
 #==============================================================================
 #==================================TESTING=====================================
 #==============================================================================
@@ -217,13 +162,12 @@ def testDeNovoSearch (goalV, limit=LIMIT ):
     p.addVariable(l)
     p.addVariable(o)
     # add the initialise complex operation
-    p.setState1(comp_initialise)
     # add any other complex operations guaranteed to be performed next by p
     #p.addNext(comp_addAB)
     #p.addNext(comp_weak)
     
     # get a list of all possible successive SCPs which meet the given goal conditions
-    solutions = scpDeNovoSearch(p, iteration=0, goalV=goalV, limit=LIMIT)   
+    solutions = scpDeNovoSearch(p, iteration=0, goalV=goalV, limit=limit)   
     # print all the solutions found
     print(strSCPList(solutions))    
     print ("Number of solutions found: " + str(len(solutions)))
@@ -246,29 +190,76 @@ def testModificationSearch(goalV, limit=LIMIT):
     q.addVariable(e)
     q.addVariable(l)
     q.addVariable(o)
-    
-    q.setState1(comp_initialise)
     #p.addNext(comp_addAB)
     q.addNext(comp_addAB)
     q.addNext(comp_weak)
     q.addNext(comp_semantic)
     q.addNext(comp_semantic)
-    q.addNext(comp_semantic)
-
+    #q.addNext(comp_semantic)
+    solutions = modificationSearch(q, goalV, limit)
+    return solutions
+    
+    """"
     solutions = scpCombinationSearch(Mprime=[], depth=limit, _scp=q, goalV=goalV)
     print (strSCPList(solutions))
     print ("Number of solutions found: " + str(len(solutions)))
     print ("The initial SCP was:")
+    """
     print(q)
+from itertools import permutations 
+
+def randomisedInsert2 (Mprime,_scp, goalV, solutions):
+    # if M' is the empty set, check if the current scp, when evluated, leads to variable assignments that satisfy the goal
+    # if the final epistemic state satisfies the goal, return the scp, else return the empty set
+    
+    if len(Mprime)==0:
+        v=[]
+        try:
+            v = _scp.evaluateV()
+            for var in v:
+                #print "var is :: {} :: {}".format(var.name,var.value)
+                if var.name == goalV[0] and var.value == goalV[1]:
+                    #print ("FOUND")
+                    return [_scp]
+            return []
+        except scp.NotBijectionError:
+            return v
+    # combination(...) already generates every possible combination, so we are only concerned with inserting them
+    # we insert the first m in every position in the scp, then we remove that m from Mprime and repreat the process with the shortened list
+    # we ignore position 0 as this is the init operation in the SCP
+    for pos in range (1, len(_scp)):      
+        # insert the first m in M' into the position pos
+        newscp = insert(Mprime[0],_scp, pos)
+        # remove the first complex operation in M' from the list
+        newMprime = remove(Mprime[0],Mprime)
+        # repeat this operation using the extended SCP and the shortened M'
+        insertAndEvaluate = randomisedInsert2(Mprime=newMprime,_scp=newscp, goalV=goalV, solutions=solutions)
+        # add any solutions that can use this scp as a base and then add some m in newM' to it to satisfy the goal
+        solutions = solutions + insertAndEvaluate
+    #return the solutions without any duplicates
+    return list(dict.fromkeys(solutions))
 
 
+def modificationSearch (_scp, goalV, depth):
+    M = _scp.M
+    solutions=[]
+    for i in range (0, depth+1):
+        li = permutations(M,i)
+        for l in list(li):
+            solutions = solutions+randomisedInsert2(l, _scp, goalV, [])
+    print "{} solutions found".format(len(solutions))
+    return solutions
+            
+            
+        
+    
 # use this method to test a general BFS search algorithm that finds a set of SCPs that model the suppression task
-testDeNovoSearch(goalV=('l',True), limit=5)
+denSearch = testDeNovoSearch(goalV=('l',True), limit=5)
 # Use this method to test a modified BFS algorithm that finds possible extensions of an existing SCP that satisfy a goal
-testModificationSearch(goalV=('l',True), limit=2)
+#modSearch = testModificationSearch(goalV=('l',True), limit=2)
 
-
-
+#for i in modSearch:
+#    print i
 
 
 
