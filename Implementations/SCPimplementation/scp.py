@@ -106,15 +106,15 @@ class scp (object):
     
         
     def strKnowledge(self, kb):
-        k = "{"
+        k = u"{"
         for i in range (0, len(kb)):
-            k = k + str(kb[i]) + (", " if i<len(kb)-1 else "") 
-        k=k+"}"
+            k = k + u"{}{}".format(kb[i],(", " if i<len(kb)-1 else "") )
+        k=k+u"}"
         return k        
     def strVariables(self, v):
         vs = "{"
         for i in range (0, len(v)):
-            vs = vs + str(v[i]) + ":" + str(v[i].value) + (", " if i<len(v)-1 else "") 
+            vs = u"{} {} : {} {}".format(vs, v[i], v[i].evaluate(), (", " if i<len(v)-1 else "") )
         vs=vs+"}"
         return vs
     def strInitialKB (self):
@@ -130,10 +130,10 @@ class scp (object):
         return s
     def strDetailed (self):
         node = self.state1
-        s = ""
+        s = u''
         while node != None:
-            s = s+"===="+str(node.name)+"====\n"
-            s=s + str(node) + "\n"
+            s = s + (u'==={}===\n').format(node.name)
+            s=s + u'{}\n'.format(node)
             node = node.next
         return s
     def evaluateV (self):
@@ -144,6 +144,25 @@ class scp (object):
         if self.getLastState() == None:
             return []
         return self.getLastState().evaluatekb()
+    
+    def getLeastModel (self):
+        variables = self.evaluateV()
+        _true=[]
+        _false=[]
+        for v in variables:
+            if (v.value == True):
+                _true.append(v)
+            elif (v.value==False):
+                _false.append(v)
+        return (_true, _false)
+
+    def strLeastModel (self):
+        least = self.getLeastModel()
+        _true = [str(i) for i in least[0]]
+        _false = [str(i) for i in least[1]]
+        s = u"True=({}),False=({})".format(_true,_false)
+        return s
+        
     def __len__(self):
         if self.state1==None:
             return 0
@@ -154,12 +173,7 @@ class scp (object):
             i=i+1
             if (node==None):
                 return i
-        
-        
-        
-        
-            
-   
+
             
     
     
@@ -194,7 +208,7 @@ class complexOperation (object):
         if kb == None:
             return "{}"
         for i in range (0, len(kb)):
-            k = k + str(kb[i]) + (", " if i<len(kb)-1 else "") 
+            k = u'{} {} {}'.format(k, kb[i], (", " if i<len(kb)-1 else "") )
         k=k+"}"
         return k
         
@@ -203,7 +217,7 @@ class complexOperation (object):
         if v == None:
             return "{}"
         for i in range (0, len(v)):
-            vs = vs + str(v[i]) + ":" + str(v[i].value) + (", " if i<len(v)-1 else "") 
+            vs = vs + u"{} : {}{}".format(v[i],v[i].evaluate(),(", " if i<len(v)-1 else "") )
         vs=vs+"}"
         return vs
     
@@ -259,9 +273,9 @@ class complexOperation_addAB (complexOperation):
         usedatoms = []
         kb = self.prev.evaluatekb()
         for i in kb:
-            if i.name == "IMPLICATION":
+            if isinstance(i,basicLogic.operator_bitonic_implication ):
                 #atom in head
-                if isinstance(i.clause2, basicLogic.atom ):
+                if isinstance(i.clause2, basicLogic.atom ) and not i.immutable:
                     #check that it is not a ground truth value
                     #abnormality needs to be added
                     if not basicLogic.isGroundAtom(i.clause1):
@@ -271,7 +285,8 @@ class complexOperation_addAB (complexOperation):
                             newAbnormality = basicLogic.atom("ab"+str(len(usedatoms)))
                             negativeAbnormality = basicLogic.operator_monotonic_negation(newAbnormality)
                             newclause = basicLogic.operator_bitonic_and(i.clause1, negativeAbnormality)
-                            kb2.append(basicLogic.operator_bitonic_implication(newclause, i.clause2))
+                            newClauseWithAbnormality = basicLogic.operator_bitonic_implication(newclause, i.clause2)
+                            kb2.append(newClauseWithAbnormality)
                             #used for the evlauatev()
                             tempABs.append(newAbnormality)
                             
@@ -349,8 +364,9 @@ class complexOperation_weaklyComplete (complexOperation):
                 body = bodies[0]
                     
                 for nbody in bodies:
+                    
                     if body!=nbody:
-                        body = basicLogic.operator_bitonic_or(body,nbody)
+                        body = basicLogic.operator_bitonic_or(clause1=body,clause2=nbody)
                 newKB.append(basicLogic.operator_bitonic_bijection(body, head))
                             
                         
@@ -360,7 +376,12 @@ class complexOperation_weaklyComplete (complexOperation):
         return self.prev.evaluatev()
 
 
-
+class Error(Exception):
+   """Base class for other exceptions"""
+   pass
+class NotBijectionError(Error):
+   """Raised when the input value is too small"""
+   pass
 
                 
 class complexOperation_semanticOperator (complexOperation):
@@ -379,20 +400,111 @@ class complexOperation_semanticOperator (complexOperation):
                 rule.deepSet(var.name, var.value)
         return kb
     #@TODO fix, doesn't do FOR ALL CALUSES A <- body I(body) = false
+    def isBijection(self,rule):
+        return isinstance (rule, basicLogic.operator_bitonic_bijection)
+    def evalClause (self, clause):
+        if clause.evaluate() == False or isinstance(clause, basicLogic.atom_false):
+            return False
+        elif clause.evaluate() == True or isinstance(clause, basicLogic.atom_truth):
+            return True
+        return None
     def initGroundAtoms(self, kb, v):
+        """
         for rule in kb:
-            if isinstance (rule, basicLogic.operator_bitonic_bijection):
-                if rule.clause1.evaluate() == False or isinstance(rule.clause1, basicLogic.atom_false):
-                    for var in v:
-                        if rule.clause2.name == var.name:
-                            var.setValue(False, setVal = SETVAL)
+            if not self.isBijection(rule):
+                raise NotBijectionError
+                
+        #FOR FALSEHOOD
+        for rule in kb:
+            if self.evalClause(rule.clause1)==False:
+                for var in v:
+                    if rule.clause2.name == var.name:
+                        var.setValue(False, setVal = SETVAL)
+        for rule in kb:
+            if self.evalClause(rule.clause2)==False:
+                for var in v:
+                    if rule.clause1.name == var.name:
+                        var.setValue(False, setVal = SETVAL)        
         
+        
+        #FOR TRUTH
         for rule in kb:
-            if isinstance (rule, basicLogic.operator_bitonic_bijection):
-                if rule.clause1.evaluate() == True or isinstance(rule.clause1, basicLogic.atom_truth):
+            print u"testing rule{}".format(rule)
+            if self.evalClause(rule.clause1)==True:
+                for var in v:
+                    if rule.clause2.name == var.name:
+                        var.setValue(True, setVal=SETVAL)   
+                        print ("HEREX2")
+                        print (u"").format(rule)
+                        print ("---")
+        for rule in kb:
+            if self.evalClause(rule.clause2)==True:
+                for var in v:
+                    if rule.clause1.name == var.name:
+                        var.setValue(True, setVal=SETVAL) 
+                        print ("HEREX1")
+                        print (u"").format(rule)
+        return v
+        """
+        #check that every rule is of a valid format
+        for rule in kb:
+            if not self.isBijection(rule):
+                raise NotBijectionError
+                
+        #test false
+        for rule in kb:
+            head = rule.clause2
+            body = rule.clause1
+            if self.evalClause(body)==False:
+                if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
                     for var in v:
-                        if rule.clause2.name == var.name:
-                            var.setValue(True, setVal=SETVAL)   
+                        if var.name == head.name:
+                            var.setValue (False)
+        for rule in kb:
+            head = rule.clause1
+            body = rule.clause2
+            if self.evalClause(body)==False:
+                if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
+                    for var in v:
+                        if var.name == head.name:
+                            var.setValue (False)            
+        #test unknown
+        for rule in kb:
+            head = rule.clause2
+            body = rule.clause1
+            if self.evalClause(body)==None:
+                if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
+                    for var in v:
+                        if var.name == head.name:
+                            var.setValue (None)
+        for rule in kb:
+            head = rule.clause2
+            body = rule.clause1
+            if self.evalClause(body)==None:
+                if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
+                    for var in v:
+                        if var.name == head.name:
+                            var.setValue (None)
+
+           
+        #test true
+        for rule in kb:
+            head = rule.clause2
+            body = rule.clause1
+            if self.evalClause(body)==True:
+                if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
+                    for var in v:
+                        if var.name == head.name:
+                            var.setValue (True)
+                            
+        for rule in kb:
+            head = rule.clause1
+            body = rule.clause2
+            if self.evalClause(body)==True:
+                if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
+                    for var in v:
+                        if var.name == head.name:
+                            var.setValue (True)   
         return v
         
     def evaluatev (self):
@@ -453,6 +565,26 @@ class complexOperation_fixVariable (complexOperation):
                 v.fixed=True
         return oldV
         
+#==============================================================================
+
+class complexOperation_modusTolens (complexOperation):
+    def __init__ (self):
+        complexOperation.__init__(self, "Modus Tolens")
+        
+    def evaluatekb (self):
+        oldkb = self.prev.evaluatekb()
+        newkb = copy.deepcopy(oldkb)
+        for rule in oldkb:
+            if isinstance(rule.clause2, basicLogic.atom) and not basicLogic.isGroundAtom(rule.clause2):
+                negateClause1 = basicLogic.operator_monotonic_negation(rule.clause1)
+                negateClause2 = basicLogic.operator_monotonic_negation(rule.clause2)
+                contraRule = basicLogic.operator_bitonic_implication(negateClause1, negateClause2)
+                newkb.append(contraRule)
+            #print u"{}".format(rule.clause2)
+        return newkb
+    def evaluatev (self):
+        return self.prev.evaluatev()
+    
 
 
 

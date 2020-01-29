@@ -7,14 +7,16 @@ Created on Mon Jan 20 14:23:02 2020
 
 import basicLogic
 import scp
+import copy
+
 
 
 print ("=================THE WASON SELECTION TASK=========================")
 #CARDS THAT CAN BE OBSERVED
-card_d = basicLogic.atom('p', setValue=False)
-card_k = basicLogic.operator_monotonic_negation(card_d)
-card_3 = basicLogic.atom('q', setValue=False)
-card_7 = basicLogic.operator_monotonic_negation(card_3)
+card_d = basicLogic.atom("p", setValue=False)
+card_k = basicLogic.atom("p'", setValue=False)
+card_3 = basicLogic.atom("q", setValue=False)
+card_7 = basicLogic.atom("q'", setValue=False)
 
 
 #STARTING RULES, FACTS
@@ -23,6 +25,12 @@ knowledge_d = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, c
 knowledge_3 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, card_3)
 knowledge_k = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, card_k)
 knowledge_7 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, card_7)
+
+pPrime = basicLogic.operator_monotonic_negation(card_3)
+knowledge_primeRelationp = basicLogic.operator_bitonic_implication(pPrime ,card_7, immutable=True)
+
+qPrime = basicLogic.operator_monotonic_negation(card_k)
+knowledge_primeRelationq = basicLogic.operator_bitonic_implication(qPrime ,card_d, immutable=True)
 #INITIALISE THE SET OF COMPLEX OPERATORS M
 
 # create the initial state of the SCP
@@ -37,6 +45,8 @@ comp_fixab1 = scp.complexOperation_fixVariable('ab1', False)
 comp_weak = scp.complexOperation_weaklyComplete()
 # create the complex operation to apply the sematic operator
 comp_semantic = scp.complexOperation_semanticOperator()
+
+comp_modusTolens = scp.complexOperation_modusTolens()
 
  
 
@@ -53,12 +63,16 @@ def createwst_card (variable, knowledge, fix=False, varToFix = None, valueToFix 
     
     wst.addVariable(card_d)
     wst.addVariable(card_3)
+    
 
+ 
+    wst.addVariable(variable)      
+    
     print ("The variables are:")
-    print (wst.strVariables(wst.initialV))   
-    wst.addVariable(variable)
-    print ("The variables are:")
-    print (wst.strVariables(wst.initialV))       
+    print (wst.strVariables(wst.initialV))  
+    print ("The initial KB is ")
+    print (u"{}".format(wst.strInitialKB()))
+    
     wst.setState1(comp_initialise)
     wst.addNext(comp_addAB)
 
@@ -72,10 +86,12 @@ def createwst_card (variable, knowledge, fix=False, varToFix = None, valueToFix 
 
     wst.addNext(comp_semantic)
     
-    import copy
+
     #without this deepcopy, some object property causes the wst of the previous call to be overwritten by this one
     #@TODOfix
     return copy.deepcopy(wst)  
+
+
 
 def createwst_card_d ():
     return createwst_card(card_d, knowledge_d) 
@@ -84,19 +100,113 @@ def createwst_card_k ():
 def createwst_card_3 ():
     return createwst_card(card_3, knowledge_3) 
 def createwst_card_7 ():
-    return createwst_card(card_7, knowledge_7)
-
- 
-
+    return createwst_card(card_7, knowledge_7) 
+def createwst_card_d_contraposition ():
+    wst = createwst_card_d()
+    #add p
+    wst.addVariable(card_7)  
+    wst.addVariable(card_k)  
+    wst.addKnowledge(knowledge_primeRelationp)
+    wst.addKnowledge(knowledge_primeRelationq)
+    wst.insertAtPos(comp_modusTolens, 1)
+    return wst
+def createwst_card_k_contraposition ():
+    wst = createwst_card_k()
+    #add p
+    wst.addVariable(card_7)  
+    wst.addVariable(card_k)  
+    wst.addKnowledge(knowledge_primeRelationp)
+    wst.addKnowledge(knowledge_primeRelationq)
+    wst.insertAtPos(comp_modusTolens, 1)
+    return wst
+def createwst_card_3_contraposition ():
+    wst = createwst_card_3()
+    #add p
+    wst.addVariable(card_7)  
+    wst.addVariable(card_k)  
+    wst.addKnowledge(knowledge_primeRelationp)
+    wst.addKnowledge(knowledge_primeRelationq)
+    wst.insertAtPos(comp_modusTolens, 1)
+    return wst
+def createwst_card_7_contraposition ():
+    wst = createwst_card_7()
+    #add p
+    wst.addVariable(card_7)  
+    wst.addVariable(card_k)  
+    wst.addKnowledge(knowledge_primeRelationp)
+    wst.addKnowledge(knowledge_primeRelationq)
+    wst.insertAtPos(comp_modusTolens, 1)
+    return wst
     
 def describeSCP (scp_toDescribe, label):
     print (">>>>>>" + label + "<<<<<<<<")
-    print(scp_toDescribe.strDetailed())
+    print(u'{}'.format(scp_toDescribe.strDetailed()))
     print ("The final sequence: " + str(scp_toDescribe))  
 
 wst_d = createwst_card_d()
 wst_k = createwst_card_k()
 wst_3 = createwst_card_3()
 wst_7 = createwst_card_7()
-wst_fixab1 = createwst_card(card_7, knowledge_7, fix=True, varToFix='d', valueToFix=True)
-describeSCP(wst_fixab1, "7 card observed")
+#describeSCP(wst_3, "3 card observed")
+#print(wst_3)
+    
+    
+#wst_fixab1 = createwst_card(card_7, knowledge_7, fix=True, varToFix='d', valueToFix=True)
+wst_d_contra = createwst_card_d_contraposition()
+wst_k_contra = createwst_card_k_contraposition()
+wst_3_contra = createwst_card_3_contraposition()
+wst_7_contra = createwst_card_7_contraposition()
+
+
+#describeSCP(wst_d_contra, "3 card observed with contra")
+print(wst_d_contra)
+
+# IF THE WCS MAPS A VARIABLE IN THE RULE TO TRUE, THEN WE MUST TURN THE CARD TO CHECK IT
+def turnFunction (_scp):
+    ruleToTest = copy.deepcopy(knowledge_dimp3)
+    
+        
+    variables = _scp.evaluateV()
+    for v in variables:
+        #print ("{}:{}".format(v.name, v.value))
+        ruleToTest.deepSet(v.name, v.value)
+    turn = ruleToTest.evaluate()
+    #print(u"Testing rule: {}").format(ruleToTest)
+    return turn
+
+def strSummary (_scp, case):
+    s = (u"Case: {}\n{}\n>>Turn :: {}\nLeast Model :: {}").format(case,_scp,turnFunction(_scp), _scp.strLeastModel())
+    return s
+
+print ("{}{}{}").format('-'*10, "standard Cases" ,'-'*10)
+print ('='*25)
+print (strSummary(wst_d, "D card seen"))
+print ('='*25)
+print (strSummary(wst_k, "K card seen"))
+print ('='*25)
+print (strSummary(wst_3, "3 card seen"))
+print ('='*25)
+print (strSummary(wst_7, "7 card seen"))
+print ('='*25)
+
+print ("{}{}{}").format('-'*10, "Non-standard Cases" ,'-'*10)
+print (strSummary(wst_d_contra, "D card seen, with modus tolens"))
+print ('='*25)
+print (strSummary(wst_k_contra, "K card seen, with modus tolens"))
+print ('='*25)
+print (strSummary(wst_3_contra, "3 card seen, with modus tolens"))
+print ('='*25)
+print (strSummary(wst_7_contra, "7 card seen, with modus tolens"))
+print ('='*25)
+#print (u"{}\n{}\n>>Turn :: {}").format("K card seen:",wst_k,turnFunction(wst_k))
+#print (u"{}\n{}\n>>Turn :: {}").format("3 card seen:",wst_3,turnFunction(wst_3))
+#print (u"{}\n{}\n>>Turn :: {}").format("7 card seen:",wst_7,turnFunction(wst_7))
+
+#describeSCP(wst_3, "3 card")
+#print (u"{}\n>>Turn :: {}").format(wst_d_contra,turnFunction(wst_d_contra))
+#print (u"{}\n>>Turn :: {}").format(wst_k_contra,turnFunction(wst_k_contra))
+#print (u"{}\n>>Turn :: {}").format(wst_3_contra,turnFunction(wst_3_contra))
+#print (u"{}\n>>Turn :: {}").format(wst_7_contra,turnFunction(wst_7_contra))
+
+
+
