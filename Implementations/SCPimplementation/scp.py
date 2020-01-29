@@ -2,6 +2,15 @@
 """
 Created on Mon Jan 20 11:28:31 2020
 
+THE SCP CLASS
+
+AN SCP (SEQUENTIAL COGNITION PROCESS) IS A LINKED LIST OF COMPLEX OPERATIONS. EACH SCP BEGINS WITH AN
+INITIAL STATE. NO OTHER SCP EXPLICITLY STORES KNOWLEDGE ABOUT THE KNOWLEDGE BASE OR VARIABLES ON WHICH IS WORKS.
+
+Instead, they rely on calls to their predecessors to be passed that information. The complex actions of an SCP
+are only bounded by the creativity of the researcher, and the relevence of their ideas to modelling the problem at hand.
+This SCP implementation focuses on the WEAK COMPLETION SEMANTICS.
+
 @author: Axel
 """
 

@@ -46,11 +46,13 @@ comp_semantic = scp.complexOperation_semanticOperator()
 
 comp_modusTolens = scp.complexOperation_modusTolens()
 
- """
-CREATE AN SCP CONTAING THE RULE D->3 AS WELL AS THE CARD OBSERVED
-
 """
-def createwst_card (variable, knowledge, fix=False, varToFix = None, valueToFix = None):
+CREATE AN SCP CONTAING THE RULE D->3 AS WELL AS THE CARD OBSERVED
+@param variable: variable to be added to the SCP (usually the card observed)
+@param knowledge: information about observed card x in the form T->x
+@return the SCP that results from this process
+"""
+def createwst_card (variable, knowledge, fix=False):
     wst =  scp.scp()
     print ("The new SCP is made")
     print (wst)
@@ -74,10 +76,6 @@ def createwst_card (variable, knowledge, fix=False, varToFix = None, valueToFix 
     print (u"{}".format(wst.strInitialKB()))
     
     wst.addNext(comp_addAB)
-
-    if fix:
-        comp_fix = scp.complexOperation_fixVariable(varToFix, valueToFix)
-        wst.addNext(comp_fix)
     
     wst.addNext(comp_weak)
     wst.addNext(comp_semantic)
@@ -91,7 +89,9 @@ def createwst_card (variable, knowledge, fix=False, varToFix = None, valueToFix 
     return copy.deepcopy(wst)  
 
 
-
+"""
+METHODS FOR EACH OF THE OBSERVED CARDS
+"""
 def createwst_card_d ():
     return createwst_card(card_d, knowledge_d) 
 def createwst_card_k ():
@@ -100,6 +100,10 @@ def createwst_card_3 ():
     return createwst_card(card_3, knowledge_3) 
 def createwst_card_7 ():
     return createwst_card(card_7, knowledge_7) 
+
+"""
+METHODS FOR CASES WHERE CONTRAPOSITION TAKES PLACE
+"""
 def createwst_card_d_contraposition ():
     wst = createwst_card_d()
     #add p
@@ -136,31 +140,30 @@ def createwst_card_7_contraposition ():
     wst.addKnowledge(knowledge_primeRelationq)
     wst.insertAtPos(comp_modusTolens, 1)
     return wst
-    
+
+"""
+PRINT OUT THE SCP IN QUESTION SHOWING THEINPUT AND OUTPUTS OF EACH COMPLEX OPERATION CALL
+"""
 def describeSCP (scp_toDescribe, label):
     print (">>>>>>" + label + "<<<<<<<<")
     print(u'{}'.format(scp_toDescribe.strDetailed()))
     print ("The final sequence: " + str(scp_toDescribe))  
 
+#instantiate each normal card observation
 wst_d = createwst_card_d()
 wst_k = createwst_card_k()
 wst_3 = createwst_card_3()
 wst_7 = createwst_card_7()
-#describeSCP(wst_3, "3 card observed")
-#print(wst_3)
+
     
-    
-#wst_fixab1 = createwst_card(card_7, knowledge_7, fix=True, varToFix='d', valueToFix=True)
+#instantiate each card observation with assumed modus tolens
 wst_d_contra = createwst_card_d_contraposition()
 wst_k_contra = createwst_card_k_contraposition()
 wst_3_contra = createwst_card_3_contraposition()
 wst_7_contra = createwst_card_7_contraposition()
 
-
-#describeSCP(wst_d_contra, "3 card observed with contra")
-print(wst_d_contra)
-
 # IF THE WCS MAPS A VARIABLE IN THE RULE TO TRUE, THEN WE MUST TURN THE CARD TO CHECK IT
+# TODO this method still needs work
 def turnFunction (_scp):
     ruleToTest = copy.deepcopy(knowledge_dimp3)
     
@@ -197,15 +200,4 @@ print (strSummary(wst_3_contra, "3 card seen, with modus tolens"))
 print ('='*25)
 print (strSummary(wst_7_contra, "7 card seen, with modus tolens"))
 print ('='*25)
-#print (u"{}\n{}\n>>Turn :: {}").format("K card seen:",wst_k,turnFunction(wst_k))
-#print (u"{}\n{}\n>>Turn :: {}").format("3 card seen:",wst_3,turnFunction(wst_3))
-#print (u"{}\n{}\n>>Turn :: {}").format("7 card seen:",wst_7,turnFunction(wst_7))
-
-#describeSCP(wst_3, "3 card")
-#print (u"{}\n>>Turn :: {}").format(wst_d_contra,turnFunction(wst_d_contra))
-#print (u"{}\n>>Turn :: {}").format(wst_k_contra,turnFunction(wst_k_contra))
-#print (u"{}\n>>Turn :: {}").format(wst_3_contra,turnFunction(wst_3_contra))
-#print (u"{}\n>>Turn :: {}").format(wst_7_contra,turnFunction(wst_7_contra))
-
-
 
