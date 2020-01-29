@@ -1,0 +1,481 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  29 JAN 2020 08:26
+entering extended mode
+**./WCSFramework.tex
+(WCSFramework.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen105
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen106
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks16
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks17
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip46
+\bibsep=\skip47
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count100
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+\c@proof=\count101
+\c@lemma=\count102
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count103
+\Gm@cntv=\count104
+\c@Gm@tempcnt=\count105
+\Gm@bindingoffset=\dimen114
+\Gm@wd@mp=\dimen115
+\Gm@odd@mp=\dimen116
+\Gm@even@mp=\dimen117
+\Gm@layoutwidth=\dimen118
+\Gm@layoutheight=\dimen119
+\Gm@layouthoffset=\dimen120
+\Gm@layoutvoffset=\dimen121
+\Gm@dimlist=\toks20
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+(WCSFramework.aux)
+\openout1 = `WCSFramework.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count106
+\scratchdimen=\dimen122
+\scratchbox=\box28
+\nofMPsegments=\count107
+\nofMParguments=\count108
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen123
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
+\everyMPtoPDFconversion=\toks22
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 17.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 17.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 106.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+ [3]
+<wasonAbstract.png, id=25, 487.8225pt x 191.9672pt>
+File: wasonAbstract.png Graphic file (type png)
+ <use wasonAbstract.png>
+Package pdftex.def Info: wasonAbstract.png used on input line 175.
+(pdftex.def)             Requested size: 243.91064pt x 95.98335pt.
+
+[4] [5 <./wasonAbstract.png>] <wstcano.png, id=35, 374.90062pt x 315.42844pt>
+File: wstcano.png Graphic file (type png)
+
+<use wstcano.png>
+Package pdftex.def Info: wstcano.png used on input line 325.
+(pdftex.def)             Requested size: 224.94211pt x 189.25851pt.
+ [6] <allBoxes.png, id=39, 482.92921pt x 77.91609pt>
+File: allBoxes.png Graphic file (type png)
+
+<use allBoxes.png>
+Package pdftex.def Info: allBoxes.png used on input line 344.
+(pdftex.def)             Requested size: 289.75975pt x 46.75pt.
+ <general.png, id=40, 877.77937pt x 168.2536pt>
+File: general.png Graphic file (type png)
+
+<use general.png>
+Package pdftex.def Info: general.png used on input line 350.
+(pdftex.def)             Requested size: 316.00034pt x 60.57124pt.
+ <generalwcs.png, id=41, 694.46953pt x 97.48921pt>
+File: generalwcs.png Graphic file (type png)
+
+<use generalwcs.png>
+Package pdftex.def Info: generalwcs.png used on input line 356.
+(pdftex.def)             Requested size: 451.39984pt x 63.36723pt.
+ [7 <./wstcano.png> <./allBoxes.png> <./general.png>]
+[8 <./generalwcs.png>] <weaklycompleteSCP.png, id=49, 557.38237pt x 86.724pt>
+File: weaklycompleteSCP.png Graphic file (type png)
+
+<use weaklycompleteSCP.png>
+Package pdftex.def Info: weaklycompleteSCP.png used on input line 412.
+(pdftex.def)             Requested size: 418.03575pt x 65.04282pt.
+
+<abnormalitySCP.png, id=50, 640.04118pt x 138.21637pt>
+File: abnormalitySCP.png Graphic file (type png)
+
+<use abnormalitySCP.png>
+Package pdftex.def Info: abnormalitySCP.png used on input line 418.
+(pdftex.def)             Requested size: 480.02971pt x 103.662pt.
+
+Overfull \hbox (10.27469pt too wide) in paragraph at lines 418--419
+ [][] 
+ []
+
+<addVariableSCP.png, id=51, 531.63618pt x 78.59363pt>
+File: addVariableSCP.png Graphic file (type png)
+ <use addVariableSCP.png>
+Package pdftex.def Info: addVariableSCP.png used on input line 424.
+(pdftex.def)             Requested size: 398.72617pt x 58.94505pt.
+
+<removeVariableSCP.png, id=52, 523.50581pt x 107.50162pt>
+File: removeVariableSCP.png Graphic file (type png)
+
+<use removeVariableSCP.png>
+Package pdftex.def Info: removeVariableSCP.png used on input line 430.
+(pdftex.def)             Requested size: 392.62839pt x 80.626pt.
+ <silenceSCP.png, id=53, 458.9145pt x 107.50162pt>
+File: silenceSCP.png Graphic file (type png)
+
+<use silenceSCP.png>
+Package pdftex.def Info: silenceSCP.png used on input line 436.
+(pdftex.def)             Requested size: 344.18503pt x 80.626pt.
+
+<semanticOperatorSCP.png, id=54, 322.05319pt x 90.78918pt>
+File: semanticOperatorSCP.png Graphic file (type png)
+
+<use semanticOperatorSCP.png>
+Package pdftex.def Info: semanticOperatorSCP.png used on input line 442.
+(pdftex.def)             Requested size: 241.53928pt x 68.0917pt.
+ [9 <./weaklycompleteSCP.png>] [10 <./abnormalitySCP.png> <./addVariableSCP.png
+> <./removeVariableSCP.png> <./silenceSCP.png> <./semanticOperatorSCP.png>]
+<suppressionSCP_overview.png, id=62, 659.91544pt x 93.49931pt>
+File: suppressionSCP_overview.png Graphic file (type png)
+
+<use suppressionSCP_overview.png>
+Package pdftex.def Info: suppressionSCP_overview.png used on input line 461.
+(pdftex.def)             Requested size: 494.93536pt x 70.1243pt.
+
+Overfull \hbox (25.18034pt too wide) in paragraph at lines 461--462
+ [] 
+ []
+
+<suppressionSCP_simple.png, id=63, 422.32782pt x 126.4725pt>
+File: suppressionSCP_simple.png Graphic file (type png)
+
+<use suppressionSCP_simple.png>
+Package pdftex.def Info: suppressionSCP_simple.png used on input line 469.
+(pdftex.def)             Requested size: 316.74509pt x 94.85413pt.
+
+<suppressionSCP_normal.png, id=64, 497.75963pt x 180.22331pt>
+File: suppressionSCP_normal.png Graphic file (type png)
+
+<use suppressionSCP_normal.png>
+Package pdftex.def Info: suppressionSCP_normal.png used on input line 477.
+(pdftex.def)             Requested size: 373.3188pt x 135.16714pt.
+
+<suppressionSCP_mod.png, id=65, 579.51506pt x 130.53769pt>
+File: suppressionSCP_mod.png Graphic file (type png)
+
+<use suppressionSCP_mod.png>
+Package pdftex.def Info: suppressionSCP_mod.png used on input line 485.
+(pdftex.def)             Requested size: 434.63522pt x 97.90302pt.
+
+<suppressionSCP_mod2.png, id=66, 492.79106pt x 196.03238pt>
+File: suppressionSCP_mod2.png Graphic file (type png)
+
+<use suppressionSCP_mod2.png>
+Package pdftex.def Info: suppressionSCP_mod2.png used on input line 493.
+(pdftex.def)             Requested size: 369.59239pt x 147.02391pt.
+ [11 <./suppressionSCP_overview.png> <./suppressionSCP_simple.png> <./suppressi
+onSCP_normal.png>] [12 <./suppressionSCP_mod.png> <./suppressionSCP_mod2.png>] 
+<WSTSCPD.png, id=74, 437.2335pt x 112.47018pt>
+File: WSTSCPD.png Graphic file (type png)
+
+<use WSTSCPD.png>
+Package pdftex.def Info: WSTSCPD.png used on input line 522.
+(pdftex.def)             Requested size: 327.92432pt x 84.35242pt.
+ <WSTSCPK.png, id=75, 412.39069pt x 114.27693pt>
+File: WSTSCPK.png Graphic file (type png)
+
+<use WSTSCPK.png>
+Package pdftex.def Info: WSTSCPK.png used on input line 530.
+(pdftex.def)             Requested size: 309.29225pt x 85.70747pt.
+ <WSTSCP3.png, id=76, 430.45819pt x 112.47018pt>
+File: WSTSCP3.png Graphic file (type png)
+
+<use WSTSCP3.png>
+Package pdftex.def Info: WSTSCP3.png used on input line 538.
+(pdftex.def)             Requested size: 322.84283pt x 84.35242pt.
+ <WSTSCP7.png, id=77, 411.48732pt x 108.405pt>
+File: WSTSCP7.png Graphic file (type png)
+
+<use WSTSCP7.png>
+Package pdftex.def Info: WSTSCP7.png used on input line 546.
+(pdftex.def)             Requested size: 308.61473pt x 81.30354pt.
+ [13 <./WSTSCPD.png> <./WSTSCPK.png> <./WSTSCP3.png>] [14 <./WSTSCP7.png>] [15]
+ [16] [17] [18] (WCSFramework.bbl) [19]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 846.
+ [20] [21]
+(WCSFramework.aux) ) 
+Here is how much of TeX's memory you used:
+ 3897 strings out of 493323
+ 51667 string characters out of 3139069
+ 136329 words of memory out of 3000000
+ 7356 multiletter control sequences out of 15000+200000
+ 12815 words of font info for 49 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 39i,17n,35p,1351b,274s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+
+Output written on WCSFramework.pdf (21 pages, 577856 bytes).
+PDF statistics:
+ 176 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+

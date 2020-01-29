@@ -9,15 +9,9 @@ Created on Mon Jan 20 11:28:31 2020
 import basicLogic
 
 import copy
-
-
- 
-        
-        
-        
-        
-
+SETVAL = True
 class scp (object):
+    
     def __init__ (self):
         self.state1 = None
         self.M = []
@@ -391,14 +385,14 @@ class complexOperation_semanticOperator (complexOperation):
                 if rule.clause1.evaluate() == False or isinstance(rule.clause1, basicLogic.atom_false):
                     for var in v:
                         if rule.clause2.name == var.name:
-                            var.setValue(False)
+                            var.setValue(False, setVal = SETVAL)
         
         for rule in kb:
             if isinstance (rule, basicLogic.operator_bitonic_bijection):
                 if rule.clause1.evaluate() == True or isinstance(rule.clause1, basicLogic.atom_truth):
                     for var in v:
                         if rule.clause2.name == var.name:
-                            var.setValue(True)   
+                            var.setValue(True, setVal=SETVAL)   
         return v
         
     def evaluatev (self):

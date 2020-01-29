@@ -11,10 +11,10 @@ import scp
 
 print ("=================THE WASON SELECTION TASK=========================")
 #CARDS THAT CAN BE OBSERVED
-card_d = basicLogic.atom('d', setValue=False)
-card_k = basicLogic.atom('k', setValue=False)
-card_3 = basicLogic.atom('3', setValue=False)
-card_7 = basicLogic.atom('7', setValue=False)
+card_d = basicLogic.atom('p', setValue=False)
+card_k = basicLogic.operator_monotonic_negation(card_d)
+card_3 = basicLogic.atom('q', setValue=False)
+card_7 = basicLogic.operator_monotonic_negation(card_3)
 
 
 #STARTING RULES, FACTS

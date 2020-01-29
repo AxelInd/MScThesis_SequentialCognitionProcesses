@@ -137,7 +137,6 @@ def remove (m,M):
             newM.append(i)
         elif alreadyRemoved == False:
             alreadyRemoved=True
-            print ("A dup")
     return newM
 
 """
@@ -224,9 +223,11 @@ def testDeNovoSearch (goalV, limit=LIMIT ):
     #p.addNext(comp_weak)
     
     # get a list of all possible successive SCPs which meet the given goal conditions
-    results = scpDeNovoSearch(p, iteration=0, goalV=goalV, limit=LIMIT)   
+    solutions = scpDeNovoSearch(p, iteration=0, goalV=goalV, limit=LIMIT)   
     # print all the solutions found
-    print(strSCPList(results))    
+    print(strSCPList(solutions))    
+    print ("Number of solutions found: " + str(len(solutions)))
+    
 """
 USE THE MODIFIED BFS SEARCH TO INSERT limit NUMBER OF NEW OPERATION INTO AND EXISTING SCP IN ORDER TO
 FIND ALL EXTENSIONS WHICH SATISFY SOME GOAL CONDITION
@@ -255,8 +256,8 @@ def testModificationSearch(goalV, limit=LIMIT):
     q.addNext(comp_semantic)
 
     solutions = scpCombinationSearch(Mprime=[], depth=limit, _scp=q, goalV=goalV)
+    print (strSCPList(solutions))
     print ("Number of solutions found: " + str(len(solutions)))
-    #print (strSCPList(solutions))
     print ("The initial SCP was:")
     print(q)
 

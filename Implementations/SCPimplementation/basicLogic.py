@@ -40,8 +40,8 @@ class atom (object):
             #print ("Variable " + str(self.name) + " set to " + str(self.value))
     def __str__ (self):
         return str(self.name)
-    def setValue (self, val):
-        if not self.fixed:
+    def setValue (self, val, setVal = True):
+        if not self.fixed and setVal==True:
             self.value = val
     
 class atom_truth (atom):
@@ -91,8 +91,25 @@ class operator_monotonic_negation (operator_monotonic):
     def __init__(self, clause = None):
         operator_monotonic.__init__(self, clause)     
         self.name = "NOT"
+        self.value=self.evaluate
+    def setValue(self, value, setVal):
+        if setVal:    
+            if value == True:
+                self.value = TRUE
+            elif value == False:
+                self.value = FALSE
+            elif value == None:
+                self.value==UNKNOWN
+        else:
+            if value == True:
+                self.value = TRUE_noValue
+            elif value == False:
+                self.value = FALSE_noValue
+            elif value == None:
+                self.value==UNKNOWN_noValue
+        
     def evaluate(self):        
-        clauseVal = self.clause.evaluate()        
+        clauseVal = self.clause.evaluate()       
         if clauseVal==None:
             return None
         elif clauseVal==True:
