@@ -21,6 +21,7 @@ tbl_bijective = {'True' : {'True': True,'None': None,'False':False},
 'None' : {'True': None,'None': True,'False':None},
 'False' : {'True': False,'None': None,'False':True}}
 
+
         
 class atom (object):
     def __init__(self, name, value = None, setValue = True):
@@ -79,11 +80,16 @@ class operator (object):
 TRUE = atom_truth (setValue=True)      
 FALSE = atom_false (setValue=True)      
 UNKNOWN = atom_unknown (setValue=True)
+      
 
-TRUE_noValue = atom_truth (setValue=False)      
-FALSE_noValue = atom_false (setValue=False)      
-UNKNOWN_noValue = atom_unknown (setValue=False)        
-        
+def getGroundAtomFor(val):
+    if val==None:
+        return UNKNOWN
+    if val==True:
+        return TRUE
+    if val==False:
+        return FALSE
+
 class operator_monotonic(operator):
     def __init__(self, clause = None, immutable = False):
         operator.__init__(self,immutable = immutable)    

@@ -23,11 +23,11 @@ o = basicLogic.atom('o', setValue=False)
 # if she has an essay to write, she will study late in the library
 knowledge1 = basicLogic.operator_bitonic_implication(e,l)
 # she has an essay to write
-knowledge2 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, e)
+knowledge2 = basicLogic.operator_bitonic_implication(basicLogic.TRUE, e)
 # if the library is open, she will study late in the library
 knowledge3 = basicLogic.operator_bitonic_implication(o, l)
 # the lirary is open
-knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, o)
+knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE, o)
 
 #INITIALISE THE SET OF COMPLEX OPERATORS M
 # create the complex operation to add abnormalities
@@ -256,7 +256,7 @@ def modificationSearch (_scp, goalV, depth):
 # use this method to test a general BFS search algorithm that finds a set of SCPs that model the suppression task
 denSearch = testDeNovoSearch(goalV=('l',True), limit=5)
 # Use this method to test a modified BFS algorithm that finds possible extensions of an existing SCP that satisfy a goal
-#modSearch = testModificationSearch(goalV=('l',True), limit=2)
+modSearch = testModificationSearch(goalV=('l',True), limit=2)
 
 #for i in modSearch:
 #    print i

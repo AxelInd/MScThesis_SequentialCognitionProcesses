@@ -6,8 +6,6 @@ Created on Sat Jan 18 09:41:08 2020
 """
 import basicLogic
 import scp
-import copy
-
 print ("=================THE SUPPRESSION TASK=========================")
 
 
@@ -30,11 +28,11 @@ o = basicLogic.atom('o', setValue=False)
 # if she has an essay to write, she will study late in the library
 knowledge1 = basicLogic.operator_bitonic_implication(e,l)
 # she has an essay to write
-knowledge2 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, e)
+knowledge2 = basicLogic.operator_bitonic_implication(basicLogic.TRUE, e)
 # if the library is open, she will study late in the library
 knowledge3 = basicLogic.operator_bitonic_implication(o, l)
 # the lirary is open
-knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE_noValue, o)
+knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE, o)
 
 #INITIALISE THE SET OF COMPLEX OPERATORS M
 
@@ -158,7 +156,7 @@ suppressionTask_delete = createsuppressionTask_deleteVariableo()
 
 
 #CHOOSE WHICH SCP TO SEE DETAILED HERE
-describeSCP(suppressionTask_fix, "Standard Suppression Task")
+describeSCP(suppressionTask_standard, "Standard Suppression Task")
 
 
 

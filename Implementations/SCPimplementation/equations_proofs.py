@@ -147,7 +147,7 @@ def unit_total_nkXcountAllValidPermutations(printout=False):
     return True
 
 #print (">>Unit Testing unit_nk() and countValidPermutations() : {}").format(unit_nkXcountValidPermutations(printout=True))
-print (">>Unit Testing unit_total_nk() and countAllValidPermutations() : {}").format(unit_total_nkXcountAllValidPermutations(printout=True))
+#print (">>Unit Testing unit_total_nk() and countAllValidPermutations() : {}").format(unit_total_nkXcountAllValidPermutations(printout=True))
 
 """
 liKeepOrder = sequenceMaker('A',2)
@@ -164,9 +164,9 @@ print ("Total Valid Permutation of any length: " + str(countAllValidPermutations
 """
 
 
-x = nk(l=4,k=4)
+#x = nk(l=4,k=4)
 
-print ("GUESS TOTOAL IS : {}").format(x)
+#print ("GUESS TOTOAL IS : {}").format(x)
 
 def definitelyNot (l,k):
     if k==0:
@@ -190,6 +190,7 @@ def totalNumberOfPermutationsWithSubstrings (s):
     return total
     
 # driver code 
+    """
 s = "abcd"; 
 n=len(s)
 print (countNonEmptySubstr(s)*permutation(n,n-1)+countNonEmptySubstr(s[1:])*permutation(n-1,n-2)+countNonEmptySubstr(s[2:])*permutation(n-2,n-3))    
@@ -198,8 +199,19 @@ total=totalNumberOfPermutationsWithSubstrings(s)
 print ("TOTAL IS: {}".format(total)) 
 
     
+"""
+
+import numpy as np
+
+#n : number of matrices
+n = 3
+
+m1 = np.matrix([[1, 2], [3, 4]])
+m2 = np.matrix([[5, 6], [7, 8]])
+m3 = np.matrix([[9, 10], [11, 12]])
     
-    
+matrices = [m1,m2,m3]
+
     
     
     

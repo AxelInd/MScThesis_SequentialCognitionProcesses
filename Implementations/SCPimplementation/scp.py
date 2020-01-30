@@ -31,28 +31,101 @@ class scp (object):
         self.state1.v = self.initialV
         self.lastState = self.getLastState
 
-    def addNext (self,nxt):
-        """
-        oldHead = self.lastState
-        newNxt = copy.copy(nxt)
-        self.lastState = newNxt
-        self.lastState.prev = oldHead
-        oldHead.next = self.lastState  
-        """
-        self.insertAtPos(nxt,len(self))      
-    def getLastState(self):
-        node = self.state1
-        if node == None:
-            return None
-        while node.next!=None:
-            node = node.next
-        return node
+
+    
     #@TODO needs to be implemented
     def checkPrecondition ():
         print ("Checking precondition")
 
+
+    
+    def setState1 (self, state):
+        """
+        state = copy.deepcopy(state)
+        self.state1 = state
+        self.lastState = state
+        """
+        self.insertAtPos(state,0)
+        self.state1.kb=self.initialKB
+        self.state1.v=self.initialV
+
+    def addM (self, M):
+        for m in M:
+            self.addComplexOperation(m)
+
+        
+    def addKnowledge (self, knowledge):
+        if knowledge==None:
+            return False
+        
+        newKnowledge = copy.copy(knowledge)
+        self.initialKB.append(newKnowledge)
+        return True
+    def removeVariable_initial (self,varname):
+        newVars = []
+        for var in self.initialV:
+            if var.name!= varname:
+                newVars.append(var)
+        return newVars
+    def addVariable (self, variable, overwrite=False):
+        newVariable = copy.copy(variable)
+        if not overwrite:
+            for v in self.initialV:
+                #prevents adding duplicate variables (at the start at least)
+                if v.name == newVariable.name:
+                    return False
+        else:
+            self.initialV=self.removeVariable_initial(variable.name)
+        self.initialV.append(newVariable)
+        return True
+
+    def evaluateV (self):
+        if self.lastState == None:
+            return []
+        return self.getLastState().evaluatev()
+    def evaluateKB (self):
+        if self.getLastState() == None:
+            return []
+        return self.getLastState().evaluatekb()
+    
+
+
+    def getVariable (self, variableName):
+        for v in self.initialV:
+            if v.name==variableName:
+                return v
+        return None
+    def existsVariable (self, variableName):
+        return self.getVariable(variableName)==None
+        
+
+#==============================================================================
+#=============================LINKED LIST OPERATIONS===========================
+#==============================================================================
+    def __len__(self):
+        if self.state1==None:
+            return 0
+        i = 0
+        node = self.state1
+        while True:
+            node = node.next
+            i=i+1
+            if (node==None):
+                return i                
+    def addComplexOperation (self, m):
+        mcopy = copy.copy(m)
+        self.M.append(mcopy)  
     def length (self):
         return self.__len__()
+    def removeLast (self, lastname=None):
+        if lastname==None or self.getLastState().name == lastname:
+            if self.lastState!=self.state1:
+                self.getLastState().prev.next=None
+                return True
+            return False
+        return False
+            
+        
     def insertAtPos (self, m, pos):
         m=copy.deepcopy(m) 
         #CREATE NEW FIRST STATE
@@ -87,44 +160,31 @@ class scp (object):
             node.next.prev=m
             node.next=m
             return True
-        return False
-    
-    def setState1 (self, state):
-        """
-        state = copy.deepcopy(state)
-        self.state1 = state
-        self.lastState = state
-        """
-        self.insertAtPos(state,0)
-        self.state1.kb=self.initialKB
-        self.state1.v=self.initialV
-    def addComplexOperation (self, m):
-        mcopy = copy.copy(m)
-        self.M.append(mcopy)
-    def addM (self, M):
-        for m in M:
-            self.addComplexOperation(m)
+        return False  
 
-        
-    def addKnowledge (self, knowledge):
-        newKnowledge = copy.copy(knowledge)
-        self.initialKB.append(newKnowledge)
-    def addVariable (self, variable):
-        newVariable = copy.copy(variable)
-        for v in self.initialV:
-            #prevents adding duplicate variables (at the start at least)
-            if v.name == newVariable.name:
-                return
-        self.initialV.append(newVariable)
+    def addNext (self,nxt):
+        self.insertAtPos(nxt,len(self))      
+    def getLastState(self):
+        node = self.state1
+        if node == None:
+            return None
+        while node.next!=None:
+            node = node.next
+        return node        
+#==============================================================================
+#===============================OUTPUT FUNCTIONS===============================
+#==============================================================================
+
     
-        
-    def strKnowledge(self, kb):
+    @staticmethod
+    def strKnowledge(kb):
         k = u"{"
         for i in range (0, len(kb)):
             k = k + u"{}{}".format(kb[i],(", " if i<len(kb)-1 else "") )
         k=k+u"}"
-        return k        
-    def strVariables(self, v):
+        return k    
+    @staticmethod    
+    def strVariables(v):
         vs = "{"
         for i in range (0, len(v)):
             vs = u"{} {} : {} {}".format(vs, v[i], v[i].evaluate(), (", " if i<len(v)-1 else "") )
@@ -133,7 +193,11 @@ class scp (object):
     def strInitialKB (self):
         return self.strKnowledge(copy.deepcopy(self.initialKB))
     def strInitialV (self):
-        return self.strVariables(copy.deepcopy(self.initialV))    
+        return self.strVariables(copy.deepcopy(self.initialV))  
+    def strFinalV (self):
+        return self.strVariables(self.getLastState().evaluatev())
+    def strFinalKB (self):
+        return self.strKnowledge(self.getLastState().evaluatekb())
     def __str__(self):
         s=""
         m = self.state1
@@ -147,50 +211,8 @@ class scp (object):
         while node != None:
             s = s + (u'==={}===\n').format(node.name)
             s=s + u'{}\n'.format(node)
-            node = node.next
+            node = node.next    
         return s
-    def evaluateV (self):
-        if self.lastState == None:
-            return []
-        return self.getLastState().evaluatev()
-    def evaluateKB (self):
-        if self.getLastState() == None:
-            return []
-        return self.getLastState().evaluatekb()
-    
-    def getLeastModel (self):
-        variables = self.evaluateV()
-        _true=[]
-        _false=[]
-        for v in variables:
-            if (v.value == True):
-                _true.append(v)
-            elif (v.value==False):
-                _false.append(v)
-        return (_true, _false)
-
-    def strLeastModel (self):
-        least = self.getLeastModel()
-        _true = [str(i) for i in least[0]]
-        _false = [str(i) for i in least[1]]
-        s = u"True=({}),False=({})".format(_true,_false)
-        return s
-        
-    def __len__(self):
-        if self.state1==None:
-            return 0
-        i = 0
-        node = self.state1
-        while True:
-            node = node.next
-            i=i+1
-            if (node==None):
-                return i
-
-            
-    
-    
-    
     
     
 
@@ -215,8 +237,14 @@ class complexOperation (object):
         print("I evaluate this specific KB")
     def evaluatev (self):
         print("I evaluate these specific variables")
-        
-    def strKnowledge(self, kb):
+    def setkbfromv (self, kb, v):
+        for var in v:
+            for rule in kb:
+                rule.deepSet(var.name, var.value)
+        return kb
+    
+    @staticmethod        
+    def strKnowledge(kb):
         k = "{"
         if kb == None:
             return "{}"
@@ -224,8 +252,11 @@ class complexOperation (object):
             k = u'{} {} {}'.format(k, kb[i], (", " if i<len(kb)-1 else "") )
         k=k+"}"
         return k
-        
-    def strVariables(self, v):
+    def strKnowledge_self(self):
+        return complexOperation.strKnowledge(self.evaluatekb())  
+    
+    @staticmethod    
+    def strVariables(v):
         vs = "{"
         if v == None:
             return "{}"
@@ -245,15 +276,15 @@ class complexOperation (object):
         s = s + ("-"*5) + "\n"
         s = s + ">>>Input" + "\n"
         s = s + self.name + "\n"
-        s = s + "KB = " + self.strKnowledge(inputkb) + "\n"
-        s = s + "V = " + self.strVariables(inputv) + "\n"
+        s = s + "KB = " + complexOperation.strKnowledge(inputkb) + "\n"
+        s = s + "V = " + complexOperation.strVariables(inputv) + "\n"
         
         s = s + ("-"*10) + "\n"
         s = s + ("-"*5) + "\n"
         s = s + ">>>Output" + "\n"
         s = s + self.name + "\n"
-        s = s + "KB = " + self.strKnowledge(outputkb) + "\n"
-        s = s + "V = " + self.strVariables(outputv) + "\n"
+        s = s + "KB = " + complexOperation.strKnowledge(outputkb) + "\n"
+        s = s + "V = " + complexOperation.strVariables(outputv) + "\n"
         s = s + ("-"*10) + "\n"
         
         return s
@@ -377,8 +408,7 @@ class complexOperation_weaklyComplete (complexOperation):
                 body = bodies[0]
                     
                 for nbody in bodies:
-                    
-                    if body!=nbody:
+                    if body!=nbody and not isinstance(nbody, basicLogic.atom_truth):
                         body = basicLogic.operator_bitonic_or(clause1=body,clause2=nbody)
                 newKB.append(basicLogic.operator_bitonic_bijection(body, head))
                             
@@ -407,11 +437,7 @@ class complexOperation_semanticOperator (complexOperation):
     
     
     
-    def setkbfromv (self, kb, v):
-        for var in v:
-            for rule in kb:
-                rule.deepSet(var.name, var.value)
-        return kb
+
     #@TODO fix, doesn't do FOR ALL CALUSES A <- body I(body) = false
     def isBijection(self,rule):
         return isinstance (rule, basicLogic.operator_bitonic_bijection)
@@ -422,43 +448,6 @@ class complexOperation_semanticOperator (complexOperation):
             return True
         return None
     def initGroundAtoms(self, kb, v):
-        """
-        for rule in kb:
-            if not self.isBijection(rule):
-                raise NotBijectionError
-                
-        #FOR FALSEHOOD
-        for rule in kb:
-            if self.evalClause(rule.clause1)==False:
-                for var in v:
-                    if rule.clause2.name == var.name:
-                        var.setValue(False, setVal = SETVAL)
-        for rule in kb:
-            if self.evalClause(rule.clause2)==False:
-                for var in v:
-                    if rule.clause1.name == var.name:
-                        var.setValue(False, setVal = SETVAL)        
-        
-        
-        #FOR TRUTH
-        for rule in kb:
-            print u"testing rule{}".format(rule)
-            if self.evalClause(rule.clause1)==True:
-                for var in v:
-                    if rule.clause2.name == var.name:
-                        var.setValue(True, setVal=SETVAL)   
-                        print ("HEREX2")
-                        print (u"").format(rule)
-                        print ("---")
-        for rule in kb:
-            if self.evalClause(rule.clause2)==True:
-                for var in v:
-                    if rule.clause1.name == var.name:
-                        var.setValue(True, setVal=SETVAL) 
-                        print ("HEREX1")
-                        print (u"").format(rule)
-        return v
-        """
         #check that every rule is of a valid format
         for rule in kb:
             if not self.isBijection(rule):
@@ -598,11 +587,151 @@ class complexOperation_modusTolens (complexOperation):
     def evaluatev (self):
         return self.prev.evaluatev()
     
+class scp_evaluator (object):
+    @staticmethod
+    def addMissingVariables (_scp, externalVariables):
+        externalVariables=copy.deepcopy(externalVariables)
+        scpVariables = _scp.evaluateV()
+        #if we are using the _scps variable assignments to begin with, it cannot mismatch with itself
+        if externalVariables==None:
+            return scpVariables
+        
+        for v_scp in scpVariables:
+            seen = False
+            for v_ex in externalVariables:
+                if v_scp.name == v_ex.name:
+                    seen = True
+            if not seen:
+                varToAdd = basicLogic.atom(v_scp.name, None)
+                externalVariables.append(varToAdd)
+        return externalVariables
+        
 
 
+    @staticmethod
+    def ruleMatch (_scp, externalVariables=None):
+        kb = _scp.evaluateKB()
+        
+        kb = scp_evaluator.setkbfromv(kb,externalVariables)
+        print "External Variables are {}".format(complexOperation.strVariables(externalVariables))
+        for rule in kb:
+            tRule = copy.deepcopy(rule)
+            print u"evaluating{} to {}".format(tRule, tRule.evaluate())
+            if tRule.evaluate()!=True:
+                return False
+        return True
+            
+    
+    @staticmethod     
+    def setkbfromv (kb, v):
+        for var in v:
+            for rule in kb:
+                rule.deepSet(var.name, var.value)
+        return kb
+                
+
+    @staticmethod  
+    def incrA (a, start=0):
+        poss=[]
+        if start>=len(a):
+            return [a]
+        
+        a=copy.deepcopy(a)
+        a[start]=None
+        poss = poss + scp_evaluator.incrA(a, start+1)
+        
+        a=copy.deepcopy(a)
+        a[start]=True
+        poss = poss + scp_evaluator.incrA(a, start+1)
+        
+        a=copy.deepcopy(a)
+        a[start]=False
+        poss = poss + scp_evaluator.incrA(a, start+1)
+        return poss
 
 
+    @staticmethod
+    def getAbducibleNames (_scp):
+        
+        abducibles = []
+        unabducibles = []
+        variables = _scp.evaluateV()
+        print "Variables are"
+        for v in variables:
+            if v.value==None:
+                v_n = basicLogic.atom(v.name, v.value)
+                abducibles.append(v_n)
+            else:
+                v_n = basicLogic.atom(v.name, v.value)
+                unabducibles.append(v_n)                
+        return abducibles, unabducibles
+    
+    @staticmethod    
+    def getLeastModel (initialSCP):
+        solutions=[]
+        abducibles, unabducibles = scp_evaluator.getAbducibleNames(initialSCP)
+        
+        values = [None]*len(abducibles)
+        possibleValues = scp_evaluator.incrA(values)
+        
+        for v in possibleValues:
+            for v2 in v:
+                print v
+        for val in possibleValues:
+            _scp = copy.deepcopy(initialSCP)
+            newVariables = []
+            for v in range (0, len(abducibles)):
+                if val[v]!=None:
+                    newVar = basicLogic.atom(abducibles[v].name, val[v])
+                    newVariables.append(newVar)
+                    
+            #print u"evaluating {}".format(_scp.strFinalKB())
+            
+            
+            for i in unabducibles:
+                newVariables.append(i)
+            #print u"using {}".format(_scp.strVariables(newVariables))            
+            match = scp_evaluator.ruleMatch(_scp,newVariables)
+            #print "Rule match : {}".format(match)
+            if match:
+                solutions.append(newVariables)
+        return solutions
+        
+        # we want to find cases where lm wc P (F) = True
+        
+    @staticmethod
+    def leastModelFormat(variables):
+        _true=[]
+        _false=[]
+        
+        for v in variables:
+            if (v.value == True):
+                _true.append(v)
+            elif (v.value==False):
+                _false.append(v)
+        return (_true, _false)        
+    @staticmethod
+    def strLeastModel (_scp):
+        least_raw = scp_evaluator.getLeastModel(_scp)
 
+        s = u""
+        for i in least_raw:
+            least = scp_evaluator.leastModelFormat(i)            
+            s=s+u"{"+scp_evaluator.strLeastModel_single(least)+"}\n"
+        return s
+            
+    @staticmethod
+    def strLeastModel_single (least):
+        t=""
+        f=""
+        _true = [str(i) for i in least[0]]
+        for i in range (0, len(_true)):
+            t="{}{}{}".format(t,_true[i], "," if i<len(_true)-1 else "")            
+        _false = [str(i) for i in least[1]]
+        for i in range (0, len(_false)):
+            f="{}{}{}".format(f,_false[i], "," if i<len(_false)-1 else "") 
+        s = u"True=({}), False=({})".format(t,f)
+        return s         
 
 
 
