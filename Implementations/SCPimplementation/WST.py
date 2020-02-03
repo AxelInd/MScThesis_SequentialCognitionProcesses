@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jan 20 14:23:02 2020
-HEREIN IS AN IMPLEMENTATION OF SCPS USING THE WASON SELECTION TASK
+HEREIN IS AN IMPLEMENTATION OF THE WASON SELECTION TASK USING SCPs
 @author: Axel
 """
 
 import basicLogic
 import scp
+from scpEvaluator import scp_evaluator
 import copy
+import complexOperation
 
 #CARDS THAT CAN BE OBSERVED
 card_d = basicLogic.atom("D", setValue=False)
@@ -34,17 +36,17 @@ knowledge_primeRelationq = basicLogic.operator_bitonic_implication(card_d,qPrime
 
 #INITIALISE THE SET OF COMPLEX OPERATORS M
 # create the complex operation to add abnormalities
-comp_addAB = scp.complexOperation_addAB ()
+comp_addAB = complexOperation.complexOperation_addAB ()
 # create the complex operation to delete a named variable
-comp_deleteo = scp.complexOperation_deleteVariable('o')
+comp_deleteo = complexOperation.complexOperation_deleteVariable('o')
 # create the complex operation to fix a named variable to a specified value
-comp_fixab1 = scp.complexOperation_fixVariable('ab1', False)
+comp_fixab1 = complexOperation.complexOperation_fixVariable('ab1', False)
 # Create the complex operation to weakly complete the logic program
-comp_weak = scp.complexOperation_weaklyComplete()
+comp_weak = complexOperation.complexOperation_weaklyComplete()
 # create the complex operation to apply the sematic operator
-comp_semantic = scp.complexOperation_semanticOperator()
+comp_semantic = complexOperation.complexOperation_semanticOperator()
 
-comp_modusTolens = scp.complexOperation_modusTolens()
+comp_modusTolens = complexOperation.complexOperation_modusTolens()
 
 """
 CREATE AN SCP CONTAING THE RULE D->3 AS WELL AS THE CARD OBSERVED
@@ -154,112 +156,13 @@ wst_7 = createwst_card_7()
 wst_d_contra = createwst_card_d_contraposition()
 wst_k_contra = createwst_card_k_contraposition()
 wst_3_contra = createwst_card_3_contraposition()
-wst_7_contra = createwst_card_7_contraposition()
-
-"""
-Following @refragnietc :
-O: observation
-A: set of abducibles for each undefined atom
-e: e subset A
-P: logic program
-F: formula
-P:=F iff lm_wc_P(F)=T
-
-O is eplained by e iff:
-    e subset A
-    P + e is satisfiable
-    (p+e) := o
-"""
-
-"""
-"""
-def getAbducibles (_scp):
-    
-    abducibles = []
-    variables = _scp.initialV
-    for v in variables:
-        if v.value==None:
-            v_true = basicLogic.atom(v.name, True)
-            v_false = basicLogic.atom(v.name, False)
-            abducibles.append(v_true)
-            abducibles.append(v_false)
-    return abducibles
-
-def getAbducibleNames (_scp):
-    
-    abducibles = []
-    variables = _scp.initialV
-    for v in variables:
-        if v.value==None:
-            v_n = basicLogic.atom(v.name, None)
-            abducibles.append(v_n)
-    return abducibles
-
-from itertools import permutations 
-
-def incrA (a, start=0):
-    poss=[]
-    if start>=len(a):
-        return [a]
-    
-    a=copy.deepcopy(a)
-    a[start]=None
-    poss = poss + incrA(a, start+1)
-    
-    a=copy.deepcopy(a)
-    a[start]=True
-    poss = poss + incrA(a, start+1)
-    
-    a=copy.deepcopy(a)
-    a[start]=False
-    poss = poss + incrA(a, start+1)
-    return poss
+wst_7_contra = createwst_card_7_contraposition() 
         
 def turnFunction (initialSCP):
-    
-    #initialSCP = createwst_noCard()
-    print scp.scp_evaluator.strLeastModel(initialSCP)
-    """
-    while isinstance(initialSCP.getLastState(), scp.complexOperation_semanticOperator):
-        initialSCP.removeLast()
-    """
-    """
-    A = getAbducibleNames(initialSCP)
-    A = scp.scp_evaluator.addMissingVariables(initialSCP, A)
-    
-    print "{}".format(scp.complexOperation.strVariables(A))
-    
-    solutions=[]
-    values = [None]*len(A)
-    possibleValues = incrA(values)
-    # we want to find cases where lm wc P (F) = True
-    for val in possibleValues:
-        _scp = copy.deepcopy(initialSCP)
-        newVariables = []
-        for v in range (0, len(A)):
-            if val[v]!=None:
-                body = basicLogic.getGroundAtomNoValFor(val[v])
-                head = A[v]
-                knowledge = basicLogic.operator_bitonic_implication(body, head)  
-                #_scp.addKnowledge(knowledge)
-                newVar = basicLogic.atom(A[v].name, val[v])
-                newVariables.append(newVar)
-                
-        #print u"evaluating {}".format(_scp.strFinalKB())
-        #print u"using {}".format(_scp.strVariables(newVariables))
-        #print "Rule match : {}".format()
-        ruleMatch = evaluator.ruleMatch(_scp,newVariables)
-        
-        if ruleMatch:
-            solutions.append(newVariables)
-    return solutions
-    """
-
-"""
-def strSummary (_scp, case):
-    s = (u"Case: {}\n{}\n>>Turn :: {}\nLeast Model :: {}").format(case,_scp,None, _scp.strLeastModel())
-    return s
-"""
+    leastModel = scp_evaluator.getLeastModel(initialSCP)
+    leastModel_sets = scp_evaluator.leastModelAsSets(leastModel)
+    print scp_evaluator.strLeastModelFromSets(leastModel_sets)
+    return leastModel
 
 
 
@@ -275,8 +178,9 @@ print ('='*25)
 
 
 #res = turnFunction(wst_7)
-least = scp.scp_evaluator.strLeastModel(wst_7)
-print u">>>>>>>>..Models Are<<<<<<<<<<< \n{}".format(least)
+#least = scp_evaluator.strLeastModel(wst_7)
+turnFunction(wst_3)
+#print u">>>>>>>>..Models Are<<<<<<<<<<< \n{}".format(least)
 """
 print ("++LEAST MODEL++")
 for r in res:
@@ -298,29 +202,34 @@ print (strSummary(wst_7_contra, "7 card seen, with modus tolens"))
 print ('='*25)
 """
 
-x = basicLogic.atom('d', None)
-y = basicLogic.atom('ab1', False)
-z = basicLogic.atom('3', True)
-
-ny = basicLogic.operator_monotonic_negation(y)
-
-pro = basicLogic.operator_bitonic_and(x,ny)
-pro2 = basicLogic.operator_bitonic_bijection(pro,z)
-
-print u"{}".format(pro2)
-print pro2.evaluate()
-            
-"""           
-a = [None,None,None]
-aincr = incrA(a, start=0)
-print aincr
-print len(aincr)
-"""
 
 
 
+def toBase (num, base, length=-1):
+    n = []
+    tn = num
+    
+    while tn >= base:
+        n.append(tn%base)
+        tn = tn // base
+    n.append(tn%base)
+    
+    if length > 0 and len(n) < length: 
+        padding=[0]*(length-len(n))
+        n = n + padding
+    n.reverse()
+    return n
 
-
+def trinaryTo3ValuedLogic (n):
+    logicRep = {0:None, 1:True, 2:False}
+    li = []
+    for i in n:
+        li.append(logicRep[i])
+    return li
+        
+print ">>>{}".format(toBase(num=55, base=2, length = 10))
+n = toBase(num=55, base=3, length = 5)
+print trinaryTo3ValuedLogic(n)
 
 
 

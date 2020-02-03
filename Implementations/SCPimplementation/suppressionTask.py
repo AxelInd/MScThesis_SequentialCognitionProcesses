@@ -6,6 +6,7 @@ Created on Sat Jan 18 09:41:08 2020
 """
 import basicLogic
 import scp
+import complexOperation
 print ("=================THE SUPPRESSION TASK=========================")
 
 
@@ -37,15 +38,15 @@ knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE, o)
 #INITIALISE THE SET OF COMPLEX OPERATORS M
 
 # create the complex operation to add abnormalities
-comp_addAB = scp.complexOperation_addAB ()
+comp_addAB = complexOperation.complexOperation_addAB ()
 # create the complex operation to delete a named variable
-comp_deleteo = scp.complexOperation_deleteVariable('o')
+comp_deleteo = complexOperation.complexOperation_deleteVariable('o')
 # create the complex operation to fix a named variable to a specified value
-comp_fixab1 = scp.complexOperation_fixVariable('ab1', False)
+comp_fixab1 = complexOperation.complexOperation_fixVariable('ab1', False)
 # Create the complex operation to weakly complete the logic program
-comp_weak = scp.complexOperation_weaklyComplete()
+comp_weak = complexOperation.complexOperation_weaklyComplete()
 # create the complex operation to apply the sematic operator
-comp_semantic = scp.complexOperation_semanticOperator()
+comp_semantic = complexOperation.complexOperation_semanticOperator()
 
 
 
