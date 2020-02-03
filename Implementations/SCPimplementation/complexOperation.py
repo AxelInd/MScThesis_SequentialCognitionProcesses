@@ -52,7 +52,7 @@ class complexOperation (object):
     def setkbfromv (kb, v):
         for var in v:
             for rule in kb:
-                rule.deepSet(var.name, var.value)
+                rule.deepSet(var.name, var.getValue())
         return kb
     """
     REPRESENT A SET OF VARIABLES AS A UNICODE STRING

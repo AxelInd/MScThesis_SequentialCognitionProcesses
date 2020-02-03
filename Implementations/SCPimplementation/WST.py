@@ -10,6 +10,7 @@ import scp
 from scpEvaluator import scp_evaluator
 import copy
 import complexOperation
+import scpError
 
 #CARDS THAT CAN BE OBSERVED
 card_d = basicLogic.atom("D", setValue=False)
@@ -164,8 +165,56 @@ def turnFunction (initialSCP):
     print scp_evaluator.strLeastModelFromSets(leastModel_sets)
     return leastModel
 
+def unit_compareAtomListStringList (stringList,atomList):
+    if len(atomList)!=len(stringList):
+        return False
+    
+    for i in atomList:
+        if not i.name in stringList:
+            return False
+    return True
+def unit_compareLeastModels (correctLeastModel, leastModel):
+    trueMatch = unit_compareAtomListStringList(correctLeastModel[0],leastModel[0])
+    falseMatch = unit_compareAtomListStringList(correctLeastModel[1],leastModel[1])
+    if not trueMatch and falseMatch:
+        raise scpError.unitTestFailedError
+    
+def unit_wst_d ():
+    _scp = createwst_card_d()
+    leastModel = scp_evaluator.getLeastModel(_scp)
+    leastModel_sets = scp_evaluator.leastModelAsSets(leastModel)[0]
+    
+    correctLeastModel=[[card_d.name,card_3.name],['ab1']]
+    unit_compareLeastModels(correctLeastModel,leastModel_sets)
+def unit_wst_k ():
+    _scp = createwst_card_k()
+    leastModel = scp_evaluator.getLeastModel(_scp)
+    leastModel_sets = scp_evaluator.leastModelAsSets(leastModel)[0]
+    
+    correctLeastModel=[[card_k.name],['ab1']]
+    unit_compareLeastModels(correctLeastModel,leastModel_sets)   
+def unit_wst_3 ():
+    _scp = createwst_card_3()
+    leastModel = scp_evaluator.getLeastModel(_scp)
+    leastModel_sets = scp_evaluator.leastModelAsSets(leastModel)[0]
+    
+    correctLeastModel=[[card_d.name,card_3.name],['ab1']]
+    unit_compareLeastModels(correctLeastModel,leastModel_sets)    
+def unit_wst_7 ():
+    _scp = createwst_card_7()
+    leastModel = scp_evaluator.getLeastModel(_scp)
+    leastModel_sets = scp_evaluator.leastModelAsSets(leastModel)[0]
+    
+    correctLeastModel=[[card_7.name],['ab1']]
+    unit_compareLeastModels(correctLeastModel,leastModel_sets) 
+def unit_TestAll ():   
+    unit_wst_d()
+    unit_wst_k()
+    unit_wst_3()
+    unit_wst_7()
 
-
+#unit test to make sure the expected results are observed    
+unit_TestAll()
 
 """
 print (strSummary(wst_k, "K card seen"))
@@ -203,33 +252,6 @@ print ('='*25)
 """
 
 
-
-
-def toBase (num, base, length=-1):
-    n = []
-    tn = num
-    
-    while tn >= base:
-        n.append(tn%base)
-        tn = tn // base
-    n.append(tn%base)
-    
-    if length > 0 and len(n) < length: 
-        padding=[0]*(length-len(n))
-        n = n + padding
-    n.reverse()
-    return n
-
-def trinaryTo3ValuedLogic (n):
-    logicRep = {0:None, 1:True, 2:False}
-    li = []
-    for i in n:
-        li.append(logicRep[i])
-    return li
-        
-print ">>>{}".format(toBase(num=55, base=2, length = 10))
-n = toBase(num=55, base=3, length = 5)
-print trinaryTo3ValuedLogic(n)
 
 
 

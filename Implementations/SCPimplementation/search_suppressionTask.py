@@ -11,6 +11,8 @@ This file provides two different search mechanisms for SCPs in the context of th
 import scp
 import copy
 import basicLogic
+import complexOperation
+import scpError
 #STARTING VARIABLES
 # e: she has an essay to write
 e = basicLogic.atom('e', setValue=False)
@@ -31,15 +33,15 @@ knowledge4 = basicLogic.operator_bitonic_implication(basicLogic.TRUE, o)
 
 #INITIALISE THE SET OF COMPLEX OPERATORS M
 # create the complex operation to add abnormalities
-comp_addAB = scp.complexOperation_addAB ()
+comp_addAB = complexOperation.complexOperation_addAB ()
 # create the complex operation to delete a named variable
-comp_deleteo = scp.complexOperation_deleteVariable('o')
+comp_deleteo = complexOperation.complexOperation_deleteVariable('o')
 # create the complex operation to fix a named variable to a specified value
-comp_fixab1 = scp.complexOperation_fixVariable('ab1', False)
+comp_fixab1 = complexOperation.complexOperation_fixVariable('ab1', False)
 # Create the complex operation to weakly complete the logic program
-comp_weak = scp.complexOperation_weaklyComplete()
+comp_weak = complexOperation.complexOperation_weaklyComplete()
 # create the complex operation to apply the sematic operator
-comp_semantic = scp.complexOperation_semanticOperator()
+comp_semantic = complexOperation.complexOperation_semanticOperator()
 
 # =============================== SEARCH ===========================================
 M = []
@@ -72,13 +74,13 @@ def scpDeNovoSearch (p, iteration, solutions = [], goalV = None, limit = LIMIT, 
     v=[]
     try:
         v = p.evaluateV()
-    except scp.NotBijectionError:
+    except scpError.NotBijectionError:
         return []
     # check goal condition
     # at present goals are limitted to variable assignments @TODO extend
     # duplicate solutions are removed
     for var in v:
-        if var.name == goalV[0] and var.value==goalV[1]:
+        if var.name == goalV[0] and var.getValue()==goalV[1]:
             solutions = solutions + [p]
             return list(dict.fromkeys(solutions))
     # check that maximum search depth has not yet been reached
@@ -218,11 +220,11 @@ def randomisedInsert2 (Mprime,_scp, goalV, solutions):
             v = _scp.evaluateV()
             for var in v:
                 #print "var is :: {} :: {}".format(var.name,var.value)
-                if var.name == goalV[0] and var.value == goalV[1]:
+                if var.name == goalV[0] and var.getValue() == goalV[1]:
                     #print ("FOUND")
                     return [_scp]
             return []
-        except scp.NotBijectionError:
+        except scpError.NotBijectionError:
             return v
     # combination(...) already generates every possible combination, so we are only concerned with inserting them
     # we insert the first m in every position in the scp, then we remove that m from Mprime and repreat the process with the shortened list

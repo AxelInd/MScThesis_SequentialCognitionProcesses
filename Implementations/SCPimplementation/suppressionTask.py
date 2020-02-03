@@ -7,15 +7,16 @@ Created on Sat Jan 18 09:41:08 2020
 import basicLogic
 import scp
 import complexOperation
+import scpError
 print ("=================THE SUPPRESSION TASK=========================")
 
 
 
 
 
-print (">>> 1) If she has an essay to write she will study late in the library.")
-print (">>> 2) If the library is open she will study late in the library.")
-print (">>> 3) She has an essay to write.")
+print (">>> 1) If she has an essay to write she will study late in the library (e->l).")
+print (">>> 2) If the library is open she will study late in the library (o->l).")
+print (">>> 3) She has an essay to write (True->e).")
 
 #STARTING VARIABLES
 # e: she has an essay to write
@@ -143,6 +144,56 @@ def createsuppressionTask_deleteVariableo():
 
     return suppressionTask
 
+def createAtoms (names, vals):
+    li = []
+    for i in range (0,len(names)):
+        at = basicLogic.atom(names[i],vals[i])
+        li.append(at)
+    return li
+
+def unit_compare(_scp,correctKB, correctNames, correctVals):
+    v = _scp.evaluateV()
+    kb = _scp.evaluateKB()   
+    
+    correctV = createAtoms(correctNames,correctVals)
+    if len(v)!=len(correctV):
+        raise scpError.unitTestFailedError
+    for i in range (0, len(correctV)):
+        if v[i].name!=correctV[i].name or v[i].getValue() != correctV[i].getValue():
+            raise scpError.unitTestFailedError
+    
+def unit_sup_standard ():
+    _scp = createsuppressionTask_standard()
+    correctKB = None
+    correctNames = ['e','l','o','ab1','ab2']
+    correctVals = [True,None,None,None,False]
+    unit_compare(_scp,correctKB,correctNames,correctVals)
+def unit_sup_noSuppression ():
+    _scp = createsuppressionTask_noSuppression()
+    correctKB = None
+    correctNames = ['e','l','ab1',]
+    correctVals = [True, True, False]
+    unit_compare(_scp,correctKB,correctNames,correctVals)    
+def unit_sup_fix ():
+    _scp = createsuppressionTask_fixVariableab1()
+    correctKB = None
+    correctNames = ['e','l','o','ab1','ab2']
+    correctVals = [True,True,None,False,False]
+    unit_compare(_scp,correctKB,correctNames,correctVals)      
+def unit_sup_delete ():
+    _scp = createsuppressionTask_deleteVariableo()
+    correctKB = None
+    correctNames = ['e','l','ab1',]
+    correctVals = [True, True, False]
+    unit_compare(_scp,correctKB,correctNames,correctVals)      
+def unit_TestAll ():
+    unit_sup_standard()
+    unit_sup_noSuppression()
+    unit_sup_fix()
+    unit_sup_delete()
+    
+
+    
 def describeSCP (scp_toDescribe, label):
     print (">>>>>" + label + "<<<<<<<<")
     print(scp_toDescribe.strDetailed())
@@ -159,13 +210,8 @@ suppressionTask_delete = createsuppressionTask_deleteVariableo()
 #CHOOSE WHICH SCP TO SEE DETAILED HERE
 describeSCP(suppressionTask_standard, "Standard Suppression Task")
 
-
-
-
-
-
-
-
+#unit test to make sure the expected results are observed
+unit_TestAll()
 
 
 

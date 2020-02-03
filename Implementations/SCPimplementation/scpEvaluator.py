@@ -49,7 +49,7 @@ class scp_evaluator (object):
         kb=copy.deepcopy(kb)
         for var in v:
             for rule in kb:
-                rule.deepSet(var.name, var.value)
+                rule.deepSet(var.name, var.getValue())
         return kb
                 
     """
@@ -117,11 +117,11 @@ class scp_evaluator (object):
         variables = _scp.evaluateV()
         #assign every variable in the scp to abducibles or unabducibles
         for v in variables:
-            if v.value==None:
-                v_n = basicLogic.atom(v.name, v.value)
+            if v._value==None:
+                v_n = basicLogic.atom(v.name, v.getValue())
                 abducibles.append(v_n)
             else:
-                v_n = basicLogic.atom(v.name, v.value)
+                v_n = basicLogic.atom(v.name, v.getValue())
                 unabducibles.append(v_n)                
         return abducibles, unabducibles
     
@@ -169,9 +169,9 @@ class scp_evaluator (object):
         _true=[]
         _false=[]
         for v in variables:
-            if (v.value == True):
+            if (v.getValue() == True):
                 _true.append(v)
-            elif (v.value==False):
+            elif (v.getValue()==False):
                 _false.append(v)
         return (_true, _false)     
     

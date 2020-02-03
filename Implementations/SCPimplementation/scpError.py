@@ -27,3 +27,5 @@ class notImplementedError_AbstractClass(notImplementedError):
    pass     
 class notBitonicOperatorError(Error):
    pass     
+class unitTestFailedError(Error):
+   pass  

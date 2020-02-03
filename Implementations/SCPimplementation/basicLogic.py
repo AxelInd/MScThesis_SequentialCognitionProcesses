@@ -28,16 +28,16 @@ class atom (object):
         self.name = name
         self.fixed=False
         if setValue:      
-            self.value = value
+            self._value = value
         else:
-            self.value=None
+            self._value=None
             
         #print("I made an atom called " + self.name)
     def evaluate(self):
-        return self.value
+        return self.getValue()
     def deepSet(self, var, val):
         if (self.name == var):
-            self.value = val
+            self._value = val
             return True
         return False
             #print ("Variable " + str(self.name) + " set to " + str(self.value))
@@ -45,7 +45,9 @@ class atom (object):
         return u"{}".format(self.name)
     def setValue (self, val, setVal = True):
         if not self.fixed and setVal==True:
-            self.value = val
+            self._value = val
+    def getValue (self):
+        return self._value
     
 class atom_truth (atom):
     def __init__ (self, setValue=True):
@@ -106,29 +108,8 @@ class operator_monotonic_negation (operator_monotonic):
     def __init__(self, clause = None, immutable = False):
         operator_monotonic.__init__(self, clause, immutable = immutable)     
         self.name = u"\u00AC"
-        self.value=clause
-    def setValue(self, value, setVal):
-        if setVal:    
-            if value == True:
-                self.value = TRUE
-                return
-            elif value == False:
-                self.value = FALSE
-                return
-            elif value == None:
-                self.value==UNKNOWN
-                return
-        else:
-            if value == True:
-                self.value = TRUE_noValue
-                return
-            elif value == False:
-                self.value = FALSE_noValue
-                return
-            elif value == None:
-                self.value==UNKNOWN_noValue
-                return
-        print ("{}AND YET WE ARE HERE").format('*'*23)
+    def getValue (self):
+        return self.clause.evaluate()
         
     def evaluate(self):        
         clauseVal = self.clause.evaluate()    
