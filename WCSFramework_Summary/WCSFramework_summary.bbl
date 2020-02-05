@@ -1,0 +1,79 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Bray and Noble}{Bray and
+  Noble}{1978}]{bray1978authoritarianism}
+Bray, R.~M. and A.~M. Noble (1978).
+\newblock Authoritarianism and decisions of mock juries: Evidence of jury bias
+  and group polarization.
+\newblock {\em Journal of Personality and Social Psychology\/}~{\em 36\/}(12),
+  1424.
+
+\bibitem[\protect\citeauthoryear{Breu, Ind, Mertesdorf, and Ragni}{Breu
+  et~al.}{2019}]{breu2019weak}
+Breu, C., A.~Ind, J.~Mertesdorf, and M.~Ragni (2019).
+\newblock The weak completion semantics can model inferences of individual
+  human reasoners.
+\newblock In {\em European Conference on Logics in Artificial Intelligence},
+  pp.\  498--508. Springer.
+
+\bibitem[\protect\citeauthoryear{Byrne}{Byrne}{1989}]{byrne1989suppressing}
+Byrne, R.~M. (1989).
+\newblock Suppressing valid inferences with conditionals.
+\newblock {\em Cognition\/}~{\em 31\/}(1), 61--83.
+
+\bibitem[\protect\citeauthoryear{Griffiths}{Griffiths}{1994}]{griffiths1994role}
+Griffiths, M.~D. (1994).
+\newblock The role of cognitive bias and skill in fruit machine gambling.
+\newblock {\em British journal of Psychology\/}~{\em 85\/}(3), 351--369.
+
+\bibitem[\protect\citeauthoryear{H{\"o}lldobler}{H{\"o}lldobler}{2015}]{holldobler2015weak}
+H{\"o}lldobler, S. (2015).
+\newblock Weak completion semantics and its applications in human reasoning.
+\newblock In {\em Bridging@ CADE}, pp.\  2--16.
+
+\bibitem[\protect\citeauthoryear{McDermott and Doyle}{McDermott and
+  Doyle}{1980}]{mcdermott1980non}
+McDermott, D. and J.~Doyle (1980).
+\newblock Non-monotonic logic i.
+\newblock {\em Artificial intelligence\/}~{\em 13\/}(1-2), 41--72.
+
+\bibitem[\protect\citeauthoryear{Needleman and Wunsch}{Needleman and
+  Wunsch}{1970}]{needleman1970general}
+Needleman, S.~B. and C.~D. Wunsch (1970).
+\newblock A general method applicable to the search for similarities in the
+  amino acid sequence of two proteins.
+\newblock {\em Journal of molecular biology\/}~{\em 48\/}(3), 443--453.
+
+\bibitem[\protect\citeauthoryear{Ragni, Eichhorn, Bock, Kern-Isberner, and
+  Tse}{Ragni et~al.}{2017}]{ragni2017formal}
+Ragni, M., C.~Eichhorn, T.~Bock, G.~Kern-Isberner, and A.~P.~P. Tse (2017).
+\newblock Formal nonmonotonic theories and properties of human defeasible
+  reasoning.
+\newblock {\em Minds and Machines\/}~{\em 27\/}(1), 79--117.
+
+\bibitem[\protect\citeauthoryear{Ragni, Kola, and Johnson-Laird}{Ragni
+  et~al.}{2017}]{ragni2017wason}
+Ragni, M., I.~Kola, and P.~Johnson-Laird (2017).
+\newblock The wason selection task: A meta-analysis.
+\newblock In {\em CogSci}.
+
+\bibitem[\protect\citeauthoryear{Smith, Waterman, et~al.}{Smith
+  et~al.}{1981}]{smith1981identification}
+Smith, T.~F., M.~S. Waterman, et~al. (1981).
+\newblock Identification of common molecular subsequences.
+\newblock {\em Journal of molecular biology\/}~{\em 147\/}(1), 195--197.
+
+\bibitem[\protect\citeauthoryear{Stenning, Van~Lambalgen, et~al.}{Stenning
+  et~al.}{2008}]{stenning2008interpretation}
+Stenning, K., M.~Van~Lambalgen, et~al. (2008).
+\newblock Interpretation, representation, and deductive reasoning.
+\newblock {\em Reasoning: Studies of human inference and its foundations\/},
+  223--248.
+
+\bibitem[\protect\citeauthoryear{Wason}{Wason}{1968}]{wason1968reasoning}
+Wason, P.~C. (1968).
+\newblock Reasoning about a rule.
+\newblock {\em Quarterly journal of experimental psychology\/}~{\em 20\/}(3),
+  273--281.
+
+\end{thebibliography}

@@ -50,6 +50,9 @@ class scp (object):
         #@TODOextendToRemoveDuplicates
         for m in M:
             self.addComplexOperation(m)
+            
+    def getInitialVariables(self):
+        return self.initialV
 
     """
     ADD A RULE TO THE KNOWLEDGE BASE
@@ -132,7 +135,14 @@ class scp (object):
 #=============================LINKED LIST OPERATIONS===========================
 #==============================================================================
 
-            
+        
+    def checkValidInsert (self, m, pos):
+        if not isinstance (m,complexOperation.complexOperation):
+            raise scpError.InvalidScpInsertion
+        if pos <= 0:
+            raise scpError.InvalidScpInsertion_FirstPosition
+        if pos > len(self):
+            raise scpError.InvalidScpInsertion_InvalidPosition
     """
     INSERT A COMPLEX OPERATION m AT POSITION pos IN THE SCP
     @param m: the copmlex operation to be inserted
@@ -140,23 +150,13 @@ class scp (object):
     @return returns if successful, throws an InvalidScpInsertion exception otherwise
     """
     def insertAtPos (self, m, pos):
+        self.checkValidInsert(m,pos)
         m=copy.deepcopy(m) 
-        #create new first state
-        if pos == 0:
-            if self.state1!=None:
-                m.next=self.state1
-                if self.state1.next != None:
-                    self.state1.next.prev=m
-                    self.state1 = m
-            else:
-                self.state1=m
-            return
+
         #cycle to the desired position
         node = self.state1
         prev = None
-        for i in range (0, pos):
-            if node == None:
-                raise scpError.InvalidScpInsertion_InvalidPosition
+        for i in range (0, pos-1):
             prev=node
             node = node.next
         #if there is no head, just add m to the prev
@@ -175,9 +175,6 @@ class scp (object):
             node.next.prev=m
             node.next=m
             return
-        #for some reason the insertion could not complete
-        raise scpError.InvalidScpInsertion_InvalidPosition
-
     def addNext (self,nxt):
         self.insertAtPos(nxt,len(self))      
     def getLastState(self):
@@ -227,7 +224,7 @@ class scp (object):
     @return True if successful, false otherwise
     """
     def removeLast (self):
-        if self.lastState!=self.state1:
+        if self.getLastState()!=self.state1:
             self.getLastState().prev.next=None
             return True
         return False
@@ -307,6 +304,8 @@ class scp (object):
             node = node.next    
         return s
 
+    def __repr__(self):
+        return self.__str__()
    
 
 

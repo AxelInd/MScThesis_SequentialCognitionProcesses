@@ -203,18 +203,22 @@ print ("TOTAL IS: {}".format(total))
 
 import numpy as np
 
+def calculateR (matrices,n):
+    print "---"
 #n : number of matrices
-n = 3
 
 m1 = np.matrix([[1, 2], [3, 4]])
-m2 = np.matrix([[5, 6], [7, 8]])
+m2 = np.matrix([[5, 6, 13], [7, 14]])
 m3 = np.matrix([[9, 10], [11, 12]])
     
 matrices = [m1,m2,m3]
 
     
     
-    
+# n matrices each has r cols and var num rows
+# make an Iterator that yields m r * r matrices without loading them into memory
+
+n = len(matrices)
     
     
     

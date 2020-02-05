@@ -170,22 +170,25 @@ class complexOperation_addAB (complexOperation):
         usedatoms = []
         kb = self.prev.evaluatekb()
         for i in kb:
+            head=i.clause2
+            body=i.clause1
             if isinstance(i,basicLogic.operator_bitonic_implication ):
                 #atom in head
-                if isinstance(i.clause2, basicLogic.atom ) and not i.immutable:
+                if isinstance(head, basicLogic.atom ) and not i.immutable:
                     #check that it is not a ground truth value
                     #abnormality needs to be added
-                    if not basicLogic.isGroundAtom(i.clause1):
-                        if len(usedatoms)==0 or not i.clause1 in usedatoms[0]:
+                    if not basicLogic.isGroundAtom(body):
+                        if len(usedatoms)==0 or not body in usedatoms[0]:
                             # Note that this atom/clause has an attached abnormality
-                            usedatoms.append([i.clause1,i.clause2])
+                            usedatoms.append([body,head])
                             newAbnormality = basicLogic.atom("ab"+str(len(usedatoms)))
                             negativeAbnormality = basicLogic.operator_monotonic_negation(newAbnormality)
-                            newclause = basicLogic.operator_bitonic_and(i.clause1, negativeAbnormality)
-                            newClauseWithAbnormality = basicLogic.operator_bitonic_implication(newclause, i.clause2)
+                            newclause = basicLogic.operator_bitonic_and(body, negativeAbnormality)
+                            newClauseWithAbnormality = basicLogic.operator_bitonic_implication(newclause, head)
                             kb2.append(newClauseWithAbnormality)
                             #used for the evlauatev()
                             tempABs.append(newAbnormality)
+                            
                             
                         else:
                             kb2.append (i)
@@ -194,7 +197,8 @@ class complexOperation_addAB (complexOperation):
                         kb2.append(i)
                 else:
                     kb2.append(i)  
-                    
+        
+        createdABs=[]
         #add the rule for the abnormality
         #this adds the appropriate abnormality assignments to the kb
         #This loop handles cases where multiple non-ground clauses can affect the same head
@@ -204,23 +208,37 @@ class complexOperation_addAB (complexOperation):
                 if usedatoms[pos2][1] == usedatoms[pos][1]:
                     #the bodies are different
                     if not usedatoms[pos2][0] == usedatoms[pos][0]:
-                        abnormality =  basicLogic.atom("ab"+str(pos+1))
-                        negatom = basicLogic.operator_monotonic_negation(usedatoms[pos2][0])
-                        newclause = basicLogic.operator_bitonic_implication(negatom, abnormality)   
-                        kb2.append(newclause)
+                        if not "ab"+str(pos+1) in createdABs:
+                            abnormality =  basicLogic.atom("ab"+str(pos+1))
+                            negatom = basicLogic.operator_monotonic_negation(usedatoms[pos2][0])
+                            newclause = basicLogic.operator_bitonic_implication(negatom, abnormality)   
+                            
+                            kb2.append(newclause)
+                            createdABs.append("ab"+str(pos+1))
             terminate = False
             #This loop handles cases where only one non-ground clause affects a head
+            
             for atom in usedatoms:
                 for atom2 in usedatoms:
                     if atom != atom2 and atom[1]==atom2[1]:
                         terminate=True
                 if not terminate:
-                    abnormality =  basicLogic.atom("ab"+str(pos+1))    
-                    newclause = basicLogic.operator_bitonic_implication(basicLogic.FALSE, abnormality)  
-                    kb2.append(newclause)
-                        
-        
+                    if not "ab"+str(pos+1) in createdABs:
+                        abnormality =  basicLogic.atom("ab"+str(pos+1))
+                        newclause = basicLogic.operator_bitonic_implication(basicLogic.FALSE, abnormality)  
+                        kb2.append(newclause)
+                        createdABs.append("ab"+str(pos+1))
+            
         return kb2, tempABs
+    def removeDuplicateABs (self,li):
+        newLi=[]
+        for i in range (0,len(li)):
+            for j in range(i+1,len(li)):
+                if li[i].name==li[j].name:
+                    pass
+                else:
+                    newLi.append(li[i])
+        return newLi 
 
     """
     DETERMINE THE OUTPUT RULES
@@ -537,10 +555,11 @@ class complexOperation_modusTolens (complexOperation):
         newkb = copy.deepcopy(oldkb)
         for rule in oldkb:
             if isinstance(rule.clause2, basicLogic.atom) and not basicLogic.isGroundAtom(rule.clause2):
-                negateClause1 = basicLogic.operator_monotonic_negation(rule.clause1)
-                negateClause2 = basicLogic.operator_monotonic_negation(rule.clause2)
-                contraRule = basicLogic.operator_bitonic_implication(negateClause1, negateClause2)
-                newkb.append(contraRule)
+                if not basicLogic.isGroundAtom(rule.clause1):
+                    negateClause1 = basicLogic.operator_monotonic_negation(rule.clause1)
+                    negateClause2 = basicLogic.operator_monotonic_negation(rule.clause2)
+                    contraRule = basicLogic.operator_bitonic_implication(negateClause1, negateClause2)
+                    newkb.append(contraRule)
             #print u"{}".format(rule.clause2)
         return newkb
     """
@@ -551,4 +570,11 @@ class complexOperation_modusTolens (complexOperation):
     """
     def evaluatev (self):
         return self.prev.evaluatev()
+    
+    
+    
+    
+    
+    
+    
  

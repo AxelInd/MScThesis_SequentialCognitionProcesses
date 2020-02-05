@@ -48,6 +48,8 @@ class atom (object):
             self._value = val
     def getValue (self):
         return self._value
+    def __repr__(self):
+        return "({}:{})".format(self.name, self.getValue())
     
 class atom_truth (atom):
     def __init__ (self, setValue=True):
@@ -77,6 +79,8 @@ class operator (object):
         return "I am evaluating"
     def deepSet (self, var, val):
         print (" I am deepsetting")
+    def __repr__(self):
+        return self.__str__()
 
 #ATOMS FOR BASE TRUTH VALUES      
 TRUE = atom_truth (setValue=True)      
@@ -112,8 +116,7 @@ class operator_monotonic_negation (operator_monotonic):
         return self.clause.evaluate()
         
     def evaluate(self):        
-        clauseVal = self.clause.evaluate()    
-        
+        clauseVal = self.clause.evaluate()
         if clauseVal==None:
             return None
         elif clauseVal==True:

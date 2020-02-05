@@ -8,6 +8,7 @@ Created on Mon Feb 03 08:26:26 2020
 import copy
 import basicLogic
 import scp
+import complexOperation
 
 """
 THE SCP EVALUATOR IS A STATIC CLASS THAT HANDLES CARIOUS FUNCITON ASSOCIATED WITH
@@ -102,62 +103,30 @@ class scp_evaluator (object):
         return poss
 
     """
-    FIND THE NAME OF EVERY ATOM MENTIONED IN THE VARIABLES OF THE SCP THAT DOES NOT
-    HAVE A BOUND VALUE
-    @param _scp: the SCP which describes the task
-    @return: all abducible variables, and all unabducible variables
-    """
-    @staticmethod
-    def getAbducibleNames (_scp):
-        #free variables
-        abducibles = []
-        #variables with set truth values
-        unabducibles = []
-        #all variables in the final epistemic state of the scp
-        variables = _scp.evaluateV()
-        #assign every variable in the scp to abducibles or unabducibles
-        for v in variables:
-            if v._value==None:
-                v_n = basicLogic.atom(v.name, v.getValue())
-                abducibles.append(v_n)
-            else:
-                v_n = basicLogic.atom(v.name, v.getValue())
-                unabducibles.append(v_n)                
-        return abducibles, unabducibles
-    
- 
-    """
-    GIVEN AN INITIAL SCP, FIND THE SHORTES ARRANGEMENT OF THE FREE VARIABLES THAT
-    SATISFIES EVERY RULE IN THE EPISTEMIC STATE USING ABDUCTION
+    GIVEN AN INITIAL SCP, FIND THE SHORTEST NUMBER OF True/False/Unknown -> x
+    RULES THAT MAKE EVERY RULE TRUE IN THE FINAL STATE
     @param initialSCP: the SCP which describes the task
     @return the least model of the final epistemic state
     """
     @staticmethod   
-    def getLeastModel (initialSCP):
-        solutions=[]
-        abducibles, unabducibles = scp_evaluator.getAbducibleNames(initialSCP)
+    def getLeastModel (_scp, allVariables=None):
+        if allVariables==None:
+            allVariables=_scp.getInitialVariables()
         
-        #every possible assigment of the variables in V
-        possibleValues = scp_evaluator.generateAllPossibleVariableAssigmentsFromV(abducibles)
-        
-        #test every possible assignment of the free variables in the epistemic state
-        #those which satisfy the entire knowledge base are solutions
-        for val in possibleValues:
-            _scp = copy.deepcopy(initialSCP)
-            newVariables = []
-            #create atoms of the abducibles corresponding the truth list in possibleValues
-            for v in range (0, len(abducibles)):
-                if val[v]!=None:
-                    newVar = basicLogic.atom(abducibles[v].name, val[v])
-                    newVariables.append(newVar)
-            #add the unabducibles to the variables too
-            for i in unabducibles:
-                newVariables.append(i)   
-            #test if the new assignments satisfy the knowledge base
-            match = scp_evaluator.ruleMatch(_scp,newVariables)
+        allValues = scp_evaluator.generateAllPossibleVariableAssigmentsFromV(allVariables)
+        leastModel =[]
+        shortest = 999
+        for valueSet in allValues:
+            _updatedScp = scp_evaluator.addRuleToSCPFromValueList(_scp, valueSet, allVariables)
+            v = _updatedScp.evaluateV()
+            kb = _updatedScp.evaluateKB()       
+            match = scp_evaluator.ruleMatch(_updatedScp, v)
             if match:
-                solutions.append(newVariables)
-        return solutions
+                numRulesAdded = scp_evaluator.countNotUnknown(valueSet)
+                if numRulesAdded <= shortest:
+                    shortest = numRulesAdded
+                    leastModel.append(_updatedScp)
+        return leastModel
     
     """
     TAKE A LIST OF ATOMS AND TURN INTO A TWO LIST OF TRUE AND FALSE ATOMS
@@ -165,15 +134,22 @@ class scp_evaluator (object):
     @return the least model as a tuple (_true, _false) of the true and false variable lists respectively
     """
     @staticmethod
-    def leastModelFormat(variables):
+    def leastModelFormatVariables(variablesSets):
         _true=[]
         _false=[]
-        for v in variables:
-            if (v.getValue() == True):
-                _true.append(v)
-            elif (v.getValue()==False):
-                _false.append(v)
-        return (_true, _false)     
+        for variables in variablesSets:
+            for v in variables:
+                if (v.getValue() == True):
+                    _true.append(v)
+                elif (v.getValue()==False):
+                    _false.append(v)
+            return (_true, _false)   
+    @staticmethod
+    def LeastModelFormatSCPList (li):
+        v = []
+        for i in li:
+            v.append(i.evaluateV())
+        return scp_evaluator.leastModelFormatVariables(v)
     
     """
     TURN A LEAST MODEL IN SET FORMAT INTO A STRING FOR PRINTING
@@ -229,3 +205,135 @@ class scp_evaluator (object):
             f="{}{}{}".format(f,_false[i], "," if i<len(_false)-1 else "") 
         s = u"True=({}), False=({})".format(t,f)
         return s         
+    
+    
+    
+    
+    
+    @staticmethod
+    def countNotUnknown (li):
+        count = 0
+        for i in li:
+            if i!=None:
+                count=count+1
+        return count    
+    
+    @staticmethod    
+    def addRuleToScpFromValue (_scp,  varName, value=True):
+        if value!=None:
+            head = basicLogic.atom(varName,None)
+            body = basicLogic.getGroundAtomFor(value)
+            rule = basicLogic.operator_bitonic_implication(body, head)
+            _scp.addKnowledge(rule)
+            _scp.addVariable(head)    
+        return _scp
+    @staticmethod
+    def addRuleToSCPFromValueList (_scp, valueSet, allVariables):
+        _scp = copy.deepcopy(_scp)
+        for variablePos in range (0, len(valueSet)):
+            scp_evaluator.addRuleToScpFromValue(_scp,allVariables[variablePos].name,valueSet[variablePos])
+        return _scp
+    
+    @staticmethod
+    def getVariableFromList(name, li):
+        for i in li:
+            if i.name == name:
+                return i
+        return None
+    @staticmethod
+    def getVariableInList (name, li):
+        if scp_evaluator.getVariableFromList(name, li)==None:
+            return False
+        return True
+    """
+    DONE BY FINDING THE MINIMAL x->y RULE TO INSERT AT THE START OF THE SCP
+    SUCH THAT THE FINAL EPISTEMIC STATE lm_wcP(F) = True
+    @TODO there would be merit in ensuring that rule sets are added in order of length
+    this would allow us to avoid processing uneccessarily long rules that could not
+    possibly be the least model because there is already a shorter rule
+    """
+    @staticmethod
+    def getRestrictedLeastModelSCPs (_scp, observation, allVariables, requiredObsValue=True):
+        allValues = scp_evaluator.generateAllPossibleVariableAssigmentsFromV(allVariables)
+        leastModel =[]
+        shortest = 999
+        for valueSet in allValues:
+            _updatedScp = scp_evaluator.addRuleToSCPFromValueList(_scp, valueSet, allVariables)
+            _updatedScp.addVariable(observation)
+            v = _updatedScp.evaluateV()
+            kb = _updatedScp.evaluateKB()       
+            match = scp_evaluator.ruleMatch(_updatedScp, v)
+            if match:
+                obsInScp = scp_evaluator.getVariableFromList(observation.name, v)
+                if obsInScp.getValue() == requiredObsValue:
+                    numRulesAdded = scp_evaluator.countNotUnknown(valueSet)
+                    if numRulesAdded <= shortest:
+                        shortest = numRulesAdded
+                        leastModel.append(_updatedScp)
+        return leastModel
+        
+    #@TODO does not yet compare kbs
+    #@TODO does not yet compare sequences
+    @staticmethod
+    def compareVarLists (v1,v2):
+        if len(v1)!=len(v2):
+            return False
+        for v in v1:
+            variableFromV2 = scp_evaluator.getVariableFromList(v.name, v2)
+            #there is a variable in v1 that is not in v2
+            if variableFromV2==None:
+                return False
+            #
+            if v.getValue() != variableFromV2.getValue():
+                return False
+        return True        
+    @staticmethod
+    def compareSCP (scp1, scp2):
+        v1=scp1.evaluateV()
+        v2=scp2.evaluateV()
+        #check if the variables are identical
+        if not scp_evaluator.compareVarLists(v1,v2):
+            return False
+        
+        return True
+
+    
+    @staticmethod
+    def credulousSCPCompare (_scp, scpList):
+        for s in scpList:
+            match = scp_evaluator.compareSCP(_scp,s)
+            if match:
+                return True
+        return False
+
+    @staticmethod
+    def skepticalSCPCompare (_scp,scpList): 
+        for s in scpList:
+            match = scp_evaluator.compareSCP(_scp,s)
+            if not match:
+                return False
+        return True                
+                 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
