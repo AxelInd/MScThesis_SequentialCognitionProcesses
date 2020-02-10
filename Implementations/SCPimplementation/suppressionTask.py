@@ -191,7 +191,7 @@ def unit_TestAll ():
     unit_sup_noSuppression()
     unit_sup_fix()
     unit_sup_delete()
-    print ">>**All unit tests passed**<<"
+    print (">>**All unit tests passed**<<")
 
     
 def describeSCP (scp_toDescribe, label):

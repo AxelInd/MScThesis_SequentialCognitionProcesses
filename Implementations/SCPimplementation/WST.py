@@ -233,21 +233,21 @@ def unit_TestAll ():
     unit_wst_k()
     unit_wst_3()
     unit_wst_7()
-    print ">>**All unit tests passed**<<"
+    print (">>**All unit tests passed**<<")
 
 #unit test to make sure the expected results are observed    
 
 
 def printSummary (_scp, message):
-    print "{}".format(">"*35)
-    print message
-    print "{}".format (_scp)
-    print u"Final Knowledge Base:\n{}".format(complexOperation.complexOperation.strKnowledge(_scp.evaluateKB()))
-    print "Final Variables (before abduction):\n{}".format(complexOperation.complexOperation.strVariables(_scp.evaluateV()))
+    print ("{}".format(">"*35))
+    print (message)
+    print ("{}".format (_scp))
+    print (u"Final Knowledge Base:\n{}".format(complexOperation.complexOperation.strKnowledge(_scp.evaluateKB())))
+    print ("Final Variables (before abduction):\n{}".format(complexOperation.complexOperation.strVariables(_scp.evaluateV())))
     leastModel = scp_evaluator.getLeastModel(_scp)
-    print "Least Model: {} ".format(scp_evaluator.strLeastModelFromVariables(leastModel))
-    print "Turn Card: {}".format(turnFunction(_scp))
-    print "{}".format("<"*35)
+    print ("Least Model: {} ".format(scp_evaluator.strLeastModelFromVariables(leastModel)))
+    print ("Turn Card: {}".format(turnFunction(_scp)))
+    print ("{}".format("<"*35))
 
 def turnFunction (initialSCP, observation, allVariables, searchType="credulous"):
     #The solution SCPs are guaranteeed to be least models which make the obervation true after execution
@@ -273,8 +273,8 @@ def turnFunctionSimple (initialSCP):
     v = initialSCP.evaluateV()
     kb = initialSCP.evaluateKB()
     updatedRule = scp_evaluator.setkbfromv(ruleToEval,v)
-    print initialSCP.strKnowledge(kb)
-    print initialSCP.strVariables(v)
+    print (initialSCP.strKnowledge(kb))
+    print (initialSCP.strVariables(v))
     for i in updatedRule:
         if (i.clause1.evaluate()!=None and i.clause2.evaluate()!=None):
             return True    
@@ -297,9 +297,9 @@ wst_7_contra = createwst_card_7_contraposition()
 def printTurnForObs (observation, allVariables, _scp=None, value=True, searchType="credulous"):
     if _scp == None:
         _scp = createwst_noCard()
-    print "turn card {}: {}".format(observation.name,turnFunction(_scp,observation, allVariables, searchType=searchType))
+    print ("turn card {}: {}".format(observation.name,turnFunction(_scp,observation, allVariables, searchType=searchType)))
 
-print "NORMAL CASES (WEAKLY COMPLETING)"
+print ("NORMAL CASES (WEAKLY COMPLETING)")
 observation = card_d
 carddturn=printTurnForObs(observation=card_d, allVariables=allVariables, value=True)
 observation = card_k
@@ -310,7 +310,7 @@ observation = card_7
 card7turn=printTurnForObs(observation=card_7, allVariables=allVariables, value=True)
 
 
-print wst_d.strDetailed()
+print (wst_d.strDetailed())
 """
 _scp = createwst_noCard()
 #adding knowledge about the second relation k->7, and so not(7)->not(k) now prevents

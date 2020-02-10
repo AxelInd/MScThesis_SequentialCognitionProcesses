@@ -80,7 +80,7 @@ def countAllValidPermutations (s, orders, withPrintout=False, first = True):
             if testOrders(j, orders):
                 total = total+1
                 if withPrintout:
-                    print j
+                    print (j)
     return total
 
     
@@ -204,7 +204,7 @@ print ("TOTAL IS: {}".format(total))
 import numpy as np
 
 def calculateR (matrices,n):
-    print "---"
+    print ("---")
 #n : number of matrices
 
 m1 = np.matrix([[1, 2], [3, 4]])

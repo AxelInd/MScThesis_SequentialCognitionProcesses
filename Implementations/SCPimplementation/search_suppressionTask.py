@@ -249,7 +249,7 @@ def modificationSearch (_scp, goalV, depth):
         li = permutations(M,i)
         for l in list(li):
             solutions = solutions+randomisedInsert2(l, _scp, goalV, [])
-    print "{} solutions found".format(len(solutions))
+    print ("{} solutions found".format(len(solutions)))
     return solutions
             
             
