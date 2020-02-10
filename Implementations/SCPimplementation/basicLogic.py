@@ -21,6 +21,8 @@ tbl_bijective = {'True' : {'True': True,'None': None,'False':False},
 'None' : {'True': None,'None': True,'False':None},
 'False' : {'True': False,'None': None,'False':True}}
 
+tbl_not = {'True': False, 'None':None, 'False':True}
+
 
         
 class atom (object):
@@ -73,8 +75,6 @@ class operator (object):
     def __init__(self, immutable=False):
         self.name= ""
         self.immutable=immutable
-    def app (self):
-        print("applying")
     def evaluate(self):
         return "I am evaluating"
     def deepSet (self, var, val):
@@ -113,16 +113,10 @@ class operator_monotonic_negation (operator_monotonic):
         operator_monotonic.__init__(self, clause, immutable = immutable)     
         self.name = u"\u00AC"
     def getValue (self):
-        return self.clause.evaluate()
+        return self.evaluate()
         
     def evaluate(self):        
-        clauseVal = self.clause.evaluate()
-        if clauseVal==None:
-            return None
-        elif clauseVal==True:
-            return False
-        else:
-            return True
+        return tbl_not[str(self.clause.evaluate())]
 #--------------------------------------------
 class operator_bitonic (operator):
     def __init__(self, clause1=None, clause2=None, immutable = False):

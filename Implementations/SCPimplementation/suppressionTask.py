@@ -208,7 +208,7 @@ suppressionTask_delete = createsuppressionTask_deleteVariableo()
 
 
 #CHOOSE WHICH SCP TO SEE DETAILED HERE
-describeSCP(suppressionTask_standard, "Standard Suppression Task")
+describeSCP(suppressionTask_delete, "Standard Suppression Task")
 
 #unit test to make sure the expected results are observed
 unit_TestAll()

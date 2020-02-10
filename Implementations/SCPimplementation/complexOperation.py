@@ -330,7 +330,8 @@ class complexOperation_semanticOperator (complexOperation):
     DETERMINE IF THE OPERATOR IN QUESTION IS A BIJECTION
     return True if it is a bijection, False otherwise
     """
-    def isBijection(self,rule):
+    @staticmethod
+    def isBijection(rule):
         return isinstance (rule, basicLogic.operator_bitonic_bijection)
     """
     DETERMINE IF THE CLAUSE EVALUATES TO True/False/None.
@@ -339,7 +340,8 @@ class complexOperation_semanticOperator (complexOperation):
     @param clause: the logical clause or atom to evaluate
     @return the logical evaluation of the clause
     """
-    def evalClause (self, clause):
+    @staticmethod
+    def evalClause (clause):
         if clause.evaluate() == False or isinstance(clause, basicLogic.atom_false):
             return False
         elif clause.evaluate() == True or isinstance(clause, basicLogic.atom_truth):
@@ -357,17 +359,18 @@ class complexOperation_semanticOperator (complexOperation):
     @param v: the set of variables being used
     @return the updated set of variables
     """
-    def initGroundAtoms(self, kb, v):
+    @staticmethod
+    def initGroundAtoms(kb, v):
         #check that every rule is of a valid format
         for rule in kb:
-            if not self.isBijection(rule):
+            if not complexOperation_semanticOperator.isBijection(rule):
                 raise scpError.NotBijectionError
                 
         #test false
         for rule in kb:
             head = rule.clause2
             body = rule.clause1
-            if self.evalClause(body)==False:
+            if complexOperation_semanticOperator.evalClause(body)==False:
                 if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
                     for var in v:
                         if var.name == head.name:
@@ -375,7 +378,7 @@ class complexOperation_semanticOperator (complexOperation):
         for rule in kb:
             head = rule.clause1
             body = rule.clause2
-            if self.evalClause(body)==False:
+            if complexOperation_semanticOperator.evalClause(body)==False:
                 if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
                     for var in v:
                         if var.name == head.name:
@@ -384,7 +387,7 @@ class complexOperation_semanticOperator (complexOperation):
         for rule in kb:
             head = rule.clause2
             body = rule.clause1
-            if self.evalClause(body)==None:
+            if complexOperation_semanticOperator.evalClause(body)==None:
                 if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
                     for var in v:
                         if var.name == head.name:
@@ -392,7 +395,7 @@ class complexOperation_semanticOperator (complexOperation):
         for rule in kb:
             head = rule.clause2
             body = rule.clause1
-            if self.evalClause(body)==None:
+            if complexOperation_semanticOperator.evalClause(body)==None:
                 if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
                     for var in v:
                         if var.name == head.name:
@@ -403,7 +406,7 @@ class complexOperation_semanticOperator (complexOperation):
         for rule in kb:
             head = rule.clause2
             body = rule.clause1
-            if self.evalClause(body)==True:
+            if complexOperation_semanticOperator.evalClause(body)==True:
                 if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
                     for var in v:
                         if var.name == head.name:
@@ -412,7 +415,7 @@ class complexOperation_semanticOperator (complexOperation):
         for rule in kb:
             head = rule.clause1
             body = rule.clause2
-            if self.evalClause(body)==True:
+            if complexOperation_semanticOperator.evalClause(body)==True:
                 if isinstance(head, basicLogic.atom) and not basicLogic.isGroundAtom(head):
                     for var in v:
                         if var.name == head.name:

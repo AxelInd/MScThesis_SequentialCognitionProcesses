@@ -209,7 +209,7 @@ def unit_wst (observation, correctLeastModel, actualTurn):
     allVariables = (card_3,card_7,card_d,card_k)
     scp_noCard = createwst_noCard()
     solutionSCPs = scp_evaluator.getRestrictedLeastModelSCPs(scp_noCard, observation, allVariables)
-    leastModel_sets=scp_evaluator.LeastModelFormatSCPList(solutionSCPs)
+    leastModel_sets=scp_evaluator.leastModelFormatSCPList(solutionSCPs)
     unit_compareLeastModels(correctLeastModel,leastModel_sets)   
     unit_turnFunction(scp_noCard,observation,allVariables, actualTurn, searchType="credulous")
 def unit_wst_d ():
@@ -310,6 +310,7 @@ observation = card_7
 card7turn=printTurnForObs(observation=card_7, allVariables=allVariables, value=True)
 
 
+print wst_d.strDetailed()
 """
 _scp = createwst_noCard()
 #adding knowledge about the second relation k->7, and so not(7)->not(k) now prevents
@@ -409,7 +410,7 @@ print len(leastModel)
 
 print scp_evaluator.strLeastModelFormatSCPList(leastModel)
 """
-#unit_TestAll()
+unit_TestAll()
 
-
+#idea for conjunction fallacy, split a + b -> c
 
