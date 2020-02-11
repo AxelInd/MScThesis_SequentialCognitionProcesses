@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  7 FEB 2020 16:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  11 FEB 2020 09:39
 entering extended mode
 **./WCSFramework_summary.tex
 (WCSFramework_summary.tex
@@ -595,16 +595,28 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
+{C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+Package natbib Warning: Citation `saldanha2017weak' on page 2 undefined on inpu
+t line 60.
+
+
+Package natbib Warning: Citation `breu2019weak' on page 2 undefined on input li
+ne 62.
+
+[2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
- [3]
-<suppressionSCP_overview.png, id=27, 659.91544pt x 93.49931pt>
+
+
+Package natbib Warning: Citation `dietz2014modeling' on page 3 undefined on inp
+ut line 77.
+
+[3] <suppressionSCP_overview.png, id=27, 659.91544pt x 93.49931pt>
 File: suppressionSCP_overview.png Graphic file (type png)
 
 <use suppressionSCP_overview.png>
@@ -618,55 +630,62 @@ File: suppressionSCP_normal.png Graphic file (type png)
 Package pdftex.def Info: suppressionSCP_normal.png used on input line 115.
 (pdftex.def)             Requested size: 373.3188pt x 135.16714pt.
  [4 <./suppressionSCP_overview.png> <./suppressionSCP_normal.png>] [5]
-<suppressionSCP_mod.png, id=36, 579.51506pt x 130.53769pt>
+<suppressionSCP_mod.png, id=37, 579.51506pt x 130.53769pt>
 File: suppressionSCP_mod.png Graphic file (type png)
 
 <use suppressionSCP_mod.png>
 Package pdftex.def Info: suppressionSCP_mod.png used on input line 157.
 (pdftex.def)             Requested size: 405.65778pt x 91.37575pt.
 
-<suppressionSCP_mod2.png, id=37, 492.79106pt x 196.03238pt>
+<suppressionSCP_mod2.png, id=38, 492.79106pt x 196.03238pt>
 File: suppressionSCP_mod2.png Graphic file (type png)
 
 <use suppressionSCP_mod2.png>
 Package pdftex.def Info: suppressionSCP_mod2.png used on input line 168.
 (pdftex.def)             Requested size: 344.95139pt x 137.22171pt.
  [6 <./suppressionSCP_mod.png> <./suppressionSCP_mod2.png>] <scpClassDiagram.pn
-g, id=42, 1238.07544pt x 711.8595pt>
+g, id=43, 1238.07544pt x 711.8595pt>
 File: scpClassDiagram.png Graphic file (type png)
 
 <use scpClassDiagram.png>
 Package pdftex.def Info: scpClassDiagram.png used on input line 189.
 (pdftex.def)             Requested size: 650.43001pt x 373.98166pt.
  [7] [8 <./scpClassDiagram.png>]
-(WCSFramework_summary.bbl) [9] [10] (WCSFramework_summary.aux) ) 
+(WCSFramework_summary.bbl) [9]
+
+Package natbib Warning: Citation `stenning2008interpretation' on page 10 undefi
+ned on input line 266.
+
+
+Package natbib Warning: There were undefined citations.
+
+[10] [11] (WCSFramework_summary.aux) ) 
 Here is how much of TeX's memory you used:
- 13827 strings out of 493323
- 263786 string characters out of 3139069
- 311958 words of memory out of 3000000
- 17079 multiletter control sequences out of 15000+200000
- 12670 words of font info for 49 fonts, out of 3000000 for 9000
+ 13839 strings out of 493323
+ 263953 string characters out of 3139069
+ 313976 words of memory out of 3000000
+ 17090 multiletter control sequences out of 15000+200000
+ 13006 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,54p,1204b,309s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
-pfb>
-Output written on WCSFramework_summary.pdf (10 pages, 403902 bytes).
+ 55i,17n,54p,1204b,309s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on WCSFramework_summary.pdf (11 pages, 410136 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
+ 111 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
