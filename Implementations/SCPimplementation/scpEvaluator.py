@@ -268,11 +268,8 @@ class scp_evaluator (object):
     def compareSCP_finalEpis (scp1, scp2):
         epi1 = scp1.evaluate()
         epi2 = scp2.evaluate()
-        #print ("comparing:\n{}\n{}\n---".format(epi1,epi2))
         if epi1 != epi2:
-            print("THE EPIS DON:T MATCH")
             return False
-        
         return True
 
     

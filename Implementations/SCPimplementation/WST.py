@@ -251,25 +251,32 @@ def printSummary (_scp, message):
 
 def turnFunction (initialSCP, observation, allVariables, searchType="credulous"):
     #The solution SCPs are guaranteeed to be least models which make the obervation true after execution
+    print (">>>>>>>>>>>>")
+    print(initialSCP.evaluate())
     solutionSCPs = scp_evaluator.getRestrictedLeastModelSCPs(initialSCP, observation, allVariables)
-    
+    print ("Num solution SCPs: {}".format(len(solutionSCPs)))
     print("solution SCPs are {}".format(solutionSCPs[0].evaluate()))
     #only apply the semantic operator once
-    """
+    
     initialSCP=copy.deepcopy(initialSCP)
     while isinstance(initialSCP.getLastOperation().prev, complexOperation.complexOperation_semanticOperator):
         initialSCP.removeLast()
     
-    
+    #print (initialSCP)
+    #print ("observation {}".format(observation))
     extendedInitialSCP = scp_evaluator.addRuleToScpFromValue(initialSCP, observation.name, True)
+    print ("extended initial scp: {}".format(extendedInitialSCP.si))
     print ("extended initial scp: {}".format(extendedInitialSCP.evaluate()))
     if searchType=="credulous":
         # if no solution scp is identical to the shortened scp, then turn
-        return not scp_evaluator.credulousSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
+        match = scp_evaluator.credulousSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
+        #print ("The states match {}".format(match))
+        return not match
     elif searchType=="skeptical":
         # if every solution scp is identical to the shortned scp, then don't turn
-        return not scp_evaluator.skepticalSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
-    """
+        match = scp_evaluator.skepticalSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
+        #print ("The states match {}".format(match))
+        return not match
     return None
 #only turn the card when there is not enough information to verify the rule after evaluating the scp
 #@TODO needs heavy tweaking
@@ -306,19 +313,16 @@ def printTurnForObs (observation, allVariables, _scp=None, value=True, searchTyp
     print ("turn card {}: {}".format(observation.name,turnFunction(_scp,observation, allVariables, searchType=searchType)))
 
 print ("NORMAL CASES (WEAKLY COMPLETING)")
-"""
 observation = card_d
-carddturn=printTurnForObs(observation=card_d, allVariables=allVariables, value=True)
+carddturn=printTurnForObs(observation=card_d, allVariables=allVariables, value=True, searchType="skeptical")
 observation = card_k
-cardkturn=printTurnForObs(observation=card_k, allVariables=allVariables, value=True)
-"""
+cardkturn=printTurnForObs(observation=card_k, allVariables=allVariables, value=True, searchType="skeptical")
 observation = card_3
-card3turn=printTurnForObs(observation=card_3, allVariables=allVariables, value=True)
-"""
+card3turn=printTurnForObs(observation=card_3, allVariables=allVariables, value=True, searchType="skeptical")
 observation = card_7
 card7turn=printTurnForObs(observation=card_7, allVariables=allVariables, value=True)
 
-"""
+
 #print (wst_7.strDetailed())
 """
 _scp = createwst_noCard()

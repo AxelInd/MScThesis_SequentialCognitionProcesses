@@ -147,16 +147,22 @@ class complexOperation_addAB (complexOperation):
     def removeRuleFromList (self, rule, li_rule):
         otherRules = []
         for r in li_rule:
-            print ("Comparing {} to {}".format(r, rule))
             if r!=rule:
-                print ("The do not match")
                 otherRules.append(r)
         return otherRules
+    def removeGroundFromRules (self,rules):
+        newRules = []
+        for rule in rules:
+            if not basicLogic.isGroundAtom(rule):
+                newRules.append(rule)
+        return newRules
     def createNewAbnormalityInstant (self, ab, otherRulesThatAffectHead):
+        # case: KB={D->3, T->3} without this (T -> ab) is created
+        otherRulesThatAffectHead=self.removeGroundFromRules(otherRulesThatAffectHead)
         if otherRulesThatAffectHead==[]:
             rule = basicLogic.FALSE
-            return rule
-        rule = otherRulesThatAffectHead[0]
+            return rule    
+        rule = otherRulesThatAffectHead[0] 
         for other in range (1,len(otherRulesThatAffectHead)):
             neg = basicLogic.operator_monotonic_negation(rule)
             rule = basicLogic.operator_bitonic_or(rule, neg)
@@ -174,42 +180,44 @@ class complexOperation_addAB (complexOperation):
             return [rule.clause1]
         return []        
     def evaluate(self):
-        print("EVALUATING<<<<<<<<<<<<")
+        #get the previous epistemic state
         epi_prev = self.prev.evaluate()
+        #generate an empy epistemic state of the same type as the previous one
         epi_next = complexOperation.createEmptyNextEpi(epi_prev)
+        
+        #all variables in prevkb will be present in the next one (plus abnormalities)
+        prev_v = epi_prev.getV()
+        epi_next.addVariableList(prev_v)
+        
+        #the list of created abnormalities
         ABs = []
         prev_kb = epi_prev.getKB()
-        print(epi_prev)
-        
-        prevV = epi_prev.getV()
-        epi_next.addVariableList(prevV)
-        
+
         for rule in prev_kb:
-            print ("Rule is {}".format(rule))
+            #we do this because there can be 1 or 2 heads/bodies depending on -> or <->
             body = self.getBodies(rule)
             head = self.getHeads(rule)
-            print ("heads are:{}   bodies are:{}".format(head, body))
             if rule.immutable:
                 epi_next.addKnowledge(rule)
             else:
                 for h in head:
                     for b in body:
+                        #truth values don't need abnormalities
                         if basicLogic.isGroundAtom(b):
                             newRule = basicLogic.operator_bitonic_implication(b,h)
                             epi_next.addKnowledge(newRule)
-                        else:                        
+                        else:       
                             rulesThatAffectHead = self.getRulesThatAffectHead(h, prev_kb)
-                            print ("Rules that afffect head {}".format(rulesThatAffectHead))
                             otherRulesThatAffectHead = self.removeRuleFromList(b, rulesThatAffectHead)
-                            print ("Other rules that afffect head {}".format(otherRulesThatAffectHead))
+                            #create the new abnormality
                             newAb = basicLogic.atom("ab{}".format(len(ABs)+1))
-                            print("Created {}".format(newAb))
                             ABs.append(newAb)
                             negAb = basicLogic.operator_monotonic_negation(newAb)
                             newBody = basicLogic.operator_bitonic_and(b,negAb)
                             newRule = basicLogic.operator_bitonic_implication(newBody,h)
                             epi_next.addKnowledge(newRule)
                             
+                            #create a valuation for the new abnormality
                             abInstHead = newAb
                             abInstBody = self.createNewAbnormalityInstant(newAb, otherRulesThatAffectHead)
                             abInstBodyIsGroundValue = basicLogic.isGroundAtom(abInstBody)
@@ -217,11 +225,8 @@ class complexOperation_addAB (complexOperation):
                             abInstRule = basicLogic.operator_bitonic_implication(newAbInstBody, abInstHead)
                             epi_next.addKnowledge(abInstRule)
                             
-                            epi_next.addVariable(newAb)
-
-            print ("ABs: {}".format(ABs))
-        
-        
+                            #add the new abnormality to the variable list
+                            epi_next.addVariable(newAb) 
         return epi_next
         
         """
@@ -287,6 +292,7 @@ class complexOperation_weaklyComplete (complexOperation):
             tempKB.append(newRule)
         #turn implications to bijections, slightly slower but much more reasable
         #than combining them in the same loop
+        
         for rule in tempKB:
             if isinstance (rule, basicLogic.operator_bitonic_bijection):
                 epi_next.addKnowledge(rule)
@@ -295,14 +301,15 @@ class complexOperation_weaklyComplete (complexOperation):
                 head = rule.clause2
                 newRule = basicLogic.operator_bitonic_bijection(body,head)
                 epi_next.addKnowledge(newRule)
+        """
         #ground rules remiain unchanged except that they become bijections
         groundRules = self.getGroundRules(old_kb)
         for rule in groundRules:
                 body = rule.clause1
                 head = rule.clause2
                 newRule = basicLogic.operator_bitonic_bijection(body,head)  
-                epi_next.addKnowledge(newRule)
-                
+                epi_next.addKnowledge(newRule)   
+        """
         
         epi_next.addVariableList(old_v)
         return epi_next
