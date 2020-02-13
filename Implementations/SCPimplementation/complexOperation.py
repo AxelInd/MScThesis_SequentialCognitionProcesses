@@ -144,11 +144,13 @@ class complexOperation_addAB (complexOperation):
         newBody = basicLogic.operator_bitonic_and(body, negAbnormality)
         newRule = basicLogic.operator_bitonic_implication(newBody, head)
         return newRule, newAbnormality, li_abs
-    def getOtherRulesThatAffectHead (self, body, rulesThatAffectHead):
+    def removeRuleFromList (self, rule, li_rule):
         otherRules = []
-        for rule in rulesThatAffectHead:
-            if rule!=body:
-                otherRules.append(rule)
+        for r in li_rule:
+            print ("Comparing {} to {}".format(r, rule))
+            if r!=rule:
+                print ("The do not match")
+                otherRules.append(r)
         return otherRules
     def createNewAbnormalityInstant (self, ab, otherRulesThatAffectHead):
         if otherRulesThatAffectHead==[]:
@@ -159,8 +161,71 @@ class complexOperation_addAB (complexOperation):
             neg = basicLogic.operator_monotonic_negation(rule)
             rule = basicLogic.operator_bitonic_or(rule, neg)
         return rule
-        
+    def getHeads (self, rule):
+        if isinstance(rule, basicLogic.operator_bitonic_bijection):
+            return [rule.clause1, rule.clause2]
+        if isinstance (rule, basicLogic.operator_bitonic_implication):
+            return [rule.clause2]
+        return []
+    def getBodies (self, rule):
+        if isinstance(rule, basicLogic.operator_bitonic_bijection):
+            return [rule.clause1, rule.clause2]
+        if isinstance (rule, basicLogic.operator_bitonic_implication):
+            return [rule.clause1]
+        return []        
     def evaluate(self):
+        print("EVALUATING<<<<<<<<<<<<")
+        epi_prev = self.prev.evaluate()
+        epi_next = complexOperation.createEmptyNextEpi(epi_prev)
+        ABs = []
+        prev_kb = epi_prev.getKB()
+        print(epi_prev)
+        
+        prevV = epi_prev.getV()
+        epi_next.addVariableList(prevV)
+        
+        for rule in prev_kb:
+            print ("Rule is {}".format(rule))
+            body = self.getBodies(rule)
+            head = self.getHeads(rule)
+            print ("heads are:{}   bodies are:{}".format(head, body))
+            if rule.immutable:
+                epi_next.addKnowledge(rule)
+            else:
+                for h in head:
+                    for b in body:
+                        if basicLogic.isGroundAtom(b):
+                            newRule = basicLogic.operator_bitonic_implication(b,h)
+                            epi_next.addKnowledge(newRule)
+                        else:                        
+                            rulesThatAffectHead = self.getRulesThatAffectHead(h, prev_kb)
+                            print ("Rules that afffect head {}".format(rulesThatAffectHead))
+                            otherRulesThatAffectHead = self.removeRuleFromList(b, rulesThatAffectHead)
+                            print ("Other rules that afffect head {}".format(otherRulesThatAffectHead))
+                            newAb = basicLogic.atom("ab{}".format(len(ABs)+1))
+                            print("Created {}".format(newAb))
+                            ABs.append(newAb)
+                            negAb = basicLogic.operator_monotonic_negation(newAb)
+                            newBody = basicLogic.operator_bitonic_and(b,negAb)
+                            newRule = basicLogic.operator_bitonic_implication(newBody,h)
+                            epi_next.addKnowledge(newRule)
+                            
+                            abInstHead = newAb
+                            abInstBody = self.createNewAbnormalityInstant(newAb, otherRulesThatAffectHead)
+                            abInstBodyIsGroundValue = basicLogic.isGroundAtom(abInstBody)
+                            newAbInstBody =  abInstBody if abInstBodyIsGroundValue else basicLogic.operator_monotonic_negation(abInstBody)
+                            abInstRule = basicLogic.operator_bitonic_implication(newAbInstBody, abInstHead)
+                            epi_next.addKnowledge(abInstRule)
+                            
+                            epi_next.addVariable(newAb)
+
+            print ("ABs: {}".format(ABs))
+        
+        
+        return epi_next
+        
+        """
+        
         epi_prev = self.prev.evaluate()
         epi_next=None
         if isinstance(epi_prev,epistemicState.epistemicState_weakCompletion):
@@ -190,6 +255,7 @@ class complexOperation_addAB (complexOperation):
                         epi_next.addKnowledge(abInst)
                         epi_next.addVariable(newAb)
         return epi_next
+        """
         
 """
 A COMPLEX OPERATION WHICH PERFORMS WEAK COMPLETION AS DEFINED BY @TODOref

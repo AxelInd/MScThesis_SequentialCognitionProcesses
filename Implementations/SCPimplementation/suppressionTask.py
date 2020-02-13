@@ -191,9 +191,9 @@ def unit_sup_delete ():
     unit_compare(_scp,correctKB,correctNames,correctVals)      
 def unit_TestAll ():
     unit_sup_standard()
-    #unit_sup_noSuppression()
-    #unit_sup_fix()
-    #unit_sup_delete()
+    unit_sup_noSuppression()
+    unit_sup_fix()
+    unit_sup_delete()
     print (">>**All unit tests passed**<<")
 
     
