@@ -85,7 +85,6 @@ class complexOperation (object):
     def createEmptyNextEpi(prevEpi):
         if isinstance (prevEpi, epistemicState.epistemicState_weakCompletion):
             return epistemicState.epistemicState_weakCompletion()
-        
         raise scpError.invalidEpistemicStateError
             
 """
@@ -590,12 +589,29 @@ class complexOperation_modusTolens (complexOperation):
     def __init__ (self):
         complexOperation.__init__(self, "Modus Tolens")
     
+    def isAtom(self, rule):
+        return isinstance (rule, basicLogic.atom)
+    def isGroundAtom (self, rule):
+        return basicLogic.isGroundAtom(rule)
     def evaluate(self):
         prev_epi = self.prev.evaluate()
+        current_epi = complexOperation.createEmptyNextEpi(prev_epi)
         oldkb = prev_epi.getKB()
         oldV = prev_epi.getV()
         
-        current_epi = copy.deepcopy(prev_epi)
+        current_epi.addVariableList(oldV)
+        current_epi.addKnowledgeList(oldkb)
+        
+        for rule in oldkb:
+            if not rule.immutable:     
+                if self.isAtom(rule.clause2) and not self.isGroundAtom(rule.clause2):
+                        negateClause1 = basicLogic.operator_monotonic_negation(rule.clause1)
+                        negateClause2 = basicLogic.operator_monotonic_negation(rule.clause2)
+                        contraRule = basicLogic.operator_bitonic_implication(negateClause1, negateClause2)
+                        current_epi.addKnowledge(contraRule)
+                                        
+        
+        """
         newkb = current_epi.getKB()
         for rule in oldkb:
             if isinstance(rule.clause2, basicLogic.atom) and not basicLogic.isGroundAtom(rule.clause2):
@@ -605,7 +621,8 @@ class complexOperation_modusTolens (complexOperation):
                     contraRule = basicLogic.operator_bitonic_implication(negateClause1, negateClause2)
                     newkb.append(contraRule)
             #print u"{}".format(rule.clause2)
-        return newkb
+        """
+        return current_epi
     
     
     
