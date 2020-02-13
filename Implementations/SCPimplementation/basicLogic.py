@@ -50,8 +50,18 @@ class atom (object):
             self._value = val
     def getValue (self):
         return self._value
+    def getName (self):
+        return self.name
     def __repr__(self):
         return "({}:{})".format(self.name, self.getValue())
+    
+    def __hash__(self):
+        return hash(self.__repr__())
+    def __eq__(self, other):
+        if isinstance(other, atom):
+            return ((self.name == other.name) and (self.getValue() == other.getValue()))
+        else:
+            return False
     
 class atom_truth (atom):
     def __init__ (self, setValue=True):
@@ -81,6 +91,8 @@ class operator (object):
         print (" I am deepsetting")
     def __repr__(self):
         return self.__str__()
+    def getName (self):
+        return self.name
 
 #ATOMS FOR BASE TRUTH VALUES      
 TRUE = atom_truth (setValue=True)      
@@ -174,7 +186,54 @@ class operator_bitonic_bijection (operator_bitonic):
     
 
 
-        
+
+
+
+def createOrFromAtomList (li):
+    bigOr = li[0]
+    for i in range(1,len(li)):
+        bigOr = operator_bitonic_or(bigOr,li[i])
+    return bigOr
+
+
+"""
+INSTANTIATES THE VARIABLES IN kb WITH THE VALUES IN v
+@param kb: the knowledge base (list of rules)
+@param v: the variables (list of basicLogic.atom abjects)
+@return the kb with each atom in each rule set to the values in v
+"""
+def setkbfromv (kb, v):
+    for var in v:
+        for rule in kb:
+            rule.deepSet(var.name, var.getValue())
+    return kb
+"""
+REPRESENT A SET OF VARIABLES AS A UNICODE STRING
+@param v: the variables to represent
+@return the variables as a human-readable string
+"""  
+def strVariables(v):
+    vs = "{"
+    if v == None:
+        return "{}"
+    for i in range (0, len(v)):
+        vs = vs + u"{} : {}{}".format(v[i],v[i].evaluate(),(", " if i<len(v)-1 else "") )
+    vs=vs+"}"
+    return vs
+
+"""
+REPRESENT A SET OF RULES AS A UNICODE STRING
+@param kb: the knowledge to represent
+@return the rules as a human-readable string
+"""     
+def strKnowledge(kb):
+        k = "{"
+        if kb == None:
+            return "{}"
+        for i in range (0, len(kb)):
+            k = u'{} {} {}'.format(k, kb[i], (", " if i<len(kb)-1 else "") )
+        k=k+"}"
+        return k        
         
 def isGroundAtom (clause):
     if isinstance(clause, atom_truth):

@@ -253,18 +253,23 @@ def turnFunction (initialSCP, observation, allVariables, searchType="credulous")
     #The solution SCPs are guaranteeed to be least models which make the obervation true after execution
     solutionSCPs = scp_evaluator.getRestrictedLeastModelSCPs(initialSCP, observation, allVariables)
     
+    print("solution SCPs are {}".format(solutionSCPs[0].evaluate()))
     #only apply the semantic operator once
+    """
     initialSCP=copy.deepcopy(initialSCP)
-    while isinstance(initialSCP.getLastState().prev, complexOperation.complexOperation_semanticOperator):
+    while isinstance(initialSCP.getLastOperation().prev, complexOperation.complexOperation_semanticOperator):
         initialSCP.removeLast()
     
+    
     extendedInitialSCP = scp_evaluator.addRuleToScpFromValue(initialSCP, observation.name, True)
+    print ("extended initial scp: {}".format(extendedInitialSCP.evaluate()))
     if searchType=="credulous":
         # if no solution scp is identical to the shortened scp, then turn
-        return not scp_evaluator.credulousSCPCompare(extendedInitialSCP, solutionSCPs)
+        return not scp_evaluator.credulousSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
     elif searchType=="skeptical":
         # if every solution scp is identical to the shortned scp, then don't turn
-        return not scp_evaluator.skepticalSCPCompare(extendedInitialSCP, solutionSCPs)
+        return not scp_evaluator.skepticalSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
+    """
     return None
 #only turn the card when there is not enough information to verify the rule after evaluating the scp
 #@TODO needs heavy tweaking
@@ -280,6 +285,7 @@ def turnFunctionSimple (initialSCP):
             return True    
     return False
 
+"""
 #instantiate each normal card observation
 wst_d = createwst_card_d()
 wst_k = createwst_card_k()
@@ -292,7 +298,7 @@ wst_d_contra = createwst_card_d_contraposition()
 wst_k_contra = createwst_card_k_contraposition()
 wst_3_contra = createwst_card_3_contraposition()
 wst_7_contra = createwst_card_7_contraposition() 
-
+"""
 
 def printTurnForObs (observation, allVariables, _scp=None, value=True, searchType="credulous"):
     if _scp == None:
@@ -300,17 +306,20 @@ def printTurnForObs (observation, allVariables, _scp=None, value=True, searchTyp
     print ("turn card {}: {}".format(observation.name,turnFunction(_scp,observation, allVariables, searchType=searchType)))
 
 print ("NORMAL CASES (WEAKLY COMPLETING)")
+"""
 observation = card_d
 carddturn=printTurnForObs(observation=card_d, allVariables=allVariables, value=True)
 observation = card_k
 cardkturn=printTurnForObs(observation=card_k, allVariables=allVariables, value=True)
+"""
 observation = card_3
 card3turn=printTurnForObs(observation=card_3, allVariables=allVariables, value=True)
+"""
 observation = card_7
 card7turn=printTurnForObs(observation=card_7, allVariables=allVariables, value=True)
 
-
-print (wst_d.strDetailed())
+"""
+#print (wst_7.strDetailed())
 """
 _scp = createwst_noCard()
 #adding knowledge about the second relation k->7, and so not(7)->not(k) now prevents
@@ -375,6 +384,7 @@ print _scp.strVariables(wst_7_contra.evaluateV())
 print "K"
 print _scp.strKnowledge(wst_k_contra.evaluateKB())
 print _scp.strVariables(wst_k_contra.evaluateV())
+
 print "3"
 print _scp.strKnowledge(wst_3_contra.evaluateKB())
 print _scp.strVariables(wst_3_contra.evaluateV())
@@ -410,7 +420,17 @@ print len(leastModel)
 
 print scp_evaluator.strLeastModelFormatSCPList(leastModel)
 """
-unit_TestAll()
+#unit_TestAll()
 
 #idea for conjunction fallacy, split a + b -> c
+
+
+
+
+
+
+
+
+
+
 
