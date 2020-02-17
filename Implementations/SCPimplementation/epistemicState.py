@@ -92,93 +92,38 @@ class epistemicState_defeaultReasoning (epistemicState):
         self.d.append(d)
     def addW(self,w):
         self.w.append(w)
+    def addV(self,v, overwrite=False):
+        for var in self.v:
+            if var.name==v.name:
+                if overwrite:
+                    var.setValue(v.getValue())
+                    return True
+                return False
+        self.v.append(v)
+        return True
+                
+        if (v in self.v) or overwrite:
+            self.v.append(v)
+    def addVList(self,V, overwrite=False):
+        for _v in V:
+            self.addV(_v, overwrite=overwrite)
+    def addWList(self,W):
+        for _w in W:
+            self.addW(_w)
+    def addDList(self,D):
+        for _d in D:
+            self.addD(_d)
+    def getV(self):
+        return self.v
+
     def __str__(self):
         sw = self.w
         sd = self.d
-        return "W = {}  D = {}".format(sw, sd)
-    #@TODO this method is really simple and must be expanded for non-monotonic conclusions
-    # that is, for cases where there are multiple possible resulting variable assignments
-    @staticmethod
-    def oneStepDeriveFromW(w):
-        v=[]
-        for rule in w:
-            if isinstance(rule, basicLogic.operator_bitonic_implication):
-                ce1 = rule.clause1.evaluate()
-                ce2 = rule.clause2.evaluate()
-                print ("Clause 1 :{} = {}  --- Clause 2 :{} = {}".format(rule.clause1,ce1,rule.clause2,ce2))
-                if ce1!=None:
-                    v.append((rule.clause2,ce1))
-            if isinstance(rule, basicLogic.operator_bitonic_bijection):
-                ce1 = rule.clause1.evaluate()
-                ce2 = rule.clause2.evaluate()
-                if ce1!=None:
-                    v.append((rule.clause2, ce1))
-                if ce2!=None:
-                    v.append((rule.clause1, ce2))
-        return v
-    @staticmethod
-    def getVariablesFromThW(thW):
-        v=[]
-        for x in thW:
-            if isinstance(x[0],basicLogic.atom):
-                v.append(copy.deepcopy(x[0]))
-                v[-1].setValue(x[1])
-        return v
-    @staticmethod
-    def deepSetVInRules (v, rules):
-        basicLogic.setkbfromv(rules,v)
-    #@TODO does not compare rules, only atoms
-    @staticmethod
-    def compareCurrentToPrev (cur, prev):
-        for c in cur:
-            cFound=False
-            if isinstance (c[0], basicLogic.atom):
-                for p in prev:
-                    if isinstance(p[0],basicLogic.atom):
-                        if c[0]==p[0]:
-                            cFound=True
-            else:
-                cFound = True
-            if not cFound:
-                print("{} did not exist in the prev".format(c))
-                return False
-        return True
-                        
-        return True
-    @staticmethod
-    def deriveFromW(w):
-        prev  = []
-        current = epistemicState_defeaultReasoning.oneStepDeriveFromW(w)
-        #all variables with derivable values
-        variables = epistemicState_defeaultReasoning.getVariablesFromThW(current)
-        while not epistemicState_defeaultReasoning.compareCurrentToPrev(current,prev):
-            prev = copy.deepcopy(current)
-            current=epistemicState_defeaultReasoning.oneStepDeriveFromW(w)
-            variables = epistemicState_defeaultReasoning.getVariablesFromThW(current)
-            
-            print ("Ich bin hier")
-            for c in current:
-                print ("---{}".format(c))
-            for v in variables:
-                for c in current:
-                    c[0].deepSet(v.getName(), v.getValue())
-        print (variables)
-        derivedRules = [i[0] for i in current]
-        return derivedRules, variables
-    @staticmethod
-    def deriveFromD(d,v):
-        d = copy.deepcopy(d)
-        print ("v is ", v)
-        for defaultRule in d:
-            print ("Default rule is",defaultRule)
-            print ("This default rule evlauates to", defaultRule.evaluate(v))
-        return d, v
+        sv = self.v
+        return "W = {} \nD = {}\nV={}".format(sw, sd, sv)
+    
 
-    @staticmethod
-    def oneStepDeriveFromD(d, v):
-        for defaultRule in d:
-            pass
-                
+
         
         
 

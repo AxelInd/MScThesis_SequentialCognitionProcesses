@@ -7,11 +7,15 @@ Created on Mon Feb 17 08:59:41 2020
 import scp
 import basicLogic
 import epistemicState
+import complexOperation
 
 a = basicLogic.atom('bird')
 b = basicLogic.atom('canFly')
 c = basicLogic.atom('isEmu')
 
+d = basicLogic.atom('penguin', False)
+e = basicLogic.atom('evil')
+f = basicLogic.atom('friend')
 
 aORb = basicLogic.operator_bitonic_or(a,b,logicType="P")
 emuscantFly = basicLogic.operator_bitonic_implication(c,basicLogic.operator_monotonic_negation(b),logicType="P")
@@ -19,11 +23,16 @@ thisIsAnEmu = basicLogic.operator_bitonic_implication(basicLogic.TRUE,c,logicTyp
 thisIsABird = basicLogic.operator_bitonic_implication(basicLogic.TRUE,a,logicType="P")
 emusAreBirds = basicLogic.operator_bitonic_implication(c, a,logicType="P")
 
-W = [emuscantFly,thisIsAnEmu,emusAreBirds]
+
 rule1 =  basicLogic.operator_tritonic_defaultRule(a, b, b, False)
-D = [rule1]
-default = scp.scp(epistemicStateType="dl")
-print (default.si)
+rule2 = basicLogic.operator_tritonic_defaultRule(d, e, f, False)
+V = [a,b,c, d, e, f]
+W = [emuscantFly,thisIsAnEmu,emusAreBirds]
+#W = [emuscantFly,thisIsABird,emusAreBirds]
+D = [rule1, rule2]
+
+comp_def_eval = complexOperation.complexOperation_default_drawConclusions()
+
 
 print (D)
 
@@ -38,11 +47,41 @@ print (W)
 
 print (thisIsAnEmu.evaluate())
 
-default.addD(rule1)
-for rule in W:
-    default.addW(rule)
+#thW, v = epistemicState.epistemicState_defeaultReasoning.deriveFromW(W)
+#print ("thW:{}\nv:{}\n".format(thW,v))
+#thW, v = epistemicState.epistemicState_defeaultReasoning.deriveFromD(D, thW)
 
+
+default = scp.scp(epistemicStateType="dl")
+
+default.addVList(V)
+default.addDList(D)
+default.addWList(W)
+
+default.addNext(comp_def_eval)
+print ("---------------")
+print (default.si)
 print (default.evaluate())
-thW, v = epistemicState.epistemicState_defeaultReasoning.deriveFromW(W)
-print ("thW:{}\nv:{}\n".format(thW,v))
-thW, v = epistemicState.epistemicState_defeaultReasoning.deriveFromD(D, thW)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

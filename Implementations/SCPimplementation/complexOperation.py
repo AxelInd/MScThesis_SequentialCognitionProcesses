@@ -85,6 +85,8 @@ class complexOperation (object):
     def createEmptyNextEpi(prevEpi):
         if isinstance (prevEpi, epistemicState.epistemicState_weakCompletion):
             return epistemicState.epistemicState_weakCompletion()
+        elif isinstance (prevEpi, epistemicState.epistemicState_defeaultReasoning):
+            return epistemicState.epistemicState_defeaultReasoning()
         raise scpError.invalidEpistemicStateError
             
 """
@@ -106,6 +108,187 @@ class complexOperation_init (complexOperation):
         self.epi_state=epi
     def getEpistemicState (self):
         return self.epi_state
+    
+class complexOperation_default (complexOperation):
+    def __init__(self, name="defaultOp"):
+        complexOperation.__init__(self,name)
+class complexOperation_default_drawConclusions (complexOperation_default):
+    def __init__(self):
+        complexOperation_default.__init__(self,name="drawConcDefault")
+    #@TODO should return a list of epistemic states corresponding to each possible world
+    #@TODO this should run until convergence (in this case only variable assignments change)
+    def evaluate(self):
+        
+        epi_prev = self.prev.evaluate()
+        epi_next = copy.deepcopy(epi_prev)
+        print ("Previous operation was", epi_prev)
+        
+        prevV = epi_prev.getV()
+        complexOperation_default_drawConclusions.deriveFromW(epi_next)
+        complexOperation_default_drawConclusions.deriveFromDandV(epi_next)
+        currentV = epi_next.getV()
+        
+        while not basicLogic.compareVariableLists(prevV,currentV):
+            prevV = epi_next.getV()
+            complexOperation_default_drawConclusions.deriveFromW(epi_next)
+            complexOperation_default_drawConclusions.deriveFromDandV(epi_next) 
+            currentV = epi_next.getV()
+
+        
+        
+        
+        """
+        prevD=epi_prev.getD()
+        thW, concs = complexOperation_default_drawConclusions.deriveFromW(prevW)
+        #thWD, v = complexOperation_default_drawConclusions.deriveFromD(prevD, thW)
+        for c in concs:
+            print ("c is ", c)
+            if isinstance(c, basicLogic.atom):
+                epi_next.addV(c,overwrite=True)
+            elif isinstance(c, basicLogic.operator_monotonic_negation):
+                reversedC = basicLogic.atom(c.clause,)
+                epi_next.addV(reversedC,overwrite=True)
+        
+        epi_next.addDList(prevD)
+        #epi_next.addVList(v)
+        epi_next.addWList(prevW)
+        
+        """
+        return epi_next
+        
+    @staticmethod
+    def deriveFromW(epi_next):
+        prev  = []
+        epi_w = epi_next.getW()
+        current = complexOperation_default_drawConclusions.oneStepDeriveFromW(epi_w)
+        #all variables with derivable values
+        newVariables = complexOperation_default_drawConclusions.getVariablesFromThW(current)
+        
+        while not complexOperation_default_drawConclusions.compareCurrentToPrev(current,prev):
+            prev = copy.deepcopy(current)
+            current=complexOperation_default_drawConclusions.oneStepDeriveFromW(epi_w)
+            newVariables = complexOperation_default_drawConclusions.getVariablesFromThW(current)
+
+            for c in current:
+                print ("---{}".format(c))
+            for v in newVariables:
+                for c in current:
+                    c[0].deepSet(v.getName(), v.getValue())
+        print (newVariables)
+        derivedRules = [i[0] for i in current]
+        print ("derived rules are",derivedRules)
+        epi_next.addVList(newVariables)
+        return epi_next
+    @staticmethod
+    def deriveFromDandV(epi_next):
+        d=epi_next.getD()
+        v=epi_next.getV()
+        derivs = []
+        print ("v is ", v)
+        for defaultRule in d:
+            print ("Default rule is",defaultRule)
+            print ("This default rule evlauates to", defaultRule.evaluate(v))
+            ruleEval = defaultRule.evaluate(v)
+            if ruleEval==False:
+                #nothing happens as this rule has been falsified
+                #maybe it should be rmoved from the list of defeault rules?
+                pass
+            else:
+                derivs.append((defaultRule.clause3,True))
+        print ("The following things have been derived:",derivs)
+        newVariables = complexOperation_default_drawConclusions.getVariablesFromThW(derivs)
+        epi_next.addVList(newVariables, overwrite=True)
+        return epi_next  
+    
+    
+    #@TODO this method is really simple and must be expanded for non-monotonic conclusions
+    # that is, for cases where there are multiple possible resulting variable assignments
+    @staticmethod
+    def oneStepDeriveFromW(w):
+        v=[]
+        for rule in w:
+            if isinstance(rule, basicLogic.operator_bitonic_implication):
+                ce1 = rule.clause1.evaluate()
+                ce2 = rule.clause2.evaluate()
+                #print ("Clause 1 :{} = {}  --- Clause 2 :{} = {}".format(rule.clause1,ce1,rule.clause2,ce2))
+                if ce1!=None:
+                    v.append((rule.clause2,ce1))
+            if isinstance(rule, basicLogic.operator_bitonic_bijection):
+                ce1 = rule.clause1.evaluate()
+                ce2 = rule.clause2.evaluate()
+                if ce1!=None:
+                    v.append((rule.clause2, ce1))
+                if ce2!=None:
+                    v.append((rule.clause1, ce2))
+        return v
+
+    @staticmethod
+    def getVariablesFromThW(thW):
+        v=[]
+        for x in thW:
+            if isinstance(x[0],basicLogic.atom):
+                v.append(copy.deepcopy(x[0]))
+                v[-1].setValue(x[1])
+            elif isinstance(x[0],basicLogic.operator_monotonic_negation):
+                v.append(copy.deepcopy(x[0].clause))
+                print ("HERE DOING DOULBE NEG THINGS")
+                print ("The double neg case is",x, "...",x[1])
+                doubleNeg = basicLogic.operator_monotonic_negation(basicLogic.atom('',x[1]))
+                print ("setting ", x[0].clause, "to", doubleNeg.evaluate())
+                v[-1].setValue(doubleNeg.evaluate())
+        print ("my v is ", v)
+        return v
+    @staticmethod
+    def deepSetVInRules (v, rules):
+        basicLogic.setkbfromv(rules,v)
+    #@TODO does not compare rules, only atoms
+    @staticmethod
+    def compareCurrentToPrev (cur, prev):
+        for c in cur:
+            cFound=False
+            if isinstance (c[0], basicLogic.atom):
+                for p in prev:
+                    if isinstance(p[0],basicLogic.atom):
+                        if c[0]==p[0]:
+                            cFound=True
+            else:
+                cFound = True
+            if not cFound:
+                return False
+        return True
+                        
+        return True
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 """
 A COMPLEX OPERATION WHICH ADDS ABNORMALITY VARIABLES TO THE EPISTEMIC STATE
 The process her may differ according to the indiivdual needs of the researcher.

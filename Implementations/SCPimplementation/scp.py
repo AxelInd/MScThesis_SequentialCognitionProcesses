@@ -111,7 +111,12 @@ class scp (object):
         self.si.addD(d)
     def addW(self,w):
         self.si.addW(w)
-        
+    def addDList(self, D):
+        return self.si.addDList(D)
+    def addWList(self,W):
+        return self.si.addWList(W)
+    def addVList(self, V):
+        return self.si.addVList(V)    
 
 #==============================================================================
 #=============================LINKED LIST OPERATIONS===========================

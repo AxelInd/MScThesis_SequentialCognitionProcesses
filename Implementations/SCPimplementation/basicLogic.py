@@ -282,7 +282,19 @@ def isGroundAtom (clause):
     return False       
 
 
-
+def compareVariableLists(li1,li2):
+    if len(li1)!=len(li2):
+        return False
+    for v in li1:
+        found = False
+        for v2 in li2:
+            if v.getName()==v2.getName():
+                found=True
+                if v.getValue() != v2.getValue():
+                    return False
+                if not found:
+                    return False
+    return True
 
 
 
