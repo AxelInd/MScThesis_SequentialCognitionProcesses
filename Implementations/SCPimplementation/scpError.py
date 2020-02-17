@@ -29,3 +29,5 @@ class notBitonicOperatorError(Error):
    pass     
 class unitTestFailedError(Error):
    pass  
+class invalidEpistemicStateError(Error):
+    pass

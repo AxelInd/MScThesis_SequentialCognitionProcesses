@@ -23,20 +23,25 @@ import complexOperation
 #used to throw exceptions for improper use
 import scpError
 
+import epistemicState
+
 class scp (object):
-    def __init__ (self):
+    def __init__ (self, epiState1 = None, epistemicStateType="wcs"):
         #the set of complex operations possible in the scp
         self.M = []
-        #the starting epistemic state rules of the agent
-        self.initialKB = []
-        #the starting epistemic state variables of the agent
-        self.initialV = []
+
         #the first state in the scp, should always be an instance of complexOperation_init
-        self.state1 = complexOperation.complexOperation_init ()
+        self.m1 = complexOperation.complexOperation_init ()
         #the knowledge base of the first state is a pointer to the knowledge base of the scp
-        self.state1.kb = self.initialKB
-        #the variables of the first state are a pointer to the variables of the scp
-        self.state1.v = self.initialV
+        switch = {"wcs": epistemicState.epistemicState_weakCompletion(), "dl": epistemicState.epistemicState_defeaultReasoning()}
+        #determines the type of state to init
+        if epiState1!=None:
+            self.si=epiState1
+        else:  
+            self.si = switch[epistemicStateType]
+        
+        self.m1.setEpistemicState(self.si)
+        
 
     #@TODO needs to be implemented
     def checkPrecondition ():
@@ -60,11 +65,7 @@ class scp (object):
     @return True if succesful, False otherwise
     """
     def addKnowledge (self, knowledge):
-        if knowledge==None:
-            return False
-        newKnowledge = copy.copy(knowledge)
-        self.initialKB.append(newKnowledge)
-        return True
+        return self.si.addKnowledge(knowledge)
     """
     REMOVE A VARIABLE FROM THE INITIAL KB OF THE SCP
     @param varname: the name of the variable to remove
@@ -84,33 +85,9 @@ class scp (object):
     @return True if the variable is added, False otherwise
     """
     def addVariable (self, variable, overwrite=False):
-        newVariable = copy.copy(variable)
-        if not overwrite:
-            for v in self.initialV:
-                #prevents adding duplicate variables (at the start at least)
-                if v.name == newVariable.name:
-                    return False
-        else:
-            self.initialV=self.removeVariable_initial(variable.name)
-        self.initialV.append(newVariable)
-        return True
-    """
-    RETURN THE VARIABLES IN THE FINAL EPISTEMIC STATE
-    @return the variable assignments in the final state as a list
-    """
-    def evaluateV (self):
-        if self.getLastState() == None:
-            return []
-        return self.getLastState().evaluatev()
-    """
-    RETURN THE RULES IN THE FINAL EPISTEMIC STATE
-    @return the rules in the final state as a list    
-    """
-    def evaluateKB (self):
-        if self.getLastState() == None:
-            return []
-        return self.getLastState().evaluatekb()
-    
+        return self.si.addVariable(variable)
+    def evaluate(self):
+        return self.getLastOperation().evaluate()
 
     """
     GET A VARIABLE IF IT IS NAMED IN THE INITIAL V
@@ -129,6 +106,11 @@ class scp (object):
     """
     def existsVariable (self, variableName):
         return self.getVariable(variableName)==None
+    
+    def addD (self, d):
+        self.si.addD(d)
+    def addW(self,w):
+        self.si.addW(w)
         
 
 #==============================================================================
@@ -154,7 +136,7 @@ class scp (object):
         m=copy.deepcopy(m) 
 
         #cycle to the desired position
-        node = self.state1
+        node = self.m1
         prev = None
         for i in range (0, pos-1):
             prev=node
@@ -177,8 +159,8 @@ class scp (object):
             return
     def addNext (self,nxt):
         self.insertAtPos(nxt,len(self))      
-    def getLastState(self):
-        node = self.state1
+    def getLastOperation(self):
+        node = self.m1
         if node == None:
             return None
         while node.next!=None:
@@ -194,18 +176,18 @@ class scp (object):
         if not isinstance (state, complexOperation.complexOperation_init):
             raise scpError.invalidComplexOperation
         self.insertAtPos(state,0)
-        self.state1.kb=self.initialKB
-        self.state1.v=self.initialV
+        self.m1.kb=self.initialKB
+        self.m1.v=self.initialV
         
     """
     FIND THE LENGTH OF THE SCP
     @return returns the number of linked complex operation in the scp
     """        
     def __len__(self):
-        if self.state1==None:
+        if self.m1==None:
             return 0
         i = 0
-        node = self.state1
+        node = self.m1
         while True:
             node = node.next
             i=i+1
@@ -224,8 +206,8 @@ class scp (object):
     @return True if successful, false otherwise
     """
     def removeLast (self):
-        if self.getLastState()!=self.state1:
-            self.getLastState().prev.next=None
+        if self.getLastOperation()!=self.m1:
+            self.getLastOperation().prev.next=None
             return True
         return False
 #==============================================================================
@@ -286,7 +268,7 @@ class scp (object):
     """
     def __str__(self):
         s=""
-        m = self.state1
+        m = self.m1
         while m != None:
             s = s + m.name + (" >> " if m.next!= None else "")
             m = m.next
@@ -296,7 +278,7 @@ class scp (object):
     @return the input/output of each complex operation after running
     """
     def strDetailed (self):
-        node = self.state1
+        node = self.m1
         s = u''
         while node != None:
             s = s + (u'==={}===\n').format(node.name)

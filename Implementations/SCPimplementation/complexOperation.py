@@ -20,6 +20,8 @@ import basicLogic
 #used to throw exceptions for improper use
 import scpError
 
+import epistemicState
+
 class complexOperation (object):
     """
     CREATE A COMPLEX OPERATION
@@ -31,58 +33,9 @@ class complexOperation (object):
         self.next = None
         #the complex operation whose output is the input to this complex operation
         self.prev = None
-    
-    """
-    USE THE PREVIOUS OPERATION'S OUTPUT RULES TO CALCULATE THE NEW OUTPUT RULES
-    """
-    def evaluatekb (self):
+    def evaluate(self):
         raise scpError.notImplementedError_AbstractClass
-    """
-    USE THE PREVIOUS OPERATION'S OUTPUT VARIABLES TO CALCULATE THE NEW OUTPUT VARIABLES
-    """        
-    def evaluatev (self):
-        raise scpError.notImplementedError_AbstractClass
-    """
-    INSTANTIATES THE VARIABLES IN kb WITH THE VALUES IN v
-    @param kb: the knowledge base (list of rules)
-    @param v: the variables (list of basicLogic.atom abjects)
-    @return the kb with each atom in each rule set to the values in v
-    """
-    @staticmethod
-    def setkbfromv (kb, v):
-        for var in v:
-            for rule in kb:
-                rule.deepSet(var.name, var.getValue())
-        return kb
-    """
-    REPRESENT A SET OF VARIABLES AS A UNICODE STRING
-    @param v: the variables to represent
-    @return the variables as a human-readable string
-    """
-    @staticmethod    
-    def strVariables(v):
-        vs = "{"
-        if v == None:
-            return "{}"
-        for i in range (0, len(v)):
-            vs = vs + u"{} : {}{}".format(v[i],v[i].evaluate(),(", " if i<len(v)-1 else "") )
-        vs=vs+"}"
-        return vs
-    
-    """
-    REPRESENT A SET OF RULES AS A UNICODE STRING
-    @param kb: the knowledge to represent
-    @return the rules as a human-readable string
-    """
-    @staticmethod        
-    def strKnowledge(kb):
-        k = "{"
-        if kb == None:
-            return "{}"
-        for i in range (0, len(kb)):
-            k = u'{} {} {}'.format(k, kb[i], (", " if i<len(kb)-1 else "") )
-        k=k+"}"
-        return k
+
     """
     REPRESENT THIS COMPLEX OPERATION'S OUTPUT RULES AS A STRING
     @return the rules as a human-readable string
@@ -95,28 +48,45 @@ class complexOperation (object):
     @return the variables as a human-readable string
     """
     def strVariables_self(self):
-        return complexOperation.strKnowledge(self.evaluatev())      
+        return complexOperation.strKnowledge(self.evaluatev())
+    #this method requires that the truth value of all variables with name x be identical
+    @staticmethod
+    def getHeads (kb):
+        heads=[]
+        for rule in kb:
+            if isinstance (rule, basicLogic.operator_bitonic_implication):
+                heads.append(rule.clause2)
+            elif isinstance (rule, basicLogic.operator_bitonic_bijection):
+                heads.append(rule.clause2)
+                heads.append(rule.clause1)
+        return list(dict.fromkeys(heads)) 
+    
     """
     REPRESENT THIS COMPLEX OPERATION AS A STRING IN TERMS OF INPUT AND OUTPUT
     @return The name of operation as well as the (KB,V) values for both input and output
     """
     def __str__(self):
-        inputkb = (self.prev.evaluatekb() if self.prev!=None else None)
-        inputv = (self.prev.evaluatev() if self.prev!=None else None)
         
-        outputkb  =self.evaluatekb()
-        outputv = self.evaluatev()
+        epi_input = (self.prev.evaluate() if self.prev!=None else None)
+        epi_output = self.evaluate()
         
         #input
         s = "{}\n{}\n>>>Input: {}\n".format(("-"*10),("-"*5), self.name)
-        s = s + u"KB = {}\nV = {}\n".format(complexOperation.strKnowledge(inputkb),complexOperation.strVariables(inputv))
+        s = s + u"{}\n".format(epi_input)
         
         #output
         s = s+"{}\n>>>Output: {}\n".format(("-"*5), self.name)
-        s = s + u"KB = {}\nV = {}\n".format(complexOperation.strKnowledge(outputkb),complexOperation.strVariables(outputv))
+        s = s + u"{}\n".format(epi_output)
         
         s = s + "{}\n".format("-"*10)  
         return s 
+    
+    @staticmethod
+    def createEmptyNextEpi(prevEpi):
+        if isinstance (prevEpi, epistemicState.epistemicState_weakCompletion):
+            return epistemicState.epistemicState_weakCompletion()
+        raise scpError.invalidEpistemicStateError
+            
 """
 THE INIT COMPLEX OPERATIONS IS ASSUMED TO BE THE FIRST STEP OF EVERY SCP
 The complexOperation_init holds pointers to epistemic information from the initial state of the scp.
@@ -129,19 +99,13 @@ class complexOperation_init (complexOperation):
     """
     def __init__ (self):
         complexOperation.__init__(self, "init")
-    """
-    RETURNS A COPY OF THE INITIAL KNOWLEDGE BASE OF THE SCP THAT CONTAINS IT
-    @return a copy of the initial rules of the scp
-    """
-    def evaluatekb (self):
-        return copy.deepcopy(self.kb)
-    """
-    RETURNS A COPY OF THE INITIAL VARIABLES OF THE THE SCO THAT CONTAINS IT
-    @return a copy of the initial variables of the scp
-    """
-    def evaluatev (self):
-        return copy.deepcopy(self.v)
-
+        self.epi_state=[]
+    def evaluate(self):
+        return self.getEpistemicState()
+    def setEpistemicState (self, epi):
+        self.epi_state=epi
+    def getEpistemicState (self):
+        return self.epi_state
 """
 A COMPLEX OPERATION WHICH ADDS ABNORMALITY VARIABLES TO THE EPISTEMIC STATE
 The process her may differ according to the indiivdual needs of the researcher.
@@ -156,110 +120,146 @@ class complexOperation_addAB (complexOperation):
     """
     def __init__ (self):
         complexOperation.__init__(self, "addAB")
-    """
-    CREATE THE ABNORMALITIES AND APPEND THEM TO THE EPISTEMIC STATE (KB AND V)
-    This method follows that in the complexOperation_addAB class description.
-    This method is necessary to keep complexOperation_addAB a pipeline class, but
-    still able to pass evaluate v and kb without code duplication.
-    @return kb2: the new knowledge base containing the created abnormalities
-    @return tempABs: a list of the added abnormalities
-    """
-    def trueEvaluation (self):
-        tempABs = []
-        kb2 = []
-        usedatoms = []
-        kb = self.prev.evaluatekb()
-        for i in kb:
-            head=i.clause2
-            body=i.clause1
-            if isinstance(i,basicLogic.operator_bitonic_implication ):
-                #atom in head
-                if isinstance(head, basicLogic.atom ) and not i.immutable:
-                    #check that it is not a ground truth value
-                    #abnormality needs to be added
-                    if not basicLogic.isGroundAtom(body):
-                        if len(usedatoms)==0 or not body in usedatoms[0]:
-                            # Note that this atom/clause has an attached abnormality
-                            usedatoms.append([body,head])
-                            newAbnormality = basicLogic.atom("ab"+str(len(usedatoms)))
-                            negativeAbnormality = basicLogic.operator_monotonic_negation(newAbnormality)
-                            newclause = basicLogic.operator_bitonic_and(body, negativeAbnormality)
-                            newClauseWithAbnormality = basicLogic.operator_bitonic_implication(newclause, head)
-                            kb2.append(newClauseWithAbnormality)
-                            #used for the evlauatev()
-                            tempABs.append(newAbnormality)
-                            
-                            
-                        else:
-                            kb2.append (i)
-                    #No abnormality needs to be added
-                    else:
-                        kb2.append(i)
-                else:
-                    kb2.append(i)  
+    def getRulesThatAffectHead (self, head, kb):
+        rulesThatAffectHead=[]
+        for rule in kb:
+            if isinstance (rule, basicLogic.operator_bitonic_implication):
+                if rule.clause2.getName() == head.getName():
+                    rulesThatAffectHead.append(rule.clause1)
+            elif isinstance (rule, basicLogic.operator_bitonic_bijection):
+                if rule.clause2.getName() == head.getName():
+                    rulesThatAffectHead.append(rule.clause1)
+                if rule.clause1.getName() == head.getName():
+                    rulesThatAffectHead.append(rule.clause2)
+        return rulesThatAffectHead
+    
+    def createBodyFromRulesThatAffectHead (self, head, body, li_abs):
+        #if basicLogic.isGroundAtom(body):
+        if basicLogic.isGroundAtom(body) or basicLogic.isGroundAtom(head):
+            return basicLogic.operator_bitonic_implication(body, head), None, li_abs
+        newAbnormality = basicLogic.atom('ab{}'.format(len(li_abs)+1))
+        negAbnormality = basicLogic.operator_monotonic_negation(newAbnormality)
+        li_abs.append(newAbnormality)    
+        newBody = basicLogic.operator_bitonic_and(body, negAbnormality)
+        newRule = basicLogic.operator_bitonic_implication(newBody, head)
+        return newRule, newAbnormality, li_abs
+    def removeRuleFromList (self, rule, li_rule):
+        otherRules = []
+        for r in li_rule:
+            if r!=rule:
+                otherRules.append(r)
+        return otherRules
+    def removeGroundFromRules (self,rules):
+        newRules = []
+        for rule in rules:
+            if not basicLogic.isGroundAtom(rule):
+                newRules.append(rule)
+        return newRules
+    def createNewAbnormalityInstant (self, ab, otherRulesThatAffectHead):
+        # case: KB={D->3, T->3} without this (T -> ab) is created
+        otherRulesThatAffectHead=self.removeGroundFromRules(otherRulesThatAffectHead)
+        if otherRulesThatAffectHead==[]:
+            rule = basicLogic.FALSE
+            return rule    
+        rule = otherRulesThatAffectHead[0] 
+        for other in range (1,len(otherRulesThatAffectHead)):
+            neg = basicLogic.operator_monotonic_negation(rule)
+            rule = basicLogic.operator_bitonic_or(rule, neg)
+        return rule
+    def getHeads (self, rule):
+        if isinstance(rule, basicLogic.operator_bitonic_bijection):
+            return [rule.clause1, rule.clause2]
+        if isinstance (rule, basicLogic.operator_bitonic_implication):
+            return [rule.clause2]
+        return []
+    def getBodies (self, rule):
+        if isinstance(rule, basicLogic.operator_bitonic_bijection):
+            return [rule.clause1, rule.clause2]
+        if isinstance (rule, basicLogic.operator_bitonic_implication):
+            return [rule.clause1]
+        return []        
+    def evaluate(self):
+        #get the previous epistemic state
+        epi_prev = self.prev.evaluate()
+        #generate an empy epistemic state of the same type as the previous one
+        epi_next = complexOperation.createEmptyNextEpi(epi_prev)
         
-        createdABs=[]
-        #add the rule for the abnormality
-        #this adds the appropriate abnormality assignments to the kb
-        #This loop handles cases where multiple non-ground clauses can affect the same head
-        for pos in range (0, len(usedatoms)):
-            for pos2 in range (0, len(usedatoms)):
-                #they share a head
-                if usedatoms[pos2][1] == usedatoms[pos][1]:
-                    #the bodies are different
-                    if not usedatoms[pos2][0] == usedatoms[pos][0]:
-                        if not "ab"+str(pos+1) in createdABs:
-                            abnormality =  basicLogic.atom("ab"+str(pos+1))
-                            negatom = basicLogic.operator_monotonic_negation(usedatoms[pos2][0])
-                            newclause = basicLogic.operator_bitonic_implication(negatom, abnormality)   
+        #all variables in prevkb will be present in the next one (plus abnormalities)
+        prev_v = epi_prev.getV()
+        epi_next.addVariableList(prev_v)
+        
+        #the list of created abnormalities
+        ABs = []
+        prev_kb = epi_prev.getKB()
+
+        for rule in prev_kb:
+            #we do this because there can be 1 or 2 heads/bodies depending on -> or <->
+            body = self.getBodies(rule)
+            head = self.getHeads(rule)
+            if rule.immutable:
+                epi_next.addKnowledge(rule)
+            else:
+                for h in head:
+                    for b in body:
+                        #truth values don't need abnormalities
+                        if basicLogic.isGroundAtom(b):
+                            newRule = basicLogic.operator_bitonic_implication(b,h)
+                            epi_next.addKnowledge(newRule)
+                        else:       
+                            rulesThatAffectHead = self.getRulesThatAffectHead(h, prev_kb)
+                            otherRulesThatAffectHead = self.removeRuleFromList(b, rulesThatAffectHead)
+                            #create the new abnormality
+                            newAb = basicLogic.atom("ab{}".format(len(ABs)+1))
+                            ABs.append(newAb)
+                            negAb = basicLogic.operator_monotonic_negation(newAb)
+                            newBody = basicLogic.operator_bitonic_and(b,negAb)
+                            newRule = basicLogic.operator_bitonic_implication(newBody,h)
+                            epi_next.addKnowledge(newRule)
                             
-                            kb2.append(newclause)
-                            createdABs.append("ab"+str(pos+1))
-            terminate = False
-            #This loop handles cases where only one non-ground clause affects a head
+                            #create a valuation for the new abnormality
+                            abInstHead = newAb
+                            abInstBody = self.createNewAbnormalityInstant(newAb, otherRulesThatAffectHead)
+                            abInstBodyIsGroundValue = basicLogic.isGroundAtom(abInstBody)
+                            newAbInstBody =  abInstBody if abInstBodyIsGroundValue else basicLogic.operator_monotonic_negation(abInstBody)
+                            abInstRule = basicLogic.operator_bitonic_implication(newAbInstBody, abInstHead)
+                            epi_next.addKnowledge(abInstRule)
+                            
+                            #add the new abnormality to the variable list
+                            epi_next.addVariable(newAb) 
+        return epi_next
+        
+        """
+        
+        epi_prev = self.prev.evaluate()
+        epi_next=None
+        if isinstance(epi_prev,epistemicState.epistemicState_weakCompletion):
+            epi_next = epistemicState.epistemicState_weakCompletion()
+        
+        kb = epi_prev.getKB()
+        li_abs = []
+
+        for v in epi_prev.getV():
+            epi_next.addVariable(v)
             
-            for atom in usedatoms:
-                for atom2 in usedatoms:
-                    if atom != atom2 and atom[1]==atom2[1]:
-                        terminate=True
-                if not terminate:
-                    if not "ab"+str(pos+1) in createdABs:
-                        abnormality =  basicLogic.atom("ab"+str(pos+1))
-                        newclause = basicLogic.operator_bitonic_implication(basicLogic.FALSE, abnormality)  
-                        kb2.append(newclause)
-                        createdABs.append("ab"+str(pos+1))
-            
-        return kb2, tempABs
-    def removeDuplicateABs (self,li):
-        newLi=[]
-        for i in range (0,len(li)):
-            for j in range(i+1,len(li)):
-                if li[i].name==li[j].name:
-                    pass
+        for rule in kb:
+            if isinstance(rule, basicLogic.operator_bitonic_implication):
+                body = rule.clause1
+                head = rule.clause2
+                #includes body
+                rulesThatAffectHead = self.getRulesThatAffectHead(head, kb)
+                otherRulesThatAffectHead = self.getOtherRulesThatAffectHead(body, rulesThatAffectHead)
+                if rule.immutable:
+                    epi_next.addKnowledge(rule)
                 else:
-                    newLi.append(li[i])
-        return newLi 
-
-    """
-    DETERMINE THE OUTPUT RULES
-    @return the new output rules with appropriate abnormalities
-    """
-    def evaluatekb (self):
-        trueEval = self.trueEvaluation()
-        return trueEval[0]
-
-    """
-    DETEMRINE THE OUTPUT VARIABLES
-    @return the input variables with the abnormalities added (and set to unknown)
-    """
-    def evaluatev (self):
-        trueEval = self.trueEvaluation()
-        tempABs = trueEval[1]
-        v = self.prev.evaluatev()
-        #for each ab that was added to the rules, add that ab to the variables
-        for i in tempABs:
-            v.append(i)        
-        return v   
+                    newRule, newAb, li_abs = self.createBodyFromRulesThatAffectHead(head, body, li_abs)
+                    epi_next.addKnowledge(newRule)
+                    newBody = self.createNewAbnormalityInstant(newAb, otherRulesThatAffectHead)
+                    if newAb != None:             
+                        abInst = basicLogic.operator_bitonic_implication(newBody, newAb)
+                        epi_next.addKnowledge(abInst)
+                        epi_next.addVariable(newAb)
+        return epi_next
+        """
         
 """
 A COMPLEX OPERATION WHICH PERFORMS WEAK COMPLETION AS DEFINED BY @TODOref
@@ -272,37 +272,72 @@ class complexOperation_weaklyComplete (complexOperation):
     """
     def __init__ (self):
         complexOperation.__init__(self, "weaklyComplete")
+
+    def evaluate(self):
+        prev_epi = self.prev.evaluate()
+        epi_next=complexOperation.createEmptyNextEpi(prev_epi)
+        tempKB = []
         
-    """
-    WEAKLY COMPLETE THE PREVIOUS EPISTEMIC STATE
-    This method follows that in the complexOperation_weaklyComplete class description.
-    @return the weakly completed epistemic state
-    """
-    def evaluatekb (self):
-        oldkb = self.prev.evaluatekb()
-        newKB = []
-        #find duplicate heads
-        #assumes kb is in terms of rules
-        for pos in range (0, len(oldkb)):
-            if isinstance (oldkb[0], basicLogic.operator_bitonic_implication):
-                head = oldkb[pos].clause2
-                bodies=[]
-                for i in range (pos, len(oldkb)):
-                    if (head==oldkb[i].clause2):
-                        bodies.append(oldkb[i].clause1)
-                body = bodies[0]
-                    
-                for nbody in bodies:
-                    if body!=nbody and not isinstance(nbody, basicLogic.atom_truth):
-                        body = basicLogic.operator_bitonic_or(clause1=body,clause2=nbody)
-                newKB.append(basicLogic.operator_bitonic_bijection(body, head))      
-        return newKB
-    """
-    WEAK COMPLETION DOES NOT CHANGE THE OUTPUT VARIABLES
-    @return the output of the previous complex action
-    """
-    def evaluatev (self):
-        return self.prev.evaluatev()
+        old_v = prev_epi.getV()
+        old_kb = prev_epi.getKB()
+
+
+        
+        uniqueHeads = complexOperation.getHeads(old_kb)
+        for head in uniqueHeads:
+            other = self.getRulesThatAffectHead(head, old_kb)
+            disjunction = basicLogic.createOrFromAtomList(other)
+            newRule = basicLogic.operator_bitonic_implication(disjunction,head)
+            tempKB.append(newRule)
+        #turn implications to bijections, slightly slower but much more reasable
+        #than combining them in the same loop
+        
+        for rule in tempKB:
+            if isinstance (rule, basicLogic.operator_bitonic_bijection):
+                epi_next.addKnowledge(rule)
+            if isinstance (rule, basicLogic.operator_bitonic_implication):
+                body = rule.clause1
+                head = rule.clause2
+                newRule = basicLogic.operator_bitonic_bijection(body,head)
+                epi_next.addKnowledge(newRule)
+        """
+        #ground rules remiain unchanged except that they become bijections
+        groundRules = self.getGroundRules(old_kb)
+        for rule in groundRules:
+                body = rule.clause1
+                head = rule.clause2
+                newRule = basicLogic.operator_bitonic_bijection(body,head)  
+                epi_next.addKnowledge(newRule)   
+        """
+        
+        epi_next.addVariableList(old_v)
+        return epi_next
+        
+    def getGroundRules (self, kb):
+        ground = []
+        for rule in kb:
+            if isinstance(rule,basicLogic.operator_bitonic_implication):
+                if basicLogic.isGroundAtom(rule.clause1):
+                    ground.append(rule)
+            if isinstance(rule, basicLogic.operator_bitonic_bijection):
+                if basicLogic.isGroundAtom(rule.clause1):
+                    ground.append(rule)
+                if basicLogic.isGroundAtom(rule.clause2):
+                    ground.append(rule)
+        return ground
+    
+    def getRulesThatAffectHead (self, head, kb):
+        rulesThatAffectHead=[]
+        for rule in kb:
+            if isinstance (rule, basicLogic.operator_bitonic_implication):
+                if rule.clause2.getName() == head.getName():
+                    rulesThatAffectHead.append(rule.clause1)
+            elif isinstance (rule, basicLogic.operator_bitonic_bijection):
+                if rule.clause2.getName() == head.getName():
+                    rulesThatAffectHead.append(rule.clause1)
+                if rule.clause1.getName() == head.getName():
+                    rulesThatAffectHead.append(rule.clause2)
+        return rulesThatAffectHead
 
 """
 A COMPLEX OPERATION WHICH APPLIES THE SEMANTIC OPERATOR AS DESCRIBED IN @TODOref
@@ -315,16 +350,23 @@ class complexOperation_semanticOperator (complexOperation):
         CREATE AN INSTANCE OF THE complexOperation_semanticOperator CLASS
         """
         complexOperation.__init__(self, "semanticOperator")
-    """
-    THE SEMANTIC OPERATOR DOES NOT CHANGE THE KNOWLEDGE BASE
-    @return the output rules of the previous complex operation
-    """
-    def evaluatekb (self):
-        return self.prev.evaluatekb()
+        
+    def evaluate(self):
+        prev_epi = self.prev.evaluate()
+        return self.semanticOperatorEpi(prev_epi)
 
-    
-    
-    
+    def semanticOperatorEpi (self, prev_epi):
+        epi_next=complexOperation.createEmptyNextEpi(prev_epi)
+        
+        old_kb = prev_epi.getKB()
+        old_v = prev_epi.getV()
+        tempkb = basicLogic.setkbfromv(old_kb,old_v)
+        newV = self.initGroundAtoms(tempkb, old_v)
+        
+        epi_next.addKnowledgeList(old_kb)
+        epi_next.addVariableList(newV)
+        return epi_next
+        
 
     """
     DETERMINE IF THE OPERATOR IN QUESTION IS A BIJECTION
@@ -421,21 +463,36 @@ class complexOperation_semanticOperator (complexOperation):
                         if var.name == head.name:
                             var.setValue (True)   
         return v
-    """
-    DETERMINE THE VARIABLE VALUES OF THE OUTPUT AFTER APPLICATION OF THE SEMANTIC OPERATOR
-    @return an updated variable list where new values have been assigned
-    """
-    def evaluatev (self):
-        #get the kb of the previous complex operation
-        kb = self.prev.evaluatekb()
-        #get the v of the previous complex operation
-        newV = self.prev.evaluatev()
-        #set the values of atoms in kb to those mentioned in v
-        tempkb = self.setkbfromv(kb,newV)
-        #determine which heads in clauses can be set to true with the new v assignments
-        newV = self.initGroundAtoms(tempkb, newV)
-        return newV
 
+class complexOperation_semanticOperator_full (complexOperation_semanticOperator):
+    """
+    CREATE AN INSTANCE OF THE COMPLEX OPERATION VARIABLE
+    """
+    def __init__ (self):
+        complexOperation.__init__(self, "semanticOperatorFull")
+    def compareLists (self,li1, li2):
+        if len(li1)!=len(li2):
+            return False
+        for i in li1:
+            found = False
+            for j in li2:
+                
+                if i.getName()==j.getName():
+                    if i.getValue()==j.getValue():
+                        found = True
+            if not found:
+                return False
+        return True
+    
+    def evaluate (self):
+        prev_epi=None
+        current_epi=self.prev.evaluate()
+        while prev_epi==None or not self.compareLists(prev_epi.getV(),current_epi.getV()):
+            prev_epi=copy.deepcopy(current_epi)
+            current_epi=self.semanticOperatorEpi(current_epi)
+        return current_epi
+        
+        
 
 """
 A COMPLEX OPERATION WHICH DELETES A NAMED VARIABLE FROM ALL SUBSEQUENT COMPLEX OPERATIONS
@@ -450,17 +507,6 @@ class complexOperation_deleteVariable (complexOperation):
         complexOperation.__init__(self, "deleteVariable" + str(variableName))
         self.toDelete = variableName
     
-    """
-    REMOVE THE VARIABLE FROM OUTPUT OF THIS COMPLEX ACTION
-    @return v-(self.toDelete)
-    """
-    def evaluatev (self):
-        oldv = self.prev.evaluatev()
-        newv = []
-        for old in oldv:
-            if not old.name == self.toDelete:
-                newv.append(old)
-        return newv
     """
     IS THE VARIABLE TO DELETE THE HEAD OF THE RULE GIVEN?
     @param rule: implication or bijection rule x >> y
@@ -489,18 +535,28 @@ class complexOperation_deleteVariable (complexOperation):
     """
     IF NEITHER THE HEAD NOR THE BODY OF THE BOJECTION IS THE OPERATOR TO DELETE
     ADD THAT RULE TO THIS LIST OF RULES TO RETURN
+    REMOVE THE VARIABLE FROM OUTPUT OF THIS COMPLEX ACTION
+    @return v-(self.toDelete)
     @return all rules which do no have the variable to delete as a head
     """
-    def evaluatekb (self):
-        #@TODO must be extended for more cases
-        
-        oldkb =  self.prev.evaluatekb()
-        newkb =[]
+    def evaluate(self):
+        prev_epi = self.prev.evaluate()
+        current_epi = complexOperation.createEmptyNextEpi(prev_epi)
+        oldkb =  prev_epi.getKB()
         for old in oldkb:
             if isinstance(old, basicLogic.operator_bitonic_implication):
                 if not self.toDeleteIsBody(old) and not self.toDeleteIsHead(old):
-                    newkb.append(old)      
-        return newkb
+                    current_epi.addKnowledge(old)
+            elif isinstance(old, basicLogic.operator_bitonic_bijection):
+                if not self.toDeleteIsBody(old) and not self.toDeleteIsHead(old):
+                    current_epi.addKnowledge(old)
+                    
+        oldv = prev_epi.getV()
+        newv = []
+        for old in oldv:
+            if not old.name == self.toDelete:
+                current_epi.addVariable(old)
+        return current_epi        
 """
 COMPLEX OPERATION THAT PREVENTS THE VALUE OF A VARIABLE FROM CHANGING IN SBUSEQUENT
 COMPLEX OPERATIONS
@@ -516,25 +572,11 @@ class complexOperation_fixVariable (complexOperation):
         complexOperation.__init__(self, "fixVariable" + str(variableName))
         self.toFix = variableName
         self.fixValue = value
-    """
-    FIXING A VARIABLE DOES NOT CHANGE THE OUTPUT RULES
-    @return the output of the previous complex operation
-    """
-    def evaluatekb (self):
-        return self.prev.evaluatekb()
-    """
-    THE EXACT SAME LIST OF VARIABLES IS RETURNED, BUT WITH THE ATOM FOR THE VARIABLE
-    IN QUESTION FIXED
-    @return the list of variables with one variable now fixed
-    """
-    def evaluatev (self):
-        oldV = self.prev.evaluatev()
-        for v in oldV:
-            if v.name == self.toFix:
-                v.setValue(self.fixValue)
-                v.fixed=True
-        return oldV
-        
+    def evaluate(self):
+        new_epi = copy.deepcopy(self.prev.evaluate())
+        new_epi.setVariable(self.toFix, self.fixValue)
+        new_epi.fixVariable(self.toFix, fixed=True)
+        return new_epi
 #==============================================================================
 """
 COMPLEX OPERATION THAT ADDS MODUS TOLENS RULES TO THE KNOWLEDGE BASE
@@ -547,15 +589,30 @@ class complexOperation_modusTolens (complexOperation):
     def __init__ (self):
         complexOperation.__init__(self, "Modus Tolens")
     
-    """
-    FOR EVERY RULE THAT IS NOT A GROUND ATOM (a->b), CREATE A NEW RULE not(b)->not(a)
-    @TODO this class needs to be extended to add temporary variables so that negative atoms don't
-    appear in the heads of clauses
-    @return the knowledge base with the new modus tolens rules
-    """
-    def evaluatekb (self):
-        oldkb = self.prev.evaluatekb()
-        newkb = copy.deepcopy(oldkb)
+    def isAtom(self, rule):
+        return isinstance (rule, basicLogic.atom)
+    def isGroundAtom (self, rule):
+        return basicLogic.isGroundAtom(rule)
+    def evaluate(self):
+        prev_epi = self.prev.evaluate()
+        current_epi = complexOperation.createEmptyNextEpi(prev_epi)
+        oldkb = prev_epi.getKB()
+        oldV = prev_epi.getV()
+        
+        current_epi.addVariableList(oldV)
+        current_epi.addKnowledgeList(oldkb)
+        
+        for rule in oldkb:
+            if not rule.immutable:     
+                if self.isAtom(rule.clause2) and not self.isGroundAtom(rule.clause2):
+                        negateClause1 = basicLogic.operator_monotonic_negation(rule.clause1)
+                        negateClause2 = basicLogic.operator_monotonic_negation(rule.clause2)
+                        contraRule = basicLogic.operator_bitonic_implication(negateClause1, negateClause2)
+                        current_epi.addKnowledge(contraRule)
+                                        
+        
+        """
+        newkb = current_epi.getKB()
         for rule in oldkb:
             if isinstance(rule.clause2, basicLogic.atom) and not basicLogic.isGroundAtom(rule.clause2):
                 if not basicLogic.isGroundAtom(rule.clause1):
@@ -564,15 +621,8 @@ class complexOperation_modusTolens (complexOperation):
                     contraRule = basicLogic.operator_bitonic_implication(negateClause1, negateClause2)
                     newkb.append(contraRule)
             #print u"{}".format(rule.clause2)
-        return newkb
-    """
-    MODUS TOLENS DOES NOT CHANGE VARIABLES AVAILABLE
-    @TODO this class needs to be extended to add temporary variables so that negative atoms don't
-    appear in the heads of clauses
-    @return the output variables of the previous complex operation
-    """
-    def evaluatev (self):
-        return self.prev.evaluatev()
+        """
+        return current_epi
     
     
     

@@ -9,6 +9,7 @@ import copy
 import basicLogic
 import scp
 import complexOperation
+import epistemicState
 
 """
 THE SCP EVALUATOR IS A STATIC CLASS THAT HANDLES CARIOUS FUNCITON ASSOCIATED WITH
@@ -27,7 +28,8 @@ class scp_evaluator (object):
     """
     @staticmethod
     def ruleMatch (_scp, externalVariables=None):
-        kb = _scp.evaluateKB()
+        epi = _scp.evaluate()
+        kb = epi.getKB()
         
         # If returns a copy of the KB with each atom's value set from those in externalVariables
         # or _scp.V by default
@@ -248,8 +250,9 @@ class scp_evaluator (object):
         for valueSet in allValues:
             _updatedScp = scp_evaluator.addRuleToSCPFromValueList(_scp, valueSet, allVariables)
             _updatedScp.addVariable(observation)
-            v = _updatedScp.evaluateV()
-            kb = _updatedScp.evaluateKB()       
+            epi = _updatedScp.evaluate()
+            v = epi.getV()
+            kb = epi.getKB()       
             match = scp_evaluator.ruleMatch(_updatedScp, v)
             if match:
                 obsInScp = scp_evaluator.getVariableFromList(observation.name, v)
@@ -259,45 +262,29 @@ class scp_evaluator (object):
                         shortest = numRulesAdded
                         leastModel.append(_updatedScp)
         return leastModel
-        
-    #@TODO does not yet compare kbs
-    #@TODO does not yet compare sequences
+             
     @staticmethod
-    def compareVarLists (v1,v2):
-        if len(v1)!=len(v2):
+    #@TODO needs extensive improving
+    def compareSCP_finalEpis (scp1, scp2):
+        epi1 = scp1.evaluate()
+        epi2 = scp2.evaluate()
+        if epi1 != epi2:
             return False
-        for v in v1:
-            variableFromV2 = scp_evaluator.getVariableFromList(v.name, v2)
-            #there is a variable in v1 that is not in v2
-            if variableFromV2==None:
-                return False
-            #
-            if v.getValue() != variableFromV2.getValue():
-                return False
-        return True        
-    @staticmethod
-    def compareSCP (scp1, scp2):
-        v1=scp1.evaluateV()
-        v2=scp2.evaluateV()
-        #check if the variables are identical
-        if not scp_evaluator.compareVarLists(v1,v2):
-            return False
-        
         return True
 
     
     @staticmethod
-    def credulousSCPCompare (_scp, scpList):
+    def credulousSCPCompare_finalEpis (_scp, scpList):
         for s in scpList:
-            match = scp_evaluator.compareSCP(_scp,s)
+            match = scp_evaluator.compareSCP_finalEpis(_scp,s)
             if match:
                 return True
         return False
 
     @staticmethod
-    def skepticalSCPCompare (_scp,scpList): 
+    def skepticalSCPCompare_finalEpis (_scp,scpList): 
         for s in scpList:
-            match = scp_evaluator.compareSCP(_scp,s)
+            match = scp_evaluator.compareSCP_finalEpis(_scp,s)
             if not match:
                 return False
         return True                

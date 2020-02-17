@@ -32,13 +32,13 @@ knowledge_7 = basicLogic.operator_bitonic_implication(basicLogic.TRUE, card_7)
 #CHANGED pPrime = basicLogic.operator_monotonic_negation(card_3)
 pPrime = basicLogic.atom("D'", None)
 
-knowledge_primeRelationp = basicLogic.operator_bitonic_implication(card_7,pPrime)
+knowledge_primeRelationp = basicLogic.operator_bitonic_implication(card_7,pPrime, immutable=True)
 # the extra fact that K->not(D)
 #CHANGED qPrime = basicLogic.operator_monotonic_negation(card_k)
 qPrime = basicLogic.atom("3'",None)
 
-knowledge_primeRelationq = basicLogic.operator_bitonic_implication(card_d,qPrime)
-notPPrime = basicLogic.operator_monotonic_negation(pPrime)
+knowledge_primeRelationq = basicLogic.operator_bitonic_implication(card_d,qPrime, immutable=True)
+notPPrime = basicLogic.operator_monotonic_negation(pPrime, immutable=True)
 knowledgeNotPtoP = basicLogic.operator_bitonic_implication(notPPrime,card_d, immutable=True)
 
 #ALL POSSIBLE VARIABLES (USED IN ABDUCTION)
@@ -64,8 +64,8 @@ CREATE AN SCP CONTAING THE RULE D->3 AS WELL AS THE CARD OBSERVED
 @param knowledge: information about observed card x in the form T->x
 @return the SCP that results from this process
 """
-def createwst_card (variable, knowledge):
-    wst =  scp.scp()
+def createwst_card (variable, knowledge, epistemicStateType="wcs"):
+    wst =  scp.scp(epistemicStateType=epistemicStateType)
     # the d-> 3 rule
     wst.addKnowledge(knowledge_dimp3)
     # the observed card
@@ -87,13 +87,17 @@ def createwst_noCard_contra ():
     wst =  scp.scp()
     # the d-> 3 rule
     wst.addKnowledge(knowledge_dimp3)
-    
+    wst.addVariable(card_d)
+    wst.addVariable(card_3)    
     wst.addVariable(pPrime)
     wst.addVariable(qPrime)
+    wst.addVariable(card_7)  
+    wst.addVariable(card_k) 
     
+    wst.addKnowledge(knowledgeNotPtoP)
     wst.addKnowledge(knowledge_primeRelationp)
     #wst.addKnowledge(knowledge_primeRelationq)
-    wst.addKnowledge(knowledgeNotPtoP)
+    #wst.addKnowledge(knowledgeNotPtoP)
     
        
     wst.addNext(comp_addAB)    
@@ -125,56 +129,32 @@ METHODS FOR CASES WHERE CONTRAPOSITION TAKES PLACE
 """
 
 def createwst_card_d_contraposition ():
-    wst = createwst_card_d()
-    #add p
-    wst.addVariable(card_7)  
-    wst.addVariable(card_k)  
-    wst.addVariable(pPrime)
-    wst.addVariable(qPrime)
-    
-    wst.addKnowledge(knowledge_primeRelationp)
-    #wst.addKnowledge(knowledge_primeRelationq)
-    wst.addKnowledge(knowledgeNotPtoP)
-    wst.insertAtPos(comp_modusTolens, 1)
+    wst = createwst_noCard_contra()
+    wst.addKnowledge(knowledge_d)
+    wst.addVariable(card_d)
+
+    print (wst.evaluate())
     return wst
 def createwst_card_k_contraposition ():
-    wst = createwst_card_k()
-    #add p
-    wst.addVariable(card_7)  
-    wst.addVariable(card_k)  
-    wst.addVariable(pPrime)
-    wst.addVariable(qPrime)
-    
-    wst.addKnowledge(knowledge_primeRelationp)
-    #wst.addKnowledge(knowledge_primeRelationq)
-    wst.addKnowledge(knowledgeNotPtoP)
-    wst.insertAtPos(comp_modusTolens, 1)
+    wst = createwst_noCard_contra()
+    wst.addKnowledge(knowledge_k)
+    wst.addVariable(card_k)
+
+    print (wst.evaluate())
     return wst
 def createwst_card_3_contraposition ():
-    wst = createwst_card_3()
-    #add p
-    wst.addVariable(card_7)  
-    wst.addVariable(card_k)  
-    wst.addVariable(pPrime)
-    wst.addVariable(qPrime)
-    
-    wst.addKnowledge(knowledge_primeRelationp)
-    #wst.addKnowledge(knowledge_primeRelationq)
-    wst.addKnowledge(knowledgeNotPtoP)
-    wst.insertAtPos(comp_modusTolens, 1)
+    wst = createwst_noCard_contra()
+    wst.addKnowledge(knowledge_3)
+    wst.addVariable(card_3)
+
+    print (wst.evaluate())
     return wst
 def createwst_card_7_contraposition ():
-    wst = createwst_card_7()
-    #add p
-    wst.addVariable(card_7)  
-    wst.addVariable(card_k)  
-    wst.addVariable(pPrime)
-    wst.addVariable(qPrime)
-    
-    wst.addKnowledge(knowledge_primeRelationp)
-    #wst.addKnowledge(knowledge_primeRelationq)
-    wst.addKnowledge(knowledgeNotPtoP)
-    wst.insertAtPos(comp_modusTolens, 1)
+    wst = createwst_noCard_contra()
+    wst.addKnowledge(knowledge_7)
+    wst.addVariable(card_7)
+
+    print (wst.evaluate())
     return wst
 
 """
@@ -251,27 +231,41 @@ def printSummary (_scp, message):
 
 def turnFunction (initialSCP, observation, allVariables, searchType="credulous"):
     #The solution SCPs are guaranteeed to be least models which make the obervation true after execution
+    print (">>>>>>>>>>>>")
+    print(initialSCP.evaluate())
     solutionSCPs = scp_evaluator.getRestrictedLeastModelSCPs(initialSCP, observation, allVariables)
-    
+    print ("Num solution SCPs: {}".format(len(solutionSCPs)))
+    print("solution SCPs are {}".format(solutionSCPs[0].evaluate()))
     #only apply the semantic operator once
+    
     initialSCP=copy.deepcopy(initialSCP)
-    while isinstance(initialSCP.getLastState().prev, complexOperation.complexOperation_semanticOperator):
+    while isinstance(initialSCP.getLastOperation().prev, complexOperation.complexOperation_semanticOperator):
         initialSCP.removeLast()
     
+    #print (initialSCP)
+    #print ("observation {}".format(observation))
     extendedInitialSCP = scp_evaluator.addRuleToScpFromValue(initialSCP, observation.name, True)
+    print ("extended initial scp: {}".format(extendedInitialSCP.si))
+    print ("extended initial scp: {}".format(extendedInitialSCP.evaluate()))
     if searchType=="credulous":
         # if no solution scp is identical to the shortened scp, then turn
-        return not scp_evaluator.credulousSCPCompare(extendedInitialSCP, solutionSCPs)
+        match = scp_evaluator.credulousSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
+        #print ("The states match {}".format(match))
+        return not match
     elif searchType=="skeptical":
         # if every solution scp is identical to the shortned scp, then don't turn
-        return not scp_evaluator.skepticalSCPCompare(extendedInitialSCP, solutionSCPs)
+        match = scp_evaluator.skepticalSCPCompare_finalEpis(extendedInitialSCP, solutionSCPs)
+        #print ("The states match {}".format(match))
+        return not match
     return None
 #only turn the card when there is not enough information to verify the rule after evaluating the scp
 #@TODO needs heavy tweaking
 def turnFunctionSimple (initialSCP):
     ruleToEval = [knowledge_dimp3]
-    v = initialSCP.evaluateV()
-    kb = initialSCP.evaluateKB()
+    epi = initialSCP.evaluate()
+    
+    v = epi.getV()
+    kb = epi.getKB()
     updatedRule = scp_evaluator.setkbfromv(ruleToEval,v)
     print (initialSCP.strKnowledge(kb))
     print (initialSCP.strVariables(v))
@@ -279,6 +273,23 @@ def turnFunctionSimple (initialSCP):
         if (i.clause1.evaluate()!=None and i.clause2.evaluate()!=None):
             return True    
     return False
+    
+
+def printTurnForObs (observation, allVariables, _scp=None, value=True, searchType="credulous"):
+    if _scp == None:
+        _scp = createwst_noCard()
+    print ("turn card {}: {}".format(observation.name,turnFunction(_scp,observation, allVariables, searchType=searchType)))
+"""
+print ("NORMAL CASES (WEAKLY COMPLETING)")
+observation = card_d
+carddturn=printTurnForObs(observation=card_d, allVariables=allVariables, value=True, searchType="skeptical")
+observation = card_k
+cardkturn=printTurnForObs(observation=card_k, allVariables=allVariables, value=True, searchType="skeptical")
+observation = card_3
+card3turn=printTurnForObs(observation=card_3, allVariables=allVariables, value=True, searchType="skeptical")
+observation = card_7
+card7turn=printTurnForObs(observation=card_7, allVariables=allVariables, value=True)
+"""
 
 #instantiate each normal card observation
 wst_d = createwst_card_d()
@@ -286,7 +297,14 @@ wst_k = createwst_card_k()
 wst_3 = createwst_card_3()
 wst_7 = createwst_card_7()
 
-    
+print ("SIMPLIFIED TURN FUNCITON")
+print ("Simplified D: {}".format(turnFunctionSimple(initialSCP=wst_d)))
+print ("Simplified K: {}".format(turnFunctionSimple(initialSCP=wst_k)))
+print ("Simplified 3: {}".format(turnFunctionSimple(initialSCP=wst_3)))
+print ("Simplified 7: {}".format(turnFunctionSimple(initialSCP=wst_7)))
+
+
+
 #instantiate each card observation with assumed modus tolens
 wst_d_contra = createwst_card_d_contraposition()
 wst_k_contra = createwst_card_k_contraposition()
@@ -294,23 +312,13 @@ wst_3_contra = createwst_card_3_contraposition()
 wst_7_contra = createwst_card_7_contraposition() 
 
 
-def printTurnForObs (observation, allVariables, _scp=None, value=True, searchType="credulous"):
-    if _scp == None:
-        _scp = createwst_noCard()
-    print ("turn card {}: {}".format(observation.name,turnFunction(_scp,observation, allVariables, searchType=searchType)))
+print ("SIMPLIFIED TURN FUNCITON WITH CONTRAPOSITION")
+print ("Simplified contra D: {}".format(turnFunctionSimple(initialSCP=wst_d_contra)))
+print ("Simplified contra K: {}".format(turnFunctionSimple(initialSCP=wst_k_contra)))
+print ("Simplified contra 3: {}".format(turnFunctionSimple(initialSCP=wst_3_contra)))
+print ("Simplified contra 7: {}".format(turnFunctionSimple(initialSCP=wst_7_contra)))
+#print (wst_7.strDetailed())
 
-print ("NORMAL CASES (WEAKLY COMPLETING)")
-observation = card_d
-carddturn=printTurnForObs(observation=card_d, allVariables=allVariables, value=True)
-observation = card_k
-cardkturn=printTurnForObs(observation=card_k, allVariables=allVariables, value=True)
-observation = card_3
-card3turn=printTurnForObs(observation=card_3, allVariables=allVariables, value=True)
-observation = card_7
-card7turn=printTurnForObs(observation=card_7, allVariables=allVariables, value=True)
-
-
-print (wst_d.strDetailed())
 """
 _scp = createwst_noCard()
 #adding knowledge about the second relation k->7, and so not(7)->not(k) now prevents
@@ -322,10 +330,6 @@ for card in allVariables:
 _scp.insertAtPos(comp_modusTolens, 1)
 
 
-print turnFunctionSimple(initialSCP=wst_d)
-print turnFunctionSimple(initialSCP=wst_k)
-print turnFunctionSimple(initialSCP=wst_3)
-print turnFunctionSimple(initialSCP=wst_7)
 
 print wst_3.strKnowledge(wst_7.evaluateKB())
 print wst_3.strVariables(wst_7.evaluateV())
@@ -375,6 +379,7 @@ print _scp.strVariables(wst_7_contra.evaluateV())
 print "K"
 print _scp.strKnowledge(wst_k_contra.evaluateKB())
 print _scp.strVariables(wst_k_contra.evaluateV())
+
 print "3"
 print _scp.strKnowledge(wst_3_contra.evaluateKB())
 print _scp.strVariables(wst_3_contra.evaluateV())
@@ -410,7 +415,17 @@ print len(leastModel)
 
 print scp_evaluator.strLeastModelFormatSCPList(leastModel)
 """
-unit_TestAll()
+#unit_TestAll()
 
 #idea for conjunction fallacy, split a + b -> c
+
+
+
+
+
+
+
+
+
+
 
