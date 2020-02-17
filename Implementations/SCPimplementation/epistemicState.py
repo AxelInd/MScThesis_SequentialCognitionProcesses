@@ -65,12 +65,74 @@ class epistemicState_weakCompletion (epistemicState):
     def fixVariable (self, varName, fixed=True):
         for var in self.v:
             if var.getName()==varName:
-                var.fixed=fixed
-    
-
-
-        
+                var.fixed=fixed 
     def __str__(self):
         sv = basicLogic.strVariables(self.v)
         skb = basicLogic.strKnowledge(self.kb)
         return "KB = {}\nV = {}".format(skb, sv)
+    
+class epistemicState_defeaultReasoning (epistemicState):
+    def __init__(self):
+        print ("Default Rule Created")
+        #D: set of default rules
+        self.d=[]
+        #W: set of rules
+        self.w=[]
+    def deriveRules (self):
+        return True
+        
+        
+    def getD (self):
+        return self.d
+    def getW (self):
+        return self.w
+    def addD(self, d):
+        self.d.append(d)
+    def addW(self,w):
+        self.w.append(w)
+    def __str__(self):
+        sw = self.w
+        sd = self.d
+        return "W = {}  D = {}".format(sw, sd)
+    #@TODO this method is really simple and must be expanded for non-monotonic conclusions
+    # that is, for cases where there are multiple possible resulting variable assignments
+    @staticmethod
+    def deriveFromW(w):
+        v=[]
+        for rule in w:
+            if isinstance(rule, basicLogic.operator_bitonic_implication):
+                ce1 = rule.clause1.evaluate()
+                ce2 = rule.clause2.evaluate()
+                if ce1!=None:
+                    v.append((rule.clause2,ce1))
+            if isinstance(rule, basicLogic.operator_bitonic_bijection):
+                ce1 = rule.clause1.evaluate()
+                ce2 = rule.clause2.evaluate()
+                if ce1!=None:
+                    v.append((rule.clause2, ce1))
+                if ce2!=None:
+                    v.append((rule.clause1, ce2))
+        return v
+                
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -33,7 +33,7 @@ class scp (object):
         #the first state in the scp, should always be an instance of complexOperation_init
         self.m1 = complexOperation.complexOperation_init ()
         #the knowledge base of the first state is a pointer to the knowledge base of the scp
-        switch = {"wcs": epistemicState.epistemicState_weakCompletion()}
+        switch = {"wcs": epistemicState.epistemicState_weakCompletion(), "dl": epistemicState.epistemicState_defeaultReasoning()}
         #determines the type of state to init
         if epiState1!=None:
             self.si=epiState1
@@ -106,6 +106,11 @@ class scp (object):
     """
     def existsVariable (self, variableName):
         return self.getVariable(variableName)==None
+    
+    def addD (self, d):
+        self.si.addD(d)
+    def addW(self,w):
+        self.si.addW(w)
         
 
 #==============================================================================

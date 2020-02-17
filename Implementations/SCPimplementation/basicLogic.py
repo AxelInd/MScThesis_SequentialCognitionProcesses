@@ -62,6 +62,7 @@ class atom (object):
             return ((self.name == other.name) and (self.getValue() == other.getValue()))
         else:
             return False
+
     
 class atom_truth (atom):
     def __init__ (self, setValue=True):
@@ -189,6 +190,47 @@ class operator_bitonic_bijection (operator_bitonic):
 
 
 
+class operator_tritonic (operator):
+    def __init__(self, clause1=None, clause2=None, clause3=None, immutable=False):
+        operator.__init__(self, immutable = immutable)
+        self.clause1 = clause1
+        self.clause2 = clause2
+        self.clause3 = clause3
+    def deepSet(self, var, val):
+        self.clause1.deepSet(var, val)
+        self.clause2.deepSet(var, val)
+    def __str__(self):
+        return u"{} ({}:{}|{})".format(self.name, self.clause1, self.clause2, self.clause3)        
+class operator_tritonic_defaultRule(operator_tritonic):
+    def __init__(self, clause1, clause2, clause3, immutable = False):
+        operator_tritonic.__init__(self,clause1,clause2, clause3, immutable = immutable)
+        self.name=u"DR"
+
+    def evaluate(self, derived):
+        clauseVal1 = self.clause1.evaluate()
+        #attempt to derive the negation of the consistency condition
+        negationDerivable = testDerivable(operator_monotonic_negation(self.clause2),derived)
+        if negationDerivable:
+            return False
+        
+        # alpha must be derived before rule is applied
+        if clauseVal1 == None:
+            return None
+        # the negation of beta must not be derivable
+        
+        
+        return self.clause3
+
+
+
+
+
+
+
+
+
+
+
 def createOrFromAtomList (li):
     bigOr = li[0]
     for i in range(1,len(li)):
@@ -243,3 +285,37 @@ def isGroundAtom (clause):
     if isinstance (clause, atom_unknown):
         return True
     return False       
+
+
+
+
+
+
+
+
+
+
+#@TODO needs a lot of work
+def testDerivable (rule, der):
+    if rule.evaluate()==True:
+        return True
+    if rule.evaluate()==False:
+        return False
+    for r in der:
+        if r == rule:
+            return True
+    return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
