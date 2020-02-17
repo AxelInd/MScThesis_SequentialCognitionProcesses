@@ -26,10 +26,11 @@ emusAreBirds = basicLogic.operator_bitonic_implication(c, a,logicType="P")
 
 rule1 =  basicLogic.operator_tritonic_defaultRule(a, b, b, False)
 rule2 = basicLogic.operator_tritonic_defaultRule(d, e, f, False)
+rule3 = basicLogic.operator_tritonic_defaultRule(c, basicLogic.operator_monotonic_negation(f), e, False)
 V = [a,b,c, d, e, f]
 W = [emuscantFly,thisIsAnEmu,emusAreBirds]
 #W = [emuscantFly,thisIsABird,emusAreBirds]
-D = [rule1, rule2]
+D = [rule1, rule2, rule3]
 
 comp_def_eval = complexOperation.complexOperation_default_drawConclusions()
 
@@ -60,7 +61,7 @@ default.addWList(W)
 
 default.addNext(comp_def_eval)
 print ("---------------")
-print (default.si)
+#print (default.si)
 print (default.evaluate())
 
 

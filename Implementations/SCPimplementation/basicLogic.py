@@ -195,7 +195,7 @@ class operator_tritonic (operator):
         self.clause3 = clause3
 
     def __str__(self):
-        return u"{} ({}:{}|{})".format(self.name, self.clause1, self.clause2, self.clause3)        
+        return u"({}:{}|{})".format(self.clause1, self.clause2, self.clause3)        
 class operator_tritonic_defaultRule(operator_tritonic):
     def __init__(self, clause1, clause2, clause3, immutable = False, truthTable = "L"):
         operator_tritonic.__init__(self,clause1,clause2, clause3, immutable = immutable)

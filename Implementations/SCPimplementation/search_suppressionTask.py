@@ -12,6 +12,7 @@ import scp
 import copy
 import basicLogic
 import complexOperation
+import helperFunctions
 import scpError
 #STARTING VARIABLES
 # e: she has an essay to write
@@ -262,7 +263,13 @@ modSearch = testModificationSearch(goalV=('l',True), limit=2)
 
 #for i in modSearch:
 #    print i
-
+"""
+FIND EVERY POSSIBLE TRUTH ASSIGNMENT OF THE FREE VARIABLES
+@param values: the variables that need assignments
+@return a list of list, containing every possible logical assignment of the values
+"""
+def generateAllPossibleVariableAssigmentsFromV (values, logicRep=[True,False,None]):
+    helperFunctions.generateAllPossibleVariableAssigmentsFromV(values,logicRep)
 
 
 

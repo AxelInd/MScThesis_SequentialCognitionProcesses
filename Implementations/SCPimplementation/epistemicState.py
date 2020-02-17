@@ -82,6 +82,8 @@ class epistemicState_defeaultReasoning (epistemicState):
         self.v=[]
     def deriveRules (self):
         return True
+    def emptyD(self):
+        self.d=[]
         
         
     def getD (self):
@@ -120,7 +122,7 @@ class epistemicState_defeaultReasoning (epistemicState):
         sw = self.w
         sd = self.d
         sv = self.v
-        return "W = {} \nD = {}\nV={}".format(sw, sd, sv)
+        return "=========\nW = {} \nD = {}\nV={}\n=========".format(sw, sd, sv)
     
 
 
