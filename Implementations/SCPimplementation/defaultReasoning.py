@@ -135,12 +135,41 @@ def unit_quakersRepublicans():
     
     print ("<<<<<<<<DICK>>>>>>>>>>")
     print (dick.evaluate())
+
+def unit_yuvalOnions():
+    yuval = scp.scp(epistemicStateType="dl")
+    eatonionSoup = basicLogic.atom("eatOnionSoup")
+    loveEating= basicLogic.atom("loveEating")
+    eatOnions=basicLogic.atom("eatOnions")
+    brushTeeth=basicLogic.atom("brushTeeth")
+    careForHygiene=basicLogic.atom("careForHygiene")
     
+    dontEatOnions=basicLogic.operator_monotonic_negation(eatOnions)
     
+    rule1=basicLogic.operator_tritonic_defaultRule(eatonionSoup,[eatOnions],eatOnions)
+    rule2=basicLogic.operator_tritonic_defaultRule(eatonionSoup,[loveEating],loveEating)
+    rule3=basicLogic.operator_tritonic_defaultRule(loveEating,[brushTeeth],brushTeeth)
+    rule4=basicLogic.operator_tritonic_defaultRule(brushTeeth,[careForHygiene],careForHygiene)
+    rule5=basicLogic.operator_tritonic_defaultRule(careForHygiene,[dontEatOnions],dontEatOnions)
+    
+    factEatsOnionSoup = basicLogic.operator_bitonic_implication(basicLogic.TRUE,eatonionSoup)
+    
+    D = [rule1,rule2,rule3,rule4,rule5]
+    W = [factEatsOnionSoup]
+    V =  [eatonionSoup, loveEating, eatOnions, brushTeeth, careForHygiene]
+    
+    yuval.addDList(D)
+    yuval.addVList(V)
+    yuval.addWList(W)
+    
+    yuval.addNext(comp_def_eval)
+    
+    print ("<<<<<<<<YUVAL>>>>>>>>>>")
+    print (yuval.evaluate())    
 #unit_tweetyAndChilly()
 
-unit_quakersRepublicans()
-
+#unit_quakersRepublicans()
+unit_yuvalOnions()
 
 
 

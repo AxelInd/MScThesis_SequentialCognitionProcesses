@@ -207,20 +207,17 @@ class operator_tritonic_defaultRule(operator_tritonic):
         consistencyConditions = self.clause2
         
         if consistencyConditions==[]:
-            print ("--------------->Returning true")
             return True
         negatedConsistencyConditions = negateRuleList(consistencyConditions)
         #evaluateRuleList_relaxed(negatedConsistencyConditions, expected=True)
         negationDerivable = testDerivableList(negatedConsistencyConditions,derived)
         if negationDerivable:
-            print ("--------------->negation derivable, returning false")
             return False
         
         # alpha must be derived before rule is applied
         if clauseVal1 == None:
             return None
         # the negation of beta must not be derivable
-        print ("--------------->Returning {}".format(self.clause3))
         return self.clause3
     
     def deepSet(self, var, val):

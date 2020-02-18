@@ -98,6 +98,8 @@ class epistemicState_defeaultReasoning (epistemicState):
         for var in self.v:
             if var.name==v.name:
                 if overwrite:
+                    var.setValue(v.getValue())
+                    """
                     if var.getValue()==None:
                         var.setValue(v.getValue())
                         return True
@@ -105,6 +107,7 @@ class epistemicState_defeaultReasoning (epistemicState):
                         #overwrite won't destroy an existing variable assignment
                         self.v.append(v)
                         return True
+                    """
                 return False
         self.v.append(v)
         return True
