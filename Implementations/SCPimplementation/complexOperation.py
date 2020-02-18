@@ -152,14 +152,10 @@ class complexOperation_default_drawConclusions (complexOperation_default):
             current=complexOperation_default_drawConclusions.oneStepDeriveFromW(epi_w)
             newVariables = complexOperation_default_drawConclusions.getVariablesFromThW(current)
 
-            for c in current:
-                print ("---{}".format(c))
             for v in newVariables:
                 for c in current:
                     c[0].deepSet(v.getName(), v.getValue())
-        print (newVariables)
-        derivedRules = [i[0] for i in current]
-        print ("derived rules are",derivedRules)
+        #print ("derived rules are",derivedRules)
         epi_next.addVList(newVariables)
         return epi_next
     @staticmethod
@@ -178,22 +174,16 @@ class complexOperation_default_drawConclusions (complexOperation_default):
     def evaluateD_full(epi_next):        
         #generate every possible sequence of default rules
         values = epi_next.getD()
-        allAss = helperFunctions.generateAllPossibleVariableAssigmentsFromV(values, logicRep=[True,False])
+        allPermutations = helperFunctions.permutation(values)
         uniqueEpis=[]
-        for D in allAss:
+        for D in allPermutations:
             epi = copy.deepcopy(epi_next)
             epi.emptyD()
-            for pos in range (0, len(D)):
-
-                if D[pos]==True:
-                    epi.addD(values[pos])
+            epi.addDList(D)
             #evaluate the epi in terms of the now limitted rules
             complexOperation_default_drawConclusions.evaluateD_hasty(epi)
-            print ("=============================")
-            print (epi)
             if not complexOperation_default_drawConclusions.checkEpiInList_checkV(epi, uniqueEpis):
                 uniqueEpis.append(epi)
-                print ("appended")
         return uniqueEpis
 
     @staticmethod
@@ -201,6 +191,7 @@ class complexOperation_default_drawConclusions (complexOperation_default):
         d=epi_next.getD()
         v=epi_next.getV()
         derivs = []
+        print ("Hasty\n{}".format(epi_next))
         for defaultRule in d:
             #print ("Default rule is",defaultRule)
             #print ("This default rule evlauates to", defaultRule.evaluate(v))
@@ -213,7 +204,9 @@ class complexOperation_default_drawConclusions (complexOperation_default):
                 derivs.append((defaultRule.clause3,True))
         #print ("The following things have been derived:",derivs)
         newVariables = complexOperation_default_drawConclusions.getVariablesFromThW(derivs)
+        print ("Adding {} to list".format(newVariables))
         epi_next.addVList(newVariables, overwrite=True)
+        
         return epi_next  
     
     
@@ -240,15 +233,18 @@ class complexOperation_default_drawConclusions (complexOperation_default):
 
     @staticmethod
     def getVariablesFromThW(thW):
+        print ("thW is {}".format(thW))
         v=[]
         for x in thW:
             if isinstance(x[0],basicLogic.atom):
                 v.append(copy.deepcopy(x[0]))
                 v[-1].setValue(x[1])
             elif isinstance(x[0],basicLogic.operator_monotonic_negation):
+                print ("in a neg")
                 v.append(copy.deepcopy(x[0].clause))
                 doubleNeg = basicLogic.operator_monotonic_negation(basicLogic.atom('',x[1]))
                 v[-1].setValue(doubleNeg.evaluate())
+        print ("RETURNING {}".format(v))
         return v
     @staticmethod
     def deepSetVInRules (v, rules):

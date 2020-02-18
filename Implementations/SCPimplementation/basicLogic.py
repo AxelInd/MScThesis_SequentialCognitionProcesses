@@ -202,16 +202,25 @@ class operator_tritonic_defaultRule(operator_tritonic):
         self.name=u"DR"
     
     def evaluate(self, derived):
-        clauseVal1 = evaluateRuleList(self.clause2,expected=True)
+        clauseVal1 = self.clause1.evaluate()
         #attempt to derive the negation of the consistency condition
-        negationDerivable = testDerivable(operator_monotonic_negation(self.clause2),derived)
+        consistencyConditions = self.clause2
+        
+        if consistencyConditions==[]:
+            print ("--------------->Returning true")
+            return True
+        negatedConsistencyConditions = negateRuleList(consistencyConditions)
+        #evaluateRuleList_relaxed(negatedConsistencyConditions, expected=True)
+        negationDerivable = testDerivableList(negatedConsistencyConditions,derived)
         if negationDerivable:
+            print ("--------------->negation derivable, returning false")
             return False
         
         # alpha must be derived before rule is applied
         if clauseVal1 == None:
             return None
         # the negation of beta must not be derivable
+        print ("--------------->Returning {}".format(self.clause3))
         return self.clause3
     
     def deepSet(self, var, val):
@@ -219,15 +228,42 @@ class operator_tritonic_defaultRule(operator_tritonic):
         self.clause2.deepSet(var, val)
 
 
+#@TODO needs a lot of work
+def testDerivableList(rules,der):
+    for rule in rules:
+        #some negation is derivable
+        if testDerivable(rule, der):
+            return True
+    #no negation was derivable
+    return False
+def testDerivable (rule, der):
+    if rule.evaluate()==True:
+        return True
+    if rule.evaluate()==False:
+        return False
+    for r in der:
+        if str(r) == str(rule):
+            return True
+    return False
+
+def negateRuleList (li):
+    newli = []
+    for rule in li:
+        neg = operator_monotonic_negation(rule)
+        newli.append(neg)
+    return newli
 
 
-
-
-def evaluateRuleList(li, expected=True):
+def evaluateRuleList_strict(li, expected=True):
     for rule in li:
         if rule.evaluate()!=expected:
             return False
     return True
+def evaluateRuleList_relaxed(li, expected=True):
+    for rule in li:
+        if rule.evaluate()==expected:
+            return True
+    return False
 
 
 def createOrFromAtomList (li):
@@ -306,16 +342,7 @@ def compareVariableLists(li1,li2):
 
 
 
-#@TODO needs a lot of work
-def testDerivable (rule, der):
-    if rule.evaluate()==True:
-        return True
-    if rule.evaluate()==False:
-        return False
-    for r in der:
-        if str(r) == str(rule):
-            return True
-    return False
+
 
 
 

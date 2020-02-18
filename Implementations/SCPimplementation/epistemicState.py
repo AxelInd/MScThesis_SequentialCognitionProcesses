@@ -73,7 +73,6 @@ class epistemicState_weakCompletion (epistemicState):
     
 class epistemicState_defeaultReasoning (epistemicState):
     def __init__(self):
-        print ("Default Rule Created")
         #D: set of default rules
         self.d=[]
         #W: set of rules
@@ -94,12 +93,18 @@ class epistemicState_defeaultReasoning (epistemicState):
         self.d.append(d)
     def addW(self,w):
         self.w.append(w)
+        
     def addV(self,v, overwrite=False):
         for var in self.v:
             if var.name==v.name:
                 if overwrite:
-                    var.setValue(v.getValue())
-                    return True
+                    if var.getValue()==None:
+                        var.setValue(v.getValue())
+                        return True
+                    else:
+                        #overwrite won't destroy an existing variable assignment
+                        self.v.append(v)
+                        return True
                 return False
         self.v.append(v)
         return True
