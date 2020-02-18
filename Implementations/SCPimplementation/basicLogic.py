@@ -202,7 +202,7 @@ class operator_tritonic_defaultRule(operator_tritonic):
         self.name=u"DR"
     
     def evaluate(self, derived):
-        clauseVal1 = self.clause1.evaluate()
+        clauseVal1 = evaluateRuleList(self.clause2,expected=True)
         #attempt to derive the negation of the consistency condition
         negationDerivable = testDerivable(operator_monotonic_negation(self.clause2),derived)
         if negationDerivable:
@@ -223,7 +223,11 @@ class operator_tritonic_defaultRule(operator_tritonic):
 
 
 
-
+def evaluateRuleList(li, expected=True):
+    for rule in li:
+        if rule.evaluate()!=expected:
+            return False
+    return True
 
 
 def createOrFromAtomList (li):
