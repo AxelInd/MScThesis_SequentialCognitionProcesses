@@ -166,9 +166,9 @@ def unit_yuvalOnions():
     
     print ("<<<<<<<<YUVAL>>>>>>>>>>")
     print (yuval.evaluate())    
-#unit_tweetyAndChilly()
+unit_tweetyAndChilly()
 
-#unit_quakersRepublicans()
+unit_quakersRepublicans()
 unit_yuvalOnions()
 
 
