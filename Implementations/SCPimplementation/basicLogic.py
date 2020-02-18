@@ -5,7 +5,14 @@ Created on Sat Jan 18 11:07:55 2020
 @author: Axel
 """
 from truthTables import truthTable
+"""
+ATOMS ARE THE BASIC UNIT OF LOGIC.
+Every atom consists of a name and truth value.
+"""
 class atom (object):
+    """
+    CREATE AN INSTANCE OF THE ATOM CLASS
+    """
     def __init__(self, name, value = None, setValue = True):
         self.name = name
         self.fixed=False
@@ -15,16 +22,38 @@ class atom (object):
             self._value=None
             
         #print("I made an atom called " + self.name)
+    """
+    RETURN THE LOGICAL VALUE OF THE ATOM (usually True, False, None, but others
+    are possible)
+    @return the value of the atom
+    """
     def evaluate(self):
         return self.getValue()
+    """
+    SET THE VALUE OF THE VARIABLE IF ITS NAME IS RIGHT. THIS METHOD NAME IS SHARED
+    WITH THE OPERATOR CLASS AND USED INTERCHANGABLY BETWEEN THEM.
+    @param var: the name of the variable
+    @param val: the value to set
+    @return True if successful, False otherwise
+    """
     def deepSet(self, var, val):
         if (self.name == var):
-            self._value = val
+            self.setValue(val)
             return True
         return False
             #print ("Variable " + str(self.name) + " set to " + str(self.value))
+    """
+    A STRING REPRESENTATION OF THE ATOM
+    @return a string representation of the atom
+    """
     def __str__ (self):
         return u"{}".format(self.name)
+    """
+    SET THE VALUE OF THE VARIABLE IF ITS NAME IS RIGHT.
+    @param var: the name of the variable
+    @param val: the value to set
+    @return True if successful, False otherwise   
+    """
     def setValue (self, val, setVal = True):
         if not self.fixed and setVal==True:
             self._value = val
