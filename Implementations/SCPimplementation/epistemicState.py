@@ -54,6 +54,9 @@ class epistemicState_weakCompletion (epistemicState):
         return self.kb
     def getV (self):
         return self.v
+    def addVList(self,V, overwrite=False):
+        for _v in V:
+            self.addV(_v, overwrite=overwrite)
     
     def removeVariable(self,varName):
         self.v = [var for var in self.v if var.getName()!=varName]
@@ -71,28 +74,23 @@ class epistemicState_weakCompletion (epistemicState):
         skb = basicLogic.strKnowledge(self.kb)
         return "KB = {}\nV = {}".format(skb, sv)
     
-class epistemicState_defeaultReasoning (epistemicState):
+class epistemicState_defeaultReasoning (epistemicState_weakCompletion):
     def __init__(self):
         #D: set of default rules
         self.d=[]
-        #W: set of rules
-        self.w=[]
-        #V: set of evaluated Variables
-        self.v=[]
+        epistemicState_weakCompletion.__init__(self)
     def deriveRules (self):
         return True
     def emptyD(self):
-        self.d=[]
-        
-        
+        self.d=[] 
     def getD (self):
         return self.d
     def getW (self):
-        return self.w
+        return self.kb
     def addD(self, d):
         self.d.append(d)
     def addW(self,w):
-        self.w.append(w)
+        self.kb.append(w)
         
     def addV(self,v, overwrite=False):
         for var in self.v:
@@ -114,9 +112,7 @@ class epistemicState_defeaultReasoning (epistemicState):
                 
         if (v in self.v) or overwrite:
             self.v.append(v)
-    def addVList(self,V, overwrite=False):
-        for _v in V:
-            self.addV(_v, overwrite=overwrite)
+
     def addWList(self,W):
         for _w in W:
             self.addW(_w)
@@ -125,11 +121,10 @@ class epistemicState_defeaultReasoning (epistemicState):
             self.addD(_d)
     def getV(self):
         return self.v
-
     def __str__(self):
-        sw = self.w
-        sd = self.d
-        sv = self.v
+        sw = self.getW()
+        sd = self.getD()
+        sv = self.getV()
         return "=========\nW = {} \nD = {}\nV={}\n=========".format(sw, sd, sv)
     
 
