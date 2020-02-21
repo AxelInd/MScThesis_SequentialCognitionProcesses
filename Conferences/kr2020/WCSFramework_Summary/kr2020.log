@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  21 FEB 2020 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  21 FEB 2020 14:41
 entering extended mode
 **./kr2020.tex
 (kr2020.tex
@@ -662,12 +662,11 @@ Package pdftex.def Info: generalWCS.png used on input line 101.
 Package natbib Warning: Citation `sigman2008brain' on page 3 undefined on input
  line 109.
 
-[3 <./general.png> <./generalWCS.png>]
+[3 <./general.png> <./generalWCS.png>] [4]
 
-Package natbib Warning: Citation `needleman1970general' on page 4 undefined on 
+Package natbib Warning: Citation `needleman1970general' on page 5 undefined on 
 input line 141.
 
-[4]
 
 Package natbib Warning: Citation `holldobler2015weak' on page 5 undefined on in
 put line 147.
@@ -684,15 +683,15 @@ put line 147.
 Package natbib Warning: Citation `ragni2017formal' on page 5 undefined on input
  line 159.
 
+[5]
 
-Package natbib Warning: Citation `byrne1989suppressing' on page 5 undefined on 
+Package natbib Warning: Citation `byrne1989suppressing' on page 6 undefined on 
 input line 168.
 
 
-Package natbib Warning: Citation `saldanha2017weak' on page 5 undefined on inpu
+Package natbib Warning: Citation `saldanha2017weak' on page 6 undefined on inpu
 t line 168.
 
-[5]
 
 Package natbib Warning: Citation `breu2019weak' on page 6 undefined on input li
 ne 170.
@@ -713,48 +712,47 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 Package natbib Warning: Citation `dietz2014modeling' on page 6 undefined on inp
 ut line 185.
 
-[6] <suppressionSCP_overview.png, id=42, 659.91544pt x 93.49931pt>
+[6] <suppressionSCP_overview.png, id=43, 659.91544pt x 93.49931pt>
 File: suppressionSCP_overview.png Graphic file (type png)
 
 <use suppressionSCP_overview.png>
 Package pdftex.def Info: suppressionSCP_overview.png used on input line 215.
 (pdftex.def)             Requested size: 428.93994pt x 60.77382pt.
 
-<suppressionSCP_normal.png, id=43, 497.75963pt x 180.22331pt>
+<suppressionSCP_normal.png, id=44, 497.75963pt x 180.22331pt>
 File: suppressionSCP_normal.png Graphic file (type png)
 
 <use suppressionSCP_normal.png>
 Package pdftex.def Info: suppressionSCP_normal.png used on input line 223.
 (pdftex.def)             Requested size: 373.3188pt x 135.16714pt.
- [7 <./suppressionSCP_overview.png> <./suppressionSCP_normal.png>] [8]
-<suppressionSCP_mod.png, id=53, 579.51506pt x 130.53769pt>
+ [7 <./suppressionSCP_overview.png>] [8 <./suppressionSCP_normal.png>]
+<suppressionSCP_mod.png, id=54, 579.51506pt x 130.53769pt>
 File: suppressionSCP_mod.png Graphic file (type png)
 
 <use suppressionSCP_mod.png>
 Package pdftex.def Info: suppressionSCP_mod.png used on input line 265.
 (pdftex.def)             Requested size: 405.65778pt x 91.37575pt.
 
-<suppressionSCP_mod2.png, id=54, 492.79106pt x 196.03238pt>
+<suppressionSCP_mod2.png, id=55, 492.79106pt x 196.03238pt>
 File: suppressionSCP_mod2.png Graphic file (type png)
 
 <use suppressionSCP_mod2.png>
 Package pdftex.def Info: suppressionSCP_mod2.png used on input line 276.
 (pdftex.def)             Requested size: 344.95139pt x 137.22171pt.
+ [9 <./suppressionSCP_mod.png>]
+
+Package natbib Warning: Citation `brown2010omission' on page 10 undefined on in
+put line 285.
 
 
-Package natbib Warning: Citation `brown2010omission' on page 9 undefined on inp
-ut line 285.
+Package natbib Warning: Citation `wroe2005feeling' on page 10 undefined on inpu
+t line 285.
 
 
-Package natbib Warning: Citation `wroe2005feeling' on page 9 undefined on input
- line 285.
+Package natbib Warning: Citation `tappin2017heart' on page 10 undefined on inpu
+t line 285.
 
-
-Package natbib Warning: Citation `tappin2017heart' on page 9 undefined on input
- line 285.
-
-[9 <./suppressionSCP_mod.png>]
-<scpClassDiagram.png, id=58, 1238.07544pt x 711.8595pt>
+<scpClassDiagram.png, id=59, 1238.07544pt x 711.8595pt>
 File: scpClassDiagram.png Graphic file (type png)
 
 <use scpClassDiagram.png>
@@ -778,11 +776,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  14948 strings out of 493323
  283727 string characters out of 3139069
- 333352 words of memory out of 3000000
+ 333353 words of memory out of 3000000
  18189 multiletter control sequences out of 15000+200000
  13305 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,17n,54p,1732b,462s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,17n,54p,1738b,462s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
@@ -798,12 +796,13 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on kr2020.pdf (15 pages, 475562 bytes).
+cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on kr2020.pdf (15 pages, 486741 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
+ 146 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
