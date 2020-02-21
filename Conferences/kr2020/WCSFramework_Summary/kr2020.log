@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  21 FEB 2020 14:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  21 FEB 2020 14:08
 entering extended mode
 **./kr2020.tex
 (kr2020.tex
@@ -500,8 +500,11 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen174
 \Gm@dimlist=\toks36
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-No file kr2020.aux.
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg")) (kr2020.aux
+
+LaTeX Warning: Label `tbl:luk' multiply defined.
+
+)
 \openout1 = `kr2020.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -516,7 +519,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count138
 \scratchdimen=\dimen175
@@ -640,58 +643,26 @@ ne 37.
 
 {C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-LaTeX Warning: Reference `tbl:luk' on page 2 undefined on input line 62.
-
-
 Package natbib Warning: Citation `stenning2008interpretation' on page 2 undefin
 ed on input line 74.
 
+<general.png, id=14, 382.57932pt x 84.46556pt>
+File: general.png Graphic file (type png)
+ <use general.png>
+Package pdftex.def Info: general.png used on input line 95.
+(pdftex.def)             Requested size: 178.5036pt x 39.40881pt.
 
-! LaTeX Error: File `general' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.95 ...ludegraphics[width=.95\linewidth]{general}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: File `generalWCS' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.101 ...graphics[width=.95\linewidth]{generalWCS}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[2]
+<generalWCS.png, id=15, 554.67226pt x 73.62506pt>
+File: generalWCS.png Graphic file (type png)
+ <use generalWCS.png>
+Package pdftex.def Info: generalWCS.png used on input line 101.
+(pdftex.def)             Requested size: 267.7622pt x 35.54182pt.
+ [2]
 
 Package natbib Warning: Citation `sigman2008brain' on page 3 undefined on input
  line 109.
 
-
-LaTeX Warning: Reference `fig:scp_general' on page 3 undefined on input line 10
-9.
-
-
-LaTeX Warning: Reference `fig:scp_general' on page 3 undefined on input line 10
-9.
-
-
-LaTeX Warning: Reference `fig:scp_generalWCS' on page 3 undefined on input line
- 109.
-
-[3]
+[3 <./general.png> <./generalWCS.png>]
 
 Package natbib Warning: Citation `needleman1970general' on page 4 undefined on 
 input line 141.
@@ -742,92 +713,34 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 Package natbib Warning: Citation `dietz2014modeling' on page 6 undefined on inp
 ut line 185.
 
+[6] <suppressionSCP_overview.png, id=42, 659.91544pt x 93.49931pt>
+File: suppressionSCP_overview.png Graphic file (type png)
 
-LaTeX Warning: Reference `ssec:weakcompletion' on page 6 undefined on input lin
-e 185.
+<use suppressionSCP_overview.png>
+Package pdftex.def Info: suppressionSCP_overview.png used on input line 215.
+(pdftex.def)             Requested size: 428.93994pt x 60.77382pt.
 
-[6]
+<suppressionSCP_normal.png, id=43, 497.75963pt x 180.22331pt>
+File: suppressionSCP_normal.png Graphic file (type png)
 
-LaTeX Warning: Reference `ssec:addAbnormalities' on page 7 undefined on input l
-ine 202.
+<use suppressionSCP_normal.png>
+Package pdftex.def Info: suppressionSCP_normal.png used on input line 223.
+(pdftex.def)             Requested size: 373.3188pt x 135.16714pt.
+ [7 <./suppressionSCP_overview.png> <./suppressionSCP_normal.png>] [8]
+<suppressionSCP_mod.png, id=53, 579.51506pt x 130.53769pt>
+File: suppressionSCP_mod.png Graphic file (type png)
 
+<use suppressionSCP_mod.png>
+Package pdftex.def Info: suppressionSCP_mod.png used on input line 265.
+(pdftex.def)             Requested size: 405.65778pt x 91.37575pt.
 
-! LaTeX Error: File `suppressionSCP_overview' not found.
+<suppressionSCP_mod2.png, id=54, 492.79106pt x 196.03238pt>
+File: suppressionSCP_mod2.png Graphic file (type png)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.215 ...hics[scale=0.65]{suppressionSCP_overview}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+<use suppressionSCP_mod2.png>
+Package pdftex.def Info: suppressionSCP_mod2.png used on input line 276.
+(pdftex.def)             Requested size: 344.95139pt x 137.22171pt.
 
-
-! LaTeX Error: File `suppressionSCP_normal' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.223 ...aphics[scale=0.75]{suppressionSCP_normal}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:supoverview' on page 7 undefined on input line 22
-9.
-
-
-LaTeX Warning: Reference `alg:addAbnormalities' on page 7 undefined on input li
-ne 242.
-
-[7]
-
-LaTeX Warning: Reference `fig:supoverview' on page 8 undefined on input line 24
-4.
-
-
-LaTeX Warning: Reference `fig:supnormal' on page 8 undefined on input line 244.
-
-
-
-LaTeX Warning: Reference `fig:supmod' on page 8 undefined on input line 261.
-
-
-! LaTeX Error: File `suppressionSCP_mod' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.265 ...degraphics[scale=0.7]{suppressionSCP_mod}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: File `suppressionSCP_mod2' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.276 ...egraphics[scale=0.7]{suppressionSCP_mod2}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[8]
 
 Package natbib Warning: Citation `brown2010omission' on page 9 undefined on inp
 ut line 285.
@@ -840,53 +753,33 @@ Package natbib Warning: Citation `wroe2005feeling' on page 9 undefined on input
 Package natbib Warning: Citation `tappin2017heart' on page 9 undefined on input
  line 285.
 
+[9 <./suppressionSCP_mod.png>]
+<scpClassDiagram.png, id=58, 1238.07544pt x 711.8595pt>
+File: scpClassDiagram.png Graphic file (type png)
 
-LaTeX Warning: Reference `fig:supmod2' on page 9 undefined on input line 289.
-
-
-! LaTeX Error: File `scpClassDiagram' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.297 ...aphics[width=\textwidth]{scpClassDiagram}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:classDiagram' on page 9 undefined on input line 3
-02.
-
-[9] [10] [11]
+<use scpClassDiagram.png>
+Package pdftex.def Info: scpClassDiagram.png used on input line 297.
+(pdftex.def)             Requested size: 650.43001pt x 373.98166pt.
+ [10 <./suppressionSCP_mod2.png>] [11 <./scpClassDiagram.png>] [12]
 No file kr2020.bbl.
-[12]
+[13]
 
-LaTeX Warning: Reference `tbl:luk' on page 13 undefined on input line 362.
-
-
-Package natbib Warning: Citation `stenning2008interpretation' on page 13 undefi
+Package natbib Warning: Citation `stenning2008interpretation' on page 14 undefi
 ned on input line 374.
 
 
 Package natbib Warning: There were undefined citations.
 
-[13] [14] (kr2020.aux)
+[14] [15] (kr2020.aux)
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14930 strings out of 493323
- 283036 string characters out of 3139069
- 333184 words of memory out of 3000000
- 18161 multiletter control sequences out of 15000+200000
+ 14948 strings out of 493323
+ 283727 string characters out of 3139069
+ 333352 words of memory out of 3000000
+ 18189 multiletter control sequences out of 15000+200000
  13305 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,54p,1732b,462s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -908,9 +801,9 @@ onts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on kr2020.pdf (14 pages, 303707 bytes).
+Output written on kr2020.pdf (15 pages, 475562 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
+ 142 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
