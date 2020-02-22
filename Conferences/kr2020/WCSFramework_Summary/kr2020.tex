@@ -252,99 +252,6 @@ Figure~\ref{fig:supmod2} shows the effect of adding a complex operation which fi
 \subsection{SCPs Under other Logics}
 \section{Conclusions and Future Work}
 
-\section{Overview}
-For my Master's thesis I intend to describe, implement, and test a novel framework for modelling human reasoners called the Sequential Cognitive Process (SCP). SCPs retain most of the expressiveness of the hitherto \textit{ad hoc} approaches to modelling reasoners with non-monotonic logics, but also introduce a number of desirable properties:
-\begin{enumerate}
-\item They enable modelling of individual reasoners through addition or removal of well-described mental operations. This is in contrast to most non-monotonic logic approaches which can model the general reasoner across a number of cognitive tasks but do not extend well to explaining reasoning that deviates from the norm.
-\item They standardise a broad class of non-monotonic logical frameworks so that cognitive comparisons, even across different frameworks are possible, in particular I have given some thought to the use of string-matching algorithms borrowed from the field of bioinformatics (such an extended version of the Needleman Wunsch Aglorithm\citep{needleman1970general}) to comparing SCPs as operation sequences.
-\item Because they are sequential (essentially linked lists of mental operations) they lend themselves well to traditional search techniques, and their utility in finding -- though not yet justifying -- models of the Suppression Task has already been demonstrated for both general and individual reasoners.
-\item They standardise a set of well-founded cognitive processes (such as, the Suppression Effect, Affirmation of the Antecedent, Conjunction Fallacy bias, and the introduction of abnormalities) as reusable epistemic operations which can be constrained or expanded according the needs of the researcher.
-\item Because they are sequences of actions with standardised input and output formats, there is certainly potential for traditional heuristic approaches to problem solving with SCPs as well as purpose-built heuristic adapted to the cognitive task being considered.
-\end{enumerate}
-
-A limited Python version of this system has already been implemented\footnote{Available on Github: https://github.com/AxelInd/SequentialCognitionPrcoesses. For access, please contact me with your details.} for the Weak Completion Semantics \citep{holldobler2015weak}. This implementation has proved effective at modelling both the Suppression Task \citep{byrne1989suppressing} and the Wason Selection Task \citep{wason1968reasoning}. Work to expand the implementation is ongoing.
-
-\section{What is an SCP}
-
-An SCP is a model of the thought process of a reasoner, whether individuals or a group. The SCP assumes that some epistemic state (of whatever form the nonmonotonic logic requires) is modified by mental operations in the SCP to reach a final epistemic state that satisfies some goal properties. An SCP Problem $\pi=(s_i,\gamma,M)$ describes the requirements and limitations of the SCP before it is created\footnote{This formulation is inspired by the field of AI Planning}. $s_i$ contains the initial state of the SCP, and $\gamma$ is the goal of the SCP (e.g. to mimic the classical case of the Suppression Task), $M$ is the set of allowable cognitive operations.
-
-The SCP framework makes several core assumptions about the nature of cognition:
-
-
-\begin{enumerate}
-\item Evolving Epistemic States: SCPs are built on the idea that some mental model of the world exists before the problem-solving begins (even if the model is empty), and is updated by each mental process that acts on it, yielding a new epistemic state as output from mental process $m_n$ to be used as input for mental process $m_{n-1}$.
-\item Sequential Reasoning: the assumption that a reasoner will perform only one mental operation at a time before moving on to the next one. Although it initially seems very limitting, the complexity of mental operations is unconstrained, and could itself involve parallel processes provided that a unified mental state is achieved before the next operation begins.
-\item Reusable Operations: in order to be more than just a container for some other non-monotonic logic, cognitive tasks must share at least some complex operations. If this were not the case, standardising a set of cognitive operations to model unseen tasks would be impossible. Fortunately, there is ample evidence of consistent mental approaches to reasoning \citep{ragni2017formal}.
-\item Limited mental processing power: SCPs assume a sequential and finite number of mental operations to reach a goal. Without this property, it would be impossible to accurately model human cognition. Further, there would be no reasonable scoring system for determining the best explanation when multiple SCPs all model the same thought process (the simplest scoring system intuitively is to compare the length of the two candidate SCPs and to prefer the smaller).
-\end{enumerate}
-
-
-
-\section{State of the Art}
-
-\subsection{More Questions Than Answers}
-The example of the Suppression Task \citep{byrne1989suppressing} illustrates one of the glaring problems with cognitive modelling in non-monotonic reasoning as it stands at present: it is unstructured. What rules should be followed when adding abnormalities? How do we choose the order to apply these operations? Is this the only reasonable sequence in which to apply these operations? All these questions arise from a lack of structure in the frameworks being used. For example, work by \cite{saldanha2017weak} discusses the idea of obligate and factual conditionals, which are treated differently in terms of how abnormalities are added. From this it immediately follows that extensions to the WCS are possible, but where can they occur? Which extensions and changes are well founded in the psychological literature? What are the properties of the search spaces of these extensions? Is it even possible to compare different cognitive models to one other if they produce identical output? SCPs are an attempt to create a framework for non-monotonic logics that is suitable to answer these questions.
-
-One of the most important questions to answer, is if it possible for these non-monotonic logics to model individual reasoners as well as general reasoners. Work by \citep{breu2019weak} showed that simple extensions to the Weak Completion Semantics allowed researchers to model the four most common decisions of participants in the Wason Selection Task. There is significant potential for research into modelling the unusual choices of participants who do not conform to the normally observed results. Part of my thesis will be dedicated to justifying a view of these unusual reasoners as deviations from the normal cognitive process who still follow a very similar reasoning approach but with small and well-founded differences when compared to general reasoners. In the following sections we briefly discuss this idea in terms of the Suppression Task.
-
-\subsection{Example: The Suppression Task}
-\subsubsection{What is the Suppression Task?}
-The Suppression Task refers to an experiment conducted by \cite{byrne1989suppressing} and is a classical example of the inadequacy of monotonic logics for modelling human reasoning. In classical logic, if our knowledge base $kb$ is such that $kb \models \phi$, then it must be the case that $kb \cup \psi \models \phi$. However, in the suppression task participants no longer draw classically valid inferences when new information is added. The task is often formulated as follows:
-
-\begin{itemize}
-\item $e \rightarrow l$: If she has an essay to write ($e$), she will study late in the library ($l$).
-\item $\top \rightarrow e$: She has an essay to write ($e$).
-\item $o\rightarrow l$: If the library is open ($o$), she will study late in the library ($l$).
-\end{itemize}
-
-Given only the rules $(e \rightarrow l)$ and $(\top \rightarrow e)$, the participants consistently concluded that she would study late in the library, seemingly drawing the classical logic inference $\frac{e \rightarrow l, e}{l}$ with \textit{modus ponens}. But when given the additional rule $o\rightarrow l$, participants no longer believe that they have enough information to judge whether she will study late in the library, and a significant portion of them no longer draw the classical conclusion. This effect, called Suppression, demonstrates the need for something more than classical logic for modelling human reasoning.
-
-\subsubsection{Modelling the Suppression Task with the WCS}
-Work by \cite{dietz2014modeling} has shown that the Weak Completion Semantics is an adequate non-monotonic logic for modelling the Suppression Task. The reader is assumed to be familiar with the Weak Completion Semantics and so it is only briefly discussed in Appendix~\ref{ssec:weakcompletion}.
-
-Under the Weak Completion Semantics and \L ukasiewicz 3-valued logic the task is usually modelled as follows for the case without suppression:
-\begin{enumerate}
-\item Initial logic program: $P = \{e \rightarrow l, \top \rightarrow e \}$. This program represents the task without information about what happens if the library is open.
-\item Addition of Abnormality: $P = \{e \land \lnot ab_1 \rightarrow l, \top \rightarrow e, \bot \rightarrow ab_1 \}$. The program now reflects the possibility that some abnormal event may prevent her from going to the library, but because we have no information about the nature of this event, it is set to false by default.
-\item Weak Completion: $wc(P) = \{e \land \lnot ab_1 \leftrightarrow l, \top \leftrightarrow e, \bot \leftrightarrow ab_1 \}$. Weak completion is applied to the logic program and, in this case, only implications need to be changed to bijections.
-\item Semantic Operator:
-\begin{itemize}
-\item Execution 1: $\top=\{e\}, \bot=\{ab_1\}$
-\item Execution 2: $\top=\{e,l\}, \bot=\{ab_1\}$
-\end{itemize}
-\end{enumerate}
-
-After application of the semantic operator $l$ is true in the least model, and so participants conclude that she will study late in the library (as when $P$ is evaluated classically). However, in the case where Suppression is observed, the same process yields a different result because of the presence of the extra conditional ($o\rightarrow l$).
-\begin{enumerate}
-\item Initial logic program: $P = \{e \rightarrow l, \top \rightarrow e, o \rightarrow l \}$. The initial program now includes information about the extra (suppressing) conditional.
-\item Addition of Abnormality: $P = \{e \land \lnot ab_1 \rightarrow l, o \land \lnot ab_2 \rightarrow l, \top \rightarrow e, \lnot o \rightarrow ab_1, \lnot e \rightarrow ab_2 \}$. Adding abnormalities is a poorly described process and often relies on intuitionist views of what actually constitutes an abnormal situation. In this case we adopt the practise of identifying abnormalities as described in Appendix~\ref{ssec:addAbnormalities}.
-\item Weak Completion: $wc(P) = \{((e \land \lnot ab_1) \lor (o \land \lnot ab_2)) \leftrightarrow l, \top \leftrightarrow e, \lnot o \leftrightarrow ab_1, \lnot e \leftrightarrow ab_2 \}$. Weak completion is applied to the logic program, combining rules with shared heads and replacing implications with bijections.
-\item Semantic Operator:
-\begin{itemize}
-\item Execution 1: $\top=\{e\}, \bot=\{ab_2\}$
-\end{itemize}
-\end{enumerate}
-
-Now suppression has been displayed in the logic program and the variable $l$ remains unknown in the least model.
-
-\section{Modelling the Suppression Task with the SCPs}
-
-
-\section{Implementation}
-A simple implementation of the SCP framework has already been implemented for the WCS, it has been shown able to model both the Suppression Task and the Wason Selection Task in terms of both general and deviant reasoning. The overall structure of the SCP implementation is as a pipeline, a linked list of operations each of which relies on input from the previous operation in the list.
-
-\subsection{Class Diagram}
-
-\begin{sidewaysfigure}
-    \centering \includegraphics[width=\textwidth]{scpClassDiagram}
-    \caption{A simplified illustration of class interactions in the SCP implementation.}
-    \label{fig:classDiagram}
-\end{sidewaysfigure}
-
-Figure~\ref{fig:classDiagram} shows a simplified class diagram of the implementation of the SCP program. The scp class makes use of a basic implementation of 3-valued logic and a sequence of \texttt{complexOperation} objects in order to evaluate the knowledge base and variables of the SCP after each operation.
-
-Each \texttt{complexOperation} is a pipeline, it contains no data other than pointers to its successor and predecessor and passes the results of its \texttt{evaluatev()} and \texttt{evaluatekb()} functions to the next operation as input. The code itself is heavily commented and contains files which implement and execute examples of the Suppression Task and Wason Selection task under WCS.
-
 \subsubsection{Additional Features}
 Several other features will be added to the implementation soon:
 \begin{itemize}
@@ -353,82 +260,12 @@ Several other features will be added to the implementation soon:
 \item Scoring: a modified version of Needleman-Wusch algorithm for string matching has already been theoretically described and must now be implemented in order determine how similar different models are to each other.
 \end{itemize}
 \newpage
-
-\section{Milestones}
-A portion of the work to create and formalise SCPs has already been completed. A literature review, time spent programming, and time spent formalising the idea of SCPs has already devoted to the problem. however there is still a significant amount of work to be done:
-\subsubsection*{Timeline}
-\begin{itemize}
-\item Standardise implementation interface: 3 Feb - 9 Feb
-\item Extend Interface to Conjunction Fallacy under WCS: 10 Feb - 16 Feb
-\item Complete paper on SCPs under the WCS: 17 Feb - 23 Feb
-\item Conceptually extend SCPs to Reiter's Default Logic: 24 Feb - 1 March
-\item Extend the existing implementation to handle Default Logic: 2 March - 8 March
-\item Explore scoring algorithms for SCps: 3 March - 9 March
-\item Examine application of heuristics to SCPs: 10 March - 15 March
-\item Complete paper on SCPs under Default Logic: 16 March - 23 March
-\item Write Thesis: 23 March - 20 April
-\item Correction, updates, and new ideas: 21 April - ...
-\end{itemize}
-
-\subsubsection*{Deliverables}
-\begin{itemize}
-\item Conference ready paper on SCPs and the WCS: 23 Feb
-\item Conference ready paper on SCPs and the default logic: 23 March
-\item Complete, documented, extensible implementation of SCPs containing various examples, search functionality, and best-practice design: 1 April
-\end{itemize}
 	
 \bibliography{bibl}
 \bibliographystyle{chicago}
 
 \newpage
-
 \section{Appendix}
-\subsection{Weak Completion} \label{ssec:weakcompletion}
-
-\begin{table}
-\begin{center}
-
-
-\begin{tabular}{ c | c c c }
-  $\rightarrow$& $\top$ & $u$ & $\bot$ \\ \hline
- $\top$ & $\top$ & $u$ & $\bot$ \\  
- $u$ & $\top$ & $\top$ & $u$\\  
- $\bot$ & $\top$ & $\top$ & $\top$
-\end{tabular}
-\caption{A table showing the implication operator in 3-valued \L ukasiewicz logic.}
-\label{tbl:luk}
-
-\end{center}
-\end{table}
-
-The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomenon. The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
-
-The Weak Completion of a program $P$ is defined as follows:
-
-\begin{enumerate}
-\item Replace all clauses of the form $A \leftarrow body_1$, ..., $A \leftarrow body_n$ with $A \leftarrow body_1 \lor ... \lor body_n$.
-% \item For all undefined variables $x$, add $x \leftarrow \bot$. THIS IS FOR STRONG COMPLETION ONLY
-\item Replace all occurrences of $\leftarrow$ with $\leftrightarrow$.
-\end{enumerate}
-
-Applying this procedure to $P$ results in $wcP$ which is the weak completion of $P$.
-
-The next requirement to apply the WCS framework is the introduction of a semantic operator $\phi_{SvL}$ \citep{stenning2008interpretation}. Let $J$ be the result of applying the semantics operator to an interpretation $I$ and logic program $P$. The $J$ is defined as follows:
-
-\[
-\begin{split}
-J^\top = \{ & A | \textrm{ there exists a clause } A\leftarrow Body \in P \textrm{ with } I(Body) = \top\}
-\end{split}
-\]
-\[
-\begin{split}
-J^\bot = \{ &  A | \textrm{ there exists a clause } A \leftarrow Body \in P \\
-           & \textrm{ and for all clauses } A \leftarrow Body \in P \textrm{ we find } I(Body) = \bot\}
-\end{split}
-\]
-
-Using $I=<\emptyset, \emptyset>$, the least model ($\textrm{lm}_\textrm{\L}$wc$P$) can be calculated by iterating $\phi_{SvL,P}$.
-
 \subsection{Systematically Adding Abnormalities} \label{ssec:addAbnormalities}
 Adding abnormalities is a poorly described process and often relies on intuitionist views of what actually constitutes an abnormal situation. For this reason I have provided one concrete method for adding abnormalities to a logic program (though many others exist and can be extended at will). This particular one is based on the principle that if a variable $v_1$ has the power to make another variable $v_2$ true, then it may be the case that participants believe that any other variables $V'$ satisfying $v_2$ may only do so when $v_1$ holds. This intuition is counter to classical logic, but follows intuitively in cases like the Suppression Task where participants believe that the library not being open may be the reason that the she doesn't study late in the library, even when she has an essay to write. The precise procedure is as follows:
 
@@ -459,6 +296,19 @@ In the case of SCPs, the procedure for creating abnormalities is handled by a si
 \end{algorithm}
 
 
+
+\subsection{Class Diagram}
+A simple implementation of the SCP framework has already been tested for the WCS, it has been shown able to model both the Suppression Task and the Wason Selection Task in terms of both general and deviant reasoning. The overall structure of the SCP implementation is as a pipeline, a linked list of operations each of which relies on input from the previous operation in the list.
+
+\begin{sidewaysfigure}
+    \centering \includegraphics[width=\textwidth]{scpClassDiagram}
+    \caption{A simplified illustration of class interactions in the SCP implementation.}
+    \label{fig:classDiagram}
+\end{sidewaysfigure}
+
+Figure~\ref{fig:classDiagram} shows a simplified class diagram of the implementation of the SCP program. The scp class makes use of a basic implementation of 3-valued logic and a sequence of \texttt{complexOperation} objects in order to evaluate the knowledge base and variables of the SCP after each operation.
+
+Each \texttt{complexOperation} is a pipeline, it contains no data other than pointers to its successor and predecessor and passes the results of its \texttt{evaluatev()} and \texttt{evaluatekb()} functions to the next operation as input. The code itself is heavily commented and contains files which implement and execute examples of the Suppression Task and Wason Selection task under WCS.
 
 
 \end{document}

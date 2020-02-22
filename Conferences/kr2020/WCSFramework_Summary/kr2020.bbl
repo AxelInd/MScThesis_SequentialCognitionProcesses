@@ -1,0 +1,74 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Breu, Ind, Mertesdorf, and Ragni}{Breu
+  et~al.}{2019}]{breu2019weak}
+Breu, C., A.~Ind, J.~Mertesdorf, and M.~Ragni (2019).
+\newblock The weak completion semantics can model inferences of individual
+  human reasoners.
+\newblock In {\em European Conference on Logics in Artificial Intelligence},
+  pp.\  498--508. Springer.
+
+\bibitem[\protect\citeauthoryear{Brown, Kroll, Hudson, Ramsay, Green, Vincent,
+  Fraser, and Sevdalis}{Brown et~al.}{2010}]{brown2010omission}
+Brown, K.~F., J.~S. Kroll, M.~J. Hudson, M.~Ramsay, J.~Green, C.~A. Vincent,
+  G.~Fraser, and N.~Sevdalis (2010).
+\newblock Omission bias and vaccine rejection by parents of healthy children:
+  implications for the influenza a/h1n1 vaccination programme.
+\newblock {\em Vaccine\/}~{\em 28\/}(25), 4181--4185.
+
+\bibitem[\protect\citeauthoryear{Byrne}{Byrne}{1989}]{byrne1989suppressing}
+Byrne, R.~M. (1989).
+\newblock Suppressing valid inferences with conditionals.
+\newblock {\em Cognition\/}~{\em 31\/}(1), 61--83.
+
+\bibitem[\protect\citeauthoryear{Dietz, H{\"o}lldobler, and Wernhard}{Dietz
+  et~al.}{2014}]{dietz2014modeling}
+Dietz, E.-A., S.~H{\"o}lldobler, and C.~Wernhard (2014).
+\newblock Modeling the suppression task under weak completion and well-founded
+  semantics.
+\newblock {\em Journal of Applied Non-Classical Logics\/}~{\em 24\/}(1-2),
+  61--85.
+
+\bibitem[\protect\citeauthoryear{Mocanu, Mocanu, Stone, Nguyen, Gibescu, and
+  Liotta}{Mocanu et~al.}{2018}]{mocanu2018scalable}
+Mocanu, D.~C., E.~Mocanu, P.~Stone, P.~H. Nguyen, M.~Gibescu, and A.~Liotta
+  (2018).
+\newblock Scalable training of artificial neural networks with adaptive sparse
+  connectivity inspired by network science.
+\newblock {\em Nature communications\/}~{\em 9\/}(1), 1--12.
+
+\bibitem[\protect\citeauthoryear{Sigman and Dehaene}{Sigman and
+  Dehaene}{2008}]{sigman2008brain}
+Sigman, M. and S.~Dehaene (2008).
+\newblock Brain mechanisms of serial and parallel processing during dual-task
+  performance.
+\newblock {\em Journal of Neuroscience\/}~{\em 28\/}(30), 7585--7598.
+
+\bibitem[\protect\citeauthoryear{Stenning, Van~Lambalgen, et~al.}{Stenning
+  et~al.}{2008}]{stenning2008interpretation}
+Stenning, K., M.~Van~Lambalgen, et~al. (2008).
+\newblock Interpretation, representation, and deductive reasoning.
+\newblock {\em Reasoning: Studies of human inference and its foundations\/},
+  223--248.
+
+\bibitem[\protect\citeauthoryear{Tappin, van~der Leer, and McKay}{Tappin
+  et~al.}{2017}]{tappin2017heart}
+Tappin, B.~M., L.~van~der Leer, and R.~T. McKay (2017).
+\newblock The heart trumps the head: Desirability bias in political belief
+  revision.
+\newblock {\em Journal of Experimental Psychology: General\/}~{\em 146\/}(8),
+  1143.
+
+\bibitem[\protect\citeauthoryear{Wason}{Wason}{1968}]{wason1968reasoning}
+Wason, P.~C. (1968).
+\newblock Reasoning about a rule.
+\newblock {\em Quarterly journal of experimental psychology\/}~{\em 20\/}(3),
+  273--281.
+
+\bibitem[\protect\citeauthoryear{Wroe, Bhan, Salkovskis, and Bedford}{Wroe
+  et~al.}{2005}]{wroe2005feeling}
+Wroe, A.~L., A.~Bhan, P.~Salkovskis, and H.~Bedford (2005).
+\newblock Feeling bad about immunising our children.
+\newblock {\em Vaccine\/}~{\em 23\/}(12), 1428--1433.
+
+\end{thebibliography}
