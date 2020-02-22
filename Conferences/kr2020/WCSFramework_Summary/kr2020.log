@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  21 FEB 2020 14:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  22 FEB 2020 09:49
 entering extended mode
 **./kr2020.tex
 (kr2020.tex
@@ -646,138 +646,148 @@ ne 37.
 Package natbib Warning: Citation `stenning2008interpretation' on page 2 undefin
 ed on input line 74.
 
-<general.png, id=14, 382.57932pt x 84.46556pt>
-File: general.png Graphic file (type png)
- <use general.png>
-Package pdftex.def Info: general.png used on input line 95.
-(pdftex.def)             Requested size: 178.5036pt x 39.40881pt.
+[2]
 
-<generalWCS.png, id=15, 554.67226pt x 73.62506pt>
-File: generalWCS.png Graphic file (type png)
- <use generalWCS.png>
-Package pdftex.def Info: generalWCS.png used on input line 101.
-(pdftex.def)             Requested size: 267.7622pt x 35.54182pt.
- [2]
+Package natbib Warning: Citation `byrne1989suppressing' on page 3 undefined on 
+input line 94.
 
-Package natbib Warning: Citation `sigman2008brain' on page 3 undefined on input
- line 109.
-
-[3 <./general.png> <./generalWCS.png>] [4]
-
-Package natbib Warning: Citation `needleman1970general' on page 5 undefined on 
-input line 141.
-
-
-Package natbib Warning: Citation `holldobler2015weak' on page 5 undefined on in
-put line 147.
-
-
-Package natbib Warning: Citation `byrne1989suppressing' on page 5 undefined on 
-input line 147.
-
-
-Package natbib Warning: Citation `wason1968reasoning' on page 5 undefined on in
-put line 147.
-
-
-Package natbib Warning: Citation `ragni2017formal' on page 5 undefined on input
- line 159.
-
-[5]
-
-Package natbib Warning: Citation `byrne1989suppressing' on page 6 undefined on 
-input line 168.
-
-
-Package natbib Warning: Citation `saldanha2017weak' on page 6 undefined on inpu
-t line 168.
-
-
-Package natbib Warning: Citation `breu2019weak' on page 6 undefined on input li
-ne 170.
-
-
-Package natbib Warning: Citation `byrne1989suppressing' on page 6 undefined on 
-input line 174.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 177.
-
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 177.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
 
 
-Package natbib Warning: Citation `dietz2014modeling' on page 6 undefined on inp
-ut line 185.
+Package natbib Warning: Citation `dietz2014modeling' on page 3 undefined on inp
+ut line 104.
 
-[6] <suppressionSCP_overview.png, id=43, 659.91544pt x 93.49931pt>
+[3] <general.png, id=25, 382.57932pt x 84.46556pt>
+File: general.png Graphic file (type png)
+ <use general.png>
+Package pdftex.def Info: general.png used on input line 134.
+(pdftex.def)             Requested size: 178.5036pt x 39.40881pt.
+
+<generalWCS.png, id=26, 554.67226pt x 73.62506pt>
+File: generalWCS.png Graphic file (type png)
+ <use generalWCS.png>
+Package pdftex.def Info: generalWCS.png used on input line 140.
+(pdftex.def)             Requested size: 267.7622pt x 35.54182pt.
+
+
+Package natbib Warning: Citation `sigman2008brain' on page 4 undefined on input
+ line 148.
+
+[4 <./general.png> <./generalWCS.png>] [5]
+<suppressionSCP_overview.png, id=40, 659.91544pt x 93.49931pt>
 File: suppressionSCP_overview.png Graphic file (type png)
 
 <use suppressionSCP_overview.png>
-Package pdftex.def Info: suppressionSCP_overview.png used on input line 215.
+Package pdftex.def Info: suppressionSCP_overview.png used on input line 184.
 (pdftex.def)             Requested size: 428.93994pt x 60.77382pt.
 
-<suppressionSCP_normal.png, id=44, 497.75963pt x 180.22331pt>
+<suppressionSCP_normal.png, id=41, 497.75963pt x 180.22331pt>
 File: suppressionSCP_normal.png Graphic file (type png)
 
 <use suppressionSCP_normal.png>
-Package pdftex.def Info: suppressionSCP_normal.png used on input line 223.
+Package pdftex.def Info: suppressionSCP_normal.png used on input line 192.
 (pdftex.def)             Requested size: 373.3188pt x 135.16714pt.
- [7 <./suppressionSCP_overview.png>] [8 <./suppressionSCP_normal.png>]
-<suppressionSCP_mod.png, id=54, 579.51506pt x 130.53769pt>
+ [6 <./suppressionSCP_overview.png>] [7 <./suppressionSCP_normal.png>]
+<suppressionSCP_mod.png, id=51, 579.51506pt x 130.53769pt>
 File: suppressionSCP_mod.png Graphic file (type png)
 
 <use suppressionSCP_mod.png>
-Package pdftex.def Info: suppressionSCP_mod.png used on input line 265.
+Package pdftex.def Info: suppressionSCP_mod.png used on input line 227.
 (pdftex.def)             Requested size: 405.65778pt x 91.37575pt.
 
-<suppressionSCP_mod2.png, id=55, 492.79106pt x 196.03238pt>
+<suppressionSCP_mod2.png, id=52, 492.79106pt x 196.03238pt>
 File: suppressionSCP_mod2.png Graphic file (type png)
 
 <use suppressionSCP_mod2.png>
-Package pdftex.def Info: suppressionSCP_mod2.png used on input line 276.
+Package pdftex.def Info: suppressionSCP_mod2.png used on input line 238.
 (pdftex.def)             Requested size: 344.95139pt x 137.22171pt.
- [9 <./suppressionSCP_mod.png>]
-
-Package natbib Warning: Citation `brown2010omission' on page 10 undefined on in
-put line 285.
 
 
-Package natbib Warning: Citation `wroe2005feeling' on page 10 undefined on inpu
-t line 285.
+Package natbib Warning: Citation `brown2010omission' on page 8 undefined on inp
+ut line 247.
 
 
-Package natbib Warning: Citation `tappin2017heart' on page 10 undefined on inpu
-t line 285.
+Package natbib Warning: Citation `wroe2005feeling' on page 8 undefined on input
+ line 247.
 
-<scpClassDiagram.png, id=59, 1238.07544pt x 711.8595pt>
+
+Package natbib Warning: Citation `tappin2017heart' on page 8 undefined on input
+ line 247.
+
+[8 <./suppressionSCP_mod.png> <./suppressionSCP_mod2.png>]
+
+Package natbib Warning: Citation `needleman1970general' on page 9 undefined on 
+input line 259.
+
+
+Package natbib Warning: Citation `holldobler2015weak' on page 9 undefined on in
+put line 265.
+
+
+Package natbib Warning: Citation `byrne1989suppressing' on page 9 undefined on 
+input line 265.
+
+
+Package natbib Warning: Citation `wason1968reasoning' on page 9 undefined on in
+put line 265.
+
+[9]
+
+Package natbib Warning: Citation `ragni2017formal' on page 10 undefined on inpu
+t line 277.
+
+
+Package natbib Warning: Citation `byrne1989suppressing' on page 10 undefined on
+ input line 286.
+
+
+Package natbib Warning: Citation `saldanha2017weak' on page 10 undefined on inp
+ut line 286.
+
+
+Package natbib Warning: Citation `breu2019weak' on page 10 undefined on input l
+ine 288.
+
+
+Package natbib Warning: Citation `byrne1989suppressing' on page 10 undefined on
+ input line 292.
+
+[10]
+
+Package natbib Warning: Citation `dietz2014modeling' on page 11 undefined on in
+put line 303.
+
+[11] <scpClassDiagram.png, id=66, 1238.07544pt x 711.8595pt>
 File: scpClassDiagram.png Graphic file (type png)
 
 <use scpClassDiagram.png>
-Package pdftex.def Info: scpClassDiagram.png used on input line 297.
+Package pdftex.def Info: scpClassDiagram.png used on input line 339.
 (pdftex.def)             Requested size: 650.43001pt x 373.98166pt.
- [10 <./suppressionSCP_mod2.png>] [11 <./scpClassDiagram.png>] [12]
+ [12] [13 <./scpClassDiagram.png>]
 No file kr2020.bbl.
-[13]
+[14]
 
-Package natbib Warning: Citation `stenning2008interpretation' on page 14 undefi
-ned on input line 374.
+Package natbib Warning: Citation `stenning2008interpretation' on page 15 undefi
+ned on input line 416.
 
 
 Package natbib Warning: There were undefined citations.
 
-[14] [15] (kr2020.aux)
+[15] [16] (kr2020.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14948 strings out of 493323
- 283727 string characters out of 3139069
- 333353 words of memory out of 3000000
- 18189 multiletter control sequences out of 15000+200000
+ 14949 strings out of 493323
+ 283737 string characters out of 3139069
+ 333362 words of memory out of 3000000
+ 18190 multiletter control sequences out of 15000+200000
  13305 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,54p,1738b,462s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -800,9 +810,9 @@ cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on kr2020.pdf (15 pages, 486741 bytes).
+Output written on kr2020.pdf (16 pages, 493624 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
+ 149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
