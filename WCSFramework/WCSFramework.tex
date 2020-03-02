@@ -7,7 +7,7 @@
 \newtheorem{proof}{Proof}
 \newtheorem{lemma}{Lemma}
 \usepackage[margin=1in]{geometry}
-
+\graphicspath{{../figs/}}
 \begin{document}
 
 
@@ -16,9 +16,8 @@
 
 \maketitle
 
-\begin{abstract}
-The Weak Completion Semantics has been shown to be an accurate model of human cognitive behaviour in many classic psychological experiments. This paper introduces the Sequential Cognitive Process framework which allows several well-founded operations to be performed on the initial knowledge base presented to subjects. With this framework, both the general case achieved by the Weak Completion Semantics Approach and unusual (aberrant) reasoning by subjects who differ from the norm can be modelled.
-\end{abstract}
+\section*{Abstract}
+Approaches to cognitive modelling with non-monotonic logics have thus far been largely \textit{ad hoc} and poorly standardised, making inter-model comparisons difficult. As an attempt to systematically represent non-monotonic logics in a framework that standardises cognitive modelling under these logics without sacrificing their expressiveness, we introduce the Sequential Cognition Process (SCP). Under the assumption that human reasoning can be represented as a sequence of distinct cognitive operations on an initial knowledge base SCPs provide a consistent framework for generating and evaluating models of human cognition. Using an adapted interpretation of the Weak Completion Semantics (WCS), SCPs are able to accurately model several classical experiments in cognitive modelling. We use the SCP framework to model both general case reasoners -- which arrive at the most frequently observed conclusions -- and poorly-studied individual case reasoners -- which do not. We illustrate the use of SCPs using the Suppression Task.
 
 \section{Introduction}
 The Weak Completion Semantics \citep{holldobler2015weak} is a non-monotonic logical framework which can be used to model the general case of several well-described cognitive tasks. The tasks include but are not limitted to: the Suppression Task \citep{byrne1989suppressing}, the Wason Selection Task \citep{wason1968reasoning}, @TODOmoreTasks. The WCS is one of a number of non-monotonic frameworks \citep{ragni2017formal} which can approximate the empirical results of reasoning tasks.

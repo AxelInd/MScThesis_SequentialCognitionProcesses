@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  22 FEB 2020 10:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  2 MAR 2020 09:33
 entering extended mode
 **./kr2020.tex
 (kr2020.tex
@@ -621,94 +621,102 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
+{C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+LaTeX Warning: Reference `sec:ecp' on page 2 undefined on input line 45.
+
+[2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
+
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
  [3]
-<general.png, id=24, 382.57932pt x 84.46556pt>
-File: general.png Graphic file (type png)
- <use general.png>
-Package pdftex.def Info: general.png used on input line 134.
+<../../../figs/general.png, id=25, 382.57932pt x 84.46556pt>
+File: ../../../figs/general.png Graphic file (type png)
+
+<use ../../../figs/general.png>
+Package pdftex.def Info: ../../../figs/general.png used on input line 142.
 (pdftex.def)             Requested size: 178.5036pt x 39.40881pt.
 
-<generalWCS.png, id=25, 554.67226pt x 73.62506pt>
-File: generalWCS.png Graphic file (type png)
- <use generalWCS.png>
-Package pdftex.def Info: generalWCS.png used on input line 140.
-(pdftex.def)             Requested size: 267.7622pt x 35.54182pt.
- [4 <./general.png> <./generalWCS.png>] [5]
-<suppressionSCP_overview.png, id=39, 659.91544pt x 93.49931pt>
-File: suppressionSCP_overview.png Graphic file (type png)
+<../../../figs/generalWCS.png, id=26, 554.67226pt x 73.62506pt>
+File: ../../../figs/generalWCS.png Graphic file (type png)
 
-<use suppressionSCP_overview.png>
-Package pdftex.def Info: suppressionSCP_overview.png used on input line 184.
+<use ../../../figs/generalWCS.png>
+Package pdftex.def Info: ../../../figs/generalWCS.png used on input line 148.
+(pdftex.def)             Requested size: 267.7622pt x 35.54182pt.
+ [4 <../../../figs/general.png> <../../../figs/generalWCS.png>] [5]
+<../../../figs/suppressionSCP_overview.png, id=40, 659.91544pt x 93.49931pt>
+File: ../../../figs/suppressionSCP_overview.png Graphic file (type png)
+
+<use ../../../figs/suppressionSCP_overview.png>
+Package pdftex.def Info: ../../../figs/suppressionSCP_overview.png used on inpu
+t line 191.
 (pdftex.def)             Requested size: 428.93994pt x 60.77382pt.
 
-<suppressionSCP_normal.png, id=40, 497.75963pt x 180.22331pt>
-File: suppressionSCP_normal.png Graphic file (type png)
+<../../../figs/suppressionSCP_normal.png, id=41, 595.32413pt x 121.50394pt>
+File: ../../../figs/suppressionSCP_normal.png Graphic file (type png)
 
-<use suppressionSCP_normal.png>
-Package pdftex.def Info: suppressionSCP_normal.png used on input line 192.
-(pdftex.def)             Requested size: 373.3188pt x 135.16714pt.
- [6 <./suppressionSCP_overview.png>] [7 <./suppressionSCP_normal.png>]
-<suppressionSCP_mod.png, id=51, 579.51506pt x 130.53769pt>
-File: suppressionSCP_mod.png Graphic file (type png)
+<use ../../../figs/suppressionSCP_normal.png>
+Package pdftex.def Info: ../../../figs/suppressionSCP_normal.png used on input 
+line 199.
+(pdftex.def)             Requested size: 446.49199pt x 91.12772pt.
+ [6 <../../../figs/suppressionSCP_overview.png>] [7 <../../../figs/suppressionS
+CP_normal.png>]
+<../../../figs/suppressionSCP_mod.png, id=51, 510.85857pt x 109.30838pt>
+File: ../../../figs/suppressionSCP_mod.png Graphic file (type png)
 
-<use suppressionSCP_mod.png>
-Package pdftex.def Info: suppressionSCP_mod.png used on input line 227.
-(pdftex.def)             Requested size: 405.65778pt x 91.37575pt.
+<use ../../../figs/suppressionSCP_mod.png>
+Package pdftex.def Info: ../../../figs/suppressionSCP_mod.png used on input lin
+e 234.
+(pdftex.def)             Requested size: 357.59856pt x 76.51534pt.
 
-<suppressionSCP_mod2.png, id=52, 492.79106pt x 196.03238pt>
-File: suppressionSCP_mod2.png Graphic file (type png)
+<../../../figs/suppressionSCP_mod2.png, id=52, 632.8142pt x 154.47713pt>
+File: ../../../figs/suppressionSCP_mod2.png Graphic file (type png)
 
-<use suppressionSCP_mod2.png>
-Package pdftex.def Info: suppressionSCP_mod2.png used on input line 238.
-(pdftex.def)             Requested size: 344.95139pt x 137.22171pt.
- [8 <./suppressionSCP_mod.png> <./suppressionSCP_mod2.png>] [9] (kr2020.bbl) [1
-0]
-<scpClassDiagram.png, id=63, 1238.07544pt x 711.8595pt>
-File: scpClassDiagram.png Graphic file (type png)
+<use ../../../figs/suppressionSCP_mod2.png>
+Package pdftex.def Info: ../../../figs/suppressionSCP_mod2.png used on input li
+ne 245.
+(pdftex.def)             Requested size: 442.96692pt x 108.13324pt.
+ [8 <../../../figs/suppressionSCP_mod.png>] [9 <../../../figs/suppressionSCP_mo
+d2.png>] [10] (kr2020.bbl) [11]
+[12] (kr2020.aux)
 
-<use scpClassDiagram.png>
-Package pdftex.def Info: scpClassDiagram.png used on input line 304.
-(pdftex.def)             Requested size: 650.43001pt x 373.98166pt.
- [11] [12 <./scpClassDiagram.png>] (kr2020.aux) ) 
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 14967 strings out of 493323
- 284233 string characters out of 3139069
- 333922 words of memory out of 3000000
- 18206 multiletter control sequences out of 15000+200000
+ 14976 strings out of 493323
+ 284808 string characters out of 3139069
+ 334213 words of memory out of 3000000
+ 18215 multiletter control sequences out of 15000+200000
  13305 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,54p,1738b,462s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmtt10.pfb>
-Output written on kr2020.pdf (12 pages, 483531 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on kr2020.pdf (12 pages, 392423 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
+ 135 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

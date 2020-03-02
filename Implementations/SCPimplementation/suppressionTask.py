@@ -170,6 +170,7 @@ def unit_sup_standard ():
     print (_scp.evaluate())
     correctNames = ['e','l','o','ab1','ab2']
     correctVals = [True,None,None,None,False]
+    print (_scp.strDetailed())
     unit_compare(_scp,correctKB,correctNames,correctVals)
 def unit_sup_noSuppression ():
     _scp = createsuppressionTask_noSuppression()

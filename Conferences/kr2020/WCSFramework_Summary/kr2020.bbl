@@ -21,6 +21,13 @@ Byrne, R.~M. (1989).
 \newblock Suppressing valid inferences with conditionals.
 \newblock {\em Cognition\/}~{\em 31\/}(1), 61--83.
 
+\bibitem[\protect\citeauthoryear{Dietz, Holldobler, and Ragni}{Dietz
+  et~al.}{2012}]{dietz2012computational}
+Dietz, E.-A., S.~Holldobler, and M.~Ragni (2012).
+\newblock A computational logic approach to the suppression task.
+\newblock In {\em Proceedings of the Annual Meeting of the Cognitive Science
+  Society}, Volume~34.
+
 \bibitem[\protect\citeauthoryear{Dietz, H{\"o}lldobler, and Wernhard}{Dietz
   et~al.}{2014}]{dietz2014modeling}
 Dietz, E.-A., S.~H{\"o}lldobler, and C.~Wernhard (2014).
@@ -28,6 +35,12 @@ Dietz, E.-A., S.~H{\"o}lldobler, and C.~Wernhard (2014).
   semantics.
 \newblock {\em Journal of Applied Non-Classical Logics\/}~{\em 24\/}(1-2),
   61--85.
+
+\bibitem[\protect\citeauthoryear{McDermott and Doyle}{McDermott and
+  Doyle}{1980}]{mcdermott1980non}
+McDermott, D. and J.~Doyle (1980).
+\newblock Non-monotonic logic i.
+\newblock {\em Artificial intelligence\/}~{\em 13\/}(1-2), 41--72.
 
 \bibitem[\protect\citeauthoryear{Mocanu, Mocanu, Stone, Nguyen, Gibescu, and
   Liotta}{Mocanu et~al.}{2018}]{mocanu2018scalable}
@@ -37,12 +50,24 @@ Mocanu, D.~C., E.~Mocanu, P.~Stone, P.~H. Nguyen, M.~Gibescu, and A.~Liotta
   connectivity inspired by network science.
 \newblock {\em Nature communications\/}~{\em 9\/}(1), 1--12.
 
+\bibitem[\protect\citeauthoryear{Saldanha, H{\"o}lldobler, and Rocha}{Saldanha
+  et~al.}{2017}]{saldanha2017weak}
+Saldanha, E.-A.~D., S.~H{\"o}lldobler, and I.~L. Rocha (2017).
+\newblock The weak completion semantics.
+\newblock In {\em Bridging@ CogSci}, pp.\  18--30.
+
 \bibitem[\protect\citeauthoryear{Sigman and Dehaene}{Sigman and
   Dehaene}{2008}]{sigman2008brain}
 Sigman, M. and S.~Dehaene (2008).
 \newblock Brain mechanisms of serial and parallel processing during dual-task
   performance.
 \newblock {\em Journal of Neuroscience\/}~{\em 28\/}(30), 7585--7598.
+
+\bibitem[\protect\citeauthoryear{Smirnova, Zorina, Obozova, and
+  Wasserman}{Smirnova et~al.}{2015}]{smirnova2015crows}
+Smirnova, A., Z.~Zorina, T.~Obozova, and E.~Wasserman (2015).
+\newblock Crows spontaneously exhibit analogical reasoning.
+\newblock {\em Current Biology\/}~{\em 25\/}(2), 256--260.
 
 \bibitem[\protect\citeauthoryear{Stenning, Van~Lambalgen, et~al.}{Stenning
   et~al.}{2008}]{stenning2008interpretation}

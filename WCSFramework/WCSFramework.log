@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  21 FEB 2020 14:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  2 MAR 2020 08:42
 entering extended mode
 **./WCSFramework.tex
 (WCSFramework.tex
@@ -290,192 +290,216 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 106.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
  [3]
-<wasonAbstract.png, id=25, 487.8225pt x 191.9672pt>
-File: wasonAbstract.png Graphic file (type png)
- <use wasonAbstract.png>
-Package pdftex.def Info: wasonAbstract.png used on input line 175.
+<../figs/wasonAbstract.png, id=23, 487.8225pt x 191.9672pt>
+File: ../figs/wasonAbstract.png Graphic file (type png)
+
+<use ../figs/wasonAbstract.png>
+Package pdftex.def Info: ../figs/wasonAbstract.png used on input line 174.
 (pdftex.def)             Requested size: 243.91064pt x 95.98335pt.
+ [4] [5 <../figs/wasonAbstract.png>]
+<../figs/wstcano.png, id=33, 374.90062pt x 315.42844pt>
+File: ../figs/wstcano.png Graphic file (type png)
 
-[4] [5 <./wasonAbstract.png>] <wstcano.png, id=35, 374.90062pt x 315.42844pt>
-File: wstcano.png Graphic file (type png)
-
-<use wstcano.png>
-Package pdftex.def Info: wstcano.png used on input line 325.
+<use ../figs/wstcano.png>
+Package pdftex.def Info: ../figs/wstcano.png used on input line 324.
 (pdftex.def)             Requested size: 224.94211pt x 189.25851pt.
- [6] <allBoxes.png, id=39, 482.92921pt x 77.91609pt>
-File: allBoxes.png Graphic file (type png)
+ [6]
+<../figs/allBoxes.png, id=37, 482.92921pt x 77.91609pt>
+File: ../figs/allBoxes.png Graphic file (type png)
 
-<use allBoxes.png>
-Package pdftex.def Info: allBoxes.png used on input line 344.
+<use ../figs/allBoxes.png>
+Package pdftex.def Info: ../figs/allBoxes.png used on input line 343.
 (pdftex.def)             Requested size: 289.75975pt x 46.75pt.
- <general.png, id=40, 382.57932pt x 84.46556pt>
-File: general.png Graphic file (type png)
 
-<use general.png>
-Package pdftex.def Info: general.png used on input line 350.
+<../figs/general.png, id=38, 382.57932pt x 84.46556pt>
+File: ../figs/general.png Graphic file (type png)
+
+<use ../figs/general.png>
+Package pdftex.def Info: ../figs/general.png used on input line 349.
 (pdftex.def)             Requested size: 137.72844pt x 30.40756pt.
- <generalwcs.png, id=41, 554.67226pt x 73.62506pt>
-File: generalwcs.png Graphic file (type png)
 
-<use generalwcs.png>
-Package pdftex.def Info: generalwcs.png used on input line 356.
+<../figs/generalwcs.png, id=39, 554.67226pt x 73.62506pt>
+File: ../figs/generalwcs.png Graphic file (type png)
+
+<use ../figs/generalwcs.png>
+Package pdftex.def Info: ../figs/generalwcs.png used on input line 355.
 (pdftex.def)             Requested size: 360.53268pt x 47.8557pt.
- [7 <./wstcano.png> <./allBoxes.png> <./general.png>]
-[8 <./generalwcs.png>] <weaklycompleteSCP.png, id=49, 557.38237pt x 86.724pt>
-File: weaklycompleteSCP.png Graphic file (type png)
+ [7 <../figs/wstcano.png> <../figs/allBoxes.png> <../figs/general.png>] [8 <../
+figs/generalwcs.png>]
+<../figs/weaklycompleteSCP.png, id=47, 557.38237pt x 86.724pt>
+File: ../figs/weaklycompleteSCP.png Graphic file (type png)
 
-<use weaklycompleteSCP.png>
-Package pdftex.def Info: weaklycompleteSCP.png used on input line 412.
+<use ../figs/weaklycompleteSCP.png>
+Package pdftex.def Info: ../figs/weaklycompleteSCP.png used on input line 411.
 (pdftex.def)             Requested size: 418.03575pt x 65.04282pt.
 
-<abnormalitySCP.png, id=50, 640.04118pt x 138.21637pt>
-File: abnormalitySCP.png Graphic file (type png)
+<../figs/abnormalitySCP.png, id=48, 640.04118pt x 138.21637pt>
+File: ../figs/abnormalitySCP.png Graphic file (type png)
 
-<use abnormalitySCP.png>
-Package pdftex.def Info: abnormalitySCP.png used on input line 418.
+<use ../figs/abnormalitySCP.png>
+Package pdftex.def Info: ../figs/abnormalitySCP.png used on input line 417.
 (pdftex.def)             Requested size: 480.02971pt x 103.662pt.
 
-Overfull \hbox (10.27469pt too wide) in paragraph at lines 418--419
+Overfull \hbox (10.27469pt too wide) in paragraph at lines 417--418
  [][] 
  []
 
-<addVariableSCP.png, id=51, 531.63618pt x 78.59363pt>
-File: addVariableSCP.png Graphic file (type png)
- <use addVariableSCP.png>
-Package pdftex.def Info: addVariableSCP.png used on input line 424.
+<../figs/addVariableSCP.png, id=49, 531.63618pt x 78.59363pt>
+File: ../figs/addVariableSCP.png Graphic file (type png)
+
+<use ../figs/addVariableSCP.png>
+Package pdftex.def Info: ../figs/addVariableSCP.png used on input line 423.
 (pdftex.def)             Requested size: 398.72617pt x 58.94505pt.
 
-<removeVariableSCP.png, id=52, 523.50581pt x 107.50162pt>
-File: removeVariableSCP.png Graphic file (type png)
+<../figs/removeVariableSCP.png, id=50, 523.50581pt x 107.50162pt>
+File: ../figs/removeVariableSCP.png Graphic file (type png)
 
-<use removeVariableSCP.png>
-Package pdftex.def Info: removeVariableSCP.png used on input line 430.
+<use ../figs/removeVariableSCP.png>
+Package pdftex.def Info: ../figs/removeVariableSCP.png used on input line 429.
 (pdftex.def)             Requested size: 392.62839pt x 80.626pt.
- <silenceSCP.png, id=53, 458.9145pt x 107.50162pt>
-File: silenceSCP.png Graphic file (type png)
 
-<use silenceSCP.png>
-Package pdftex.def Info: silenceSCP.png used on input line 436.
+<../figs/silenceSCP.png, id=51, 458.9145pt x 107.50162pt>
+File: ../figs/silenceSCP.png Graphic file (type png)
+
+<use ../figs/silenceSCP.png>
+Package pdftex.def Info: ../figs/silenceSCP.png used on input line 435.
 (pdftex.def)             Requested size: 344.18503pt x 80.626pt.
 
-<semanticOperatorSCP.png, id=54, 322.05319pt x 90.78918pt>
-File: semanticOperatorSCP.png Graphic file (type png)
+<../figs/semanticOperatorSCP.png, id=52, 322.05319pt x 90.78918pt>
+File: ../figs/semanticOperatorSCP.png Graphic file (type png)
 
-<use semanticOperatorSCP.png>
-Package pdftex.def Info: semanticOperatorSCP.png used on input line 442.
+<use ../figs/semanticOperatorSCP.png>
+Package pdftex.def Info: ../figs/semanticOperatorSCP.png used on input line 441
+.
 (pdftex.def)             Requested size: 241.53928pt x 68.0917pt.
- [9 <./weaklycompleteSCP.png>] [10 <./abnormalitySCP.png> <./addVariableSCP.png
-> <./removeVariableSCP.png> <./silenceSCP.png> <./semanticOperatorSCP.png>]
-<suppressionSCP_overview.png, id=62, 659.91544pt x 93.49931pt>
-File: suppressionSCP_overview.png Graphic file (type png)
+ [9] [10 <../figs/weaklycompleteSCP.png> <../figs/abnormalitySCP.png> <../figs/
+addVariableSCP.png> <../figs/removeVariableSCP.png> <../figs/silenceSCP.png>]
+<../figs/suppressionSCP_overview.png, id=60, 659.91544pt x 93.49931pt>
+File: ../figs/suppressionSCP_overview.png Graphic file (type png)
 
-<use suppressionSCP_overview.png>
-Package pdftex.def Info: suppressionSCP_overview.png used on input line 461.
+<use ../figs/suppressionSCP_overview.png>
+Package pdftex.def Info: ../figs/suppressionSCP_overview.png used on input line
+ 460.
 (pdftex.def)             Requested size: 494.93536pt x 70.1243pt.
 
-Overfull \hbox (25.18034pt too wide) in paragraph at lines 461--462
+Overfull \hbox (25.18034pt too wide) in paragraph at lines 460--461
  [] 
  []
 
-<suppressionSCP_simple.png, id=63, 422.32782pt x 126.4725pt>
-File: suppressionSCP_simple.png Graphic file (type png)
+<../figs/suppressionSCP_simple.png, id=61, 389.8063pt x 140.47481pt>
+File: ../figs/suppressionSCP_simple.png Graphic file (type png)
 
-<use suppressionSCP_simple.png>
-Package pdftex.def Info: suppressionSCP_simple.png used on input line 469.
-(pdftex.def)             Requested size: 316.74509pt x 94.85413pt.
+<use ../figs/suppressionSCP_simple.png>
+Package pdftex.def Info: ../figs/suppressionSCP_simple.png used on input line 4
+68.
+(pdftex.def)             Requested size: 292.354pt x 105.35583pt.
 
-<suppressionSCP_normal.png, id=64, 497.75963pt x 180.22331pt>
-File: suppressionSCP_normal.png Graphic file (type png)
+<../figs/suppressionSCP_normal.png, id=62, 595.32413pt x 121.50394pt>
+File: ../figs/suppressionSCP_normal.png Graphic file (type png)
 
-<use suppressionSCP_normal.png>
-Package pdftex.def Info: suppressionSCP_normal.png used on input line 477.
-(pdftex.def)             Requested size: 373.3188pt x 135.16714pt.
+<use ../figs/suppressionSCP_normal.png>
+Package pdftex.def Info: ../figs/suppressionSCP_normal.png used on input line 4
+76.
+(pdftex.def)             Requested size: 446.49199pt x 91.12772pt.
 
-<suppressionSCP_mod.png, id=65, 579.51506pt x 130.53769pt>
-File: suppressionSCP_mod.png Graphic file (type png)
+<../figs/suppressionSCP_mod.png, id=63, 510.85857pt x 109.30838pt>
+File: ../figs/suppressionSCP_mod.png Graphic file (type png)
 
-<use suppressionSCP_mod.png>
-Package pdftex.def Info: suppressionSCP_mod.png used on input line 485.
-(pdftex.def)             Requested size: 434.63522pt x 97.90302pt.
+<use ../figs/suppressionSCP_mod.png>
+Package pdftex.def Info: ../figs/suppressionSCP_mod.png used on input line 484.
 
-<suppressionSCP_mod2.png, id=66, 492.79106pt x 196.03238pt>
-File: suppressionSCP_mod2.png Graphic file (type png)
+(pdftex.def)             Requested size: 383.14297pt x 81.98108pt.
 
-<use suppressionSCP_mod2.png>
-Package pdftex.def Info: suppressionSCP_mod2.png used on input line 493.
-(pdftex.def)             Requested size: 369.59239pt x 147.02391pt.
- [11 <./suppressionSCP_overview.png> <./suppressionSCP_simple.png> <./suppressi
-onSCP_normal.png>] [12 <./suppressionSCP_mod.png> <./suppressionSCP_mod2.png>] 
-<WSTSCPD.png, id=74, 437.2335pt x 112.47018pt>
-File: WSTSCPD.png Graphic file (type png)
+<../figs/suppressionSCP_mod2.png, id=64, 632.8142pt x 154.47713pt>
+File: ../figs/suppressionSCP_mod2.png Graphic file (type png)
 
-<use WSTSCPD.png>
-Package pdftex.def Info: WSTSCPD.png used on input line 522.
+<use ../figs/suppressionSCP_mod2.png>
+Package pdftex.def Info: ../figs/suppressionSCP_mod2.png used on input line 492
+.
+(pdftex.def)             Requested size: 474.60948pt x 115.85756pt.
+
+Overfull \hbox (4.85446pt too wide) in paragraph at lines 492--493
+ [] 
+ []
+
+[11 <../figs/semanticOperatorSCP.png> <../figs/suppressionSCP_overview.png> <..
+/figs/suppressionSCP_simple.png>] [12 <../figs/suppressionSCP_normal.png> <../f
+igs/suppressionSCP_mod.png> <../figs/suppressionSCP_mod2.png>]
+<../figs/WSTSCPD.png, id=72, 437.2335pt x 112.47018pt>
+File: ../figs/WSTSCPD.png Graphic file (type png)
+
+<use ../figs/WSTSCPD.png>
+Package pdftex.def Info: ../figs/WSTSCPD.png used on input line 521.
 (pdftex.def)             Requested size: 327.92432pt x 84.35242pt.
- <WSTSCPK.png, id=75, 412.39069pt x 114.27693pt>
-File: WSTSCPK.png Graphic file (type png)
 
-<use WSTSCPK.png>
-Package pdftex.def Info: WSTSCPK.png used on input line 530.
+<../figs/WSTSCPK.png, id=73, 412.39069pt x 114.27693pt>
+File: ../figs/WSTSCPK.png Graphic file (type png)
+
+<use ../figs/WSTSCPK.png>
+Package pdftex.def Info: ../figs/WSTSCPK.png used on input line 529.
 (pdftex.def)             Requested size: 309.29225pt x 85.70747pt.
- <WSTSCP3.png, id=76, 430.45819pt x 112.47018pt>
-File: WSTSCP3.png Graphic file (type png)
 
-<use WSTSCP3.png>
-Package pdftex.def Info: WSTSCP3.png used on input line 538.
+<../figs/WSTSCP3.png, id=74, 430.45819pt x 112.47018pt>
+File: ../figs/WSTSCP3.png Graphic file (type png)
+
+<use ../figs/WSTSCP3.png>
+Package pdftex.def Info: ../figs/WSTSCP3.png used on input line 537.
 (pdftex.def)             Requested size: 322.84283pt x 84.35242pt.
- <WSTSCP7.png, id=77, 411.48732pt x 108.405pt>
-File: WSTSCP7.png Graphic file (type png)
 
-<use WSTSCP7.png>
-Package pdftex.def Info: WSTSCP7.png used on input line 546.
+<../figs/WSTSCP7.png, id=75, 411.48732pt x 108.405pt>
+File: ../figs/WSTSCP7.png Graphic file (type png)
+
+<use ../figs/WSTSCP7.png>
+Package pdftex.def Info: ../figs/WSTSCP7.png used on input line 545.
 (pdftex.def)             Requested size: 308.61473pt x 81.30354pt.
- [13 <./WSTSCPD.png> <./WSTSCPK.png> <./WSTSCP3.png>] [14 <./WSTSCP7.png>] [15]
- [16] [17] [18] (WCSFramework.bbl) [19]
+ [13 <../figs/WSTSCPD.png> <../figs/WSTSCPK.png> <../figs/WSTSCP3.png>] [14 <..
+/figs/WSTSCP7.png>] [15] [16] [17] [18]
+(WCSFramework.bbl) [19]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 846.
- [20] [21]
-(WCSFramework.aux) ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 845.
+ [20] [21] (WCSFramework.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3897 strings out of 493323
- 51667 string characters out of 3139069
- 136329 words of memory out of 3000000
- 7356 multiletter control sequences out of 15000+200000
- 12815 words of font info for 49 fonts, out of 3000000 for 9000
+ 3894 strings out of 493323
+ 52279 string characters out of 3139069
+ 135341 words of memory out of 3000000
+ 7354 multiletter control sequences out of 15000+200000
+ 12208 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,17n,35p,1351b,274s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-
-Output written on WCSFramework.pdf (21 pages, 535348 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+>
+Output written on WCSFramework.pdf (21 pages, 523750 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
+ 168 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
