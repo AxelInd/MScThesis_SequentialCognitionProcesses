@@ -1,12 +1,21 @@
 \documentclass{article}
+
+
+\usepackage{kr}
+
+
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{natbib}
 \usepackage{xcolor}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{subcaption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\bibliographystyle{kr}
+
+
 
 \usepackage{rotating}
 \usepackage{tikz}
@@ -14,7 +23,8 @@
 \graphicspath{{../../../figs/}}
 \newtheorem{proof}{Proof}
 \newtheorem{lemma}{Lemma}
-\usepackage[margin=1in]{geometry}
+
+
 
 \begin{document}
 
@@ -42,7 +52,7 @@ This paper introduces the Sequential Cognition Process (SCP) which generalises t
 \section{Mathematical Preliminaries}
 \subsection{Non-monotonic Logics in General}
 
-Before discussing the WCS, it is important to understand why non-monotonic logics are required for cognitive modelling at all. There are a number of empirical studies demonstrating that humans consistently fail to draw the classically valid conclusions to certain cognitive tasks \citep{byrne1989suppressing}, \citep{wason1968reasoning}. Section~\ref{sec:ecp} describes the Suppression Task, in which human test subjects repeatedly make the mistake of assuming that, given some knowledge base $KB$, it is possible for $KB \models \phi$ to be true, but $(KB \cup \psi) \models \phi$ to be false.
+Before discussing the WCS, it is important to understand why non-monotonic logics are required for cognitive modelling at all. There are a number of empirical studies demonstrating that humans consistently fail to draw the classically valid conclusions to certain cognitive tasks \citep{byrne1989suppressing}, \citep{wason1968reasoning}. Section~\ref{ssec:sup} describes the Suppression Task, in which human test subjects repeatedly make the mistake of assuming that, given some knowledge base $KB$, it is possible for $KB \models \phi$ to be true, but $(KB \cup \psi) \models \phi$ to be false.
 
 In the field of non-monotonic logics, reasoning is represented as a collection of defeasible inferences. Unlike in classical logic, conclusions need not hold in perpetuity, or even in the same model and revision is always possible. Monotonic logics are not capable of describing human reasoning in experiments like the Suppression Task \citep{dietz2012computational} because they lack this revisionist characteristic.
 
@@ -79,17 +89,17 @@ The Weak Completion of a program $P$ is defined as follows:
 
 Applying this procedure to $P$ results in $wcP$ which is the weak completion of $P$.
 
-The next requirement to apply the WCS framework is the introduction of a semantic operator $\phi_{SvL}$ \citep{stenning2008interpretation}. Let $J$ be the result of applying the semantics operator to an interpretation $I$ and logic program $P$. The $J$ is defined as follows:
+The next requirement to apply the WCS framework is the introduction of a semantic operator $\phi_{SvL}$ \citep{stenning2008interpretation}. Let $J$ be the result of applying the semantics operator to an interpretation $I$ and logic program $P$. Then $J$ is defined as follows:
 
 \[
 \begin{split}
-J^\top = \{ & A | \textrm{ there exists a clause } A\leftarrow Body \in P \textrm{ with } I(Body) = \top\}
+J^\top = \{ & A | \textrm{ there exists a clause } A\leftarrow Body \in P \\ & \textrm{ with } I(Body) = \top\}
 \end{split}
 \]
 \[
 \begin{split}
 J^\bot = \{ &  A | \textrm{ there exists a clause } A \leftarrow Body \in P \\
-           & \textrm{ and for all clauses } A \leftarrow Body \in P \textrm{ we find } I(Body) = \bot\}
+           & \textrm{ and for all clauses } A \leftarrow Body \in P \\ & \textrm{ we find } I(Body) = \bot\}
 \end{split}
 \]
 
@@ -136,7 +146,7 @@ Now suppression has been displayed in the logic program and the variable $l$ rem
 
 \section{Sequential Cognition Process}
 \subsection{SCPs: an Intuitive Description}
-\begin{figure}
+\begin{figure*}
 \begin{subfigure}{.4\textwidth}
   \centering
   \includegraphics[width=.95\linewidth]{general}
@@ -151,7 +161,7 @@ Now suppression has been displayed in the logic program and the variable $l$ rem
 \end{subfigure}
 \caption{The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.}
 \label{fig:scp_generalWCS}
-\end{figure}
+\end{figure*}
 
 Although there is evidence that the brain can perform several simultaneous operations when considering a task (such as when considering an image \citep{sigman2008brain}, the SCP framework assumes that at some points in reasoning about a given task, the mental processes of the agent converge to a set of epistemic states, called a \textit{state point}. Whatever happens between these points of convergence can contain any number of parallel processes. The processes that occur between any two state points in a reasoning task is called a \textit{cognitive operation}. It follows that any cognitive operation is valid as long it takes a set of epistemic states as input and produces a set of epistemic states as output. Figure~\ref{fig:scp_general} describes an SCP that is powerful enough to model any cognitive task that involves an epistemic state transition. However, it does not provide any useful information; the nature of the processes followed is completely undescribed. Suppose, instead, that some cognitive task is being modelled, and that researchers have reason to believe that The Weak Completion Semantics should play a part in their model. Under this new restriction, and assuming a sufficiently expressive epistemic state, Figure~\ref{fig:scp_general} is still an accurate model of the process, but now so is Figure~\ref{fig:scp_generalWCS}. By sacrificing some of the ambiguity -- and, thus, expressiveness -- of the model, the information content of the model description has increased. This trade-off is a feature of the SCP framework and finding the right depth of complexity to model the task accurately and still provide meaningful information is more art than science at present. 
 
@@ -187,31 +197,44 @@ More abstractly, the set of cognitive operations should be well-founded in the l
 \subsection{SCPs Under the Weak Completion Semantics}
 
 \subsubsection{The Suppression Task}
-\begin{figure}
+\begin{figure*}
 \begin{center}
  \centering \includegraphics[scale=0.65]{suppressionSCP_overview}
 \caption{A generalised illustration of the WCS in an SCP. }
 \label {fig:supoverview}
 \end{center}
-\end{figure}
+\end{figure*}
 
-\begin{figure}
+\begin{figure*}
 \begin{center}
  \centering \includegraphics[scale=0.75]{suppressionSCP_normal}
 \caption{The standard case of the Suppression Task, demonstrating the suppression effect. Where the epistemic state in the boxes represents the output of that cognitive operation.}
 \label {fig:supnormal}
 \end{center}
-\end{figure}
+\end{figure*}
 
 Figure~\ref{fig:supoverview} illustrates a generalised SCP to describe the Suppression Task as a series of sequential steps directly mirroring the discrete steps outlined in Section~\ref{ssec:sup}, each cognitive operation passing information to the next process\footnote{It is important to note that a diagram like this is valid for \textit{any} cognitive modelling task because any process may be arbitrarily complex and non-sequential. and so the overall linear process of (actor, complex decision, observed results) is always valid for retroactive modelling, and at least as powerful as the non-monotonic logic framework it uses for modelling.}. To model the SCP the implicit sequence of operations in the Suppression Task is systematized and refined into a set of complex operations. Further we introduce an initial epistemic state $s_i=(KB,V,R)$. One interpretation of the requirements of the suppression task $\pi=(s_i,\gamma,M)$ using SCPs and the WCS is as follows: 
-\begin{itemize}
-\item $s_i=\{KB_i, V_i, R_i\}$
-\item $KB_i=\{e \rightarrow l, \top \rightarrow e, o \rightarrow l\}$, $V_i=\{e:u, l:u, o:u\}$, $R_i=\{\}$
-\item $\gamma = (l\models \top) $ or $(l \models \bot)$ (that is, l is no longer mapped to unknown in the final epistemic state.)
-\item $M=\{\texttt{init, addAB, WeaklyComplete, semanticOperator}\}$
-\end{itemize}
+ 
+ 
+ 
+ 
 
-where all cognitive operations require as in input and produce as output a state point $p$ where every ground point $\bar{p} \in_s p$ is of format $\bar{p}=(KB,V,R)$, \texttt{init} is always the first cognitive operation and adds the initial variables and rules to epistemic state; \texttt{addAB} adds abnormalities to the current epistemic state using the procedure described in Algorithm~\ref{alg:addAbnormalities} (but now also adds those abnormalities to the variable list of the epistemic state; \texttt{WeaklyComplete} weakly completes the knowledge base of the current epistemic state; and \texttt{semanticOperator} returns an epistemic state that leaves the knowledge base unchanged but updates the variables of that state to return the least model of the epistemic state.
+
+\[s_i=\{KB_i, V_i, R_i\} \]
+\[KB_i=\{e \rightarrow l, \top \rightarrow e, o \rightarrow l\} \]
+\[V_i=\{e:u, l:u, o:u\} \]
+\[R_i=\{\} \]
+\[
+\begin{split}
+M= \{\texttt{init}, \texttt{addAB}, \texttt{WeaklyComplete},
+\\ \texttt{semanticOperator}\}
+\end{split}
+\]
+\[\gamma = (l\models \top) \textrm{ or } (l \models \bot)\]
+
+%@TODO change semanticOper to semanticOperator without line overflowing 
+
+where all cognitive operations require as in input and produce as output a state point $p$ where every ground point $\bar{p} \in_s p$ is of format $\bar{p}=(KB,V,R)$, \texttt{init} is always the first cognitive operation and adds the initial variables and rules to epistemic state; \texttt{addAB} adds abnormalities to the current epistemic state using the procedure described in Algorithm~\ref{alg:addAbnormalities} (but now also adds those abnormalities to the variable list of the epistemic state; \texttt{WeaklyComplete} weakly completes the knowledge base of the current epistemic state; and \texttt{semanticOperator} returns an epistemic state that leaves the knowledge base unchanged but updates the variables of that state to return the least model of the epistemic state. The goal $\gamma$ states that l should no longer be mapped to unknown in the final epistemic state.)
 
 Treating Figure~\ref{fig:supoverview} as an SCP, we observe the sequence of output states seen in Figure~\ref{fig:supnormal}. Note that in the final state $l$ remains unknown and the suppression effect is demonstrated.
 
@@ -230,25 +253,25 @@ The exact details of how to delete a variable from a knowledge base are non-triv
 
 In the case of the Suppression Task we argue that one cognitively valid reason for drawing the classical conclusion to the task may be forgetting (or disregarding) the variable $o$. Figure~\ref{fig:supmod} illustrates this case, and shows how the insertion of a complex operation can completely change the final epistemic state.
 
-\begin{figure}
+\begin{figure*}
 \begin{center}
 \includegraphics[scale=0.7]{suppressionSCP_mod}
 \end{center}
 
 \caption{The Suppression Task in which the additional operation of deleting the variable $o$ occurs.}
 \label{fig:supmod}
-\end{figure}
+\end{figure*}
 
 \subsubsection*{Variable Fixing} \label{ssec:variableFixing}
 
-\begin{figure}
+\begin{figure*}
 \begin{center}
 \includegraphics[scale=0.7]{suppressionSCP_mod2}
 \end{center}
 
 \caption{The Suppression Task in which the additional operation of fixing the variable $ab_1$ to false occurs.}
 \label{fig:supmod2}
-\end{figure}
+\end{figure*}
 
 The second case of a potential complex operation to add to the search space of our SCPs is the idea of Variable Fixing. The idea that some  conclusions can be fixed \textit{a priori}. Consider a person who strongly doubts the effectiveness of vaccines, we will call her Karen. Karen started her day convinced that giving her child the MMR vaccine is more dangerous than the disease itself. Later that day Karen spoke to her doctor who strongly advised that she vaccinate her child. He offered her a variety of peer-reviewed papers and studies that showed the relative safety of the vaccination. Karen listened carefully to the trained medical professional, and then went home. After some thought Karen decided that he was wrong, and her opinion on vaccines didn't change.
 

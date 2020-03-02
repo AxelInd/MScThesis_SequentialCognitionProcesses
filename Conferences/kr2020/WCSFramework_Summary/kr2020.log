@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  2 MAR 2020 09:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.5.13)  2 MAR 2020 11:10
 entering extended mode
 **./kr2020.tex
 (kr2020.tex
@@ -20,8 +20,11 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+) (kr.sty
+Conference Style for KR for LaTeX 2e -- version 1.2 (27-Feb-2020)
+\titlepad=\skip43
+\titlebox=\skip44
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
@@ -55,7 +58,7 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2016/11/05 v2.16a AMS math features
-\@mathmargin=\skip43
+\@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
@@ -105,17 +108,19 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \totwidth@=\dimen112
 \lineht@=\dimen113
 \@envbody=\toks18
-\multlinegap=\skip44
-\multlinetaggap=\skip45
+\multlinegap=\skip46
+\multlinetaggap=\skip47
 \mathdisplay@stack=\toks19
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip46
-\bibsep=\skip47
+\bibhang=\skip48
+\bibsep=\skip49
 LaTeX Info: Redefining \cite on input line 694.
+LaTeX Info: Redefining \citeauthor on input line 712.
+LaTeX Info: Redefining \citeyear on input line 735.
 \c@NAT@ctr=\count100
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
@@ -195,20 +200,20 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \c@ALG@line=\count106
 \c@ALG@rem=\count107
 \c@ALG@nested=\count108
-\ALG@tlm=\skip48
-\ALG@thistlm=\skip49
+\ALG@tlm=\skip50
+\ALG@thistlm=\skip51
 \c@ALG@Lnr=\count109
 \c@ALG@blocknr=\count110
 \c@ALG@storecount=\count111
 \c@ALG@tmpcounter=\count112
-\ALG@tmplength=\skip50
+\ALG@tmplength=\skip52
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\rotating.sty"
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 \c@r@tfl@t=\count113
-\rotFPtop=\skip51
-\rotFPbot=\skip52
+\rotFPtop=\skip53
+\rotFPbot=\skip54
 \rot@float@box=\box30
 \rot@mess@toks=\toks23
 )
@@ -473,62 +478,35 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
 \c@proof=\count133
 \c@lemma=\count134
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
-Package: geometry 2010/09/12 v5.6 Page Geometry
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-)
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-)
-("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-\Gm@cnth=\count135
-\Gm@cntv=\count136
-\c@Gm@tempcnt=\count137
-\Gm@bindingoffset=\dimen167
-\Gm@wd@mp=\dimen168
-\Gm@odd@mp=\dimen169
-\Gm@even@mp=\dimen170
-\Gm@layoutwidth=\dimen171
-\Gm@layoutheight=\dimen172
-\Gm@layouthoffset=\dimen173
-\Gm@layoutvoffset=\dimen174
-\Gm@dimlist=\toks36
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg")) (kr2020.aux)
+ (kr2020.aux)
 \openout1 = `kr2020.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count138
-\scratchdimen=\dimen175
+\scratchcounter=\count135
+\scratchdimen=\dimen167
 \scratchbox=\box42
-\nofMPsegments=\count139
-\nofMParguments=\count140
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count141
-\MPscratchDim=\dimen176
-\MPnumerator=\count142
-\makeMPintoPDFobject=\count143
-\everyMPtoPDFconversion=\toks38
+\nofMPsegments=\count136
+\nofMParguments=\count137
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count138
+\MPscratchDim=\dimen168
+\MPnumerator=\count139
+\makeMPintoPDFobject=\count140
+\everyMPtoPDFconversion=\toks37
 ) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -536,6 +514,9 @@ Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -577,146 +558,131 @@ Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: <default>
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=469.75502pt
-* \textheight=650.43001pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=10.0pt
-* \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
-* \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+\titlearea=\box43
+\actualheight=\skip55
+ [1{C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 115.
 
-{C:/Users/Axel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-LaTeX Warning: Reference `sec:ecp' on page 2 undefined on input line 45.
-
-[2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
-
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
- [3]
-<../../../figs/general.png, id=25, 382.57932pt x 84.46556pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
+ [2]
+<../../../figs/general.png, id=20, 382.57932pt x 84.46556pt>
 File: ../../../figs/general.png Graphic file (type png)
 
 <use ../../../figs/general.png>
-Package pdftex.def Info: ../../../figs/general.png used on input line 142.
-(pdftex.def)             Requested size: 178.5036pt x 39.40881pt.
+Package pdftex.def Info: ../../../figs/general.png used on input line 152.
+(pdftex.def)             Requested size: 192.23463pt x 42.44016pt.
 
-<../../../figs/generalWCS.png, id=26, 554.67226pt x 73.62506pt>
+<../../../figs/generalWCS.png, id=21, 554.67226pt x 73.62506pt>
 File: ../../../figs/generalWCS.png Graphic file (type png)
 
 <use ../../../figs/generalWCS.png>
-Package pdftex.def Info: ../../../figs/generalWCS.png used on input line 148.
-(pdftex.def)             Requested size: 267.7622pt x 35.54182pt.
- [4 <../../../figs/general.png> <../../../figs/generalWCS.png>] [5]
-<../../../figs/suppressionSCP_overview.png, id=40, 659.91544pt x 93.49931pt>
+Package pdftex.def Info: ../../../figs/generalWCS.png used on input line 158.
+(pdftex.def)             Requested size: 288.35928pt x 38.27625pt.
+
+Underfull \vbox (badness 3701) has occurred while \output is active []
+
+ [3]
+Underfull \vbox (badness 1552) has occurred while \output is active []
+
+ [4 <../../../figs/general.png> <../../../figs/generalWCS.png>]
+Underfull \hbox (badness 1038) in paragraph at lines 194--195
+[]\OT1/cmr/m/n/10 More ab-stractly, the set of cog-ni-tive op-er-a-tions
+ []
+
+<../../../figs/suppressionSCP_overview.png, id=34, 659.91544pt x 93.49931pt>
 File: ../../../figs/suppressionSCP_overview.png Graphic file (type png)
 
 <use ../../../figs/suppressionSCP_overview.png>
 Package pdftex.def Info: ../../../figs/suppressionSCP_overview.png used on inpu
-t line 191.
+t line 202.
 (pdftex.def)             Requested size: 428.93994pt x 60.77382pt.
 
-<../../../figs/suppressionSCP_normal.png, id=41, 595.32413pt x 121.50394pt>
+<../../../figs/suppressionSCP_normal.png, id=35, 595.32413pt x 121.50394pt>
 File: ../../../figs/suppressionSCP_normal.png Graphic file (type png)
 
 <use ../../../figs/suppressionSCP_normal.png>
 Package pdftex.def Info: ../../../figs/suppressionSCP_normal.png used on input 
-line 199.
+line 210.
 (pdftex.def)             Requested size: 446.49199pt x 91.12772pt.
- [6 <../../../figs/suppressionSCP_overview.png>] [7 <../../../figs/suppressionS
-CP_normal.png>]
-<../../../figs/suppressionSCP_mod.png, id=51, 510.85857pt x 109.30838pt>
+ [5]
+Underfull \vbox (badness 7740) has occurred while \output is active []
+
+
+<../../../figs/suppressionSCP_mod.png, id=41, 510.85857pt x 109.30838pt>
 File: ../../../figs/suppressionSCP_mod.png Graphic file (type png)
 
 <use ../../../figs/suppressionSCP_mod.png>
 Package pdftex.def Info: ../../../figs/suppressionSCP_mod.png used on input lin
-e 234.
+e 258.
 (pdftex.def)             Requested size: 357.59856pt x 76.51534pt.
 
-<../../../figs/suppressionSCP_mod2.png, id=52, 632.8142pt x 154.47713pt>
+<../../../figs/suppressionSCP_mod2.png, id=42, 632.8142pt x 154.47713pt>
 File: ../../../figs/suppressionSCP_mod2.png Graphic file (type png)
 
 <use ../../../figs/suppressionSCP_mod2.png>
 Package pdftex.def Info: ../../../figs/suppressionSCP_mod2.png used on input li
-ne 245.
+ne 269.
 (pdftex.def)             Requested size: 442.96692pt x 108.13324pt.
- [8 <../../../figs/suppressionSCP_mod.png>] [9 <../../../figs/suppressionSCP_mo
-d2.png>] [10] (kr2020.bbl) [11]
-[12] (kr2020.aux)
+ [6 <../../../figs/suppressionSCP_overview.png> <../../../figs/suppressionSCP_n
+ormal.png>] [7 <../../../figs/suppressionSCP_mod.png> <../../../figs/suppressio
+nSCP_mod2.png>] (kr2020.bbl)
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
+[] $\OML/cmm/m/it/10 headDependencies$\OT1/cmtt/m/n/10 := [all non-ground
+ []
 
-LaTeX Warning: There were undefined references.
 
- ) 
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
+[] $\OML/cmm/m/it/10 abDependencies \OT1/cmr/m/n/10 =
+ []
+
+[8] (kr2020.aux) ) 
 Here is how much of TeX's memory you used:
- 14976 strings out of 493323
- 284808 string characters out of 3139069
- 334213 words of memory out of 3000000
- 18215 multiletter control sequences out of 15000+200000
- 13305 words of font info for 52 fonts, out of 3000000 for 9000
+ 14516 strings out of 493323
+ 277820 string characters out of 3139069
+ 327591 words of memory out of 3000000
+ 17767 multiletter control sequences out of 15000+200000
+ 12063 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,17n,54p,1738b,462s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on kr2020.pdf (12 pages, 392423 bytes).
+ 55i,17n,54p,1738b,442s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmtt10.pfb>
+Output written on kr2020.pdf (8 pages, 355731 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
+ 111 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
