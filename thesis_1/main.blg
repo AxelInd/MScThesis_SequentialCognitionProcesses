@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (MiKTeX 2.9.7400 64-bit)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: biblatex.bst
+A level-1 auxiliary file: Appendices/AppendixA.aux
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: main-blx.bib
+Database file #2: bibl.bib
+Biblatex version: 3.13
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+You've used 17 entries,
+            6365 wiz_defined-function locations,
+            1300 strings with 11893 characters,
+and the built_in function-call counts, 125114 in all, are:
+= -- 9424
+> -- 2070
+< -- 653
++ -- 2943
+- -- 740
+* -- 9529
+:= -- 13375
+add.period$ -- 0
+call.type$ -- 17
+change.case$ -- 413
+chr.to.int$ -- 42
+cite$ -- 32
+duplicate$ -- 12338
+empty$ -- 11307
+format.name$ -- 1217
+if$ -- 25994
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 0
+newline$ -- 646
+num.names$ -- 923
+pop$ -- 5826
+preamble$ -- 1
+purify$ -- 520
+quote$ -- 0
+skip$ -- 3537
+stack$ -- 0
+substring$ -- 17104
+swap$ -- 3009
+text.length$ -- 476
+text.prefix$ -- 16
+top$ -- 1
+type$ -- 566
+warning$ -- 0
+while$ -- 1720
+width$ -- 0
+write$ -- 630

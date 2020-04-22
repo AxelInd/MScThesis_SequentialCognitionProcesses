@@ -1,0 +1,656 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{breu2019weak}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=BC}{%
+         family={Breu},
+         familyi={B\bibinitperiod},
+         given={Christian},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=IA}{%
+         family={Ind},
+         familyi={I\bibinitperiod},
+         given={Axel},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Mertesdorf},
+         familyi={M\bibinitperiod},
+         given={Julia},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Ragni},
+         familyi={R\bibinitperiod},
+         given={Marco},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{BC+1}
+    \strng{fullhash}{BCIAMJRM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{booktitle}{European Conference on Logics in Artificial Intelligence}
+    \field{pages}{498\bibrangedash 508}
+    \field{title}{The Weak Completion Semantics Can Model Inferences of
+  Individual Human Reasoners}
+    \field{year}{2019}
+  \endentry
+
+  \entry{brown2010omission}{article}{}
+    \name{author}{8}{}{%
+      {{hash=BKF}{%
+         family={Brown},
+         familyi={B\bibinitperiod},
+         given={Katrina\bibnamedelima F},
+         giveni={K\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=KJS}{%
+         family={Kroll},
+         familyi={K\bibinitperiod},
+         given={J\bibnamedelima Simon},
+         giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=HMJ}{%
+         family={Hudson},
+         familyi={H\bibinitperiod},
+         given={Michael\bibnamedelima J},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Ramsay},
+         familyi={R\bibinitperiod},
+         given={Mary},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Green},
+         familyi={G\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=VCA}{%
+         family={Vincent},
+         familyi={V\bibinitperiod},
+         given={Charles\bibnamedelima A},
+         giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=FG}{%
+         family={Fraser},
+         familyi={F\bibinitperiod},
+         given={Graham},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=SN}{%
+         family={Sevdalis},
+         familyi={S\bibinitperiod},
+         given={Nick},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{BKF+1}
+    \strng{fullhash}{BKFKJSHMJRMGJVCAFGSN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2010}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{25}
+    \field{pages}{4181\bibrangedash 4185}
+    \field{title}{Omission bias and vaccine rejection by parents of healthy
+  children: implications for the influenza A/H1N1 vaccination programme}
+    \field{volume}{28}
+    \field{journaltitle}{Vaccine}
+    \field{year}{2010}
+  \endentry
+
+  \entry{byrne1989suppressing}{article}{}
+    \name{author}{1}{}{%
+      {{hash=BRM}{%
+         family={Byrne},
+         familyi={B\bibinitperiod},
+         given={Ruth\bibnamedelima MJ},
+         giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{BRM1}
+    \strng{fullhash}{BRM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1989}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{1}
+    \field{pages}{61\bibrangedash 83}
+    \field{title}{Suppressing valid inferences with conditionals}
+    \field{volume}{31}
+    \field{journaltitle}{Cognition}
+    \field{year}{1989}
+  \endentry
+
+  \entry{dietz2012computational}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=DEA}{%
+         family={Dietz},
+         familyi={D\bibinitperiod},
+         given={Emmanuelle-Anna},
+         giveni={E\bibinithyphendelim A\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Holldobler},
+         familyi={H\bibinitperiod},
+         given={Steffan},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Ragni},
+         familyi={R\bibinitperiod},
+         given={Marco},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DEAHSRM1}
+    \strng{fullhash}{DEAHSRM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{booktitle}{Proceedings of the Annual Meeting of the Cognitive
+  Science Society}
+    \field{number}{34}
+    \field{title}{A computational logic approach to the suppression task}
+    \field{volume}{34}
+    \field{year}{2012}
+  \endentry
+
+  \entry{dietz2014modeling}{article}{}
+    \name{author}{3}{}{%
+      {{hash=DEA}{%
+         family={Dietz},
+         familyi={D\bibinitperiod},
+         given={Emmanuelle-Anna},
+         giveni={E\bibinithyphendelim A\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={H{\"o}lldobler},
+         familyi={H\bibinitperiod},
+         given={Steffen},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=WC}{%
+         family={Wernhard},
+         familyi={W\bibinitperiod},
+         given={Christoph},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Taylor \& Francis}%
+    }
+    \strng{namehash}{DEAHSWC1}
+    \strng{fullhash}{DEAHSWC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2014}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{number}{1-2}
+    \field{pages}{61\bibrangedash 85}
+    \field{title}{Modeling the suppression task under weak completion and
+  well-founded semantics}
+    \field{volume}{24}
+    \field{journaltitle}{Journal of Applied Non-Classical Logics}
+    \field{year}{2014}
+  \endentry
+
+  \entry{holldobler2015weak}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=HS}{%
+         family={H{\"o}lldobler},
+         familyi={H\bibinitperiod},
+         given={Steffen},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HS1}
+    \strng{fullhash}{HS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{booktitle}{Bridging@ CADE}
+    \field{pages}{2\bibrangedash 16}
+    \field{title}{Weak Completion Semantics and its Applications in Human
+  Reasoning.}
+    \field{year}{2015}
+  \endentry
+
+  \entry{mcdermott1980non}{article}{}
+    \name{author}{2}{}{%
+      {{hash=MD}{%
+         family={McDermott},
+         familyi={M\bibinitperiod},
+         given={Drew},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=DJ}{%
+         family={Doyle},
+         familyi={D\bibinitperiod},
+         given={Jon},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{MDDJ1}
+    \strng{fullhash}{MDDJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1980}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{number}{1-2}
+    \field{pages}{41\bibrangedash 72}
+    \field{title}{Non-monotonic logic I}
+    \field{volume}{13}
+    \field{journaltitle}{Artificial intelligence}
+    \field{year}{1980}
+  \endentry
+
+  \entry{mocanu2018scalable}{article}{}
+    \name{author}{6}{}{%
+      {{hash=MDC}{%
+         family={Mocanu},
+         familyi={M\bibinitperiod},
+         given={Decebal\bibnamedelima Constantin},
+         giveni={D\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=ME}{%
+         family={Mocanu},
+         familyi={M\bibinitperiod},
+         given={Elena},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=SP}{%
+         family={Stone},
+         familyi={S\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=NPH}{%
+         family={Nguyen},
+         familyi={N\bibinitperiod},
+         given={Phuong\bibnamedelima H},
+         giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=GM}{%
+         family={Gibescu},
+         familyi={G\bibinitperiod},
+         given={Madeleine},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=LA}{%
+         family={Liotta},
+         familyi={L\bibinitperiod},
+         given={Antonio},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Nature Publishing Group}%
+    }
+    \strng{namehash}{MDC+1}
+    \strng{fullhash}{MDCMESPNPHGMLA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{number}{1}
+    \field{pages}{1\bibrangedash 12}
+    \field{title}{Scalable training of artificial neural networks with adaptive
+  sparse connectivity inspired by network science}
+    \field{volume}{9}
+    \field{journaltitle}{Nature communications}
+    \field{year}{2018}
+  \endentry
+
+  \entry{reiter1980logic}{article}{}
+    \name{author}{1}{}{%
+      {{hash=RR}{%
+         family={Reiter},
+         familyi={R\bibinitperiod},
+         given={Raymond},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{RR1}
+    \strng{fullhash}{RR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1980}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{number}{1-2}
+    \field{pages}{81\bibrangedash 132}
+    \field{title}{A logic for default reasoning}
+    \field{volume}{13}
+    \field{journaltitle}{Artificial intelligence}
+    \field{year}{1980}
+  \endentry
+
+  \entry{saldanha2017weak}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=SEAD}{%
+         family={Saldanha},
+         familyi={S\bibinitperiod},
+         given={Emmanuelle-Anna\bibnamedelima Dietz},
+         giveni={E\bibinithyphendelim A\bibinitperiod\bibinitdelim
+  D\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={H{\"o}lldobler},
+         familyi={H\bibinitperiod},
+         given={Steffen},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=RIL}{%
+         family={Rocha},
+         familyi={R\bibinitperiod},
+         given={Isabelly\bibnamedelima Lour{\^e}do},
+         giveni={I\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SEADHSRIL1}
+    \strng{fullhash}{SEADHSRIL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{booktitle}{Bridging@ CogSci}
+    \field{pages}{18\bibrangedash 30}
+    \field{title}{The Weak Completion Semantics.}
+    \field{year}{2017}
+  \endentry
+
+  \entry{sigman2008brain}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SM}{%
+         family={Sigman},
+         familyi={S\bibinitperiod},
+         given={Mariano},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DS}{%
+         family={Dehaene},
+         familyi={D\bibinitperiod},
+         given={Stanislas},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Soc Neuroscience}%
+    }
+    \strng{namehash}{SMDS1}
+    \strng{fullhash}{SMDS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2008}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{30}
+    \field{pages}{7585\bibrangedash 7598}
+    \field{title}{Brain mechanisms of serial and parallel processing during
+  dual-task performance}
+    \field{volume}{28}
+    \field{journaltitle}{Journal of Neuroscience}
+    \field{year}{2008}
+  \endentry
+
+  \entry{smirnova2015crows}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SA}{%
+         family={Smirnova},
+         familyi={S\bibinitperiod},
+         given={Anna},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ZZ}{%
+         family={Zorina},
+         familyi={Z\bibinitperiod},
+         given={Zoya},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=OT}{%
+         family={Obozova},
+         familyi={O\bibinitperiod},
+         given={Tanya},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wasserman},
+         familyi={W\bibinitperiod},
+         given={Edward},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{SA+1}
+    \strng{fullhash}{SAZZOTWE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{2}
+    \field{pages}{256\bibrangedash 260}
+    \field{title}{Crows spontaneously exhibit analogical reasoning}
+    \field{volume}{25}
+    \field{journaltitle}{Current Biology}
+    \field{year}{2015}
+  \endentry
+
+  \entry{stenning2008interpretation}{article}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{2}{}{%
+      {{hash=SK}{%
+         family={Stenning},
+         familyi={S\bibinitperiod},
+         given={Keith},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=VLM}{%
+         family={Van\bibnamedelima Lambalgen},
+         familyi={V\bibinitperiod\bibinitdelim L\bibinitperiod},
+         given={Michiel},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press Cambridge, England}%
+    }
+    \strng{namehash}{SKVLM+1}
+    \strng{fullhash}{SKVLM+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2008}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{pages}{223\bibrangedash 248}
+    \field{title}{Interpretation, representation, and deductive reasoning}
+    \field{journaltitle}{Reasoning: Studies of human inference and its
+  foundations}
+    \field{year}{2008}
+  \endentry
+
+  \entry{tappin2017heart}{article}{}
+    \name{author}{3}{}{%
+      {{hash=TBM}{%
+         family={Tappin},
+         familyi={T\bibinitperiod},
+         given={Ben\bibnamedelima M},
+         giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=vdLL}{%
+         prefix={van\bibnamedelima der},
+         prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod},
+         family={Leer},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MRT}{%
+         family={McKay},
+         familyi={M\bibinitperiod},
+         given={Ryan\bibnamedelima T},
+         giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {American Psychological Association}%
+    }
+    \strng{namehash}{TBMLLvdMRT1}
+    \strng{fullhash}{TBMLLvdMRT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{number}{8}
+    \field{pages}{1143}
+    \field{title}{The heart trumps the head: Desirability bias in political
+  belief revision.}
+    \field{volume}{146}
+    \field{journaltitle}{Journal of Experimental Psychology: General}
+    \field{year}{2017}
+  \endentry
+
+  \entry{wason1968reasoning}{article}{}
+    \name{author}{1}{}{%
+      {{hash=WPC}{%
+         family={Wason},
+         familyi={W\bibinitperiod},
+         given={Peter\bibnamedelima C},
+         giveni={P\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {SAGE Publications Sage UK: London, England}%
+    }
+    \strng{namehash}{WPC1}
+    \strng{fullhash}{WPC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1968}
+    \field{labeldatesource}{}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{number}{3}
+    \field{pages}{273\bibrangedash 281}
+    \field{title}{Reasoning about a rule}
+    \field{volume}{20}
+    \field{journaltitle}{Quarterly journal of experimental psychology}
+    \field{year}{1968}
+  \endentry
+
+  \entry{wroe2005feeling}{article}{}
+    \name{author}{4}{}{%
+      {{hash=WAL}{%
+         family={Wroe},
+         familyi={W\bibinitperiod},
+         given={Abigail\bibnamedelima L},
+         giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Bhan},
+         familyi={B\bibinitperiod},
+         given={Angela},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SP}{%
+         family={Salkovskis},
+         familyi={S\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=BH}{%
+         family={Bedford},
+         familyi={B\bibinitperiod},
+         given={Helen},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{WAL+1}
+    \strng{fullhash}{WALBASPBH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{number}{12}
+    \field{pages}{1428\bibrangedash 1433}
+    \field{title}{Feeling bad about immunising our children}
+    \field{volume}{23}
+    \field{journaltitle}{Vaccine}
+    \field{year}{2005}
+  \endentry
+\enddatalist
+\endinput
