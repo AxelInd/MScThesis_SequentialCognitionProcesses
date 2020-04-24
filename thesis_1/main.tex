@@ -496,7 +496,7 @@ There are an infinite number of possible, valid SCPs, that can meet any goal con
 \item There exist infinitely many cognitive operations $T \in \Omega$ which add a new variable from the set of all possible variable names $p \in P$.
 \item There exist infinitely many cognitive operations $V \in \Omega$ which remove a variable from the set of all possible variable names  $p \in P$.
 \item It follows that there exist infinitely many pairs $(T_i \in T, P_i \in P) \in W$ where $T_i$ adds a variable $p \in P$ to the resulting state point, and $V_i$ removes that variable from the resulting statepoint.
-\item Then $x \longmapsto A = x \longmapsto T_i \longmapsto V_i$
+\item Then $f(x \longmapsto A) = f(x \longmapsto T_i \longmapsto V_i)$
 \item Thus it follows that if $f(x \longmapsto A)\models \gamma$ then $f(x \longmapsto T_i \longmapsto V_i)\models \gamma$ for all $(T_i \in T, P_i \in P) \in W$.
 \end{enumerate}
 \end{proof}
@@ -682,11 +682,66 @@ Now, because \texttt{semanticOperator} does not change the values of variables m
 \section{Wason Selection Task}
 
 \chapter{Comparing SCPs}
-\section{Why do we need to compare SCPs?}
-\section{Comparing Generated SCPs}
-\section{Comparing External SCPs}
-\subsection{The Needleman-Wunsch Algorithm}
-\subsection{A Modified Scoring Algorithm}
+\section{Why do we need to compare SCPs?} \label{sec:whyCompare}
+The ability to compare the feasibility of different solutions is an essential step in any computational process in which multiple solutions produce the desired output. Consider a toy example of an SCP task which describes the mental process needed to bake a cake:
+
+\[
+\Pi = (s_0, M, \gamma, f())
+\]
+
+\[
+s_0 = (V=(cakeBaked: \bot) )
+\]
+\[
+M=\{\texttt{mixIngredients}, \texttt{bakeIngredients}, \texttt{doTheLaundry}\}
+\]
+
+\[
+f(x)= \left\{ \begin{split} cakeBaked \models \top & & & \textrm{True}\\ cakeBaked \models \bot & & & \textrm{False} \end{split} \right\}
+\]
+
+\[
+\gamma = (f(\pi) = True)
+\]
+
+Without specifying the precise details of the complex operations in $M$, and simply using our intuition of the effects of these actions, we can draw some candidate SCPs. Candidate SCPs such as $f(s_0 \longmapsto \texttt{mixIngredients})$ do not result in the cake being baked and so are discounted immediately. However, consider a case where the modelling algorithm being used has come up with two possible SCPs to explain the processes chosen by the participant:
+
+\begin{equation} \label{eq:bakeCake}
+SCP_1 = f(s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients})
+\end{equation}
+
+\begin{equation} \label{eq:bakeCakeLaundry}
+SCP_2 = f(s_0 \longmapsto \texttt{mixIngredients} \longmapsto  \texttt{doTheLaundry} \longmapsto \texttt{bakeIngredients})
+\end{equation}
+
+Intuitively, both of these operational sequences would result in a cake being baked and $f(X)$ returning $true$, and thus, both are candidate solutions to the SCP task given. However, both of these solutions may not be equally \textit{plausible}. Why would someone need to do their laundry to make a cake? We can concoct wild scenarios in which the participant's house is so full of dirty laundry that access to the oven it restricted, but this seems implausible. Most readers would agree that Equation~\ref{eq:bakeCake} is more plausible that Equation~\ref{eq:bakeCakeLaundry}.
+
+This toy example is evidence that, in at least some cases, one can confidently prefer one SCP to another. The question now arises: how do we precisely, and consistently prefer one SCP over another? This question is not easy to answer, and this chapter is devoted to proposing candidate solutions which may be able to quantitatively score and select preferable SCPs.
+
+Section~\ref{ssec:compGen} discusses the question of how to compare different SCPs found using search for a single task. Section~\ref{ssec:compExt} discuses the more general problem of comparing SCPs even when the underlying SCPs tasks differ. Section~\ref{ssec:nw} introduces the Needleman-Wunsch Algorithm for string matching whose underlying principles have allowed us to quantify questions of homology and evolutionary relationships in biology, and Section~\ref{ssec:nw_mod} discusses and justifies and extension to this algorithm for use in SCP comparisons.
+
+\section{Comparing Generated SCPs} \label{ssec:compGen}
+\subsection{Scoring}
+Cognitive modelling as a science that exists, in part, to replicate the empirical results of human reasoning suffers from a painful truth: just because a solution is simple, elegant and seemingly well-justified, it does not follow that that solution is correct. Indeed, that solution might completely fail to explain experimental data from a cognitive task, and must then be discounted. However in the fields of string-matching, etymology, and homological evolution @TODOref3times, mathematically consistent approaches to scoring are still generally a good starting point. And so we carry that assumption into the field of cognitive modellings and assume that, in the absence of directly contradictory empirical data, certain properties related to finding the optimal sequence of cognitive operations are desirable, whilst others are not.
+
+In general the easiest way to compare two distinct objects is to quantify some subset of their properties and use these properties to rank the objects. Continuing with the toy example in Section~\ref{sec:whyCompare} we will attempt to create a commonsense scoring mechanism to determine whether $SCP_1$ or $SCP_2$ is a more cognitively plausible solution to baking a cake. A great many possible criteria exist for scoring these two SCPs, but we will focus on just two of them: the length of the SCP, and the plausibility of each cognitive operation that occurs in either SCP.
+
+\subsubsection{SCP Length}
+Perhaps the simplest and most intuitive way to decide which of two SCPs is best suited to solving a specific problem is to prefer the shortest one. In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions, value changes) would be necessary to turn each of these genetic sequences into each other sequence @TODOref. The same logic can be applied to SCPs for those SCPs generated using either \textit{De Novo} or \textit{Insertion Search} (Section~@TODOref).
+
+In the case of \textit{De Novo} search, we assume assume that the optimal length of a solution to $\Pi$ is an SCP length $l=|X|=0$. This optimal solution obviously does not exist in this case $f(s_0) \not\models (cakeBaked = \top)$, but it serves as a way of implicitly preferring shorter SCPs, as those will require fewer insertion operations to satisfy $f(x)$. 
+
+Using this simple test criteria: $|SCP_1| < |SCP_2|$, therefore $SCP_1$ is prefered because it requires only $2$ operations to transform the ideal SCP $f(s_0)$ into $f(s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients})$, rather than the $3$ required for $SCP_2$.
+
+The case for \textit{Insertion search} follows identical logic in order to model deviations from the general reasoner, but uses an ideal SCP which is the known SCP for the general case.
+
+Though simple, this scoring procedure provides the foundations upon which more complex scoring algorithms will be built for the remainder of this section.
+
+\section{Comparing External SCPs} \label{ssec:compExt}
+\subsection{The Needleman-Wunsch Algorithm} \label{ssec:nw}
+In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions) would be necessary to turn each of these sequences into each other sequence.
+
+\subsection{A Modified Scoring Algorithm} \label{ssec:nw_mod}
 
 
 \chapter{Program Design}

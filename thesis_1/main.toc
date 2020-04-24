@@ -67,17 +67,19 @@
 \contentsline {section}{\numberline {7.3}Wason Selection Task}{22}{section.101}%
 \contentsline {chapter}{\numberline {8}Comparing SCPs}{23}{chapter.102}%
 \contentsline {section}{\numberline {8.1}Why do we need to compare SCPs?}{23}{section.103}%
-\contentsline {section}{\numberline {8.2}Comparing Generated SCPs}{23}{section.104}%
-\contentsline {section}{\numberline {8.3}Comparing External SCPs}{23}{section.105}%
-\contentsline {subsection}{\numberline {8.3.1}The Needleman-Wunsch Algorithm}{23}{subsection.106}%
-\contentsline {subsection}{\numberline {8.3.2}A Modified Scoring Algorithm}{23}{subsection.107}%
-\contentsline {chapter}{\numberline {9}Program Design}{25}{chapter.108}%
-\contentsline {section}{\numberline {9.1}Implementing the SCP Framework}{25}{section.109}%
-\contentsline {section}{\numberline {9.2}A Modular Programming Approach}{25}{section.110}%
-\contentsline {chapter}{\numberline {10}Non-Sequential Cognitive Processes}{27}{chapter.111}%
-\contentsline {chapter}{\numberline {11}Conclusions and Future Work}{29}{chapter.112}%
-\contentsline {section}{\numberline {11.1}Conclusion}{29}{section.113}%
-\contentsline {section}{\numberline {11.2}Future Work}{29}{section.114}%
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{33}{appendix.116}%
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{33}{section.117}%
-\contentsline {chapter}{Bibliography}{35}{appendix*.118}%
+\contentsline {section}{\numberline {8.2}Comparing Generated SCPs}{24}{section.106}%
+\contentsline {subsection}{\numberline {8.2.1}Scoring}{24}{subsection.107}%
+\contentsline {subsubsection}{SCP Length}{24}{section*.108}%
+\contentsline {section}{\numberline {8.3}Comparing External SCPs}{25}{section.109}%
+\contentsline {subsection}{\numberline {8.3.1}The Needleman-Wunsch Algorithm}{25}{subsection.110}%
+\contentsline {subsection}{\numberline {8.3.2}A Modified Scoring Algorithm}{25}{subsection.111}%
+\contentsline {chapter}{\numberline {9}Program Design}{27}{chapter.112}%
+\contentsline {section}{\numberline {9.1}Implementing the SCP Framework}{27}{section.113}%
+\contentsline {section}{\numberline {9.2}A Modular Programming Approach}{27}{section.114}%
+\contentsline {chapter}{\numberline {10}Non-Sequential Cognitive Processes}{29}{chapter.115}%
+\contentsline {chapter}{\numberline {11}Conclusions and Future Work}{31}{chapter.116}%
+\contentsline {section}{\numberline {11.1}Conclusion}{31}{section.117}%
+\contentsline {section}{\numberline {11.2}Future Work}{31}{section.118}%
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{35}{appendix.120}%
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{35}{section.121}%
+\contentsline {chapter}{Bibliography}{37}{appendix*.122}%
