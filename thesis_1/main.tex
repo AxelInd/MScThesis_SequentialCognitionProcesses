@@ -559,13 +559,51 @@ In many ways it could be argued that the \texttt{init} operation is simply an ag
 Because it is actually used as a shorthand for whatever sequence of sub-operations is needed to represent the initial epistemic state \texttt{init} is the only cognitive operation which differs on a task-by-task and a reasoner-by-reasoner basis. Every other cognitive operation is a uniquely-named pipeline whose internal structure is fixed for any task in which it appears.
 
 \subsection{Variable Insertion}
+
+
 \subsection{Variable Deletion}
 \subsection{Variable Silencing}
 \subsection{Variable Fixation}
 \subsection{Adding Abnormalities}
+\begin{figure} 
+\begin{center}
+\includegraphics[width=\linewidth]{abnormalitySCP}
+\end{center}
+\caption{One possible formulation of a cognitive function to add abnormalities to variables. This formulation follows the intuition of Appendix~@TODOref.}
+\label{fig:addAB}
+\end{figure}
+
+One of the most obvious candidates for a cognitive function that has evidence across a wide swathe of the cognitive literature (@TODOrefAFewPapers) is the idea of adding an abnormality variable to a problem that does not appear in the initial formulation of that problem. In Section~@TODOref and Section~@TODOref we discussed the idea of abnormalities as licenses for implication. The fact that we can point to several tasks in which an abnormality variable is added after formulation provides compelling evidence that creating these abnormality variables is a well-founded cognitive process that should be included in any comprehensive formulation of $M$. Figure~\ref{fig:addAB} shows one possible formulation of the \texttt{addAB} function for adding abnormalities to a knowledge base of the form $s=(KB,...)$ where $KB$ is a set of rules, and $V$ is a set of (variable name, variable value) pairs.
+
+
+
 \subsection{Weakly Completing}
+\begin{figure} 
+\begin{center}
+\includegraphics[width=\linewidth]{weaklycompleteSCP}
+\end{center}
+\caption{One possible formulation of a cognitive function to weakly complete a set of rules. This formulation follows the intuition of weak completion outlined in Section~@TODOsec.}
+\label{fig:weaklycompleteSCP}
+\end{figure}
+
+Weak completion is an essential part of the WCS. Under the assumption that the WCS is a valid representation of human cognition in at least one scenario, any comprehensive set of cognitive operations $M$ must be able to mimic the Weak Completion of a knowledge base. Figure~\ref{fig:weaklycompleteSCP} how this can be achieved for any epistemic state of the form $s=(KB,...)$.
+
+
 \subsection{Semantic Operator}
+\begin{figure} 
+\begin{center}
+\includegraphics[width=\linewidth]{semanticOperatorSCP}
+\end{center}
+\caption{One possible formulation of a cognitive function to apply the semantic operator a congnitive state by temporarily setting all variables in $V$ to any value that can computed using the semantic rule in Equation~@TODOref. This process is repeated until $V$ is no longer updated. @TODOredoThisDigramToShowActualProcess}
+\label{fig:semanticOperatorSCP}
+\end{figure}
+
+Another essential step in the WCS, the semantic operator is used to assign all variables to either True or False (explictly), or to Unknown (implicitly). Figure~\ref{fig:semanticOperatorSCP} illustrates one way in which this cognitive operation can be implemented for any epistemic state of the form $s=(KB,V,...)$.
+
+
+
 \subsection{Default Inferencing}
+If we assume that Reiter's default logic is a valid model of cognition for at least one task, it follows that an comprehensive formulation of $M$ must encode a cognitive operation for drawing inferences from a set of default rules. Figure~@TODOref illustrates the procedure for drawing such inferences from an epistemic state state of the form $s=(KB,V,D)$ where $KB$ is a set of inference rules, $V$ is mapping of variable names onto variable values, and $D$ is a set of default rules of the form $\frac{condition:exception}{conclusion}$ @TODOrewriteEquationWithStandardSymbols.
 
 \section{Cognitive Operations as Aggregates}
 %talk about combining existing cognitive operations for which there is strong evidence

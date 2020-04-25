@@ -45,41 +45,41 @@
 \contentsline {subsection}{\numberline {5.4.5}Variable Silencing}{16}{subsection.72}%
 \contentsline {subsection}{\numberline {5.4.6}Variable Fixation}{16}{subsection.73}%
 \contentsline {subsection}{\numberline {5.4.7}Adding Abnormalities}{16}{subsection.74}%
-\contentsline {subsection}{\numberline {5.4.8}Weakly Completing}{16}{subsection.75}%
-\contentsline {subsection}{\numberline {5.4.9}Semantic Operator}{16}{subsection.76}%
-\contentsline {subsection}{\numberline {5.4.10}Default Inferencing}{16}{subsection.77}%
-\contentsline {section}{\numberline {5.5}Cognitive Operations as Aggregates}{16}{section.78}%
-\contentsline {section}{\numberline {5.6}Epistemic State Structure Changes with Cognitive Operations}{16}{section.79}%
-\contentsline {section}{\numberline {5.7}Purpose-Built Cognitive Operations}{16}{section.80}%
-\contentsline {subsection}{\numberline {5.7.1}Propositional Logic}{16}{subsection.81}%
-\contentsline {subsection}{\numberline {5.7.2}Weak Completion Semantics}{16}{subsection.82}%
-\contentsline {subsection}{\numberline {5.7.3}Default Logic}{16}{subsection.83}%
-\contentsline {section}{\numberline {5.8}Two Apporaches to Creating Cognitive Operations}{16}{section.84}%
-\contentsline {section}{\numberline {5.9}Theoretical Approximation}{16}{section.85}%
-\contentsline {section}{\numberline {5.10}Empirical Appoximation}{16}{section.86}%
-\contentsline {chapter}{\numberline {6}Mimicking Non-Monotonic Logics With SCPs}{17}{chapter.87}%
-\contentsline {section}{\numberline {6.1}The Suppression Task}{17}{section.88}%
-\contentsline {section}{\numberline {6.2}The Weak Completion Semantics}{17}{section.89}%
-\contentsline {chapter}{\numberline {7}Modelling Experiments with SCPs}{19}{chapter.90}%
-\contentsline {section}{\numberline {7.1}Overview}{19}{section.91}%
-\contentsline {section}{\numberline {7.2}Suppression Task}{19}{section.92}%
-\contentsline {subsection}{\numberline {7.2.1}Extending the Suppression Task with SCPs}{20}{subsection.96}%
-\contentsline {section}{\numberline {7.3}Wason Selection Task}{22}{section.101}%
-\contentsline {chapter}{\numberline {8}Comparing SCPs}{23}{chapter.102}%
-\contentsline {section}{\numberline {8.1}Why do we need to compare SCPs?}{23}{section.103}%
-\contentsline {section}{\numberline {8.2}Comparing Generated SCPs}{24}{section.106}%
-\contentsline {subsection}{\numberline {8.2.1}Scoring}{24}{subsection.107}%
-\contentsline {subsubsection}{SCP Length}{24}{section*.108}%
-\contentsline {section}{\numberline {8.3}Comparing External SCPs}{25}{section.109}%
-\contentsline {subsection}{\numberline {8.3.1}The Needleman-Wunsch Algorithm}{25}{subsection.110}%
-\contentsline {subsection}{\numberline {8.3.2}A Modified Scoring Algorithm}{25}{subsection.111}%
-\contentsline {chapter}{\numberline {9}Program Design}{27}{chapter.112}%
-\contentsline {section}{\numberline {9.1}Implementing the SCP Framework}{27}{section.113}%
-\contentsline {section}{\numberline {9.2}A Modular Programming Approach}{27}{section.114}%
-\contentsline {chapter}{\numberline {10}Non-Sequential Cognitive Processes}{29}{chapter.115}%
-\contentsline {chapter}{\numberline {11}Conclusions and Future Work}{31}{chapter.116}%
-\contentsline {section}{\numberline {11.1}Conclusion}{31}{section.117}%
-\contentsline {section}{\numberline {11.2}Future Work}{31}{section.118}%
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{35}{appendix.120}%
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{35}{section.121}%
-\contentsline {chapter}{Bibliography}{37}{appendix*.122}%
+\contentsline {subsection}{\numberline {5.4.8}Weakly Completing}{16}{subsection.76}%
+\contentsline {subsection}{\numberline {5.4.9}Semantic Operator}{17}{subsection.78}%
+\contentsline {subsection}{\numberline {5.4.10}Default Inferencing}{17}{subsection.80}%
+\contentsline {section}{\numberline {5.5}Cognitive Operations as Aggregates}{18}{section.81}%
+\contentsline {section}{\numberline {5.6}Epistemic State Structure Changes with Cognitive Operations}{18}{section.82}%
+\contentsline {section}{\numberline {5.7}Purpose-Built Cognitive Operations}{18}{section.83}%
+\contentsline {subsection}{\numberline {5.7.1}Propositional Logic}{18}{subsection.84}%
+\contentsline {subsection}{\numberline {5.7.2}Weak Completion Semantics}{18}{subsection.85}%
+\contentsline {subsection}{\numberline {5.7.3}Default Logic}{18}{subsection.86}%
+\contentsline {section}{\numberline {5.8}Two Apporaches to Creating Cognitive Operations}{18}{section.87}%
+\contentsline {section}{\numberline {5.9}Theoretical Approximation}{18}{section.88}%
+\contentsline {section}{\numberline {5.10}Empirical Appoximation}{18}{section.89}%
+\contentsline {chapter}{\numberline {6}Mimicking Non-Monotonic Logics With SCPs}{19}{chapter.90}%
+\contentsline {section}{\numberline {6.1}The Suppression Task}{19}{section.91}%
+\contentsline {section}{\numberline {6.2}The Weak Completion Semantics}{19}{section.92}%
+\contentsline {chapter}{\numberline {7}Modelling Experiments with SCPs}{21}{chapter.93}%
+\contentsline {section}{\numberline {7.1}Overview}{21}{section.94}%
+\contentsline {section}{\numberline {7.2}Suppression Task}{21}{section.95}%
+\contentsline {subsection}{\numberline {7.2.1}Extending the Suppression Task with SCPs}{22}{subsection.99}%
+\contentsline {section}{\numberline {7.3}Wason Selection Task}{24}{section.104}%
+\contentsline {chapter}{\numberline {8}Comparing SCPs}{25}{chapter.105}%
+\contentsline {section}{\numberline {8.1}Why do we need to compare SCPs?}{25}{section.106}%
+\contentsline {section}{\numberline {8.2}Comparing Generated SCPs}{26}{section.109}%
+\contentsline {subsection}{\numberline {8.2.1}Scoring}{26}{subsection.110}%
+\contentsline {subsubsection}{SCP Length}{26}{section*.111}%
+\contentsline {section}{\numberline {8.3}Comparing External SCPs}{27}{section.112}%
+\contentsline {subsection}{\numberline {8.3.1}The Needleman-Wunsch Algorithm}{27}{subsection.113}%
+\contentsline {subsection}{\numberline {8.3.2}A Modified Scoring Algorithm}{27}{subsection.114}%
+\contentsline {chapter}{\numberline {9}Program Design}{29}{chapter.115}%
+\contentsline {section}{\numberline {9.1}Implementing the SCP Framework}{29}{section.116}%
+\contentsline {section}{\numberline {9.2}A Modular Programming Approach}{29}{section.117}%
+\contentsline {chapter}{\numberline {10}Non-Sequential Cognitive Processes}{31}{chapter.118}%
+\contentsline {chapter}{\numberline {11}Conclusions and Future Work}{33}{chapter.119}%
+\contentsline {section}{\numberline {11.1}Conclusion}{33}{section.120}%
+\contentsline {section}{\numberline {11.2}Future Work}{33}{section.121}%
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{37}{appendix.123}%
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{37}{section.124}%
+\contentsline {chapter}{Bibliography}{39}{appendix*.125}%
