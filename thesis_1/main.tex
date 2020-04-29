@@ -77,7 +77,7 @@ headsepline, % Uncomment to get a line under the header
 \geometry{
 	paper=a4paper, % Change to letterpaper for US letter
 	inner=2.5cm, % Inner margin
-	outer=3.8cm, % Outer margin
+	outer=2.5cm, % Outer margin
 	bindingoffset=.5cm, % Binding offset
 	top=1.5cm, % Top margin
 	bottom=1.5cm, % Bottom margin
@@ -410,6 +410,190 @@ After application of the semantic operator $l$ is true in the least model, and s
 Now suppression has been displayed in the logic program and the variable $l$ remains unknown in the least model.
 
 \section{Wason Selection Task}
+
+\begin{table}
+\begin{center}
+
+
+\begin{tabular}{ c c c c c}
+  & \textbf{$p$} & \textbf{$pq$} & \textbf{$pq\bar{q}$} & \textbf{$p\bar{q}$}\\ 
+ Abstract & 36 & 39 & 5 & 19\\  
+ Everyday & 23 & 37 & 11 & 29\\  
+ Deontic & 13 & 19 & 4 & 64
+\end{tabular}
+\caption{The canonical results of the Wason Selection Task}
+\label{tbl:can}
+\end{center}
+\end{table}
+
+
+Another widely studied task in the psychological literature is the Wason Selection Task (WST), which asks participants to draw conclusions about which variables are able to falsify a given rule (\textit{Modus Tolens}\footnote{If $a\rightarrow b$, then $\lnot b \rightarrow \lnot a$}). We will look at this task in terms of the Abstract case of the task \citep{wason1968reasoning}. Each case is identical to each other in terms of classical logic representation, but each is interpreted differently by subjects. The WST is often used to illustrate that humans do no follow classical logic.
+
+\subsubsection*{Abstract Case}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{wasonAbstract}
+\caption{The Abstract case of the Wason Selection Task}
+\end{center}
+\end{figure}
+
+The Abstract case of the WST presents the subject with four cards on a table. Their face-up sides read $D, K, 3,$ and $7$. They are asked which cards must be turned over to test the rule:
+
+\begin{center}
+``If there is a $D$ on one side of the card, then the other side shows $3$."
+\end{center} 
+Using classical logic, it is easy to see that turning $D$ to find anything but $3$ would invalidate the rule, as would turning $7$ and finding a $D$. Thus these two cards must be turned to check the rule. However, human subjects very seldom choose this classical answer set and instead overwhelmingly prefer to turn $D$ and $3$. Table~\ref{tbl:can} shows the most common card selection sets for participants.
+
+A great many cognitive theories have been applied to these results, with varying degrees of success \cite{ragni2017formal}. This paper will focus on the WCS interpretation of the task provided by \citep{ragni2017wason}. This approach assumed an initial knowledge base containing only the rule $3 \leftarrow D$.
+
+To illustrate this interpretation of the task we shall use the WCS to examine each of the four cards individually and see what conclusions can be drawn.
+
+When $D$ is observed:
+
+\[
+KB = \{3 \leftarrow D, D\leftarrow \top \}
+\]
+
+However, at this point, the authors introduce the concept of an abnormality as discussed in \citep{ragni2017formal}. Now, the rule holds only provided that some abnormal even does not occur.
+
+\[
+KB_D = \{3 \leftarrow D \land \lnot ab_1, D \leftarrow \top, ab \leftarrow \bot \}
+\]
+
+\[
+wcKB_D = \{3 \leftrightarrow D \land \lnot ab_1, D \leftrightarrow \top, ab \leftrightarrow \bot \}
+\]
+
+The authors also require that, to validate the rule, it must be evaluated after the semantic operator is iterated. Table~\ref{tbl:dcard} shows the result of repeatedly applying the semantic operator to $KB_D$. 
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c c c }
+ \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
+ 0 &  &  \\  
+ 1 &  $D$ & $ab$  \\  
+ 2 &  $D$, $3$ & $ab$  
+\end{tabular}
+\caption{Applying the Weak Completion Semantics to the $D$ card of the WST.}
+\label{tbl:dcard}
+
+\end{center}
+\end{table}
+
+When the $K$ card is observed:
+
+\[
+KB_K = \{3 \leftarrow D \land \lnot ab_1, K \leftarrow \top, ab \leftarrow \bot \}
+\]
+
+\[
+wcKB_K = \{3 \leftrightarrow D \land \lnot ab_1, K \leftrightarrow \top, ab \leftrightarrow \bot \}
+\]
+
+Table~\ref{tbl:kcard} shows that not enough information can be obtained using only the semantic operator to evaluate the rule $D \leftrightarrow 3$. This is identical to the case for the $7$ card.
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c c c }
+ \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
+ 0 &  &  \\  
+ 1 &  $K$ & $ab$  \\  
+ 2 &  $K$ & $ab$  
+\end{tabular}
+\caption{Applying the Weak Completion Semantics to the $K$ card of the WST.}
+\label{tbl:kcard}
+
+\end{center}
+\end{table}
+
+When the $3$ card is observed:
+\[
+KB_3 = \{3 \leftarrow D \land \lnot ab_1, 3 \leftarrow \top, ab \leftarrow \bot \}
+\]
+
+\[
+wcKB_3 = \{3 \leftrightarrow D \land \lnot ab_1, 3 \leftrightarrow \top, ab \leftrightarrow \bot \}
+\]
+
+In this case, something odd happens. Even though the WCS framework a outlined is not able to deduce anything about the truth value of the variable $D$, participants still very often chose to turn this card. In \cite{breu2019weak} we argue that this may be a result of implicit \textit{abduction}. That is, that the participant subconsciously attempts to identify any possible way in which $3 \leftrightarrow D \land \lnot ab$ could hold when $3=\top$ and $ab=\bot$. The only way for this rule to hold would be for $D$ to be true too:
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c c c }
+ \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
+ 0 &  &  \\  
+ 1 &  $3$ & $ab$  \\  
+ 2 &  $3$ & $ab$  
+\end{tabular}
+\caption{Applying the Weak Completion Semantics to the $K$ card of the WST.}
+\label{tbl:3card}
+
+\end{center}
+\end{table}
+
+Now, using Table~\ref{tbl:3card} one can see that $3$ is set to true, the abnormality is set to false, and $D$ has been assumed via abduction. Following \L ukasiewicz logic these assignments are sufficient to evaluate $3\leftarrow D \land \lnot ab$ to $\top$. This the subject will conclude to turn the card.
+
+This simple interpretation of the WST using the WCS and using or not using abduction is sufficient to achieve the most common (general) reasoning of participants. It does not however explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant portion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak} by including two simple processes: Abduction and Contraposition. By including these two processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical results can also be drawn.
+
+As discussed above, Abduction can be used when the rule under consideration evaluates to unknown. It uses fixing of remaining free varibles to determine if any combination of these can validate or falsify the rule. In the case we have discussed, only fixing $D = \top$ will validate the rule.
+
+Contraposition explicitly makes use of \textit{modus tolens}, usually assumed to be silenced in human cognition to derive certain canonical cases in the WST. In particular, for the card $7$, the logic program:
+
+\[
+KB_7 = \{3 \leftarrow D, 7 \leftarrow \top \}
+\]
+
+is extended with the rule $\lnot D \leftarrow \lnot 3$, which itself simply means $K \leftarrow 7$ for our restricted domain. 
+
+\[
+KB_7 = \{3 \leftarrow D, \lnot D \leftarrow \lnot 3, 7 \leftarrow \top \}
+\]
+
+Adding abnormalities yields:
+
+\[
+KB_7 = \{3 \leftarrow D \land \lnot ab_1, \lnot D \leftarrow \lnot 3 \land \lnot ab_2, 7 \leftarrow \top, ab_1 \leftarrow \bot, ab_2 \leftarrow \bot \}
+\]
+
+After weakly completing:
+
+\[
+KB_7 = \{3 \leftrightarrow D \land \lnot ab_1, \lnot D \leftrightarrow \lnot 3 \land \lnot ab_2, 7 \leftrightarrow \top, ab_1 \leftrightarrow \bot, ab_2 \leftrightarrow \bot \}
+\]
+
+Applying the semantic operator then yields:
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c c c }
+ \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
+ 0 &  &  \\  
+ 1 &  $7$ & $ab_1$, $ab_2$  \\  
+ 2 &  $K$, $7$ & $D$, $3$, $ab_1$, $ab_2$  
+\end{tabular}
+\caption{Applying the Weak Completion Semantics and Contraposition to the $7$ card of the WST.}
+\label{tbl:7cont}
+
+\end{center}
+\end{table}
+
+\begin{figure}
+\centering \includegraphics[scale=.6]{wstcano}
+\caption{Using the abduction and contraposition extensions to derive all four canonical cases.}
+\label{fig:wstcano}
+\end{figure}
+
+
+
+Table~\ref{tbl:7cont} shows the result of applying the semantic operator to the resulting knowledge base. From this, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
+
+@TODOrewritewholesectionintermsofpq
+
 \section{More}
 
 \chapter{Sequential Cognition Processes}
@@ -452,6 +636,10 @@ This paper will focus on cases where the type of cognitive state remains constan
 
 An SCP $\pi=(s_i,m_1,...,m_n)$ describes an initial epistemic state (or state point if the input is uncertain) and state point $p_k$ is defined recursively by $p_k = J[p_{k-1},m_k]$. An SCP is called \textit{credulously valid} if $p_n \models \gamma$ for at least one epistemic state in the final state $p_n$. An SCP is called \textit{sceptically valid} if $p_n \models \gamma$ for every epistemic state in the final state. In cases where all operations are monotonic, sceptical validity is the same as credulous validity.
 \section{SCPs vs SCP Tasks}
+The distinction between SCPs and SCP tasks is fairly straightforward: An SCP task describes a cognitive phenomena that has been observed and details the tools and constraints which may be used to model it; and an SCP is a single solution to the problem described in the SCP task which does not violate conditions outlined in that task.
+
+For a given SCP task there can be many possible SCPs (the question of how to choose the most probable of these candidate SCPs is discussed in Section~@TODOref), or no possible SCPs at all.
+
 \section{Epistemic States}
 The choice of epistemic state is dependent on the properties that are known or suspected to be true for the cognitive task as a whole. For example, a researcher working on drawing inferences using Propositional Logic can be certain that any SCP they create should be expressive enough to pass a knowledge base to a cognitive operation. Thus, it might suffice to simply define $s_i=(KB)$ where $KB$ is a set of propositional rules. By contrast, a researcher using the WCS requires a system capable of both communicating a set of rules to the next complex operation, and of describing the results of repeated applications of the semantic operator. It might seem intuitive to simply keep the epistemic state used for the propositional case and to use a non-complex operation function on the weakly completed program to find the least model. And, though this approach works for many examples, it makes it impossible to perform further processing in the SCP \textit{after} applying the semantic operator. What if the conclusion drawn was meant to form part of the background knowledge of another process? In practice using $s_k=(KB,V, R)$, where $V$ is a set of (variable name, value pairs) and $R$ is a categorization variable, is able to model all aspects of the WCS, including information related to the least model. 
 
@@ -545,6 +733,38 @@ The total number of possible non-trivial SCPs of length $n$ for an SCP Task is g
 
 
 \section{A Limited Set of Allowable Operations}
+In practice it is impossible compute the set of all candidate SCPs when the set of allowable cognitive operations $M$ in a planning task is $\Omega^*$ or even $\Omega$. Without a length constraint Proof~\ref{proof:infiniteSCPLength} shows that it is not even possible to compute all possible SCPs for many SCP tasks with a finite set of allowable operations. Table~\ref{tbl:solutionSpace} summarises the properties of solution space under different SCP task conditions.
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c c c c}
+ \textbf{$M$} & \textbf{Finite Length Constraint} & \textbf{Finite Solution Space} & \textbf{Guaranteed Solution}\\ 
+ $\Omega^*$ & None & \text{\sffamily X} & \checkmark \\ 
+ $\Omega^*$ & Yes & \text{\sffamily X} & \checkmark \\ 
+ $\Omega$ & None & \text{\sffamily X} & \checkmark \\ 
+ $\Omega$ & Yes & \text{\sffamily X} & \checkmark \\  
+ finite &  None & not guaranteed & \text{\sffamily X}\\  
+ finite &  Yes &  \checkmark & \text{\sffamily X}
+\end{tabular}
+\caption{Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.}
+\label{tbl:solutionSpace}
+
+\end{center}
+\end{table}
+
+\subsection{A Limited Set of Cognitive Operations}\label{ssec:limCogOp}
+Readers should recognize that using the space of all possible cognitive operations for $M$ results in a computationally impossible task. No matter the other conditions imposed there will be infinitely many solutions to the given SCP task which satisfy $f()$.
+
+But, beyond being just computationally infeasible, there are more empirical and philosophical objections to this approach. The first is that the human brain itself does not have infinite processing or space capabilities and so any model which allows for unrestricted data sizes in the set of allowable cognitive operations $M$ or in the number of resultant state points $M$ is not biologically well-founded\footnote{Because $\Omega$ is the set of all possible cogntive operations there must be at least one $m \in M$ such that, for any given input $x$, $x\longmapsto m$ results in a state point of size greater than the capacity of any storage system to hold.}. 
+
+The second considerations is that there is considerable evidence in the literature that many problems can be modelled using logical frameworks which describe cognitive behaviour across a variety of tasks @TODOref. These frameworks reflect a more generally philosophy in cognitive psychology which is the idea of consistent cognitive motifs in reasoning. Using an infinite $M$ shows no discrimination at the time of task-formulation between those operations for which there is significant evidence and those which are fundamentally improbable.
+
+\subsection{A Limited SCP Length}
+As discussed in Section~\ref{ssec:limCogOp}, the human brain is constrained by a set of physical computational and storage limitation. In all case except those which are trivial or repetitive it would be computationally infeasible for the human mind to mimic an infinitely long SCPs. For this reason, SCPs of infinite length, though possible in a mathematical formulation, tend violate the spirit of the SCP Framework which is to \textit{accurately} model human cognition processes, not simply their conclusions.
+
+It is worth noting that SCPs containing infinite loops can exist and can be evaluated at any time point $n$, they simply cannot be evaluated in their entirety.
+
 \section{Purpose-Selected Cognitive Operations}
 \subsection{Overview}
 \subsection{Initialisation}
@@ -612,9 +832,10 @@ If we assume that Reiter's default logic is a valid model of cognition for at le
 \section{Purpose-Built Cognitive Operations}
 \subsection{Propositional Logic}
 %no requirement of sequence, just exhaustive search
+%not computationaly valid, NP-complete is too hard for human brain
 \subsection{Weak Completion Semantics}
 \subsection{Default Logic}
-\section{Two Apporaches to Creating Cognitive Operations}
+\section{Two Approaches to Creating Cognitive Operations}
 \section{Theoretical Approximation}
 %must have empirical basis, but focused on reproducing mechanisms that have been proposed and substantiated in literature
 %hand-curated
@@ -784,10 +1005,20 @@ In the field of Bioinformatics, one of the earliest approaches to determine whic
 
 \chapter{Program Design}
 \section{Implementing the SCP Framework}
+The SCP framework has been implemented in \texttt{Python 3} as series of modules which follow strong object-oriented programming principles which support simple extensions and revisions. This implementation is used to demonstrate the practical approaches to generating and evaluating SCPs; and to model a series of cognitive tasks for which empirical results already exist. The library containing this implementation and its associated documentation is available at @TODOref.
+
+At present, concrete implementations for epistemic state structures and cognitive operation formulations related to propositional logic, the WCS, and Reiter's default logic are provided.
+
 \section{A Modular Programming Approach}
 % talk about each 
+The principle of modular programming is followed in this implementation to the greatest extent possible, thus maximising the ease of modification and upkeep for the program. Figure~@TODOref provides a simplified class diagram to explain how the major components of the system relate to one another.
 
+\subsection{Most Important Modules}
 
+\subsection{Program Flow}
+Diagram~@TODOref demonstrates the basic programatic flow used to model the Suppression Task using a WCS SCP. Diagram~@TODOref demonstrates the programmatic flow used by the De Novo search in order to generate an SCP to map to known data. Finally, Diagram~@TODOref shows the process by which information stored in a .csv file can be read into CCOBRA before being interpreted by the SCP framework and used for modelling.
+
+\section{External Framework Integration}
 
 
 \chapter{Non-Sequential Cognitive Processes}
