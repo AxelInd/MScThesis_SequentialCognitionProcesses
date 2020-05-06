@@ -324,6 +324,7 @@ In the field of non-monotonic logics, reasoning is represented as a collection o
 
 A large number of non-monotonic frameworks exist in the literature \citep{mcdermott1980non}, each applicable to a different subset of cognitive problem space, and each modelling their problem space with various degrees of success. In the simplest formulation, a non-monotonic logic is simply an extension to a classical logic which introduces a preference relation $\rightarrow_p$. This preference relation states that, given some number of derivable facts in a knowledge base, the fact derived using the most preferential rule is to be derived first and cannot be overwritten by a less preferable assignment.  
 
+Although the non-monotonic logics discussed in this section has simple extensions to first-order logic, we instead restrict ourselves to a propositional format throughout this thesis.
 \section{The Weak Completion Semantics}
 \begin{table}
 \begin{center}
@@ -368,6 +369,21 @@ J^\bot = \{ &  A | \textrm{ there exists a clause } A \leftarrow Body \in P \\
 Using $I=<\emptyset, \emptyset>$, the least model of $P$ ($\textrm{lm}_\textrm{\L}$wc$P$) can be calculated by iterating $\phi_{SvL,P}$.
 
 \section{Reiter's Default Logic}
+Reteir's Default Logic \citep{reiter1980logic} is a non-monotonic framework which allows us to divide the inferential capabilities of a system into those facts and inference rules which are always true (as in classical logic) and those which are are usually true. The second type of inference is the eponymous default rule.
+
+The set of immutable facts is called $kb$ and inferences in $kb$ are made as with propositional logic, with the addition of the conclusion of any previously evaluated default rules. The set of default rules $d$ consists rules of the form:
+
+\[\frac{\textrm{prerequisite}:\textrm{ justification}_1, \textrm{ ...}, \textrm{ justification}_n}{\textrm{conclusion}}\] @TODOextend.
+
+Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion} are propositional logic clauses. A \textit{conclusion} is valid and added to the set of known variables in $kb$ iff \textit{prerequisite} holds and no clause $\textit{justification}_i$ holds.
+
+Formally, inferences in default logic are calculated as follows:
+
+@TODOref
+
+It should be immediately apparent form this formulation that, for many possible sets of rules in $kb$, the output is non-monotonic as is dependent on the order in which default rules are evaluated.
+
+A very significant restriction on reiter's default logic is the complexity of computing inferences. Even in the simple case of $kb={rule_1,...rule_n}$ and $d={}$, the set of possible inferences is \textit{NP-complete} as for a propositional formula @TODOnpcompleteref. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is an atom.
 
 
 \chapter{Experiments} \label{chp:experiments}
@@ -827,6 +843,54 @@ If we assume that Reiter's default logic is a valid model of cognition for at le
 
 \section{Cognitive Operations as Aggregates}
 %talk about combining existing cognitive operations for which there is strong evidence
+An obvious and interesting idea follows from Proof~\ref{proof:aggregateValid} which is the idea of finding well-founded, uninterrupted epistemic operation sequences which are effective in modelling a variety of tasks and representing them as a single epistemic operation. We call this approach \textit{aggregating}, and it draws inspiration from recent advances in the field of reinforcement learning @TODORef in which simple tasks previously achieved are used as allowable actions when attempting to solve complex tasks.
+
+This approach introduces the desirable property of shortening the total length of the SCP for a given set of cognitive tasks. However, it is evident from Proof~\ref{proof:aggregateExpressiveness} that any SCP task in which an aggregated subsequence of operations replaces those individual operations in $M$ may be less expressive than the same formulation in which the aggregated operations are still present.
+
+\begin{proof} \label{proof:aggregateExpressiveness}
+Given a cognitive task $\Pi=(x,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$ and a second cognitive planing task $\Pi'=(x,f(),M')$ in which $M'= M \smallsetminus \{A_k,...,A_m\} \cup A'$, where $A'=(A_k \longmapsto... \longmapsto A_m)$ is a cognitive sequence containing some ordering of the other operations in $(\Pi \smallsetminus \Pi')$, $\Pi'$ is as expressive or less expressive than $\Pi$.
+
+\item No more expressive:
+\begin{itemize}
+\item If $\pi' = (x\longmapsto A_p \longmapsto ... \longmapsto A' \longmapsto ... \longmapsto A_q)$ and $f(\pi)$ is a solution to $\Pi'$.
+\item Let $\pi'' = (x\longmapsto A_p \longmapsto ... \longmapsto [A'] \longmapsto ... \longmapsto A_q)$.
+\item Then $f(\pi'')$ is a solution to $\Pi'$ (Lemma~\ref{lemma:substitutionValid}).
+\item $f(\pi'')$ is a valid solution to $\Pi$ because $\pi''$ uses only cognitive operations which occur in $\Pi$, $x$ is the initial epistemic state, and $f(\pi'') \models \gamma$. 
+\end{itemize}
+
+\item Less Expressive: Proof by counterexample
+\begin{itemize}
+\item If we assume that $\Pi'$ is strictly as expressive or more expressive than $\Pi$, then there exist no cases in which $\Pi'$ is less expressive.
+\item Let $\gamma = \emptyset$, and $f(x)=True$ for all inputs (i.e. is trivially satisfied).
+\item Let $x=\{\}$, $M=\{A_0,A_1\}$, $M'=\{A'\}$, $A'=\{A_0\longmapsto A_1\}$.
+\item Then solutions of $\Pi$ are $f(x)$, $f(x \longmapsto A_0)$, $f(x \longmapsto A_1)$, $f(x \longmapsto A_0\longmapsto A_1)$ and $f(x \longmapsto A_1\longmapsto A_0)$.
+\item Solutions of $\Pi'$ are $f(x), f(x \longmapsto A')$.
+\item Thus, $\Pi'$ has fewer solutions that $\Pi$. A contradiction.
+\end{itemize}
+\end{proof}
+
+@TODOexample?
+
+The use of aggregates then, is a trade-off between sacrificing cross-reasoner accuracy and optimising a set of desirable heuristic properties such as length minimisation.
+
+In many ways this compromise follows the philosophy of cognitive modelling in general. A neuron-by-neuron approach to predicting human behaviour (if one were ever possible) would give us extreme accuracy in modelling any human reasoner, but is too complex to be practical, and even if it were, would provide no abstracted information with which to find common motifs and inferences among reasoners. On the other extreme, modelling reasoners as (\textit{input}, \textit{output}) pairs perfectly captures the average predictions of a population, but proves very inaccurate for unseen individuals. State-of-the-art approaches to cognitive modelling like neural networks and non-monotonic logical frameworks seek generalizations which accurately capture the responses of most reasoners across as many tasks as possible by approximating human motifs in human reasoning and applying across multiple tasks and inputs.
+
+The question of how to generate appropriate complex operation aggregates is a complex problem and is not discussed further in this thesis. It is, however a topic in which the author has significant interest.
+
+\begin{proof} \label{proof:aggregateValid}
+Given an SCP $\pi= f(x \longmapsto A_0 \longmapsto ... \longmapsto A_n)$, where $f(x)$ is an external evaluation function, $x$ is a state point, and $A_i \in \Omega$, any subsequence $A'=(A_k \longmapsto ... \longmapsto A_{k+l})$, $(k+l)<n$ of the cognitive operations in $\pi$ is a valid cognitive operation.
+\begin{itemize}
+\item Given that $\pi$ is a valid SCP, $x \longmapsto A_0$ must, by the definitions discussed in Section~@TODOref result in a valid state point.
+\item It follows that $A'$ takes a valid state point as input, because $A_k$ took a valid state point as input.
+\item It follows that $A'$ produces a valid state point as output, because $A_{k+1}$ produced a valid state point as output.
+\item Therefore, $A'$ is a valid cognitive operation, by the definition in Section~@TODOref.
+\end{itemize}
+\end{proof}
+
+\begin{lemma} \label{lemma:substitutionValid}
+Let $\pi=(x\longmapsto A_0, ..., A', ..., longmapsto A_n)$ be a sequence of cognitive operations drawn from some cognitive task $\Pi=(x, \gamma, f(x), M)$ . And let $\pi'=(x\longmapsto [A_0], ..., A', ..., longmapsto A_n)$ where $[A]$ is the substitution of the aggregate operation $A'$ for $(A'[0]\longmapsto ... \longmapsto A'[t])$ . Then $f(\pi)=f(\pi')$.
+\end{lemma}
+
 \section{Epistemic State Structure Changes with Cognitive Operations}
 %e.g. going to WCS to Default
 \section{Purpose-Built Cognitive Operations}
@@ -839,9 +903,21 @@ If we assume that Reiter's default logic is a valid model of cognition for at le
 \section{Theoretical Approximation}
 %must have empirical basis, but focused on reproducing mechanisms that have been proposed and substantiated in literature
 %hand-curated
+It seems reasonable that, given our desire to accurately model reasoning in participants, researchers creating cognitive functions for SCPs would choose to limit the set of allowable cognitive operations to those for which there is a sound theoretical basis. The reasons for this choice were discussed in Section~@TODOref.
+
+The first approach to creating cognitive operations we will consider is the use of cognitive operations for which there is already evidence in our existing models of human cognition. This evidence can take a wide variety of forms: it may follow from our knowledge of physics (for example, the impossibility of storing a set of unrelated variables above a certain physical threshold); evolutionary biology (there cannot exist a class of organisms without some kind of reproductive drive); anatomy (there must exist cognitive processes that facilitate voluntary muscle activation); sociology (some neuronal connections seem to restrict the number of close friends a human can maintain @TODOref); or any other field of science. Using this information can allow researchers to predict what cognitive functions may play a role in observed empirical data. 
+
+For the most part, theoretical approximation is a very powerful and well-justified mechanism for determining which cognitive operation could plausibly considered in the cognitive toolbox for a given task. Restricting the space of other cognitive operations which may play a part is also enabled by all the scientific fields mentioned above, complexity theory tells us that humans are unlikely to apply exhaustive classical logic reasoning to a task when the set of variables and rules to be considered is large because of physical limitations related to solving \textit{NP-complete} or harder tasks efficiently.
+
+At present, the foundation of non-monotonic reasoning in cognitive modelling is this theoretical mindset, a well-founded explanation is found by borrowing from a relevent field (often psychology) and then tested against empirical evidence and across multiple cognitive tasks to show evidence that is a reasonable approximation of a mechanism in human cognition.
+
+
 \section{Empirical Appoximation}
 %finding cognitive operations using machine learning
 %done by using search techniques to create and explore comparison space
+Contrasting theoretical approximation is the field of constrained empirical approximation. Techniques ranging from neural networks and Markov models genetical inspired techniques consistently outperform humans in a huge variety of fields. Drawing on enormous databases of empirical data, modern artificial intelligence researchers have come to view machine learning as the most plausible way to create the first real thinking machine @TODOref.
+
+@TODOfinish
 
 \chapter{Mimicking Non-Monotonic Logics With SCPs}
 
