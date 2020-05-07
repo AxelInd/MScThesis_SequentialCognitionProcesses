@@ -8,15 +8,15 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.\relax }}{15}{figure.caption.50}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces One possible formulation of a cognitive function to add abnormalities to variables. This formulation follows the intuition of Appendix~@TODOref.\relax }}{23}{figure.caption.88}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces One possible formulation of a cognitive function to weakly complete a set of rules. This formulation follows the intuition of weak completion outlined in Section~@TODOsec.\relax }}{23}{figure.caption.90}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces One possible formulation of a cognitive function to apply the semantic operator a congnitive state by temporarily setting all variables in $V$ to any value that can computed using the semantic rule in Equation~@TODOref. This process is repeated until $V$ is no longer updated. @TODOredoThisDigramToShowActualProcess\relax }}{24}{figure.caption.92}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces One possible formulation of a cognitive function to add abnormalities to variables. This formulation follows the intuition of Appendix~@TODOref.\relax }}{25}{figure.caption.93}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces One possible formulation of a cognitive function to weakly complete a set of rules. This formulation follows the intuition of weak completion outlined in Section~@TODOsec.\relax }}{25}{figure.caption.95}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces One possible formulation of a cognitive function to apply the semantic operator a congnitive state by temporarily setting all variables in $V$ to any value that can computed using the semantic rule in Equation~@TODOref. This process is repeated until $V$ is no longer updated. @TODOredoThisDigramToShowActualProcess\relax }}{26}{figure.caption.97}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces A generalised illustration of the WCS in an SCP. \relax }}{31}{figure.caption.112}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces The standard case of the Suppression Task, demonstrating the suppression effect. Where the epistemic state in the boxes represents the output of that cognitive operation. $V_f$ represents the assignment of $V$ in the epistemic state in the resulting least model. $V_{i\in \PazoBB {N}}$ represents the assignments in $V$ after $i$ iterations of the semantic operator.\relax }}{32}{figure.caption.113}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces The Suppression Task in which the additional operation of deleting the variable $o$ occurs.\relax }}{33}{figure.caption.117}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces The Suppression Task in which the additional operation of fixing the variable $ab_1$ to false occurs.\relax }}{34}{figure.caption.119}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces A generalised illustration of the WCS in an SCP. \relax }}{33}{figure.caption.117}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces The standard case of the Suppression Task, demonstrating the suppression effect. Where the epistemic state in the boxes represents the output of that cognitive operation. $V_f$ represents the assignment of $V$ in the epistemic state in the resulting least model. $V_{i\in \PazoBB {N}}$ represents the assignments in $V$ after $i$ iterations of the semantic operator.\relax }}{34}{figure.caption.118}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces The Suppression Task in which the additional operation of deleting the variable $o$ occurs.\relax }}{35}{figure.caption.122}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces The Suppression Task in which the additional operation of fixing the variable $ab_1$ to false occurs.\relax }}{36}{figure.caption.124}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
