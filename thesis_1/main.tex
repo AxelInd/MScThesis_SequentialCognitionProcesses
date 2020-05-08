@@ -950,6 +950,22 @@ Let $\pi=(x\longmapsto A_0, ..., A', ..., longmapsto A_n)$ be a sequence of cogn
 
 \section{Epistemic State Structure Changes with Cognitive Operations}
 %e.g. going to WCS to Default
+The conception and mathematics of cognitive operations which produce output epistemic states points which differ in structure from the epistemic input structure are fairly straightforward.
+
+Some cognitive operation $A$ with input base point structure $\textrm{struct}(s_k)$ and output base point structure $\textrm{struct}(s_{k+1})$ is called a \textit{structural transformation operation} iff $\textrm{struct}(s_k) \ne \textrm{struct}(s_{k+1})$.
+
+The intuition behind structural state changes goes back to Albert Einstein's quote that opened this thesis ``Everything should be made as simple as possible, but no simpler.". In theory there is no restriction on SCP structure that would prevent every epistemic state passing an arbitrarily large number of variables and arguments. An SCP meant to represent a cognitive task where participant responses are consistent with propositional logic, for exmaple, could be accurately represented with an initial state $s_x=(KB)$ where $KB$ is simply the knowledge base of facts and rules given; but a researcher might equally use an epistemic state $s_y=(KB,V)$ where a variable $V$ is intended to store the values of each variable in $KB$; or even $s_z=(KB,V,D)$ where $D$ is a set of default rules. All three of these approaches would give an SCP the information required to evaluate the propositional task, but, if we know the task structure does not deal with uncertainty or show variation in reasoner responses, it becomes apparent that the set of default rules $D$ is unnecessary.
+
+All of the possibilities given hold for the propositional task because $s_y$ and $s_z$ are both supersets of $s_x$ and $s_x$ is sufficient to model the task. Thus, provided the researchers do not believe that the task will make use of cognitive operations which require more complex state structures, $s_x$ is the simplest solution which meets the requirements of the researchers.
+
+An obvious extension to the discussion above is the fact that a transformation from one state point structure to another when the input structure is a subset of the output structure is as easy as appending more structural variables to the input state. This transition hold in the example above in which a propositional logic compliant state point $s_x$ could be transformed into a WCS compliant state point $s_y$ or a default rule compliant state point $s_z$.
+
+Unfortunately, structural change by appending variables are not universal obvious cases of structural transformation where they do not apply spring to mind. Such as the case where a more expressive state point must be changed to a less expressive state point structure. Imagine a case where a cognitive operation $B$ transforms a case point of $\textrm{struct}(s_z)$ to one of $\textrm{struct}(s_y)$. An intuitive example of this might be a hypothetical mental operation which handles biases in thinking. A student might begin at an epistemic state which believes ``usually, if I study for tests, I fail" and, through bias confirmation, come to believe ``If i study for tests, I fail", transitioning from a default rule, to immutable rule. 
+
+In cases like this, it is up to the researcher to make several decisions: do I believe that the now empty set of variables $D$ no longer provides meaningful information? And how do I represent the change in the variables still present in the output state? These questions are very often task or function specific and cannot be answered in a general sense.
+
+@TODOcompletestatetransformation
+
 \section{Purpose-Built Cognitive Operations}
 \subsection{Propositional Logic}
 %no requirement of sequence, just exhaustive search

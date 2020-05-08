@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.20)  7 MAY 2020 13:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.20)  8 MAY 2020 11:37
 entering extended mode
 **./main.tex
 (main.tex
@@ -1586,12 +1586,22 @@ n/10.95 )$
  []
 
 [27]
-Overfull \hbox (1.47751pt too wide) in paragraph at lines 975--976
+Overfull \hbox (30.14447pt too wide) in paragraph at lines 955--956
+\T1/ppl/m/n/10.95 point struc-ture $[]\OT1/zplm/m/n/10.95 (\OML/zplm/m/it/10.95
+ s[]\OT1/zplm/m/n/10.95 )$ \T1/ppl/m/n/10.95 is called a \T1/ppl/m/it/10.95 str
+uc-tural trans-for-ma-tion op-er-a-tion \T1/ppl/m/n/10.95 iff $[]\OT1/zplm/m/n/
+10.95 (\OML/zplm/m/it/10.95 s[]\OT1/zplm/m/n/10.95 ) \OMS/zplm/m/n/10.95 6\OT1/
+zplm/m/n/10.95 = [](\OML/zplm/m/it/10.95 s[]\OT1/zplm/m/n/10.95 )$\T1/ppl/m/n/1
+0.95 . 
+ []
+
+[28]
+Overfull \hbox (1.47751pt too wide) in paragraph at lines 991--992
 \T1/ppl/m/n/10.95 con-sis-tently out-per-form hu-mans in a huge va-ri-ety of fi
 elds. Draw-ing on enor-mous databases
  []
 
-[28] [29] [30
+[29] [30
 
 ]
 Chapter 6.
@@ -1604,23 +1614,23 @@ Chapter 7.
 File: ../figs/suppressionSCP_overview.png Graphic file (type png)
 <use ../figs/suppressionSCP_overview.png>
 Package pdftex.def Info: ../figs/suppressionSCP_overview.png  used on input lin
-e 993.
+e 1009.
 (pdftex.def)             Requested size: 441.01775pt x 62.4844pt.
 <../figs/suppressionSCP_normal.png, id=869, 595.32413pt x 121.50394pt>
 File: ../figs/suppressionSCP_normal.png Graphic file (type png)
 <use ../figs/suppressionSCP_normal.png>
 Package pdftex.def Info: ../figs/suppressionSCP_normal.png  used on input line 
-1001.
+1017.
 (pdftex.def)             Requested size: 441.01775pt x 90.01161pt.
 
 LaTeX Warning: Reference `alg:addAbnormalities' on page 33 undefined on input l
-ine 1027.
+ine 1043.
 
 
-LaTeX Warning: Reference `ssec:wcs' on page 33 undefined on input line 1027.
+LaTeX Warning: Reference `ssec:wcs' on page 33 undefined on input line 1043.
 
 
-Overfull \hbox (0.24538pt too wide) in paragraph at lines 1027--1028
+Overfull \hbox (0.24538pt too wide) in paragraph at lines 1043--1044
 \T1/ppl/m/n/10.95 now also adds those ab-nor-mal-i-ties to the vari-able list o
 f the epis-temic state); \T1/cmtt/m/n/10.95 WeaklyComplete
  []
@@ -1631,20 +1641,20 @@ ng>]
 <../figs/suppressionSCP_mod.png, id=887, 510.85857pt x 109.30838pt>
 File: ../figs/suppressionSCP_mod.png Graphic file (type png)
 <use ../figs/suppressionSCP_mod.png>
-Package pdftex.def Info: ../figs/suppressionSCP_mod.png  used on input line 104
-9.
+Package pdftex.def Info: ../figs/suppressionSCP_mod.png  used on input line 106
+5.
 (pdftex.def)             Requested size: 374.86777pt x 80.21143pt.
 <../figs/suppressionSCP_mod2.png, id=888, 630.10406pt x 152.21869pt>
 File: ../figs/suppressionSCP_mod2.png Graphic file (type png)
 <use ../figs/suppressionSCP_mod2.png>
 Package pdftex.def Info: ../figs/suppressionSCP_mod2.png  used on input line 10
-60.
+76.
 (pdftex.def)             Requested size: 441.01775pt x 106.54073pt.
  [35 <../figs/suppressionSCP_mod.png>] [36 <../figs/suppressionSCP_mod2.png>]
 Chapter 8.
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1092.
+(amsmath)                trying to recover with `aligned' on input line 1108.
 
 1: section
 [37
@@ -1682,7 +1692,7 @@ Appendix A.
 
 
 ]
-Overfull \hbox (4.63652pt too wide) in paragraph at lines 1190--1190
+Overfull \hbox (4.63652pt too wide) in paragraph at lines 1206--1206
 [][]\T1/ppl/m/n/10.95 Reiter, Ray-mond (1980).   A logic for de-fault rea-son-
 ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 .1-2, pp. 81
@@ -1690,11 +1700,11 @@ ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 
 1: section
 [51]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1194.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1194.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1210.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1210.
  (main.aux (Appendices/AppendixA.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1194.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1194.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1210.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1210.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: ACABE6F48020CC3EC5EFE979D693D055;15824.
@@ -1738,7 +1748,7 @@ s/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (71 pages, 543052 bytes).
+Output written on main.pdf (71 pages, 546504 bytes).
 PDF statistics:
  1144 PDF objects out of 1200 (max. 8388607)
  237 named destinations out of 1000 (max. 500000)
