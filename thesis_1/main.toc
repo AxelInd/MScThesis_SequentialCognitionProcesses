@@ -86,9 +86,17 @@
 \contentsline {subsection}{\numberline {9.2.2}Program Flow}{41}{subsection.140}%
 \contentsline {section}{\numberline {9.3}External Framework Integration}{41}{section.141}%
 \contentsline {chapter}{\numberline {10}Non-Sequential Cognitive Processes}{43}{chapter.142}%
-\contentsline {chapter}{\numberline {11}Conclusions and Future Work}{45}{chapter.143}%
-\contentsline {section}{\numberline {11.1}Conclusion}{45}{section.144}%
-\contentsline {section}{\numberline {11.2}Future Work}{45}{section.145}%
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{49}{appendix.147}%
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{49}{section.148}%
-\contentsline {chapter}{Bibliography}{51}{appendix*.149}%
+\contentsline {section}{\numberline {10.1}Overview}{43}{section.143}%
+\contentsline {section}{\numberline {10.2}Applications}{43}{section.144}%
+\contentsline {section}{\numberline {10.3}nSCPs: a Formal Framework}{43}{section.145}%
+\contentsline {section}{\numberline {10.4}The Suppression Task as an nSCP}{43}{section.146}%
+\contentsline {section}{\numberline {10.5}The Wason Selection Task as an nSCP}{44}{section.147}%
+\contentsline {section}{\numberline {10.6}A cross-task nSCP}{44}{section.148}%
+\contentsline {section}{\numberline {10.7}Multiple Inputs with an nSCP}{44}{section.149}%
+\contentsline {section}{\numberline {10.8}Machine Learning with nSCPs}{44}{section.150}%
+\contentsline {chapter}{\numberline {11}Conclusions and Future Work}{45}{chapter.151}%
+\contentsline {section}{\numberline {11.1}Conclusion}{45}{section.152}%
+\contentsline {section}{\numberline {11.2}Future Work}{45}{section.153}%
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{49}{appendix.155}%
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{49}{section.156}%
+\contentsline {chapter}{Bibliography}{51}{appendix*.157}%
