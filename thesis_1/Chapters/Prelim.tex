@@ -1,0 +1,112 @@
+\chapter{Mathematical Preliminaries}\label{chp:prelim} 
+\section{Propositional Logic}
+
+\begin{table}
+\begin{center}
+
+
+\begin{tabular}{ c | c c }
+  $\land$& $\top$ & $\bot$ \\ \hline
+ $\top$ & $\top$ & $\bot$ \\  
+ $\bot$ & $\bot$ &  $\bot$
+\end{tabular}
+\quad
+\begin{tabular}{ c | c c }
+  $\lor$& $\top$ & $\bot$ \\ \hline
+ $\top$ & $\top$ & $\top$ \\  
+ $\bot$ & $\top$ &  $\bot$
+\end{tabular}
+\quad
+\begin{tabular}{ c | c }
+  $\lnot$& \\ \hline
+ $\top$ & $\bot$ \\  
+ $\bot$ & $\top$
+\end{tabular}
+
+\begin{tabular}{ c | c c }
+  $\rightarrow$& $\top$ & $\bot$ \\ \hline
+ $\top$ & $\top$ & $\bot$ \\  
+ $\bot$ & $\top$ &  $\top$
+\end{tabular}
+\quad
+\begin{tabular}{ c | c c }
+  $\rightarrow$& $\top$ & $\bot$ \\ \hline
+ $\top$ & $\top$ & $\bot$ \\  
+ $\bot$ & $\bot$ &  $\top$
+\end{tabular}
+
+\caption{Truth tables for standard operators in propositional logic.}
+\label{tbl:prop}
+
+\end{center}
+\end{table}
+
+Propositional (or classical) logic is the form of logic most traditionally associated with problem solving in mathematics and computer science. In propositional logic features of a hypothetical world are encoded by a set of \textit{variables}. every variable must be mapped to either $\top$ (usually denoting truth, in some subject-specific sense) or $\bot$ (denoting falseness). A \textit{clause} $\phi$ consists of either a single atomic variable or an operator and some set of sub-clauses. Every clause has a truth value determined by the values of the sub-clauses it contains and the relevant operator which handles their interaction. Table~\ref{tbl:prop} illustrates the classical interpretations of the allowable operators. A knowledge base $KB$ consists of a set of clauses. In this paper we adopt the assumption all clauses (also called rules) $\in KB$ are of the form $head\leftarrow body$ and all heads are atomic variables.
+
+\section{Logic Programming}
+
+\section{Non-Monotonic Logics}
+In the field of non-monotonic logics, reasoning is represented as a collection of defeasible inferences. Unlike in classical logic, conclusions need not hold in perpetuity, or even in the same model and revision is always possible. Monotonic logics are not capable of describing human reasoning in experiments like the Suppression Task \citep{dietz2012computational} because they lack this revisionist characteristic.
+
+A large number of non-monotonic frameworks exist in the literature \citep{mcdermott1980non}, each applicable to a different subset of cognitive problem space, and each modelling their problem space with various degrees of success. In the simplest formulation, a non-monotonic logic is simply an extension to a classical logic which introduces a preference relation $\rightarrow_p$. This preference relation states that, given some number of derivable facts in a knowledge base, the fact derived using the most preferential rule is to be derived first and cannot be overwritten by a less preferable assignment.  
+
+Although the non-monotonic logics discussed in this section has simple extensions to first-order logic, we instead restrict ourselves to a propositional format throughout this thesis.
+\section{The Weak Completion Semantics}
+\begin{table}
+\begin{center}
+\begin{tabular}{ c | c c c }
+  $\rightarrow$& $\top$ & $u$ & $\bot$ \\ \hline
+ $\top$ & $\top$ & $u$ & $\bot$ \\  
+ $u$ & $\top$ & $\top$ & $u$\\  
+ $\bot$ & $\top$ & $\top$ & $\top$
+\end{tabular}
+\caption{A table showing the implication operator in 3-valued \L ukasiewicz logic.}
+\label{tbl:luk}
+\end{center}
+\end{table}
+
+The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomena. The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
+
+The Weak Completion of a program $P$ is defined as follows:
+
+\begin{enumerate}
+\item Replace all clauses of the form $A \leftarrow body_1$, ..., $A \leftarrow body_n$ with $A \leftarrow body_1 \lor ... \lor body_n$.
+% \item For all undefined variables $x$, add $x \leftarrow \bot$. THIS IS FOR STRONG COMPLETION ONLY
+\item Replace all occurrences of $\leftarrow$ with $\leftrightarrow$.
+\end{enumerate}
+
+Applying this procedure to $P$ results in $wcP$ which is the weak completion of $P$.
+
+The next requirement to apply the WCS framework is the introduction of a semantic operator $\phi_{SvL}$ \citep{stenning2008interpretation}. Let $J$ be the result of applying the semantics operator to an interpretation $I$ and logic program $P$. Then $J$ is defined as follows:
+
+\[
+\begin{split}
+J^\top = \{ & A | \textrm{ there exists a clause } A\leftarrow Body \in P \\ & \textrm{ with } I(Body) = \top\}
+\end{split}
+\]
+\[
+\begin{split}
+J^\bot = \{ &  A | \textrm{ there exists a clause } A \leftarrow Body \in P \\
+           & \textrm{ and for all clauses } A \leftarrow Body \in P \\ & \textrm{ we find } I(Body) = \bot\}
+\end{split}
+\]
+
+%this might not be right? Should it say I or J? @TODO
+Using $I=<\emptyset, \emptyset>$, the least model of $P$ ($\textrm{lm}_\textrm{\L}$wc$P$) can be calculated by iterating $\phi_{SvL,P}$.
+
+\section{Reiter's Default Logic}
+Reteir's Default Logic \citep{reiter1980logic} is a non-monotonic framework which allows us to divide the inferential capabilities of a system into those facts and inference rules which are always true (as in classical logic) and those which are are usually true. The second type of inference is the eponymous default rule.
+
+The set of immutable facts is called $kb$ and inferences in $kb$ are made as with propositional logic, with the addition of the conclusion of any previously evaluated default rules. The set of default rules $d$ consists rules of the form:
+
+\[\frac{\textrm{prerequisite}:\textrm{ justification}_1, \textrm{ ...}, \textrm{ justification}_n}{\textrm{conclusion}}\] @TODOextend.
+
+Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion} are propositional logic clauses. A \textit{conclusion} is valid and added to the set of known variables in $kb$ iff \textit{prerequisite} holds and no clause $\textit{justification}_i$ holds.
+
+Formally, inferences in default logic are calculated as follows:
+
+@TODOref
+
+It should be immediately apparent form this formulation that, for many possible sets of rules in $kb$, the output is non-monotonic as is dependent on the order in which default rules are evaluated.
+
+A very significant restriction on reiter's default logic is the complexity of computing inferences. Even in the simple case of $kb={rule_1,...rule_n}$ and $d={}$, the set of possible inferences is \textit{NP-complete} as for a propositional formula @TODOnpcompleteref. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is an atom.

@@ -1,0 +1,61 @@
+\chapter{Non-Sequential Cognitive Processes} \label{chp:nscp}
+% relation to neural networks
+% summarising tool
+\section{Overview}
+The SCP framework has already been shown to be a powerful tool for modelling human cognition across a number of tasks, but as a framework it still carries several limitations. The first and most significant of which is the requirement that only one state point is passed as input and one state point is produced as output. This requirement ensures that a linear formulation of the SCP is possible and an intuitive procession of cognitive operations is apparent. SCPs are also limitted to representing or describing only a single cognitive task's interpretation by only a single or generalised reasoner. These properties are desirable when attempting to explicitly model a specific response to with relation to empirical data, but to model a group of reasoners with disparate responses, a group of SCPs is required.
+
+By relaxing the requirement that every SCP outputs into one other cognitive operation we arrive at new type of cognition process, a \textit{non-Sequential Cognitive Process} (\textit{nSCP}). nSCPs are more powerful than traditional SCPs and can produce process models for different reasoners over a task using a single SCP. They also provide a mechanism for illustrating motif reuse across multiple cognitive tasks which can all be modelled using the same nSCP. Finally, nSCPs lend themselves well to machine learning techniques, and graph compression approaches, allowing researchers to derive minimal inter and cross-task models.
+
+\section{Applications}
+
+\section{nSCPs: a Formal Framework}
+
+\section{The Suppression Task as an nSCP}
+
+Figure~TODOref showed one possible SCP interpretation of the Suppression Task that satisfied the empirically observed general case of the task. Figures~@TODOref and @TODOref showed two possible SCPs that described the deviant `classical' response to the task using non-monotonic logics. These three disparate representation can be compared to one another using the techniques described in Section~@TODOsec using the proposed modified Needleman-Wunsch algorithm, but these quantitive comparissons do not intuitive illustrate the structural similarity between these three SCPs.
+
+Figure~@TODOref shows an nSCP constructed so that any of the possible individual SCP paths can be followed. This, more compact approach carries the desirable property of colapsing the motifs @TODOlistmotifs into shared structures thus reducing the total number of distinct cognitive operations needed represent the task by @TODOxPrecent. 
+
+\section{The Wason Selection Task as an nSCP}
+
+
+\section{A cross-task nSCP}
+
+\section{Multiple Inputs with an nSCP}
+Sometimes the information we use in reasoning comes from various distinct cognitive data structures @TODOref and, therefore are plausibly produced by differing prior cognitive processes.
+
+Consider the following two facts a person may have been afflicted with due to an unfortunate surplus of education:
+\begin{itemize}
+\item ``Those who speak Greek come from Greece."
+\item ``Aristotle speaks Greek."
+\end{itemize}
+
+
+
+A person might have this information in their background knowledge about the world.  This person might then decide to take part in a cognitive experiment and be presented with a new incomplete syllogism:
+
+\begin{itemize}
+\item ``All men are mortal."
+\item ``Aristotle is a man."
+\end{itemize}
+
+And be asked what conclusions they could draw from the following statement:
+
+``Mortals who are Greek believe in Zeus."
+
+By \textit{combining} their background knowledge about syllogism~@TODOref with the presented knowledge about the second syllogism the reasoner might derive two, chronologically distinct facts:
+
+\begin{itemize}
+\item From the new information: ``Aristotle is mortal"
+\item From relevant background knowledge: ``Aristotle Speaks Greek".
+\end{itemize}
+
+These two derived facts are both relevant to the question being asked, but are drawn from distinct information sources. In a standard SCP for propositional logic we would be forced to combine the two facts into a single knowledge base (removing contextual information about information that might be relevant in human reasoning), create a new epistemic state structure that explicitly captures marks the background and task-specific knowledge as distinct rule sets, or to pre-process background knowledge before adding it to the given knowledge.
+
+An nSCP framework offers a fourth, more elegant, solution that captures the spirit of the pre-processing approach. Because an nSCP can take multiple cognitive operations as inputs, it is possible to attach two seperate cognition trees - one of background knowledge and one for given knowledge - to one another and use an \textit{integrating operation} to combine their outputs into a single epistemic state.
+
+Figure~TODOref illustrates one possible formulation of our example as an nSCP where @TODO is an integrating operation which uses the following rule: @TODO.
+
+\section{Machine Learning with nSCPs}
+
+nSCPs have a structure which many people experienced with machine learning will recognise. 
