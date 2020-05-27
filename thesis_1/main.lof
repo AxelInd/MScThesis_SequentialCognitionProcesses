@@ -6,19 +6,19 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces The Abstract case of the Wason Selection Task\relax }}{9}{figure.caption.43}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Using the abduction and contraposition extensions to derive all four canonical cases.\relax }}{12}{figure.caption.48}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.\relax }}{13}{figure.caption.52}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces An SCP Task, SCP, and Realised SCP describing whether a student will pass their exam. @TODOredodiagram\relax }}{16}{figure.caption.56}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces A breadth-first search algorithm for De Novo SCP search with SCP Task $\Pi =(x,M,\gamma ,f())$.\relax }}{20}{figure.caption.69}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.\relax }}{13}{figure.caption.54}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces An SCP Task, SCP, and Realised SCP describing whether a student will pass their exam. @TODOredodiagram\relax }}{16}{figure.caption.58}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces A breadth-first search algorithm for De Novo SCP search with SCP Task $\Pi =(x,M,\gamma ,f())$.\relax }}{21}{figure.caption.72}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces One possible formulation of a cognitive function to add abnormalities to variables. This formulation follows the intuition of Appendix~@TODOref.\relax }}{25}{figure.caption.97}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces One possible formulation of a cognitive function to weakly complete a set of rules. This formulation follows the intuition of weak completion outlined in Section~@TODOsec.\relax }}{25}{figure.caption.99}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces One possible formulation of a cognitive function to apply the semantic operator a congnitive state by temporarily setting all variables in $V$ to any value that can computed using the semantic rule in Equation~@TODOref. This process is repeated until $V$ is no longer updated. @TODOredoThisDigramToShowActualProcess\relax }}{26}{figure.caption.101}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces One possible formulation of a cognitive function to add abnormalities to variables. This formulation follows the intuition of Appendix~@TODOref.\relax }}{27}{figure.caption.101}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces One possible formulation of a cognitive function to weakly complete a set of rules. This formulation follows the intuition of weak completion outlined in Section~@TODOsec.\relax }}{27}{figure.caption.103}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces One possible formulation of a cognitive function to apply the semantic operator a congnitive state by temporarily setting all variables in $V$ to any value that can computed using the semantic rule in Equation~@TODOref. This process is repeated until $V$ is no longer updated. @TODOredoThisDigramToShowActualProcess\relax }}{28}{figure.caption.105}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces A generalised illustration of the WCS in an SCP. \relax }}{33}{figure.caption.122}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces The standard case of the Suppression Task, demonstrating the suppression effect. Where the epistemic state in the boxes represents the output of that cognitive operation. $V_f$ represents the assignment of $V$ in the epistemic state in the resulting least model. $V_{i\in \PazoBB {N}}$ represents the assignments in $V$ after $i$ iterations of the semantic operator.\relax }}{34}{figure.caption.123}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces The Suppression Task in which the additional operation of deleting the variable $o$ occurs.\relax }}{35}{figure.caption.127}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces The Suppression Task in which the additional operation of fixing the variable $ab_1$ to false occurs.\relax }}{36}{figure.caption.129}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces A generalised illustration of the WCS in an SCP. \relax }}{35}{figure.caption.126}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces The standard case of the Suppression Task, demonstrating the suppression effect. Where the epistemic state in the boxes represents the output of that cognitive operation. $V_f$ represents the assignment of $V$ in the epistemic state in the resulting least model. $V_{i\in \PazoBB {N}}$ represents the assignments in $V$ after $i$ iterations of the semantic operator.\relax }}{36}{figure.caption.127}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces The Suppression Task in which the additional operation of deleting the variable $o$ occurs.\relax }}{37}{figure.caption.131}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces The Suppression Task in which the additional operation of fixing the variable $ab_1$ to false occurs.\relax }}{38}{figure.caption.133}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
