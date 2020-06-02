@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.20)  27 MAY 2020 11:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.4.20)  2 JUN 2020 12:43
 entering extended mode
 **./main.tex
 (main.tex
@@ -1425,7 +1425,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
 ] (main.lof
 LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 
-19.
+20.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ufplmbb.fd"
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
@@ -1460,35 +1460,35 @@ Chapter 1.
 
 
 ])
-Overfull \hbox (2.92195pt too wide) in paragraph at lines 22--243
+Overfull \hbox (2.92195pt too wide) in paragraph at lines 34--243
 \T1/ppl/m/n/10.95 gram-ming and non-monotonic log-ics - par-tic-u-larly the WCS
  and Re-iter's de-fault logic (Chap-
  []
 
-[2]
+[2] [3]
 \openout2 = `Chapters/Prelim.aux'.
 
- (Chapters/Prelim.tex
-Chapter 2.
-1: section
-[3
-
-
-
-] [4]) [5]
-\openout2 = `Chapters/Experiments.aux'.
-
- (Chapters/Experiments.tex [6
+ (Chapters/Prelim.tex [4
 
 
 
 ]
+Chapter 2.
+1: section
+[5] [6] [7]) [8]
+\openout2 = `Chapters/Experiments.aux'.
+
+ (Chapters/Experiments.tex
 Chapter 3.
 1: section
-[7]
+[9
 
-LaTeX Warning: Reference `ssec:addAbnormalities' on page 8 undefined on input l
-ine 30.
+
+
+]
+
+LaTeX Warning: Reference `ssec:addAbnormalities' on page 10 undefined on input 
+line 30.
 
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 9.37807pt on input line 58.
@@ -1502,123 +1502,150 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.29405pt on input line 58.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 58.
-<../figs/wasonAbstract.png, id=765, 487.8225pt x 191.9672pt>
+
+Overfull \hbox (19.39194pt too wide) in paragraph at lines 60--61
+\T1/ppl/m/n/10.95 and dis-cusses in-ter-pre-ta-tions of each case in terms of t
+he WCS, fol-low-ing the work of @TODOref. 
+ []
+
+<../figs/wasonAbstract.png, id=788, 487.8225pt x 191.9672pt>
 File: ../figs/wasonAbstract.png Graphic file (type png)
 <use ../figs/wasonAbstract.png>
-Package pdftex.def Info: ../figs/wasonAbstract.png  used on input line 66.
+Package pdftex.def Info: ../figs/wasonAbstract.png  used on input line 68.
 (pdftex.def)             Requested size: 243.91064pt x 95.98335pt.
-[8]
 
-LaTeX Warning: Citation 'ragni2017formal' on page 9 undefined on input line 78.
-
-
-
-LaTeX Warning: Citation 'ragni2017wason' on page 9 undefined on input line 78.
+Package caption Warning: \label without proper reference on input line 71.
+See the caption package documentation for explanation.
 
 
-LaTeX Warning: Citation 'ragni2017formal' on page 9 undefined on input line 88.
+LaTeX Warning: Reference `fig:wst' on page 10 undefined on input line 74.
 
-
+[10]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 109.
+(Font)              scaled to size 10.42007pt on input line 91.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 109.
+(Font)              scaled to size 7.91925pt on input line 91.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 109.
+(Font)              scaled to size 10.42007pt on input line 91.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 109.
-[9 <../figs/wasonAbstract.png>] [10]
-<../figs/wstcano.png, id=791, 374.90062pt x 315.42844pt>
+(Font)              scaled to size 7.91925pt on input line 91.
+
+
+LaTeX Warning: Citation 'ragni2017formal' on page 11 undefined on input line 99
+.
+
+
+LaTeX Warning: Citation 'ragni2017wason' on page 11 undefined on input line 99.
+
+
+[11 <../figs/wasonAbstract.png>]
+Overfull \hbox (45.67786pt too wide) in paragraph at lines 114--115
+[]\T1/ppl/m/n/10.95 Using this ap-proach, $\OML/zplm/m/it/10.95 I[]\OT1/zplm/m/
+n/10.95 (\OML/zplm/m/it/10.95 D \OMS/zplm/m/n/10.95 ^ :[]\OML/zplm/m/it/10.95 a
+b\OT1/zplm/m/n/10.95 )) \OMS/zplm/m/n/10.95 j[]\OT1/zplm/m/n/10.95 = \OMS/zplm/
+m/n/10.95 >$\T1/ppl/m/n/10.95 , $\OML/zplm/m/it/10.95 I[]\OT1/zplm/m/n/10.95 (\
+OML/zplm/m/it/10.95 D \OMS/zplm/m/n/10.95 ^ :[]\OML/zplm/m/it/10.95 ab\OT1/zplm
+/m/n/10.95 )) \OMS/zplm/m/n/10.95 j[]\OT1/zplm/m/n/10.95 = \OMS/zplm/m/n/10.95 
+>$\T1/ppl/m/n/10.95 , $\OML/zplm/m/it/10.95 I[]\OT1/zplm/m/n/10.95 (\OML/zplm/m
+/it/10.95 D \OMS/zplm/m/n/10.95 ^
+ []
+
+[12]
+<../figs/wstcano.png, id=819, 374.90062pt x 315.42844pt>
 File: ../figs/wstcano.png Graphic file (type png)
 <use ../figs/wstcano.png>
-Package pdftex.def Info: ../figs/wstcano.png  used on input line 216.
+Package pdftex.def Info: ../figs/wstcano.png  used on input line 181.
 (pdftex.def)             Requested size: 224.94211pt x 189.25851pt.
- [11]
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 2
-54.
+<../figs/WST_WCS.png, id=820, 1130.7846pt x 273.4215pt>
+File: ../figs/WST_WCS.png Graphic file (type png)
+<use ../figs/WST_WCS.png>
+Package pdftex.def Info: ../figs/WST_WCS.png  used on input line 189.
+(pdftex.def)             Requested size: 452.30583pt x 109.36665pt.
 
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmss.fd"
-File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)) [12 <../figs/wstcano.png>]
+Overfull \hbox (11.28809pt too wide) in paragraph at lines 189--190
+ [][] 
+ []
+
+) [13 <../figs/wstcano.png>] [14 <../figs/WST_WCS.png>]
 \openout2 = `Chapters/SCP.aux'.
 
  (Chapters/SCP.tex
 Chapter 4.
-<../figs/general.png, id=806, 307.1475pt x 75.8835pt>
+<../figs/general.png, id=831, 307.1475pt x 75.8835pt>
 File: ../figs/general.png Graphic file (type png)
 <use ../figs/general.png>
 Package pdftex.def Info: ../figs/general.png  used on input line 6.
 (pdftex.def)             Requested size: 149.72832pt x 36.99217pt.
-<../figs/generalWCS.png, id=807, 554.67226pt x 73.62506pt>
+<../figs/generalWCS.png, id=832, 554.67226pt x 73.62506pt>
 File: ../figs/generalWCS.png Graphic file (type png)
 <use ../figs/generalWCS.png>
 Package pdftex.def Info: ../figs/generalWCS.png  used on input line 12.
 (pdftex.def)             Requested size: 278.0594pt x 36.90904pt.
 1: section
-[13
+[15
 
 
 
- <../figs/general.png> <../figs/generalWCS.png>] [14]
-<../figs/ExamSCP.png, id=826, 1077.3048pt x 1111.2717pt>
+ <../figs/general.png> <../figs/generalWCS.png>] [16]
+<../figs/ExamSCP.png, id=851, 1077.3048pt x 1111.2717pt>
 File: ../figs/ExamSCP.png Graphic file (type png)
 <use ../figs/ExamSCP.png>
 Package pdftex.def Info: ../figs/ExamSCP.png  used on input line 55.
 (pdftex.def)             Requested size: 430.91429pt x 444.50081pt.
- [15] [16 <../figs/ExamSCP.png>]
+ [17] [18 <../figs/ExamSCP.png>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
 7.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [17]
-[18]
-Overfull \hbox (44.65576pt too wide) in paragraph at lines 132--133
+) [19]
+[20]
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
+15.
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmss.fd"
+File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Overfull \hbox (44.65576pt too wide) in paragraph at lines 133--134
 \T1/ppl/m/n/10.95 fine an ex-ter-nal ac-ti-va-tion func-tion $\OML/zplm/m/it/10
 .95 f[]\OT1/zplm/m/n/10.95 ()$ \T1/ppl/m/n/10.95 with an out-put do-main of $\O
 MS/zplm/m/n/10.95 f[]$\T1/ppl/m/n/10.95 ,
  []
 
-[19]
-<../figs/deNovo.png, id=859, 843.3909pt x 641.5167pt>
+[21]
+<../figs/deNovo.png, id=886, 843.3909pt x 641.5167pt>
 File: ../figs/deNovo.png Graphic file (type png)
 <use ../figs/deNovo.png>
-Package pdftex.def Info: ../figs/deNovo.png  used on input line 163.
+Package pdftex.def Info: ../figs/deNovo.png  used on input line 164.
 (pdftex.def)             Requested size: 337.35039pt x 256.60213pt.
- [20]
-
-LaTeX Warning: Reference `proof:insertionSearch' on page 21 undefined on input 
-line 184.
-
-[21 <../figs/deNovo.png>]) [22]
+ [22] [23 <../figs/deNovo.png>]) [24]
 \openout2 = `Chapters/Toolbox.aux'.
 
  (Chapters/Toolbox.tex
 Chapter 5.
 1: section
-[23
+[25
 
 
 
-] [24] [25]
-<../figs/abnormalitySCP.png, id=906, 640.04118pt x 138.21637pt>
+] [26] [27]
+<../figs/abnormalitySCP.png, id=934, 640.04118pt x 138.21637pt>
 File: ../figs/abnormalitySCP.png Graphic file (type png)
 <use ../figs/abnormalitySCP.png>
 Package pdftex.def Info: ../figs/abnormalitySCP.png  used on input line 129.
 (pdftex.def)             Requested size: 441.01775pt x 95.23862pt.
- [26]
-<../figs/weaklycompleteSCP.png, id=914, 557.38237pt x 86.724pt>
+ [28]
+<../figs/weaklycompleteSCP.png, id=942, 557.38237pt x 86.724pt>
 File: ../figs/weaklycompleteSCP.png Graphic file (type png)
 <use ../figs/weaklycompleteSCP.png>
 Package pdftex.def Info: ../figs/weaklycompleteSCP.png  used on input line 142.
 
 (pdftex.def)             Requested size: 441.01775pt x 68.61838pt.
-<../figs/semanticOperatorSCP.png, id=916, 322.05319pt x 90.78918pt>
+<../figs/semanticOperatorSCP.png, id=944, 322.05319pt x 90.78918pt>
 File: ../figs/semanticOperatorSCP.png Graphic file (type png)
 <use ../figs/semanticOperatorSCP.png>
 Package pdftex.def Info: ../figs/semanticOperatorSCP.png  used on input line 15
 4.
 (pdftex.def)             Requested size: 441.01775pt x 124.3333pt.
- [27 <../figs/abnormalitySCP.png> <../figs/weaklycompleteSCP.png>] [28 <../figs
+ [29 <../figs/abnormalitySCP.png> <../figs/weaklycompleteSCP.png>] [30 <../figs
 /semanticOperatorSCP.png>]
 Overfull \hbox (0.36974pt too wide) in paragraph at lines 206--207
 []\T1/ppl/m/it/10.95 Given that $\OML/zplm/m/it/10.95 $ \T1/ppl/m/it/10.95 is 
@@ -1640,7 +1667,7 @@ OML/zplm/m/it/10.95 x \OMS/zplm/m/n/10.95 7[][]! \OT1/zplm/m/n/10.95 [\OML/zplm
 n/10.95 )$
  []
 
-[29]
+[31]
 Overfull \hbox (30.14447pt too wide) in paragraph at lines 221--222
 \T1/ppl/m/n/10.95 point struc-ture $[]\OT1/zplm/m/n/10.95 (\OML/zplm/m/it/10.95
  s[]\OT1/zplm/m/n/10.95 )$ \T1/ppl/m/n/10.95 is called a \T1/ppl/m/it/10.95 str
@@ -1650,46 +1677,46 @@ zplm/m/n/10.95 = [](\OML/zplm/m/it/10.95 s[]\OT1/zplm/m/n/10.95 )$\T1/ppl/m/n/1
 0.95 . 
  []
 
-[30] [31]
+[32] [33]
 Overfull \hbox (1.47751pt too wide) in paragraph at lines 263--264
 \T1/ppl/m/n/10.95 con-sis-tently out-per-form hu-mans in a huge va-ri-ety of fi
 elds. Draw-ing on enor-mous databases
  []
 
-) [32]
+) [34]
 \openout2 = `Chapters/Mimic.aux'.
 
  (Chapters/Mimic.tex
 Chapter 6.
 1: section
-[33
+[35
 
 
 
-] [34
+] [36
 
 ]
 Chapter 7.
-<../figs/suppressionSCP_overview.png, id=961, 659.91544pt x 93.49931pt>
+<../figs/suppressionSCP_overview.png, id=990, 659.91544pt x 93.49931pt>
 File: ../figs/suppressionSCP_overview.png Graphic file (type png)
 <use ../figs/suppressionSCP_overview.png>
 Package pdftex.def Info: ../figs/suppressionSCP_overview.png  used on input lin
 e 18.
 (pdftex.def)             Requested size: 441.01775pt x 62.4844pt.
-<../figs/suppressionSCP_normal.png, id=962, 595.32413pt x 121.50394pt>
+<../figs/suppressionSCP_normal.png, id=991, 595.32413pt x 121.50394pt>
 File: ../figs/suppressionSCP_normal.png Graphic file (type png)
 <use ../figs/suppressionSCP_normal.png>
 Package pdftex.def Info: ../figs/suppressionSCP_normal.png  used on input line 
 26.
 (pdftex.def)             Requested size: 441.01775pt x 90.01161pt.
 1: section
-[35 <../figs/suppressionSCP_overview.png>]
+[37 <../figs/suppressionSCP_overview.png>]
 
-LaTeX Warning: Reference `alg:addAbnormalities' on page 36 undefined on input l
+LaTeX Warning: Reference `alg:addAbnormalities' on page 38 undefined on input l
 ine 52.
 
 
-LaTeX Warning: Reference `ssec:wcs' on page 36 undefined on input line 52.
+LaTeX Warning: Reference `ssec:wcs' on page 38 undefined on input line 52.
 
 
 Overfull \hbox (0.24538pt too wide) in paragraph at lines 52--53
@@ -1697,20 +1724,20 @@ Overfull \hbox (0.24538pt too wide) in paragraph at lines 52--53
 f the epis-temic state); \T1/cmtt/m/n/10.95 WeaklyComplete
  []
 
-[36 <../figs/suppressionSCP_normal.png>]
-<../figs/suppressionSCP_mod.png, id=980, 510.85857pt x 109.30838pt>
+[38 <../figs/suppressionSCP_normal.png>]
+<../figs/suppressionSCP_mod.png, id=1008, 510.85857pt x 109.30838pt>
 File: ../figs/suppressionSCP_mod.png Graphic file (type png)
 <use ../figs/suppressionSCP_mod.png>
 Package pdftex.def Info: ../figs/suppressionSCP_mod.png  used on input line 74.
 
 (pdftex.def)             Requested size: 374.86777pt x 80.21143pt.
-<../figs/suppressionSCP_mod2.png, id=981, 630.10406pt x 152.21869pt>
+<../figs/suppressionSCP_mod2.png, id=1009, 630.10406pt x 152.21869pt>
 File: ../figs/suppressionSCP_mod2.png Graphic file (type png)
 <use ../figs/suppressionSCP_mod2.png>
 Package pdftex.def Info: ../figs/suppressionSCP_mod2.png  used on input line 85
 .
 (pdftex.def)             Requested size: 441.01775pt x 106.54073pt.
- [37 <../figs/suppressionSCP_mod.png>]) [38 <../figs/suppressionSCP_mod2.png>]
+ [39 <../figs/suppressionSCP_mod.png>]) [40 <../figs/suppressionSCP_mod2.png>]
 \openout2 = `Chapters/Comparing.aux'.
 
  (Chapters/Comparing.tex
@@ -1720,14 +1747,14 @@ Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 17.
 
 1: section
-[39
+[41
 
 
 
-] [40]) [41]
+] [42]) [43]
 \openout2 = `Chapters/Program.aux'.
 
- (Chapters/Program.tex [42
+ (Chapters/Program.tex [44
 
 
 
@@ -1735,43 +1762,43 @@ Package amsmath Warning: Cannot use `split' here;
 Chapter 9.
 )
 1: section
-[43]
+[45]
 \openout2 = `Chapters/NSCP.aux'.
 
- (Chapters/NSCP.tex [44
+ (Chapters/NSCP.tex [46
 
 
 
 ]
 Chapter 10.
 1: section
-[45]) [46]
+[47]) [48]
 \openout2 = `Chapters/Conclusion.aux'.
 
  (Chapters/Conclusion.tex
 Chapter 11.
 )
 1: section
-[47
+[49
 
 
 
-] [48
+] [50
 
 
 ]
 1: section
-[49]
+[51]
 \openout2 = `Appendices/AppendixA.aux'.
 
- (Appendices/AppendixA.tex [50
+ (Appendices/AppendixA.tex [52
 
 
 ]
 Appendix A.
 )
 1: section
-[51] [52
+[53] [54
 
 
 ]
@@ -1782,7 +1809,7 @@ ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
  []
 
 1: section
-[53]
+[55]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
  (main.aux (Chapters/Introduction.aux) (Chapters/Prelim.aux)
@@ -1792,7 +1819,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 60321B6C8850B954B7AC529F38D554EA;17915.
+(rerunfilecheck)             Checksum: F984284E3849CC1AC8E18D494CA5B4D8;18301.
 
 
 LaTeX Warning: There were undefined references.
@@ -1810,18 +1837,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39308 strings out of 480896
- 807989 string characters out of 2908248
- 1283044 words of memory out of 3000000
- 54228 multiletter control sequences out of 15000+200000
- 615647 words of font info for 196 fonts, out of 3000000 for 9000
+ 39325 strings out of 480896
+ 808227 string characters out of 2908248
+ 1283066 words of memory out of 3000000
+ 54237 multiletter control sequences out of 15000+200000
+ 615904 words of font info for 197 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,21n,86p,1796b,2428s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\e
 ctt1000.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec
 /dpi600\ectt0900.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jk
-nappen/ec/dpi600\ectt1095.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecss1095.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dv
+nappen/ec/dpi600\ecss1095.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/
+ljfour/jknappen/ec/dpi600\ectt1095.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dv
 ips/base/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cme
 x10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progr
@@ -1834,9 +1861,9 @@ ts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/upl
 b8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (73 pages, 847987 bytes).
+Output written on main.pdf (75 pages, 947586 bytes).
 PDF statistics:
- 1249 PDF objects out of 1440 (max. 8388607)
- 256 named destinations out of 1000 (max. 500000)
- 902 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1278 PDF objects out of 1440 (max. 8388607)
+ 263 named destinations out of 1000 (max. 500000)
+ 931 words of extra memory for PDF output out of 10000 (max. 10000000)
 

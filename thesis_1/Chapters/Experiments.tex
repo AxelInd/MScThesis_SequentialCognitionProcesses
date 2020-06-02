@@ -55,7 +55,9 @@ Now suppression has been displayed in the logic program and the variable $l$ rem
 \end{table}
 
 
-Another widely studied task in the psychological literature is the Wason Selection Task (WST), which asks participants to draw conclusions about which variables are able to falsify a given rule (\textit{Modus Tolens}\footnote{If $a\rightarrow b$, then $\lnot b \rightarrow \lnot a$}). We will look at this task in terms of the Abstract case of the task \citep{wason1968reasoning}. Each case is identical to each other in terms of classical logic representation, but each is interpreted differently by subjects. The WST is often used to illustrate that humans do no follow classical logic.
+Another widely studied task in the psychological literature is the Wason Selection Task (WST), which asks participants to draw conclusions about which variables are able to falsify a given rule (\textit{Modus Tolens}\footnote{If $a\rightarrow b$, then $\lnot b \rightarrow \lnot a$}). The task has many formulations @TODOref, but this thesis will exam two of the most mostly widely researched cases: the abstract case, and the deontic case.
+
+Sections~@TODORef and @TODOref examine participant response patterns for each case and discusses interpretations of each case in terms of the WCS, following the work of @TODOref. 
 
 \subsection{Modelling the Wason Selection Task} \label{ssec:wst_mod}
 
@@ -66,136 +68,97 @@ Another widely studied task in the psychological literature is the Wason Selecti
 \includegraphics[scale=0.5]{wasonAbstract}
 \caption{The Abstract case of the Wason Selection Task}
 \end{center}
+\label{fig:wst}
 \end{figure}
 
-The Abstract case of the WST presents the subject with four cards on a table. Their face-up sides read $D, K, 3,$ and $7$. They are asked which cards must be turned over to test the rule:
+The Abstract case of the WST presents the subject with four cards on a table as shown in Figure~\ref{fig:wst}. Their face-up sides read $D, K, 3,$ and $7$. Participants are told that each card has a number on one side and a letter on the other. They are then asked which cards must be turned over to test the rule:
 
 \begin{center}
 ``If there is a $D$ on one side of the card, then the other side shows $3$."
 \end{center} 
-Using classical logic, it is easy to see that turning $D$ to find anything but $3$ would invalidate the rule, as would turning $7$ and finding a $D$. Thus these two cards must be turned to check the rule. However, human subjects very seldom choose this classical answer set and instead overwhelmingly prefer to turn $D$ and $3$. Table~\ref{tbl:can} shows the most common card selection sets for participants.
-
-A great many cognitive theories have been applied to these results, with varying degrees of success \cite{ragni2017formal}. This paper will focus on the WCS interpretation of the task provided by \citep{ragni2017wason}. This approach assumed an initial knowledge base containing only the rule $3 \leftarrow D$.
-
-To illustrate this interpretation of the task we shall use the WCS to examine each of the four cards individually and see what conclusions can be drawn.
-
-When $D$ is observed:
-
-\[
-KB = \{3 \leftarrow D, D\leftarrow \top \}
-\]
-
-However, at this point, the authors introduce the concept of an abnormality as discussed in \citep{ragni2017formal}. Now, the rule holds only provided that some abnormal even does not occur.
-
-\[
-KB_D = \{3 \leftarrow D \land \lnot ab_1, D \leftarrow \top, ab \leftarrow \bot \}
-\]
-
-\[
-wcKB_D = \{3 \leftrightarrow D \land \lnot ab_1, D \leftrightarrow \top, ab \leftrightarrow \bot \}
-\]
-
-The authors also require that, to validate the rule, it must be evaluated after the semantic operator is iterated. Table~\ref{tbl:dcard} shows the result of repeatedly applying the semantic operator to $KB_D$. 
 
 \begin{table}
 \begin{center}
 
-\begin{tabular}{ c c c }
- \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
- 0 &  &  \\  
- 1 &  $D$ & $ab$  \\  
- 2 &  $D$, $3$ & $ab$  
-\end{tabular}
-\caption{Applying the Weak Completion Semantics to the $D$ card of the WST.}
-\label{tbl:dcard}
 
+\begin{tabular}{ c c c}
+  \textbf{$D$}&  \textbf{$3$}& \textbf{$3\leftarrow D$} \\ 
+ $\top$ & $\top$ & $\top$\\  
+ $\top$ & $\bot$ & $\bot$\\  
+ $\bot$ & $\top$ & $\top$\\
+ $\bot$ & $\bot$ & $\top$
+\end{tabular}
+\caption{Propositional evaluation of the conditional $3 \leftarrow D$ for each possible truth value of $3$ and $D$.}
+\label{tbl:wst_classical}
 \end{center}
 \end{table}
 
-When the $K$ card is observed:
+
+This task requires the participants to find possible defeaters for the conditional rule. Assuming $\textrm{``if } \phi \textrm{ then }\psi \textrm{"} \leftrightarrow (\psi \leftarrow \phi)$, Table~\ref{tbl:wst_classical} shows that the cards $D$ and $7$ (i.e. $\lnot 3)$ are both possible defeaters to the rule $3\leftarrow D$ because the rule $3 \leftarrow D$ is only falsified when the interpretation maps $(D,\top)$ and $(3, \bot)$ and so any observed card which allows a possible world with both of those assignments is a possible defeater. If a participant were to turn the $D$ card and find a number that was not $3$, or were to a turn the card $7$ and find the letter $D$ on the other side, the conditional would not hold. Thus these two cards must be turned to check the rule. However, human subjects very seldom choose this classical answer set and instead overwhelmingly prefer to turn the cards $D$ and $3$. Table~\ref{tbl:can} shows the most common card selection sets for participants.
+
+A great many cognitive theories have been applied to these results, with varying degrees of success \cite{ragni2017formal}. This paper will focus on the WCS interpretation of the task provided by \citep{ragni2017wason}. This approach assumed an initial knowledge base $\textit{KB}$ containing only the conditional $(3|D)$ and an interpretation of the conditional as follows:
+
+\begin{itemize}
+\item $I_\textrm{\L}(\psi|\phi)\leftrightarrow I_\textrm{\L}(\psi \leftarrow \phi \land \lnot \textit{ab})$, where $I_\textrm{\L}$ denotes the interpretation of the conditional under 3-valued @TODOLukaname logic, and \textit{ab} represents a license for implication.
+\end{itemize}
+
+Figure~\ref{wst_wcs} illustrates the weak completion of \textit{KB} for each of the four cards $D$, $K$, $3$, and $7$. In order to interpret the results achieved by applying the WCS to the abstract case of the WST, one must verify whether the conditional holds under $I_J$, where interpretations $I_J$ maps variable names after application of the semantic operators to their respective values ($v_i \in \textrm{True}:\top, v_j\in \textrm{False}:\bot$).
+
+@TODOrefdietsholldobler showed that the abstract case of the WST could be modelled using the WCS and 3-valued @lucasciewics logic. Using the conditional as the initial logic program, we write $KB=(S=\{\},\Delta=(3|D))$. Treating conditionals as licenses for implication $KB$ can be rewritten as $KB=(3\leftarrow D \land \lnot ab)$ where $ab$ is an abnormality predicate. Now $\textrm{lm wc}(KB)=\{\}\{ab\}$, and no information is obtained that could either verify or falsify the conditional. In order to adapt the WCS to the WST @TODOname introduced the concept of observation support.
+
+The set of abducibles $A$ corresponds to positive and negative facts which are not assigned in $KB$. For the WST as formulated here $A=\{D\leftarrow \top,D\leftarrow \bot,3\leftarrow \top,3\leftarrow \bot,K\leftarrow \top,k\leftarrow \bot,7\leftarrow \top,7\leftarrow \bot\}$.
+ An observation $O$ is explained by a minimal explanation $\eta \in A$ if and only if $O$ holds in $\textrm{lm wc}(KB\cup\eta)$. Table~@TODOfig shows the least models that can be drawn for the observations $D$, $3$, $K$, and $7$. If a least model obtained in this way contains atoms and atomic assignments that could invalidate the conditional (i.e. make $I_{\textrm{lm wc}(KB\cup \eta)}(3\leftarrow D \land ab)\models \bot$), then the observed card should be turned. Figure~@TODOref shows the derivation of $\textrm{lm wc}(KB\cup \eta)$ for $\eta=D, \eta=3, \eta=K$, and $\eta=7$ @TODOchangetextinfiguretosayetainsteadofobservation.
+
+----
+
+Using this approach, $I_{\top:\{D,3\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models \top$, $I_{\top:\{K\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models \top$, $I_{\top:\{3\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models u$, and $I_{\top:\{7\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models \top$. 
+
+---
+
+
+This simple interpretation of the WST which applies abduction to the initial knowledge base to derive observation is sufficient to model the general reasoner. It does not however explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant portion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak} by including three simple processes: adding the obersvation to the initial knowledge base, abduction as we have already discussed in this section, and contraposition. By including these three processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical results can also be drawn.
+
+\subsubsection*{Contraposition}
+
+Contraposition explicitly makes use of \textit{modus tolens}, usually assumed to be silenced in human cognition to derive certain canonical cases in the WST. Using contraposition it becomes possible to model individual participants who choose to turn the cards $D$ and $7$ (the classical response).
+
+Contraposition is applied as follows for the initial knowledge base $KB$:
+\begin{enumerate}
+\item $KB'=KB\cup(\lnot \phi|\lnot \psi) \textrm{iff } (\psi|\phi)\in KB$.@TODOinprelimmentiongettingelementsfromKB
+\item For each conditional $(\lnot \phi| \lnot \psi)\in KB'$ :
+\begin{itemize}
+\item Substitute $(\lnot \phi| \lnot \psi)$ for $(\phi' \leftarrow \lnot \psi \land \textit{ab}_k)$, where $k$ is an unused label for an abnormality predicate.
+\item Add the rule $(\phi' \leftarrow \lnot \phi)$ to $KB'$.
+\item Add the rule $(\textit{ab}_k\leftarrow \bot)$, if their is no abnormal situation associated with the rule $(\phi' \leftarrow \lnot \psi \land \textit{ab}_k)$.
+\end{itemize}
+\end{enumerate}
+
+Using this technique, it is possible to model the classical case of the WST. The resolution for the $7$ is as follows.
 
 \[
-KB_K = \{3 \leftarrow D \land \lnot ab_1, K \leftarrow \top, ab \leftarrow \bot \}
+KB = (S=\{\},\Delta=\{(3|D)\})
 \]
-
 \[
-wcKB_K = \{3 \leftrightarrow D \land \lnot ab_1, K \leftrightarrow \top, ab \leftrightarrow \bot \}
+KB' = (S=\{\},\Delta\{=(3|D),(\lnot D|\lnot 3)\})
 \]
-
-Table~\ref{tbl:kcard} shows that not enough information can be obtained using only the semantic operator to evaluate the rule $D \leftrightarrow 3$. This is identical to the case for the $7$ card.
-
-\begin{table}
-\begin{center}
-
-\begin{tabular}{ c c c }
- \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
- 0 &  &  \\  
- 1 &  $K$ & $ab$  \\  
- 2 &  $K$ & $ab$  
-\end{tabular}
-\caption{Applying the Weak Completion Semantics to the $K$ card of the WST.}
-\label{tbl:kcard}
-
-\end{center}
-\end{table}
-
-When the $3$ card is observed:
 \[
-KB_3 = \{3 \leftarrow D \land \lnot ab_1, 3 \leftarrow \top, ab \leftarrow \bot \}
+KB' = (S=\{\lnot D \leftarrow \lnot 3 \land ab_2, ab_2\leftarrow \bot\}, \Delta=\{(3|D)\})
 \]
-
 \[
-wcKB_3 = \{3 \leftrightarrow D \land \lnot ab_1, 3 \leftrightarrow \top, ab \leftrightarrow \bot \}
+KB' = (S=\{D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D, ab_2\leftarrow \bot\}, \Delta=\{(3|D)\})
 \]
-
-In this case, something odd happens. Even though the WCS framework a outlined is not able to deduce anything about the truth value of the variable $D$, participants still very often chose to turn this card. In \cite{breu2019weak} we argue that this may be a result of implicit \textit{abduction}. That is, that the participant subconsciously attempts to identify any possible way in which $3 \leftrightarrow D \land \lnot ab$ could hold when $3=\top$ and $ab=\bot$. The only way for this rule to hold would be for $D$ to be true too:
-
-\begin{table}
-\begin{center}
-
-\begin{tabular}{ c c c }
- \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
- 0 &  &  \\  
- 1 &  $3$ & $ab$  \\  
- 2 &  $3$ & $ab$  
-\end{tabular}
-\caption{Applying the Weak Completion Semantics to the $K$ card of the WST.}
-\label{tbl:3card}
-
-\end{center}
-\end{table}
-
-Now, using Table~\ref{tbl:3card} one can see that $3$ is set to true, the abnormality is set to false, and $D$ has been assumed via abduction. Following \L ukasiewicz logic these assignments are sufficient to evaluate $3\leftarrow D \land \lnot ab$ to $\top$. This the subject will conclude to turn the card.
-
-This simple interpretation of the WST using the WCS and using or not using abduction is sufficient to achieve the most common (general) reasoning of participants. It does not however explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant portion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak} by including two simple processes: Abduction and Contraposition. By including these two processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical results can also be drawn.
-
-As discussed above, Abduction can be used when the rule under consideration evaluates to unknown. It uses fixing of remaining free varibles to determine if any combination of these can validate or falsify the rule. In the case we have discussed, only fixing $D = \top$ will validate the rule.
-
-Contraposition explicitly makes use of \textit{modus tolens}, usually assumed to be silenced in human cognition to derive certain canonical cases in the WST. In particular, for the card $7$, the logic program:
-
 \[
-KB_7 = \{3 \leftarrow D, 7 \leftarrow \top \}
+KB' = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D,  ab_2\leftarrow \bot, ab_1\leftarrow \bot\}
 \]
-
-is extended with the rule $\lnot D \leftarrow \lnot 3$, which itself simply means $K \leftarrow 7$ for our restricted domain. 
-
 \[
-KB_7 = \{3 \leftarrow D, \lnot D \leftarrow \lnot 3, 7 \leftarrow \top \}
+KB'\cup 7\leftarrow\top = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D,  ab_2\leftarrow \bot, ab_1\leftarrow \bot, 7\leftarrow\top \}
 \]
+\begin{equation} \label{eqn:wst_contra}
+\textrm{wc} (KB'\cup (7\leftarrow\top)) = \{3 \leftrightarrow D \land \lnot ab_1, D' \leftrightarrow (\lnot 3 \land ab_2) \lor (\lnot D),  ab_2\leftrightarrow \bot, ab_1\leftrightarrow \bot, 7\leftrightarrow\top \}
+\end{equation}
 
-Adding abnormalities yields:
+Table~\ref{tbl:7cont} shows the computation of $\textrm{lm wc} (KB'\cup (7\leftarrow\top))$. From this, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
 
-\[
-KB_7 = \{3 \leftarrow D \land \lnot ab_1, \lnot D \leftarrow \lnot 3 \land \lnot ab_2, 7 \leftarrow \top, ab_1 \leftarrow \bot, ab_2 \leftarrow \bot \}
-\]
-
-After weakly completing:
-
-\[
-KB_7 = \{3 \leftrightarrow D \land \lnot ab_1, \lnot D \leftrightarrow \lnot 3 \land \lnot ab_2, 7 \leftrightarrow \top, ab_1 \leftrightarrow \bot, ab_2 \leftrightarrow \bot \}
-\]
-
-Applying the semantic operator then yields:
 
 \begin{table}
 \begin{center}
@@ -204,7 +167,9 @@ Applying the semantic operator then yields:
  \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
  0 &  &  \\  
  1 &  $7$ & $ab_1$, $ab_2$  \\  
- 2 &  $K$, $7$ & $D$, $3$, $ab_1$, $ab_2$  
+ 2 &  $7$ & $3$, $ab_1$, $ab_2$  \\
+ 3 &  $7$, $D'$ & $3$, $ab_1$, $ab_2$  \\
+ 4 &  $7$, $D'$ & $3$, $ab_1$, $ab_2$, $D$  
 \end{tabular}
 \caption{Applying the Weak Completion Semantics and Contraposition to the $7$ card of the WST.}
 \label{tbl:7cont}
@@ -218,49 +183,16 @@ Applying the semantic operator then yields:
 \label{fig:wstcano}
 \end{figure}
 
-
-
-Table~\ref{tbl:7cont} shows the result of applying the semantic operator to the resulting knowledge base. From this, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
-
-@TODOrewritewholesectionintermsofpq
-
 @TODOallbelowshouldbeintegratedintoabove
 
-\subsubsection*{For card D}
-initial
-\[
-\{3 \leftarrow D\}
-\]
-Observe $D$ card.
-\[
-\{3 \leftarrow D \leftarrow \top\}
-\]
-Add abnormalities
-\[
-\{3 \land \lnot \textrm{ab} \leftarrow D, D \leftarrow \top\}
-\]
-Weakly Complete
-\[
-\{3 \land \lnot \textrm{ab} \leftrightarrow D, D \leftrightarrow \top\}
-\]
-Semantic Operator
+\begin{figure}
+\centering \includegraphics[scale=0.4]{WST_WCS}
+\caption{Application of the WCS to the abstract case of the WST.}
+\label{wst_wcs}
+\end{figure}
 
 
 
-\begin{table}
-\begin{center}
-\begin{tabular}{ M L L L}
- \textbf{Validity} & \textbf{Full SCP evaluation} & \textbf{Uniform Epistemic Structure} & \textbf{Operator Silencing Knowledge}\\ 
- Trivial & \text{\sffamily X} & \checkmark & \text{\sffamily X} \\ 
- Variable & \checkmark & \text{\sffamily X} & \text{\sffamily X} \\ 
- Operator & \text{\sffamily X} & \text{\sffamily X} & \checkmark \\ 
- Hybrid & \text{\sffamily X} & \text{\sffamily X} & \text{\sffamily X}
-\end{tabular}
-\caption{SCP property requirements for precondition types in cognitive operations.}
-\label{tbl:wst}
-
-\end{center}
-\end{table}
 
 
 
