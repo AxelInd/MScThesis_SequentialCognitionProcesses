@@ -43,21 +43,21 @@
 
 Propositional logic is one of the simplest classical logics and concerns itself with binary truth values. $\top$ denotes a tautology, and $\bot$ denotes a contradiction. An alphabet $\Sigma=\{v_1,...,v_n\}$ defines the set of atoms available to the language. Every atom $v_i \in \Sigma$ has the domain $\{v_i, \bar{v_i}\}$. An (atom, domain) pair which associates an atom with a value in its domain is called a literal.
 
-A formaula $\theta \in \zeta$ from set of all formuli $\zeta$ is defined recursively over all conjunction $\land$, disjunction $\lor$, and negation $\lnot$ operations as follows:
+A formula $\theta \in \zeta$ from set of all formuli $\zeta$ is defined recursively over all conjunction $\land$, disjunction $\lor$, and negation $\lnot$ operations as follows:
 
 \[
 \theta = \{ v_i \in \Sigma | \lnot \theta | \theta \lor \theta | \theta \land \theta \}
 \]
 
 
-The material implication $(\phi \rightarrow \psi)$ precisely substitutes the formula for the formula $(\lnot \psi \lor \phi)$ and is often used, classically to denote an ``if $\phi$ then $\psi$" relationship between variables. However, in Section~@TODOref other interpretations of the "if $\phi$ then $\psi$" relationship are examined in a non-monotonic setting.
+The material implication $(\psi \leftarrow \phi)$ precisely substitutes the formula for the formula $(\lnot \psi \lor \phi)$ and is often used, classically to denote an ``if $\phi$ then $\psi$" relationship between variables. However, in Section~@TODOref other interpretations of the "if $\phi$ then $\psi$" relationship are examined in a non-monotonic setting.
 
-An interpretation of $\Sigma$, $I_w(\sigma)$ assigns each $v_i\ in \Sigma$ to one value in its domain as defined by possible world $w$. The interpretation of a formula $\theta$, $I_w(\theta)$ is recursively calculated using the associated truth tables of the operators involved, as defined in Table~\ref{tbl:prop}. 
+An interpretation of $\Sigma$, $I_w(\Sigma)$ assigns each $v_i\ \in \Sigma$ to one value in its domain as defined by possible world $w$. The interpretation of a formula $\theta$, $I_w(\theta)$ is recursively calculated using the associated truth tables of the operators involved, as defined in Table~\ref{tbl:prop}. 
 
 \section{Possible Worlds}
-A possible world $w\in W_\sigma$ from the set of all possible worlds $W$ over a language $\sigma$ is $(v_0,w_0) \land ... \land I(v_n,w_n)$ and is the conjunction of each atom and an associated value from its domain. Possible worlds represent one setting of the variables in the alphabet that could hypothetically hold. A model of a propositional formula $\theta \in \zeta$ is a possible world $w$ in which $\theta$ is evaluated to $top$ (also called satisfying) and is written $w \models \theta$. 
+A possible world $w\in W_\sigma$ from the set of all possible worlds $W$ over a language $\Sigma$ is $(v_0,w_0) \land ... \land I(v_n,w_n)$ and is the conjunction of each atom and an associated value from its domain. Possible worlds represent one setting of the variables in the alphabet that could hypothetically hold. A model of a propositional formula $\theta \in \zeta$ is a possible world $w$ in which $\theta$ is evaluated to $top$ (also called satisfying) and is written $w \models \theta$. 
 
-$Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds - that is, $Mod(\theta)=\{w|w\models \theta\}$. The operator $\models$ is overloaded so that $\phi \models \psi$ if and only if $Mod(\phi) \subseteq Mod(\psi)$ for $\phi,\psi \in \zeta$.
+$Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that is, $Mod(\theta)=\{w|w\models \theta\}$. The operator $\models$ is overloaded so that $\phi \models \psi$ if and only if $Mod(\phi) \subseteq Mod(\psi)$ for $\phi,\psi \in \zeta$.
 
 \section{Conditionals}
 \begin{table}
@@ -76,9 +76,14 @@ Defeasible knowledge is information which is assumed, but not guaranteed, to hol
 
 \section{Logic Programming}
 \subsection{Knowledge Base}
-In propositional logic, a knowledge base $KB_{prop}=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $KB_{prop}$ is called consistent only if their exists some possible world $w \in W$ such that every rule in $I_w(KB_{prop})$ evaluates to $\top$.
+In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called consistent only if their exists some possible world $w \in W$ such that every rule in $I_w(KB_{prop})$ evaluates to $\top$.
 
-More generally, a non-monotonic knowledge base $KB=(KB_{prop}, \Delta)$ contains both a set of propositional rules ($KB_{prop}$) and a set of defeasible/conditional rules ($\Delta=\{\Delta_1,...,\Delta_m\}$). A non-monotonic knowledge base tolerates a conditional $(\psi|\phi)\in\Delta$ if and only if there exists some possible world $w\in W$ that verifies $(\psi|\phi)$ and does not falsify any conditional in $\Delta$. $KB$ is said it be consistent if and only if there exists of partition of $\Delta$, $(\Delta_0,...,\Delta_n)$ such that $\Delta_i$ is tolerated by $\Delta_{i+k}$, where $k$ is any natural number not greater than $m$.
+More generally, a non-monotonic knowledge base $KB=(S, \Delta)$ contains both a set of propositional rules ($S$) and a set of defeasible/conditional rules ($\Delta=\{\Delta_1,...,\Delta_m\}$). A non-monotonic knowledge base tolerates a conditional $(\psi|\phi)\in\Delta$ if and only if there exists some possible world $w\in W$ that verifies $(\psi|\phi)$ and does not falsify any conditional in $\Delta$. $KB$ is said to be consistent if and only if there exists of partition of $\Delta$, $(\Delta_0,...,\Delta_n)$ such that $\Delta_i$ is tolerated by $\Delta_{i+k}$, where $k$ is any natural number not greater than $m$. 
+
+When $KB=(S=\{\textrm{rule}_1,...,\textrm{rule}_n\},\Delta=\{\})$, we will sometimes ignore $\Delta$ and refer only to the value of $S$ whilst still using the term `$KB$'.
+%
+\subsection{Interpretation of conditionals}
+@TODO
 
 
 
@@ -87,7 +92,7 @@ In the field of non-monotonic logics, reasoning is represented as a collection o
 
 A large number of non-monotonic frameworks exist in the literature \citep{mcdermott1980non}, each applicable to a different subset of cognitive problem space, and each modelling their problem space with various degrees of success. In the simplest formulation, a non-monotonic logic is simply an extension to a classical logic which introduces a preference relation $\rightarrow_p$. This preference relation states that, given some number of derivable facts in a knowledge base, the fact derived using the most preferential rule is to be derived first and cannot be overwritten by a less preferable assignment.  
 
-Although the non-monotonic logics discussed in this section has simple extensions to first-order logic, we instead restrict ourselves to a propositional format throughout this thesis.
+Although the non-monotonic logics discussed in this section have simple extensions to first-order logic (@TODOref), we instead restrict ourselves to a propositional format throughout this thesis.
 \section{The Weak Completion Semantics}
 \begin{table}
 \begin{center}
@@ -102,7 +107,7 @@ Although the non-monotonic logics discussed in this section has simple extension
 \end{center}
 \end{table}
 
-The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomena. The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
+The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomena (@OTDOextend). The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
 
 The Weak Completion of a program $P$ is defined as follows:
 
