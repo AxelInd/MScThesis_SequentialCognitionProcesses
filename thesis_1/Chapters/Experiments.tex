@@ -107,18 +107,34 @@ Figure~\ref{wst_wcs} illustrates the weak completion of \textit{KB} for each of 
 @TODOrefdietsholldobler showed that the abstract case of the WST could be modelled using the WCS and 3-valued @lucasciewics logic. Using the conditional as the initial logic program, we write $KB=(S=\{\},\Delta=(3|D))$. Treating conditionals as licenses for implication $KB$ can be rewritten as $KB=(3\leftarrow D \land \lnot ab)$ where $ab$ is an abnormality predicate. Now $\textrm{lm wc}(KB)=\{\}\{ab\}$, and no information is obtained that could either verify or falsify the conditional. In order to adapt the WCS to the WST @TODOname introduced the concept of observation support.
 
 The set of abducibles $A$ corresponds to positive and negative facts which are not assigned in $KB$. For the WST as formulated here $A=\{D\leftarrow \top,D\leftarrow \bot,3\leftarrow \top,3\leftarrow \bot,K\leftarrow \top,k\leftarrow \bot,7\leftarrow \top,7\leftarrow \bot\}$.
- An observation $O$ is explained by a minimal explanation $\eta \in A$ if and only if $O$ holds in $\textrm{lm wc}(KB\cup\eta)$. Table~@TODOfig shows the least models that can be drawn for the observations $D$, $3$, $K$, and $7$. If a least model obtained in this way contains atoms and atomic assignments that could invalidate the conditional (i.e. make $I_{\textrm{lm wc}(KB\cup \eta)}(3\leftarrow D \land ab)\models \bot$), then the observed card should be turned. Figure~@TODOref shows the derivation of $\textrm{lm wc}(KB\cup \eta)$ for $\eta=D, \eta=3, \eta=K$, and $\eta=7$ @TODOchangetextinfiguretosayetainsteadofobservation.
-
-----
-
-Using this approach, $I_{\top:\{D,3\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models \top$, $I_{\top:\{K\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models \top$, $I_{\top:\{3\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models u$, and $I_{\top:\{7\},\bot:\{ab\}}(D \land \lnot \textit(ab))\models \top$. 
-
----
+ An observation $O$ is explained by a minimal explanation $\epsilon \in A$ if and only if $O$ holds in $\textrm{lm wc}(KB\cup\epsilon)$. Table~@TODOfig shows the least models that can be drawn for the observations $D$, $3$, $K$, and $7$. If a least model obtained in this way contains atoms and atomic assignments that could invalidate the conditional (i.e. make $I_{\textrm{lm wc}(KB\cup \epsilon)}(3\leftarrow D \land ab)\models \bot$), then the observed card should be turned. Figure~@TODOref shows the derivation of $\textrm{lm wc}(KB\cup \epsilon)$ for $\epsilon=D, \epsilon=3, \epsilon=K$, and $\epsilon=7$ @TODOchangetextinfiguretosayetainsteadofobservation.
 
 
-This simple interpretation of the WST which applies abduction to the initial knowledge base to derive observation is sufficient to model the general reasoner. It does not however explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant portion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak} by including three simple processes: adding the obersvation to the initial knowledge base, abduction as we have already discussed in this section, and contraposition. By including these three processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical results can also be drawn.
+This simple interpretation of the WST which applies abduction to the initial knowledge base to derive observation is sufficient to model the general reasoner. It does not however explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant portion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak} by including three simple processes: basic weak completion, abduction as we have already discussed in this section, and contraposition. By including these three processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical results can also be drawn.
+
+\subsubsection*{Basic Weak Completion}
+\begin{figure}
+\centering \includegraphics[scale=0.4]{WST_WCS}
+\caption{Application of the WCS to the abstract case of the WST for the basic weak completion approach.}
+\label{wst_wcs}
+\end{figure}
+Basic weak completion ignores the existence of other least models which may validate the inference $(3|D)$ and, instead handles only those cases where $\epsilon \leftrightarrow (O\leftarrow \top)$. That is, only information about the currently observed card is considered in the abductive framework. Figure~\ref{wst_wcs} illustrates this process for each of the four observations: $D$, $3$, $K$, and $7$. Now only $\textrm{wc lm}(KB \cup (D \leftarrow \top))$ now provides assignments which could invalidate the inference if they were otherwise. Observing the card $3$ no longer leads to the decision to turn the card because only the case $\epsilon = (3\leftarrow \top)$ is considered and the case $\epsilon = (D \leftarrow \top)$ is not considered.
 
 \subsubsection*{Contraposition}
+\begin{table}
+\begin{center}
+\begin{tabular}{ c c c }
+ \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
+ 0 &  &  \\  
+ 1 &  $7$ & $ab_1$, $ab_2$  \\  
+ 2 &  $7$ & $3$, $ab_1$, $ab_2$  \\
+ 3 &  $7$, $D'$ & $3$, $ab_1$, $ab_2$  \\
+ 4 &  $7$, $D'$ & $3$, $ab_1$, $ab_2$, $D$  
+\end{tabular}
+\caption{Applying the Weak Completion Semantics and Contraposition to the $7$ card of the WST.}
+\label{tbl:7cont}
+\end{center}
+\end{table}
 
 Contraposition explicitly makes use of \textit{modus tolens}, usually assumed to be silenced in human cognition to derive certain canonical cases in the WST. Using contraposition it becomes possible to model individual participants who choose to turn the cards $D$ and $7$ (the classical response).
 
@@ -133,7 +149,7 @@ Contraposition is applied as follows for the initial knowledge base $KB$:
 \end{itemize}
 \end{enumerate}
 
-Using this technique, it is possible to model the classical case of the WST. The resolution for the $7$ is as follows.
+Using this technique, and applying basic weak completion (i.e. only considering the case $\epsilon\leftrightarrow(O\leftarrow \top)$ it is possible to model the classical case of the WST. The resolution for the $7$ card is as follows:
 
 \[
 KB = (S=\{\},\Delta=\{(3|D)\})
@@ -151,7 +167,7 @@ KB' = (S=\{D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D, ab_2\leftarr
 KB' = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D,  ab_2\leftarrow \bot, ab_1\leftarrow \bot\}
 \]
 \[
-KB'\cup 7\leftarrow\top = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D,  ab_2\leftarrow \bot, ab_1\leftarrow \bot, 7\leftarrow\top \}
+KB'\cup (7\leftarrow\top) = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D,  ab_2\leftarrow \bot, ab_1\leftarrow \bot, 7\leftarrow\top \}
 \]
 \begin{equation} \label{eqn:wst_contra}
 \textrm{wc} (KB'\cup (7\leftarrow\top)) = \{3 \leftrightarrow D \land \lnot ab_1, D' \leftrightarrow (\lnot 3 \land ab_2) \lor (\lnot D),  ab_2\leftrightarrow \bot, ab_1\leftrightarrow \bot, 7\leftrightarrow\top \}
@@ -159,37 +175,19 @@ KB'\cup 7\leftarrow\top = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot
 
 Table~\ref{tbl:7cont} shows the computation of $\textrm{lm wc} (KB'\cup (7\leftarrow\top))$. From this, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
 
+\subsubsection*{Combined Model}
+By combining our contra position and adductive rules for inferences which we discussed in @TODOfirstwcs's paper, it is possible to model the case where the cards $D$, $K$, and $7$ are turned (Figure~\ref{wstcano} @TODOfigures?).
 
-\begin{table}
-\begin{center}
+This work showed that all canonical cases of the weak completion semantics could be modelled by activating or silencing these three processes on the initial knowledge base. The intuition that a discrete and systematic succession of well-founded processes could be used to model multiple different results for the same experiment was the inspiration for the SCP framework which this thesis introduces.
 
-\begin{tabular}{ c c c }
- \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
- 0 &  &  \\  
- 1 &  $7$ & $ab_1$, $ab_2$  \\  
- 2 &  $7$ & $3$, $ab_1$, $ab_2$  \\
- 3 &  $7$, $D'$ & $3$, $ab_1$, $ab_2$  \\
- 4 &  $7$, $D'$ & $3$, $ab_1$, $ab_2$, $D$  
-\end{tabular}
-\caption{Applying the Weak Completion Semantics and Contraposition to the $7$ card of the WST.}
-\label{tbl:7cont}
-
-\end{center}
-\end{table}
 
 \begin{figure}
 \centering \includegraphics[scale=.6]{wstcano}
-\caption{Using the abduction and contraposition extensions to derive all four canonical cases.}
+\caption{Using the abduction and contraposition extensions to derive all four canonical cases. @TODOredoWithCards}
 \label{fig:wstcano}
 \end{figure}
 
-@TODOallbelowshouldbeintegratedintoabove
 
-\begin{figure}
-\centering \includegraphics[scale=0.4]{WST_WCS}
-\caption{Application of the WCS to the abstract case of the WST.}
-\label{wst_wcs}
-\end{figure}
 
 
 
