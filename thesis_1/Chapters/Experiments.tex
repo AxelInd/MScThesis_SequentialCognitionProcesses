@@ -16,7 +16,7 @@ Work by \cite{dietz2014modeling} has shown that the WCS is an adequate non-monot
 \begin{enumerate}
 \item $KB=(\{e \leftarrow \top\}, \Delta=\{(l|e)\})$
 \item Initial logic program: $P = \{e \rightarrow l, \top \rightarrow e \}$. This program represents the task without information about what happens if the library is open.
-\item Interpretation of conditionals: $P = \{e \land \lnot ab_1 \rightarrow l, \top \rightarrow e, \bot \rightarrow ab_1 \}$. Treating the conditional as a license for implication (Section~@TODORef). The program now reflects the possibility that some abnormal event may prevent her from going to the library, but because we have no information about the nature of this event, it is set to $\bot$ by default.
+\item Interpretation of conditionals: $P = \{e \land \lnot ab_1 \rightarrow l, \top \rightarrow e, \bot \rightarrow ab_1 \}$. Treating the conditional as a license for implication (Section~\ref{ssec:condInterpretation}). The program now reflects the possibility that some abnormal event may prevent her from going to the library, but because we have no information about the nature of this event, it is set to $\bot$ by default.
 \item Weak Completion: $wc(P) = \{e \land \lnot ab_1 \leftrightarrow l, \top \leftrightarrow e, \bot \leftrightarrow ab_1 \}$.
 \item Semantic Operator:
 \begin{itemize}

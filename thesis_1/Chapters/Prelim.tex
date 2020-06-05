@@ -75,14 +75,14 @@ $Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that
 Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following @TODOrefwason1968 we do not use the implication $\rightarrow$ to represent a conditional, and instead opt for what Baratgin (@TODOrefbaratgin2014) called a \textit{deFinetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
 
 \section{Logic Programming}
-\subsection{Knowledge Base}
+\subsection{Knowledge Base} \label{ssec:kb}
 In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called consistent only if their exists some possible world $w \in W$ such that every rule in $I_w(KB_{prop})$ evaluates to $\top$.
 
 More generally, a non-monotonic knowledge base $KB=(S, \Delta)$ contains both a set of propositional rules ($S$) and a set of defeasible/conditional rules ($\Delta=\{\Delta_1,...,\Delta_m\}$). A non-monotonic knowledge base tolerates a conditional $(\psi|\phi)\in\Delta$ if and only if there exists some possible world $w\in W$ that verifies $(\psi|\phi)$ and does not falsify any conditional in $\Delta$. $KB$ is said to be consistent if and only if there exists of partition of $\Delta$, $(\Delta_0,...,\Delta_n)$ such that $\Delta_i$ is tolerated by $\Delta_{i+k}$, where $k$ is any natural number not greater than $m$. 
 
 When $KB=(S=\{\textrm{rule}_1,...,\textrm{rule}_n\},\Delta=\{\})$, we will sometimes ignore $\Delta$ and refer only to the value of $S$ whilst still using the term `$KB$'.
 %
-\subsection{Interpretation of conditionals}
+\subsection{Interpretation of conditionals} \label{ssec:condInterpretation}
 @TODO
 
 
@@ -143,12 +143,18 @@ The set of immutable facts is called $kb$ and inferences in $kb$ are made as wit
 
 \[\frac{\textrm{prerequisite}:\textrm{ justification}_1, \textrm{ ...}, \textrm{ justification}_n}{\textrm{conclusion}}\] @TODOextend.
 
+The background theory $W$ is a set of propositional formula which are evaluated as with the propositional knowledge base $S$ (Section~\ref{ssec:kb}).
+
 Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion} are propositional logic clauses. A \textit{conclusion} is valid and added to the set of known variables in $kb$ iff \textit{prerequisite} holds and no clause $\textit{justification}_i$ holds.
 
-Formally, inferences in default logic are calculated as follows:
 
-@TODOref
+A default rule may be applied to a theory if it is entailed by the theory and all of its justifications and conclusions are consistent with the theory. When a default rule is applied, its consequence is added to the background theory.
+
+Formally, inferences in default logic are calculated as follows:
+@TODO
 
 It should be immediately apparent form this formulation that, for many possible sets of rules in $kb$, the output is non-monotonic as is dependent on the order in which default rules are evaluated.
 
-A very significant restriction on reiter's default logic is the complexity of computing inferences. Even in the simple case of $kb={rule_1,...rule_n}$ and $d={}$, the set of possible inferences is \textit{NP-complete} as for a propositional formula @TODOnpcompleteref. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is an atom.
+A very significant restriction on reiter's default logic is the complexity of computing all inferences. Even in the simple case of $kb={rule_1,...rule_n}$ and $d={}$, the set of possible inferences is potential infinitely large, and even the set of non-trivial inferences is computationally infeasible @TODOref. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is an atom.
+
+The closed world assumption $\frac{: \lnot \bot}{\bot}$ states that all information which is not known to be true is assumed to be false. The closed world assumption can be used to ensure that every variable $v_i \in I_w(\Sigma) \models \top \lor bot$.

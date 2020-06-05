@@ -30,17 +30,34 @@ p \in_s q = \begin{pmatrix} p \in q  & \textrm{True} \\   \exists_{r\in p}p \in_
 
 It is never the case that $p \in_s p$.
 
-A cognitive operation $m = (\chi, e), m \in M$ consists of a precondition $\chi$ and a process $e$, such that for an input state point $p$, every base point $\bar{p} \in_s p$ is either accepted as input ($\bar{p} \models m[\chi]$ under whatever definition of $\models$ is used for the complex operation $m$), or else rejected. Every base point is evaluated by the complex operation in isolation (no other base point $\bar{q}$ can affect the output of $m$ on base point $\bar{p}$). To capture the fact that cognitive operation may utilize non-monotonic logic, applying $m$ to an input base point $\bar{p}\in p$ always yields a state point $p'$ (written $J[\bar{p},m]=p'$) which describes all possible resulting epistemic states that can be generated. @TODOextend
+A cognitive operation $m = (\chi, e), m \in M$ consists of a precondition $\chi$ and a process $e$, such that for an input state point $p$, every base point $\bar{p} \in_s p$ is either accepted as input ($\bar{p} \models m[\chi]$ under whatever definition of $\models$ is used for the complex operation $m$), or else rejected. Every base point is evaluated by the complex operation in isolation (no other base point $\bar{q}$ can affect the output of $m$ on base point $\bar{p}$).
 
-Applying $m$ to an input state point $p$ is done by replacing every base point $\bar{p} \in p$ with $J[\bar{p},m]$. A cognitive operation is called monotonic if it always yields a base point as an output given a base point input ($J[\bar{p},m]=\bar{p'}$). It follows that the depth of a state point is directly related to the number of complex operations which have been performed in the SCP prior to its occurrence. If a base point does not meet the precondition, it is either ignored completely and not processed (\textit{cruel application}), or passed exactly as is to the next complex operation (\textit{lenient application}). It is worth noting that the type of cognitive states produced as output by $m$ may not be the same as those of the input.
+$J[\bar{p},m]=p'$ describes the \textit{application} of a base point $\bar{p}$ to a cognitive operation $m \in M$ to produce an output base point $p'$, where $p'$ is vector of base points. $p'$ is \textit{defined} if and only if $\bar{p}$ is a valid input for $m$ (Section~@TODOsection). In this way, a single single base point may produce multiple base points as output, reflecting potentially non-monotonic or non-deterministic properties of cognitive operations. 
 
-This paper will focus on cases where the type of cognitive state remains constant, but there is no reason in principle that a base point input $s_k = (P,\Delta,V)$ for the WCS could not be returned as a base point $s_k = (P,\Delta,V,R)$ where $R$ is a categorization variable (Section~@TODOref). Future models of human cognition may well rely on background knowledge which draws inferences from multiple types of non-monotonic logics.
+We overload the functionality of $J$ so that $J[p,m]=p'$, where $p$ is a state point (rather than just a base point), and define $J[p,m]$ as follows: $J[p,m]=[ \texttt{replace}(\bar{p} \in p,J[\bar{p},m])]$. $J[p,m]=p'$ is \textit{defined} if and only if some $J[\bar{p} \in p,m]$ is defined.
 
-An SCP $(\pi,f())$, $\pi=(s_i\longmapsto m_1\longmapsto ...\longmapsto m_n)$ describes an initial epistemic state (or state point if the input is uncertain) and state point $p_k$ is defined recursively by $p_k = J[p_{k-1},m_k]$. An SCP is called \textit{credulously valid} if $f(p_n) \models \gamma$ for at least one epistemic state in the final state $p_n$. An SCP is called \textit{sceptically valid} if $f(p_n) \models \gamma$ for every epistemic state in the final state. In cases where all operations are monotonic, sceptical validity is the same as credulous validity.
+It follows that the depth of a state point is directly related to the number of complex operations which have been performed in the SCP prior to its occurrence. If a base point does not meet the precondition (see Section~@TODOref), it is either ignored completely and not processed (\textit{cruel application}), or passed exactly as is to the next complex operation (\textit{lenient application}). It is worth noting that the type of cognitive states produced as output by $m$ may not be the same as those of the input.
+ 
+A cognitive operation is called monotonic if it always yields a base point as an output given a base point input ($J[\bar{p},m]=\bar{p'}$).
 
-Finally, a \textit{realised SCP} $r = (\mu, f())$ where $\mu=K[\pi]$, and $K[\pi]=s_i \longmapsto (m_1,\bar{p}_1) \longmapsto ... \longmapsto (m_n,\bar{p}_n))$ where, for every pair $(m_i,\bar{p}_i)$, $\bar{p}_i \in J[\bar{p}_{i-1},m_i]$. Realised SCPs describe a single agent's interpretation of an SCP and associate only a single epistemic state, rather than a state point to the output each cognitive operation in an SCP. 
+This paper will focus on cases where the type of cognitive state remains constant, but it is possible for $J[\bar{p},m]=p'$ where $\bar{p}$ is of structure $(\alpha,\beta)$ and $\bar{p'}\in p'$ to be of structure $(\alpha,\beta,\gamma)$ @TODOdefiniestrcutureinepis. Future models of human cognition may well rely on background knowledge which draws inferences from multiple types of non-monotonic logics.
 
-When every cognitive operation in $M$ is monotonic, it is trivially easy to transform and SCP into a realised SCP and vice versa @TODOproof. In cases where SCPs are monotonic, we will use the SCP and its realised SCP interchangeably. The number of realised SCPs for an SCP is the same as the number of base points in the final state point of that SCP.
+A cognitive transition model (\textit{CTM}) describes an ordered procession of cognitive operations following an initial epistemic state as follows: CTM $\pi=(s_i\longmapsto m_1\longmapsto ...\longmapsto m_n)$ where $s_i$ is a state point, and $m_k$ is a cognitive operation. A partial cognitive transition model (\textit{pCTM}) $\pi=(m_1\longmapsto ...\longmapsto m_n)$ describes a procession of cognitive operations without an an initial state point.
+
+The CTM $\pi = (s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$, for SCP task $\Pi=(s_i, M, f(), \gamma)$ is \textit{defined} if and only if $J[p_k,m_k]$ is defined for $p_k = J[p_{k-1},m_k]$, $k>2$, and $J[s_i,m_1]$ is defined. The set of possible CTMs for SCP task $\Pi$ is given by $L[\Pi]=\{\pi\}$, where $\pi$ is a defined CTM for $\Pi$.
+
+An SCP $\mu=(\pi,f())$  pairs a CTM $\pi$ with an external activation function $f()$ (Section~@TODOsection). An SCP $\mu=(\pi,f())$ is defined for SCP task $\Pi=(s_i, M, f(), \gamma$ if and only if $\pi \in L[\Pi]$.
+
+---
+@TODOmovetoValidity
+An SCP is called \textit{credulously valid} if $f(\pi) \models \gamma$ for at least one epistemic state in the final state $p_n$. An SCP is called \textit{sceptically valid} if $f(\pi) \models \gamma$ for every epistemic state in the final state. In cases where all operations are monotonic, sceptical validity is the same as credulous validity.
+---
+
+Finally, we define a realised SCP $r = (k, f())$ where $k \in K[\pi]$, and $K[\pi]=\{s_i \longmapsto (m_1,\bar{p}_1) \longmapsto ... \longmapsto (m_n,\bar{p}_n)\}$ where, for every pair $(m_i,\bar{p}_i)$, $\bar{p}_i \in J[\bar{p}_{i-1},m_i]$. Realised SCPs describe a single agent's interpretation of an SCP and associate only a single epistemic state, rather than a state point to the output each cognitive operation in an SCP. 
+
+$r=(k, f())$ is a realised SCP for SCP $\mu=(\pi,f())$, with $\pi=(s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$ is given by $k=(s_i \longmapsto (m_i, \bar{p_1} \in J[\bar{p}_{0},m]) \longmapsto ... \longmapsto (m_n, \bar{p_n} \in J[\bar{p}_{n-1},m]))$.
+
+When every cognitive operation in $M$ is monotonic, it is trivially easy to transform an SCP into a realised SCP and vice versa @TODOproof. In cases where SCPs are monotonic, we will use the SCP and its realised SCP interchangeably. The number of realised SCPs for an SCP is the same as the number of base points in the final state point of that SCP.
 
 
 
@@ -61,11 +78,23 @@ Figure~\ref{fig:scpExam} illustrates a situation in which students are asked if 
 \end{figure}
 
 \section{Epistemic States}
-The choice of epistemic state is dependent on the properties that are known or suspected to be true for the cognitive task as a whole. For example, a researcher working on drawing inferences using Propositional Logic can be certain that any SCP they create should be expressive enough to pass a knowledge base to a cognitive operation. Thus, it might suffice to simply define $s_i=(KB)$ where $KB$ is a set of propositional rules. By contrast, a researcher using the WCS requires a system capable of both communicating a set of rules to the next complex operation, and of describing the results of repeated applications of the semantic operator. It might seem intuitive to simply append a set of conditional rules $\Delta$ to the state used for the propositional case and to use a the semantic operator as an external function to evaluate the SCP. And, though this approach works for many examples, it makes it impossible to perform further processing in the SCP \textit{after} applying the semantic operator. What if the conclusion drawn was meant to form part of the background knowledge of another process? In practice using $s_k=(S,\Delta,V, R)$, where $V$ is a set of (variable name, value pairs) and $R$ is a categorization variable, seems able to model all aspects of the WCS, including information related to the least model. 
+The choice of epistemic state is dependent on the properties that are known or suspected to be true for the cognitive task as a whole. For example, a researcher working on drawing inferences using boolean Propositional Logic can be certain that any SCP they create should be expressive enough to pass a boolean knowledge base and possible world to a cognitive operation . Thus, it might suffice to simply define $s_i=(KB)$ where $KB$ is a set of propositional rules. By contrast, a researcher using the WCS requires a system capable of both communicating a set of rules to the next complex operation, and of describing the results of repeated applications of the semantic operator. It might seem intuitive to simply append a set of conditional rules $\Delta$ to the state used for the propositional case and to use a the semantic operator as an external function to evaluate the SCP. And, though this approach works for many examples, it makes it impossible to perform further processing in the SCP \textit{after} applying the semantic operator. What if the conclusion drawn was meant to form part of the background knowledge of another process? In practice using $s_k=(S,\Delta,V, R)$, where $V$ is a set of (variable name, value pairs) and $R$ is a categorization variable, seems able to model all aspects of the WCS, including information related to the least model. 
 
 As yet, there are no definite rules for creating an epistemic state, but Albert Einstein's famous advice from 1950 still rings true: ``Everything should be made as simple as possible, but no simpler.'' The ideal epistemic state is one that enables every reasonable cognitive operation in $M$ that might help model the problem, without adding superfluous functionality that might render searching the SCP space infeasible.
 
-\subsection{State Points}
+\subsection{Common State Point Properties}
+Though state points are largely unbounded in the information that they can contain and communicate, this thesis will restrict itself to epistemic state structures which carry intuition both from the underlying logics which they utilise, and from properties of search in the field of AI Planning (@TODOref).
+
+\subsubsection*{The possible world: V}
+The possible world variable $V$ encodes information about the current world state the agent believes itself to be in. As in Section~\ref{chp:prelim}, the possible world variable consists of a conjunction of variable pairs of the form $(\textrm{atom},\textrm{value}n\textrm{domain}_\textrm{atom})$, where $\textrm{atom}$ occurs only once. Unlike in a true possible world, not every there exist $\textrm{atom} \in Sigma$ which do not occur in $V$.
+
+$V[\phi]$ returns the pair $(\phi,\textrm{value}) \in V$. An interpretation of formula $\phi$ using $V$, $I_v[\phi]$ occurs as with any possible world except that, when an atomic name $a$ which occurs in $\phi$ when $V[a]$ is undefined is given the default value of that language during computation ($u$ in $\L$@TODOname logic, and $\bot$ in propositional logic.). This is a necessity born of the fact that infinite space is required to explicitly store every possible variable name. The reason that $V$ is used throughout this thesis is threefold: it ensures that the possible world of the agent at any state of its cognition is always known; it allows inferences drawn using one logic to be utilised as background knowledge in another logic; and in practical implementation it can prevent recalculation of complex rules that have been preciously interpreted.
+
+\subsubsection*{Propositional Rule Set: S}
+The propositional rule set $S$ is defined precisely as the knowledge base was defined in Section~@TODOsection.
+
+\subsubsection*{The set of conditionals: $\Delta$}
+The set of conditionals $\Delta$ is defined precisely as in the conditional knowledge base in Section~@TODOsection.
 
 \subsection{The Categorization Variable}
 %@TODOreformulatefors_k=(s,v,delta,r)
@@ -73,12 +102,12 @@ The final property of a cognitive operation that needs to be discussed is how it
 
 @TODOdefinereachability
 \section{Cognitive Operations}
-The set of possible complex operations $M$ determines many attributes of the achievable final state point $p_n$. If every $m \in M$ is monotonic, then $p_n$ will be monotonic. If some cognitive operation is computationally complex or produces a very large number of output state points, then search using that base point becomes less efficient. If some complex operation $m'$ (such as weakly completing) is known or believed to occur in the SCP, then a restriction on the cognitive states exists such that either the initial state is of a format suitable as input for $m'$, or there exists another cognitive operation which is able to output a state point which contains base points of a suitable format.
+The set of possible complex operations $M$ determines many attributes of the achievable final state point $p_n$. If every $m \in M$ is monotonic, then $p_n$ will be a base point. If some cognitive operation is computationally complex or produces a very large number of output state points, then search using that base point becomes less efficient. If some complex operation $m'$ (such as weakly completing) is known or believed to occur in the SCP, then a restriction on the cognitive states exists such that either the initial state is of a format suitable as input for $m'$, or there exists another cognitive operation which is able to output a state point which contains base points of a suitable format.
 
 More abstractly, the set of cognitive operations should be well-founded in the literature. The set of possible complex operations is infinite and an SCP only meaningfully describes human cognition when it contains cognitive operations that have been justified empirically (\textit{modus ponens-modus tolens} asymmetry, suppression, denial of the antecedent, etc.). 
 
 \subsection{Pre-conditions and Effects} \label{ssec:precond}
-The precondition $\chi$ of a cognitive operation $A$ refer to those conditions the input state point must satisfy in order for that operation to be considered valid. An SCP is valid if and only if every cognitive operation it contains is valid. For example, one might have a cognitive process describing Julie's plans for a night out on the town. Let us imagine that the SCP task describing her night out includes the operation \texttt{goHomeByCar}. Semantically, this operation should take her \textit{isHome} variable and set it to True.
+The precondition $\chi$ of a cognitive operation $m$ refer to those conditions the input state point must satisfy in order for that operation to be considered valid. An SCP is valid if and only if every cognitive operation it contains is valid. For example, one might have a cognitive process describing Julie's plans for a night out on the town. Let us imagine that the SCP task describing her night out includes the operation \texttt{goHomeByCar}. Semantically, this operation should take her \textit{isHome} variable and set it to True.
 
 The situations in which \texttt{goHomeByCar} can reasonably occur in an SCP are at the researchers' discretion. Researcher~1 might feel that it can be allowed at any point in the SCP and will simply have no effect for those input epistemic states in which she is already at home. Researcher~2 might argue that \texttt{goHomeByCar} is applicable only when \textit{isHome}=False. Researcher~3 knows that only the cognitive operation \texttt{goToClub} changes the \textit{isHome} variable, and so argues that \textit{isHome} is only applicable after \texttt{goToClub} occurs. There are merits to the arguments of each researcher.
 
@@ -200,12 +229,12 @@ In practice it becomes necessary to limit the search depth of the algorithm to s
 Changing the structure of an existing SCP allows researchers to model deviations from standard reasoning for a task. For example, in Section~@TODOref we show that slight modifications to an SCP that models the standard case of the suppression task can lead to an SCP which is able to model reasoners who achieve that classical valid conclusion that she will study late in the library.
 
 The insertion search modifies an existing SCP:
-\[\pi=\{s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n\}\]
+\[\pi=(s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n)\]
 
 to produce a new SCP:
 
 \[
-\pi'=\{s_i \longmapsto B^*_0 \longmapsto A_0 \longmapsto \longmapsto B^*_1... \longmapsto  B^*_n \longmapsto A_n \longmapsto  B^*_{n+1}\}
+\pi'=\{(s_i \longmapsto B^*_0 \longmapsto A_0 \longmapsto \longmapsto B^*_1... \longmapsto  B^*_n \longmapsto A_n \longmapsto  B^*_{n+1})\}
 \] 
 
 Where $B^*_i = (B_0\longmapsto ...\longmapsto B_n)$, $B \in M$  or is the trivial operation $T$ which returns input state point as output. When describing the SCP, $T$ operations are generally omitted.
