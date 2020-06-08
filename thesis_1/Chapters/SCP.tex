@@ -245,17 +245,7 @@ This consideration means that it is potentially necessary to insert an unbounded
 
 Figure~@TODOfigure illustrates the process of bounded breadth-first search for Insertion Search.
 
-\begin{proof} \label{proof:insertionSearch}
-Given a set of cognitive operations $M$, an external activation function $f()$, and an initially valid SCP $f(\pi)$, $\pi=\{s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n\}$, $A_i \in M$, inserting multiple operations into $\pi$ to create cognitive sequence $\pi'$ may result in a valid SCP $f(\pi')$, when inserting only one operation would result in an invalid SCP.
 
-\begin{itemize}
-\item Assume hybrid validity (Section~@TODOsection).
-\item Let $f(\pi)=\{True if V is defined\}$, $\gamma = True$.
-\item Let $A_x$ be a cognitive operation which transforms an input state point of structure $\{KB, V\}$, where $KB$ contains a set of logical formula of the form $head \leftarrow body$ and every rule in $V$ is of the form $variable \leftarrow value$, where $variable$ is an atom and  $value=\top$ into an output state point of structure $\{KB'\}$, $KB'=(KB \cup V)$.
-\item Let $A_y$ be cognitive operation which transforms an input state point of structure $KB'$ into an output state point of structure $\{KB, V\}$ where $V$ contains every rule of the form $head \leftarrow body$, where $head$ is an atom and $body=\top$ and $KB= KB' \setminus V$.
-\end{itemize}
-\item if $f(\pi)$, $pi=(s_i)$ is a valid SCP, then $f(\pi')$, $\pi'=(s_i\longmapsto A_x)$ is an invalid SCP and $f(\pi'')$, $\pi''=(\pi'\longmapsto A_y)$ is valid.
-\end{proof}
 
 
 

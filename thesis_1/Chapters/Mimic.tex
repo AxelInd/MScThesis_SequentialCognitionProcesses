@@ -97,3 +97,133 @@ In this example Karen shows a very powerful type of cognitive bias, the unwillin
 
 Now, because \texttt{semanticOperator} does not change the values of variables mentioned in $V_{fix} \in fixed:V_{fix}$, $fixed \in R$, Figure~\ref{fig:supmod2} shows the effect of adding a complex operation which fixes the value of the abnormality to false in $v$ so that, no matter what rules in $KB$ when the semantic operator is applied, $ab_1$ will remain false.
 \section{Wason Selection Task}
+
+\[\Pi=(s_i,M,f(),\gamma\]
+
+
+
+\[\mu=(\pi,f())\]
+
+The choice of external evaluation function for this task (the turn function), if we are to follow the intuition from @TODO, has two requirements: it must be able to capture whether an observation $O$ can be explained by the least model of the weakly completed program, and it must ensure that variable assignments which,if incorrect could falsify the rule $2\leftarrow D$, are present in the least model. To this end, we add an observation variable $O$ to the definition of the initial epistemic state, and combine this with the variables for the set of propositional rules $S$, conditional rules $\Delta$, and possible world $V$.
+
+
+
+\[f(\pi,O)==  I_V(O)\models \top \textrm{ and } I_V(D)\models \top \lor \bot \textrm{ and } I_V(3)\models \top \lor \bot\]
+
+
+
+Next, we require an intuition for the generation of the initial epistemic state point $s_i$. In this case, abduction can be simulated by the SCP in one of three ways. The first is to create a unique SCP for each possible explanation for each observation as we did for the classical WCS interpretation of the task in Section~@TODOref. But the fact that SCPs may contain an initial state point, rather than just a single epistemic state, enables a more elegant solution that captures the full scope of possible observation, explanation pairings. The other two options are to start with a state point containing each abductive case, or to create cognitive operations which create these abductive cases at computation time.
+
+Because SCPs aim to capture as much cognitive information as possible within the CTM as possible, we will prefer this third case and make use of a categorization variable $R$ to specify both the set of observations $O$, and the possible explanations $\eta$. The cognitive operation \texttt{AddExp} is created.
+
+\texttt{AddExp} adds possible explanations $\eta$ to the set of rules $S$ in the epistemic state and is defined as follows:
+
+%------
+\[\texttt{AddExp}(\textit{input})=(\chi,e)\]
+\[\chi=(\textit{input}\models (S,R))\]
+\[e=\]
+\[R'\subseteq R[\textrm{'explanations'}]\]
+\[d := (R'[1]\cup...\cup R'[n])\]
+
+\[S:=S\cup d\]
+
+\[R[\epsilon]:=R[\epsilon] \cup e\]
+@TODOdefine$\cup$forR
+%------
+
+Figure~@TODOref shows the state point that results from applying this cognitive operation to $s_i=(S=\{\},\Delta=\{(3|D)\},V=\{D,K,3,7\},O=\{\},R=\{'explanations':\{D,K,3,7\}\})$ for cases where $R'$ is a single abducible.
+
+Because the intention of this task is model a known response set for the WST, we must consider some way of generating an SCP in which $f(\pi)= \gamma$. As before this necessitates an appropriate selection of cognitive functions for $M$. We will make use of the set:
+
+\[
+M=\{\texttt{addAB},\texttt{wc},\texttt{semantic}, \texttt{addExp}\}
+\]
+
+Conducting de Novo search on $\Pi$ for each of the observations at this point now returns a state point containing the following CTMs:
+\[
+\pi_1=(s_i \longmapsto \texttt{addAB} \texttt{addExp} \longmapsto \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))
+\]
+
+\[
+\pi_2=(s_i \longmapsto \texttt{addExp} \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))
+\]
+
+
+\[
+\mu_D^1=(\pi_1), f(\pi, O=\{D\}))
+\]
+\[
+\mu_D^2=(\pi_2), f(\pi, O=\{D\}))
+\]
+
+\[
+\mu_K^1=(\pi_1), f(\pi, O=\{K\}))
+\]
+\[
+\mu_K^2=(\pi_2), f(\pi, O=\{K\}))
+\]
+
+\[
+\mu_3^1=(\pi_1), f(\pi, O=\{3\}))
+\]
+\[
+\mu_3^2=(\pi_2), f(\pi, O=\{3\}))
+\]
+
+\[
+\mu_7^1=(\pi_1), f(\pi, O=\{7\}))
+\]
+\[
+\mu_7^2=(\pi_2), f(\pi, O=\{7\}))
+\]
+
+\begin{figure}
+\centering{\includegraphics[width=\linewidth]{realisedSCPsWST}}
+\label{fig:rSCP_WST}
+\caption{Realised SCPs for the SCP interpretation of the WST $\pi_1=(s_i \longmapsto \texttt{addAB} \longmapsto \texttt{addExp}  \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))$. Results mimic those observed in @TODOref's WST interpretation.}
+\end{figure}
+
+These results are not surprisingly and illustrate two important points. The first is that, for external evaluation functions that only evaluate the final epistemic state $p_n$, $f(\pi_1,O=\{o\})=f(\pi_2,O=\{o\})$ for any observation $o$. Secondly, the non-monotonic cognitive operation \texttt{addExp} means that these SCPs do not necessarily produce a single base point for $p_n$ and it will be necessary to examine the realised SCPs to determine which cards can actually be turned. Figure~\ref{fig:rSCP_WST} shows the realised SCP that can be produced for explanations of length 1 (as with @TODOcite's original WCS interpretation minimal explanations are preferred) using CTM $\pi_1$. @TODOdefineindependenceofcognitiveoperations. 
+
+\begin{figure}
+\centering{\includegraphics[width=\linewidth]{realisedSCPsWST_simple}}
+\label{fig:rSCP_WST_simple}
+\caption{Realised SCPs for the simplified SCP interpretation of the WST $\pi_1=(s_i \longmapsto \texttt{addAB} \texttt{addExp} \longmapsto \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))$.}
+\end{figure}
+
+In order to model the three deviant cases of WST, we follow the same reasoning discussed in Section~@TODOsec and introduce two extensions to our original model: Basic Weak Completion, and Contraposition.
+
+Basic Weak Completion is achieved by formulating a new external evaluation function $f'(\pi)=f(\pi,O=\epsilon)$. Because $I_V(\top)\models \top$, the observation is trivially satisfied and the evaluation function simply depends on whether the possible world of realised SCP assigns values which, if they were otherwise, could violate the conditional $(3|D)$. Figure~\ref{rSCP_WST_simple} illustrates $f'(r)$ for each of the realised SCPs generated in the abductive interpretation of SCPs, where the explanation $\epsilon$  is minimal.
+
+Contraposition can be achieved by creating a new congitive operation \texttt{contra} which applies add the classical modus tolens implications to all conditionals contained in $\Delta$ of the input state.
+
+%------
+\[\texttt{contra}(\textit{input})=(\chi,e)\]
+\[\chi=(\textit{input}\models (\Delta))\]
+\[\Delta' := \Delta\]
+\[\forall_{(\psi|\phi) \in \Delta'}\]:
+\begin{itemize}
+\item $S:=S \cup (\phi'\leftarrow \lnot \phi)$
+\item $\Delta := \Delta\cup (\phi'| \lnot \psi)$
+\item $V:=V\cup(\phi':u)$
+\end{itemize}
+%------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
