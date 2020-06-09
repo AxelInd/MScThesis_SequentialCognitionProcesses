@@ -76,3 +76,28 @@ Given a cognitive task $\Pi=(x,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$ and
 \item Thus, $\Pi'$ has fewer solutions that $\Pi$. A contradiction.
 \end{itemize}
 \end{proof}
+
+\begin{proof} \label{proof:aggregateValid}
+Given an SCP $\pi= f(x \longmapsto A_0 \longmapsto ... \longmapsto A_n)$, where $f(x)$ is an external evaluation function, $x$ is a state point, and $A_i \in \Omega$, any subsequence $A'=(A_k \longmapsto ... \longmapsto A_{k+l})$, $(k+l)<n$ of the cognitive operations in $\pi$ is a valid cognitive operation.
+\begin{itemize}
+\item Given that $\pi$ is a valid SCP, $x \longmapsto A_0$ must, by the definitions discussed in Section~@TODOref result in a valid state point.
+\item It follows that $A'$ takes a valid state point as input, because $A_k$ took a valid state point as input.
+\item It follows that $A'$ produces a valid state point as output, because $A_{k+1}$ produced a valid state point as output.
+\item Therefore, $A'$ is a valid cognitive operation, by the definition in Section~@TODOref.
+\end{itemize}
+\end{proof}
+
+\begin{lemma} \label{lemma:substitutionValid}
+Let $\pi=(x\longmapsto A_0, ..., A', ..., longmapsto A_n)$ be a sequence of cognitive operations drawn from some cognitive task $\Pi=(x, \gamma, f(x), M)$ . And let $\pi'=(x\longmapsto [A_0], ..., A', ..., longmapsto A_n)$ where $[A]$ is the substitution of the aggregate operation $A'$ for $(A'[0]\longmapsto ... \longmapsto A'[t])$ . Then $f(\pi)=f(\pi')$.
+\end{lemma}
+
+\begin{proof} \label{proof:infiniteSCPs}
+There are an infinite number of possible, valid SCPs, that can meet any goal condition $\gamma$ from input $x$ provided that at least one SCP exists that can reach goal condition $\gamma$ from input $x$.
+\begin{enumerate}
+\item There exist infinitely many cognitive operations $T \in \Omega$ which add a new variable from the set of all possible variable names $p \in P$.
+\item There exist infinitely many cognitive operations $V \in \Omega$ which remove a variable from the set of all possible variable names  $p \in P$.
+\item It follows that there exist infinitely many pairs $(T_i \in T, P_i \in P) \in W$ where $T_i$ adds a variable $p \in P$ to the resulting state point, and $V_i$ removes that variable from the resulting statepoint.
+\item Then $f(x \longmapsto A) = f(x \longmapsto T_i \longmapsto V_i)$
+\item Thus it follows that if $f(x \longmapsto A)\models \gamma$ then $f(x \longmapsto T_i \longmapsto V_i)\models \gamma$ for all $(T_i \in T, P_i \in P) \in W$.
+\end{enumerate}
+\end{proof}

@@ -17,16 +17,7 @@ The remainder of this section is devoted to expressing the exact properties, lim
 %then SCP space is cog op space size ^^ scp length
 In principle, the number of cognitive operations available for use in an SCP is unlimited. We denote the space of all cognitive operations $\Omega$, and the space of all sequences $(A_0 \longmapsto ... \longmapsto A_n)$ with $\Omega^*$. There cannot and never will be an exhaustive search procedure to evaluate every possible way of manipulating an epistemic state (Proofs~\ref{proof:infiniteSCPs} and \ref{proof:infiniteSCPLength} illustrate the existence of valid SCPs for infinitely many different cognitive operations and valid SCPs of any length, respectively). However, there are ways of limiting the number of allowable cognitive operations. Lemma~\ref{lem:uniredundant} defines those cases in which there is redundancy in the set of all possible cognitive operations, Lemma~\ref{lem:taskredundant} focuses this concept on specific cognitive tasks which are to be modelled using SCPs.
 
-\begin{proof} \label{proof:infiniteSCPs}
-There are an infinite number of possible, valid SCPs, that can meet any goal condition $\gamma$ from input $x$ provided that at least one SCP exists that can reach goal condition $\gamma$ from input $x$.
-\begin{enumerate}
-\item There exist infinitely many cognitive operations $T \in \Omega$ which add a new variable from the set of all possible variable names $p \in P$.
-\item There exist infinitely many cognitive operations $V \in \Omega$ which remove a variable from the set of all possible variable names  $p \in P$.
-\item It follows that there exist infinitely many pairs $(T_i \in T, P_i \in P) \in W$ where $T_i$ adds a variable $p \in P$ to the resulting state point, and $V_i$ removes that variable from the resulting statepoint.
-\item Then $f(x \longmapsto A) = f(x \longmapsto T_i \longmapsto V_i)$
-\item Thus it follows that if $f(x \longmapsto A)\models \gamma$ then $f(x \longmapsto T_i \longmapsto V_i)\models \gamma$ for all $(T_i \in T, P_i \in P) \in W$.
-\end{enumerate}
-\end{proof}
+
 
 
 
@@ -88,47 +79,109 @@ Because it is actually used as a shorthand for whatever sequence of sub-operatio
 \subsection{Variable Silencing}
 \subsection{Variable Fixation}
 \subsection{Adding Abnormalities}
-\begin{figure} 
-\begin{center}
-\includegraphics[width=\linewidth]{abnormalitySCP}
-\end{center}
-\caption{One possible formulation of a cognitive function to add abnormalities to variables. This formulation follows the intuition of Appendix~@TODOref.}
-\label{fig:addAB}
-\end{figure}
 
-One of the most obvious candidates for a cognitive function that has evidence across a wide swathe of the cognitive literature (@TODOrefAFewPapers) is the idea of adding an abnormality variable to a problem that does not appear in the initial formulation of that problem. In Section~@TODOref and Section~@TODOref we discussed the idea of abnormalities as licenses for implication. The fact that we can point to several tasks in which an abnormality variable is added after formulation provides compelling evidence that creating these abnormality variables is a well-founded cognitive process that should be included in any comprehensive formulation of $M$. Figure~\ref{fig:addAB} shows one possible formulation of the \texttt{addAB} function for adding abnormalities to a knowledge base of the form $s=(KB,...)$ where $KB$ is a set of rules, and $V$ is a set of (variable name, variable value) pairs.
+As we have discussed (Section~\ref), one way to interpret conditionals in reasoning tasks is as licenses for implication. One possible definition for a cognitive operation that performs this same task by transforming defeasible conditional facts to propositional logic rules is as given by Algorithm~\ref{cogOp:addAB}.
 
+@TODOdefiniesigmachiasalphabetofvariablesincogop
 
+\begin{algorithm}[H] \label{cogOp:addAB}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$\chi$ ($\bar{p}$)}
+{
+$\Sigma_{\chi}=\{\}$\;
+\eIf{$\forall v \in \Sigma_\chi, v \in p$}
+{
+Accept $p$ as input\;
+}
+{
+Reject $p$\;
+}\tcc{Add the conditional as a license for implication to the set of rules}
+}
+\Fn{$e$($\bar{p}$)}
+{
+\textbf{e}\;
+\For{$(\psi|\phi) \in p[\Delta]$}
+{
+$k:=$ the lowest natural number for which $\text{ab}_k \notin \bar{p}[S]$\;
+\tcc{Add the conditional as a license for implication to the set of rules}
+$p[S]:= p[S] \cup (\psi \leftarrow \land \lnot \text{ab}_k)$\;
+\tcc{Add the new abnormality to the possible world $V$}
+$p[V]:= p[V] \cup \text{ab}_k$\;
+\tcc{Remove the conditional from the list of conditionals}
+$p[\Delta]:=p[\Delta] - (\psi|\phi)$
+}
+}
+
+\caption{\texttt{addAB}$(\bar{p})$}
+\end{algorithm}
 
 \subsection{Weakly Completing}
-\begin{figure} 
-\begin{center}
-\includegraphics[width=\linewidth]{weaklycompleteSCP}
-\end{center}
-\caption{One possible formulation of a cognitive function to weakly complete a set of rules. This formulation follows the intuition of weak completion outlined in Section~@TODOsec.}
-\label{fig:weaklycompleteSCP}
-\end{figure}
 
-Weak completion is an essential part of the WCS. Under the assumption that the WCS is a valid representation of human cognition in at least one scenario, any comprehensive set of cognitive operations $M$ must be able to mimic the Weak Completion of a knowledge base. Figure~\ref{fig:weaklycompleteSCP} how this can be achieved for any epistemic state of the form $s=(KB,...)$.
 
-The 
+Weak completion is an essential part of the WCS. Under the assumption that the WCS is a valid representation of human cognition in at least one scenario, any comprehensive set of cognitive operations $M$ must be able to mimic the Weak Completion of a knowledge base. Algorithm~\ref{cogOp:wc} shows one way in which this can be achieved.
+
+\begin{algorithm}[H] \label{cogOp:wc}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$\chi$ ($\bar{p}$)}
+{
+$\Sigma_{\chi}=\{\}$\;
+\eIf{$\forall v \in \Sigma_\chi, v \in p$}
+{
+Accept $p$ as input\;
+}
+{
+Reject $p$\;
+}
+}
+\Fn{$e$($\bar{p}$)}
+{
+Replace all rules $\in \bar{p}[S]$ of the form $A\leftarrow \text{body}_1,...,A\leftarrow \text{body}_n$ with $A\leftarrow \text{body}_1 \lor ... \lor \text{body}_n$\;
+Replace all occurrences of $\leftarrow \in \bar{p}[S]$ with $\leftrightarrow$\;
+}
+
+\caption{\texttt{wc}$(\bar{p})$}
+\end{algorithm}
 
 
 \subsection{Semantic Operator}
-\begin{figure} 
-\begin{center}
-\includegraphics[width=\linewidth]{semanticOperatorSCP}
-\end{center}
-\caption{One possible formulation of a cognitive function to apply the semantic operator a congnitive state by temporarily setting all variables in $V$ to any value that can computed using the semantic rule in Equation~@TODOref. This process is repeated until $V$ is no longer updated. @TODOredoThisDigramToShowActualProcess}
-\label{fig:semanticOperatorSCP}
-\end{figure}
 
-Another essential step in the WCS, the semantic operator is used to assign all variables to either True or False (explictly), or to Unknown (implicitly). Figure~\ref{fig:semanticOperatorSCP} illustrates one way in which this cognitive operation can be implemented for any epistemic state of the form $s=(KB,V,...)$.
+Another essential step in the WCS, the semantic operator is used to assign all variables to either True or False (explictly), or to Unknown (implicitly). Algorithm~\ref{cogOp:semantic} illustrates one way in which this cognitive operation can be implemented for any epistemic state of the form $s=(KB,V,...)$.
 
+\begin{algorithm}[H] \label{cogOp:semantic}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$\chi$ ($\bar{p}$)}
+{
+$\Sigma_{\chi}=\{\}$\;
+\eIf{$\forall v \in \Sigma_\chi, v \in p$}
+{
+Accept $p$ as input\;
+}
+{
+Reject $p$\;
+}
+}
+\Fn{$e$($\bar{p}$)}
+{
+\If{there exists a clause $A\leftarrow \text{body} \in \bar{p}[S]$ with $I_V(body)=\top$}
+{
+$\bar{p}[V][A]:=\top$
+}
+\If{there exists a clause $A\leftarrow \text{body} \in \bar{p}[S]$ and for all clauses $A\leftarrow \text{body} \in \bar{p}[S]$ we find $I_V(body)=\bot$}
+{
+$\bar{p}[V][A]:=\bot$
+}
+}
 
+\caption{\texttt{semantic}$(\bar{p})$}
+\end{algorithm}
 
 \subsection{Default Inferencing}
 If we assume that Reiter's default logic is a valid model of cognition for at least one task, it follows that an comprehensive formulation of $M$ must encode a cognitive operation for drawing inferences from a set of default rules. Figure~@TODOref illustrates the procedure for drawing such inferences from an epistemic state state of the form $s=(KB,V,D)$ where $KB$ is a set of inference rules, $V$ is mapping of variable names onto variable values, and $D$ is a set of default rules of the form $\frac{condition:exception}{conclusion}$ @TODOrewriteEquationWithStandardSymbols.
+
+
 
 \section{Cognitive Operations as Aggregates}
 %talk about combining existing cognitive operations for which there is strong evidence
@@ -146,19 +199,7 @@ In many ways this compromise follows the philosophy of cognitive modelling in ge
 
 The question of how to generate appropriate complex operation aggregates is a complex problem and is not discussed further in this thesis. It is, however a topic in which the author has significant interest.
 
-\begin{proof} \label{proof:aggregateValid}
-Given an SCP $\pi= f(x \longmapsto A_0 \longmapsto ... \longmapsto A_n)$, where $f(x)$ is an external evaluation function, $x$ is a state point, and $A_i \in \Omega$, any subsequence $A'=(A_k \longmapsto ... \longmapsto A_{k+l})$, $(k+l)<n$ of the cognitive operations in $\pi$ is a valid cognitive operation.
-\begin{itemize}
-\item Given that $\pi$ is a valid SCP, $x \longmapsto A_0$ must, by the definitions discussed in Section~@TODOref result in a valid state point.
-\item It follows that $A'$ takes a valid state point as input, because $A_k$ took a valid state point as input.
-\item It follows that $A'$ produces a valid state point as output, because $A_{k+1}$ produced a valid state point as output.
-\item Therefore, $A'$ is a valid cognitive operation, by the definition in Section~@TODOref.
-\end{itemize}
-\end{proof}
 
-\begin{lemma} \label{lemma:substitutionValid}
-Let $\pi=(x\longmapsto A_0, ..., A', ..., longmapsto A_n)$ be a sequence of cognitive operations drawn from some cognitive task $\Pi=(x, \gamma, f(x), M)$ . And let $\pi'=(x\longmapsto [A_0], ..., A', ..., longmapsto A_n)$ where $[A]$ is the substitution of the aggregate operation $A'$ for $(A'[0]\longmapsto ... \longmapsto A'[t])$ . Then $f(\pi)=f(\pi')$.
-\end{lemma}
 
 \section{Epistemic State Structure Changes with Cognitive Operations}
 %e.g. going to WCS to Default
