@@ -3,22 +3,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The Abstract case of the Wason Selection Task\relax }}{11}{figure.caption.47}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Application of the WCS to the abstract case of the WST for the basic weak completion approach.\relax }}{12}{figure.caption.51}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Using the abduction and contraposition extensions to derive all four canonical cases. @TODOredoWithCards\relax }}{14}{figure.caption.58}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Abstract case of the Wason Selection Task\relax }}{11}{figure.caption.49}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Application of the WCS to the abstract case of the WST for the basic weak completion approach.\relax }}{12}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Using the abduction and contraposition extensions to derive all four canonical cases. @TODOredoWithCards\relax }}{14}{figure.caption.62}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.\relax }}{15}{figure.caption.62}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces An SCP Task, SCP, and Realised SCP describing whether a student will pass their exam. @TODOredodiagram\relax }}{18}{figure.caption.66}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces A breadth-first search algorithm for De Novo SCP search with SCP Task $\Pi =(x,M,\gamma ,f())$.\relax }}{24}{figure.caption.83}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.\relax }}{15}{figure.caption.66}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces An SCP-like examination of a mental task, showing the relative levels of granularity of SCP Tasks, SCPs, and Realised SCPs.\relax }}{18}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces A breadth-first search algorithm for De Novo SCP search with SCP Task $\Pi =(x,M,\gamma ,f())$.\relax }}{24}{figure.caption.87}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Suppression for the two SCPs $\mu ^1_\text {deviant}$ and $\mu ^1_\text {standard}$\relax }}{44}{figure.caption.134}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Inhibition of Suppression for the two SCPs $\mu ^1_\text {deviant}$ and $\mu ^1_\text {standard}$\relax }}{46}{figure.caption.135}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces The Suppression Task in which the additional operation of deleting the variable $o$ occurs.\relax }}{47}{figure.caption.137}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces The Suppression Task in which the additional operation of fixing the variable $ab_1$ to false occurs.\relax }}{47}{figure.caption.138}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Realised SCPs for the SCP interpretation of the WST $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$. Results mimic those observed in @TODOref's WST interpretation.\relax }}{49}{figure.caption.140}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Realised SCPs for the simplified SCP interpretation of the WST $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$.\relax }}{49}{figure.caption.141}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Suppression for the two SCPs $\mu _\text {noSup}$ and $\mu _\text {sup}$\relax }}{42}{figure.caption.135}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Inhibition of Suppression for the two SCPs $\mu ^1_\text {deviant}$ and $\mu ^1_\text {standard}$\relax }}{44}{figure.caption.136}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces The Suppression Task in which the additional operation of deleting the variable $o$ occurs.\relax }}{45}{figure.caption.138}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces The Suppression Task in which the additional operation of fixing the variable $ab_1$ to false occurs.\relax }}{45}{figure.caption.139}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Realised SCPs for the SCP interpretation of the WST $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$. Results mimic those observed in @TODOref's WST interpretation.\relax }}{47}{figure.caption.141}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Realised SCPs for the simplified SCP interpretation of the WST $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$.\relax }}{47}{figure.caption.142}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

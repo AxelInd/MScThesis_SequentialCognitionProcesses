@@ -138,15 +138,16 @@ Basic weak completion ignores the existence of other least models which may vali
 
 Contraposition explicitly makes use of \textit{modus tolens}, usually assumed to be silenced in human cognition to derive certain canonical cases in the WST. Using contraposition it becomes possible to model individual participants who choose to turn the cards $D$ and $7$ (the classical response).
 
+@TODO change
 Contraposition is applied as follows for the initial knowledge base $KB$:
 \begin{enumerate}
-\item $KB'=KB\cup(\lnot \phi|\lnot \psi) \textrm{iff } (\psi|\phi)\in KB$.@TODOinprelimmentiongettingelementsfromKB
-\item For each conditional $(\lnot \phi| \lnot \psi)\in KB'$ :
+\item For each conditional $(\psi|\phi)\in KB'$ :
 \begin{itemize}
-\item Substitute $(\lnot \phi| \lnot \psi)$ for $(\phi' \leftarrow \lnot \psi \land \textit{ab}_k)$, where $k$ is an unused label for an abnormality predicate.
-\item Add the rule $(\phi' \leftarrow \lnot \phi)$ to $KB'$.
-\item Add the rule $(\textit{ab}_k\leftarrow \bot)$, if their is no abnormal situation associated with the rule $(\phi' \leftarrow \lnot \psi \land \textit{ab}_k)$.
+\item Add the conditional $(\phi'|X)$ to $\Delta$, where $X$ is the other possible value for that card face\footnote{$(D,K),(3,7)$}.
+\item Add the fact $\phi\leftarrow \lnot \phi'$ to $S$.
 \end{itemize}
+\item Interpret conditionals as licenses for implication.
+\item Apply the WCS as normal.
 \end{enumerate}
 
 Using this technique, and applying basic weak completion (i.e. only considering the case $\epsilon\leftrightarrow(O\leftarrow \top)$ it is possible to model the classical case of the WST. The resolution for the $7$ card is as follows:
@@ -155,19 +156,17 @@ Using this technique, and applying basic weak completion (i.e. only considering 
 KB = (S=\{\},\Delta=\{(3|D)\})
 \]
 \[
-KB' = (S=\{\},\Delta\{=(3|D),(\lnot D|\lnot 3)\})
+KB' = (S=\{D \leftarrow  \lnot D'\},\Delta\{=(3|D),(D'|7)\})
 \]
 \[
-KB' = (S=\{\lnot D \leftarrow \lnot 3 \land ab_2, ab_2\leftarrow \bot\}, \Delta=\{(3|D)\})
+KB' = \{3 \leftarrow D \land \lnot \text{ab}_1, D' \leftarrow 7 \land \lnot \text{ab}_2, \text{ab}_1 \leftarrow \bot, \text{ab}_2 \leftarrow \bot\}\}
 \]
 \[
-KB' = (S=\{D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D, ab_2\leftarrow \bot\}, \Delta=\{(3|D)\})
+KB'\cup (7\leftarrow\top) = \{3 \leftarrow D \land \lnot \text{ab}_1, D' \leftarrow 7 \land \lnot \text{ab}_2, \text{ab}_1 \leftarrow \bot, \text{ab}_2 \leftarrow \bot, 7 \leftarrow \top\}\}
 \]
+
 \[
-KB' = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D,  ab_2\leftarrow \bot, ab_1\leftarrow \bot\}
-\]
-\[
-KB'\cup (7\leftarrow\top) = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \lnot 3 \land ab_2, D' \leftarrow \lnot D,  ab_2\leftarrow \bot, ab_1\leftarrow \bot, 7\leftarrow\top \}
+\text{wc}KB'\cup (7\leftarrow\top) = \{3 \leftrightarrow D \land \lnot \text{ab}_1, D' \leftrightarrow 7 \land \lnot \text{ab}_2, \text{ab}_1 \leftrightarrow \bot, \text{ab}_2 \leftrightarrow \bot, 7 \leftrightarrow \top\}\}
 \]
 \begin{equation} \label{eqn:wst_contra}
 \textrm{wc} (KB'\cup (7\leftarrow\top)) = \{3 \leftrightarrow D \land \lnot ab_1, D' \leftrightarrow (\lnot 3 \land ab_2) \lor (\lnot D),  ab_2\leftrightarrow \bot, ab_1\leftrightarrow \bot, 7\leftrightarrow\top \}
@@ -176,7 +175,7 @@ KB'\cup (7\leftarrow\top) = \{3 \leftarrow D \land \lnot ab_1, D' \leftarrow \ln
 Table~\ref{tbl:7cont} shows the computation of $\textrm{lm wc} (KB'\cup (7\leftarrow\top))$. From this, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
 
 \subsubsection*{Combined Model}
-By combining our contra position and adductive rules for inferences which we discussed in @TODOfirstwcs's paper, it is possible to model the case where the cards $D$, $K$, and $7$ are turned (Figure~\ref{wstcano} @TODOfigures?).
+By combining our contraposition and adductive rules for inferences which were discussed in \citep{dietz2012computational}'s paper, it is possible to model the case where the cards $D$, $K$, and $7$ are turned (Figure~\ref{wstcano} @TODOfigures?).
 
 This work showed that all canonical cases of the weak completion semantics could be modelled by activating or silencing these three processes on the initial knowledge base. The intuition that a discrete and systematic succession of well-founded processes could be used to model multiple different results for the same experiment was the inspiration for the SCP framework which this thesis introduces.
 

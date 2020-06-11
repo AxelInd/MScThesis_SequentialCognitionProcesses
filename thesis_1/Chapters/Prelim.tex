@@ -151,7 +151,29 @@ Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion}
 A default rule may be applied to a theory if it is entailed by the theory and all of its justifications and conclusions are consistent with the theory. When a default rule is applied, its consequence is added to the background theory.
 
 Formally, inferences in default logic are calculated as follows:
-@TODO
+
+\begin{algorithm}[H] \label{alg:reiter}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$e$($\bar{p}$)}
+{
+\tcc{Current theory.}
+$T:=W$\;
+\tcc{Set of defaults already applied.}
+$A:=\{\}$\;
+\While{There exists a default rule $d$ that is not in $A$ and is applicable to $T$}
+{
+Add the conclusion of $d$ to $T$\;
+Add 	$d$ to $A$\;
+}
+\If{$T$ is consistent with all justifications of every default $d \in A$}
+{
+$T$ is a valid extension\;
+}
+}
+
+\caption{Algorithmic addition of extensions to a Reiter's Knowledge Base.}
+\end{algorithm}
 
 It should be immediately apparent form this formulation that, for many possible sets of rules in $kb$, the output is non-monotonic as is dependent on the order in which default rules are evaluated.
 
