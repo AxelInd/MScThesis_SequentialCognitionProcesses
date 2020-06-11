@@ -99,12 +99,15 @@ Reject $p$\;
 \Fn{$e$($\bar{p}$)}
 {
 $\bar{p}[S]:=\bar{p}[S] \cup [(\text{atom name} \leftarrow \text{value}) |$ ($\text{atom name},\text{value}) \in \bar{p}[V]$ and $\text{value} \neq u$\;
-$\bar{p}[S]:=\bar{p}[S] \cup [A$ | clause $A$ would not make $\bar{p}[S]$ inconsistent$]$;
+$\bar{p}[S]:=\bar{p}[S] \cup [A$ | clause $A$ would not make $\bar{p}[S]$ inconsistent$]$\;
+$\bar{p}[V]:=[B$ | $B \leftarrow body \in \bar{p}[S]$ and $ I(body)=\top$ or $I(body)=\bot$]\; 
 \Return $\bar{p}$
 }
 
 \caption{\texttt{th}$(\bar{p})$: generates the potentially infinite set of possible classical inferences from $\bar{p}[S]$.}
 \end{algorithm}
+
+A realised SCP $r=(k=K[\pi],f())$ is said to model the classical inference, if $f(k) = f(s_i \in \pi \longmapsto \texttt{th})$. An SCP $\pi$ is said to model the classical inference if some realised SCP generated from $\pi$ models the classical inference.
 
 
 \subsection{Variable Insertion}
@@ -145,9 +148,17 @@ Following on the from the $\texttt{addV}$ operation, the $\texttt{removeV}$ oper
 
 This is not the only imaginable case where a variable might be removed from the knowledge base of the person being modelled. The size of the knowledge base used for cognitive modelling is always implicitly restricted to relevant variables. Only those variables whose values might reasonably be expected to affect the final conclusions drawn with regard to the research question should be considered. Finding which variables and rules are relevant is, however, non-trivial. For another real-life example, imagine a mystery novel: Three hundred pages of plot descriptions, character actions, and dialogues. In a good murder mystery novel every piece of information that reveals the killer's identity is hidden in the story itself, yet we do not hold every fact and interaction in the book in our epistemic model of the book, so discerning the identity of the killer remains a mystery until the last page. But when the mystery is solved, many details that we internalised while reading (and recall in retrospect) suddenly make the conclusion seem obvious. We have not forgotten this information, we had merely incorrectly deemed it irrelevant at the time and ignored it in our cognitive processing.
 
-Forgetting a variable in an SCP is not-trivial task, just as removing a variable in an AI planning task @TODOref is non-trivial. Multiple intuitions for how it may best be done occur, but we will keep this definition as simple as possible for the examples that will be discussed in Chapter~@TODOref.
+Forgetting a variable in an SCP is not-trivial task, just as removing a variable in an AI planning task @TODOref is non-trivial. Multiple intuitions for how it may best be done occur, but we will keep this definition as simple as possible for the examples that will be discussed in Chapter~@TODOref. We introduce three cognitive operations $\texttt{remove}_\top V$, $\texttt{remove}_\bot V$, and $\texttt{remove}_u V$. $\texttt{remove}_\top$ assumes that conditionals and rules which depend on the removed variable are validated by its removal. $\texttt{remove}_\bot V$ assumes that rules and conditionals are invalidated by the removal. $\texttt{remove}_u V$ assumes that no conclusion can be drawn without this information.  These three approaches can be differentiated by these examples:
 
-\begin{algorithm}[H] \label{cogOp:removeV}
+\begin{itemize}
+\item ``If aliens invade, then I will hide in my bunker."
+\item ``If I do not fail my exam, then I will graduate.''
+\item ``Unless I am a boy, I am a girl.''
+\end{itemize}
+
+In the first example, the presumed default position is that I will not hide in my bunker. In the second, the default position is that I will graduate. And in the third example there is no apparent default position. In the absence of the conditions in each each of these conditionals we would probably conclude that, I am probably not hiding in my bunker, I probably graduated, and that my gender is uncertain. This observation implies that a mechanism by which to determine the plausibility of default positions is needed to translate such default theories into a non-monotonic framework. In the absence of such a mechanism we will generally assume $\texttt{remove}_\bot V$, as with the closed-world assumption.
+
+\begin{algorithm}[H] \label{cogOp:removeuV}
 \SetAlgoLined
 \tcc{The variable to be deleted, defined before SCP execution.}
 $v:= \text{atom name}$\;
@@ -165,6 +176,7 @@ Reject $p$\;
 }
 \Fn{$e$($\bar{p}$)}
 {
+\tcc{Remove $\alpha$ from the possible world variables.}
 $\forall_{\alpha = (\text{v},\text{value}\in \text{domain}(v))} \bar{p}[V]:=\bar{p}[V] - \alpha$\;
 \For{$\text{rule}=(\text{head} \leftarrow \text{body}) \in \bar{p}[S]$}
 {
@@ -172,15 +184,32 @@ $\forall_{\alpha = (\text{v},\text{value}\in \text{domain}(v))} \bar{p}[V]:=\bar
 {
 $\bar{p}[S]:=\bar{p}[S]-\text{rule}$\;
 }
-\If{$\text{rule} \in \text{body}$}
+\If{$\text{v} \in \text{body}$}
 {
-replace all subclauses $(v \lor \phi)$, $(v \land \phi)$ with $(\phi)$\;
+replace all subclauses $(v \lor \phi)$, $(v \land \phi)\in \bar{p}[S]$ with $(\phi)$\;
 }
 }
+\For{$\text{rule}=(\text{head}|\text{body}) \in \bar{p}[\Delta]$}
+{
+\If{$\text{head}=v$}
+{
+$\bar{p}[\Delta]:=\bar{p}[\Delta] - \text{rule}$\;
+}
+\If{$\text{v} \in \text{body}$}
+{
+replace all subclauses $(v \lor \phi)$, $(v \land \phi)\in \bar{p}[\Delta]$ with $(\phi)$\;
+}
+}
+\tcc{This is where $\texttt{remove}_\bot V$ differs from $\texttt{remove}_\top V$, and  $\texttt{remove}_u V$ }
+replace all rules $\text{head} \leftarrow v \in \bar{p}[S]$ with $\bot$\;
+replace all rules $\text{head} \leftarrow \lnot v \in \bar{p}[S]$ with $\lnot \bot$\;
+replace all rules $(\text{head}|v)$ with $\bot$\;
+replace all rules $(\text{head}|\lnot v)$ with $\lnot \bot$\;
+
 \Return $\bar{p}$
 }
 
-\caption{\texttt{removeV}$(\bar{p})$: removes a variable name $v$, defined \textit{a priori}}
+\caption{\texttt{remove}$_\bot$V$(\bar{p})$: removes a variable name $v$, defined \textit{a priori}}
 \end{algorithm}
 
 \subsection{Variable Silencing}
@@ -242,24 +271,39 @@ Accept $p$ as input\;
 }
 {
 Reject $p$\;
-}\tcc{Add the conditional as a license for implication to the set of rules.}
+}
 }
 \Fn{$e$($\bar{p}$)}
 {
-\For{$(\psi|\phi) \in p[\Delta]$}
+\tcc{Variables for which an abnormality has already been created}
+\For{$(\psi|\phi) \in \bar{p}[\Delta]$}
 {
 $k:=$ the lowest natural number for which $\text{ab}_k \notin \bar{p}[S]$\;
+$\text{all dependencies}:= [A | (\psi|A) \in \bar{p}[\Delta]]$\;
+
+\For{$A \in \text{all dependencies}$}
+{
+$\text{head}:=\psi$\;
+\tcc{All other variables which can make $\psi$ true are treated as though they could also falsify $\psi$.}
+$\text{current dependencies}:= \text{all dependencies} - \text{A}$\;
+\If{$\text{current dependencies} = \{\}$}
+{
+$\text{current dependencies}:=\bot$\;
+}
+$\text{body}:=(\text{current dependencies}_1 \lor ... \lor \text{current dependencies}_n)$\;
+
 \tcc{Add the conditional as a license for implication to the set of rules.}
-$\bar{p}[S]:= p[S] \cup (\psi \leftarrow \land \lnot \text{ab}_k)$\;
+$\bar{p}[S]:= \bar{p}[S] \cup (\text{head} \leftarrow A \land \lnot \text{ab}_k)$\;
+$\bar{p}[S]:= \text{ab}_k \leftarrow \lnot body$\;
+
+}
 \tcc{Add the new abnormality to the possible world $V$.}
-$\bar{p}[V]:= \bar{p}[V] \cup \text{ab}_k$\;
-\tcc{Remove the conditional from the list of conditionals.}
-$\bar{p}[\Delta]:=\bar{p}[\Delta] - (\psi|\phi)$\;
+$\bar{p}[V]:= \bar{p}[V] \cup (\text{ab}_k,u)$\;
+}
+\tcc{Remove all conditionals now that they have been interpreted as licences for implication.}
+$\Delta:=\{\}$\;
 \Return $\bar{p}$
 }
-
-}
-
 \caption{\texttt{addAB}$(\bar{p})$}
 \end{algorithm}
 

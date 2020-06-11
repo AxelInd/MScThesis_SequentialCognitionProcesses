@@ -13,47 +13,103 @@ As with any cognitive framework, the most important metric for judging the succe
 In particular, we will show that the Wason Selection Task, Suppression Task and @TODO can be modelled at both the general and individual reasoner level with SCPs in a formulation that intuitive and consistent with the WCS approach already described in Section~@TODOref.
 \section{Suppression Task}
 
-\begin{figure*}
-\begin{center}
- \centering \includegraphics[width=\linewidth]{suppressionSCP_overview}
-\caption{A generalised illustration of the WCS in an SCP. }
-\label {fig:supoverview}
-\end{center}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
- \centering \includegraphics[width=\linewidth]{suppressionSCP_normal}
-\caption{The standard case of the Suppression Task, demonstrating the suppression effect. Where the epistemic state in the boxes represents the output of that cognitive operation. $V_f$ represents the assignment of $V$ in the epistemic state in the resulting least model. $V_{i\in \mathbb{N}}$ represents the assignments in $V$ after $i$ iterations of the semantic operator.}
-\label {fig:supnormal}
-\end{center}
-\end{figure*}
-
-Figure~\ref{fig:supoverview} illustrates a generalised SCP to describe the Suppression Task as a series of sequential steps directly mirroring the discrete steps outlined in Section~\ref{sec:sup}, each cognitive operation passing information to the next process\footnote{It is important to note that a diagram like this is valid for \textit{any} cognitive modelling task because any process may be arbitrarily complex and non-sequential. and so the overall linear process of (actor, complex decision, observed results) is always valid for retroactive modelling, and at least as powerful as the non-monotonic logic framework it uses for modelling.}. To model the SCP the implicit sequence of operations in the Suppression Task is systematized and refined into a set of complex operations. Further we introduce an initial epistemic state $s_i=(KB,V,R)$. One interpretation of the requirements of the suppression task $\pi=(s_i,\gamma,M)$ using SCPs and the WCS is as follows: 
- 
- 
- 
- 
 
 
-\[s_i=\{KB_i, V_i, R_i\} \]
-\[KB_i=\{e \rightarrow l, \top \rightarrow e, o \rightarrow l\} \]
-\[V_i=\{e:u, l:u, o:u\} \]
-\[R_i=\{\} \]
+To model this experiment in the SCP framework, we must first define the SCP Task $\Pi_{sup}=(s_i,M,f(),\gamma)$ which outlines the restrictions and goals of the model. The structure of $s_i$ must be robust enough to capture information regarding a set of rules, variable assignments in the possible world, and conditionals. To this end we define:
+
+\[s_i^\text{noSup}=\{S,\Delta_\text{noSup}, V\} \]
+
+\[s_i^\text{sup}=\{S,\Delta_\text{sup}, V\} \]
+
+For the the only unconditional rule, that she has an essay to write, we define $S=\{(e \leftarrow \top)\}$. The set of conditional rules $\Delta_{\text{noSup}}=\{l|e\}$ captures the probable assumption that she will study late in the library if she has an essay to write, $\Delta_{\text{sup}}=\{(l|e),(l|o)\}$ captures the addition of the conditional that if the library is open she will study late in the library. And the possible world $V=\{(e,u),(l,u)\}$ sets all variable names occurring in $S$ and $\delta$ to unknown.
+
+The second consideration $M$, denotes the set of possible cognitive operations which may occur in the resulting SCPs and realised SCPs of $\Pi_{sup}$. Following the intuition we used in Section~@TODOref we choose cognitive operations that enable application of the WCS and interpretation of conditionals. To that end we define:
+
 \[
-\begin{split}
-M= \{\texttt{init}, \texttt{addAB}, \texttt{WeaklyComplete}, \texttt{semanticOperator}\}
-\end{split}
+M=\{\texttt{addAB}, \texttt{semantic}, \texttt{wc}\}
 \]
-\[\gamma = (l\models \top) \textrm{ or } (l \models \bot)\]
 
-%@TODO change semanticOper to semanticOperator without line overflowing 
+The external evaluation function should translate the SCP into a decision that can be compared with empirical data. In the Suppression Task we will treat $f()$ as the question: `Will she study late in the library?'. Under the assumption only the final state point $p_n$
+determines whether she will study late, we define:
 
-where all cognitive operations require as input and produce as output a state point $p$ where every ground point $\bar{p} \in_s p$ is of format $\bar{p}=(KB,V,R)$; \texttt{init} is always the first cognitive operation and adds the initial variables and rules to epistemic state; \texttt{addAB} adds abnormalities to the current epistemic state using the procedure described in Algorithm~\ref{alg:addAbnormalities} (but now also adds those abnormalities to the variable list of the epistemic state); \texttt{WeaklyComplete} weakly completes the knowledge base of the current epistemic state; and \texttt{semanticOperator} returns an epistemic state that leaves the knowledge base unchanged but updates the variables of that state to return the least model of the epistemic state. \texttt{semanticOperator} follows the same logic seen in Section~\ref{ssec:wcs}, but directly updating $V$ after each iteration of the semantic operator, instead of the externalised variable set $J$. Thus, we ensure that the output state point is able to communicate the result of applying the semantic operator without any structural changes to the epistemic states it contains. As an additional feature of the \texttt{semanticOperator} cognitive operation, if there exists a labelled set in $R$ called $fixed$, then the semantic operator will not set the value of any $v \in fixed$ in the variables list $V$. The goal $\gamma$ states that $l$ should no longer be mapped to unknown in the final epistemic state.
+\[
+f(\pi) = \begin{pmatrix} \text{she will study late in the library} & (l,\top) \in p_n[V] \\   \text{she will not study late in the library} & (l,\bot) \in p_n[V] \\ 
+\text{we are unsure if she will study late in the library} & \text{otherwise} \end{pmatrix}
+\]
+
+Next, we define the empirical result we wish to emulate $\gamma$. In this case we will define $\gamma_{text{noSup}}$ to model cases where no suppression is observed, and $\gamma_{\text{sup}}$ to model cases where suppression is observed.
+
+\[\gamma_{text{noSup}} = \text{she will study late in the library} \]
+\[\gamma_{text{sup}} = \text{she will not study late in the library} \]
+
+Armed with these definitions, it is possible to model the case where she will study late in the library $\Pi$ as follows:
+
+\[\Pi_\text{noSup}=(s_i^{\text{noSup}},M,f(),\gamma_{\text{noSup}})\]
+
+De Novo search on $\Pi_\text{noSup}$ returns the satisfying SCP $\mu_\text{noSup}$:
+
+\[\mu_\text{noSup}=(\pi=(s_i^{\text{noSup}} \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
+
+Figure~@TODOref illustrates the realised SCP for $\mu_\text{noSup}$ and illustrates that $\mu_\text{noSup} \models \gamma$.
+
+The next case to examine is the one in which we show evidence of suppression in the SCP framework $\Pi_\text{sup}$. To that end we find satisfying SCPs for the task:
+
+\[\Pi_\text{sup}=(s_i^{\text{sup}},M,f(),\gamma_{\text{sup}})\]
+
+De Novo search on $\Pi_\text{sup}$ returns the satisfying SCP $\mu_\text{noSup}$:
+
+\[\mu_\text{sup}=(\pi=(s_i^{\text{sup}} \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
+
+\begin{figure}
+\centering \includegraphics[scale=0.4]{Suppression_SCP}
+\caption{Suppression for the two SCPs $\mu_\text{noSup}$ and $\mu_\text{sup}$}.
+\label{fig:Suppression_SCP}
+\end{figure}
+
+Figure~\ref{Suppression_SCP} illustrates the realised SCP for $\mu_\text{noSup}$ and $\mu_\text{sup}$ and illustrates a suppression effect between the two.
+
+These two examples have served to show that suppression can modelled in the SCP framework. The reader might be tempted to argue that the SCP $\mu_\text{ce1} = (\pi_\text{ce1}=(s^\text{sup}_i),f())$ also demonstrates Suppression because $f(\pi_\text{ce1})\models \gamma_\text{sup}$. However, this is not the case because Suppression occurs only when inferences drawn from a knowledge base \textit{no longer} occur. Using the same SCP without the additional conditional in the epistemic state results in $\mu_\text{ce2} = (\pi_\text{ce2}=(s^\text{noSup}_i),f())$ and $f(\pi_\text{ce2})=f(\pi_\text{ce1})$. Suppression is only demonstrated when the inference \textit{changes} when the initial state is given additional information.
+
+To illustrate the ability of the framework to model individual reasoners, we examine those reasoners who despite knowing both that if she has an essay to write she will study late in the library and that if the library is open she will study late in the library still do not demonstrate suppression, and instead draw the classical conclusion that she will study late in the library. To this end we define a third SCP Task $\Pi_\text{deviant}$.
+
+\[\Pi_\text{deviant}=(s_i^{\text{sup}},M,f(),\gamma_{\text{noSup}})\]
+
+De Novo search on $\Pi_\text{sup}$ returns no satisfying SCP for this task and it is clear that some change must be made, either to the knowledge contained in the initial state, or to the set of allowable operations $M$. The initial state could be supplemented by additional background knowledge, but we cannot be certain of this background knowledge and instead will focus on finding appropriate cognitive operations to add to our model. We create $M'=M\cup \texttt{delete}_o \cup \texttt{fix}_{(\text{ab}_1\leftarrow \bot)}$. $M'$ is now able to delete the variable $o$ and to force the $V[\text{ab}_1]$ to always return $(\text{ab}_1,\bot)$. To see the explanations and justifications for these two cognitive operations, refer to Section~@TODOref, and Section~@TODOref.
+
+Equipped with these two cognitive operations, there are now two SCPs of length $4$ which can model the SCP Task $\Pi'_\text{deviant}$.
+
+\[\Pi'_\text{deviant}=(s_i^{\text{sup}},M',f(),\gamma_{\text{noSup}})\]
+
+\[\mu^1_\text{deviant}=(\pi^1_\text{deviant}=(s_i^{\text{sup}} \longmapsto \texttt{delete}_o \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
+\[\mu^1_\text{standard}=(\pi^1_\text{standard}=(s_i^{\text{noSup}} \longmapsto \texttt{delete}_o \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
+
+
+\[\mu^2_\text{deviant}=(\pi^1_\text{deviant}=(s_i^{\text{sup}} \longmapsto \texttt{addAB} \longmapsto \texttt{delete}_o \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
+
+
+\[\mu^3_\text{deviant}=(\pi^1_\text{deviant}=(s_i^{\text{sup}} \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto  \texttt{delete}_o \longmapsto \texttt{semantic}),f())\]
+
+\[\mu^4_\text{deviant}=(\pi^1_\text{deviant}=(s_i^{\text{sup}} \longmapsto \texttt{fix}_{(\text{ab}_1\leftarrow \bot)} \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
+
+\[\mu^5_\text{deviant}=(\pi^1_\text{deviant}=(s_i^{\text{sup}} \longmapsto \texttt{addAB} \longmapsto \texttt{fix}_{(\text{ab}_1\leftarrow \bot)} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
 
 
 
-Treating Figure~\ref{fig:supoverview} as an SCP, we observe the sequence of output states seen in Figure~\ref{fig:supnormal}. Note that in the final state $l$ remains mapped to $u$, meaning that the suppression effect is demonstrated.
+\[\mu^6_\text{deviant}=(\pi^1_\text{deviant}=(s_i^{\text{sup}} \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{fix}_{(\text{ab}_1\leftarrow \bot)} \longmapsto \texttt{semantic}),f())\]
+
+Figure~\ref{fig:Suppression_SCP_del1} illustrates derivation of the classical logical response to the suppression task as a modification of an SCP which did illustrate suppression for the two SCPs $\mu^1_\text{deviant}$ and $\mu^1_\text{standard}$. This evidences one of the core claims of the SCP Framework which is that it is a reasonable tool for modelling individual reasoners in a cognitive task. 
+
+Figure~@TODOref illustrates the same phenomenon for the SCPs @TODO and @TODO using the $\texttt{fix}_{(\text{ab}_1\leftarrow \bot)}$ cognitive function.
+
+The value of these examples lies in that they show that classical logic response to a cognitive task is not necessarily derived through the use of classical logic.
+
+\begin{figure}
+\centering \includegraphics[scale=0.4]{Suppression_SCP_del1}
+\caption{Inhibition of Suppression for the two SCPs $\mu^1_\text{deviant}$ and $\mu^1_\text{standard}$}.
+\label{fig:Suppression_SCP_del1}
+\end{figure}
+
+
 
 \subsection{Extending the Suppression Task with SCPs}
 The previous example merely showed that SCPs are suitable for modelling the suppression task. In this example we consider one of the most powerful characteristics of SCPs, the ability to model unusual results as deviations from general reasoning. In the original Suppression Task Experiment examined in Section~\ref{sec:sup}, a significant portion of people still believed that she would study late in the library, even though the majority suppressed the inference. Several possible explanations are intuitive, the first and simplest, is the assumption that the reasoner is using classical logic and drawing the classical conclusion. However, what if that is not the case? What if they do reason in exactly the same way as the other reasoners, except for one or two small deviations?
