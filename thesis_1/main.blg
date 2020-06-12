@@ -1,8 +1,76 @@
-This is BibTeX, Version 0.99d (MiKTeX 2.9.7400 64-bit)
+This is BibTeX, Version 0.99d (MiKTeX 2.9.7440 64-bit)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: biblatex.bst
-A level-1 auxiliary file: Appendices/AppendixA.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+I couldn't open auxiliary file Chapters/Introduction.aux
+---line 35 of file main.aux
+ : \@input{Chapters/Introduction.aux
+ :                                  }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 20 items.
+I couldn't open auxiliary file Chapters/Prelim.aux
+---line 82 of file main.aux
+ : \@input{Chapters/Prelim.aux
+ :                            }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 25 items.
+I couldn't open auxiliary file Chapters/Experiments.aux
+---line 99 of file main.aux
+ : \@input{Chapters/Experiments.aux
+ :                                 }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 17 items.
+I couldn't open auxiliary file Chapters/SCP.aux
+---line 122 of file main.aux
+ : \@input{Chapters/SCP.aux
+ :                         }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+I couldn't open auxiliary file Chapters/Toolbox.aux
+---line 134 of file main.aux
+ : \@input{Chapters/Toolbox.aux
+ :                             }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 19 items.
+I couldn't open auxiliary file Chapters/Mimic.aux
+---line 147 of file main.aux
+ : \@input{Chapters/Mimic.aux
+ :                           }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 23 items.
+I couldn't open auxiliary file Chapters/Comparing.aux
+---line 148 of file main.aux
+ : \@input{Chapters/Comparing.aux
+ :                               }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+I couldn't open auxiliary file Chapters/Program.aux
+---line 149 of file main.aux
+ : \@input{Chapters/Program.aux
+ :                             }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+I couldn't open auxiliary file Chapters/NSCP.aux
+---line 150 of file main.aux
+ : \@input{Chapters/NSCP.aux
+ :                          }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+I couldn't open auxiliary file Chapters/Conclusion.aux
+---line 151 of file main.aux
+ : \@input{Chapters/Conclusion.aux
+ :                                }
+I'm skipping whatever remains of this command
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+I couldn't open auxiliary file Chapters/Appendix.aux
+---line 152 of file main.aux
+ : \@input{Chapters/Appendix.aux
+ :                              }
+I'm skipping whatever remains of this command
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
 Reallocating 'global_strs' (item size: 1) to 4000000 items.
@@ -20,47 +88,52 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: main-blx.bib
 Database file #2: bibl.bib
+Repeated entry---line 227 of file bibl.bib
+ : @inproceedings{ragni2017wason
+ :                              ,
+I'm skipping whatever remains of this entry
 Biblatex version: 3.13
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 17 entries,
+You've used 21 entries,
             6365 wiz_defined-function locations,
-            1300 strings with 11893 characters,
-and the built_in function-call counts, 125114 in all, are:
-= -- 9424
-> -- 2070
-< -- 653
-+ -- 2943
-- -- 740
-* -- 9529
-:= -- 13375
+            1332 strings with 12647 characters,
+and the built_in function-call counts, 155324 in all, are:
+= -- 11668
+> -- 2566
+< -- 789
++ -- 3641
+- -- 932
+* -- 11946
+:= -- 16640
 add.period$ -- 0
-call.type$ -- 17
-change.case$ -- 413
+call.type$ -- 21
+change.case$ -- 483
 chr.to.int$ -- 42
-cite$ -- 32
-duplicate$ -- 12338
-empty$ -- 11307
-format.name$ -- 1217
-if$ -- 25994
+cite$ -- 40
+duplicate$ -- 15293
+empty$ -- 14064
+format.name$ -- 1532
+if$ -- 32237
 int.to.chr$ -- 0
-int.to.str$ -- 45
+int.to.str$ -- 56
 missing$ -- 0
-newline$ -- 646
-num.names$ -- 923
-pop$ -- 5826
+newline$ -- 796
+num.names$ -- 1121
+pop$ -- 7280
 preamble$ -- 1
-purify$ -- 520
+purify$ -- 618
 quote$ -- 0
-skip$ -- 3537
+skip$ -- 4331
 stack$ -- 0
-substring$ -- 17104
-swap$ -- 3009
-text.length$ -- 476
-text.prefix$ -- 16
+substring$ -- 21305
+swap$ -- 3701
+text.length$ -- 595
+text.prefix$ -- 20
 top$ -- 1
-type$ -- 566
+type$ -- 702
 warning$ -- 0
-while$ -- 1720
+while$ -- 2127
 width$ -- 0
-write$ -- 630
+write$ -- 776
+(There were 12 error messages)

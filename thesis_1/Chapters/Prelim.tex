@@ -72,7 +72,7 @@ $Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that
 \end{center}
 \end{table}
 
-Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following @TODOrefwason1968 we do not use the implication $\rightarrow$ to represent a conditional, and instead opt for what Baratgin (@TODOrefbaratgin2014) called a \textit{deFinetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
+Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following @TODOrefwason1968 we do not use the implication $\leftarrow$ to represent a conditional, and instead opt for what Baratgin (@TODOrefbaratgin2014) called a \textit{deFinetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
 
 \section{Logic Programming}
 \subsection{Knowledge Base} \label{ssec:kb}
@@ -88,11 +88,11 @@ When $KB=(S=\{\textrm{rule}_1,...,\textrm{rule}_n\},\Delta=\{\})$, we will somet
 
 
 \section{Non-Monotonic Logics}
-In the field of non-monotonic logics, reasoning is represented as a collection of defeasible inferences. Unlike in classical logic, conclusions need not hold in perpetuity, or even in the same model and revision is always possible. Monotonic logics are not capable of describing human reasoning in experiments like the Suppression Task \citep{dietz2012computational} because they lack this revisionist characteristic.
+In the field of non-monotonic logics, reasoning is represented as a collection of defeasible inferences. Unlike in classical logic, conclusions need not hold in perpetuity, or even in the same model and revision is always possible. Monotonic logics are not capable of describing human reasoning in experiments like the Suppression Task \citep{dietz2012computational} because they lack this revisionist characteristic. @TODOref showed that two-valued logics were not sufficient to model human cognition.
 
 A large number of non-monotonic frameworks exist in the literature \citep{mcdermott1980non}, each applicable to a different subset of cognitive problem space, and each modelling their problem space with various degrees of success. In the simplest formulation, a non-monotonic logic is simply an extension to a classical logic which introduces a preference relation $\rightarrow_p$. This preference relation states that, given some number of derivable facts in a knowledge base, the fact derived using the most preferential rule is to be derived first and cannot be overwritten by a less preferable assignment.  
 
-Although the non-monotonic logics discussed in this section have simple extensions to first-order logic (@TODOref), we instead restrict ourselves to a propositional format throughout this thesis.
+Although the non-monotonic logics discussed in this chapter have simple extensions to first-order logic (@TODOref), we instead restrict ourselves to a propositional format throughout this thesis.
 \section{The Weak Completion Semantics}
 \begin{table}
 \begin{center}
@@ -107,7 +107,7 @@ Although the non-monotonic logics discussed in this section have simple extensio
 \end{center}
 \end{table}
 
-The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomena (@OTDOextend). The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
+The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomena (@OTDOextend). The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}), rather than Kripke-Kleene logic which has been shown inadequate to model several aspects of cognition (including suppression @TODOref). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
 
 The Weak Completion of a program $P$ is defined as follows:
 
@@ -136,16 +136,14 @@ J^\bot = \{ &  A | \textrm{ there exists a clause } A \leftarrow Body \in P \\
 %this might not be right? Should it say I or J? @TODO
 Using $I=<\emptyset, \emptyset>$, the least model of $P$ ($\textrm{lm}_\textrm{\L}$wc$P$) can be calculated by iterating $\phi_{SvL,P}$.
 
-\section{Reiter's Default Logic}
+\section{Reiter's Default Logic} \label{ssec:reiter}
 Reteir's Default Logic \citep{reiter1980logic} is a non-monotonic framework which allows us to divide the inferential capabilities of a system into those facts and inference rules which are always true (as in classical logic) and those which are are usually true. The second type of inference is the eponymous default rule.
 
-The set of immutable facts is called $kb$ and inferences in $kb$ are made as with propositional logic, with the addition of the conclusion of any previously evaluated default rules. The set of default rules $d$ consists rules of the form:
+Inferences from the set of immutable facts $S$ are made as with propositional knowledge bases, with the addition of the conclusion of any previously evaluated default rules. The set of default rules $d$ consists rules of the form:
 
-\[\frac{\textrm{prerequisite}:\textrm{ justification}_1, \textrm{ ...}, \textrm{ justification}_n}{\textrm{conclusion}}\] @TODOextend.
+\[\frac{\textrm{prerequisite}:\textrm{ justification}_1, \textrm{ ...}, \textrm{ justification}_n}{\textrm{conclusion}}\]
 
-The background theory $W$ is a set of propositional formula which are evaluated as with the propositional knowledge base $S$ (Section~\ref{ssec:kb}).
-
-Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion} are propositional logic clauses. A \textit{conclusion} is valid and added to the set of known variables in $kb$ iff \textit{prerequisite} holds and no clause $\textit{justification}_i$ holds.
+Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion} are propositional logic clauses. A \textit{conclusion} is valid and added to the set of known variables in $S$ if and only if \textit{prerequisite} holds and no clause $\textit{justification}_i$ holds.
 
 
 A default rule may be applied to a theory if it is entailed by the theory and all of its justifications and conclusions are consistent with the theory. When a default rule is applied, its consequence is added to the background theory.
@@ -158,7 +156,7 @@ Formally, inferences in default logic are calculated as follows:
 \Fn{$e$($\bar{p}$)}
 {
 \tcc{Current theory.}
-$T:=W$\;
+$T:=S$\;
 \tcc{Set of defaults already applied.}
 $A:=\{\}$\;
 \While{There exists a default rule $d$ that is not in $A$ and is applicable to $T$}
@@ -175,8 +173,8 @@ $T$ is a valid extension\;
 \caption{Algorithmic addition of extensions to a Reiter's Knowledge Base.}
 \end{algorithm}
 
-It should be immediately apparent form this formulation that, for many possible sets of rules in $kb$, the output is non-monotonic as is dependent on the order in which default rules are evaluated.
+It should be immediately apparent form this formulation that, for many possible sets of rules in $S$, the output is non-monotonic as is dependent on the order in which default rules are evaluated.
 
-A very significant restriction on reiter's default logic is the complexity of computing all inferences. Even in the simple case of $kb={rule_1,...rule_n}$ and $d={}$, the set of possible inferences is potential infinitely large, and even the set of non-trivial inferences is computationally infeasible @TODOref. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is an atom.
+A very significant restriction on reiter's default logic is the complexity of computing all inferences. Even in the simple case of $S={rule_1,...rule_n}$ and $d=\{\}$, the set of possible inferences is potential infinitely large, and even the set of non-trivial inferences is computationally infeasible @TODOref. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is a literal.
 
 The closed world assumption $\frac{: \lnot \bot}{\bot}$ states that all information which is not known to be true is assumed to be false. The closed world assumption can be used to ensure that every variable $v_i \in I_w(\Sigma) \models \top \lor bot$.

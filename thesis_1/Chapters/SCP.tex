@@ -20,9 +20,11 @@
 Although there is evidence that the brain can perform several simultaneous operations when considering a task (such as when considering an image \citep{sigman2008brain}, the SCP framework assumes that at some points in reasoning about a given task, the mental processes of the agent converge to a set of epistemic states, called a \textit{state point}. Whatever happens between these points of convergence can contain any number of parallel processes. The collection of processes that occur between any two state points in a reasoning task is called a \textit{cognitive operation}. It follows that any cognitive operation is valid as long it takes a set of epistemic states as input and produces a set of epistemic states as output. Figure~\ref{fig:scp_general} outlines an SCP-like structure that is powerful enough to model any cognitive task that involves an epistemic state transition. However, it does not provide any useful information; the nature of the processes followed is completely undescribed. Suppose, instead, that some cognitive task is being modelled, and that researchers have reason to believe that The Weak Completion Semantics should play a part in their model. Under this new restriction, and assuming a sufficiently expressive epistemic state, Figure~\ref{fig:scp_general} is still an accurate model of the process, but now so is Figure~\ref{fig:sfig2}. By sacrificing some of the ambiguity -- and, thus, expressiveness -- of the model, the information content of the model description has increased. This trade-off is a feature of the SCP framework and finding the right depth of complexity to model the task accurately and still provide meaningful information is more art than science at present. 
 
 \section{SCPs: Mathematical Formulation}
-An SCP Task $\Pi=(s_i, M, f(), \gamma)$ consists of an initial epistemic state $s_i$, a known set of cognitive operations $M$, a desired final output $\gamma$, and an external function $f()$ which generates those final outputs by translating the final epistemic state into an empirically grounded set of possible responses. An epistemic state $s_k$ describes all the information available to the agent at state point $k$. The precise contents of an epistemic state should be chosen so that at least some $m \in M$ are able to accept that state as an input. In the case of a system containing only the one complex operation which applies the WCS, one possible epistemic state is $s=(P,\Delta,V)$, where $P$ is a set of inference rules of the form $(head \leftarrow body)$, $\Delta$ is a set of conditional rules of the form $(\psi|\phi)$ and $V$ is a mapping of atom names appearing in $KB$ to a truth value in \L ukasiewicz logic ($\top,u, \bot$). In principle this definition will serve for the rest of the paper, but it is extended slightly so that $s_k = (S,\Delta,V,R)$ where $R$ is a set of labelled categorization criteria sets (\textit{LCS}). An LCS $ c \in R$ consists of a category name and list of rules and atoms which fit into that category.
+An SCP Task $\Pi=(s_i, M, f(), \gamma)$ consists of an initial epistemic state point $s_i$, a known set of cognitive operations $M$, a desired final output $\gamma$, and an external function $f()$ which generates those final outputs by translating the final epistemic state into an empirically grounded set of possible responses. 
 
-A base point is a single epistemic state. A state point $p$ is defined recursively by $p=\{\bar{p} \oplus Q \}$ where $\bar{p}$ is a base point, and $Q$ is a set of state points, and $\oplus$ represents the exclusive-or operation\footnote{$(X \oplus Y) = ((X \cup Y) - (X \cap Y))$ for sets $X$ and $Y$.}. State point containment $\in_s$ for state points $p$ and $q$ is defined recursively as follows:
+An epistemic state, also called a base point, describes all information which the agent \textit{believes} to be true at a given moment in its cognition. An epistemic state is an $n$-tuple of relevent structural variables, each of which describes some aspect of the belief of the agent at that moment (a non-monotic KB as describes in Section~TODOref, is an epistemic state $s_i=(S,\Delta)$ containing structural variables $S$ for a set of propositional rules, and $\Delta$ for a set of conditionals beliefs.)
+
+A state point $p$ is defined recursively by $p=\{\bar{p} \oplus Q \}$ where $\bar{p}$ is a base point, and $Q$ is a set of state points, and $\oplus$ represents the exclusive-or operation\footnote{$(X \oplus Y) = ((X \cup Y) - (X \cap Y))$ for sets $X$ and $Y$.}. State point containment $\in_s$ for state points $p$ and $q$ is defined recursively as follows:
 
 \[
 p \in_s q = \begin{pmatrix} p \in q  & \textrm{True} \\   \exists_{r\in p}p \in_s r = \textrm{True} & \textrm{True}   \\ \textrm{Otherwise} & \textrm{False} \end{pmatrix}
@@ -32,32 +34,29 @@ It is never the case that $p \in_s p$.
 
 A cognitive operation $m = (\chi, e), m \in M$ consists of a precondition $\chi$ and a process $e$, such that for an input state point $p$, every base point $\bar{p} \in_s p$ is either accepted as input ($\bar{p} \models m[\chi]$ under whatever definition of $\models$ is used for the complex operation $m$), or else rejected. Every base point is evaluated by the complex operation in isolation (no other base point $\bar{q}$ can affect the output of $m$ on base point $\bar{p}$).
 
-$J[\bar{p},m]=p'$ describes the \textit{application} of a base point $\bar{p}$ to a cognitive operation $m \in M$ to produce an output base point $p'$, where $p'$ is vector of base points. $p'$ is \textit{defined} if and only if $\bar{p}$ is a valid input for $m$ (Section~@TODOsection). In this way, a single single base point may produce multiple base points as output, reflecting potentially non-monotonic or non-deterministic properties of cognitive operations. 
+$J[\bar{p},m]=p'$ describes the \textit{application} of a base point $\bar{p}$ to a cognitive operation $m \in M$ to produce an output state point $p'$, where $p'$ is vector of base points. $p'$ is \textit{defined} if and only if $\bar{p}$ is a valid input for $m$ (Section~@TODOsection). In this way, a single single base point may produce multiple base points as output, reflecting potentially non-monotonic or non-deterministic properties of cognitive operations. 
 
 We overload the functionality of $J$ so that $J[p,m]=p'$, where $p$ is a state point (rather than just a base point), and define $J[p,m]$ as follows: $J[p,m]=[ \texttt{replace}(\bar{p} \in p,J[\bar{p},m])]$. $J[p,m]=p'$ is \textit{defined} if and only if some $J[\bar{p} \in p,m]$ is defined.
 
-It follows that the depth of a state point is directly related to the number of complex operations which have been performed in the SCP prior to its occurrence. If a base point does not meet the precondition (see Section~@TODOref), it is either ignored completely and not processed (\textit{cruel application}), or passed exactly as is to the next complex operation (\textit{lenient application}). It is worth noting that the type of cognitive states produced as output by $m$ may not be the same as those of the input.
+It follows that the depth of a state point is directly related to the number of complex operations which have been performed in the SCP prior to its occurrence. If a base point does not meet the precondition (see Section~@TODOref), it is either ignored completely and not processed (\textit{cruel application}), or passed exactly as is to the next complex operation (\textit{lenient application}). It is worth noting that the type of cognitive states produced as output by $m$ may not contain the same structural variables as those of the input.
  
 A cognitive operation is called monotonic if it always yields a base point as an output given a base point input ($J[\bar{p},m]=\bar{p'}$).
 
 This paper will focus on cases where the type of cognitive state remains constant, but it is possible for $J[\bar{p},m]=p'$ where $\bar{p}$ is of structure $(\alpha,\beta)$ and $\bar{p'}\in p'$ to be of structure $(\alpha,\beta,\gamma)$ @TODOdefiniestrcutureinepis. Future models of human cognition may well rely on background knowledge which draws inferences from multiple types of non-monotonic logics.
 
-A cognitive transition model (\textit{CTM}) describes an ordered procession of cognitive operations following an initial epistemic state as follows: CTM $\pi=(s_i\longmapsto m_1\longmapsto ...\longmapsto m_n)$ where $s_i$ is a state point, and $m_k$ is a cognitive operation. A partial cognitive transition model (\textit{pCTM}) $\pi=(m_1\longmapsto ...\longmapsto m_n)$ describes a procession of cognitive operations without an an initial state point.
+A \textit{cognitive transition model} (CTM) describes an ordered procession of cognitive operations following an initial epistemic state as follows: CTM $\pi=(s_i\longmapsto m_1\longmapsto ...\longmapsto m_n)$ where $s_i$ is a state point, and $m_k$ is a cognitive operation. A \textit{partial cognitive transition model} (pCTM) $\pi=(m_1\longmapsto ...\longmapsto m_n)$ describes a procession of cognitive operations without an an initial state point.
 
 The CTM $\pi = (s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$, for SCP task $\Pi=(s_i, M, f(), \gamma)$ is \textit{defined} if and only if $J[p_k,m_k]$ is defined for $p_k = J[p_{k-1},m_k]$, $k>2$, and $J[s_i,m_1]$ is defined. The set of possible CTMs for SCP task $\Pi$ is given by $L[\Pi]=\{\pi\}$, where $\pi$ is a defined CTM for $\Pi$.
 
 An SCP $\mu=(\pi,f())$  pairs a CTM $\pi$ with an external activation function $f()$ (Section~@TODOsection). An SCP $\mu=(\pi,f())$ is defined for SCP task $\Pi=(s_i, M, f(), \gamma$ if and only if $\pi \in L[\Pi]$.
 
----
-@TODOmovetoValidity
-An SCP is called \textit{credulously valid} if $f(\pi) \models \gamma$ for at least one epistemic state in the final state $p_n$. An SCP is called \textit{sceptically valid} if $f(\pi) \models \gamma$ for every epistemic state in the final state. In cases where all operations are monotonic, sceptical validity is the same as credulous validity.
----
 
-Finally, we define a realised SCP $r = (k, f())$ where $k \in K[\pi]$, and $K[\pi]=\{s_i \longmapsto (m_1,\bar{p}_1) \longmapsto ... \longmapsto (m_n,\bar{p}_n)\}$ where, for every pair $(m_i,\bar{p}_i)$, $\bar{p}_i \in J[\bar{p}_{i-1},m_i]$. Realised SCPs describe a single agent's interpretation of an SCP and associate only a single epistemic state, rather than a state point to the output each cognitive operation in an SCP. 
 
-$r=(k, f())$ is a realised SCP for SCP $\mu=(\pi,f())$, with $\pi=(s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$ is given by $k=(s_i \longmapsto (m_i, \bar{p_1} \in J[\bar{p}_{0},m]) \longmapsto ... \longmapsto (m_n, \bar{p_n} \in J[\bar{p}_{n-1},m]))$.
+Finally, we define a \textit{realised SCP} $r = (k, f())$ where $k \in K[\pi]$, and $K[\pi]=\{s_i \longmapsto (m_1,\bar{p}_1) \longmapsto ... \longmapsto (m_n,\bar{p}_n)\}$ where, for every pair $(m_i,\bar{p}_i)$, $\bar{p}_i \in J[\bar{p}_{i-1},m_i]$. Realised SCPs describe a single agent's interpretation of an SCP and associate only a single epistemic state, rather than a state point to the output each cognitive operation in an SCP. 
 
-When every cognitive operation in $M$ is monotonic, it is trivially easy to transform an SCP into a realised SCP and vice versa @TODOproof. In cases where SCPs are monotonic, we will use the SCP and its realised SCP interchangeably. The number of realised SCPs for an SCP is the same as the number of base points in the final state point of that SCP.
+$r=(k, f())$ is a realised SCP for SCP $\mu=(\pi,f())$, with $\pi=(s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$ and is given by $k=(s_i \longmapsto (m_i, \bar{p_1} \in J[\bar{p}_{0},m]) \longmapsto ... \longmapsto (m_n, \bar{p_n} \in J[\bar{p}_{n-1},m]))$.
+
+A cognitive operation is called \textit{monotonic} if it is guaranteed to produce only one base point as output for each base point passed as input. When every cognitive operation in $M$ is monotonic, it is trivially easy to transform an SCP into a realised SCP and vice versa @TODOproof. In cases where SCPs are monotonic, we will use the SCP and its realised SCP interchangeably. The number of realised SCPs for an SCP is the same as the number of base points in the final state point of that SCP.
 
 
 
@@ -65,9 +64,9 @@ When every cognitive operation in $M$ is monotonic, it is trivially easy to tran
 
 SCP tasks describe a problem that needs to be solved and the limitations which the solution must to adhere to; SCPs describe a single 'recipe' that can be used to describe a sequence of well-founded, non-monotonic operations which an agent might use to model a problem; and realised SCPs describe how adherence to specific SCP can result in some agent coming to a conclusion that matches empirical data.
 
-For a given SCP task there can be many possible SCPs (the question of how to choose the most probable of these candidate SCPs is discussed in Section~@TODOref), or no possible SCPs at all.
+For a given SCP task there can be many possible SCPs (the question of how to choose the most probable of these candidate SCPs is discussed in Section~\ref{chp:comparing}), or no possible SCPs at all.
 
-Figure~\ref{fig:scpExam} explores a situation in which students are asked if they will pass their next exam. Though all subsequent examples in this paper will consider SCPs in a more formal context, this captures the inuition of the different levels of granularity which SCP Tasks, SCPs, and realised SCPs capture. 
+Figure~\ref{fig:scpExam} explores a situation in which students are asked if they will pass their next exam. Though all subsequent examples in this paper will consider SCPs in a more formal context which is grounded in specific nonmonotonic logical interpretations, this conceptual captures the intuition of the different levels of granularity which SCP Tasks, SCPs, and realised SCPs capture. 
 
 \begin{figure}
 \begin{center}
@@ -78,92 +77,45 @@ Figure~\ref{fig:scpExam} explores a situation in which students are asked if the
 \end{figure}
 
 \section{Epistemic States}
-The choice of epistemic state is dependent on the properties that are known or suspected to be true for the cognitive task as a whole. For example, a researcher working on drawing inferences using boolean Propositional Logic can be certain that any SCP they create should be expressive enough to pass a boolean knowledge base and possible world to a cognitive operation . Thus, it might suffice to simply define $s_i=(KB)$ where $KB$ is a set of propositional rules. By contrast, a researcher using the WCS requires a system capable of both communicating a set of rules to the next complex operation, and of describing the results of repeated applications of the semantic operator. It might seem intuitive to simply append a set of conditional rules $\Delta$ to the state used for the propositional case and to use a the semantic operator as an external function to evaluate the SCP. And, though this approach works for many examples, it makes it impossible to perform further processing in the SCP \textit{after} applying the semantic operator. What if the conclusion drawn was meant to form part of the background knowledge of another process? In practice using $s_k=(S,\Delta,V, R)$, where $V$ is a set of (variable name, value pairs) and $R$ is a categorization variable, seems able to model all aspects of the WCS, including information related to the least model. 
+The choice of epistemic state is dependent on the properties that are known or suspected to be true for the cognitive task as a whole. For example, a researcher working on drawing inferences using boolean Propositional Logic can be certain that any SCP they create should be expressive enough to pass a boolean knowledge base and possible world to a cognitive operation . Thus, it might suffice to simply define $s_i=(S)$ where $S$ is a set of propositional rules. By contrast, a researcher using the WCS requires a system capable of both communicating a set of rules to the next complex operation, and of describing the results of repeated applications of the semantic operator. To model the Suppression Task or WCS it might seem intuitive simply to append a set of conditional rules $\Delta$ to the state used for the propositional case and to use $\text{lm wc}(s_i)$ as an external function to evaluate the SCP. And, though this approach works for many examples, it makes it impossible to perform further processing in the SCP \textit{after} applying the semantic operator. What if the conclusion drawn was meant to form part of the background knowledge of another process? In practice, we will see that using $s_k=(S,\Delta,V, R)$, where $V$ is a set of (variable name, value pairs) and $R$ is a categorization variable, seems able to model all aspects of the WCS, including information related to the least model. 
 
 As yet, there are no definite rules for creating an epistemic state, but Albert Einstein's famous advice from 1950 still rings true: ``Everything should be made as simple as possible, but no simpler.'' The ideal epistemic state is one that enables every reasonable cognitive operation in $M$ that might help model the problem, without adding superfluous functionality that might render searching the SCP space infeasible.
 
-\subsection{Common State Point Properties}
+\subsection{Common State Point Properties} \label{ssec:epiprops}
 Though state points are largely unbounded in the information that they can contain and communicate, this thesis will restrict itself to epistemic state structures which carry intuition both from the underlying logics which they utilise, and from properties of search in the field of AI Planning (@TODOref).
 
 \subsubsection*{The possible world: V}
-The possible world variable $V$ encodes information about the current world state the agent believes itself to be in. As in Section~\ref{chp:prelim}, the possible world variable consists of a conjunction of variable pairs of the form $(\textrm{atom},\textrm{value}n\textrm{domain}_\textrm{atom})$, where $\textrm{atom}$ occurs only once. Unlike in a true possible world, not every there exist $\textrm{atom} \in Sigma$ which do not occur in $V$.
+The possible world variable $V$ encodes information about the current world state the agent believes itself to be in. As in Section~\ref{chp:prelim}, the possible world variable consists of a conjunction of variable pairs of the form $(\textrm{atom},\textrm{value}\in\textrm{domain}_\textrm{atom})$, where $\textrm{atom}$ occurs only once. Unlike in a true possible world, there exist $\textrm{atoms} \in \Sigma$ which do not occur in $V$.
 
-$V[\phi]$ returns the pair $(\phi,\textrm{value}) \in V$. An interpretation of formula $\phi$ using $V$, $I_v[\phi]$ occurs as with any possible world except that, when an atomic name $a$ which occurs in $\phi$ when $V[a]$ is undefined is given the default value of that language during computation ($u$ in $\L$@TODOname logic, and $\bot$ in propositional logic.). This is a necessity born of the fact that infinite space is required to explicitly store every possible variable name. The reason that $V$ is used throughout this thesis is threefold: it ensures that the possible world of the agent at any state of its cognition is always known; it allows inferences drawn using one logic to be utilised as background knowledge in another logic; and in practical implementation it can prevent recalculation of complex rules that have been preciously interpreted.
+$V[\phi]$ returns the pair $(\phi,\textrm{value}) \in V$. An interpretation of formula $\phi$ using $V$, $I_v[\phi]$ occurs as with any possible world except that, when an atomic name $a$ which occurs in $\phi$ when $V[a]$ is undefined is given the default value of that language during computation ($u$ in $\L$@TODOname logic, and $\bot$ in propositional logic.). This is a necessity born of the fact that infinite space is required to explicitly store every possible variable name. The reason that $V$ is used throughout this thesis is threefold: it ensures that the possible world of the agent at any state of its cognition is always known; it allows inferences drawn using one logic to be utilised as background knowledge in another logic; and in practical implementation it can prevent recalculation of complex rules that have been previously interpreted.
 
 \subsubsection*{Propositional Rule Set: S}
-The propositional rule set $S$ is defined precisely as the knowledge base was defined in Section~@TODOsection.
+The propositional rule set $S$ is defined precisely as the knowledge base was defined in Section~\ref{ssec:kb}.
 
 \subsubsection*{The set of conditionals: $\Delta$}
-The set of conditionals $\Delta$ is defined precisely as in the conditional knowledge base in Section~@TODOsection.
+The set of conditionals $\Delta$ is defined precisely as in the conditional knowledge base in Section~\ref{ssec:kb}.
 
 \subsection{The Categorization Variable}
 %@TODOreformulatefors_k=(s,v,delta,r)
-The final property of a cognitive operation that needs to be discussed is how it is able to interact with the categorization variable $R$. Imagine a case drawn from \cite{saldanha2017weak} where the difference between creating abnormalities for obligate and factual conditionals is discussed. The intuition behind the authors' work can be summarised by saying that there are two different types of conditional statement, those that \textit{have to be} true, and those that are \textit{usually} true. If it rains $r$, I will normally take my umbrella $u$ (in the absence of something abnormal happening, like a plague of umbrella-stealing gnomes). This a statement that is usually true, but some things are definitely true. For example, when it rains, water has to fall out of the sky $s$. This is an essential property of rain, not subject to abnormalities. Thus one useful set of categorizations for researchers seeking cosmic knowledge of weather patterns may be: $R=\{obligate: \{u \leftarrow r\}, factual: \{s \leftarrow r\} \}$. With these labels we might then expect that the process followed by the operation $m \in M$ which creates abnormalities would treat the two conditionals in $KB$ differently, because of their assignments in $R$. $R$ then is a way of expressing meta information to the cognitive operations, and it is completely possible that some operation $m_k$ might change $R$ is such a way that future operation $m_{k+l}$ produces different output. This is a technique we will exploit in several examples in this paper.
-
-@TODOdefinereachability
+The final property of a cognitive operation that needs to be discussed is how it is able to interact with the categorization variable $R$. Imagine a case drawn from \cite{saldanha2017weak} where the difference between creating abnormalities for obligate and factual conditionals is discussed. The intuition behind the authors' work can be summarised by saying that there are two different types of conditional statement, those that \textit{have to be} true, and those that are \textit{usually} true. If it rains $r$, I will normally take my umbrella $u$ (in the absence of something abnormal happening, like a plague of umbrella-stealing gnomes). This a statement that is usually true, but some things are definitely true. For example, when it rains, water has to fall out of the sky $s$. This is an essential property of rain, not subject to abnormalities. Thus one useful set of categorizations for researchers seeking cosmic knowledge of weather patterns may be: $R=\{obligate: \{u \leftarrow r\}, factual: \{s \leftarrow r\} \}$. With these labels we might then expect that the process followed by the operation $m \in M$ which creates abnormalities would treat the two conditionals in $KB$ differently, because of their assignments in $R$. $R$ then is a way of expressing meta information to the subsequent cognitive operations, and it is completely possible that some operation $m_k$ might change $R$ is such a way that future operation $m_{k+l}$ produces different output. This is a technique we will exploit in several examples in this paper.
 \section{Cognitive Operations}
 The set of possible complex operations $M$ determines many attributes of the achievable final state point $p_n$. If every $m \in M$ is monotonic, then $p_n$ will be a base point. If some cognitive operation is computationally complex or produces a very large number of output state points, then search using that base point becomes less efficient. If some complex operation $m'$ (such as weakly completing) is known or believed to occur in the SCP, then a restriction on the cognitive states exists such that either the initial state is of a format suitable as input for $m'$, or there exists another cognitive operation which is able to output a state point which contains base points of a suitable format.
 
 More abstractly, the set of cognitive operations should be well-founded in the literature. The set of possible complex operations is infinite and an SCP only meaningfully describes human cognition when it contains cognitive operations that have been justified empirically (\textit{modus ponens-modus tolens} asymmetry, suppression, denial of the antecedent, etc.). 
 
 \subsection{Pre-conditions and Effects} \label{ssec:precond}
-The precondition $\chi$ of a cognitive operation $m$ refer to those conditions the input state point must satisfy in order for that operation to be considered valid. An SCP is valid if and only if every cognitive operation it contains is valid. For example, one might have a cognitive process describing Julie's plans for a night out on the town. Let us imagine that the SCP task describing her night out includes the operation \texttt{goHomeByCar}. Semantically, this operation should take her \textit{isHome} variable and set it to True.
+The precondition $\chi$ of a cognitive operation $m$ refers to those conditions which the input state point must satisfy in order for that operation to be considered valid. An SCP is valid if and only if every cognitive operation it contains is valid. For example, one might have a cognitive process describing Julie's plans for a night out on the town. Let us imagine that the SCP task describing her night out includes the operation \texttt{goHomeByCar}. Semantically, this operation should take her \textit{isHome} variable and set it to True.
 
 The situations in which \texttt{goHomeByCar} can reasonably occur in an SCP are at the researchers' discretion. Researcher~1 might feel that it can be allowed at any point in the SCP and will simply have no effect for those input epistemic states in which she is already at home. Researcher~2 might argue that \texttt{goHomeByCar} is applicable only when \textit{isHome}=False. Researcher~3 knows that only the cognitive operation \texttt{goToClub} changes the \textit{isHome} variable, and so argues that \textit{isHome} is only applicable after \texttt{goToClub} occurs. There are merits to the arguments of each researcher.
 
-Researcher~1 argues for a property called \textit{trivial validity}, that is that SCPs should always be considered valid, without any need for evaluation. This approach, however has one significant drawback: it cannot handle changes in the structure of epistemic state inputs. Imagine an epistemic operation called \texttt{dontDriveDrunk} which corresponds to our party animal realising that she shouldn't drive home of she's been drinking. Imagine further that this operation takes base points which are either of propositional or default structure (@TODOrefsection) and outputs an epistemic state of default structure which contains the new rule. If \texttt{goHomeByCar} took only a propositional state as input, then any sequence where \texttt{dontDriveDrunk} occurs as the previous operation will cause the SCP to fail because of the input state is not of an allowed type. Trivial validity then, is not sufficient for modelling SCP which state structure changes.
+Researcher~1 argues for a property called \textit{trivial validity}, that is that SCPs should always be considered valid, without any need for evaluation. This approach, however has one significant drawback: it cannot handle changes in the structure of epistemic state inputs. Imagine an epistemic operation called \texttt{dontDriveDrunk} which corresponds to our party animal realising that she shouldn't drive home of she's been drinking. Imagine further that this operation takes base points which are either of propositional or default structure (Section~\ref{ssec:reiter}) and outputs an epistemic state of default structure which contains the new rule. If \texttt{goHomeByCar} took only a propositional state as input, then any sequence where \texttt{dontDriveDrunk} occurs as the previous operation will cause the SCP to fail because of the input state is not of an allowed type. Trivial validity then, is not sufficient for modelling SCP which state structure changes.
 
 Researcher~2 has opted for a \textit{variable validity} approach. She has reasoned, correctly, that the \texttt{goHomeByCar} only results in an epistemic state change when when \textit{isHome} is not True. She therefore, feels that it only makes sense to reduce redundancy and search complexity in creating the SCP by only allowing the action to occur when it can be said to have an effect. This argument has some merit from an intuitive perspective, but presents an unpleasant question: what if there are state points in which only some ground points actually meet the precondition? To compound the troubles with this variable state approach to preconditions is the fact that it is not possible to determine SCP validity without evaluating the SCP at runtime, which could be slow for large SCPs.
 
 Researcher~3 has taken an \textit{operator validity} approach, instead has focused on the structure of the SCP. This approach allows SCP validity to be determined without explicitly evaluating an SCP, one need simply search through the cognitive operations in the SCP to make sure that no operation has a precondition operation which has not yet occurred. This approach also presents drawbacks, it requires explicit knowledge of operation interactions, and adding a new cognitive operation to $M$ in the SCP Task might force several other operations to update or change their interactions. Further, there might be other cognitive operations which mean that the precondition operation is no longer in effect. Imagine a third operation \texttt{goHomeByTrain} which also sets \textit{isHome} to True. Now the sequence of operations $x\longmapsto \texttt{goToClub} \longmapsto \texttt{goHomeByTrain} \longmapsto \texttt{goHomeByCar}$ would still be valid with Researcher 2's original requirement that  \texttt{goToClub} occurred previously in SCP. However, it is obvious that \texttt{goHomeByTrain} has negated the effect of \texttt{goToClub}. Evidently this approach is not appropriate in any case in which other operations can silence the effect of those operations mentioned in preconditions.
 
-Every approach has shows strengths and weaknesses, a final approach to consider is the \textit{hybrid validity} approach. With this approach, all cognitive operations are assumed to be valid, provided that the output base points of the previous operation are of a suitable input type for the current operation. Hybrid validity is an appropriate approach for all SCPs in which every cognitive operation has a known output structure. Though hybrid validity does not have the best-case search properties of the other approached, its universal validity means that it should generally be the starting point for generating SCPs. The hybrid approach is followed implicitly throughout the rest of this thesis and preconditions are omitted.
+Every approach shows strengths and weaknesses. A final approach to consider is the \textit{hybrid validity} approach. With this approach, all cognitive operations are assumed to be valid, provided that the output base points of the previous operation are of a suitable input structure for the current operation. Hybrid validity is an appropriate approach for all SCPs in which every cognitive operation has a known output structure. Though hybrid validity does not have the best-case search properties of the other approached, its universal appropriateness means that it should generally be the starting point for generating SCPs. The hybrid approach is followed implicitly throughout the rest of this thesis and preconditions are omitted.
 
-\subsection{Optimality, Satisfaction, Validity} \label{ssec:validity}
-\subsubsection{Validity}
-As discussed in Section~\ref{ssec:precond} validity can be defined for a cognitive operation and its input. Reaslied SCPs describe both the operation and the input for an SCP and allow us to define SCP validity as follows:
-
-%generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n), f())$ was in here
-A realised SCP $r=(k \in K[\pi],f())$, $k=(s_i \longmapsto (m_1,s_1) \longmapsto ... \longmapsto (m_n,s_n))$ with evaluation function $f()$ is valid iff $s_i$ is an epistemic state, every $m \in \pi$ is valid (according the validity requirements defined by the researcher), and $f(k)$ is defined. 
-
-@TODOredefineKinFirstappearance
-
-An SCP $(\pi,f())$ is valid if and only if there exists some realised SCP $r=(k \in K[\pi],f())$ which is valid.
-
-An SCP Task $\Pi=(s+i, M, \gamma, f())$ is valid if and only if there exists some SCP $((\pi,f())$, with $(\pi=(s_i \longmapsto m_1 \in M \longmapsto ... \longmapsto m_n \in M)$ which is valid.
-
-Validity does not require that $f(\pi)=\gamma$, only that external function $f()$ is able to make some prediction or set of predictions based $\pi$.
-
-
-\subsubsection{Satisfaction} 
-
-%generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n), f())$ was in here
-A realised SCP $r=(k \in K[\pi],f())$, $k=(s_i \longmapsto (m_1,s_1) \longmapsto ... \longmapsto (m_n,s_n))$ with evaluation function $f()$ satisfies goal condition $\gamma$, written $r\models \gamma$ if and only if $r$ is valid, and $f(k)\models \gamma$. 
-
-An SCP $(\pi,f())$ is satisfies $\gamma$, written $(\pi,f())\models \gamma$, if and only if there exists some realised SCP $r=(k \in K[\pi],f())$ for which $f(k)\models \gamma$.
-
-An SCP Task $\Pi=(s+i, M, \gamma, f())$ is satisfies $\gamma$, written $\Pi\models \gamma$, if and only if there exists some SCP $((\pi,f())$, with $(\pi=(s_i \longmapsto m_1 \in M \longmapsto ... \longmapsto m_n \in M)$ which satisfies $\gamma$.
-
-Heuristic Searches and machine learning techniques are generally used to find satisfying solutions for situations in which it is possible for an answer to be good enough for practical purposes. 
-
-\subsubsection{Optimality}
-Optimality refers to finding the best possible SCP to describe a problem according to whatever criteria are used to evaluate the SCP (Section~\ref{ssec:limCogOp}). Loop-free SCPs are candidates for exhaustive search techniques to find optimality, but in practice, loop free SCPs can seldom be guaranteed when there are many cognitive operations in $M$ @TODOproof?. As with all exhaustive search techniques, optimality can be guaranteed for searches of restricted depth even when SCP space contains infinite loops.
-
-%generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n), f())$ was in here
-A realised SCP $r=(k \in K[\pi],f())$, $k=(s_i \longmapsto (m_1,s_1) \longmapsto ... \longmapsto (m_n,s_n))$ generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n)$ with evaluation function $f()$ is optimal for goal condition $\gamma$ and heuristic function $g()$, written @TODO, if and only if $r\models\gamma$, and $\forall r'=(k' \in [K[\pi]], f()), g(r)\geq g(r')$. 
-
-An SCP $(\pi,f())$ generated from  $\Pi=(s+i, M, \gamma, f())$ is is optimal for goal condition $\gamma$ and heuristic function $g()$, written @TODO, if and only if $(\pi,f()) \models \gamma$ and there exists no other $\gamma$ - satisfying SCP $(\pi,f())$ which can be generated from $\Pi$ for which $g(\pi')>g(\pi)$.
-
-Optimality is not defined for SCP Tasks.
-
-
-
-
-
-
-Formally, an SCP $\pi=(\pi_0 \longmapsto ... \longmapsto \pi_n)$ generated from SCP Task $\Pi=(s_i, M, \gamma, f())$ with evaluation function $h()$ is optimality iff $f(\pi)$ is satisfying and there exists no SCP $\pi'$ such that $g(\pi)<g(\pi')$.
-
-In an SCP context a solution may be optimal for a given task or set of empirical data, but only globally valid or satisfying. A significant part of the appeal of the SCP framework is the potential to use high-scoring local solutions to several tasks or from several reasoners and to predict which are most likely by searching for evidence of repeated structures in the disparate solutions.
 
 \begin{table}
 \begin{center}
@@ -180,21 +132,64 @@ In an SCP context a solution may be optimal for a given task or set of empirical
 \end{center}
 \end{table}
 
+\subsection{Optimality, Satisfaction, Validity} \label{ssec:validity}
+\subsubsection{Validity}
+As discussed in Section~\ref{ssec:precond} validity can be defined for a cognitive operation and its input. Realised SCPs describe both the operation and the input for an SCP and allow us to define SCP validity as follows:
+
+%generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n), f())$ was in here
+A realised SCP $r=(k \in K[\pi],f())$, $k=(s_i \longmapsto (m_1,s_1) \longmapsto ... \longmapsto (m_n,s_n))$ with evaluation function $f()$ is valid if and only if $s_i$ is a state point, every $m \in \pi$ is valid (according the validity requirements defined by the researcher), and $f(k)$ is defined. 
+
+An SCP $(\pi,f())$ is valid if and only if there exists some realised SCP $r=(k \in K[\pi],f())$ which is valid.
+
+An SCP Task $\Pi=(s_i, M, \gamma, f())$ is valid if and only if there exists some SCP $((\pi,f())$, with $(\pi=(s_i \longmapsto m_1 \in M \longmapsto ... \longmapsto m_n \in M)$ which is valid.
+
+Validity does not require that $f(\pi)=\gamma$, only that external function $f()$ is able to make some prediction or set of predictions based on $\pi$.
+
+
+\subsubsection{Satisfaction} 
+
+%generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n), f())$ was in here
+A realised SCP $r=(k \in K[\pi],f())$, $k=(s_i \longmapsto (m_1,s_1) \longmapsto ... \longmapsto (m_n,s_n))$ with evaluation function $f()$ satisfies goal condition $\gamma$, written $r\models \gamma$ if and only if $r$ is valid, and $f(k)\models \gamma$. 
+
+An SCP $(\pi,f())$ satisfies $\gamma$, written $(\pi,f())\models \gamma$, if and only if there exists some realised SCP $r=(k \in K[\pi],f())$ for which $f(k)\models \gamma$.
+
+An SCP Task $\Pi=(s+i, M, \gamma, f())$ satisfies $\gamma$, written $\Pi\models \gamma$, if and only if there exists some SCP $((\pi,f())$, with $(\pi=(s_i \longmapsto m_1 \in M \longmapsto ... \longmapsto m_n \in M)$ which satisfies $\gamma$.
+
+Heuristic Searches and machine learning techniques are can be to find satisfying solutions for situations in which it is possible for an answer to be good enough for practical purposes, but search time or space is infeasible. 
+
+\subsubsection{Optimality}
+Optimality refers to finding the best possible SCP to describe a problem according to whatever criteria are used to evaluate the SCP (Section~\ref{ssec:limCogOp}). Loop-free SCPs are candidates for exhaustive search techniques to find optimality, but in practice, loop free SCPs can seldom be guaranteed when there are many cognitive operations in $M$ @TODOproof?. As with all exhaustive search techniques, optimality can be guaranteed for searches of restricted depth even when SCP space contains infinite loops.
+
+%generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n), f())$ was in here
+A realised SCP $r=(k \in K[\pi],f())$, $k=(s_i \longmapsto (m_1,s_1) \longmapsto ... \longmapsto (m_n,s_n))$ generated from SCP $(\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n)$ with evaluation function $f()$ is optimal for goal condition $\gamma$ and heuristic function $g()$, if and only if $r\models\gamma$, and $\forall r'=(k' \in [K[\pi]], f()), g(r)\geq g(r')$ for all case in which $f(r') \models \gamma$. 
+
+An SCP $(\pi,f())$ generated from  $\Pi=(s+i, M, \gamma, f())$ is optimal for goal condition $\gamma$ and heuristic function $g()$, if and only if $(\pi,f()) \models \gamma$ and there exists no other $\gamma$ - satisfying SCP $(\pi,f())$ which can be generated from $\Pi$ for which $g(\pi')>g(\pi)$.
+
+Optimality is not defined for SCP Tasks.
+
+Formally, an SCP $\pi=(\pi_0 \longmapsto ... \longmapsto \pi_n)$ generated from SCP Task $\Pi=(s_i, M, \gamma, f())$ with evaluation function $h()$ is optimal if and only if $f(\pi)$ is satisfying and there exists no SCP $\pi'$ such that $g(\pi)<g(\pi')$.
+
+In an SCP context a solution may be optimal for a given task or set of empirical data, but only globally valid or satisfying. A significant part of the appeal of the SCP framework is the potential to use high-scoring local solutions to several tasks or from several reasoners and to predict which are most likely by searching for evidence of repeated structures in the disparate solutions.
+\subsection{Credulous and Skeptical Validity}
+
+A planning task may permit an SCP in which all or only some of the associated realised SCPs are valid, satisfying, or optimal. An SCP is called \textit{credulously valid} if $f(\pi)$ is valid for \textit{at least one} epistemic state in the final state $p_n$. An SCP is called \textit{sceptically valid} if $f(\pi)$ is valid.for \textit{every} epistemic state in the final state. In cases where all operations are monotonic, sceptical validity is the same as credulous validity. Similar logic applies the concepts of sceptical satisfaction, credulous satisfaction, sceptical optimality, and credulous optimality.
+
+
 
 
 \section{External Evaluation Functions}
-The external evaluation function $f()$ is responsible for evaluating the final state of the generated SCP to map it to the observed or predicted empirical data observed in respondents. The $f()$ function in general is an unbounded tool for making a decision with an epistemic state.
+The external evaluation function $f()$ is responsible for evaluating an SCP or reaslised SCP in order to map it to the observed or predicted empirical data observed in respondents. The $f()$ function in general is an unbounded tool for making a decision with a CTM.
 
 As a function, defining $f()$ forces researchers to specify what information in the epistemic state corresponds to empirical data. The exact procedure by which $f()$ makes this decision should correspond to researcher's chosen criteria for decision making.
 
-For example, in the Suppression task, as formulated in Section~@TODOref, one could define an external activation function $f_{sup}()$ with an output domain of $\{\textrm{She will study late in the library}$, $\textrm{She will not study late in the library}$, $\textrm{Uncertain}\}$. The function must output one of these two responses, regardless of the epistemic state it is given to evaluate. And, when using the WCS formulation of the task, $f_{sup}()$ might be defined as follows:
+All external evaluation functions that we examine in this paper will use the final state point $p_n$ which results from evaluating the state point returned by applying the penultimate state point to the last cognitive operation $J[p_{n-1},m_{n-1}]$. But other external functions which take into account aspects of the structure of $\pi$ or intermediate epistemic states can be formulated.
+
+For example, in the Suppression task, as formulated in Section~\ref{ssec:sup_mod}, one could define an external activation function $f_\text{sup}()$ with an output domain of $\{\textrm{She will study late in the library}$, $\textrm{She will not study late in the library}$, $\textrm{Uncertain}\}$. The function must output one of these two responses, regardless of the epistemic state it is given to evaluate. And, when using the WCS formulation of the task, $f_\text{sup}()$ might be defined as follows:
 \[
-f_{sup}(s_n) = \begin{pmatrix} s_n \models l\in kb \land l=\top& \textrm{She will study late in the library} \\  s_n \models l \in kb \land l=\bot  & \textrm{She will not study late in the library}   \\ \textrm{Else} & \textrm{Uncertain} \end{pmatrix}
+f_\text{sup}(\pi) = \begin{pmatrix} s_n \models l\in kb \land l=\top& \textrm{She will study late in the library} \\  s_n \models l \in kb \land l=\bot  & \textrm{She will not study late in the library}   \\ \textrm{Else} & \textrm{Uncertain} \end{pmatrix}
 \].
 
 The question of how to select the right external evaluation function is not a focus of this thesis, but, where necessary, all used evaluation functions will be justified with respect to either common-sense reasoning, or evidence that such a function is already used in a more informal way in the existing literature for that experiment.
-
-In general an external activation function is applied to an SCP or realised SCP, but there is no reason one could not be applied to an SCP task as a whole.
 
 The desired final output $\gamma$ simply specifies which output of $f()$ corresponds with observed empirical data of the task under examination. If an SCP is being generated for a task without a known output, $\gamma$ is set to the entire domain of $f()$ so that every response is accepted.
 
@@ -210,7 +205,7 @@ Searching through solutions to an SCP task takes one of two forms \textit{De Nov
 
 
 \subsection{De-Novo SCP Searching} \label{ssec:denovo}
-De Novo (from new) search is a search technique in which a final desirable world state is achieved by generating a sequence of actions from a known initial state. An SCP Task contains all the information required to conduct a de Novo search through the space of allowable SCPs for a given cognitive task. The exact search techniques used can be easily varied, but we will consider de Novo search in terms of a breadth-first traversal (@TODORef). 
+De Novo (from new) search is a search technique in which a final desirable world state is achieved by generating a sequence of cognitive operations and using a known initial state as the input to the first cognitive function. An SCP Task contains all the information required to conduct a de Novo search through the space of allowable SCPs for a given cognitive task. The exact search techniques used can be easily varied, but we will consider de Novo search in terms of a breadth-first traversal \cite{zhou2006breadth}. 
 
 Figure~\ref{fig:deNovo} illustrates the process by which breadth first search over an SCP task $\Pi=(x,M,\gamma,f())$ can be conducted. Search terminates if a structural inconsistency between two states in $\pi=(x\longmapsto A_0 \longmapsto ... \longmapsto A_n)$ occurs (e.g. output state point structure of $A_k$ does not match expected input structure of $A_{k+1}$). Operator sequences are added to the list of solutions if and only if they meet the validity requirements of the search being used, as discussed in Section~\ref{ssec:validity}. 
 
@@ -226,18 +221,18 @@ In practice it becomes necessary to limit the search depth of the algorithm to s
 
 \subsection{Insertion Search}\label{ssec:insertion}
 
-Changing the structure of an existing SCP allows researchers to model deviations from standard reasoning for a task. For example, in Section~@TODOref we show that slight modifications to an SCP that models the standard case of the suppression task can lead to an SCP which is able to model reasoners who achieve that classical valid conclusion that she will study late in the library.
+Changing the structure of an existing SCP allows researchers to model deviations from standard reasoning for a task. For example, in Section~\ref{sec:supSCP} we show that slight modifications to an SCP that models the standard case of the suppression task can lead to an SCP which is able to model reasoners who achieve the classical valid conclusion that she will study late in the library.
 
 The insertion search modifies an existing SCP:
-\[\pi=(s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n)\]
+\[\mu=(\pi=(s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n),f())\]
 
 to produce a new SCP:
 
 \[
-\pi'=\{(s_i \longmapsto B^*_0 \longmapsto A_0 \longmapsto \longmapsto B^*_1... \longmapsto  B^*_n \longmapsto A_n \longmapsto  B^*_{n+1})\}
+\mu'=(\pi'=\{(s_i \longmapsto B^*_0 \longmapsto A_0 \longmapsto \longmapsto B^*_1... \longmapsto  B^*_n \longmapsto A_n \longmapsto  B^*_{n+1}),f())\}
 \] 
 
-Where $B^*_i = (B_0\longmapsto ...\longmapsto B_n)$, $B \in M$  or is the trivial operation $T$ which returns input state point as output. When describing the SCP, $T$ operations are generally omitted.
+Where $B^*_i = (B_0\longmapsto ...\longmapsto B_n)$, $B \in M$  or is the trivial operation $T$ which returns the input state point as output. When describing the SCP, $T$ operations are generally omitted.
 
 In general, Insertion Search is a more difficult search type than De-Novo Search (which is equivalent to an Insertion Search in which the initial SCP is empty). The reason for this is that it is possible for a single insertion to result in an invalid SCP, but adding additional cognitive states may revalidate the SCP (Proof~\ref{proof:insertionSearch}).
 

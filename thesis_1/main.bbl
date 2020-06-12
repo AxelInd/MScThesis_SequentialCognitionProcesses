@@ -356,6 +356,94 @@
     \field{year}{2018}
   \endentry
 
+  \entry{ragni2017wason}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=RM}{%
+         family={Ragni},
+         familyi={R\bibinitperiod},
+         given={Marco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KI}{%
+         family={Kola},
+         familyi={K\bibinitperiod},
+         given={Ilir},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=JLP}{%
+         family={Johnson-Laird},
+         familyi={J\bibinithyphendelim L\bibinitperiod},
+         given={Phil},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RMKIJLP1}
+    \strng{fullhash}{RMKIJLP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{CogSci}
+    \field{title}{The Wason Selection task: A Meta-Analysis.}
+    \field{year}{2017}
+  \endentry
+
+  \entry{ragni2017formal}{article}{}
+    \name{author}{5}{}{%
+      {{hash=RM}{%
+         family={Ragni},
+         familyi={R\bibinitperiod},
+         given={Marco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=EC}{%
+         family={Eichhorn},
+         familyi={E\bibinitperiod},
+         given={Christian},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=BT}{%
+         family={Bock},
+         familyi={B\bibinitperiod},
+         given={Tanja},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=KIG}{%
+         family={Kern-Isberner},
+         familyi={K\bibinithyphendelim I\bibinitperiod},
+         given={Gabriele},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=TAPP}{%
+         family={Tse},
+         familyi={T\bibinitperiod},
+         given={Alice Ping\bibnamedelima Ping},
+         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
+  P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{RM+1}
+    \strng{fullhash}{RMECBTKIGTAPP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{number}{1}
+    \field{pages}{79\bibrangedash 117}
+    \field{title}{Formal nonmonotonic theories and properties of human
+  defeasible reasoning}
+    \field{volume}{27}
+    \field{journaltitle}{Minds and Machines}
+    \field{year}{2017}
+  \endentry
+
   \entry{reiter1980logic}{article}{}
     \name{author}{1}{}{%
       {{hash=RR}{%
@@ -499,6 +587,36 @@
     \field{volume}{25}
     \field{journaltitle}{Current Biology}
     \field{year}{2015}
+  \endentry
+
+  \entry{stenning2012human}{book}{}
+    \name{author}{2}{}{%
+      {{hash=SK}{%
+         family={Stenning},
+         familyi={S\bibinitperiod},
+         given={Keith},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=VLM}{%
+         family={Van\bibnamedelima Lambalgen},
+         familyi={V\bibinitperiod\bibinitdelim L\bibinitperiod},
+         given={Michiel},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \strng{namehash}{SKVLM1}
+    \strng{fullhash}{SKVLM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Human reasoning and cognitive science}
+    \field{year}{2012}
   \endentry
 
   \entry{stenning2008interpretation}{article}{}
@@ -651,6 +769,40 @@
     \field{volume}{23}
     \field{journaltitle}{Vaccine}
     \field{year}{2005}
+  \endentry
+
+  \entry{zhou2006breadth}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ZR}{%
+         family={Zhou},
+         familyi={Z\bibinitperiod},
+         given={Rong},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=HEA}{%
+         family={Hansen},
+         familyi={H\bibinitperiod},
+         given={Eric\bibnamedelima A},
+         giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{ZRHEA1}
+    \strng{fullhash}{ZRHEA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2006}
+    \field{labeldatesource}{}
+    \field{sortinit}{Z}
+    \field{sortinithash}{Z}
+    \field{number}{4-5}
+    \field{pages}{385\bibrangedash 408}
+    \field{title}{Breadth-first heuristic search}
+    \field{volume}{170}
+    \field{journaltitle}{Artificial Intelligence}
+    \field{year}{2006}
   \endentry
 \enddatalist
 \endinput
