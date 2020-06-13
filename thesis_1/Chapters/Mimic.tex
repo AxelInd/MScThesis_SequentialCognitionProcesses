@@ -104,23 +104,23 @@ The value of these examples lies in that they show that classical logic response
 
 \section{Wason Selection Task}\label{sec:wstSCP}
 
-\[\Pi=(s_i,M,f(),\gamma\]
+\[\Pi=(s_i,M,f(),\gamma)\]
 
 
 
 \[\mu=(\pi,f())\]
 
-The choice of external evaluation function for this task (the turn function), if we are to follow the intuition from @TODO, has two requirements: it must be able to capture whether an observation $O$ can be explained by the least model of the weakly completed program, and it must ensure that variable assignments which,if incorrect could falsify the rule $2\leftarrow D$, are present in the least model. To this end, we add an observation variable $O$ to the definition of the initial epistemic state, and combine this with the variables for the set of propositional rules $S$, conditional rules $\Delta$, and possible world $V$.
+The choice of external evaluation function for this task (the turn function), if we are to follow the intuition from Section~\ref{ssec:sup_mod}, has two requirements: it must be able to capture whether an observation $O$ can be explained by the least model of the weakly completed program, and it must ensure that variable assignments which could falsify or verify the conditional rule $(3|D)$, are present in the least model. To this end, we add an observation variable $O$ to the definition of the initial epistemic state, and combine this with the variables for the set of propositional rules $S$, conditional rules $\Delta$, and possible world $V$.
+
+\[
+f(\pi,O) = \begin{pmatrix} I_V((3|D)\not\models u  & \textrm{Turn card} \\ 
+   I_V((3|D)\models u & \textrm{Do not turn} \end{pmatrix}
+\]
 
 
+Next, we require an intuition for the generation of the initial epistemic state point $s_i$. In this case, abduction can be simulated by the SCP in one of three ways. The first is to create a unique SCP for each possible explanation for each observation as we did for the classical WCS interpretation of the task in Section~\ref{ssec:sup_mod}. But the fact that SCPs may contain an initial state point, rather than just a single epistemic state, enables a more elegant solution that captures the full scope of possible observation, explanation pairings. The other two options are to start with a state point containing each abductive case, or to create cognitive operations which create these abductive cases at computation time.
 
-\[f(\pi,O)==  I_V(O)\models \top \textrm{ and } I_V(D)\models \top \lor \bot \textrm{ and } I_V(3)\models \top \lor \bot\]
-
-
-
-Next, we require an intuition for the generation of the initial epistemic state point $s_i$. In this case, abduction can be simulated by the SCP in one of three ways. The first is to create a unique SCP for each possible explanation for each observation as we did for the classical WCS interpretation of the task in Section~@TODOref. But the fact that SCPs may contain an initial state point, rather than just a single epistemic state, enables a more elegant solution that captures the full scope of possible observation, explanation pairings. The other two options are to start with a state point containing each abductive case, or to create cognitive operations which create these abductive cases at computation time.
-
-Because SCPs aim to capture as much cognitive information as possible within the CTM as possible, we will prefer this third case and make use of a categorization variable $R$ to specify both the set of observations $O$, and the possible explanations $\eta$. The cognitive operation \texttt{AddExp} is created.
+Because SCPs aim to capture as much cognitive information as possible within the CTM as possible, we will prefer this third case and make use of the categorization variable $R$ to specify both the set of observations $O$, and the possible explanations $\eta$. The cognitive operation \texttt{AddExp} is created.
 
 \texttt{AddExp} adds possible explanations $\eta$ to the set of rules $S$ in the epistemic state and is defined as follows:
 

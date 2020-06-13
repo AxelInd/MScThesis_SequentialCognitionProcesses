@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  12 JUN 2020 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  13 JUN 2020 09:00
 entering extended mode
 **./main.tex
 (main.tex
@@ -1823,21 +1823,21 @@ Overfull \hbox (42.50816pt too wide) in paragraph at lines 99--100
  []
 
 [42 <../figs/Suppression_SCP_del1.png>] [43]
-<../figs/realisedSCPsWST.png, id=999, 1008.1665pt x 409.2891pt>
+<../figs/realisedSCPsWST.png, id=1001, 1008.1665pt x 409.2891pt>
 File: ../figs/realisedSCPsWST.png Graphic file (type png)
 <use ../figs/realisedSCPsWST.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 187.
 (pdftex.def)             Requested size: 441.01775pt x 179.03854pt.
 
 
-Package caption Warning: \label without proper reference on input line 188.
+Package caption Warning: \label without proper reference on input line 191.
 See the caption package documentation for explanation.
 
 
 LaTeX Warning: Reference `fig:rSCP_WST' on page 44 undefined on input line 192.
 
 
-<../figs/realisedSCPsWST_simple.png, id=1001, 999.735pt x 124.5453pt>
+<../figs/realisedSCPsWST_simple.png, id=1003, 999.735pt x 124.5453pt>
 File: ../figs/realisedSCPsWST_simple.png Graphic file (type png)
 <use ../figs/realisedSCPsWST_simple.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST_simple.png  used on input line
@@ -1985,9 +1985,9 @@ Data/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Ax
 el/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Us
 ers/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb
 >
-Output written on main.pdf (82 pages, 1172141 bytes).
+Output written on main.pdf (82 pages, 1173167 bytes).
 PDF statistics:
- 1275 PDF objects out of 1440 (max. 8388607)
+ 1277 PDF objects out of 1440 (max. 8388607)
  279 named destinations out of 1000 (max. 500000)
  844 words of extra memory for PDF output out of 10000 (max. 10000000)
 

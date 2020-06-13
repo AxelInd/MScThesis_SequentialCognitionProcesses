@@ -1,0 +1,6 @@
+"""
+This is my first test with CCOBRA
+"""
+
+import ccobra
+
