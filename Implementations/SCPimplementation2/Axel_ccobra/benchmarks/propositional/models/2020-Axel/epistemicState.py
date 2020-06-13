@@ -7,11 +7,14 @@ Created on Tue Feb 11 09:47:35 2020
 import basicLogic
 import copy
 class epistemicState (object):
-    def __init__(self):
+    def __init__(self, name=""):
         print ("epistemic State Created")
-        self.name="invalid"
+        self.name=name
+        self.structuralVariables={}
+    def setName(self,name):
+        self.name=name
     def __str__(self):
-        return "ABSTRACT"
+        return ">" + self.name + "<" + str(self.structuralVariables)
     def __repr__(self):
         return self.__str__()
     def __hash__(self):
@@ -21,7 +24,22 @@ class epistemicState (object):
             return self.__str__() == other.__str__()
         else:
             return False
-        
+    def __getitem__(self, key):
+        if key in self.structuralVariables:
+            return self.structuralVariables[key]
+        else:
+               print ("Invalid key!")
+    def __setitem__(self,key, value):
+        self.structuralVariables[key]=value
+    def getAtomsInStructuralVariables(self,li):
+        ats = []
+        for l in li:
+            for r in self[l]:
+                ats=ats+r.getAtoms()
+        atsWithGroundTruths = list(dict.fromkeys(ats))
+        return [atm for atm in atsWithGroundTruths if not basicLogic.isGroundAtom(atm)]
+    def getAtomNamesInStructuralVariables(self,li):
+        return [atm.getName() for atm in self.getAtomsInStructuralVariables(li)] 
 class epistemicState_weakCompletion (epistemicState):
     def __init__(self):
         self.v=[]

@@ -104,7 +104,7 @@ class operator (object):
         self.immutable=immutable
         self.logicType= logicType
         switch = {"L":truthTable.getTruthTables_L(),"P":truthTable.getTruthTables_P()}
-        self.tbl_and, self.tbl_or, self.tbl_implication, self.tbl_bijective, self.tbl_not = switch[logicType]
+        self.tbl_and, self.tbl_or, self.tbl_implication, self.tbl_bijective, self.tbl_not, self.tbl_conditional = switch[logicType]
     def evaluate(self):
         return "I am evaluating"
     def deepSet (self, var, val):
@@ -276,7 +276,7 @@ class operator_bitonic_or (operator_bitonic):
 class operator_bitonic_implication (operator_bitonic):      
     def __init__(self, clause1, clause2, immutable = False,  logicType = "L"):
         operator_bitonic.__init__(self,clause1,clause2, immutable = immutable, logicType=logicType) 
-        self.name=u"\u2192"
+        self.name=u"\u2190"
     def evaluate(self):
         clauseVal1 = self.clause1.evaluate()
         clauseVal2 = self.clause2.evaluate()
@@ -287,7 +287,20 @@ class operator_bitonic_implication (operator_bitonic):
         except:
             return None
             
-    
+class operator_bitonic_conditional (operator_bitonic):      
+    def __init__(self, clause1, clause2, immutable = False,  logicType = "L"):
+        operator_bitonic.__init__(self,clause1,clause2, immutable = immutable, logicType=logicType) 
+        self.name=u"|"
+    def evaluate(self):
+        clauseVal1 = self.clause1.evaluate()
+        clauseVal2 = self.clause2.evaluate()
+        
+        #@TODO is it valid to return unknown for all evaluation that cannot be handled by the truth table?
+        try:
+            return self.tbl_conditional[str(clauseVal1)][str(clauseVal2)] 
+        except:
+            return None
+        
 class operator_bitonic_bijection (operator_bitonic):      
     def __init__(self, clause1, clause2,immutable=False,  logicType = "L"):
         operator_bitonic.__init__(self,clause1,clause2, immutable=immutable, logicType=logicType) 

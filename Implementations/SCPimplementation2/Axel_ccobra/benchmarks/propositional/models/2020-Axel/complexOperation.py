@@ -696,7 +696,7 @@ class complexOperation_semanticOperator (complexOperation):
     @param v: the variable list of the epistemic state (pointer)
     """    
     @staticmethod
-    def setToLogicalValue (kb,v, value):
+    def setToLogicalValue (kb, v, value):
         for rule in kb:
             head = rule.clause2
             body = rule.clause1

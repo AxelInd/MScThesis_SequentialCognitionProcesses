@@ -214,8 +214,79 @@ def removeDuplicateAtomsFromList (li):
     return li2
         
         
-            
+#space-seperated information
+# ( l <- e )
+def stringToBasicLogic (string):
+    sp = string.split()
+    return specialSplit(sp)
 
+def stringListToBasicLogic (sList):
+    if sList==[""]:
+        return []
+    li = []
+    for s in sList:
+        li.append(stringToBasicLogic(s))
+    return li
+    
+def specialSplit (sp):
+    #length 1 can only be an atom or truth value
+    truthValues = {
+        'T':basicLogic.TRUE,
+        'u':basicLogic.UNKNOWN,
+        'F':basicLogic.FALSE
+        }
+    if len(sp)==1:
+        if sp[0] in truthValues:
+            return truthValues[sp[0]]
+        
+        return basicLogic.atom(name=sp[0],value=None)
+    monotonicOps = {
+                    '!':basicLogic.operator_monotonic_negation,
+                    'h':basicLogic.operator_monotonic_holds,
+                    'm':basicLogic.operator_monotonic_mostly,
+                    'r':basicLogic.operator_monotonic_rarely}
+    bitonicOps = {'&':basicLogic.operator_bitonic_and,
+                  '|':basicLogic.operator_bitonic_or,
+                  '<-':basicLogic.operator_bitonic_implication, 
+                  '<->':basicLogic.operator_bitonic_bijection,
+                  '|':basicLogic.operator_bitonic_conditional
+                  }
+    newS = []
+    firstBracket=-1
+    lastBracket=-1
+    #if this is a single rule encapsulated by brackets
+    if sp[0]=='(':
+        firstBracket=0
+    if firstBracket == 0:
+        for s in range( 0, len(sp)):
+            if sp[s]==')':
+                lastBracket=s
+        return specialSplit(sp[firstBracket+1:lastBracket])
+    else:
+        #find the first operator when there are an equal number of '(' and ')'
+        leftBracketCount = 0
+        rightBracketCount = 0
+        if sp[0] in monotonicOps:
+            if sp[1] == '(':     
+                return monotonicOps[sp[0]](specialSplit(sp[1:len(sp)]))
+            else:
+                return monotonicOps[sp[0]](specialSplit(sp[1]))
+        
+        for s in range (0, len(sp)):
+            if sp[s]=='(':
+                leftBracketCount=leftBracketCount+1
+            if sp[s]==')':
+                rightBracketCount=rightBracketCount+1
+            if leftBracketCount == rightBracketCount:
+                if sp[s] in bitonicOps:
+                    clause1 = specialSplit(sp[0:s])
+                    clause2 = specialSplit(sp[s+1:len(sp)])
+                    return bitonicOps[sp[s]](clause1,clause2)
+
+        
+    
+    
+            
 
 
 
