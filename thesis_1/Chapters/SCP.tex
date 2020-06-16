@@ -184,14 +184,23 @@ As a function, defining $f()$ forces researchers to specify what information in 
 
 All external evaluation functions that we examine in this paper will use the final state point $p_n$ which results from evaluating the state point returned by applying the penultimate state point to the last cognitive operation $J[p_{n-1},m_{n-1}]$. But other external functions which take into account aspects of the structure of $\pi$ or intermediate epistemic states can be formulated.
 
-For example, in the Suppression task, as formulated in Section~\ref{ssec:sup_mod}, one could define an external activation function $f_\text{sup}()$ with an output domain of $\{\textrm{She will study late in the library}$, $\textrm{She will not study late in the library}$, $\textrm{Uncertain}\}$. The function must output one of these two responses, regardless of the epistemic state it is given to evaluate. And, when using the WCS formulation of the task, $f_\text{sup}()$ might be defined as follows:
+The question of how to select the right external evaluation function is not a focus of this thesis, but, where necessary, all used evaluation functions will be justified with respect to either common-sense reasoning, or evidence will be given that such a function is already used in a more informal way in the existing literature for that experiment. External evaluation functions will be provided using pseudocode.
+
+A goal $\gamma=\{P_1:\{\alpha_1,...\alpha_m\},...,P_n:\{\beta_1,...\beta_p\}$ is a labelled set of properties, each of which correspond to some empirically observed response to the task at hand. For example, in the Suppression Task (Section~\ref{sec:sup}) we might define:
 \[
-f_\text{sup}(\pi) = \begin{pmatrix} s_n \models l\in kb \land l=\top& \textrm{She will study late in the library} \\  s_n \models l \in kb \land l=\bot  & \textrm{She will not study late in the library}   \\ \textrm{Else} & \textrm{Uncertain} \end{pmatrix}
+\gamma_\text{sup}=\{\text{'conclusion'}:\text{'we are unsure if she will study late in the library'}\}
 \].
+The precise mechanism by which the conclusions in $\gamma_\text{sup}$ is reached is assumed to be unknown, and it is the purpose of the SCP framework to find a well-founded cognitive process, and corresponding external evaluation function, which matches this empirical answer set.
 
-The question of how to select the right external evaluation function is not a focus of this thesis, but, where necessary, all used evaluation functions will be justified with respect to either common-sense reasoning, or evidence that such a function is already used in a more informal way in the existing literature for that experiment.
+We say that a realised SCP, $r=(k,f())$, \textit{satisfies} a goal $\gamma=\{P_1:\{\alpha_1,...\alpha_m\},...,P_n:\{\beta_1,...\beta_p\}$, written $f(k)\models \gamma$, if and only if for every property label $P_i \in f(k)$, we also find that $P_i \in \gamma$, and $f(k)[P_i]\in \gamma[P_i]$.
 
-The desired final output $\gamma$ simply specifies which output of $f()$ corresponds with observed empirical data of the task under examination. If an SCP is being generated for a task without a known output, $\gamma$ is set to the entire domain of $f()$ so that every response is accepted.
+We say that an SCP, $\mu=(\pi,f())$, \textit{strictly satisfies} a goal $\gamma$, written $f(\pi)\models_\text{strict} \gamma$, if and only if, \textit{for every} realised SCP $r=(k=K[\pi],f())$ we find that $f(k) \models \gamma$.
+
+We say that an SCP, $\mu=(\pi,f())$, \textit{weakly satisfies} a goal $\gamma$, written $f(\pi)\models_\text{weak} \gamma$, if and only if, \textit{for some} realised SCP $r=(k=K[\pi],f())$ we find that $f(k) \models \gamma$.
+
+These two definitions of satisfaction for SCPs will be used later to motivate an alternate method for modelling individual reasoners in the Wason Selection Task using SCPs (Section~\ref{sec:wstSCP}). When an SCP is monotonic, strict and weak satisfaction are identical and we simply write $f(\pi)\models_\text{weak} \gamma$.
+
+
 
 \section{Search in SCP-Space}
 As with any data structure in which one input can produce one or multiple outputs, it is possible to search through SCP space in order to find those SCPs which meet certain criteria. Those criteria might be \textit{validity} (Section~\ref{ssec:precond}), \textit{satisfaction} (conditions in $\gamma$ are satisfied), or \textit{optimality} (there exists no better solution to this problem).
@@ -239,7 +248,6 @@ In general, Insertion Search is a more difficult search type than De-Novo Search
 This consideration means that it is potentially necessary to insert an unbounded number of new cognitive operations at each point in $\pi$ to find those insertions which are valid. When the total number of new cognitive operations to insert is bounded by $N$, however, it becomes possible to generate every possible subsequence of operation insertions of length $\geq N-k$, where $k$ is the number of insertions already used in the search, for each position $B^*_i$ and determine for which of the resulting SCP cognitive operations sequences $f(\pi')$ is valid.
 
 Figure~@TODOfigure illustrates the process of bounded breadth-first search for Insertion Search.
-
 
 
 

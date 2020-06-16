@@ -12,8 +12,9 @@ import copy
 import complexOperation
 #used to throw exceptions for improper use
 import scpError
-
+import StatePointOperations
 import epistemicState
+import CTM
 
 
 class SCP_Task (object):
@@ -52,6 +53,44 @@ class SCP_Task (object):
         return self.gamma
     def evaluate(self):
         return self.f(self.M)
+    def deNoveSearch(self, depth = 3, searchType="satisfying"):
+        searchTypes={"exhaustive":self.s_exhaustive, "satisfying":self.s_satisfying}
+        firstCTM = CTM.CTM()
+        firstCTM.si = self.si
+        
+        ctms = firstCTM
+        results = self.dns(ctms, depth)
+        
+        
+        results = searchTypes[searchType](results)
+        
+        return results
+
+    def dns (self, ctm, depth):
+        if depth == 0:
+            return [ctm]
+        new_ctms=[]
+        for m in self.M:
+            n = copy.deepcopy(ctm)
+            n.appendm(m)
+            new_ctms.append(n)
+        toKeep=[]
+        for ctm in new_ctms:
+            toKeep= toKeep + self.dns(ctm,depth-1)
+        return toKeep
+    def s_exhaustive(self, results):
+        return StatePointOperations.CTMtoSCP(results,self.f)   
+        
+    def s_satisfying(self, results):
+        satisfyingResults=[]
+        for result in results:
+            #print ("result is ",result)
+            #print (self.f(result))
+            if self.gamma in self.f(result):
+                satisfyingResults.append(result)
+        return StatePointOperations.CTMtoSCP(satisfyingResults,self.f)    
+
+        
     
     
     

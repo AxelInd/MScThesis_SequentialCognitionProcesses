@@ -8,13 +8,19 @@ import basicLogic
 import copy
 class epistemicState (object):
     def __init__(self, name=""):
-        print ("epistemic State Created")
         self.name=name
         self.structuralVariables={}
     def setName(self,name):
         self.name=name
+    def getStructuralVariables (self):
+        return list(self.structuralVariables.keys())
+    def getName(self):
+        return self.name
     def __str__(self):
-        return ">" + self.name + "<" + str(self.structuralVariables)
+        structVarsAsString = ''
+        for i in self.structuralVariables:
+            structVarsAsString=structVarsAsString+str(i)+':: '+str(self.structuralVariables[i])+"\n"
+        return "\n===>" + self.name + "<===\n" + structVarsAsString
     def __repr__(self):
         return self.__str__()
     def __hash__(self):

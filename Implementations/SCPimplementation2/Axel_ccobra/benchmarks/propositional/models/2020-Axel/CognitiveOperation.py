@@ -10,6 +10,8 @@ import copy
 class CognitiveOperation(object):
     def __init__(self,name):
         self.name=name
+        self.inputStructuralRequirements=[]
+        self.outputStructure=[]
     def evaluateEpistemicState(self, epi):
         pass
     def precondition(self, epi):
@@ -34,6 +36,8 @@ class CognitiveOperation(object):
 class m_addAB (CognitiveOperation):
     def __init__(self):
         CognitiveOperation.__init__(self,name="addAB")
+        self.inputStructuralRequirements=['Delta']
+        self.outputStructure=['S','Delta']
     @staticmethod
     def findLowestK(epi):
         #the lowest number for which ab_1 does not exist
@@ -100,7 +104,8 @@ class m_addAB (CognitiveOperation):
 class m_wc (CognitiveOperation):
     def __init__(self):
         CognitiveOperation.__init__(self,name="wc")
-        
+        self.inputStructuralRequirements=['S']
+        self.outputStructure=['S']        
 
     @staticmethod
     def disjunctionOfClauses(clauses):
@@ -141,6 +146,8 @@ class m_wc (CognitiveOperation):
 class m_semantic (CognitiveOperation):
     def __init__(self):
         CognitiveOperation.__init__(self,name="semantic")
+        self.inputStructuralRequirements=['S','V']
+        self.outputStructure=['S','V']
     @staticmethod    
     def changeAssignmentInV(atomName, Value, V):
         for atom in V:
@@ -243,9 +250,10 @@ class m_addAbducibles(CognitiveOperation):
         CognitiveOperation.__init__(self,name="addAbducibles:"+str(abducibles))
         self.abducibles=abducibles
         self.maxLength=maxLength
+        self.inputStructuralRequirements=['S']
+        self.outputStructure=['S']
     def evaluateEpistemicState(self,epi):
         nextEpis=[]
-        length = 1
         #find only as many abducibles as the max length allows
         for i in range(0, min(len(self.abducibles)+1,self.maxLength)):  
             perm = combinations(self.abducibles,i)

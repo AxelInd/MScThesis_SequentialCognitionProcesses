@@ -74,6 +74,53 @@ $Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that
 
 Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following @TODOrefwason1968 we do not use the implication $\leftarrow$ to represent a conditional, and instead opt for what Baratgin (@TODOrefbaratgin2014) called a \textit{deFinetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
 
+\subsection{Interpretation of conditionals} \label{ssec:condInterpretation}
+The precise interpretation of conditionals is a topic for philosophical and logical debate. Approaches both probabilistic and logical can be used to define precisely what a conditional means in the context of a logical system. In this thesis we adopt adopt @TODOrefs interpretation of conditionals as licenses for implication. 
+
+Thus, the conditional $(\psi|\phi)$ precisely means $\psi \leftarrow \phi \land \lnot \text{ab}$ where $\text{ab}$ is called an abnormality predicate. The abnormality predicate captures an element of uncertainty in the interpretation of the conditional and means that the conditional now reflects the statement ``If $\phi$ and nothing abnormal is known, then $\psi$".
+
+The choice of appropriate value assignments to the abnormality predicate is non-trivial and often requires expert knowledge to design. However, over the course of this thesis we will adopt an algorithmic approach to abnormality creation (Algorithm~\ref{alg:addAB}) that will serve to mimic the hand-designed abnormalities used by \citep{dietz2012computational}, and \citep{breu2019weak}.
+
+
+\begin{algorithm}[H] \label{alg:addAB}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{Create Abnormalities(KB)}
+{
+\For{$(\psi|\phi) \in \text{KB}[\Delta]$}
+{
+$k:=$ the lowest natural number for which $\text{ab}_k \notin \text{KB}$\;
+$\text{all dependencies}:= [A | (\psi|A) \in \text{KB}'[\Delta]]$\;
+
+\For{$A \in \text{all dependencies}$}
+{
+$\text{head}:=\psi$\;
+$\text{current dependencies}:= \text{all dependencies} - \text{A}$\;
+\If{$\text{current dependencies} = \{\}$}
+{
+$\text{current dependencies}:=\bot$\;
+}
+$\text{body}:=(\text{current dependencies}_1 \lor ... \lor \text{current dependencies}_n)$\;
+
+\tcc{Add the conditional as a license for implication to the set of rules.}
+$\text{KB}'[S]:= \text{KB} \cup (\text{head} \leftarrow A \land \lnot \text{ab}_k)$\;
+$\text{KB}'[S]:= \text{KB}'[S] \cup \text{ab}_k \leftarrow \lnot body$\;
+
+}
+}
+\tcc{Remove all conditionals now that they have been interpreted as licences for implication.}
+$\Delta:=\{\}$\;
+\Return $\text{KB}'$
+}
+\caption{\texttt{Conditional to License for Implication}}
+\end{algorithm}
+
+
+
+
+
+
+
 \section{Logic Programming}
 \subsection{Knowledge Base} \label{ssec:kb}
 In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called consistent only if their exists some possible world $w \in W$ such that every rule in $I_w(KB_{prop})$ evaluates to $\top$.
@@ -82,8 +129,7 @@ More generally, a non-monotonic knowledge base $KB=(S, \Delta)$ contains both a 
 
 When $KB=(S=\{\textrm{rule}_1,...,\textrm{rule}_n\},\Delta=\{\})$, we will sometimes ignore $\Delta$ and refer only to the value of $S$ whilst still using the term `$KB$'.
 %
-\subsection{Interpretation of conditionals} \label{ssec:condInterpretation}
-@TODO
+
 
 
 
@@ -149,6 +195,8 @@ Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion}
 A default rule may be applied to a theory if it is entailed by the theory and all of its justifications and conclusions are consistent with the theory. When a default rule is applied, its consequence is added to the background theory.
 
 Formally, inferences in default logic are calculated as follows:
+
+
 
 \begin{algorithm}[H] \label{alg:reiter}
 \SetAlgoLined

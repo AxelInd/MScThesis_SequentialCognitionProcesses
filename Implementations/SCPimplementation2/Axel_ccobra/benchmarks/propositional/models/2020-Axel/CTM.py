@@ -5,16 +5,27 @@ Created on Sat Jun 13 09:29:03 2020
 @author: Axel
 """
 import epistemicState
-import StatePoint
 import copy
+import StatePointOperations
+import scpError
 
 class CTM (object):
     def __init__(self):
-        print ("I am a new CTM")
         self.si=None
         self.last=[]
         #partial transition model (no intial state)
         self.pCTM=[]
+    #this method is not perfect and cannot handle validity when different epis in si do not have the same structure!
+    def getSiStructure(self):
+        structure=[]
+        flattenedSi = StatePointOperations.flattenStatePoint(self.si)
+        if not isinstance(flattenedSi,list):
+            flattenedSi=[flattenedSi]
+        #print ("FLATTENED si IS ", flattenedSi)
+        for epi in flattenedSi:
+            structure=structure+epi.getStructuralVariables()
+        return list(dict.fromkeys(structure))
+        
     def setSi(self,si):
         self.si=si
     def insertm (self, pos, m):
@@ -22,13 +33,22 @@ class CTM (object):
     def appendm (self, m):
         self.insertm(len(self.pCTM),m)
         
-    def evaluate(self):
+    def evaluate(self, validity=["hybrid"]):
+        validityTypes={"trivial":self.validity_trivial,"hybrid":self.validity_hybrid}
         currentStatePoint=self.si
-        for m in self.pCTM:
-            currentStatePoint=self.J(currentStatePoint,m)
+        for i in range(0,len(self.pCTM)):
+            valid = True
+            for val in validity:
+                if validityTypes[val](self.pCTM[0:i], self.pCTM[i])!=True:
+                    print ("OH NOOOOOO invalid!!!!")
+                    valid = False
+                if not valid:
+                    raise scpError.invalidCTMError()
+            currentStatePoint=self.J(currentStatePoint,self.pCTM[i])
         return currentStatePoint
     @staticmethod
     def J(p,m):
+        
         #if it is a base point
         if isinstance (p,epistemicState.epistemicState):
             return [CTM.J_epi(p,m)]
@@ -51,6 +71,53 @@ class CTM (object):
         s = str(self.si)
         pCTM = ""
         for i in self.pCTM:
-            pCTM = " => "+str(i)
+            pCTM = pCTM + " => "+str(i)
         return s + pCTM
+
+    def __repr__(self):
+        s = "si"
+        pCTM = ""
+        for i in self.pCTM:
+            pCTM = pCTM + " => "+str(i)
+        return s + pCTM     
+    
+    def validity_trivial(self,m_prev, m_current):
+        return True
+    def validity_hybrid (self,M_prev, m_current):
+        
+        previousOutputStructure = self.getSiStructure()
+        for m in M_prev:
+            previousOutputStructure=previousOutputStructure+m.outputStructure
+        #previousOutputStructure=list(dict.fromkeys(previousOutputStructure))
+        #print ("Only accepting output structure of : ", previousOutputStructure)
+        if set(m_current.outputStructure).issubset(set(previousOutputStructure)):
+            #print (set(m_current.outputStructure), " is a subset of ", set(previousOutputStructure))
+            return True
+        #print (set(m_current.outputStructure), " is NOT a subset of ", set(previousOutputStructure))
+        return False
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
