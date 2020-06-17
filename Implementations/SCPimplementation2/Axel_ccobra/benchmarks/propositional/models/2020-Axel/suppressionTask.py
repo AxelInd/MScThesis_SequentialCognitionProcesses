@@ -175,6 +175,8 @@ def standardSuppression():
     print ("===========================================================")
     print ("================STANDARD SUPPRESSION========================")
     print ("===========================================================")
+    #The epistemic state for the initial state of a reasoner who only knows
+    #conditional ( l | e )
     basePoint1=epistemicState.epistemicState('el')
     delta1=["( l | e )"]
     S1 = ["( e <- T )"]
@@ -183,7 +185,6 @@ def standardSuppression():
     basePoint1['S']=S1AsLogic
     basePoint1['Delta']=delta1AsLogic
     basePoint1['V']=[e,l]
-    
     
     #The elo case expressed as the addition of information to the el case
     basePoint2=copy.deepcopy(basePoint1)
@@ -194,18 +195,15 @@ def standardSuppression():
     basePoint2['Delta']=basePoint2['Delta']+extraConditionalAsLogic
     basePoint2['V']=basePoint2['V']+[o]
     
-
     #Create the first state point
     statePoints=[basePoint1,basePoint2]
     s_i=statePoints
     
     f=f_suppression_studyLate
     #The desired output of the external evaluation function
-    gamma={'el':'She will study late in the library','elo':'We are uncertain if she will study late in the library'}
-
-
-
-
+    gamma={'el':'She will study late in the library',
+           'elo':'We are uncertain if she will study late in the library'}
+    
     #test ctm
     c = CTM.CTM()
     c.setSi(s_i)
@@ -215,12 +213,12 @@ def standardSuppression():
 
     predictions = f(c)
     print ('predictions: ', predictions)
-    
-    
     print ("Lenient Interp")
     print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
     print("Strict Interp")
     print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+    print ("f(pi) models gamma_Sup? : ", 
+           (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma)))  
     
 def abducibleSuppression():
     print ("===========================================================")

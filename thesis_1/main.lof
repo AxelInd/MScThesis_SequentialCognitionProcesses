@@ -21,4 +21,6 @@
 \contentsline {figure}{\numberline {8.1}{\ignorespaces Two use cases for the implementation of the SCP framework\relax }}{54}{figure.caption.160}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Code snippet showing how the Suppression Task is modelled in the SCP Framework\relax }}{62}{figure.caption.193}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part1.\relax }}{62}{figure.caption.191}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part2.\relax }}{63}{figure.caption.192}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Code snippet showing how the Suppression Task is modelled in the SCP Framework.\relax }}{64}{figure.caption.195}%
