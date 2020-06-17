@@ -22,6 +22,7 @@ def f_turnFunction(pi,observations):
         
         
 def f_turn(pi,observation):
+    
     finalStructures=pi.evaluate()
     finalStates=StatePointOperations.flattenStatePoint(finalStructures)
     
@@ -30,7 +31,14 @@ def f_turn(pi,observation):
     #print("Final states")
     #print(finalStates)
     
-    conditional = scpNotationParser.stringListToBasicLogic(['( 3 | D )'])
+    #severe problem using interpetation of conditionals with de-finnetti truth table
+    # @TODO how do we resolve????
+    # maybe determine if the conditional CAN be falsified?
+    #@TODO parser struggles with ( ( a | b) or ( c | d ) )
+    conditional = scpNotationParser.stringListToBasicLogic(["( ( 3 | D ) or ( D' | 7 ) )"])
+    # we are willing to turn the card if either the (3 | D) or the contrapositive case ( D' | 7 ) holds
+    print ("CONDITIONAL")
+    print (conditional)
     obs = scpNotationParser.stringListToBasicLogic(['( {} <- T )'.format(observation)])
     
     responses=[]
@@ -53,7 +61,7 @@ def f_turn(pi,observation):
         else:
             responses.append('observations do not')
 
-            
+              
         
         
             
@@ -64,8 +72,12 @@ def f_turn(pi,observation):
         if responses[i]=='observations hold':
             turnResponses.append(finalStates[i])
     minimalSubset = []
-    
+     
     for epi in turnResponses:
+        print ("epi is ", epi)
+        #print ("we made it here")
+        #print (epi['R']['abducibles'])
+        #print ("and then here")
         x = [StatePointOperations.properSubset(ot['R']['abducibles'],epi['R']['abducibles'])  for ot in turnResponses]
         #another least model is a subset of this one
         if True in x:
@@ -81,8 +93,11 @@ def f_turn(pi,observation):
         allCondApplicable=True
         #this is done later
         basicLogic.setkbfromv(conditional,mini)
+        print ("mini is : ", mini)
         for cond in conditional:
+            print (cond, "Evaluates to ", cond.evaluate())
             if cond.evaluate()==None:
+                
                 #print ("evaluation was ", cond.evaluate())
                 allCondApplicable = False   
         #print ("cond is ",cond)
@@ -96,7 +111,6 @@ def f_turn(pi,observation):
                     
     return turns
 
-
     
 D = basicLogic.atom('D')
 K = basicLogic.atom('K')
@@ -104,18 +118,31 @@ three = basicLogic.atom('3')
 seven=basicLogic.atom('7')
 
 
+Dprime = basicLogic.atom("D'")
 
 basePointNoAbd=epistemicState.epistemicState('')
 #The possible starting states for the SCP
-delta1=["( 3 | D )"]
+#delta_contra=["( 3 | D )"," ( D' | 7 ) "]
+delta_nocontra=["( 3 | D )"]
 #delta1=["( l | e )", "( l | o )"]
-S1 = [""]
+S_nocontra = [""]
+#S_contra = [" ( D <- ! ( D' ) )"]
 
-delta1AsLogic = scpNotationParser.stringListToBasicLogic(delta1)
-S1AsLogic = scpNotationParser.stringListToBasicLogic(S1)
+
+
+#set to 8 to run all abducibles
+abducibs = ['( D <- T )', '( D <- F )', '( K <- T )', '( K <- F )', '( 3 <- T )', '( 3 <- F )', '( 7 <- T )', '( 7 <- F )']
+#abducibs = ['( K <- T )']
+#abducibs = [ '( 7 <- T )', '( 7 <- F )']
+logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
+
+
+delta1AsLogic = scpNotationParser.stringListToBasicLogic(delta_nocontra)
+S1AsLogic = scpNotationParser.stringListToBasicLogic(S_nocontra)
 basePointNoAbd['S']=S1AsLogic
 basePointNoAbd['Delta']=delta1AsLogic
-basePointNoAbd['V']=[D, K, three, seven]
+basePointNoAbd['V']=[D, K, three, seven, Dprime]
+basePointNoAbd['R']={'abducibles':logAbducibs}
 
 
 #Create the first state point
@@ -156,11 +183,10 @@ task = SCP_Task.SCP_Task(s_i,M,f,gamma)
 ADDAB = CognitiveOperation.m_addAB()
 WC = CognitiveOperation.m_wc()
 SEMANTIC = CognitiveOperation.m_semantic()
-#abducibs = [ '( 7 <- T )', '( 7 <- F )']
-abducibs = ['( D <- T )', '( D <- F )', '( K <- T )', '( K <- F )', '( 3 <- T )', '( 3 <- F )', '( 7 <- T )', '( 7 <- F )']
-logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
-#set to 8 to run all abducibles
-ABDUCIBLES=CognitiveOperation.m_addAbducibles(abducibles=logAbducibs, maxLength=3)
+
+
+
+ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=4)
 #test ctm
 c = CTM.CTM()
 c.setSi(s_i)
@@ -168,32 +194,10 @@ c.appendm(ADDAB)
 c.appendm(ABDUCIBLES)
 c.appendm(WC)
 c.appendm(SEMANTIC)
-print(c.evaluate())
+#print(c)
+#print(c.evaluate())
 
 
-
-
-observation = 'D'
-result = f(c,observation)
-print ("minimal subset for {} : {}".format(observation,result))
-
-observation = 'K'
-result = f(c,observation)
-print ("minimal subset for {} : {}".format(observation,result))
-
-observation = '3'
-result = f(c,observation)
-print ("minimal subset for {} : {}".format(observation,result))
-
-
-observation = '7'
-result = f(c,observation)
-print ("minimal subset for {} : {}".format(observation,result))
-
-"""
-results = task.deNoveSearch(depth=3,searchType='satisfying')
-print ("Results",results)
-"""
 
 observations = ['D','K','3','7']
 predictions=f_turnFunction(c,observations)
@@ -204,6 +208,47 @@ print (predictions)
 
 print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
 print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+
+
+"""
+results = task.deNoveSearch(depth=3,searchType='satisfying')
+print ("Results",results)
+"""
+
+#test = [ "( ( A ) or ( ( X ) & ( Y ) ) )"]
+#test = ["( ( 3 | D ) or ( D' | 7 ) )"]
+#res = scpNotationParser.stringListToBasicLogic(test)
+
+#print (res)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

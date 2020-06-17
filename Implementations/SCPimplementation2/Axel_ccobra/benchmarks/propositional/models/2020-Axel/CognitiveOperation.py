@@ -246,17 +246,17 @@ class m_semantic (CognitiveOperation):
 
 from itertools import combinations
 class m_addAbducibles(CognitiveOperation):
-    def __init__(self,abducibles, maxLength=9999):
-        CognitiveOperation.__init__(self,name="addAbducibles:"+str(abducibles))
-        self.abducibles=abducibles
+    def __init__(self, maxLength=9999):
+        CognitiveOperation.__init__(self,name="addAbducibles")
         self.maxLength=maxLength
         self.inputStructuralRequirements=['S']
         self.outputStructure=['S']
     def evaluateEpistemicState(self,epi):
         nextEpis=[]
         #find only as many abducibles as the max length allows
-        for i in range(0, min(len(self.abducibles)+1,self.maxLength)):  
-            perm = combinations(self.abducibles,i)
+        abducibles=epi['R']['abducibles']
+        for i in range(0, min(len(abducibles)+1,self.maxLength)):  
+            perm = combinations(abducibles,i)
 
             for j in list(perm): 
                 newEpi = copy.deepcopy(epi)

@@ -228,33 +228,41 @@ def stringListToBasicLogic (sList):
         li.append(stringToBasicLogic(s))
     return li
     
+
+            
+    
 def specialSplit (sp):
+        #find last index
+    def rindex(mylist, myvalue):
+        return len(mylist) - mylist[::-1].index(myvalue) - 1
+    #must be a literal or a monotonic operator    
     #length 1 can only be an atom or truth value
+    print ("sp is ", sp)
     truthValues = {
         'T':basicLogic.TRUE,
         'u':basicLogic.UNKNOWN,
         'F':basicLogic.FALSE
         }
-    if len(sp)==1:
-        if sp[0] in truthValues:
-            return truthValues[sp[0]]
-        
-        return basicLogic.atom(name=sp[0],value=None)
+
     monotonicOps = {
                     '!':basicLogic.operator_monotonic_negation,
                     'h':basicLogic.operator_monotonic_holds,
                     'm':basicLogic.operator_monotonic_mostly,
                     'r':basicLogic.operator_monotonic_rarely}
     bitonicOps = {'&':basicLogic.operator_bitonic_and,
-                  '|':basicLogic.operator_bitonic_or,
+                  'or':basicLogic.operator_bitonic_or,
                   '<-':basicLogic.operator_bitonic_implication, 
                   '<->':basicLogic.operator_bitonic_bijection,
                   '|':basicLogic.operator_bitonic_conditional
                   }
+    
+    
+    """
     newS = []
     firstBracket=-1
     lastBracket=-1
     #if this is a single rule encapsulated by brackets
+    
     if sp[0]=='(':
         firstBracket=0
     if firstBracket == 0:
@@ -283,10 +291,43 @@ def specialSplit (sp):
                     clause2 = specialSplit(sp[s+1:len(sp)])
                     return bitonicOps[sp[s]](clause1,clause2)
 
+    """
+    if len(sp)==1:
+        if sp[0] in truthValues:
+            return truthValues[sp[0]]
+        return basicLogic.atom(name=sp[0],value=None)
+    if len(sp)==3:
+        return specialSplit(sp[1])
+    
+
+    
+    countleftBracket=0
+    counterRightBracket=0
+    for i in range (0,len(sp)):
+        if sp[i]=='(':
+            countleftBracket=countleftBracket+1
+        if sp[i]==')':
+            counterRightBracket=counterRightBracket+1
+        if countleftBracket == counterRightBracket+1:
+            if sp[i] in bitonicOps:
+                print ("we must execute this op!")
+                left = specialSplit(sp[1:i])
+                
+                print ("leftClause:",left)
+                right = specialSplit(sp[i+1:len(sp)-1])
+                print ("rightClause:",right)
+                return bitonicOps[sp[i]](left,right)
+    #if we are here it must be a long clause (monotonicOp, a, b, ..., Z)
+    #is not Atom or (Atom)
+    if sp[1] in monotonicOps:
+        print ("mono ops!")
+        print ("sp is ", sp)
+        clause = sp[2:len(sp)-1]
+        print ("mono clause is ", clause)
+        return monotonicOps[sp[1]](specialSplit(clause))    
         
     
-    
-            
+
 
 
 

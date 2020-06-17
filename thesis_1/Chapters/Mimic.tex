@@ -141,7 +141,7 @@ Let $R=[(K[\pi],f())]$ be the set of realised SCPs $r_i=(k,f())$ which can be ge
 Let $P=[p_1,...,p_n]$, where $p_i$ is the final state of $r_i$\;
 Let $\eta_i=[\eta_1,...,\eta_n]$, where $\eta_i=p_i[R][\eta]$\;
 Let $O=\{(D,\top),(K,\top),(3,\top),(7,\top)\}$ be the set of observations\;
-Let $C=\{(3|D)\}$ be the set of conditionals which must be falsified or verified.\;
+Let $C=\{(3|D), (D' | 7)\}$ be the set of conditionals which must be falsified or verified.\;
 Output={}\;
 \For{$p_i \in P$}
 {
@@ -150,7 +150,7 @@ run \texttt{isExplanation}($p_i$)\;
 
 \For{each minimal explanation $e$ for observation $o$}
 {
-\uIf {$I_\text{e[{`V'}]}(C)$ either falsifies or verifies every conditional in $C$}
+\uIf {$I_\text{e[{`V'}]}(C)$ either falsifies or verifies some conditional in $C$}
 {
 Output[o]:=Output[o]$\cup$ `Turn Card'\;
 }
@@ -247,6 +247,8 @@ Conducting de Novo search on $\Pi$ for each of the observations at this point no
 \[
 \mu_7^2=(\pi_2), f(\pi, O=\{7\}))
 \]
+
+@TODOcontra, indroduce $(3|D) \land (D' | 7 )$ interpretation using de finetti truth table.
 
 \begin{figure}
 \centering{\includegraphics[width=\linewidth]{realisedSCPsWST}}

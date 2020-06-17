@@ -26,12 +26,13 @@ class truthTable (object):
                            'False':{'True':False, 'None':None, 'False':True}}
         
         tbl_bijective = {'True' : {'True': True,'None': None,'False':False}, 
-        'None' : {'True': None,'None': True,'False':None},
-        'False' : {'True': False,'None': None,'False':True}}
+                         'None' : {'True': None,'None': True,'False':None},
+                         'False' : {'True': False,'None': None,'False':True}}
 
         tbl_conditional = {'True' : {'True': True,'None': None,'False':False}, 
-        'None' : {'True': None,'None': None,'False':None},
-        'False' : {'True': None,'None': None,'False':None}}        
+                           'None' : {'True': None,'None': None,'False':None},
+                           'False' : {'True': None,'None': None,'False':None}}       
+        
         tbl_not = {'True': False, 'None':None, 'False':True}    
 
         return tbl_and, tbl_or, tbl_implication, tbl_bijective, tbl_not, tbl_conditional 

@@ -158,10 +158,15 @@ KB'\cup (7\leftarrow\top) = \{3 \leftarrow D \land \lnot \text{ab}_1, D' \leftar
 
 Table~\ref{tbl:7cont} shows the computation of $\textrm{lm wc} (KB'\cup (7\leftarrow\top))$. From this, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
 
-\subsubsection*{Combined Model}
-By combining our contraposition and adductive rules for inferences which were discussed in \citep{dietz2012computational}'s paper, it is possible to model the case where the cards $D$, $K$, and $7$ are turned. This is done by turning a card if it would be turned in any of the Basic, Abductive, or Contrapositional formulations.
+Because this thesis has used a de finetti truth table to interpret conditionals (rather than converting the conditional into a license for implication and then evluating it using the $\L @TODO$ logic) evaluating the conditional $I_{\{7,D'\}\{3 \text{ab1},\text{ab2},D\}}( 3 | D )$ results in non-applicability. This author suggests that instead of evaluating the condtional $(3|D)$ to determine it is false, a card should be turned in the contrapositional case if $I_{\text{lm wc KB'}\cup \epsilon}(D' | 7)$ does not result in non-applicability. Under this revised interpretation, the cards $D$ and $3$ and no longer turned, but the card $7$ is.
 
-This work showed that all canonical cases of the weak completion semantics could be modelled by activating or silencing these three processes on the initial knowledge base. The intuition that a discrete and systematic succession of well-founded processes could be used to model multiple different results for the same experiment was the inspiration for the SCP framework which this thesis introduces.
+ 
+\subsubsection*{Combined Model}
+By combining our contraposition and adductive rules for inferences which were discussed in \citep{dietz2012computational}'s paper, it is possible to model the case where the cards $D$, $3$, and $7$ are turned. This can be done simply by turning a card if it would be turned in any of the three other cases.
+
+For those who find combining results from multiple models distasteful, it is also possible to model this case modifying the conditional to be evaluated in the contraposition case. By changing the requirement that conditional $I(D' | 7)\neq \text{non-applicability}$ to the requirement that either $I((3|D) \neq \text{non-applicability}$ or $I(D' | 7))\neq \text{non-applicability}$, every card except $K$ will be turned.
+
+This work has shown that all canonical cases of the weak completion semantics can be modelled by activating or silencing these three processes on the initial knowledge base. The intuition that a discrete and systematic succession of well-founded processes could be used to model multiple different results for the same experiment was the inspiration for the SCP framework which this thesis introduces.
 
 
 \begin{figure}

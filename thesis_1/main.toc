@@ -24,7 +24,7 @@
 \contentsline {subsection}{\numberline {3.1.1}Intuitive Overview}{11}{subsection.36}%
 \contentsline {subsection}{\numberline {3.1.2}Modelling the Suppression Task}{11}{subsection.37}%
 \contentsline {section}{\numberline {3.2}Wason Selection Task}{12}{section.38}%
-\contentsline {section}{\numberline {3.3}More}{15}{section.55}%
+\contentsline {section}{\numberline {3.3}More}{16}{section.55}%
 \contentsline {chapter}{\numberline {4}Sequential Cognition Processes}{17}{chapter.56}%
 \contentsline {section}{\numberline {4.1}SCPs: An Intuitionist Description}{17}{section.57}%
 \contentsline {section}{\numberline {4.2}SCPs: Mathematical Formulation}{17}{section.59}%

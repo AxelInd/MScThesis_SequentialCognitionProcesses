@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  16 JUN 2020 16:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  16 JUN 2020 19:19
 entering extended mode
 **./main.tex
 (main.tex
@@ -1705,10 +1705,21 @@ Overfull \hbox (11.28809pt too wide) in paragraph at lines 102--103
  []
 
 [14 <../figs/WST_WCS.png>]
+
+LaTeX Warning: Command \L invalid in math mode on input line 161.
+
+
+Overfull \hbox (2.43907pt too wide) in paragraph at lines 161--162
+\OT1/ppl/m/n/10.95 Š@\OML/zplm/m/it/10.95 TODO$ \T1/ppl/m/n/10.95 logic) eval-u
+-at-ing the con-di-tional $\OML/zplm/m/it/10.95 I[]\OT1/zplm/m/n/10.95 (\OT1/pp
+l/m/n/10.95 3\OMS/zplm/m/n/10.95 j\OML/zplm/m/it/10.95 D\OT1/zplm/m/n/10.95 )$ 
+\T1/ppl/m/n/10.95 re-sults in non-applicability.
+ []
+
 <../figs/wstcano.png, id=779, 374.90062pt x 315.42844pt>
 File: ../figs/wstcano.png Graphic file (type png)
 <use ../figs/wstcano.png>
-Package pdftex.def Info: ../figs/wstcano.png  used on input line 168.
+Package pdftex.def Info: ../figs/wstcano.png  used on input line 173.
 (pdftex.def)             Requested size: 224.94211pt x 189.25851pt.
 ) [15] [16 <../figs/wstcano.png>]
 \openout2 = `Chapters/SCP.aux'.
@@ -1826,15 +1837,15 @@ Overfull \hbox (42.50816pt too wide) in paragraph at lines 99--100
 <../figs/realisedSCPsWST.png, id=1026, 1008.1665pt x 409.2891pt>
 File: ../figs/realisedSCPsWST.png Graphic file (type png)
 <use ../figs/realisedSCPsWST.png>
-Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 252.
+Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 254.
 (pdftex.def)             Requested size: 441.01775pt x 179.03854pt.
 
 
-Package caption Warning: \label without proper reference on input line 262.
+Package caption Warning: \label without proper reference on input line 255.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:rSCP_WST' on page 47 undefined on input line 257.
+LaTeX Warning: Reference `fig:rSCP_WST' on page 47 undefined on input line 259.
 
 
 [47 <../figs/realisedSCPsWST.png>]
@@ -1842,12 +1853,12 @@ LaTeX Warning: Reference `fig:rSCP_WST' on page 47 undefined on input line 257.
 File: ../figs/realisedSCPsWST_simple.png Graphic file (type png)
 <use ../figs/realisedSCPsWST_simple.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST_simple.png  used on input line
- 260.
+ 262.
 (pdftex.def)             Requested size: 441.01775pt x 54.94072pt.
 
 
 LaTeX Warning: Reference `rSCP_WST_simple' on page 48 undefined on input line 2
-67.
+69.
 
 ) [48 <../figs/realisedSCPsWST_simple.png>]
 \openout2 = `Chapters/Comparing.aux'.
@@ -1987,7 +1998,7 @@ AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users
 /Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.p
 fb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/up
 lri8a.pfb>
-Output written on main.pdf (84 pages, 1189991 bytes).
+Output written on main.pdf (84 pages, 1191233 bytes).
 PDF statistics:
  1319 PDF objects out of 1440 (max. 8388607)
  288 named destinations out of 1000 (max. 500000)
