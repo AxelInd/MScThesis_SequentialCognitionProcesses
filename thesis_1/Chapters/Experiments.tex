@@ -14,7 +14,7 @@ Given only the rule $e\leftarrow \top$ and conditional $(l|e)$, the participants
 \subsection{Modelling the Suppression Task} \label{ssec:sup_mod}
 Work by \cite{dietz2014modeling} has shown that the WCS is an adequate non-monotonic logic for modelling the Suppression Task. Under the WCS and \L ukasiewicz 3-valued logic the task is usually modelled using an epistemic knowledge base $\text{KB}_\text{noSup}$, with:
 \[\text{KB}_\text{noSup}=(S=\{e \leftarrow \top\}, \Delta=\{(l|e)\})\]
-Which represents the  task without the suppressing conditional $(l|o)$. Interpreting the conditional as a license for implication, as in Section~@TODOref, the knowledge base can be rewritten as a propositional knowledge base:
+Which represents the  task without the suppressing conditional $(l|o)$. Interpreting the conditional as a license for implication, as in Table~\ref{tbl:cond}, the knowledge base can be rewritten as a propositional knowledge base:
 \[\text{KB}_\text{noSup}=\{e \leftarrow \top, l \leftarrow e \land \lnot \text{ab}_1, \text{ab}_1\leftarrow \bot\})\]
 Weakly completing $\text{KB}_\text{noSup}$ results in:
 \[\text{wc KB}_\text{noSup}=\{e \leftrightarrow \top, l \leftrightarrow e \land \lnot \text{ab}_1, \text{ab}_1\leftrightarrow \bot\}\]

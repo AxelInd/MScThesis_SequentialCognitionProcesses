@@ -84,17 +84,22 @@
 \contentsline {section}{\numberline {8.2}A Modular Programming Approach}{53}{section.157}%
 \contentsline {subsection}{\numberline {8.2.1}Most Important Modules}{53}{subsection.158}%
 \contentsline {subsection}{\numberline {8.2.2}Program Flow}{53}{subsection.159}%
-\contentsline {section}{\numberline {8.3}External Framework Integration}{53}{section.160}%
-\contentsline {chapter}{\numberline {9}Non-Sequential Cognitive Processes}{55}{chapter.161}%
-\contentsline {section}{\numberline {9.1}Overview}{55}{section.162}%
-\contentsline {section}{\numberline {9.2}Applications}{55}{section.163}%
-\contentsline {section}{\numberline {9.3}nSCPs: a Formal Framework}{55}{section.164}%
-\contentsline {section}{\numberline {9.4}The Suppression Task as an nSCP}{55}{section.165}%
-\contentsline {section}{\numberline {9.5}The Wason Selection Task as an nSCP}{56}{section.166}%
-\contentsline {section}{\numberline {9.6}A cross-task nSCP}{56}{section.167}%
-\contentsline {section}{\numberline {9.7}Multiple Inputs with an nSCP}{56}{section.168}%
-\contentsline {section}{\numberline {9.8}Machine Learning with nSCPs}{56}{section.169}%
-\contentsline {chapter}{\numberline {10}Conclusions and Future Work}{57}{chapter.170}%
-\contentsline {section}{\numberline {10.1}Conclusion}{57}{section.171}%
-\contentsline {section}{\numberline {10.2}Future Work}{57}{section.172}%
-\contentsline {chapter}{Bibliography}{63}{appendix*.187}%
+\contentsline {subsection}{\numberline {8.2.3}Modelled Experiments}{54}{subsection.161}%
+\contentsline {section}{\numberline {8.3}External Framework Integration}{54}{section.162}%
+\contentsline {chapter}{\numberline {9}Non-Sequential Cognitive Processes}{55}{chapter.163}%
+\contentsline {section}{\numberline {9.1}Overview}{55}{section.164}%
+\contentsline {section}{\numberline {9.2}Applications}{55}{section.165}%
+\contentsline {section}{\numberline {9.3}nSCPs: a Formal Framework}{55}{section.166}%
+\contentsline {section}{\numberline {9.4}The Suppression Task as an nSCP}{55}{section.167}%
+\contentsline {section}{\numberline {9.5}The Wason Selection Task as an nSCP}{56}{section.168}%
+\contentsline {section}{\numberline {9.6}A cross-task nSCP}{56}{section.169}%
+\contentsline {section}{\numberline {9.7}Multiple Inputs with an nSCP}{56}{section.170}%
+\contentsline {section}{\numberline {9.8}Machine Learning with nSCPs}{56}{section.171}%
+\contentsline {chapter}{\numberline {10}Conclusions and Future Work}{57}{chapter.172}%
+\contentsline {section}{\numberline {10.1}Conclusion}{57}{section.173}%
+\contentsline {section}{\numberline {10.2}Future Work}{57}{section.174}%
+\contentsline {section}{\numberline {.1}Proofs}{59}{section.176}%
+\contentsline {section}{\numberline {.2}Output}{61}{section.190}%
+\contentsline {section}{\numberline {.3}Code Snippets}{61}{section.191}%
+\contentsline {subsection}{\numberline {.3.1}Program Flow}{61}{subsection.192}%
+\contentsline {chapter}{Bibliography}{63}{appendix*.194}%

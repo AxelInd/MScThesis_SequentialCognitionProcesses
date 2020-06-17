@@ -12,11 +12,13 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces A breadth-first search algorithm for De Novo SCP search with SCP Task $\Pi =(x,M,\gamma ,f())$.\relax }}{26}{figure.caption.80}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Suppression for the two SCPs $\mu _\text {noSup}$ and $\mu _\text {sup}$\relax }}{43}{figure.caption.136}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Inhibition of Suppression for the SCP $\mu _del=(\pi ,f_\text {sup}()), \pi = (s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {remove}_\bot \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}).$\relax }}{45}{figure.caption.138}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Suppression for the SCP $\mu _\text {sup}=(\pi =(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}),f())$\relax }}{43}{figure.caption.136}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Inhibition of Suppression for the SCP $\mu _del=(\pi ,f_\text {sup}()), \pi = (s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {remove}_\bot \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}).$\relax }}{44}{figure.caption.138}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Realised SCPs for the SCP interpretation of the WST $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$. Results mimic those observed in @TODOref's WST interpretation.\relax }}{47}{figure.caption.143}%
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Realised SCPs for the simplified SCP interpretation of the WST $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$.\relax }}{47}{figure.caption.144}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Two use cases for the implementation of the SCP framework\relax }}{54}{figure.caption.160}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces Code snippet showing how the Suppression Task is modelled in the SCP Framework\relax }}{62}{figure.caption.193}%

@@ -79,7 +79,7 @@ def f_studyLateSingle(finalEpis):
                         responses.append("We are uncertain if she will study late in the library")
         print ("Epistemic state:")
         print (epi)
-        print ("response:", responses[-1])
+        print ("response(p_bar):", responses[-1])
         print ("------------------------------")
     return responses
         
@@ -278,6 +278,7 @@ def abducibleSuppression():
     print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
     print("Strict Interp")
     print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+    print ("f(pi) models gamma_noSup? : ", (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma)))
 
 def deletionSuppression():
     print ("===========================================================")
@@ -334,9 +335,10 @@ def deletionSuppression():
     print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
     print("Strict Interp")
     print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+   
     
 #print (standardSuppression())
-print (abducibleSuppression())
+abducibleSuppression()
 #print (deletionSuppression())
 
 

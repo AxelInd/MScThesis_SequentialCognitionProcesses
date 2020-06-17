@@ -10,8 +10,46 @@ The principle of modular programming is followed in this implementation to the g
 
 \subsection{Most Important Modules}
 
+\begin{itemize}
+\item $\texttt{basicLogic}$: an implementation of basic two and three-valued logic.
+\item $\texttt{SCP\_Task}$: implements both the SCP Task ($\Pi$) object and a search function for generating SCPs which meet the given goals.
+\item $\texttt{CTM}$: implements the CTM $\pi$ and defines the $J[p,m]$ application of a cognitive operation to an input state point
+\item $\texttt{CognitiveOperations}$: defines the set of cognitive operations as well as the their input and output parameters.
+\item $\texttt{StatePointOperations}$: defines $f(\pi) \models_\text{strict} \gamma$ and $f(\pi) \models_\text{weak} \gamma$ determining if a given SCP meets a given set of output criteria.
+\item $\texttt{truthTables}$: a set of truth tables for each operator defined in \texttt{basicLogic}.
+\end{itemize}
+
 \subsection{Program Flow}
-Diagram~@TODOref demonstrates the basic programatic flow used to model the Suppression Task using a WCS SCP. Diagram~@TODOref demonstrates the programmatic flow used by the De Novo search in order to generate an SCP to map to known data. Finally, Diagram~@TODOref shows the process by which information stored in a .csv file can be read into CCOBRA before being interpreted by the SCP framework and used for modelling.
+\begin{figure}
+\centering \includegraphics[width=\linewidth]{SCP_Use_Cases}
+\caption{Two use cases for the implementation of the SCP framework}.
+\label{fig:SCP_Use_Cases}
+\end{figure}
+
+
+
+Diagram~\ref{fig:SCP_Use_Cases} illustrates the basic programmatic flow used to model either a known SCP or known empirical result set using the SCP Framework. In the appendix, Figure~\ref{suppression_python} provides a code snippet to show exactly how the general case of the Suppression Task is modelled in the SCP framework.
+
+
+
+\subsection{Modelled Experiments}
+\begin{itemize}
+\item \texttt{suppressionTask.py}: models the Suppression Task as discussed in Chapter~\ref{chp:model}.
+\item \texttt{WST.py}: models the Wason Selection Task as discussed in Chapter~\ref{chp:model}.
+\end{itemize}
 
 \section{External Framework Integration}
+At present work is ongoing to integrate the SCP framework with \texttt{CCOBRA} @TODOref.
+
+
+
+
+
+
+
+
+
+
+
+
 

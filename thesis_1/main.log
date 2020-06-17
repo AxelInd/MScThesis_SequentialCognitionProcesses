@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  17 JUN 2020 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  17 JUN 2020 17:52
 entering extended mode
 **./main.tex
 (main.tex
@@ -1579,7 +1579,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
 ] (main.lof
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-6.
+5.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -1628,17 +1628,13 @@ Chapter 1.
 [1
 
 
-]
-
-LaTeX Warning: Reference `chp:mimick' on page 2 undefined on input line 34.
-
-)
-Overfull \hbox (2.92195pt too wide) in paragraph at lines 34--244
+] [2])
+Overfull \hbox (2.92195pt too wide) in paragraph at lines 36--246
 \T1/ppl/m/n/10.95 gram-ming and non-monotonic log-ics - par-tic-u-larly the WCS
  and Re-iter's de-fault logic (Chap-
  []
 
-[2] [3]
+[3]
 \openout2 = `Chapters/Prelim.aux'.
 
  (Chapters/Prelim.tex [4
@@ -1649,12 +1645,17 @@ Overfull \hbox (2.92195pt too wide) in paragraph at lines 34--244
 Chapter 2.
 1: section
 [5] [6] [7]
-Overfull \hbox (2.34229pt too wide) in paragraph at lines 141--142
+Overfull \hbox (2.34229pt too wide) in paragraph at lines 142--143
 \T1/ppl/m/n/10.95 first-order logic (@TODOref), we in-stead re-strict our-selve
 s to a propo-si-tional for-mat through-
  []
 
-[8]) [9]
+[8]
+
+LaTeX Warning: Citation 'schaefer1978complexity' on page 9 undefined on input l
+ine 227.
+
+) [9]
 \openout2 = `Chapters/Experiments.aux'.
 
  (Chapters/Experiments.tex [10
@@ -1677,7 +1678,7 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.29405pt on input line 54.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 54.
-<../figs/wasonAbstract.png, id=752, 487.8225pt x 191.9672pt>
+<../figs/wasonAbstract.png, id=793, 487.8225pt x 191.9672pt>
 File: ../figs/wasonAbstract.png Graphic file (type png)
 <use ../figs/wasonAbstract.png>
 Package pdftex.def Info: ../figs/wasonAbstract.png  used on input line 58.
@@ -1700,7 +1701,7 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 82.
  [13]
-<../figs/WST_WCS.png, id=771, 1130.7846pt x 273.4215pt>
+<../figs/WST_WCS.png, id=812, 1130.7846pt x 273.4215pt>
 File: ../figs/WST_WCS.png Graphic file (type png)
 <use ../figs/WST_WCS.png>
 Package pdftex.def Info: ../figs/WST_WCS.png  used on input line 102.
@@ -1722,7 +1723,7 @@ l/m/n/10.95 3\OMS/zplm/m/n/10.95 j\OML/zplm/m/it/10.95 D\OT1/zplm/m/n/10.95 )$
 \T1/ppl/m/n/10.95 re-sults in non-applicability.
  []
 
-<../figs/wstcano.png, id=785, 374.90062pt x 315.42844pt>
+<../figs/wstcano.png, id=826, 374.90062pt x 315.42844pt>
 File: ../figs/wstcano.png Graphic file (type png)
 <use ../figs/wstcano.png>
 Package pdftex.def Info: ../figs/wstcano.png  used on input line 173.
@@ -1732,12 +1733,12 @@ Package pdftex.def Info: ../figs/wstcano.png  used on input line 173.
 
  (Chapters/SCP.tex
 Chapter 4.
-<../figs/general.png, id=800, 307.1475pt x 75.8835pt>
+<../figs/general.png, id=841, 307.1475pt x 75.8835pt>
 File: ../figs/general.png Graphic file (type png)
 <use ../figs/general.png>
 Package pdftex.def Info: ../figs/general.png  used on input line 6.
 (pdftex.def)             Requested size: 149.72832pt x 36.99217pt.
-<../figs/generalWCS.png, id=801, 554.67226pt x 73.62506pt>
+<../figs/generalWCS.png, id=842, 554.67226pt x 73.62506pt>
 File: ../figs/generalWCS.png Graphic file (type png)
 <use ../figs/generalWCS.png>
 Package pdftex.def Info: ../figs/generalWCS.png  used on input line 12.
@@ -1748,7 +1749,7 @@ Package pdftex.def Info: ../figs/generalWCS.png  used on input line 12.
 
 
  <../figs/general.png> <../figs/generalWCS.png>] [18]
-<../figs/Exam_SCP.png, id=821, 1086.30844pt x 1400.23125pt>
+<../figs/Exam_SCP.png, id=862, 1086.30844pt x 1400.23125pt>
 File: ../figs/Exam_SCP.png Graphic file (type png)
 <use ../figs/Exam_SCP.png>
 Package pdftex.def Info: ../figs/Exam_SCP.png  used on input line 73.
@@ -1765,7 +1766,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
 File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 [23] [24] [25]
-<../figs/deNovo.png, id=873, 843.3909pt x 641.5167pt>
+<../figs/deNovo.png, id=914, 843.3909pt x 641.5167pt>
 File: ../figs/deNovo.png Graphic file (type png)
 <use ../figs/deNovo.png>
 Package pdftex.def Info: ../figs/deNovo.png  used on input line 225.
@@ -1819,18 +1820,13 @@ OT1/ppl/m/n/10.95 , [], []\OMS/zplm/m/n/10.95 g$\T1/ppl/m/n/10.95 .
 
 
 ]
-<../figs/Suppression_SCP.png, id=1003, 2214.62381pt x 1028.94412pt>
+<../figs/Suppression_SCP.png, id=1044, 2214.62381pt x 1028.94412pt>
 File: ../figs/Suppression_SCP.png Graphic file (type png)
 <use ../figs/Suppression_SCP.png>
 Package pdftex.def Info: ../figs/Suppression_SCP.png  used on input line 91.
-(pdftex.def)             Requested size: 885.83385pt x 411.57036pt.
-
-Overfull \hbox (444.8161pt too wide) in paragraph at lines 91--92
- [][] 
- []
-
-[42] [43 <../figs/Suppression_SCP.png>]
-<../figs/Suppression_SCP_del1.png, id=1019, 1196.5503pt x 684.156pt>
+(pdftex.def)             Requested size: 441.01775pt x 204.89024pt.
+ [42] [43 <../figs/Suppression_SCP.png>]
+<../figs/Suppression_SCP_del1.png, id=1062, 1196.5503pt x 684.156pt>
 File: ../figs/Suppression_SCP_del1.png Graphic file (type png)
 <use ../figs/Suppression_SCP_del1.png>
 Package pdftex.def Info: ../figs/Suppression_SCP_del1.png  used on input line 1
@@ -1841,8 +1837,8 @@ Overfull \hbox (37.59389pt too wide) in paragraph at lines 116--117
  [][] 
  []
 
-[44] [45 <../figs/Suppression_SCP_del1.png>] [46]
-<../figs/realisedSCPsWST.png, id=1042, 1008.1665pt x 409.2891pt>
+[44 <../figs/Suppression_SCP_del1.png>] [45]
+<../figs/realisedSCPsWST.png, id=1077, 1008.1665pt x 409.2891pt>
 File: ../figs/realisedSCPsWST.png Graphic file (type png)
 <use ../figs/realisedSCPsWST.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 250.
@@ -1853,21 +1849,21 @@ Package caption Warning: \label without proper reference on input line 251.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:rSCP_WST' on page 47 undefined on input line 255.
+LaTeX Warning: Reference `fig:rSCP_WST' on page 46 undefined on input line 255.
 
 
-<../figs/realisedSCPsWST_simple.png, id=1044, 999.735pt x 124.5453pt>
+<../figs/realisedSCPsWST_simple.png, id=1079, 999.735pt x 124.5453pt>
 File: ../figs/realisedSCPsWST_simple.png Graphic file (type png)
 <use ../figs/realisedSCPsWST_simple.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST_simple.png  used on input line
  258.
 (pdftex.def)             Requested size: 441.01775pt x 54.94072pt.
-[47 <../figs/realisedSCPsWST.png> <../figs/realisedSCPsWST_simple.png>]
 
-LaTeX Warning: Reference `rSCP_WST_simple' on page 48 undefined on input line 2
+LaTeX Warning: Reference `rSCP_WST_simple' on page 46 undefined on input line 2
 65.
 
-) [48]
+[46] [47 <../figs/realisedSCPsWST.png> <../figs/realisedSCPsWST_simple.png>])
+[48]
 \openout2 = `Chapters/Comparing.aux'.
 
  (Chapters/Comparing.tex
@@ -1890,19 +1886,27 @@ Package amsmath Warning: Cannot use `split' here;
 
 ]
 Chapter 8.
-)
+<../figs/SCP_Use_Cases.png, id=1118, 1120.185pt x 758.835pt>
+File: ../figs/SCP_Use_Cases.png Graphic file (type png)
+<use ../figs/SCP_Use_Cases.png>
+Package pdftex.def Info: ../figs/SCP_Use_Cases.png  used on input line 24.
+(pdftex.def)             Requested size: 441.01775pt x 298.75813pt.
+
+LaTeX Warning: Reference `suppression_python' on page 53 undefined on input lin
+e 31.
+
 1: section
-[53]
+[53]) [54 <../figs/SCP_Use_Cases.png>]
 \openout2 = `Chapters/NSCP.aux'.
 
- (Chapters/NSCP.tex [54
-
-
-
-]
+ (Chapters/NSCP.tex
 Chapter 9.
 1: section
-[55]) [56]
+[55
+
+
+
+]) [56]
 \openout2 = `Chapters/Conclusion.aux'.
 
  (Chapters/Conclusion.tex
@@ -1921,15 +1925,6 @@ Chapter 10.
 
 
 ]
-! Undefined control sequence.
-l.2 \Section
-            {Proofs}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 1: section
 [59]
 Overfull \hbox (0.36974pt too wide) in paragraph at lines 80--81
@@ -1952,1419 +1947,14 @@ OML/zplm/m/it/10.95 x \OMS/zplm/m/n/10.95 7[][]! \OT1/zplm/m/n/10.95 [\OML/zplm
 n/10.95 )$
  []
 
-! Undefined control sequence.
-l.102 \Section
-              {Output}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \hbox (5.09647pt too wide) in paragraph at lines 102--107
-[]\T1/ppl/m/n/10.95 Output ====================================================
-=======
- []
-
-
-Overfull \hbox (344.9201pt too wide) in paragraph at lines 102--107
-\T1/ppl/m/n/10.95 =================AB-DUCIBLE SUP-PRES-SION====================
-= ===========================================================
- []
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 S:: [(e ↔
-                  ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 S:: [(e ↔ ⊤
-                     ), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 S:: [(e ↔ ⊤), (l ↔
-                               (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 S:: [(e ↔ ⊤), (l ↔ (e ∧
-                                      (¬ ab_1))), (ab_1 ↔ ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.109 S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_
-                                             1))), (ab_1 ↔ ⊥)]
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...��), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔
-                                                   ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ... (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥
-                                                  )]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.113 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 S:: [(e ↔
-                  ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊤)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 S:: [(e ↔ ⊤
-                     ), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊤)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 S:: [(e ↔ ⊤), (l ↔
-                               (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊤)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 S:: [(e ↔ ⊤), (l ↔ (e ∧
-                                      (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊤)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.119 S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_
-                                             1))), (ab_1 ↔ ⊥), (o ↔ ⊤)]
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 ...��), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔
-                                                   ⊥), (o ↔ ⊤)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 ... (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥
-                                                  ), (o ↔ ⊤)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 ...e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔
-                                                   ⊤)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 ...� (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊤
-                                                  )]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 122.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 122.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 122.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 122.
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.122 R:: {'abducibles': [(o ← ⊤
-                                    )]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.123 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 S:: [(e ↔
-                  ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊥)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 S:: [(e ↔ ⊤
-                     ), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊥)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 S:: [(e ↔ ⊤), (l ↔
-                               (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊥)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 S:: [(e ↔ ⊤), (l ↔ (e ∧
-                                      (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊥)]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.129 S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_
-                                             1))), (ab_1 ↔ ⊥), (o ↔ ⊥)]
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 ...��), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔
-                                                   ⊥), (o ↔ ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 ... (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥
-                                                  ), (o ↔ ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 ...e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔
-                                                   ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 ...� (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊥
-                                                  )]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 132.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 132.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 132.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 132.
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.132 R:: {'abducibles': [(o ← ⊥
-                                    )]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.133 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 S:: [(e ↔
-                  ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ (�...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 S:: [(e ↔ ⊤
-                     ), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ (�...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 S:: [(e ↔ ⊤), (l ↔
-                               (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ (�...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 S:: [(e ↔ ⊤), (l ↔ (e ∧
-                                      (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ (�...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.139 S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_
-                                             1))), (ab_1 ↔ ⊥), (o ↔ (�...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 ...��), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔
-                                                   ⊥), (o ↔ (⊤ ∨ ⊥))]
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 ... (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥
-                                                  ), (o ↔ (⊤ ∨ ⊥))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 ...e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔
-                                                   (⊤ ∨ ⊥))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 ... (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ (⊤
-                                                   ∨ ⊥))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∨ (U+2228)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 ... ab_1))), (ab_1 ↔ ⊥), (o ↔ (⊤ ∨
-                                                   ⊥))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.139 ...1))), (ab_1 ↔ ⊥), (o ↔ (⊤ ∨ ⊥
-                                                  ))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 142.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 142.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 142.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 142.
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.142 R:: {'abducibles': [(o ← ⊤
-                                    ), (o ← ⊥)]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 142.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 142.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 142.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 142.
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.142 R:: {'abducibles': [(o ← ⊤), (o ← ⊥
-                                                 )]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.143 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 S:: [(e ↔
-                  ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 S:: [(e ↔ ⊤
-                     ), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 S:: [(e ↔ ⊤), (l ↔
-                               ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 S:: [(e ↔ ⊤), (l ↔ ((e ∧
-                                       (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.149 S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_
-                                              1)) ∨ (o ∧ (¬ ab_2)))), (...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ∨ (U+2228)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 ...e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨
-                                                   (o ∧ (¬ ab_2)))), (ab_...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 ...��), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧
-                                                   (¬ ab_2)))), (ab_1 ↔ (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 149.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 149.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 ...ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔
-                                                   (¬ o)), (ab_2 ↔ (¬ e))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 149.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 149.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 ...¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔
-                                                   (¬ e))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 149.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 149.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.153 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 S:: [(e ↔
-                  ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 S:: [(e ↔ ⊤
-                     ), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 S:: [(e ↔ ⊤), (l ↔
-                               ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 S:: [(e ↔ ⊤), (l ↔ ((e ∧
-                                       (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.159 S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_
-                                              1)) ∨ (o ∧ (¬ ab_2)))), (...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ∨ (U+2228)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 ...e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨
-                                                   (o ∧ (¬ ab_2)))), (ab_...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 ...��), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧
-                                                   (¬ ab_2)))), (ab_1 ↔ (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 159.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 159.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 ...ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔
-                                                   (¬ o)), (ab_2 ↔ (¬ e)...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 159.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 159.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 ...¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔
-                                                   (¬ e)), (o ↔ ⊤)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 159.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 159.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 ..._1 ↔ (¬ o)), (ab_2 ↔ (¬ e)), (o ↔
-                                                   ⊤)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 ...�� (¬ o)), (ab_2 ↔ (¬ e)), (o ↔ ⊤
-                                                  )]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 162.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 162.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 162.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 162.
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.162 R:: {'abducibles': [(o ← ⊤
-                                    )]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.163 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 S:: [(e ↔
-                  ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 S:: [(e ↔ ⊤
-                     ), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 S:: [(e ↔ ⊤), (l ↔
-                               ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 S:: [(e ↔ ⊤), (l ↔ ((e ∧
-                                       (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.169 S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_
-                                              1)) ∨ (o ∧ (¬ ab_2)))), (...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ∨ (U+2228)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 ...e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨
-                                                   (o ∧ (¬ ab_2)))), (ab_...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 ...��), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧
-                                                   (¬ ab_2)))), (ab_1 ↔ (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 169.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 169.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 ...ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔
-                                                   (¬ o)), (ab_2 ↔ (¬ e)...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 169.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 169.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 ...¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔
-                                                   (¬ e)), (o ↔ ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 169.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 169.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 ..._1 ↔ (¬ o)), (ab_2 ↔ (¬ e)), (o ↔
-                                                   ⊥)]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 ...�� (¬ o)), (ab_2 ↔ (¬ e)), (o ↔ ⊥
-                                                  )]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 172.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 172.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 172.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 172.
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.172 R:: {'abducibles': [(o ← ⊥
-                                    )]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.173 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-[61]
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 S:: [(e ↔
-                  ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 S:: [(e ↔ ⊤
-                     ), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 S:: [(e ↔ ⊤), (l ↔
-                               ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 S:: [(e ↔ ⊤), (l ↔ ((e ∧
-                                       (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.179 S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_
-                                              1)) ∨ (o ∧ (¬ ab_2)))), (...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! Package inputenc Error: Unicode character ∨ (U+2228)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ...e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨
-                                                   (o ∧ (¬ ab_2)))), (ab_...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∧ (U+2227)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ...��), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧
-                                                   (¬ ab_2)))), (ab_1 ↔ (...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 179.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 179.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ...ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔
-                                                   (¬ o)), (ab_2 ↔ (¬ e)...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 179.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 179.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ...¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔
-                                                   (¬ e)), (o ↔ (⊤ ∨ ...
-
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 179.
-
-
-LaTeX Warning: Command \textlnot invalid in math mode on input line 179.
-
-
-! Package inputenc Error: Unicode character ↔ (U+2194)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ..._1 ↔ (¬ o)), (ab_2 ↔ (¬ e)), (o ↔
-                                                   (⊤ ∨ ⊥))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ...� (¬ o)), (ab_2 ↔ (¬ e)), (o ↔ (⊤
-                                                   ∨ ⊥))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ∨ (U+2228)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ...� o)), (ab_2 ↔ (¬ e)), (o ↔ (⊤ ∨
-                                                   ⊥))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.179 ...), (ab_2 ↔ (¬ e)), (o ↔ (⊤ ∨ ⊥
-                                                  ))]
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 182.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 182.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 182.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 182.
-
-
-! Package inputenc Error: Unicode character ⊤ (U+22A4)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.182 R:: {'abducibles': [(o ← ⊤
-                                    ), (o ← ⊥)]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 182.
-
-LaTeX Info: Symbol \textleftarrow not provided by
-            font family ppl in TS1 encoding.
-            Default family used instead on input line 182.
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 182.
-
-
-LaTeX Warning: Command \textleftarrow invalid in math mode on input line 182.
-
-
-! Package inputenc Error: Unicode character ⊥ (U+22A5)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.182 R:: {'abducibles': [(o ← ⊤), (o ← ⊥
-                                                 )]}
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.183 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-Missing character: There is no � in font pplr7t!
-) [62]
-Overfull \hbox (4.63652pt too wide) in paragraph at lines 274--274
+<../figs/suppression_python.png, id=1162, 470.50781pt x 553.31718pt>
+File: ../figs/suppression_python.png Graphic file (type png)
+<use ../figs/suppression_python.png>
+Package pdftex.def Info: ../figs/suppression_python.png  used on input line 108
+.
+(pdftex.def)             Requested size: 441.01775pt x 518.6407pt.
+) [61] [62 <../figs/suppression_python.png>]
+Overfull \hbox (4.63652pt too wide) in paragraph at lines 276--276
 [][]\T1/ppl/m/n/10.95 Reiter, Ray-mond (1980).   A logic for de-fault rea-son-
 ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 .1-2, pp. 81
@@ -3375,140 +1965,64 @@ ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 
 
 ] [64]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
  (main.aux (Chapters/Introduction.aux) (Chapters/Prelim.aux)
 (Chapters/Experiments.aux) (Chapters/SCP.aux) (Chapters/Toolbox.aux)
 (Chapters/Mimic.aux) (Chapters/Comparing.aux) (Chapters/Program.aux)
 (Chapters/NSCP.aux) (Chapters/Conclusion.aux) (Chapters/Appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 453DFA6899FB770B9E325866E3F5C239;17263.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: F10B93DA4DD9704919ED8A144F968D0F;16674
-(rerunfilecheck)             After:  F788417EDEEBFBACBD92C1FFF835A045;16674.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
+
+Package biblatex Warning: Please (re)run BibTeX on the file(s):
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40164 strings out of 480799
- 829578 string characters out of 2896252
- 1283609 words of memory out of 3000000
- 55136 multiletter control sequences out of 15000+200000
- 618747 words of font info for 199 fonts, out of 3000000 for 9000
+ 40180 strings out of 480799
+ 830358 string characters out of 2896252
+ 1284031 words of memory out of 3000000
+ 55168 multiletter control sequences out of 15000+200000
+ 618406 words of font info for 198 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,22n,87p,1810b,2431s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{lemma.179} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.146} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{proof.177} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{lemma.175} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{proof.180} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{proof.173} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.142} has been referenced but does no
-t exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.137} has been referenced but does no
-t exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{appendix*.186} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.170} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.169} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.161} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.160} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.159} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.157} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.155} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.154} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.152} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.151} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.150} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.149} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.148} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.145} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.144} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.138} has been referenced but does not exist
-, replaced by a fixed one
-
- <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ect
-t1000.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecit1095.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
-ppen/ec/dpi600\ectt0900.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/lj
-four/jknappen/ec/dpi600\ecss1095.pk>{C:/Users/Axel/AppData/Local/Programs/MiKTe
-X 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\Axel\AppData\Local\MiKTeX\2.9\font
-s/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk><C:/Users/Axel/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Axel/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Ax
-el/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-mathpazo/fplmr.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/mathpazo/fplmri.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/Axel/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Axel/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/A
-xel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/U
-sers/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb
-><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr
-i8a.pfb>
-Output written on main.pdf (84 pages, 1218521 bytes).
+ <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\e
+ctt1000.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecit1095.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jk
+nappen/ec/dpi600\ectt0900.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecss1095.pk>{C:/Users/Axel/AppData/Local/Programs/MiK
+TeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fo
+nts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk><C:/Users/Axel/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Axel/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/
+Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb
+><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/mathpazo/fplmr.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/mathpazo/fplmri.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/Axel/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Axel/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users
+/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:
+/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.p
+fb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/up
+lri8a.pfb>
+Output written on main.pdf (84 pages, 1431022 bytes).
 PDF statistics:
- 1368 PDF objects out of 1440 (max. 8388607)
- 317 named destinations out of 1000 (max. 500000)
- 852 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1394 PDF objects out of 1440 (max. 8388607)
+ 302 named destinations out of 1000 (max. 500000)
+ 902 words of extra memory for PDF output out of 10000 (max. 10000000)
 
