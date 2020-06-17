@@ -237,7 +237,6 @@ def specialSplit (sp):
         return len(mylist) - mylist[::-1].index(myvalue) - 1
     #must be a literal or a monotonic operator    
     #length 1 can only be an atom or truth value
-    print ("sp is ", sp)
     truthValues = {
         'T':basicLogic.TRUE,
         'u':basicLogic.UNKNOWN,
@@ -310,20 +309,13 @@ def specialSplit (sp):
             counterRightBracket=counterRightBracket+1
         if countleftBracket == counterRightBracket+1:
             if sp[i] in bitonicOps:
-                print ("we must execute this op!")
                 left = specialSplit(sp[1:i])
-                
-                print ("leftClause:",left)
                 right = specialSplit(sp[i+1:len(sp)-1])
-                print ("rightClause:",right)
                 return bitonicOps[sp[i]](left,right)
     #if we are here it must be a long clause (monotonicOp, a, b, ..., Z)
     #is not Atom or (Atom)
     if sp[1] in monotonicOps:
-        print ("mono ops!")
-        print ("sp is ", sp)
         clause = sp[2:len(sp)-1]
-        print ("mono clause is ", clause)
         return monotonicOps[sp[1]](specialSplit(clause))    
         
     

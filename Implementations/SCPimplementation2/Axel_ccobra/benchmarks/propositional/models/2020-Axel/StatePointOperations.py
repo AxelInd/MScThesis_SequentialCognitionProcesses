@@ -5,17 +5,34 @@ Created on Sun Jun 14 09:58:01 2020
 @author: Axel
 """
 
-
+import copy
 #take a state point and return every base point in the state point
+def flatten_list(nested_list):
+    """Flatten an arbitrarily nested list, without recursion (to avoid
+    stack overflows). Returns a new list, the original list is unchanged.
+    >> list(flatten_list([1, 2, 3, [4], [], [[[[[[[[[5]]]]]]]]]]))
+    [1, 2, 3, 4, 5]
+    >> list(flatten_list([[1, 2], 3]))
+    [1, 2, 3]
+    """
+    if not isinstance(nested_list,list):
+        nested_list=[nested_list]
+    nested_list = copy.deepcopy(nested_list)
+
+   
+    
+    while nested_list:
+        sublist = nested_list.pop(0)
+
+        if isinstance(sublist, list):
+            nested_list = sublist + nested_list
+        else:
+            yield sublist
+
 def flattenStatePoint(statePoint):
     if not isinstance (statePoint,list):
-        return statePoint
-    if len(statePoint)==1:
-        return flattenStatePoint(statePoint[0])
-    li=[]
-    for epi in statePoint:
-        li.append(flattenStatePoint(epi))
-    return li
+        statePoint=[statePoint]
+    return list(flatten_list(statePoint))
 
 #find all epis with a specific name in a list flattened with flattenEpiList()
 def extractBasePointsFromFlattenedStatePoint(epiList, name):

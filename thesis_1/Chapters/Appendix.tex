@@ -1,8 +1,5 @@
 \chapter*{Appendix} \label{chp:appendix}
-@TODO talk about adding abnormalities
-
-
-
+\Section{Proofs}
 \begin{proof} \label{proof:insertionSearch}
 Given a set of cognitive operations $M$, an external activation function $f()$, and an initially valid SCP $f(\pi)$, $\pi=\{s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n\}$, $A_i \in M$, inserting multiple operations into $\pi$ to create cognitive sequence $\pi'$ may result in a valid SCP $f(\pi')$, when inserting only one operation would result in an invalid SCP.
 
@@ -101,3 +98,89 @@ There are an infinite number of possible, valid SCPs, that can meet any goal con
 \item Thus it follows that if $f(x \longmapsto A)\models \gamma$ then $f(x \longmapsto T_i \longmapsto V_i)\models \gamma$ for all $(T_i \in T, P_i \in P) \in W$.
 \end{enumerate}
 \end{proof}
+
+\Section{Output}
+===========================================================
+=================ABDUCIBLE SUPPRESSION=====================
+===========================================================
+Epistemic state:
+
+===>el<===
+S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥)]
+Delta:: []
+V:: [(e:True), (l:True), (ab_1:False)]
+R:: {'abducibles': []}
+
+response: She will study late in the library
+------------------------------
+Epistemic state:
+
+===>el<===
+S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊤)]
+Delta:: []
+V:: [(e:True), (l:True), (ab_1:False)]
+R:: {'abducibles': [(o ← ⊤)]}
+
+response: She will study late in the library
+------------------------------
+Epistemic state:
+
+===>el<===
+S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ ⊥)]
+Delta:: []
+V:: [(e:True), (l:True), (ab_1:False)]
+R:: {'abducibles': [(o ← ⊥)]}
+
+response: She will study late in the library
+------------------------------
+Epistemic state:
+
+===>el<===
+S:: [(e ↔ ⊤), (l ↔ (e ∧ (¬ ab_1))), (ab_1 ↔ ⊥), (o ↔ (⊤ ∨ ⊥))]
+Delta:: []
+V:: [(e:True), (l:True), (ab_1:False)]
+R:: {'abducibles': [(o ← ⊤), (o ← ⊥)]}
+
+response: She will study late in the library
+------------------------------
+Epistemic state:
+
+===>elo<===
+S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔ (¬ e))]
+Delta:: []
+V:: [(e:True), (l:None), (o:None), (ab_1:None), (ab_2:False)]
+R:: {'abducibles': []}
+
+response: We are uncertain if she will study late in the library
+------------------------------
+Epistemic state:
+
+===>elo<===
+S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔ (¬ e)), (o ↔ ⊤)]
+Delta:: []
+V:: [(e:True), (l:True), (o:True), (ab_1:False), (ab_2:False)]
+R:: {'abducibles': [(o ← ⊤)]}
+
+response: She will study late in the library
+------------------------------
+Epistemic state:
+
+===>elo<===
+S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔ (¬ e)), (o ↔ ⊥)]
+Delta:: []
+V:: [(e:True), (l:False), (o:False), (ab_1:True), (ab_2:False)]
+R:: {'abducibles': [(o ← ⊥)]}
+
+response: She will not study late in the library
+------------------------------
+Epistemic state:
+
+===>elo<===
+S:: [(e ↔ ⊤), (l ↔ ((e ∧ (¬ ab_1)) ∨ (o ∧ (¬ ab_2)))), (ab_1 ↔ (¬ o)), (ab_2 ↔ (¬ e)), (o ↔ (⊤ ∨ ⊥))]
+Delta:: []
+V:: [(e:True), (l:True), (o:True), (ab_1:False), (ab_2:False)]
+R:: {'abducibles': [(o ← ⊤), (o ← ⊥)]}
+
+response: She will study late in the library
+------------------------------
+predictions:  {'el': ['She will study late in the library', 'She will study late in the library', 'She will study late in the library', 'She will study late in the library'], 'elo': ['We are uncertain if she will study late in the library', 'She will study late in the library', 'She will not study late in the library', 'She will study late in the library']}

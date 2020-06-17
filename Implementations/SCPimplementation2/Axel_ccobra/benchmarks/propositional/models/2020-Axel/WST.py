@@ -22,7 +22,7 @@ def f_turnFunction(pi,observations):
         
         
 def f_turn(pi,observation):
-    
+
     finalStructures=pi.evaluate()
     finalStates=StatePointOperations.flattenStatePoint(finalStructures)
     
@@ -183,10 +183,8 @@ task = SCP_Task.SCP_Task(s_i,M,f,gamma)
 ADDAB = CognitiveOperation.m_addAB()
 WC = CognitiveOperation.m_wc()
 SEMANTIC = CognitiveOperation.m_semantic()
-
-
-
 ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=4)
+
 #test ctm
 c = CTM.CTM()
 c.setSi(s_i)

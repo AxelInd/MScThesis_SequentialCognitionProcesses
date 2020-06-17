@@ -249,8 +249,8 @@ class m_addAbducibles(CognitiveOperation):
     def __init__(self, maxLength=9999):
         CognitiveOperation.__init__(self,name="addAbducibles")
         self.maxLength=maxLength
-        self.inputStructuralRequirements=['S']
-        self.outputStructure=['S']
+        self.inputStructuralRequirements=['S','R']
+        self.outputStructure=['S','R']
     def evaluateEpistemicState(self,epi):
         nextEpis=[]
         #find only as many abducibles as the max length allows
@@ -264,7 +264,57 @@ class m_addAbducibles(CognitiveOperation):
                 newEpi['S']=newEpi['S']+list(j)
                         
                 nextEpis.append(newEpi)
-        return nextEpis        
+        return nextEpis    
+    
+class m_deleteo(CognitiveOperation):
+    def __init__(self, maxLength=9999):
+        CognitiveOperation.__init__(self,name="delete")
+        self.maxLength=maxLength
+        self.inputStructuralRequirements=['S','R']
+        self.outputStructure=['S','R']
+    def delete(self,varname,epi):
+        V = epi['V']
+        S = epi['S']
+        V = [v for v in V if v.getName()!=varname]
+        newP=[]
+        
+        for rule in S:
+            head = rule.clause1
+            body = rule.clause2
+            if isinstance (head, basicLogic.atom):
+                if head.getName()==varname:
+                    head=None
+            if isinstance(body,basicLogic.operator_monotonic):
+    
+                if body.clause.getName()==varname:
+                    body.clause=basicLogic.FALSE
+            if isinstance (body, basicLogic.atom):
+                body = basicLogic.TRUE
+            if isinstance (body, basicLogic.operator_bitonic):
+                if body.clause1.getName() == varname:
+                    body=body.clause2
+                elif body.clause2.getName() == varname:
+                    body=body.clause1   
+            if head != None:
+                newP.append(basicLogic.operator_bitonic_implication(head,body))
+            
+        epi['V']=V
+        epi['S']=newP
+        return epi
+        
+    def evaluateEpistemicState(self,epi):
+        nextEpis=[]
+        #find only as many abducibles as the max length allows
+        for i in range(0, min(len(epi['R']['delete'])+1,self.maxLength)):  
+            perm = combinations(epi['R']['delete'],i)
+
+            for j in list(perm): 
+                newEpi = copy.deepcopy(epi)
+                for i in j:
+                    newEpi=self.delete(i,newEpi)
+                newEpi['R']['deleted']=j
+                nextEpis.append(newEpi)
+        return nextEpis    
     
 
 

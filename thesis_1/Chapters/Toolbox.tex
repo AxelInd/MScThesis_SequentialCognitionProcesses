@@ -136,7 +136,7 @@ $\bar{p}[V]:=\bar{p}[V] \cup \alpha$\;
 
 In order to ensure that the SCP still acts as a pipeline of information, it is necessary that $\texttt{Add}\alpha$ for variable $\alpha=(\text{atom name, value})$ is defined as part of the allowable operations of the SCP Task $\Pi$ which generates the SCPs and realised SCPs that will make use of it. The core principle of this pipeline framework is that each usable component (cognitive operation) of that framework which is not the input value should not be modified.
 
-\subsection{Variable Deletion}
+\subsection{Variable Deletion} \label{ssec:deletion}
 Following on the from the $\texttt{addV}$ operation, the $\texttt{removeV}$ operations captures human intuition of forgetting. Consider the sequence of numbers: 1, 44, 27, 8, 0 , -4, 6, 7, 346, 7, 74, 7, 234, -55, 2.4, 18. Now without looking back at the numbers, ask yourself some questions: how many numbers were there? Were any of them prime? How many numbers were repeated? In all probability you are not entirely sure. This simple thought experiment provides support for our first extension, the idea that variables can be ``forgotten", that is, that information that existed in the knowledge base at one point in time might no longer exist at a later timepoint. 
 
 This is not the only imaginable case where a variable might be removed from the knowledge base of the person being modelled. The size of the knowledge base used for cognitive modelling is always implicitly restricted to relevant variables. Only those variables whose values might reasonably be expected to affect the final conclusions drawn with regard to the research question should be considered. Finding which variables and rules are relevant is, however, non-trivial. For another real-life example, imagine a mystery novel: Three hundred pages of plot descriptions, character actions, and dialogues. In a good murder mystery novel every piece of information that reveals the killer's identity is hidden in the story itself, yet we do not hold every fact and interaction in the book in our epistemic model of the book, so discerning the identity of the killer remains a mystery until the last page. But when the mystery is solved, many details that we internalised while reading (and recall in retrospect) suddenly make the conclusion seem obvious. We have not forgotten this information, we had merely incorrectly deemed it irrelevant at the time and ignored it in our cognitive processing.
@@ -321,6 +321,30 @@ $\bar{p}[V][A]:=\bot$
 
 \caption{\texttt{semantic}$(\bar{p})$}
 \end{algorithm}
+
+\subsection{Adding Abducibles} \label{ssec:abd}
+Next, we define a cognitive operation which uses the set of possible abducibles, given by $\bar{p}['R']['abducibles']$. We have already used the intuition of this operation to handle the WST and derive the general answer set. Later we will see that it can also be used to model individual reasoners in the Suppression Task. \texttt{AddExp} adds possible explanations $\eta$ to the set of rules $S$ in the epistemic state and is defined as follows:
+
+\begin{algorithm}[H] \label{cogOp:addExp}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$e(\bar{p})$}
+{
+abducibles:=$\bar{p}[\text{`abducibles'}]$\;
+$p':=[]$\;
+\For{every unique subset $A \in$ abducibles }
+{
+newP := $\bar{p}$\;
+$\text{newP}['S']=\text{newP}[\text{`S'}] \cup \{a \in A\leftarrow \top\}$\;
+$\text{newP}['\eta']=A$\;
+$p':=p' \cup \text{newP}$\;
+}
+\Return $p'$
+}
+
+\caption{$\texttt{addExp}$}
+\end{algorithm}
+
 
 \subsection{Default Inferencing}
 If we assume that Reiter's default logic is a valid model of cognition for at least one task, it follows that an comprehensive formulation of $M$ must encode a cognitive operation for drawing inferences from a set of default rules. Figure~@TODOref illustrates the procedure for drawing such inferences from an epistemic state state of the form $s=(KB,V,D)$ where $KB$ is a set of inference rules, $V$ is mapping of variable names onto variable values, and $D$ is a set of default rules of the form $\frac{condition:exception}{conclusion}$ @TODOrewriteEquationWithStandardSymbols.

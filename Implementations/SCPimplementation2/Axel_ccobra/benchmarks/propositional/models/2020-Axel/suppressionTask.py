@@ -13,9 +13,9 @@ import CognitiveOperation
 import StatePointOperations
 import copy
 print ("=================THE SUPPRESSION TASK=========================")
-print (">>> 1) If she has an essay to write she will study late in the library (e->l).")
-print (">>> 2) If the library is open she will study late in the library (o->l).")
-print (">>> 3) She has an essay to write (True->e).")
+print (">>> 1) If she has an essay to write she will study late in the library (l|e).")
+print (">>> 2) If the library is open she will study late in the library (l|o).")
+print (">>> 3) She has an essay to write (e <- T).")
   
 
 
@@ -32,6 +32,7 @@ o = basicLogic.atom('o', setValue=False)
 def f_suppression_studyLate(pi):
     finalStructures=pi.evaluate()
     finalStates=StatePointOperations.flattenStatePoint(finalStructures)
+    #print (finalStates)
     #get all realised epis with 'el' name 
     statesForCaseEL = StatePointOperations.extractBasePointsFromFlattenedStatePoint(finalStates,name="el")
     #get all realised epis with 'elo' name 
@@ -42,9 +43,6 @@ def f_suppression_studyLate(pi):
     # find the set of responses that that the realised SCPs of 'elo' could reach
     responsesELO = f_studyLateSingle(statesForCaseELO)
     
-    print (responsesEL)
-    print ("<><>")
-    print(responsesELO)
     #suppression has occured if there is a response in responsesEL which is NOT
     # in responsesELO
     """
@@ -79,13 +77,18 @@ def f_studyLateSingle(finalEpis):
                         responses.append("She will not study late in the library")
                     if var.getValue()==None:
                         responses.append("We are uncertain if she will study late in the library")
+        print ("Epistemic state:")
+        print (epi)
+        print ("response:", responses[-1])
+        print ("------------------------------")
     return responses
         
 # THE SET OF COGNITIVE OPERATIONS APPROPRIATE TO THE SUPPRESSION TASK
 ADDAB = CognitiveOperation.m_addAB()
 WC = CognitiveOperation.m_wc()
 SEMANTIC = CognitiveOperation.m_semantic()
-
+ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=4)
+DELETE=CognitiveOperation.m_deleteo()
 
         
 basePoint1=epistemicState.epistemicState('el')
@@ -106,8 +109,14 @@ extraConditional=["( l | o )"]
 extraConditionalAsLogic = scpNotationParser.stringListToBasicLogic(extraConditional)
 basePoint2['Delta']=basePoint2['Delta']+extraConditionalAsLogic
 basePoint2['V']=basePoint2['V']+[o]
-
-
+basePoint1['R']={'delete':["o","e"]}
+basePoint2['R']={'delete':["o","e"]}
+#abducibs= []
+#abducibs = [ '( o <- T )']
+#abducibs = [ '( l <- T )', '( l <- F )','( o <- T )', '( o <- F )']
+#logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
+#basePoint1['R']={'abducibles':logAbducibs}
+#basePoint2['R']={'abducibles':logAbducibs}
 
 #Create the first state point
 statePoints=[basePoint1,basePoint2]
@@ -128,14 +137,16 @@ task = SCP_Task.SCP_Task(s_i,M,f,gamma)
 
 
 
-
 #test ctm
 c = CTM.CTM()
 c.setSi(s_i)
 c.appendm(ADDAB)
+#c.appendm(ABDUCIBLES)
+c.appendm(DELETE)
 c.appendm(WC)
+
 c.appendm(SEMANTIC)
-print (c)
+
 predictions = f(c)
 print ('predictions: ', predictions)
 
@@ -145,13 +156,7 @@ print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
 print("Strict Interp")
 print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
 
-
-
-
-
-
-
-
+#print (c.evaluate())
 """
 searchResult = task.deNoveSearch()
 print ("\nSEARCH RESULTS:")
@@ -165,6 +170,189 @@ print ("RESULT 1: IS\n",result1)
 """
 
 """
+
+def standardSuppression():
+    print ("===========================================================")
+    print ("================STANDARD SUPPRESSION========================")
+    print ("===========================================================")
+    basePoint1=epistemicState.epistemicState('el')
+    delta1=["( l | e )"]
+    S1 = ["( e <- T )"]
+    delta1AsLogic = scpNotationParser.stringListToBasicLogic(delta1)
+    S1AsLogic = scpNotationParser.stringListToBasicLogic(S1)
+    basePoint1['S']=S1AsLogic
+    basePoint1['Delta']=delta1AsLogic
+    basePoint1['V']=[e,l]
+    
+    
+    #The elo case expressed as the addition of information to the el case
+    basePoint2=copy.deepcopy(basePoint1)
+    basePoint2.setName('elo')
+    #The possible starting states for the SCP
+    extraConditional=["( l | o )"]
+    extraConditionalAsLogic = scpNotationParser.stringListToBasicLogic(extraConditional)
+    basePoint2['Delta']=basePoint2['Delta']+extraConditionalAsLogic
+    basePoint2['V']=basePoint2['V']+[o]
+    
+
+    #Create the first state point
+    statePoints=[basePoint1,basePoint2]
+    s_i=statePoints
+    
+    f=f_suppression_studyLate
+    #The desired output of the external evaluation function
+    gamma={'el':'She will study late in the library','elo':'We are uncertain if she will study late in the library'}
+
+
+
+
+    #test ctm
+    c = CTM.CTM()
+    c.setSi(s_i)
+    c.appendm(ADDAB)
+    c.appendm(WC)
+    c.appendm(SEMANTIC)
+
+    predictions = f(c)
+    print ('predictions: ', predictions)
+    
+    
+    print ("Lenient Interp")
+    print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
+    print("Strict Interp")
+    print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+    
+def abducibleSuppression():
+    print ("===========================================================")
+    print ("=================ABDUCIBLE SUPPRESSION=====================")
+    print ("===========================================================")
+    basePoint1=epistemicState.epistemicState('el')
+    delta1=["( l | e )"]
+    S1 = ["( e <- T )"]
+    delta1AsLogic = scpNotationParser.stringListToBasicLogic(delta1)
+    S1AsLogic = scpNotationParser.stringListToBasicLogic(S1)
+    basePoint1['S']=S1AsLogic
+    basePoint1['Delta']=delta1AsLogic
+    basePoint1['V']=[e,l]
+    
+    
+    #The elo case expressed as the addition of information to the el case
+    basePoint2=copy.deepcopy(basePoint1)
+    basePoint2.setName('elo')
+    #The possible starting states for the SCP
+    extraConditional=["( l | o )"]
+    extraConditionalAsLogic = scpNotationParser.stringListToBasicLogic(extraConditional)
+    basePoint2['Delta']=basePoint2['Delta']+extraConditionalAsLogic
+    basePoint2['V']=basePoint2['V']+[o]
+    
+
+
+    #abducibs = [ '( l <- T )', '( l <- F )','( o <- T )', '( o <- F )']
+    abducibs = ['( o <- T )', '( o <- F )']
+    logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
+    basePoint1['R']={'abducibles':logAbducibs}
+    basePoint2['R']={'abducibles':logAbducibs}
+    #Create the first state point
+    statePoints=[basePoint1,basePoint2]
+    s_i=statePoints
+    
+    f=f_suppression_studyLate
+    #The desired output of the external evaluation function
+    gamma={'el':'She will study late in the library','elo':'We are uncertain if she will study late in the library'}
+
+
+
+
+    #test ctm
+    c = CTM.CTM()
+    c.setSi(s_i)
+    c.appendm(ADDAB)
+    c.appendm(ABDUCIBLES)
+    c.appendm(WC)
+    c.appendm(SEMANTIC)    
+    predictions = f(c)
+    print ('predictions: ', predictions)
+    
+    
+    print ("Lenient Interp")
+    print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
+    print("Strict Interp")
+    print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+
+def deletionSuppression():
+    print ("===========================================================")
+    print ("================DELETION SUPPRESSION=======================")
+    print ("===========================================================")        
+    basePoint1=epistemicState.epistemicState('el')
+    delta1=["( l | e )"]
+    S1 = ["( e <- T )"]
+    delta1AsLogic = scpNotationParser.stringListToBasicLogic(delta1)
+    S1AsLogic = scpNotationParser.stringListToBasicLogic(S1)
+    basePoint1['S']=S1AsLogic
+    basePoint1['Delta']=delta1AsLogic
+    basePoint1['V']=[e,l]
+    
+    
+    #The elo case expressed as the addition of information to the el case
+    basePoint2=copy.deepcopy(basePoint1)
+    basePoint2.setName('elo')
+    #The possible starting states for the SCP
+    extraConditional=["( l | o )"]
+    extraConditionalAsLogic = scpNotationParser.stringListToBasicLogic(extraConditional)
+    basePoint2['Delta']=basePoint2['Delta']+extraConditionalAsLogic
+    basePoint2['V']=basePoint2['V']+[o]
+    basePoint1['R']={'delete':["o","e"]}
+    basePoint2['R']={'delete':["o","e"]}
+    #abducibs= []
+    #abducibs = [ '( o <- T )']
+    #abducibs = [ '( l <- T )', '( l <- F )','( o <- T )', '( o <- F )']
+    #logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
+    #basePoint1['R']={'abducibles':logAbducibs}
+    #basePoint2['R']={'abducibles':logAbducibs}
+    
+    #Create the first state point
+    statePoints=[basePoint1,basePoint2]
+    s_i=statePoints
+    
+    #The external evaluation function
+    f=f_suppression_studyLate
+    #The desired output of the external evaluation function
+    gamma={'el':'She will study late in the library','elo':'We are uncertain if she will study late in the library'}
+
+    #test ctm
+    c = CTM.CTM()
+    c.setSi(s_i)
+    c.appendm(ADDAB)
+    #c.appendm(ABDUCIBLES)
+    c.appendm(DELETE)
+    c.appendm(WC)
+    c.appendm(SEMANTIC)
+
+    predictions = f(c)
+    print ('predictions: ', predictions)
+    print ("Lenient Interp")
+    print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
+    print("Strict Interp")
+    print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+    
+#print (standardSuppression())
+print (abducibleSuppression())
+#print (deletionSuppression())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -72,7 +72,8 @@ class CTM (object):
         pCTM = ""
         for i in self.pCTM:
             pCTM = pCTM + " => "+str(i)
-        return s + pCTM
+        return "si"+pCTM 
+        #return s + pCTM
 
     def __repr__(self):
         s = "si"
