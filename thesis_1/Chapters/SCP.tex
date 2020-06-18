@@ -177,7 +177,7 @@ A planning task may permit an SCP in which all or only some of the associated re
 
 
 
-\section{External Evaluation Functions}
+\section{External Evaluation Functions}\label{ssec:f}
 The external evaluation function $f()$ is responsible for evaluating an SCP or reaslised SCP in order to map it to the observed or predicted empirical data observed in respondents. The $f()$ function in general is an unbounded tool for making a decision with a CTM.
 
 As a function, defining $f()$ forces researchers to specify what information in the epistemic state corresponds to empirical data. The exact procedure by which $f()$ makes this decision should correspond to researcher's chosen criteria for decision making.
@@ -200,7 +200,33 @@ We say that an SCP, $\mu=(\pi,f())$, \textit{weakly satisfies} a goal $\gamma$, 
 
 These two definitions of satisfaction for SCPs will be used later to motivate an alternate method for modelling individual reasoners in the Wason Selection Task using SCPs (Section~\ref{sec:wstSCP}). When an SCP is monotonic, strict and weak satisfaction are identical and we simply write $f(\pi)\models_\text{weak} \gamma$.
 
+Finally, we define the \textit{preferred response} $p()$ for the output of an external evaluation function $f()$ and CTM $\pi$ as follows:
 
+\begin{algorithm}[H] \label{alg:outPutconditionModified}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$p(f(\pi),\text{pref})$}
+{
+responses:=$f(\pi)$\;
+finalResponses:=$\{\}$
+\For{category $ \in $ responses}
+{
+\uIf{pref[category] $\in$ responses[category]}
+{
+finalResponses[category]=pref[category]
+}
+\Else
+{
+finalResponses[category]=responses[category]
+}
+\Return finalResponses
+}
+
+}
+\caption{\texttt{p}$(f(\pi,\text{pref}))$: a method which removes unpreferred responses from a list and replaces them with the preferred response (if it was in the original list).}
+\end{algorithm}
+
+A preferred response allows us to specify a hierachy of achievable outputs from an SCP or realised SCP and a practical application will be shown for modelling individual reasoners in the WST (Section~\ref{sec:wstSCP}).
 
 \section{Search in SCP-Space}
 As with any data structure in which one input can produce one or multiple outputs, it is possible to search through SCP space in order to find those SCPs which meet certain criteria. Those criteria might be \textit{validity} (Section~\ref{ssec:precond}), \textit{satisfaction} (conditions in $\gamma$ are satisfied), or \textit{optimality} (there exists no better solution to this problem).

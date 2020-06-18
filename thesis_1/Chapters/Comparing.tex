@@ -58,5 +58,176 @@ Though simple, this scoring procedure provides the foundations upon which more c
 \subsection{The Needleman-Wunsch Algorithm} \label{ssec:nw}
 In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions) would be necessary to turn each of these sequences into each other sequence.
 
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c c }
+ \textbf{Process} & \textbf{Score} \\ 
+ Match & 1 \\
+ Mismatch & -1 \\
+ Insert & -2 \\
+ Delete & -2
+\end{tabular}
+\caption{A very simple table for scoring SCPs with the Needleman-Wunsch algorithm.}
+\label{tbl:simpleneed}
+
+\end{center}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c | c c c c c c}
+& & init & addAB & weakly  & SO & SO \\ \hline
+& \textcolor{green}{0} & -2 & -4 & -6 & -8 & -10 \\
+
+init & -2 & \textcolor{green}{1} & -1 & -3 & -5 & -7 \\
+
+delete & -4 & \textcolor{green}{-1} & 0 & -2 & -4 & -6 \\
+
+addAB& -6 & -3 & \textcolor{green}{0} &-1 &  -3 & -5 \\
+
+weakly& -8 & -5 & -2 & \textcolor{green}{1} & -1 & -3 \\
+
+SO & -10 & -7 &  -4 & \textcolor{green}{-1} & 2 & 0 \\
+
+SO & -12 & -9 & -6 & -3 & \textcolor{green}{0} & 3\\
+
+SO & -14 & -11 & -8 & -5 & -2 & \textcolor{green}{1} 
+ 
+\end{tabular}
+\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_2$. Entries in green are part of the optimal traceback. Match: 1, Mismatch: -1, Insertion: -2, Deletion: -2}
+\label{tbl:needs1s2}
+
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c | c c c c c c}
+& & init & addAB & weakly  & SO & SO \\ \hline
+& \textcolor{green}{0}  & -2  & -4 & -6  & -8  & -10 \\
+
+init & -2 & \textcolor{green}{1} & -1 & -3 & -5 & -7 \\
+
+addAB & -4 & -1 & \textcolor{green}{2} & 0 & -2 & -4 \\
+
+fix &-6 & -3 & \textcolor{green}{0} & 1 & -1 & -3  \\
+
+weakly& -8& -5 & -2 & \textcolor{green}{1} & 0 & -2  \\
+
+SO & -10& -7 & -4 & \textcolor{green}{-1} & 2 & 1  \\
+
+SO & -12& -9 & -6 & -3 & \textcolor{green}{0} & 3  \\
+
+SO & -14 & -11 & -8 & -5 & -2 & \textcolor{green}{1}  \\
+ 
+\end{tabular}
+\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_3$. Entries in green are part of the optimal traceback. Match: 1, Mismatch: -1, Insertion: -2, Deletion: -2}
+\label{tbl:needs1s3}
+
+\end{center}
+\end{table}
+
+A linear SCP can be represented using a single string. For example the SCP for the Suppression task (Figure~\ref{fig:supnormal}) might be represented with the string:
+
+\[s_1=init-addAB-weaklyComplete-SO-SO\]
+
+Which simply denotes the sequence of complex actions in the SCP. Similarly, our two modified SCPs for the deviant case can be denoted as follows:
+
+
+\[s_2=init-deleteO-addAB-weaklyComplete-SO-SO-SO\]
+
+\[s_3=init-addAB-FixVariable-weaklyComplete-SO-SO-SO\]
+
+Given these strings, and a suitable scoring matrix, it is possible to use a modified version of the Needleman-Wunsch algorithm to estimate the similarity between the original sequence $s_1$ and our two proposed deviations $s_2$ and $s_3$.
+
+%What is important to note is that, unlike in the Needleman-Wunsch algorithm where every part of the sequence shares a single type (i.e. nucleotide, polypeptide, ...)
+
+Creating a scoring matrix for SCPs becomes a very interesting problem. An extremely simple one might look something like Table~\ref{tbl:simpleneed}. This follows an identical pattern to the original algorithm, and the corresponding scoring matrix is given in Table~\ref{tbl:needs1s2} for $s_1$ and $s_2$, and in Table~\ref{tbl:needs1s3} for $s_1$ and $s_3$. USing the Needleman Wunsch algorithm and looking at the traceback, one can see that both comparisons assign a similarity score of 1, but the traceback itself differs.
+
+However, these tables makes one significantly questionable assumption. In the normal Needleman-Wunsch algorithm every part of the sequence shares a single type (i.e. nucleotide, polypeptide, etc). This is emphatically not the case for SCPs where every part of the sequence represents a complex epistemic process. Some of these processes might be very easily and frequently used in reasoning, whereas other might happen only exceedingly rarely. These complex operations might differ markedly from one another. For this reason, the standard Needleman-Wunsch algorithm is inadequate. What is needed is a modification which allows for each type of epistemic operation to be scored independently. This necessitates a table for each operation that details the score for inserting, deleting, matching, or mismatching that particular operation.
+
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c c c c c c c}
+ \textbf{Process} & \textbf{init} & \textbf{addAB} & \textbf{weak} & \textbf{SO} & \textbf{fix} & \textbf{delete}\\ 
+ Match & 1 & 1 & 1 & 0 & 1 & 1\\
+ Mismatch & -2 & -1 & -1 & 0 & -1 & -3\\
+ Insert & -1 & -2 & -2 & 0 & -2 & -3\\
+ Delete & -1 & -2 & -2 & 0 & -2 & -3
+\end{tabular}
+\caption{An arbitrary table for scoring SCPs with the extended Needleman-Wunsch algorithm.}
+\label{tbl:arbneed}
+
+\end{center}
+\end{table}
+
+
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c | c c c c}
+& & init & addAB & weakly  \\ \hline
+& 0 & -1 & -3 & -5  \\
+
+init & -1 & 1 & -1 & -3 \\
+
+delete & -4 &-2  & -2 & -4 \\
+
+addAB & -6 & -4  & -1 & -3 \\
+
+weakly & -8 & -6 & -3 & 0   \\
+ 
+\end{tabular}
+\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_2$, using the extended scoring table Entries in green are part of the optimal traceback.}
+\label{tbl:exneeds1s2}
+
+\end{center}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ c | c c c c}
+& & init & addAB & weakly  \\ \hline
+& 0 & -1 & -3 & -5  \\
+
+init & -1 & 1  & -1 & -3 \\
+
+addAB & -3 & -1  & 2 & 0 \\
+
+fix & -5 & -3 & 0 & 0 \\
+
+weakly & -7 & -4 & -2 & -1   \\
+ 
+\end{tabular}
+\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_3$, using the extended scoring table Entries in green are part of the optimal traceback.}
+\label{tbl:exneeds1s3}
+
+\end{center}
+\end{table}
+
+
+At present, no analysis of existing psychological phenomena and congitive process frequencies with regards to SCPs exists. Until one is created, it suffices to use commonsense scoring mechanisms to demonstrate the suitability of the algorithm for SCPs, if not yet its usefulness. We might, for example, assume that variable fixing (as in $s_3$) is much more likely likely than variable deletion (as in $s_2$). Further we might consider that repeated applications of the semantic operator are negligibly informative about the cognitive state of the subject and so the number of times it is applied ignored entirely. An example of an extended scoring matrix that reflects this hypothesis is given in Table~\ref{tbl:arbneed}. 
+
+One convenient advantage of setting our own table values, means that we can omit the semantic operator complex operation from subsequent tables, as we have set all of its values to 0 and it no longer affects the recursion.
+
+Tables~\ref{tbl:exneeds1s2} and \ref{tbl:exneeds1s3} show the results of using the new scoring system on $s_1s_2$ and $s_1s_3$ respectively. Now final scores of the tables do differ. It appears that, under the assumption than deleting a variable is more mentally expensive than fixing one, $s_3$ is the more cognitively consistent approach to explaining the deviation in the Suppression Task where the classically correct answer is derived.
+
+\subsection{Extensions and Notes}
+
+The Needleman-Wunsch algorithm is generally considered a good introductory algorithm to those learning bioinformatics, it lacks many of the useful features of more advanced algorithms in the field. In a similar way, it was used here to show the suitability of similarity scoring algorithms to SCPs, logical extensions to more advanced string-matching algorithms are easily imagined.
+
+A significant limitation of the Needleman-Wunsch algorithm, and by extensions our algorithm, is the inability to deal with crossovers. That is, the algorithm cannot handle cases where operators or groups of operators are shifted into a new position (imagine cutting the middle out of a piece of string and retying it to the end of the string). This limitation is imposed by many such algorithms to limit the computational complexity of the computation, without this limitation string matching becomes NP-hard.
+
+The Smith-Waterman algorithm \citep{smith1981identification} is a simple variation on the Needleman-Wunsch algorithm and is used to  find optimal local alignments. It could be used to find subsequences of complex actions that are preserved between different SCPs. These subsequences (for example $addAB - weaklycomplete$) may be shown to be present in comparisons of models of different cognitive tasks, and may be considered to show support for common motifs in general human cognition.
+
 \subsection{A Modified Scoring Algorithm} \label{ssec:nw_mod}
 

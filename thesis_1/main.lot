@@ -12,9 +12,15 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {4.1}{\ignorespaces SCP property requirements for precondition types in cognitive operations.\relax }}{23}{table.caption.71}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.\relax }}{30}{table.caption.86}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.\relax }}{30}{table.caption.88}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm.\relax }}{51}{table.caption.159}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_2$. Entries in green are part of the optimal traceback. Match: 1, Mismatch: -1, Insertion: -2, Deletion: -2\relax }}{51}{table.caption.160}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_3$. Entries in green are part of the optimal traceback. Match: 1, Mismatch: -1, Insertion: -2, Deletion: -2\relax }}{51}{table.caption.161}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces An arbitrary table for scoring SCPs with the extended Needleman-Wunsch algorithm.\relax }}{52}{table.caption.162}%
+\contentsline {table}{\numberline {7.5}{\ignorespaces The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_2$, using the extended scoring table Entries in green are part of the optimal traceback.\relax }}{52}{table.caption.163}%
+\contentsline {table}{\numberline {7.6}{\ignorespaces The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_3$, using the extended scoring table Entries in green are part of the optimal traceback.\relax }}{53}{table.caption.164}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

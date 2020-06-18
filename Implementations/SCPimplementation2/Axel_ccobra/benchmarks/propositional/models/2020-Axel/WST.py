@@ -122,11 +122,11 @@ Dprime = basicLogic.atom("D'")
 
 basePointNoAbd=epistemicState.epistemicState('')
 #The possible starting states for the SCP
-#delta_contra=["( 3 | D )"," ( D' | 7 ) "]
-delta_nocontra=["( 3 | D )"]
+delta_contra=["( 3 | D )"," ( D' | 7 ) "]
+#delta_nocontra=["( 3 | D )"]
 #delta1=["( l | e )", "( l | o )"]
-S_nocontra = [""]
-#S_contra = [" ( D <- ! ( D' ) )"]
+#S_nocontra = [""]
+S_contra = ["( ( D ) <- ( !  D'  ) )"]
 
 
 
@@ -137,8 +137,12 @@ abducibs = ['( D <- T )', '( D <- F )', '( K <- T )', '( K <- F )', '( 3 <- T )'
 logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
 
 
-delta1AsLogic = scpNotationParser.stringListToBasicLogic(delta_nocontra)
-S1AsLogic = scpNotationParser.stringListToBasicLogic(S_nocontra)
+delta1AsLogic = scpNotationParser.stringListToBasicLogic(delta_contra)
+S1AsLogic = scpNotationParser.stringListToBasicLogic(S_contra)
+
+print (S1AsLogic)
+
+
 basePointNoAbd['S']=S1AsLogic
 basePointNoAbd['Delta']=delta1AsLogic
 basePointNoAbd['V']=[D, K, three, seven, Dprime]
@@ -208,17 +212,13 @@ print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
 print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
 
 
-"""
-results = task.deNoveSearch(depth=3,searchType='satisfying')
-print ("Results",results)
-"""
+
 
 #test = [ "( ( A ) or ( ( X ) & ( Y ) ) )"]
 #test = ["( ( 3 | D ) or ( D' | 7 ) )"]
 #res = scpNotationParser.stringListToBasicLogic(test)
 
 #print (res)
-
 
 
 

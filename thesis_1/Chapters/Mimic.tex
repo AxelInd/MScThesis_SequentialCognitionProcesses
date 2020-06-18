@@ -121,15 +121,17 @@ The value of these examples lies in that they show that classical logic response
 
 \section{Wason Selection Task}\label{sec:wstSCP}
 
-We define the SCP Task $\Pi=(s_i,M,f(),\gamma)$ to model the WST. The choice of external evaluation function for this task (the turn function), if we are to follow the intuition from Section~\ref{ssec:sup_mod}, has two requirements: it must be able to capture whether an observation $O$ can be explained by the least model of the weakly completed program, and it must ensure that variable assignments which could falsify or verify the conditional rule $(3|D)$, are present in the least model. 
+\begin{figure}
+\centering{\includegraphics[width=\linewidth]{realisedSCPsWST}}
+\label{fig:rSCP_WST}
+\caption{Realised SCPs for the SCP interpretation of the WST $\pi_1=(s_i \longmapsto \texttt{addAB} \longmapsto \texttt{addExp}  \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))$. Results mimic those observed in @TODOref's WST interpretation.}
+\end{figure}
 
-To this end, we add an observation variable $O$ to the definition of turn function, and combine this with the variables for the set of propositional rules $S$, conditional rules $\Delta$, and possible world $V$.
+We define the SCP Task $\Pi=(s_i,M,f(),\gamma)$ to model the general case of the WST. The choice of external evaluation function for this task (the turn function), if we are to follow the intuition from Section~\ref{ssec:sup_mod}, has two requirements: it must be able to capture whether an observation $O$ can be explained by the least model of the weakly completed program, and it must ensure that variable assignments which could falsify or verify the conditional rule $(3|D)$ , are present in the least model. 
 
-Next, we require an intuition for the generation of the initial epistemic state point $s_i$. In this case, abduction can be simulated by the SCP in one of three ways. The first is to create a unique SCP for each possible explanation for each observation as we did for the classical WCS interpretation of the task in Section~\ref{ssec:sup_mod}. But the fact that SCPs may contain an initial state point, rather than just a single epistemic state, enables a more elegant solution that captures the full scope of possible observation, explanation pairings. The other two options are to start with a state point containing each abductive case, or to create cognitive operations which create these abductive cases at computation time.
+To this end, we add a set of abducibles to the categorization variable $R$, and combine this with the variables for the set of propositional rules $S$, conditional rules $\Delta$, and possible world $V$ to create the initial state point $s_i$.
 
-Because SCPs aim to capture as much cognitive information as possible within the CTM as possible, we will prefer this third case and make use of the categorization variable $R$ to specify both the set of observations, and the possible explanations. The cognitive operation \texttt{AddExp} is created.
-
-In a significant alteration to the logic we followed with the WCS approach to the WST, we will create a single SCP to model the turn function for each card. Our initial state for this for this task will contain the initial conditional rule, no propositional rules, and will make use of the categorization variable $R=\{\text{explanations}\}$ to store information about the producible which may added to the epistemic state at some time point. With this in mind we define:
+Next, we require an intuition for the contents of $s_i$. In this case, abduction can be simulated by the SCP in one of three ways. The first is to create a unique SCP for each possible explanation for each observation as we did for the classical WCS interpretation of the task in Section~\ref{ssec:sup_mod}. But the fact that SCPs may contain an initial state point, rather than just a single epistemic state, enables a more elegant solution that captures the full scope of possible observation, explanation pairings. The other two options are to start with a state point containing each abductive case, or to create cognitive operations which add the abducible cases at computation time. To this end we define:
 
 \[
 s_i=(S,\Delta, R)
@@ -143,6 +145,8 @@ S=\{\}
 \[
 R=\{\text{explanations}:\{D\leftarrow \top, D \leftarrow \bot, K\leftarrow \top, K \leftarrow \bot, 3\leftarrow \top, 3 \leftarrow \bot, 7\leftarrow \top, 7\leftarrow \bot\}\}
 \]
+
+Because SCPs aim to capture as much cognitive information as possible within the CTM as possible, we will prefer this third case and make use of the categorization variable $R$ to specify both the set of observations, and the possible explanations. The cognitive operation \texttt{AddExp} is created.
 
 For the purposes of readability, we will restrict examination of the abducibles to cases that are of length 1, and contain only positive facts\footnote{A reader wishing to see this process with respect to the full set of abducibles should examine the \texttt{WST.py} file in the SCP implementation.}.
 
@@ -159,7 +163,7 @@ Let $P=[p_1,...,p_n]$, where $p_i$ is the final state of $r_i$\;
 Let $\eta_i=[\eta_1,...,\eta_n]$, where $\eta_i=p_i[R][\eta]$\;
 Let $O=\{(D,\top),(K,\top),(3,\top),(7,\top)\}$ be the set of observations\;
 Let $C=\{(3|D), (D' | 7)\}$ be the set of conditionals which must be falsified or verified.\;
-Output={}\;
+Output=\{\}\;
 \For{$p_i \in P$}
 {
 run \texttt{isExplanation}($p_i$)\;
@@ -179,9 +183,9 @@ Output[o]:=Output[o]$\cup$ `Do not turn Card'\;
 
 \Return Output
 }
-\Fn{$\texttt{isExplanation}(\pi)$}
+\Fn{$\texttt{isExplanation}(p_i)$}
 {
-\If{$I_{p_i['V']}(p_i['S']) \models (o) \in O$}
+\If{$I_{p_i['V']}(p_i['S']) \models (o \in O)$}
 {
 \tcc{Then $p_i$ explains $o$.}
 Add $p_i$ to the explanations for $o$.
@@ -192,92 +196,122 @@ Add $p_i$ to the explanations for $o$.
 \end{algorithm}
 
 
+Next we create our goals. We will make one goal for each of the canonical cases of the WST. The structure of the goal associates a turn function with every possible observation that needs to be explained.
+
+\[\gamma_{D,3}=\{(\text{D}:\text{turn card}),(\text{3}:\text{turn card}),(\text{K}:\text{turn card}),(\text{7}:\text{do not turn card})\}\]
+\[\gamma_{D}=\{(\text{D}:\text{turn card}),(\text{3}:\text{do not turn card}),(\text{K}:\text{turn card}),(\text{7}:\text{do not turn card})\}\]
+\[\gamma_{D,7}=\{(\text{D}:\text{turn card}),(\text{3}:\text{do not turn card}),(\text{K}:\text{turn card}),(\text{7}:\text{turn card})\}\]
+\[\gamma_{D,3,7}=\{(\text{D}:\text{turn card}),(\text{3}:\text{turn card}),(\text{K}:\text{turn card}),(\text{7}:\text{turn card})\}\]
+
+Next, we define the set of allowable cognitive operations $M$. In this case, because our previous modelling of the general case of the WCS required the addition of explanations from the set of abducibles, we will include the operation \texttt{addExp} (as seen in the SCP Modelling of individual cases of the Suppression Task).
+
+\[M=\{\texttt{addAB}, \texttt{semantic}, \texttt{wc}, \texttt{AddExp}\}\]
+
+The overall planning task, $\Pi$, can now be formulated for the general case of the WST.
+
+\[\Pi=(s_i,M,f_\text{WST}(),\gamma_{D,3})\]
+
+De Novo search for the SCP Plan yields several SCP (differentiated by where the \texttt{addExp} cognitive operation occurs), including this one:
+
+\[\mu_{D,3}=(\pi=(s_i\longmapsto \texttt{addAB} \longmapsto \texttt{addExp} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\}\]
+
+@TODO put in pArray
+\[f_\text{sup}(\pi)=
+\{(\text{D}:\{\text{turn card},\text{do not turn})\},
+(\text{3}:\{\text{turn card},\text{do not turn})\},
+(\text{K}:\{\text{do not turn})\},
+(\text{7}:\{\text{do not turn})\}\}\]
 
 
 
+Figure~\ref{fig:rSCP_WST} demonstrates the calculation of $f(\pi)$ for each positive explanation $\eta$ of length 1. When this task is run for minimal explanations of unrestricted length, the set of conclusions for each card returned by $f_\text{WST}()$ do not change. We find that $\mu_{D,3}\models_\text{weak} \gamma_{D,3}$ and that we should turn the cards $D$, and $3$, precisely as in \cite{dietz2014modeling}'s model.
 
+Thus, it has been shown that the SCP Framework is capable of modelling the general response to the abstract case of the WST.
 
-Figure~@TODOref shows the state point that results from applying this cognitive operation to $s_i=(S=\{\},\Delta=\{(3|D)\},V=\{D,K,3,7\},O=\{\},R=\{'explanations':\{D,K,3,7\}\})$ for cases where $R$ is a single abducible.
+%---------------------------------------Extensions---------------------------------------
 
-Because the intention of this task is to model a known response set for the WST, we must consider some way of generating an SCP in which $f(\pi)\models \gamma$. As before this necessitates an appropriate selection of cognitive functions for $M$. We will make use of the set:
+In order to model the goals $\gamma_{D}$, $\gamma_{D,7}$, and $\gamma_{D,3,7}$, we must again change our SCP Task. These extensions are easily introduced and, the author hopes, will serve as motivation of the practical and intuitive usefulness of the SCP Framework.
 
-\[
-M=\{\texttt{addAB},\texttt{wc},\texttt{semantic}, \texttt{addExp}\}
-\]
-
-Conducting de Novo search on $\Pi$ for each of the observations at this point now returns a state point containing the following CTMs:
-@TODOwegothereish
-\[
-\pi_1=(s_i \longmapsto \texttt{addAB} \texttt{addExp} \longmapsto \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))
-\]
-
-\[
-\pi_2=(s_i \longmapsto \texttt{addExp} \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))
-\]
-
-
-\[
-\mu_D^1=(\pi_1), f(\pi, O=\{D\}))
-\]
-\[
-\mu_D^2=(\pi_2), f(\pi, O=\{D\}))
-\]
-
-\[
-\mu_K^1=(\pi_1), f(\pi, O=\{K\}))
-\]
-\[
-\mu_K^2=(\pi_2), f(\pi, O=\{K\}))
-\]
-
-\[
-\mu_3^1=(\pi_1), f(\pi, O=\{3\}))
-\]
-\[
-\mu_3^2=(\pi_2), f(\pi, O=\{3\}))
-\]
+The simplest of these case to model is  $\gamma_{D}$. This could done by creating the new SCP Task $\Pi_D$.
 
 \[
-\mu_7^1=(\pi_1), f(\pi, O=\{7\}))
+\Pi_D = (s_i, M, \gamma_D, f_\text{WST, simple})
+\]
+
+And defining $f_\text{WST, simple}$ precisely as $f_\text{WST}$ was defined, except that the \texttt{isExplanation} function in Algorithm~\ref{alg:outPutcondition} is changed to that of 
+Algorithm~\ref{alg:outPutconditionModified}.
+
+\begin{algorithm}[H] \label{alg:outPutcondition}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$\texttt{isExplanation}(p_i)$}
+{
+\If{$I_{p_i['V']}(p_i['S']) \models (o \in O)$}
+{
+\tcc{Then $p_i$ explains $o$.}
+Add $p_i$ to the explanations for $o$.
+}
+}
+\caption{\texttt{isExplanation} function as it appears in $\texttt{f}_\text{WST}$.}
+\end{algorithm}
+
+\begin{algorithm}[H] \label{alg:outPutconditionModified}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$\texttt{isExplanation}(p_i)$}
+{
+\tcc{We no require that the observation being explained is an element of the proposed explanations.}
+\If{$I_{p_i['V']}(p_i['S']) \models (o \in O)$ \textbf{AND} $o \in p_i[R][\epsilon]$}
+{
+\tcc{Then $p_i$ explains $o$.}
+Add $p_i$ to the explanations for $o$.
+}
+}
+\caption{\texttt{isExplanation} function as it appears in $\texttt{f}_\text{WST, simple}$.}
+\end{algorithm}
+
+This approach mimics the logic we used to create the Simple WCS Extension in Section~@TODOref. However, there is an alternative approach which I prefer. 
+
+One should note that, while $\mu_{D,3}\models_\text{weak} \gamma_{D,3}$, it is also the case that that `do not turn' $\in f_\text{sup}(\pi)[K]$, $f_\text{sup}(\pi)[D]$, and $ f_\text{sup}(\pi)[7]$, but is not in $ f_\text{sup}(\pi)[D]$. If we treat $f_\text{sup}(\pi)$ sceptically and assume that we only turn a card if there is \textit{no reason not to turn it}, we arrive at the conclusion that only $D$ should be turned.
+
+We define a set of preferred responses which prefers the `do not turn' response as follows (using prefered responses as defined in Section~\ref{ssec:f}):
+\[
+\text{pred}=\{(\text{D}:\text{do not turn}),(\text{3}:\text{do not turn}),(\text{K}:\text{do not turn}),(\text{7}:\text{do not turn})\}
+\]
+
+
+\[
+p(f_\text{WST}(\pi),\text{pred})=\{(\text{D}:\text{turn card}),(\text{3}:\text{do not turn}),(\text{K}:\text{do not turn}),(\text{7}:\text{do not turn})\}
+\]
+
+Now it is clear that $p(f_\text{WST}(\pi),\text{pred})\models \gamma_D$. To return this to an acceptable SCP format, we may simply define $f_\text{WST}^\text{pref}=p(f_\text{WST}(\pi)$ and observe that $f_\text{WST}^\text{pref}\models \gamma_D$ for SCP $\mu_D=(\pi, f_\text{WST}^\text{pref}())$.
+%------------------Contraposition-----------------------------------
+Implementing contraposition in the SCP framework we have defined is suprisingly simple. We simply need to define a new plan $\Pi_\text{D,3,7}$ as follows:
+\[
+\Pi_\text{D,3,7} = (s_i', M, \gamma_{D,3,7}, f_\text{WST}())
 \]
 \[
-\mu_7^2=(\pi_2), f(\pi, O=\{7\}))
+s_i'=(S', \Delta', R)
+\]
+\[
+S'=\{(D \leftarrow \lnot D')\}
+\]
+\[
+\Delta'=\{(3|D),(D'|7)\}
 \]
 
-@TODOcontra, indroduce $(3|D) \land (D' | 7 )$ interpretation using de finetti truth table.
+Simply by adding the contrapositive conditional and its variable initialization, search returns an SCP $\mu_{D,3,7}=(\pi', f_\text{WST}())$, with $f_\text{WST}(\pi')\models_\text{weak} \gamma_{D,3,7}$. Figure~@TODO illustrates this fact for positive explanations of length 1.
 
-\begin{figure}
-\centering{\includegraphics[width=\linewidth]{realisedSCPsWST}}
-\label{fig:rSCP_WST}
-\caption{Realised SCPs for the SCP interpretation of the WST $\pi_1=(s_i \longmapsto \texttt{addAB} \longmapsto \texttt{addExp}  \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))$. Results mimic those observed in @TODOref's WST interpretation.}
-\end{figure}
+Finally, the case where the $D$ and $7$ cards are turned (the classical inference), can be modelled by combining aspects of the SCPs above. We define the SCP Plan $\Pi_\text{D,7}$:
 
-These results are not surprisingly and illustrate two important points. The first is that, for external evaluation functions that only evaluate the final epistemic state $p_n$, $f(\pi_1,O=\{o\})=f(\pi_2,O=\{o\})$ for any observation $o$. Secondly, the non-monotonic cognitive operation \texttt{addExp} means that these SCPs do not necessarily produce a single base point for $p_n$ and it will be necessary to examine the realised SCPs to determine which cards can actually be turned. Figure~\ref{fig:rSCP_WST} shows the realised SCP that can be produced for explanations of length 1 (as with @TODOcite's original WCS interpretation minimal explanations are preferred) using CTM $\pi_1$. @TODOdefineindependenceofcognitiveoperations. 
 
-\begin{figure}
-\centering{\includegraphics[width=\linewidth]{realisedSCPsWST_simple}}
-\label{fig:rSCP_WST_simple}
-\caption{Realised SCPs for the simplified SCP interpretation of the WST $\pi_1=(s_i \longmapsto \texttt{addAB} \texttt{addExp} \longmapsto \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))$.}
-\end{figure}
+\[
+\Pi_\text{D,7} = (s_i', M, f_\text{WST}^\text{pref}(), \gamma_{D,7})
+\]
 
-In order to model the three deviant cases of WST, we follow the same reasoning discussed in Section~@TODOsec and introduce two extensions to our original model: Basic Weak Completion, and Contraposition.
+An running De Novo search over this Task reveals that the SCP $\mu_{D,7}=(\pi, f_\text{WST}^\text{pref}())$ is a satisfying SCP for the goal $\gamma_{D,7}$. Figure~@TODO illustrates this point.
 
-Basic Weak Completion is achieved by formulating a new external evaluation function $f'(\pi)=f(\pi,O=\epsilon)$. Because $I_V(\top)\models \top$, the observation is trivially satisfied and the evaluation function simply depends on whether the possible world of realised SCP assigns values which, if they were otherwise, could violate the conditional $(3|D)$. Figure~\ref{rSCP_WST_simple} illustrates $f'(r)$ for each of the realised SCPs generated in the abductive interpretation of SCPs, where the explanation $\epsilon$  is minimal.
-
-Contraposition can be achieved by creating a new congitive operation \texttt{contra} which applies add the classical modus tolens implications to all conditionals contained in $\Delta$ of the input state.
-
-%------
-\[\texttt{contra}(\textit{input})=(\chi,e)\]
-\[\chi=(\textit{input}\models (\Delta))\]
-\[\Delta' := \Delta\]
-\[\forall_{(\psi|\phi) \in \Delta'}\]:
-\begin{itemize}
-\item $S:=S \cup (\phi'\leftarrow \lnot \phi)$
-\item $\Delta := \Delta\cup (\phi'| \lnot \psi)$
-\item $V:=V\cup(\phi':u)$
-\end{itemize}
-%------
-
+Thus, it has been shown that two CTMs $\pi$, and $\pi'$, in conjunction with the external activation functions $f_\text{WST}()$ and $f_\text{WST}^\text{pref}()$ are able to model individual reasoners in the Wason Selection Task.
 
 
 
