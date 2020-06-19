@@ -72,8 +72,8 @@ class CTM (object):
         pCTM = ""
         for i in self.pCTM:
             pCTM = pCTM + " => "+str(i)
-        return "si"+pCTM 
-        #return s + pCTM
+        #return "si"+pCTM 
+        return s + pCTM
 
     def __repr__(self):
         s = "si"
@@ -81,6 +81,8 @@ class CTM (object):
         for i in self.pCTM:
             pCTM = pCTM + " => "+str(i)
         return s + pCTM     
+    def __len__(self):
+        return len(self.pCTM)+1
     
     def validity_trivial(self,m_prev, m_current):
         return True
@@ -98,7 +100,12 @@ class CTM (object):
         return False
     
         
-        
+    def reversepCTM(self):
+        return self.pCTM[::-1]
+    def NMTransformation(self):
+        rev= self.reversepCTM()
+        self.si=rev[-1]
+        self.pCTM=rev[1:len(rev)]
         
         
         

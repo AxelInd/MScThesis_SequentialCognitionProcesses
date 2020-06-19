@@ -1,46 +1,6 @@
 # Code in this file is modified from the code available publicly at:
 #https://wilkelab.org/classes/SDS348/2019_spring/labs/lab13-solution.html
 
-import CTM
-import CognitiveOperation
-# THE SET OF COGNITIVE OPERATIONS APPROPRIATE TO THE SUPPRESSION TASK
-ADDAB = CognitiveOperation.m_addAB()
-WC = CognitiveOperation.m_wc()
-SEMANTIC = CognitiveOperation.m_semantic()
-ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=4)
-DELETE=CognitiveOperation.m_deleteo()
-
-s_i=[None]
-c = CTM.CTM()
-c.setSi(s_i)
-c.appendm(ADDAB)
-c.appendm(WC)
-c.appendm(SEMANTIC)
-
-d = CTM.CTM()
-d.setSi(s_i)
-d.appendm(ADDAB)
-d.appendm(ABDUCIBLES)
-d.appendm(WC)
-d.appendm(SEMANTIC)
-
-
-print (c)
-print (d)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Use these values to calculate scores
 gap_penalty = -1
@@ -118,14 +78,7 @@ def needleman_wunsch(seq1, seq2):
     for row in score:
         print (row)
     
-    
-    #THIS IS WHERE WE MAKE BIG CHANGES!
     # Create variables to store alignment
-    al1 = CTM.CTM()
-    al2 = CTM.CTM()
-    al1.si==None
-    al2.si==None
-    
     align1 = ""
     align2 = ""
     
@@ -142,71 +95,47 @@ def needleman_wunsch(seq1, seq2):
         
         # Check to figure out which cell the current score was calculated from,
         # then update i and j to correspond to that cell.
-        if score_current == score_diagonal + match_score(str(seq1[j-1]), str(seq2[i-1])):
-            align1 += str(seq1[j-1])
-            align2 += str(seq2[i-1])
-            al1.appendm(seq1[j-1])
-            al2.appendm(seq2[i-1])
+        if score_current == score_diagonal + match_score(seq1[j-1], seq2[i-1]):
+            align1 += seq1[j-1]
+            align2 += seq2[i-1]
             i -= 1
             j -= 1
         elif score_current == score_up + gap_penalty:
-            align1 += str(seq1[j-1])
+            align1 += seq1[j-1]
             align2 += '-'
-            al1.appendm(seq1[j-1])
-            al2.appendm(None)
             j -= 1
         elif score_current == score_left + gap_penalty:
             align1 += '-'
-            
-            align2 += str(seq2[i-1])
-            al1.appendm(None)
-            al2.appendm(seq2[i-1])
+            align2 += seq2[i-1]
             i -= 1
 
     # Finish tracing up to the top left cell
     while j > 0:
-        align1 += str(seq1[j-1])
+        align1 += seq1[j-1]
         align2 += '-'
-        al1.appendm(seq1[j-1])
-        al2.appendm(None)
         j -= 1
     while i > 0:
         align1 += '-'
-        align2 += str(seq2[i-1])
-        al1.appendm(seq2[i-1])
-        al2.appendm(None)
+        align2 += seq2[i-1]
         i -= 1
     
     # Since we traversed the score matrix from the bottom right, our two sequences will be reversed.
     # These two lines reverse the order of the characters in each sequence.
     align1 = align1[::-1]
     align2 = align2[::-1]
-    al1.NMTransformation()
-    al2.NMTransformation()
-    #print (al1)
-    #print (al2)
-    #print (type(align2))
-    return(al1, al2, score)
+    
+    return(align1, align2)
 
+output1, output2 = needleman_wunsch(seq1, seq2)
 
-def maxScore(matrix):
-    #optimal global alignment is always last entry
-    return matrix[-1][-1]
+print(output1 + "\n" + output2)
 
 
 
-"""
-output1, output2, scoreMatrix = needleman_wunsch(seq1, seq2)
-print(output1, "\n", output2)
-"""
 
-output1, output2, scoreMatrix = needleman_wunsch(c, d)
-print(output1,"\n", output2)
 
-for i in scoreMatrix:
-    print (i)
 
-print ("score for alignment:", maxScore(scoreMatrix))
+
 
 
 
