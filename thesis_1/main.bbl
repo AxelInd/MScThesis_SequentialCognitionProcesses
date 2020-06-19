@@ -202,6 +202,34 @@
     \field{year}{1989}
   \endentry
 
+  \entry{de1983bidirectional}{article}{}
+    \name{author}{1}{}{%
+      {{hash=DCD}{%
+         family={De\bibnamedelima Champeaux},
+         familyi={D\bibinitperiod\bibinitdelim C\bibinitperiod},
+         given={Dennis},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM New York, NY, USA}%
+    }
+    \strng{namehash}{DCD1}
+    \strng{fullhash}{DCD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1983}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{number}{1}
+    \field{pages}{22\bibrangedash 32}
+    \field{title}{Bidirectional heuristic search again}
+    \field{volume}{30}
+    \field{journaltitle}{Journal of the ACM (JACM)}
+    \field{year}{1983}
+  \endentry
+
   \entry{dietz2012computational}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=DEA}{%
@@ -280,6 +308,71 @@
     \field{year}{2014}
   \endentry
 
+  \entry{drummond2002accelerating}{article}{}
+    \name{author}{1}{}{%
+      {{hash=DC}{%
+         family={Drummond},
+         familyi={D\bibinitperiod},
+         given={Chris},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DC1}
+    \strng{fullhash}{DC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{pages}{59\bibrangedash 104}
+    \field{title}{Accelerating reinforcement learning by composing solutions of
+  automatically identified subtasks}
+    \field{volume}{16}
+    \field{journaltitle}{Journal of Artificial Intelligence Research}
+    \field{year}{2002}
+  \endentry
+
+  \entry{gonccalves2011modeling}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GB}{%
+         family={Gon{\c{c}}alves},
+         familyi={G\bibinitperiod},
+         given={Bruno},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=PN}{%
+         family={Perra},
+         familyi={P\bibinitperiod},
+         given={Nicola},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=VA}{%
+         family={Vespignani},
+         familyi={V\bibinitperiod},
+         given={Alessandro},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Public Library of Science}%
+    }
+    \strng{namehash}{GBPNVA1}
+    \strng{fullhash}{GBPNVA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2011}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{8}
+    \field{title}{Modeling users' activity on twitter networks: Validation of
+  dunbar's number}
+    \field{volume}{6}
+    \field{journaltitle}{PloS one}
+    \field{year}{2011}
+  \endentry
+
   \entry{heit2005defending}{article}{}
     \name{author}{3}{}{%
       {{hash=HE}{%
@@ -338,6 +431,58 @@
     \field{title}{Weak Completion Semantics and its Applications in Human
   Reasoning.}
     \field{year}{2015}
+  \endentry
+
+  \entry{korf1987planning}{article}{}
+    \name{author}{1}{}{%
+      {{hash=KRE}{%
+         family={Korf},
+         familyi={K\bibinitperiod},
+         given={Richard\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{KRE1}
+    \strng{fullhash}{KRE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1987}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{1}
+    \field{pages}{65\bibrangedash 88}
+    \field{title}{Planning as search: A quantitative approach}
+    \field{volume}{33}
+    \field{journaltitle}{Artificial intelligence}
+    \field{year}{1987}
+  \endentry
+
+  \entry{korf1996artificial}{book}{}
+    \name{author}{1}{}{%
+      {{hash=KRE}{%
+         family={Korf},
+         familyi={K\bibinitperiod},
+         given={Richard\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Citeseer}%
+    }
+    \strng{namehash}{KRE1}
+    \strng{fullhash}{KRE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1996}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{Artificial intelligence search algorithms}
+    \field{year}{1996}
   \endentry
 
   \entry{mcdermott1980non}{article}{}
@@ -433,6 +578,41 @@
     \field{year}{2018}
   \endentry
 
+  \entry{needleman1970general}{article}{}
+    \name{author}{2}{}{%
+      {{hash=NSB}{%
+         family={Needleman},
+         familyi={N\bibinitperiod},
+         given={Saul\bibnamedelima B},
+         giveni={S\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=WCD}{%
+         family={Wunsch},
+         familyi={W\bibinitperiod},
+         given={Christian\bibnamedelima D},
+         giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{NSBWCD1}
+    \strng{fullhash}{NSBWCD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1970}
+    \field{labeldatesource}{}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{number}{3}
+    \field{pages}{443\bibrangedash 453}
+    \field{title}{A general method applicable to the search for similarities in
+  the amino acid sequence of two proteins}
+    \field{volume}{48}
+    \field{journaltitle}{Journal of molecular biology}
+    \field{year}{1970}
+  \endentry
+
   \entry{ccobra}{misc}{}
     \name{author}{1}{}{%
       {{hash=NR}{%
@@ -495,6 +675,48 @@
     \field{booktitle}{CogSci}
     \field{title}{The Wason Selection task: A Meta-Analysis.}
     \field{year}{2017}
+  \endentry
+
+  \entry{ragni2016two}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=RM}{%
+         family={Ragni},
+         familyi={R\bibinitperiod},
+         given={Marco},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DEA}{%
+         family={Dietz},
+         familyi={D\bibinitperiod},
+         given={Emmanuelle-Anna},
+         giveni={E\bibinithyphendelim A\bibinitperiod},
+      }}%
+      {{hash=KI}{%
+         family={Kola},
+         familyi={K\bibinitperiod},
+         given={Ilir},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={H{\"o}lldobler},
+         familyi={H\bibinitperiod},
+         given={Steffen},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RM+1}
+    \strng{fullhash}{RMDEAKIHS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2016}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{Bridging@ IJCAI}
+    \field{pages}{61\bibrangedash 73}
+    \field{title}{Two-Valued Logic is Not Sufficient to Model Human Reasoning,
+  but Three-Valued Logic is: A Formal Analysis.}
+    \field{year}{2016}
   \endentry
 
   \entry{ragni2017formal}{article}{}
@@ -615,6 +837,30 @@
     \field{year}{2017}
   \endentry
 
+  \entry{schaefer1978complexity}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=STJ}{%
+         family={Schaefer},
+         familyi={S\bibinitperiod},
+         given={Thomas\bibnamedelima J},
+         giveni={T\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{STJ1}
+    \strng{fullhash}{STJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1978}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{booktitle}{Proceedings of the tenth annual ACM symposium on Theory
+  of computing}
+    \field{pages}{216\bibrangedash 226}
+    \field{title}{The complexity of satisfiability problems}
+    \field{year}{1978}
+  \endentry
+
   \entry{sigman2008brain}{article}{}
     \name{author}{2}{}{%
       {{hash=SM}{%
@@ -696,6 +942,42 @@
     \field{year}{2015}
   \endentry
 
+  \entry{smith1981identification}{article}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{2}{}{%
+      {{hash=STF}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={Temple\bibnamedelima F},
+         giveni={T\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=WMS}{%
+         family={Waterman},
+         familyi={W\bibinitperiod},
+         given={Michael\bibnamedelima S},
+         giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier Science}%
+    }
+    \strng{namehash}{STFWMS+1}
+    \strng{fullhash}{STFWMS+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1981}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{1}
+    \field{pages}{195\bibrangedash 197}
+    \field{title}{Identification of common molecular subsequences}
+    \field{volume}{147}
+    \field{journaltitle}{Journal of molecular biology}
+    \field{year}{1981}
+  \endentry
+
   \entry{stenning2012human}{book}{}
     \name{author}{2}{}{%
       {{hash=SK}{%
@@ -759,6 +1041,32 @@
     \field{journaltitle}{Reasoning: Studies of human inference and its
   foundations}
     \field{year}{2008}
+  \endentry
+
+  \entry{sweetser1990etymology}{book}{}
+    \name{author}{1}{}{%
+      {{hash=SE}{%
+         family={Sweetser},
+         familyi={S\bibinitperiod},
+         given={Eve},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press}%
+    }
+    \strng{namehash}{SE1}
+    \strng{fullhash}{SE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1990}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{From etymology to pragmatics: Metaphorical and cultural
+  aspects of semantic structure}
+    \field{volume}{54}
+    \field{year}{1990}
   \endentry
 
   \entry{tappin2017heart}{article}{}

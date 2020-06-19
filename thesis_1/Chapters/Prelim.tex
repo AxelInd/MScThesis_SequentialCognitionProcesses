@@ -1,5 +1,5 @@
 \chapter{Mathematical Preliminaries}\label{chp:prelim} 
-\section{Propositional Logic}
+\section{Propositional Logic}\label{ssec:propLog}
 
 \begin{table}
 \begin{center}
@@ -50,16 +50,16 @@ A formula $\theta \in \zeta$ from set of all formuli $\zeta$ is defined recursiv
 \]
 
 
-The material implication $(\psi \leftarrow \phi)$ precisely substitutes the formula for the formula $(\lnot \psi \lor \phi)$ and is often used, classically to denote an ``if $\phi$ then $\psi$" relationship between variables. However, in Section~@TODOref other interpretations of the "if $\phi$ then $\psi$" relationship are examined in a non-monotonic setting.
+The material implication $(\psi \leftarrow \phi)$ precisely substitutes for the formula $(\lnot \psi \lor \phi)$ and is often used, classically to denote an ``if $\phi$ then $\psi$" relationship between variables. However, in Section~\ref{ssec:condi} other interpretations of the "if $\phi$ then $\psi$" relationship are examined in a non-monotonic setting.
 
 An interpretation of $\Sigma$, $I_w(\Sigma)$ assigns each $v_i\ \in \Sigma$ to one value in its domain as defined by possible world $w$. The interpretation of a formula $\theta$, $I_w(\theta)$ is recursively calculated using the associated truth tables of the operators involved, as defined in Table~\ref{tbl:prop}. 
 
 \section{Possible Worlds}
-A possible world $w\in W_\sigma$ from the set of all possible worlds $W$ over a language $\Sigma$ is $(v_0,w_0) \land ... \land I(v_n,w_n)$ and is the conjunction of each atom and an associated value from its domain. Possible worlds represent one setting of the variables in the alphabet that could hypothetically hold. A model of a propositional formula $\theta \in \zeta$ is a possible world $w$ in which $\theta$ is evaluated to $top$ (also called satisfying) and is written $w \models \theta$. 
+A possible world $w\in W_\sigma$ from the set of all possible worlds $W$ over a language $\Sigma$ is $(v_0,w_0) \land ... \land I(v_n,w_n)$ and is the conjunction of each atom and an associated value from its domain. Possible worlds represent one setting of the variables in the alphabet that could hypothetically hold. A model of a propositional formula $\theta \in \zeta$ is a possible world $w$ in which $\theta$ is evaluated to $\top$ (also called satisfying) and is written $w \models \theta$. 
 
 $Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that is, $Mod(\theta)=\{w|w\models \theta\}$. The operator $\models$ is overloaded so that $\phi \models \psi$ if and only if $Mod(\phi) \subseteq Mod(\psi)$ for $\phi,\psi \in \zeta$.
 
-\section{Conditionals}
+\section{Conditionals} \label{ssec:condi}
 \begin{table}
 \begin{center}
 \begin{tabular}{ c | c c c }
@@ -73,14 +73,14 @@ $Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that
 \end{center}
 \end{table}
 
-Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following \citep{wason1968reasoning} we do not use the implication $\leftarrow$ to represent a conditional, and instead opt for a three-valued interpretation of what \citep{baratgin2014new} called a \textit{deFinetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ or $\phi \models \bot$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
+Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following \cite{wason1968reasoning} we do not use the implication $\leftarrow$ to represent a conditional, and instead opt for a three-valued interpretation of what \cite{baratgin2014new} called a \textit{deFinetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ or $\phi \models u$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
 
 \subsection{Interpretation of conditionals} \label{ssec:condInterpretation}
-The precise interpretation of conditionals is a topic for philosophical and logical debate. Approaches both probabilistic and logical can be used to define precisely what a conditional means in the context of a logical system. In this thesis we adopt adopt @TODOrefs interpretation of conditionals as licenses for implication. 
+The precise interpretation of conditionals is a topic for philosophical and logical debate. Approaches both probabilistic and logical can be used to define precisely what a conditional means in the context of a logical system. In this thesis we adopt adopt \cite{stenning2008interpretation}'s interpretation of conditionals as licenses for implication. 
 
 Thus, the conditional $(\psi|\phi)$ precisely means $\psi \leftarrow \phi \land \lnot \text{ab}$ where $\text{ab}$ is called an abnormality predicate. The abnormality predicate captures an element of uncertainty in the interpretation of the conditional and means that the conditional now reflects the statement ``If $\phi$ and nothing abnormal is known, then $\psi$".
 
-The choice of appropriate value assignments to the abnormality predicate is non-trivial and often requires expert knowledge to design. However, over the course of this thesis we will adopt an algorithmic approach to abnormality creation (Algorithm~\ref{alg:addAB}) that will serve to mimic the hand-designed abnormalities used by \citep{dietz2012computational}, and \citep{breu2019weak}.
+The choice of appropriate value assignments to the abnormality predicate is non-trivial and often requires expert knowledge to design. However, over the course of this thesis we will adopt an algorithmic approach to abnormality creation (Algorithm~\ref{alg:addAB}) that will serve to mimic the hand-designed abnormalities used by \cite{dietz2012computational}, and \cite{breu2019weak}.
 
 
 \begin{algorithm}[H] \label{alg:addAB}
@@ -124,7 +124,7 @@ $\Delta:=\{\}$\;
 
 \section{Logic Programming}
 \subsection{Knowledge Base} \label{ssec:kb}
-In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called consistent only if their exists some possible world $w \in W$ such that every rule in $I_w(KB_{prop})$ evaluates to $\top$.
+In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called \textit{consistent} only if there exists some possible world $w \in W$ such that every rule in $I_w(KB_{prop})$ evaluates to $\top$.
 
 More generally, a non-monotonic knowledge base $KB=(S, \Delta)$ contains both a set of propositional rules ($S$) and a set of defeasible/conditional rules ($\Delta=\{\Delta_1,...,\Delta_m\}$). A non-monotonic knowledge base tolerates a conditional $(\psi|\phi)\in\Delta$ if and only if there exists some possible world $w\in W$ that verifies $(\psi|\phi)$ and does not falsify any conditional in $\Delta$. $KB$ is said to be consistent if and only if there exists of partition of $\Delta$, $(\Delta_0,...,\Delta_n)$ such that $\Delta_i$ is tolerated by $\Delta_{i+k}$, where $k$ is any natural number not greater than $m$. 
 
@@ -135,12 +135,12 @@ When $KB=(S=\{\textrm{rule}_1,...,\textrm{rule}_n\},\Delta=\{\})$, we will somet
 
 
 \section{Non-Monotonic Logics}
-In the field of non-monotonic logics, reasoning is represented as a collection of defeasible inferences. Unlike in classical logic, conclusions need not hold in perpetuity, or even in the same model and revision is always possible. Monotonic logics are not capable of describing human reasoning in experiments like the Suppression Task \citep{dietz2012computational} because they lack this revisionist characteristic. @TODOref showed that two-valued logics were not sufficient to model human cognition.
+In the field of non-monotonic logics, reasoning is represented as a collection of defeasible inferences. Unlike in classical logic, conclusions need not hold in perpetuity, or even in the same model and revision is always possible. Monotonic logics are not capable of describing human reasoning in experiments like the Suppression Task \citep{dietz2012computational} because they lack this revisionist characteristic. \cite{ragni2016two} showed that two-valued logics were not sufficient to model human cognition.
 
-A large number of non-monotonic frameworks exist in the literature \citep{mcdermott1980non}, each applicable to a different subset of cognitive problem space, and each modelling their problem space with various degrees of success. In the simplest formulation, a non-monotonic logic is simply an extension to a classical logic which introduces a preference relation $\rightarrow_p$. This preference relation states that, given some number of derivable facts in a knowledge base, the fact derived using the most preferential rule is to be derived first and cannot be overwritten by a less preferable assignment.  
+A large number of non-monotonic frameworks exist in the literature \citep{mcdermott1980non}, each applicable to a different subset of cognitive problem space, and each modelling their problem space with various degrees of success. In the simplest formulation, a non-monotonic logic is an extension to a classical logic which introduces a preference relation $\leftarrow_p$. This preference relation states that, given some number of derivable facts in a knowledge base, the fact derived using the most preferential rule is to be derived first and cannot be overwritten by a less preferable assignment.  
 
-Although the non-monotonic logics discussed in this chapter have simple extensions to first-order logic (@TODOref), we instead restrict ourselves to a propositional format throughout this thesis.
-\section{The Weak Completion Semantics}
+Although the non-monotonic logics discussed in this chapter have simple extensions to first-order logic, we instead restrict ourselves to a propositional format throughout this thesis.
+\section{The Weak Completion Semantics} \label{ssec:wcs}
 \begin{table}
 \begin{center}
 \begin{tabular}{ c | c c c }
@@ -154,7 +154,7 @@ Although the non-monotonic logics discussed in this chapter have simple extensio
 \end{center}
 \end{table}
 
-The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomena (@OTDOextend). The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}), rather than Kripke-Kleene logic which has been shown inadequate to model several aspects of cognition (including suppression @TODOref). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
+The Weak Completion Semantics is a non-monotonic logic which procedurally encodes several well-known cognitive phenomena. The WCS makes use of 3-valued \L ukasiewicz logic (Table~\ref{tbl:luk}), rather than Kripke-Kleene logic which has been shown inadequate to model several aspects of cognition (including suppression \citep{dietz2012computational}). It adds abnormalities to non-ground inferences, and replaces the classical inference ($\leftarrow$), with a bijective ($\leftrightarrow$). 
 
 The Weak Completion of a program $P$ is defined as follows:
 
@@ -164,7 +164,7 @@ The Weak Completion of a program $P$ is defined as follows:
 \item Replace all occurrences of $\leftarrow$ with $\leftrightarrow$.
 \end{enumerate}
 
-Applying this procedure to $P$ results in $wcP$ which is the weak completion of $P$.
+Applying this procedure to $P$ results in $\text{wc }P$ which is the \textit{weak completion} of $P$.
 
 The next requirement to apply the WCS framework is the introduction of a semantic operator $\phi_{SvL}$ \citep{stenning2008interpretation}. Let $J$ be the result of applying the semantics operator to an interpretation $I$ and logic program $P$. Then $J$ is defined as follows:
 
@@ -226,4 +226,7 @@ It should be immediately apparent form this formulation that, for many possible 
 
 A very significant restriction on reiter's default logic is the complexity of computing all inferences. Even in the simple case of $S={rule_1,...rule_n}$ and $d=\{\}$, the set of possible inferences is potential infinitely large, and even the set of non-trivial inferences is computationally infeasible \citep{schaefer1978complexity}. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is a literal.
 
-The closed world assumption $\frac{: \lnot \bot}{\bot}$ states that all information which is not known to be true is assumed to be false. The closed world assumption can be used to ensure that every variable $v_i \in I_w(\Sigma) \models \top \lor bot$.
+The closed world assumption $\frac{: \lnot \bot}{\bot}$ states that all information which is not known to be true is assumed to be false. The closed world assumption can be used to ensure that, for every variable $v_i \in \Sigma$ $I_w(v_i) \models \top$ or $I_w(v_i) \models \bot$.
+
+
+

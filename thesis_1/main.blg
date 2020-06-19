@@ -13,61 +13,61 @@ I couldn't open auxiliary file Chapters/Introduction.aux
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 20 items.
 I couldn't open auxiliary file Chapters/Prelim.aux
----line 99 of file main.aux
+---line 100 of file main.aux
  : \@input{Chapters/Prelim.aux
  :                            }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 25 items.
 I couldn't open auxiliary file Chapters/Experiments.aux
----line 132 of file main.aux
+---line 147 of file main.aux
  : \@input{Chapters/Experiments.aux
  :                                 }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 17 items.
 I couldn't open auxiliary file Chapters/SCP.aux
----line 157 of file main.aux
+---line 172 of file main.aux
  : \@input{Chapters/SCP.aux
  :                         }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 21 items.
 I couldn't open auxiliary file Chapters/Toolbox.aux
----line 170 of file main.aux
+---line 194 of file main.aux
  : \@input{Chapters/Toolbox.aux
  :                             }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 19 items.
 I couldn't open auxiliary file Chapters/Mimic.aux
----line 183 of file main.aux
+---line 220 of file main.aux
  : \@input{Chapters/Mimic.aux
  :                           }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 23 items.
 I couldn't open auxiliary file Chapters/Comparing.aux
----line 184 of file main.aux
+---line 225 of file main.aux
  : \@input{Chapters/Comparing.aux
  :                               }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 21 items.
 I couldn't open auxiliary file Chapters/Program.aux
----line 185 of file main.aux
+---line 235 of file main.aux
  : \@input{Chapters/Program.aux
  :                             }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 18 items.
 I couldn't open auxiliary file Chapters/NSCP.aux
----line 186 of file main.aux
+---line 236 of file main.aux
  : \@input{Chapters/NSCP.aux
  :                          }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 24 items.
 I couldn't open auxiliary file Chapters/Conclusion.aux
----line 187 of file main.aux
+---line 237 of file main.aux
  : \@input{Chapters/Conclusion.aux
  :                                }
 I'm skipping whatever remains of this command
 Reallocating 'name_of_file' (item size: 1) to 22 items.
 I couldn't open auxiliary file Chapters/Appendix.aux
----line 188 of file main.aux
+---line 262 of file main.aux
  : \@input{Chapters/Appendix.aux
  :                              }
 I'm skipping whatever remains of this command
@@ -88,52 +88,52 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: main-blx.bib
 Database file #2: bibl.bib
-Repeated entry---line 227 of file bibl.bib
+Repeated entry---line 234 of file bibl.bib
  : @inproceedings{ragni2017wason
  :                              ,
 I'm skipping whatever remains of this entry
 Biblatex version: 3.13
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 24 entries,
+You've used 34 entries,
             6365 wiz_defined-function locations,
-            1348 strings with 13085 characters,
-and the built_in function-call counts, 174496 in all, are:
-= -- 12972
-> -- 3014
-< -- 959
-+ -- 4130
-- -- 1084
-* -- 13242
-:= -- 18433
+            1411 strings with 14657 characters,
+and the built_in function-call counts, 232594 in all, are:
+= -- 16989
+> -- 4078
+< -- 1315
++ -- 5229
+- -- 1432
+* -- 17610
+:= -- 23888
 add.period$ -- 0
-call.type$ -- 24
-change.case$ -- 593
+call.type$ -- 34
+change.case$ -- 817
 chr.to.int$ -- 48
-cite$ -- 46
-duplicate$ -- 17435
-empty$ -- 15712
-format.name$ -- 1756
-if$ -- 36336
+cite$ -- 66
+duplicate$ -- 23204
+empty$ -- 21333
+format.name$ -- 2355
+if$ -- 48851
 int.to.chr$ -- 0
-int.to.str$ -- 65
+int.to.str$ -- 95
 missing$ -- 0
-newline$ -- 901
-num.names$ -- 1329
-pop$ -- 8341
+newline$ -- 1203
+num.names$ -- 1879
+pop$ -- 11744
 preamble$ -- 1
-purify$ -- 746
+purify$ -- 1008
 quote$ -- 0
-skip$ -- 5110
+skip$ -- 7108
 stack$ -- 0
-substring$ -- 23176
-swap$ -- 4264
-text.length$ -- 691
-text.prefix$ -- 23
+substring$ -- 30115
+swap$ -- 5858
+text.length$ -- 944
+text.prefix$ -- 33
 top$ -- 1
-type$ -- 804
+type$ -- 1144
 warning$ -- 0
-while$ -- 2382
+while$ -- 3042
 width$ -- 0
-write$ -- 878
+write$ -- 1170
 (There were 12 error messages)
