@@ -37,30 +37,51 @@ e.setSi(s_i)
 e.appendm(TH)
 
 
+f = CTM.CTM()
+f.setSi(s_i)
+f.appendm(ADDAB)
+f.appendm(TH)
+f.appendm(WC)
+f.appendm(SEMANTIC)
+
 print (c)
 print (d)
 
+#major changes
+# added insertionCosts, matchRewards, mismatchCosts 
+# removed gap_penalty, match_award, mismatch_penalty
+# match = matchRewards[]
+# mismatchCosts=mismatchCosts[type(alpha)]+ mismatchCosts[type(beta)]
+
+#initialization: top row: cost = cost[-1]+cost of inserting the operation in the top row
+# first col: cost = cost[-1]+cost of inserting the operation in the first col
 
 
 
 
-
-
-
-
-
-
-
-
-
-# Use these values to calculate scores
-gap_penalty = -1
-match_award = 1
-mismatch_penalty = -1
-
-# Make a score matrix with these two sequences
-seq1 = "ATTACA"
-seq2 = "ATGCT"
+insertionCosts={CognitiveOperation.m_addAB: -2,
+                CognitiveOperation.m_wc: -1,
+                CognitiveOperation.m_semantic: -1,
+                CognitiveOperation.m_addAbducibles: -1,
+                CognitiveOperation.m_deleteo:-1,
+                CognitiveOperation.m_dummyOperation:-5,
+                list: -1
+                }
+mismatchCosts={CognitiveOperation.m_addAB: -5,
+                CognitiveOperation.m_wc: -1,
+                CognitiveOperation.m_semantic: -1,
+                CognitiveOperation.m_addAbducibles: -1,
+                CognitiveOperation.m_deleteo:-1,
+                CognitiveOperation.m_dummyOperation:-5,
+                list: -2
+                }
+matchRewards={CognitiveOperation.m_addAB: 1,
+                CognitiveOperation.m_wc: 1,
+                CognitiveOperation.m_semantic:1,
+                CognitiveOperation.m_addAbducibles: 1,
+                CognitiveOperation.m_deleteo:1,
+                CognitiveOperation.m_dummyOperation:1,
+                list: 1}
 
 # A function for making a matrix of zeroes
 def zeros(rows, cols):
@@ -79,12 +100,20 @@ def zeros(rows, cols):
 
 # A function for determining the score between any two bases in alignment
 def match_score(alpha, beta):
-    if alpha == beta:
-        return match_award
-    elif alpha == '-' or beta == '-':
-        return gap_penalty
+    """
+    print ("alpha is ", alpha)
+    print ("alpha", type(alpha))
+    print ("beta", type(beta))
+    print ("beta is ",beta)
+    """
+    if type(alpha) == type(beta):
+        return matchRewards[type(alpha)]
+    elif isinstance(alpha,CognitiveOperation.m_insertionOperation):
+        return insertionCosts[type(beta)]
+    elif isinstance(beta,CognitiveOperation.m_insertionOperation):
+        return insertionCosts[type(alpha)]
     else:
-        return mismatch_penalty
+        return  mismatchCosts[type(alpha)]+ mismatchCosts[type(beta)]
 
 
 
@@ -104,27 +133,27 @@ def needleman_wunsch(seq1, seq2):
     # Calculate score table
     
     # Fill out first column
-    for i in range(0, m + 1):
-        score[i][0] = gap_penalty * i
+    score[0][0]=0
+    for i in range(1, m + 1):
+        
+        score[i][0] = score[i-1][0]+ insertionCosts[type(seq2[i-1])]
+        #score[i][0] = insertionCosts
     
     # Fill out first row
-    for j in range(0, n + 1):
-        score[0][j] = gap_penalty * j
+    for j in range(1, n + 1):
+        score[0][j] = score[0][j-1]+ insertionCosts[type(seq1[j-1])]
     
     # Fill out all other values in the score matrix
     for i in range(1, m + 1):
         for j in range(1, n + 1):
             # Calculate the score by checking the top, left, and diagonal cells
             match = score[i - 1][j - 1] + match_score(seq1[j-1], seq2[i-1])
-            delete = score[i - 1][j] + gap_penalty
-            insert = score[i][j - 1] + gap_penalty
+            delete = score[i - 1][j] + insertionCosts[type(seq2[i-1])]
+            insert = score[i][j - 1] + insertionCosts[type(seq1[j-1])]
             # Record the maximum score from the three possible scores calculated above
             score[i][j] = max(match, delete, insert)
     
     # Traceback and compute the alignment 
-    print ("THE MATRIX IS")
-    for row in score:
-        print (row)
     
     
     #THIS IS WHERE WE MAKE BIG CHANGES!
@@ -147,16 +176,16 @@ def needleman_wunsch(seq1, seq2):
         
         # Check to figure out which cell the current score was calculated from,
         # then update i and j to correspond to that cell.
-        if score_current == score_diagonal + match_score(str(seq1[j-1]), str(seq2[i-1])):
+        if score_current == score_diagonal + match_score(seq1[j-1], seq2[i-1]):
             al1.appendm(seq1[j-1])
             al2.appendm(seq2[i-1])
             i -= 1
             j -= 1
-        elif score_current == score_up + gap_penalty:
+        elif score_current == score_up + insertionCosts[type(seq1[j-1])]:
             al1.appendm(seq1[j-1])
             al2.appendm(NONE)
             j -= 1
-        elif score_current == score_left + gap_penalty:
+        elif score_current == score_left +  insertionCosts[type(seq2[i-1])]:
             al1.appendm(NONE)
             al2.appendm(seq2[i-1])
             i -= 1
@@ -170,11 +199,6 @@ def needleman_wunsch(seq1, seq2):
         al1.appendm(seq2[i-1])
         al2.appendm(NONE)
         i -= 1
-    
-    print ("---")
-    print (al1)
-    print (al2)
-    print ("+++")
     
     # Since we traversed the score matrix from the bottom right, our two sequences will be reversed.
     # These two lines reverse the order of the characters in each sequence.
@@ -213,7 +237,7 @@ print ("score for alignment:", maxScore(scoreMatrix))
 printAlignment(output1,output2)
 
 #align the unrelated SCPs
-output1, output2, scoreMatrix = needleman_wunsch(c, e)
+output1, output2, scoreMatrix = needleman_wunsch(c, f)
 print(output1)
 print(output2)
 

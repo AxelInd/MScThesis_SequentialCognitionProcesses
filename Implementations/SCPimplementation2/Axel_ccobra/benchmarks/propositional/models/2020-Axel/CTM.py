@@ -104,7 +104,8 @@ class CTM (object):
         return self.pCTM[::-1]
     def NMTransformation(self):
         rev= self.reversepCTM()
-        self.si=rev[-1]
+        self.si=rev[0]
+        self.pCTM=None
         self.pCTM=rev[1:len(rev)]
         
         

@@ -18,6 +18,8 @@ class CognitiveOperation(object):
         print ("Checking preconditions")
     def __str__(self):
         return self.name
+    def __repr__(self):
+        return str(self)
     
 
 
@@ -247,7 +249,7 @@ class m_semantic (CognitiveOperation):
 from itertools import combinations
 class m_addAbducibles(CognitiveOperation):
     def __init__(self, maxLength=9999):
-        CognitiveOperation.__init__(self,name="addAbducibles")
+        CognitiveOperation.__init__(self,name="addExp")
         self.maxLength=maxLength
         self.inputStructuralRequirements=['S','R']
         self.outputStructure=['S','R']
@@ -315,10 +317,16 @@ class m_deleteo(CognitiveOperation):
                 newEpi['R']['deleted']=j
                 nextEpis.append(newEpi)
         return nextEpis    
-    
 
+#only used for the NM algorithm
+class m_insertionOperation(CognitiveOperation):
+    def __init__(self):
+        CognitiveOperation.__init__(self,name="INSERT")
 
-
+#this operation is used in place of an undefined operation for scoring
+class m_dummyOperation(CognitiveOperation):
+    def __init__(self,name="dummy"):
+        CognitiveOperation.__init__(self,name=name)
 
        
        
