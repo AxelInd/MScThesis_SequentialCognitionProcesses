@@ -225,5 +225,73 @@ print ("score for alignment:", maxScore(scoreMatrix))
 printAlignment(output1,output2)
 
 
-
+def matrixAsLatexRC(matrix, r, c):
+    s='\\begin{table}\n'
+    s+='\\begin{center}\n'
+    s+='\\begin{tabular}{'
+    s+='c | '
+    s+='c '* (len(matrix[0]))
+    s+='}\n & '
+    for j in range (0,len(r)):
+        s+=str(r[j])+ (' & ' if j!=len(r)-1 else '')
+    s+="\n"
+    for i in range (0,len(matrix)):
+        s+= c[i]+' & '
+        for j in range (0, len(matrix[0])):
+            s+=str(matrix[i][j])+ (' & ' if j!=len(matrix[0])-1 else '')
+            print (j)
+        s+=('' if i==len(matrix)-1 else '\\\\')+ '\n'
+    s+='\\end{tabular}\n'   
+    s+='\caption{no caption}\n'
+    s+='\label{tbl:needsAName}\n'
+    s+='\end{center}\n' 
+    s+='\end{table}\n'
+   
+    return s
+def matrixAsLatex(matrix):
+    s='\\begin{table}\n'
+    s+='\\begin{center}\n'
+    s+='\\begin{tabular}{'
+    s+='c '* len(matrix[0])
+    s+='}\n & '
+    s+="\n"
+    for i in range (0,len(matrix)):
+        
+        for j in range (0, len(matrix[0])):
+            s+=str(matrix[i][j])+ (' & ' if j!=len(matrix[0])-1 else '')
+            print (j)
+        s+=('' if i==len(matrix)-1 else '\\\\')+ '\n'
+    s+='\\end{tabular}\n'   
+    s+='\caption{no caption}\n'
+    s+='\label{tbl:needsAName}\n'
+    s+='\end{center}\n' 
+    s+='\end{table}\n'
+   
+    return s    
+    
+a=[[1,2,3],[4,5,6]]
+topRow=['Made','This']
+firstCold=['Cool', 'This']
+print (matrixAsLatexRC(a, topRow, firstCold))
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 

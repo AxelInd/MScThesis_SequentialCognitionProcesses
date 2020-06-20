@@ -6,9 +6,15 @@ At present, concrete implementations for epistemic state structures and cognitiv
 
 \section{A Modular Programming Approach}
 % talk about each 
-The principle of modular programming is followed in this implementation to the greatest extent possible, thus maximising the ease of modification and upkeep for the program. Figure~@TODOref provides a simplified class diagram to explain how the major components of the system relate to one another.
+The principle of modular programming is followed in this implementation to the greatest extent possible, thus maximising the ease of modification and upkeep for the program. Figure~\ref{scpClassDiagram} provides a simplified class diagram to explain how the major components of the system relate to one another.
 
 \subsection{Most Important Modules}
+
+\begin{figure}
+\centering \includegraphics[width=\linewidth]{scpClassDiagram}
+\caption{Class diagram for the implementation of the SCP Framework.}
+\label{fig:scpClassDiagram}
+\end{figure}
 
 \begin{itemize}
 \item $\texttt{basicLogic}$: an implementation of basic two and three-valued logic.
@@ -17,18 +23,20 @@ The principle of modular programming is followed in this implementation to the g
 \item $\texttt{CognitiveOperations}$: defines the set of cognitive operations as well as the their input and output parameters.
 \item $\texttt{StatePointOperations}$: defines $f(\pi) \models_\text{strict} \gamma$ and $f(\pi) \models_\text{weak} \gamma$ determining if a given SCP meets a given set of output criteria.
 \item $\texttt{truthTables}$: a set of truth tables for each operator defined in \texttt{basicLogic}.
+\item $texttt{SCP\_scoring}$: an implementation of the Needleman-Wunsch Algorithm for SCPs described in Chapter~\ref{chp:comparing}
+\item $texttt{SCP\_scoring\_extending}$: an implementation of the extended Needleman Wunsch Algorithm for SCPs described in Chapter~\ref{chp:comparing}
 \end{itemize}
 
 \subsection{Program Flow}
 \begin{figure}
 \centering \includegraphics[width=\linewidth]{SCP_Use_Cases}
-\caption{Two use cases for the implementation of the SCP framework}.
+\caption{Two use cases for the implementation of the SCP framework}
 \label{fig:SCP_Use_Cases}
 \end{figure}
 
 
 
-Diagram~\ref{fig:SCP_Use_Cases} illustrates the basic programmatic flow used to model either a known SCP or known empirical result set using the SCP Framework. In the appendix, Figure~\ref{suppression_python} provides a code snippet to show exactly how the general case of the Suppression Task is modelled in the SCP framework.
+Diagram~\ref{fig:SCP_Use_Cases} illustrates the basic programmatic flow used to model either a known SCP or known empirical result set using the SCP Framework. In the appendix, Figure~\ref{fig:sup_snippet} provides a code snippet to show exactly how the general case of the Suppression Task is modelled in the SCP framework.
 
 
 
@@ -39,7 +47,7 @@ Diagram~\ref{fig:SCP_Use_Cases} illustrates the basic programmatic flow used to 
 \end{itemize}
 
 \section{External Framework Integration}
-At present work is ongoing to integrate the SCP framework with \texttt{CCOBRA} \citep{\citep{ccobra}}.
+At present work is ongoing to integrate the SCP framework with \texttt{CCOBRA} \citep{ccobra}.
 
 
 

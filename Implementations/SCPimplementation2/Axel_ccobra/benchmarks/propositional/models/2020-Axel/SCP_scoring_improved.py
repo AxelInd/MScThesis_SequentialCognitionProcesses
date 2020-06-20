@@ -16,7 +16,7 @@ SEMANTIC = CognitiveOperation.m_semantic()
 ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=4)
 DELETE=CognitiveOperation.m_deleteo()
 
-s_i=[None]
+s_i=['$s_\text{WST}$']
 c = CTM.CTM()
 c.setSi(s_i)
 c.appendm(ADDAB)
@@ -59,21 +59,21 @@ print (d)
 
 
 
-insertionCosts={CognitiveOperation.m_addAB: -2,
+insertionCosts={CognitiveOperation.m_addAB: -1,
                 CognitiveOperation.m_wc: -1,
                 CognitiveOperation.m_semantic: -1,
                 CognitiveOperation.m_addAbducibles: -1,
                 CognitiveOperation.m_deleteo:-1,
-                CognitiveOperation.m_dummyOperation:-5,
+                CognitiveOperation.m_dummyOperation:-1,
                 list: -1
                 }
-mismatchCosts={CognitiveOperation.m_addAB: -5,
+mismatchCosts={CognitiveOperation.m_addAB: -1,
                 CognitiveOperation.m_wc: -1,
                 CognitiveOperation.m_semantic: -1,
                 CognitiveOperation.m_addAbducibles: -1,
                 CognitiveOperation.m_deleteo:-1,
-                CognitiveOperation.m_dummyOperation:-5,
-                list: -2
+                CognitiveOperation.m_dummyOperation:-1,
+                list: -1
                 }
 matchRewards={CognitiveOperation.m_addAB: 1,
                 CognitiveOperation.m_wc: 1,
@@ -218,12 +218,40 @@ def printAlignment(align1,align2):
         return []
     for i in range(0, len(align1)):
         print ("{}{:>20}".format(str(align1[i]),str(align2[i])))
+        
+def matrixAsLatexRC(matrix, r, c):
+    s='\\begin{table}\n'
+    s+='\\begin{center}\n'
+    s+='\\begin{tabular}{'
+    s+='c | '
+    s+='c '* ((len(matrix[0])))
+    s+='}\n & & '
+    for j in range (0,len(r)):
+        s+=str(r[j])+ (' & ' if j!=len(r)-1 else '')
+    s+="\\\\\n"
+    s+="\\hline\n"
+    for i in range (0,len(matrix)):
+        print (i)
+        if i>=1:
+            s+= str(c[i-1])+' & '
+        else:
+            s+=' & '
+        for j in range (0, len(matrix[0])):
+            s+=str(matrix[i][j])+ (' & ' if j!=len(matrix[0])-1 else '')
+        s+=('' if i==len(matrix)-1 else '\\\\')+ '\n'
+    s+='\\end{tabular}\n'   
+    s+='\caption{no caption}\n'
+    s+='\label{tbl:needsAName}\n'
+    s+='\end{center}\n' 
+    s+='\end{table}\n'
+   
+    return s
 
 """
 output1, output2, scoreMatrix = needleman_wunsch(seq1, seq2)
 print(output1, "\n", output2)
 """
-
+"""
 #align the related SCPs
 output1, output2, scoreMatrix = needleman_wunsch(c, d)
 print(output1)
@@ -243,11 +271,13 @@ print(output2)
 
 for i in scoreMatrix:
     print (i)
+"""
+output1, output2, scoreMatrix = needleman_wunsch(e, d)
 
 print ("score for alignment:", maxScore(scoreMatrix))
 
 printAlignment(output1,output2)
 
-
+print (matrixAsLatexRC(scoreMatrix,e,d))
 
 

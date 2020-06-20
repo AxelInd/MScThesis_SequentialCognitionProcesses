@@ -11,9 +11,8 @@ mismatch_penalty = -1
 seq1 = "ATTACA"
 seq2 = "ATGCT"
 
-seq1 = ['Axel', 'Tom', 'Tom', 'Axel', 'Cait', 'Axel']
-seq2 = ['Axel', 'Tom', 'George', 'Cait', 'Tom']
-
+#seq1 = "ATT"
+#seq2 = "ATG"
 # A function for making a matrix of zeroes
 def zeros(rows, cols):
     # Define an empty list
@@ -124,14 +123,62 @@ def needleman_wunsch(seq1, seq2):
     align1 = align1[::-1]
     align2 = align2[::-1]
     
-    return(align1, align2)
+    return(align1, align2, score)
 
-output1, output2 = needleman_wunsch(seq1, seq2)
+
+def matrixAsLatexRC(matrix, r, c):
+    s='\\begin{table}\n'
+    s+='\\begin{center}\n'
+    s+='\\begin{tabular}{'
+    s+='c | '
+    s+='c '* ((len(matrix[0])))
+    s+='}\n & & '
+    for j in range (0,len(r)):
+        s+=str(r[j])+ (' & ' if j!=len(r)-1 else '')
+    s+="\\\\\n"
+    for i in range (0,len(matrix)):
+        print (i)
+        if i>=1:
+            s+= c[i-1]+' & '
+        else:
+            s+=' & '
+        for j in range (0, len(matrix[0])):
+            s+=str(matrix[i][j])+ (' & ' if j!=len(matrix[0])-1 else '')
+        s+=('' if i==len(matrix)-1 else '\\\\')+ '\n'
+    s+='\\end{tabular}\n'   
+    s+='\caption{no caption}\n'
+    s+='\label{tbl:needsAName}\n'
+    s+='\end{center}\n' 
+    s+='\end{table}\n'
+   
+    return s
+def matrixAsLatex(matrix):
+    s='\\begin{table}\n'
+    s+='\\begin{center}\n'
+    s+='\\begin{tabular}{'
+    s+='c '* len(matrix[0])
+    s+='}\n & '
+    s+="\n"
+    for i in range (0,len(matrix)):
+        
+        for j in range (0, len(matrix[0])):
+            s+=str(matrix[i][j])+ (' & ' if j!=len(matrix[0])-1 else '')
+        s+=('' if i==len(matrix)-1 else '\\\\')+ '\n'
+    s+='\\end{tabular}\n'   
+    s+='\caption{no caption}\n'
+    s+='\label{tbl:needsAName}\n'
+    s+='\end{center}\n' 
+    s+='\end{table}\n'
+   
+    return s   
+
+
+output1, output2, matrix = needleman_wunsch(seq1, seq2)
 
 print(output1 + "\n" + output2)
 
 
-
+print (matrixAsLatexRC(matrix,seq1,seq2))
 
 
 

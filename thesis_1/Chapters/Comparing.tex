@@ -1,6 +1,6 @@
 \chapter{Comparing SCPs} \label{chp:comparing}
 \section{Why do we need to compare SCPs?} \label{sec:whyCompare}
-The ability to compare the feasibility of different solutions is an essential step in any computational process in which multiple solutions produce the desired output. Consider a toy example of an SCP task which describes the mental process needed to bake a cake:
+The ability to compare the feasibility of different solutions is an essential step in any computational process in which multiple approaches produce the desired output. Consider a toy example of an SCP task which describes the mental process needed to bake a cake:
 
 \[
 \Pi = (s_0, M, \gamma, f())
@@ -24,11 +24,11 @@ f(x)= \left\{ \begin{split} cakeBaked \models \top & & & \textrm{True}\\ cakeBak
 Without specifying the precise details of the complex operations in $M$, and simply using our intuition of the effects of these actions, we can draw some candidate SCPs. Candidate SCPs such as $f(s_0 \longmapsto \texttt{mixIngredients})$ do not result in the cake being baked and so are discounted immediately. However, consider a case where the modelling algorithm being used has come up with two possible SCPs to explain the processes chosen by the participant:
 
 \begin{equation} \label{eq:bakeCake}
-SCP_1 = f(s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients})
+\mu_1 = (\pi_1=s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients},f())
 \end{equation}
 
 \begin{equation} \label{eq:bakeCakeLaundry}
-SCP_2 = f(s_0 \longmapsto \texttt{mixIngredients} \longmapsto  \texttt{doTheLaundry} \longmapsto \texttt{bakeIngredients})
+\mu_2 = (\pi_2 = s_0 \longmapsto \texttt{mixIngredients} \longmapsto  \texttt{doTheLaundry} \longmapsto \texttt{bakeIngredients},f())
 \end{equation}
 
 Intuitively, both of these operational sequences would result in a cake being baked and $f(X)$ returning $true$, and thus, both are candidate solutions to the SCP task given. However, both of these solutions may not be equally \textit{plausible}. Why would someone need to do their laundry to make a cake? We can concoct wild scenarios in which the participant's house is so full of dirty laundry that access to the oven it restricted, but this seems implausible. Most readers would agree that Equation~\ref{eq:bakeCake} is more plausible that Equation~\ref{eq:bakeCakeLaundry}.
@@ -41,193 +41,193 @@ Section~\ref{ssec:compGen} discusses the question of how to compare different SC
 \subsection{Scoring}
 Cognitive modelling as a science that exists, in part, to replicate the empirical results of human reasoning suffers from a painful truth: just because a solution is simple, elegant and seemingly well-justified, it does not follow that that solution is correct. Indeed, that solution might completely fail to explain experimental data from a cognitive task, and must then be discounted. However in the fields of string-matching, etymology, and homological evolution \citep{sweetser1990etymology} \citep{needleman1970general} , mathematically consistent approaches to scoring are still generally a good starting point. And so we carry that assumption into the field of cognitive modellings and assume that, in the absence of directly contradictory empirical data, certain properties related to finding the optimal sequence of cognitive operations are desirable, whilst others are not.
 
-In general the easiest way to compare two distinct objects is to quantify some subset of their properties and use these properties to rank the objects. Continuing with the toy example in Section~\ref{sec:whyCompare} we will attempt to create a commonsense scoring mechanism to determine whether $SCP_1$ or $SCP_2$ is a more cognitively plausible solution to baking a cake. A great many possible criteria exist for scoring these two SCPs, but we will focus on just two of them: the length of the SCP, and the plausibility of each cognitive operation that occurs in either SCP.
+In general the easiest way to compare two distinct objects is to quantify some subset of their properties and use these properties to rank the objects. Continuing with the toy example in Section~\ref{sec:whyCompare} we will attempt to create a commonsense scoring mechanism to determine whether $\mu_1$ or $\mu_2$ is a more cognitively plausible solution to baking a cake. A great many possible criteria exist for scoring these two SCPs, but we will focus on just two of them: the length of the SCP, and the plausibility of each cognitive operation that occurs in either SCP.
 
 \subsubsection{SCP Length}
 Perhaps the simplest and most intuitive way to decide which of two SCPs is best suited to solving a specific problem is to prefer the shortest one. In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions, value changes) would be necessary to turn each of these genetic sequences into each other sequence. The same logic can be applied to SCPs for those SCPs generated using either \textit{De Novo} or \textit{Insertion Search} (Section~\ref{ssec:scpSearch}).
 
-In the case of \textit{De Novo} search, we assume assume that the optimal length of a solution to $\Pi$ is an SCP length $l=|X|=0$. This optimal solution obviously does not exist in this case $f(s_0) \not\models (cakeBaked = \top)$, but it serves as a way of implicitly preferring shorter SCPs, as those will require fewer insertion operations to satisfy $f(x)$. 
+If we define the length $|\mu|$ of an SCP $\mu=\{\pi,f()\}$ to be number of cognitive operations present in $\pi$. In the case of \textit{De Novo} search, we assume assume that the optimal length of a solution to $\Pi$ is an SCP $\mu^*=(\pi^*,f())$ with length $|\mu^*|=0$. This optimal solution obviously does not exist in this case $f(s_0) \not\models (cakeBaked = \top)$, but it serves as a way of implicitly preferring shorter SCPs, as those will require fewer insertion operations to satisfy $f(x)$. 
 
-Using this simple test criteria: $|SCP_1| < |SCP_2|$, therefore $SCP_1$ is prefered because it requires only $2$ operations to transform the ideal SCP $f(s_0)$ into $f(s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients})$, rather than the $3$ required for $SCP_2$.
-
-The case for \textit{Insertion search} follows identical logic in order to model deviations from the general reasoner, but uses an ideal SCP which is the known SCP for the general case.
+Using this simple test criteria: $|\mu_1| < |\mu_2|$, therefore $\mu_1$ is preferred because it requires only $2$ operations to transform the ideal SCP $f(s_0)$ into $f(s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients})$, rather than the $3$ required for $mu_2$.
 
 Though simple, this scoring procedure provides the foundations upon which more complex scoring algorithms will be built for the remainder of this section.
 
+\subsubsection*{Limitations}
+
+Unfortunately, the SCP Length approach fails to capture anything about the \textit{relationship} between the SCPs being scored. Let us examine the following three SCPs, all generated whilst modelling the Wason Selection Task:
+\[
+\pi_\text{WST}=(s_{WST} \longmapsto \texttt{addAB} \longmapsto \texttt{addExp} \longmapsto \texttt{wc} \longmapsto \texttt{semantic})
+\]
+\[
+\pi_\text{prop}=(s_{WST} \longmapsto \texttt{th})
+\]
+\[
+\mu_{D,3}=(\pi_{WST},f_\text{WST}())
+\]
+\[
+\mu_{D,7}=(\pi_\text{WST},f_\text{WST}^\text{pref}())
+\]
+\[
+\mu'_{D,7}=(\pi_\text{prop},f_\text{WST}^\text{pref}())
+\]
+
+Using SCP Length, $|\mu_{D,7}|=4$ and $|\mu'_{D,7}|=1$ and we would would conclude that $|\mu'_{D,7}|=1$ is the more probable SCP.
+
+In isolation, given only $|\mu_{D,7}|$ and $\mu'_{D,7}$, this conclusion makes some sense. $\mu'_{D,7}$ is indeed significantly shorter, and can be achieved with a single cognitive operation. But our information about these SCPs comes with more context than that. Assume that we are certain that $\mu_{D,3}$ is an accurate model for some other related cognitive task. Now it seems plausible that the solution to a related cognitive task may be an offshoot of an underlying core process. From this perspective, if we belief that $\mu_{D,3}$ has an underlying model in common (save for some `mutations' which add or remove cognitive operations) with the solution to the task to turn the $D$ and $3$ cards, $\mu_{D,7}$ seems significantly more likely than $\mu'_{D,7}$.
+
 \section{Comparing External SCPs} \label{ssec:compExt}
+
+One of the core principles of biological scoring algorithms is the intuition that the genetic structures being analysed share a common ancestor at some point in the post. With this assumption it becomes possible to model precisely what genetic mutations one sequence might have undergone to become the other.
+
+This intuition carries surprisingly well into the field of cognitive modelling where researchers very often search for common core mechanisms shared between different reasoners, or across different cognitive tasks. Concepts like the Diversity Principle\citep{heit2005defending}, and denial of the antecedent are often shown be powerful predictors of participant responses.
+
+To this end, I propose that the concept of a shared underlying cognitive process in cognitive modelling can be considered analogous to the concept of shared ancestry in genetic sequences. If we assume that the SCP Framework is a valid mechanism for human cognition, it becomes possible to use these biological principle to compare and score SCPs.
+
 \subsection{The Needleman-Wunsch Algorithm} \label{ssec:nw}
-In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions) would be necessary to turn each of these sequences into each other sequence.
 
 \begin{table}
 \begin{center}
 
-\begin{tabular}{ c c }
- \textbf{Process} & \textbf{Score} \\ 
- Match & 1 \\
- Mismatch & -1 \\
- Insert & -2 \\
- Delete & -2
+\begin{tabular}{ c c c}
+ \textbf{Event}&\textbf{Process} & \textbf{Score} \\ 
+ \hline
+ $x=y$ & Match & 1 \\
+ $x\neq y$, $x \neq $`-', $y \neq $`-' & Mismatch & -1 \\
+ $x=$`-',& Insert & -1 \\
+ $y=$`-'& Delete & -1
 \end{tabular}
-\caption{A very simple table for scoring SCPs with the Needleman-Wunsch algorithm.}
+\caption{A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.}
 \label{tbl:simpleneed}
 
 \end{center}
 \end{table}
 
+\begin{table}
+\begin{center}
+\begin{tabular}{c | c c c c c c c }
+ & & A & T & T & A & C & A\\
+ \hline
+ & 0 & -1 & -2 & -3 & -4 & -5 & -6\\
+A & -1 & 1 & 0 & -1 & -2 & -3 & -4\\
+T & -2 & 0 & 2 & 1 & 0 & -1 & -2\\
+G & -3 & -1 & 1 & 1 & 0 & -1 & -2\\
+C & -4 & -2 & 0 & 0 & 0 & 1 & 0\\
+T & -5 & -3 & -1 & 1 & 0 & 0 & 0
+\end{tabular}
+\caption{Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref{tbl:simpleneed}.}
+\label{tbl:NW_nucleotides}
+\end{center}
+\end{table}
+
+
+In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions) would be necessary to the genetic sequence of one of those animals into the other. \cite{needleman1970general} proposed a simple scoring algorithm to determine how similar two genetic sequences were to one another by computing how many insertions, deletions, and mutations the first sequence would have to undergo to become the second sequence, and assigned a quantitative penalty or reward to each of these events. 
+
+Needleman's recursion makes use of a dynamic programming approach and \textit{score matrix} $D$ to score two sequences efficiently ($O(nm)$ time and $O(nm)$ space complexity for sequences of length $n$ and $m$, respectively). The recursion for his algorithm for sequences $a$ and $b$ is as follows:
+\[
+D_{0,j}=d \times j
+\]
+\[
+D_{i,0}=d \times i
+\]
+\[
+D_{i,j}=\text{min}
+\begin{pmatrix}
+D_{i-1,j-1} & + & s(a_i,b_j)\\
+D_{i-1,j} & + & s(a_i, - )\\
+D_{i,j-1} & + & s(-,b_j)
+\end{pmatrix}
+\]
+Where an example of the costs $s(x,y)$ is given by Table~\ref{tbl:simpleneed}. Matches are usually positively scored (desirable), and mismatches, insertions, and deletions, are usually negatively scored (undesirable).
+
+Needleman also defined a traceback algorithm to show what this optimal global alignment was. The traceback begins at the bottom right corner of the $D$ matrix and for, position $D_{i,j}$, calculates which neighbouring value $D_{i-1,j-1}$, $D_{i-1,j}$, $D_{i,j-1}$ would result in $D_{i,j}$ when added to the cost of match/mismatch, insertion and deletion respectively. We will not detail this aspect of the algorithm beyond this point because our interest lies in the scoring itself, rather than the traceback.
+
+Table~\ref{tbl:NW_nucleotides} shows the scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$, and the optimal alignment is given by:
+\[
+\begin{pmatrix}
+A & T & T & A & C & A \\
+A & - & T & G & C & T
+\end{pmatrix}
+\]
+Where $-$ denotes an insertion or deletion.
+
+\subsubsection{Needleman-Wunsch for SCPs}
 
 \begin{table}
 \begin{center}
-
-\begin{tabular}{ c | c c c c c c}
-& & init & addAB & weakly  & SO & SO \\ \hline
-& \textcolor{green}{0} & -2 & -4 & -6 & -8 & -10 \\
-
-init & -2 & \textcolor{green}{1} & -1 & -3 & -5 & -7 \\
-
-delete & -4 & \textcolor{green}{-1} & 0 & -2 & -4 & -6 \\
-
-addAB& -6 & -3 & \textcolor{green}{0} &-1 &  -3 & -5 \\
-
-weakly& -8 & -5 & -2 & \textcolor{green}{1} & -1 & -3 \\
-
-SO & -10 & -7 &  -4 & \textcolor{green}{-1} & 2 & 0 \\
-
-SO & -12 & -9 & -6 & -3 & \textcolor{green}{0} & 3\\
-
-SO & -14 & -11 & -8 & -5 & -2 & \textcolor{green}{1} 
- 
+\begin{tabular}{c | c c c c c c }
+ & & $s_\text{WST}$ & addAB & addExp & wc & semantic\\
+ \hline
+ & 0 & -1 & -2 & -3 & -4 & -5\\
+$s_\text{WST}$ & -1 & 1 & 0 & -1 & -2 & -3\\
+addAB & -2 & 0 & 2 & 1 & 0 & -1\\
+addExp & -3 & -1 & 1 & 3 & 2 & 1\\
+wc & -4 & -2 & 0 & 2 & 4 & 3\\
+semantic & -5 & -3 & -1 & 1 & 3 & 5
 \end{tabular}
-\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_2$. Entries in green are part of the optimal traceback. Match: 1, Mismatch: -1, Insertion: -2, Deletion: -2}
-\label{tbl:needs1s2}
-
+\caption{Needleman-Wunsch comparison of $\mu_{D,3}$ to $\mu_{D,7}$}
+\label{tbl:compD3D7}
 \end{center}
 \end{table}
 
 \begin{table}
 \begin{center}
-
-\begin{tabular}{ c | c c c c c c}
-& & init & addAB & weakly  & SO & SO \\ \hline
-& \textcolor{green}{0}  & -2  & -4 & -6  & -8  & -10 \\
-
-init & -2 & \textcolor{green}{1} & -1 & -3 & -5 & -7 \\
-
-addAB & -4 & -1 & \textcolor{green}{2} & 0 & -2 & -4 \\
-
-fix &-6 & -3 & \textcolor{green}{0} & 1 & -1 & -3  \\
-
-weakly& -8& -5 & -2 & \textcolor{green}{1} & 0 & -2  \\
-
-SO & -10& -7 & -4 & \textcolor{green}{-1} & 2 & 1  \\
-
-SO & -12& -9 & -6 & -3 & \textcolor{green}{0} & 3  \\
-
-SO & -14 & -11 & -8 & -5 & -2 & \textcolor{green}{1}  \\
- 
+\begin{tabular}{c | c c c c c c }
+ & & $s_\text{WST}$ & addAB & addExp & wc & semantic\\
+\hline
+ & 0 & -1 & -2 & -3 & -4 & -5\\
+$s_\text{WST}$ & -1 & 1 & 0 & -1 & -2 & -3\\
+th & -2 & 0 & -1 & -2 & -3 & -4
 \end{tabular}
-\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_3$. Entries in green are part of the optimal traceback. Match: 1, Mismatch: -1, Insertion: -2, Deletion: -2}
-\label{tbl:needs1s3}
-
+\caption{Needleman-Wunsch comparison of $\mu_{D,3}$ to $\mu'_{D,7}$}
+\label{tbl:compD3D7prime}
 \end{center}
 \end{table}
 
-A linear SCP can be represented using a single string. For example the SCP for the Suppression task (Figure~\ref{fig:supnormal}) might be represented with the string:
+The initial extension of the Needleman-Wunsch algorithm to the SCP framework is surprisingly simple. Because known SCPs are guaranteed to consist of a linear, finite sequence of cognitive operations, and comparison between cognitive operations is possible (two cognitive operations are equal if they have the same name), the only thing the SCP framework lacks is a way to represent insertions and deletions. To this end we define the \texttt{insert} cognitive operation. 
 
-\[s_1=init-addAB-weaklyComplete-SO-SO\]
+\begin{algorithm}[H] \label{cogOp:insert}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$e$($\bar{p}$)}
+{
+\Return $\bar{p}$
+}
 
-Which simply denotes the sequence of complex actions in the SCP. Similarly, our two modified SCPs for the deviant case can be denoted as follows:
+\caption{\texttt{insert}$(\bar{p})$: fixes a variable name $v$, defined \textit{a priori}}
+\end{algorithm}
 
+Like the $\texttt{th}$ operation, \texttt{insert} has no function in an SCP Task, and is not assumed to be a function with an analogue in human reasoning. Instead it is a placeholder function that represents some unknown function in the shared cognitive process from which both SCPs are assumed to originate.
 
-\[s_2=init-deleteO-addAB-weaklyComplete-SO-SO-SO\]
+Finally, we must decide how the initial epistemic state is to be scored. For now we will simply treat the $s_i$ as if it were a cognitive operation for scoring purposes.
 
-\[s_3=init-addAB-FixVariable-weaklyComplete-SO-SO-SO\]
+Now we can compare out candidate solution SCPs $\mu_{D,7}$ and $\mu'_{D,7}$ using the score system from Table~\ref{tbl:simpleneed} and the Needleman-Wunsch Algorithm. Table~\ref{tbl:compD3D7prime} shows global alignment score of -4 for ($\mu_{D,3}$,$\mu'_{D,7}$), whereas Table~\ref{tbl:compD3D7} has a global alignment score of 5 for ($\mu_{D,3}$,$\mu_{D,7}$) and so $\mu_{D,7}$ is believed to be more similar to $\mu_{D,3}$.
+\[
+\text{align}(\mu_{D,3},\mu'_{D,7}) =
+\begin{pmatrix}
+s_\text{WST} & \texttt{addAB} & \texttt{addExp} & \texttt{wc} & \texttt{semantic} \\
+s_\text{WST} & \texttt{addAB} & \texttt{addExp} & \texttt{wc} & \texttt{semantic}
+\end{pmatrix}
+\]
+\[
+\text{align}(\mu_{D,3},\mu_{D,7}) =
+\begin{pmatrix}
+s_\text{WST} & \texttt{addAB} & \texttt{addExp} & \texttt{wc} & \texttt{semantic} \\
+s_\text{WST} & \texttt{insert} & \texttt{insert} & \texttt{insert} & \texttt{th}
+\end{pmatrix}
+\]
+It is my belief that this technique offers a great deal of insight into which cognitive operations are to be prefered, and, over a sufficiently large number of well-founded SCPs for different cognitive tasks, may help to shape our future theories about what general processing motifs really inform certain aspects of human cognition.
 
-Given these strings, and a suitable scoring matrix, it is possible to use a modified version of the Needleman-Wunsch algorithm to estimate the similarity between the original sequence $s_1$ and our two proposed deviations $s_2$ and $s_3$.
+\subsubsection{Extending Needleman-Wunsch for SCPs}
 
-%What is important to note is that, unlike in the Needleman-Wunsch algorithm where every part of the sequence shares a single type (i.e. nucleotide, polypeptide, ...)
+We have now seen that SCP similarity can be computed using the Needleman-Wunsch algorithm. \texttt{SCP\_ scoring\_ improved} in the implementation of the SCP framework takes this approach one step further and assigns unique scores to matches, mismatches, and insertion operations for every cognitive operation. This allows the researcher to specify intuition about the relative complexity of each cognitive operation. 
 
-Creating a scoring matrix for SCPs becomes a very interesting problem. An extremely simple one might look something like Table~\ref{tbl:simpleneed}. This follows an identical pattern to the original algorithm, and the corresponding scoring matrix is given in Table~\ref{tbl:needs1s2} for $s_1$ and $s_2$, and in Table~\ref{tbl:needs1s3} for $s_1$ and $s_3$. USing the Needleman Wunsch algorithm and looking at the traceback, one can see that both comparisons assign a similarity score of 1, but the traceback itself differs.
+I will not detail this approach further in this thesis because I do not currently have an intuition as to how these scores should be calculated for each operation, but it is worth noting that the implementation exists.
 
-However, these tables makes one significantly questionable assumption. In the normal Needleman-Wunsch algorithm every part of the sequence shares a single type (i.e. nucleotide, polypeptide, etc). This is emphatically not the case for SCPs where every part of the sequence represents a complex epistemic process. Some of these processes might be very easily and frequently used in reasoning, whereas other might happen only exceedingly rarely. These complex operations might differ markedly from one another. For this reason, the standard Needleman-Wunsch algorithm is inadequate. What is needed is a modification which allows for each type of epistemic operation to be scored independently. This necessitates a table for each operation that details the score for inserting, deleting, matching, or mismatching that particular operation.
+\subsection{Limitations of the Needleman-Wunsch Algorithm}
 
-
-\begin{table}
-\begin{center}
-
-\begin{tabular}{ c c c c c c c}
- \textbf{Process} & \textbf{init} & \textbf{addAB} & \textbf{weak} & \textbf{SO} & \textbf{fix} & \textbf{delete}\\ 
- Match & 1 & 1 & 1 & 0 & 1 & 1\\
- Mismatch & -2 & -1 & -1 & 0 & -1 & -3\\
- Insert & -1 & -2 & -2 & 0 & -2 & -3\\
- Delete & -1 & -2 & -2 & 0 & -2 & -3
-\end{tabular}
-\caption{An arbitrary table for scoring SCPs with the extended Needleman-Wunsch algorithm.}
-\label{tbl:arbneed}
-
-\end{center}
-\end{table}
-
-
-
-\begin{table}
-\begin{center}
-
-\begin{tabular}{ c | c c c c}
-& & init & addAB & weakly  \\ \hline
-& 0 & -1 & -3 & -5  \\
-
-init & -1 & 1 & -1 & -3 \\
-
-delete & -4 &-2  & -2 & -4 \\
-
-addAB & -6 & -4  & -1 & -3 \\
-
-weakly & -8 & -6 & -3 & 0   \\
- 
-\end{tabular}
-\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_2$, using the extended scoring table Entries in green are part of the optimal traceback.}
-\label{tbl:exneeds1s2}
-
-\end{center}
-\end{table}
-
-
-\begin{table}
-\begin{center}
-
-\begin{tabular}{ c | c c c c}
-& & init & addAB & weakly  \\ \hline
-& 0 & -1 & -3 & -5  \\
-
-init & -1 & 1  & -1 & -3 \\
-
-addAB & -3 & -1  & 2 & 0 \\
-
-fix & -5 & -3 & 0 & 0 \\
-
-weakly & -7 & -4 & -2 & -1   \\
- 
-\end{tabular}
-\caption{The Needleman-Wunsch Algorithm for scoring the similarity of $s_1$ and $s_3$, using the extended scoring table Entries in green are part of the optimal traceback.}
-\label{tbl:exneeds1s3}
-
-\end{center}
-\end{table}
-
-
-At present, no analysis of existing psychological phenomena and congitive process frequencies with regards to SCPs exists. Until one is created, it suffices to use commonsense scoring mechanisms to demonstrate the suitability of the algorithm for SCPs, if not yet its usefulness. We might, for example, assume that variable fixing (as in $s_3$) is much more likely likely than variable deletion (as in $s_2$). Further we might consider that repeated applications of the semantic operator are negligibly informative about the cognitive state of the subject and so the number of times it is applied ignored entirely. An example of an extended scoring matrix that reflects this hypothesis is given in Table~\ref{tbl:arbneed}. 
-
-One convenient advantage of setting our own table values, means that we can omit the semantic operator complex operation from subsequent tables, as we have set all of its values to 0 and it no longer affects the recursion.
-
-Tables~\ref{tbl:exneeds1s2} and \ref{tbl:exneeds1s3} show the results of using the new scoring system on $s_1s_2$ and $s_1s_3$ respectively. Now final scores of the tables do differ. It appears that, under the assumption than deleting a variable is more mentally expensive than fixing one, $s_3$ is the more cognitively consistent approach to explaining the deviation in the Suppression Task where the classically correct answer is derived.
-
-\subsection{Extensions and Notes}
-
-The Needleman-Wunsch algorithm is generally considered a good introductory algorithm to those learning bioinformatics, it lacks many of the useful features of more advanced algorithms in the field. In a similar way, it was used here to show the suitability of similarity scoring algorithms to SCPs, logical extensions to more advanced string-matching algorithms are easily imagined.
+The Needleman-Wunsch algorithm is generally considered a good introductory algorithm to those learning bioinformatics, but it lacks many of the useful features of more advanced algorithms in the field. In a similar way, it was used here to show the suitability of similarity scoring algorithms to SCPs, logical extensions to more advanced string-matching algorithms are easily imagined.
 
 A significant limitation of the Needleman-Wunsch algorithm, and by extensions our algorithm, is the inability to deal with crossovers. That is, the algorithm cannot handle cases where operators or groups of operators are shifted into a new position (imagine cutting the middle out of a piece of string and retying it to the end of the string). This limitation is imposed by many such algorithms to limit the computational complexity of the computation, without this limitation string matching becomes NP-hard.
 
 The Smith-Waterman algorithm \citep{smith1981identification} is a simple variation on the Needleman-Wunsch algorithm and is used to  find optimal local alignments. It could be used to find subsequences of complex actions that are preserved between different SCPs. These subsequences (for example $addAB - weaklycomplete$) may be shown to be present in comparisons of models of different cognitive tasks, and may be considered to show support for common motifs in general human cognition.
-
-\subsection{A Modified Scoring Algorithm} \label{ssec:nw_mod}
 
