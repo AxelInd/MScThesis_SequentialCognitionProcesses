@@ -17,9 +17,9 @@
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Realised SCPs for the SCP interpretation of the WST $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$. Results mimic those observed in @TODOref's WST interpretation.\relax }}{47}{figure.caption.146}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Class diagram for the implementation of the SCP Framework.\relax }}{58}{figure.caption.177}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Two use cases for the implementation of the SCP framework\relax }}{59}{figure.caption.179}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Class diagram for the implementation of the SCP Framework.\relax }}{58}{figure.caption.178}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Two use cases for the implementation of the SCP framework\relax }}{59}{figure.caption.180}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part1.\relax }}{66}{figure.caption.189}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part2.\relax }}{67}{figure.caption.190}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Code snippet showing how the Suppression Task is modelled in the SCP Framework.\relax }}{68}{figure.caption.193}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part1.\relax }}{66}{figure.caption.190}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part2.\relax }}{67}{figure.caption.191}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Code snippet showing how the Suppression Task is modelled in the SCP Framework.\relax }}{68}{figure.caption.194}%
