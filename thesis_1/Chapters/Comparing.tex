@@ -124,10 +124,10 @@ In the field of Bioinformatics, one of the earliest approaches to determine whic
 
 Needleman's recursion makes use of a dynamic programming approach and \textit{score matrix} $D$ to score two sequences efficiently ($O(nm)$ time and $O(nm)$ space complexity for sequences of length $n$ and $m$, respectively). The recursion for his algorithm for sequences $a$ and $b$ is as follows:
 \[
-D_{0,j}=d \times j
+D_{0,j}=\text{insertion cost} \times j
 \]
 \[
-D_{i,0}=d \times i
+D_{i,0}=\text{deletion cost} \times i
 \]
 \[
 D_{i,j}=\text{min}
@@ -229,5 +229,5 @@ The Needleman-Wunsch algorithm is generally considered a good introductory algor
 
 A significant limitation of the Needleman-Wunsch algorithm, and by extensions our algorithm, is the inability to deal with crossovers. That is, the algorithm cannot handle cases where operators or groups of operators are shifted into a new position (imagine cutting the middle out of a piece of string and retying it to the end of the string). This limitation is imposed by many such algorithms to limit the computational complexity of the computation, without this limitation string matching becomes NP-hard.
 
-The Smith-Waterman algorithm \citep{smith1981identification} is a simple variation on the Needleman-Wunsch algorithm and is used to  find optimal local alignments. It could be used to find subsequences of complex actions that are preserved between different SCPs. These subsequences (for example $addAB - weaklycomplete$) may be shown to be present in comparisons of models of different cognitive tasks, and may be considered to show support for common motifs in general human cognition.
+The Smith-Waterman algorithm \citep{smith1981identification} is a simple variation on the Needleman-Wunsch algorithm and is used to  find optimal local alignments. It could be used to find subsequences of complex actions that are preserved between different SCPs. These subsequences (for example the pCTM $(\texttt{addAB} \longmapsto \texttt{wc}$) may be shown to be present in comparisons of models of different cognitive tasks, and may be considered to show support for common motifs in general human cognition.
 
