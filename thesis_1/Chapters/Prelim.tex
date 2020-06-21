@@ -59,6 +59,8 @@ A possible world $w\in W_\sigma$ from the set of all possible worlds $W$ over a 
 
 $Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that is, $Mod(\theta)=\{w|w\models \theta\}$. The operator $\models$ is overloaded so that $\phi \models \psi$ if and only if $Mod(\phi) \subseteq Mod(\psi)$ for $\phi,\psi \in \zeta$.
 
+A set of propositional clauses $W$ is called \textit{deductively closed}, written $\text{th}(W)$ if it contains every formula $\phi$ that can be logically deduced from $W$. 
+
 \section{Conditionals} \label{ssec:condi}
 \begin{table}
 \begin{center}
@@ -186,47 +188,22 @@ Using $I=<\emptyset, \emptyset>$, the least model of $P$ ($\textrm{lm}_\textrm{\
 \section{Reiter's Default Logic} \label{ssec:reiter}
 Reteir's Default Logic \citep{reiter1980logic} is a non-monotonic framework which allows us to divide the inferential capabilities of a system into those facts and inference rules which are always true (as in classical logic) and those which are are usually true. The second type of inference is the eponymous default rule.
 
-Inferences from the set of immutable facts $S$ are made as with propositional knowledge bases, with the addition of the conclusion of any previously evaluated default rules. The set of default rules $d$ consists rules of the form:
+A Reiter Default Theory $(W,D)$ consists of a background theory $W$, and a set of default rules
+$D$. For our purposes we will restrict both to a propositional, rather than a first-order logic domain. 
 
-\[\frac{\textrm{prerequisite}:\textrm{ justification}_1, \textrm{ ...}, \textrm{ justification}_n}{\textrm{conclusion}}\]
-
-Where \textit{prerequisite}, $\textit{justification}_i$, and \textit{conclusion} are propositional logic clauses. A \textit{conclusion} is valid and added to the set of known variables in $S$ if and only if \textit{prerequisite} holds and no clause $\textit{justification}_i$ holds.
-
-
-A default rule may be applied to a theory if it is entailed by the theory and all of its justifications and conclusions are consistent with the theory. When a default rule is applied, its consequence is added to the background theory.
-
-Formally, inferences in default logic are calculated as follows:
+The set of default rules $D$ consists of a set of tritonic clauses of the form $\delta=\frac{\text{pre}(\delta):\text{just}(\delta)}{\text{cons}(\delta)}$. Where $\text{pre}(\delta)$ is a propositional clause called the precondition, $\text{just}(\delta)$ is a set of propositional clauses and is called the justification, and $\text{cons}(\delta)$ is a propositional clause called the consequence. To maintain consistency, we restrict our background theory to propositional clauses of the form $(\text{head}\leftarrow \text{body})$ and restrict $D$ so that, for any $\delta \in D$, $\text{cons}(\delta)$ is of the form $(\text{head}\leftarrow \text{body})$.%, where $\text{head}$ is a literal, and $\text{body}$ is a clause $\theta$ recursively defined by $\theta = \{ v_i \in \Sigma | \lnot \theta | \theta \lor \theta | \theta \land \theta\}$.
 
 
+A default $\delta$ is \textit{applicable} to a deductively closed set $\text{th}(W)$ if and only if $\text{pre}(\delta) \in \text{th}(W)$ and there exists no $\text{just}_i(\delta) \in \text{just}(\delta)$ such that $\lnot \text{just}(\delta) \in th(W)$.
 
-\begin{algorithm}[H] \label{alg:reiter}
-\SetAlgoLined
-\SetKwProg{Fn}{Function}{ is}{end}
-\Fn{$e$($\bar{p}$)}
-{
-\tcc{Current theory.}
-$T:=S$\;
-\tcc{Set of defaults already applied.}
-$A:=\{\}$\;
-\While{There exists a default rule $d$ that is not in $A$ and is applicable to $T$}
-{
-Add the conclusion of $d$ to $T$\;
-Add 	$d$ to $A$\;
-}
-\If{$T$ is consistent with all justifications of every default $d \in A$}
-{
-$T$ is a valid extension\;
-}
-}
+A default process $\Pi=(\delta_1,...,\delta_n)$ consists of a sequence of default rules, $\delta_i\in D\}$. Following \cite{ragni2017formal}, we define the sets $\text{In}(\Pi)=\{\text{th}(W \cup \text{cons}(\delta)|\delta \in \Pi)$ and $\text{Out}(\Pi)=\{\lnot A|A \in \text{just}(\delta), \delta \in \Pi\}$. A default process is called \textit{successful} if and only if $\text{In}(\Pi)\cap \text{Out}(\Pi)=\emptyset$. A default process if called \textit{closed} if and only if there exists no $\delta \in D$, where $\delta$ is applicable to $\text{In}(\Pi)$ and $\delta \not\in \Pi$. The set $E$ is called an extension of default process $D$ if and only if $E=\text{In}(\Pi)$, for some successful closed process $\Pi$. 
 
-\caption{Algorithmic addition of extensions to a Reiter's Knowledge Base.}
-\end{algorithm}
+We write $W\models_\text{D}^\text{Reiter} \psi$ if and only if $\psi \in \bigcap \epsilon$, where $\epsilon$ is the set of all valid extensions of the default theory $(W,D)$.
 
-It should be immediately apparent form this formulation that, for many possible sets of rules in $S$, the output is non-monotonic as is dependent on the order in which default rules are evaluated.
 
-A very significant restriction on reiter's default logic is the complexity of computing all inferences. Even in the simple case of $S={rule_1,...rule_n}$ and $d=\{\}$, the set of possible inferences is potential infinitely large, and even the set of non-trivial inferences is computationally infeasible \citep{schaefer1978complexity}. When default rules are included in this computation the complexity of calculating all possible inferences for all possible default rule application sequences quickly becomes intractable for all but the most basic logic programs. With this limitation in mind, we restrict propositional rules to those in the form $a\leftarrow\phi$ where $a$ is an atomic head. Further, we restrict the set of default rules to those of the form $\frac{B:C}{a}$ where $a$ is a literal.
+It should be immediately apparent form this formulation that, for many possible sets of rules in default theories, the number of extensions is non-monotonic as it is dependent on the number of orders in which default rules are applied successfully. A very significant restriction on reiter's default logic is the complexity of computing deductively closed sets.
 
-The closed world assumption $\frac{: \lnot \bot}{\bot}$ states that all information which is not known to be true is assumed to be false. The closed world assumption can be used to ensure that, for every variable $v_i \in \Sigma$ $I_w(v_i) \models \top$ or $I_w(v_i) \models \bot$.
+The closed world assumption $\frac{: \lnot \bot}{\bot}$ states that all information which is not known to be true is assumed to be false. The closed world assumption can be used to ensure that, for every variable $v_i \in \Sigma$, $I_w(v_i) \models \top$ or $I_w(v_i) \models \bot$.
 
 
 
