@@ -123,8 +123,9 @@ The value of these examples lies in that they show that classical logic response
 
 \begin{figure}
 \centering{\includegraphics[width=\linewidth]{realisedSCPsWST}}
-\label{fig:rSCP_WST}
+
 \caption{Realised SCPs for the SCP interpretation of the WST $\pi_1=(s_i \longmapsto \texttt{addAB} \longmapsto \texttt{addExp}  \longmapsto \texttt{wc} \longmapsto \texttt{semantic}))$. Results mimic those observed in @TODOref's WST interpretation.}
+\label{fig:rSCP_WST}
 \end{figure}
 
 We define the SCP Task $\Pi=(s_i,M,f(),\gamma)$ to model the general case of the WST. The choice of external evaluation function for this task (the turn function), if we are to follow the intuition from Section~\ref{ssec:sup_mod}, has two requirements: it must be able to capture whether an observation $O$ can be explained by the least model of the weakly completed program, and it must ensure that variable assignments which could falsify or verify the conditional rule $(3|D)$ , are present in the least model. 
@@ -213,14 +214,17 @@ The overall planning task, $\Pi$, can now be formulated for the general case of 
 
 De Novo search for the SCP Plan yields several SCP (differentiated by where the \texttt{addExp} cognitive operation occurs), including this one:
 
-\[\mu_{D,3}=(\pi=(s_i\longmapsto \texttt{addAB} \longmapsto \texttt{addExp} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\}\]
+\[\mu_{D,3}=(\pi=(s_i\longmapsto \texttt{addAB} \longmapsto \texttt{addExp} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f_\text{WST}())\}\]
 
-@TODO put in pArray
-\[f_\text{sup}(\pi)=
-\{(\text{D}:\{\text{turn card},\text{do not turn})\},
-(\text{3}:\{\text{turn card},\text{do not turn})\},
-(\text{K}:\{\text{do not turn})\},
-(\text{7}:\{\text{do not turn})\}\}\]
+\[
+f_\text{WST}(\pi)=
+\begin{pmatrix}
+\{(\text{D}:\{\text{turn card},\text{do not turn})\}, & 
+(\text{3}:\{\text{turn card},\text{do not turn})\}, \\
+(\text{K}:\{\text{do not turn})\} &
+(\text{7}:\{\text{do not turn})\}
+\end{pmatrix}
+\]
 
 
 

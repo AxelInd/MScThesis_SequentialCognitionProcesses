@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  22 JUN 2020 19:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  22 JUN 2020 19:35
 entering extended mode
 **./main.tex
 (main.tex
@@ -1856,27 +1856,7 @@ File: ../figs/realisedSCPsWST.png Graphic file (type png)
 Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 125.
 (pdftex.def)             Requested size: 441.01775pt x 207.353pt.
 [46 <../figs/Suppression_SCP_del1.png>] [47 <../figs/realisedSCPsWST.png>]
-[48]
-Overfull \hbox (103.3128pt too wide) detected at line 223
-\OML/zplm/m/it/10.95 f[]\OT1/zplm/m/n/10.95 (\OML/zplm/m/it/10.95 \OT1/zplm/m/
-n/10.95 ) = \OMS/zplm/m/n/10.95 f\OT1/zplm/m/n/10.95 ([] : \OMS/zplm/m/n/10.95 
-f[]\OT1/ppl/m/n/10.95 , []\OT1/zplm/m/n/10.95 )\OMS/zplm/m/n/10.95 g\OT1/ppl/m/
-n/10.95 , \OT1/zplm/m/n/10.95 ([] : \OMS/zplm/m/n/10.95 f[]\OT1/ppl/m/n/10.95 ,
- []\OT1/zplm/m/n/10.95 )\OMS/zplm/m/n/10.95 g\OT1/ppl/m/n/10.95 , \OT1/zplm/m/n
-/10.95 ([] : \OMS/zplm/m/n/10.95 f[]\OT1/zplm/m/n/10.95 )\OMS/zplm/m/n/10.95 g\
-OT1/ppl/m/n/10.95 , \OT1/zplm/m/n/10.95 ([] : \OMS/zplm/m/n/10.95 f[]\OT1/zplm/
-m/n/10.95 )\OMS/zplm/m/n/10.95 gg
- []
-
-
-Package caption Warning: \label without proper reference on input line 126.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:rSCP_WST' on page 49 undefined on input line 227.
-
-
-[49]) [50]
+[48] [49]) [50]
 \openout2 = `Chapters/Comparing.aux'.
 
  (Chapters/Comparing.tex
@@ -1898,11 +1878,7 @@ LaTeX Warning: Reference `ssec:nw_mod' on page 51 undefined on input line 38.
 
  (Chapters/Program.tex
 Chapter 8.
-
-LaTeX Warning: Reference `scpClassDiagram' on page 57 undefined on input line 1
-0.
-
-<../figs/scpClassDiagram.png, id=1174, 772.38562pt x 601.64775pt>
+<../figs/scpClassDiagram.png, id=1175, 772.38562pt x 601.64775pt>
 File: ../figs/scpClassDiagram.png Graphic file (type png)
 <use ../figs/scpClassDiagram.png>
 Package pdftex.def Info: ../figs/scpClassDiagram.png  used on input line 15.
@@ -1918,7 +1894,7 @@ Overfull \hbox (14.6129pt too wide) in paragraph at lines 28--29
 []$[]$\T1/ppl/m/n/10.95 : an im-ple-men-ta-tion of the ex-tended Needle-
  []
 
-<../figs/SCP_Use_Cases.png, id=1177, 1120.185pt x 758.835pt>
+<../figs/SCP_Use_Cases.png, id=1178, 1120.185pt x 758.835pt>
 File: ../figs/SCP_Use_Cases.png Graphic file (type png)
 <use ../figs/SCP_Use_Cases.png>
 Package pdftex.def Info: ../figs/SCP_Use_Cases.png  used on input line 33.
@@ -1961,17 +1937,17 @@ ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 \openout2 = `Chapters/Appendix.aux'.
 
  (Chapters/Appendix.tex
-<../figs/output1.jpg, id=1219, 614.295pt x 794.97pt>
+<../figs/output1.jpg, id=1220, 614.295pt x 794.97pt>
 File: ../figs/output1.jpg Graphic file (type jpg)
 <use ../figs/output1.jpg>
 Package pdftex.def Info: ../figs/output1.jpg  used on input line 106.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/output2.jpg, id=1220, 614.295pt x 794.97pt>
+<../figs/output2.jpg, id=1221, 614.295pt x 794.97pt>
 File: ../figs/output2.jpg Graphic file (type jpg)
 <use ../figs/output2.jpg>
 Package pdftex.def Info: ../figs/output2.jpg  used on input line 111.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/suppression_python.png, id=1221, 470.50781pt x 553.31718pt>
+<../figs/suppression_python.png, id=1222, 470.50781pt x 553.31718pt>
 File: ../figs/suppression_python.png Graphic file (type png)
 <use ../figs/suppression_python.png>
 Package pdftex.def Info: ../figs/suppression_python.png  used on input line 119
@@ -2006,10 +1982,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40269 strings out of 480799
- 832573 string characters out of 2896252
- 1286385 words of memory out of 3000000
- 55249 multiletter control sequences out of 15000+200000
+ 40268 strings out of 480799
+ 832556 string characters out of 2896252
+ 1286503 words of memory out of 3000000
+ 55248 multiletter control sequences out of 15000+200000
  621682 words of font info for 202 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,22n,89p,1810b,2431s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2034,9 +2010,9 @@ ata/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Axe
 l/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Use
 rs/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
 
-Output written on main.pdf (88 pages, 2299545 bytes).
+Output written on main.pdf (88 pages, 2299717 bytes).
 PDF statistics:
- 1455 PDF objects out of 1728 (max. 8388607)
+ 1456 PDF objects out of 1728 (max. 8388607)
  314 named destinations out of 1000 (max. 500000)
  856 words of extra memory for PDF output out of 10000 (max. 10000000)
 
