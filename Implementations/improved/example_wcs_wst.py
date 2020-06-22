@@ -16,15 +16,6 @@ from SCPFramework import StatePointOperations
 # Minimal subsets which verify/falsify the conditional and explain the observation o
 # Are vallid iff and only 
 
-
-
-
-
-
-
-
-
-
 def f_turnFunction(pi,observations):
     decisions={}
     for obs in observations:

@@ -2,8 +2,7 @@
 #https://wilkelab.org/classes/SDS348/2019_spring/labs/lab13-solution.html
 
 import os
-os.path.normpath(os.path.abspath(__file__) + os.sep + os.pardir)
-
+os.chdir("../")
 from SCPFramework import CTM
 from SCPFramework import CognitiveOperation
 #the insertion operation. Only used in scoring and alignment
