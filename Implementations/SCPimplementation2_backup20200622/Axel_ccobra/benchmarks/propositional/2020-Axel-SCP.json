@@ -1,0 +1,10 @@
+{
+    "corresponding_data": false,
+    "data.train": "",
+    "data.test": "data/suppression_shortened.csv",
+    "domains": ["propositional"],
+    "response_types": ["single-choice"],
+    "models": [
+        "models/2020-Axel/Axel_ccobra.py"
+    ]
+}
