@@ -13,14 +13,14 @@
 \contentsline {table}{\numberline {3.5}{\ignorespaces Dietz' computational logic approach to the abstract case of the WST.\relax }}{14}{table.caption.44}%
 \contentsline {table}{\numberline {3.6}{\ignorespaces Applying the Weak Completion Semantics and Contraposition to the $7$ card of the WST.\relax }}{15}{table.caption.49}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces SCP property requirements for precondition types in cognitive operations.\relax }}{25}{table.caption.74}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces SCP property requirements for precondition types in cognitive operations.\relax }}{23}{table.caption.74}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.\relax }}{32}{table.caption.91}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.\relax }}{30}{table.caption.91}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.\relax }}{54}{table.caption.163}%
-\contentsline {table}{\numberline {7.2}{\ignorespaces Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref {tbl:simpleneed}.\relax }}{54}{table.caption.164}%
-\contentsline {table}{\numberline {7.3}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$\relax }}{55}{table.caption.166}%
-\contentsline {table}{\numberline {7.4}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$\relax }}{55}{table.caption.167}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.\relax }}{52}{table.caption.163}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref {tbl:simpleneed}.\relax }}{52}{table.caption.164}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$\relax }}{53}{table.caption.166}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$\relax }}{53}{table.caption.167}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

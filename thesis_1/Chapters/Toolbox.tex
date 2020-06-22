@@ -64,7 +64,7 @@ Accessing a specific element $\alpha_k$ in the structural variables of base poin
 
 The input alphabet $\Sigma_\chi=\{\alpha_1, ..., \alpha_k\}$ of a cognitive function $m$ describes the set of structural variables which must be present in the epistemic states $\bar{p}$ of the input state point $p$. The alphabet of structural variables in $p$ is given by $\Sigma_p$. Hybrid validity, as defined in Section~\ref{ssec:validity}, can be algorithmically illustrated as follows:
 
-\begin{algorithm}[H] \label{cogOp:th}
+\begin{algorithm}[H] \label{cogOp:precon}
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\Sigma_{\chi}$ ($\bar{p}$)}
@@ -202,7 +202,7 @@ In this example Karen shows a very powerful type of cognitive bias, the unwillin
 
 In order to implement this operation, we will make use of the categorization variable $R$ first discussed in Section~\ref{ssec:epiprops}.
 
-\begin{algorithm}[H] \label{cogOp:addV}
+\begin{algorithm}[H] \label{cogOp:fixV}
 \SetAlgoLined
 \tcc{The variable to be fixed, defined before SCP execution.}
 $v:= (\alpha = (\text{atom name}, \text{value}))$\;
@@ -344,6 +344,7 @@ $p':=p' \cup \text{newP}$\;
 
 \subsection{Default Inferencing}
 If we assume that Reiter's default logic is a valid model of cognition for at least one task, it follows that an comprehensive formulation of $M$ must encode a cognitive operation for drawing inferences from a set of default rules. Figure~@TODOref illustrates the procedure for drawing such inferences from an epistemic state state of the form $s=(KB,V,D)$ where $KB$ is a set of inference rules, $V$ is mapping of variable names onto variable values, and $D$ is a set of default rules of the form $\frac{condition:exception}{conclusion}$ @TODOrewriteEquationWithStandardSymbols.
+
 
 
 

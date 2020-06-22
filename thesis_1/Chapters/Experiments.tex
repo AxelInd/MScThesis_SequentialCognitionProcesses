@@ -41,6 +41,7 @@ Now suppression has been displayed in the logic program and the variable $l$ rem
 
 \begin{tabular}{ c c c c c}
   & \textbf{$D$} & \textbf{$Dn3$} & \textbf{$Dn3n7$} & \textbf{$Dn7$}\\ 
+  \hline
  Abstract & 36 & 39 & 5 & 19\\  
 \end{tabular}
 \caption{The canonical results of the Wason Selection Task for the Abstract case.}
@@ -52,6 +53,7 @@ Now suppression has been displayed in the logic program and the variable $l$ rem
 \begin{center}
 \begin{tabular}{ c c c c c}
   & \textbf{$p$} & \textbf{$pq$} & \textbf{$pq\bar{q}$} & \textbf{$p\bar{q}$}\\ 
+  \hline
  Abstract & 36 & 39 & 5 & 19\\  
  Everyday & 23 & 37 & 11 & 29\\  
  Deontic & 13 & 19 & 4 & 64
@@ -84,6 +86,7 @@ The Abstract case of the WST presents the subject with four cards on a table as 
 
 \begin{tabular}{ c c c}
   \textbf{$D$}&  \textbf{$3$}& \textbf{$3\leftarrow D$} \\ 
+  \hline
  $\top$ & $\top$ & $\top$\\  
  $\top$ & $\bot$ & $\bot$\\  
  $\bot$ & $\top$ & $\top$\\
@@ -99,7 +102,7 @@ The Abstract case of the WST presents the subject with four cards on a table as 
 
 
 \begin{tabular}{ c c c}
-  \textbf{$D$}&  \textbf{$3$}& \textbf{$3|D$} \\ 
+  \textbf{$D$}&  \textbf{$3$}& \textbf{$(3|D)$} \\ 
   \hline
  $\top$ & $\top$ & verification\\  
   $\top$ & $u$ & non-applicability\\ 
@@ -156,6 +159,7 @@ Basic weak completion ignores the existence of other least models which may vali
 \begin{center}
 \begin{tabular}{ c c c }
  \textbf{Iteration} & \textbf{$\top$} & \textbf{$\bot$} \\ 
+ \hline
  0 &  &  \\  
  1 &  $7$ & $ab_1$, $ab_2$  \\  
  2 &  $7$ & $3$, $ab_1$, $ab_2$  \\
@@ -225,40 +229,7 @@ This work has shown that all canonical cases of the weak completion semantics ca
 
 
 \section{The Nixon Diamond}
-The Nixon Diamond @TODOref shows that default reasoning can lead to several, contradictory, conclusions when deriving inferences in Reiter's Default Logic. Though this example is not a traditional cognitive modelling task, there is empirical data to show what conclusions participants draw from the premises @TODOref. The task is usually formulated as follows:
-
-\begin{itemize}
-\item Usually Quakers are pacifists.
-\item Usually Republicans are not Pascifists.
-\item Nixon is both a Republican and Quaker.
-\end{itemize}
-
-Let us assign the three properties pacifist, Quaker, and Republican as the variables $p$, $q$, and $r$, respectively. In order to transform these statements into conditional rules which are suitable for use in non-monotonic logic bases, we might reformulate the three statements as follows:
-
-\begin{itemize}
-\item If $x$ is a Quaker, then $x$ is a pacifist: $(p|q)$.
-\item If $x$ is a Republican, then $x$ is not a pacifist: $(\lnot p | r)$
-\item Nixon is both a Republican and Quaker: $(q \leftarrow \top), (r \leftarrow \top)$
-\end{itemize}
-
-And we may then define out non-monotonic knowledge base \text{KB} as follows:
-
-\[
-\text{KB}=\{S=\{q\leftarrow \top, r \leftarrow \top\}, \Delta=\{(p|q),(\lnot p | r)\}\}
-\].
-
-Although it is possible to treat the conditionals in $\Delta$ as licenses for implication and use the WCS to model this scenario, we will instead make use of Reiter's Default Logic (Section~@TODOref). It is also worth noting that only some default rules can be readily interpreted from a set of conditionals.
-
-To transform these conditional rules into default rules we assume that the only known defeater $\beta$ for the default rule $\frac{\alpha:\beta}{\gamma}$ generated from conditional $(\psi|\phi)$ is the negation of the conclusion of the conditional, i.e. $\lnot \psi$. Further, we assume that the prerequisite for the default rule $\alpha$ is given by the prerequisite for the conditional, i.e. $\phi$. The conclusion of the default rule $\gamma$ is the same as the conclusion of the conditional, i.e. $\psi$. With this in mind, we may interpret $\Delta$ and derive the set of default rules $D=\{d_1,d_2\}$, containing the following two default rules. 
-
-
-\[d_1=\frac{r:\lnot p}{p\leftarrow \bot}\]
-\[d_2=\frac{q:p}{ p\leftarrow \top}\]
-
-
-Simply applying the defaults of  $D$ to $P$ using Reiter's Default Logic we derive the contradictory possible world:$(p)\land(\lnot p)\land(q )\land(r)$.
-
-Applying~@TODOalg we may derive one of two possible valid extensions: $(p \leftarrow \top)$ or $(p \leftarrow \bot)$, resulting in the possible worlds $(p)\land(q )\land(r)$ and $(\lnot p)\land(q )\land(r)$ respectively. 
+@TODO
 
 
 
