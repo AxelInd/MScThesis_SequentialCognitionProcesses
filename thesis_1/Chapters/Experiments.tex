@@ -11,7 +11,7 @@ The Suppression Task refers to an experiment conducted by \cite{byrne1989suppres
 
 Given only the rule $e\leftarrow \top$ and conditional $(l|e)$, the participants consistently concluded that she would study late in the library, seemingly interpreting $(l|e)$ as $l\leftarrow e$ and drawing the classical logic inference $\frac{l \leftarrow e, e}{l}$ with \textit{modus ponens}. But when given the additional conditional $(l|o)$, participants no longer believe that they have enough information to judge whether she will study late in the library, and a significant portion of them no longer draw the classical conclusion. This effect, called Suppression, demonstrates the need for something more than classical logic for modelling human reasoning.
 
-\subsection{Modelling the Suppression Task} \label{ssec:sup_mod}
+\subsection{Modelling the Suppression Task: WCS} \label{ssec:sup_mod}
 Work by \cite{dietz2014modeling} has shown that the WCS is an adequate non-monotonic logic for modelling the Suppression Task. Under the WCS and \L ukasiewicz 3-valued logic the task is usually modelled using an epistemic knowledge base $\text{KB}_\text{noSup}$, with:
 \[\text{KB}_\text{noSup}=(S=\{e \leftarrow \top\}, \Delta=\{(l|e)\})\]
 Which represents the  task without the suppressing conditional $(l|o)$. Interpreting the conditional as a license for implication, as in Section~\ref{ssec:condInterpretation}, the knowledge base can be rewritten as a propositional knowledge base:
@@ -32,7 +32,39 @@ For which applying the semantic operator converges to the least model $\top=\{e\
 
 Now suppression has been displayed in the logic program and the variable $l$ remains unknown in the least model.
 
-@TODORefragnipaper showed that suppression is not possible in Reiter's default logic.
+\subsection{Modelling the Suppression Task: Reiter's Default Logic}
+\cite{ragni2017formal} showed that it was not possible to model the suppression task using Reiter's Default Logic. They created a default theory $(W, D'_P)$ as an illustration of Default Theory to illustrate this point.
+
+A naive Default Theory for the suppression task $(W,D_\text{naive})$ can be used to model the classical logic response to the suppression task (i.e. that she will study late in the library), by treating the conditional as an implication without an associated abnormality predicate.
+\[
+W=\{e\leftarrow \top\}
+\]
+\[
+D_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top} ,
+\}
+\]
+\[
+D'_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top} ,
+\{\delta_2:\frac{o\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top}
+\}
+\]
+The only closed and successful default process that can generated for this task is $\Pi_\text{naive}=(\delta_1)$, which results in the inset $\text{In}(\Pi_\text{naive})=\{e\leftarrow \top, l\leftarrow\top\}$. When the set of default rules is extended to create $D'_\text{naive}$ which describes information about if the library is open, then the inset $\text{In}(\Pi_\text{naive})=\{e\leftarrow \top, l\leftarrow\top\}$, and $\{\delta_1\}$ remains the only extension. Both theories assert that she will study late in the library and suppression is not observed.
+
+Even generalising our WCS approach to the Suppression Task and defining a set of defaults $D_P$ which capture intuition about abnormalities, fails to demonstrate suppression.
+\[
+D_P=\{\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
+\delta_2:\frac{:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top}
+\}
+\]
+\[
+D'_P=\{\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
+\delta_2:\frac{o\leftarrow \top:\text{ab}_2 \leftarrow \bot}{l\leftarrow\top},
+\delta_3:\frac{o\leftarrow \bot:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top},
+\delta_4:\frac{e\leftarrow \bot:\text{ab}_2 \leftarrow \top}{\text{ab}_2\leftarrow\top}
+\}
+\]
+
+For the theory $(W,D_P)$, the only closed and successful default processes which produce extensions are $\Pi_P^1=(\delta_1,\delta_2)$ and $\Pi^2_P=(\delta_2,\delta_1)$, with $(l\leftarrow \top)\in \text{In}(\Pi^1_P)$ and $(l\leftarrow \top)\in \text{In}(\Pi^2_P)$. For the theory $(W,D'_P)$ the only closed and successful default process is $\Pi'_P=(\delta_1)$ and $(l\leftarrow \top)\in \text{In}(\Pi'_P)$, thus neither theory demonstrates suppression.
 
 \section{Wason Selection Task}
 \begin{table}
@@ -226,10 +258,6 @@ This work has shown that all canonical cases of the weak completion semantics ca
 
 
 
-
-
-\section{The Nixon Diamond}
-@TODO
 
 
 
