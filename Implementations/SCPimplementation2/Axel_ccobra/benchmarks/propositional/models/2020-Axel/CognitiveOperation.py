@@ -484,7 +484,7 @@ class m_default(CognitiveOperation):
             failed=False
             for IN_rule in IN:
                 if IN_rule in OUT:
-                    print ("INVALID")
+                    print ("d = INVALID")
                     failed=True
             if not failed:
                 successfulProcesses.append(dp)
