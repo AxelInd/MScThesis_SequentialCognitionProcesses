@@ -1,6 +1,7 @@
 \chapter{Program Design} \label{chp:program}
 \section{Implementing the SCP Framework}
-The SCP framework has been implemented in \texttt{Python 3} as series of modules which follow strong object-oriented programming principles which support simple extensions and revisions. This implementation is used to demonstrate the practical approaches to generating and evaluating SCPs; and to model a series of cognitive tasks for which empirical results already exist. The library containing this implementation and its associated documentation is available at @TODOref.
+
+The SCP framework has been implemented in \texttt{Python 3} as series of modules which follow strong object-oriented programming principles which support simple extensions and revisions. This implementation is used to demonstrate the practical approaches to generating and evaluating SCPs; and to model a series of cognitive tasks for which empirical results already exist. The library containing this implementation and its associated documentation is available at \href{https://github.com/AxelInd/SCP_Implementation}{github.com/AxelInd/SCP\_ Implementation}.
 
 At present, concrete implementations for epistemic state structures and cognitive operation formulations related to propositional logic, the WCS, and Reiter's default logic are provided.
 
@@ -17,14 +18,14 @@ The principle of modular programming is followed in this implementation to the g
 \end{figure}
 
 \begin{itemize}
-\item $\texttt{basicLogic}$: an implementation of basic two and three-valued logic.
-\item $\texttt{SCP\_Task}$: implements both the SCP Task ($\Pi$) object and a search function for generating SCPs which meet the given goals.
-\item $\texttt{CTM}$: implements the CTM $\pi$ and defines the $J[p,m]$ application of a cognitive operation to an input state point
-\item $\texttt{CognitiveOperations}$: defines the set of cognitive operations as well as the their input and output parameters.
-\item $\texttt{StatePointOperations}$: defines $f(\pi) \models_\text{strict} \gamma$ and $f(\pi) \models_\text{weak} \gamma$ determining if a given SCP meets a given set of output criteria.
-\item $\texttt{truthTables}$: a set of truth tables for each operator defined in \texttt{basicLogic}.
-\item $texttt{SCP\_scoring}$: an implementation of the Needleman-Wunsch Algorithm for SCPs described in Chapter~\ref{chp:comparing}
-\item $texttt{SCP\_scoring\_extending}$: an implementation of the extended Needleman Wunsch Algorithm for SCPs described in Chapter~\ref{chp:comparing}
+\item $\texttt{SCPFramework/basicLogic}$: an implementation of basic two and three-valued logic.
+\item $\texttt{SCPFramework/SCP\_Task}$: implements both the SCP Task ($\Pi$) object and a search function for generating SCPs which meet the given goals.
+\item $\texttt{SCPFramework/CTM}$: implements the CTM $\pi$ and defines the $J[p,m]$ application of a cognitive operation to an input state point
+\item $\texttt{SCPFramework/CognitiveOperations}$: defines the set of cognitive operations as well as the their input and output parameters.
+\item $\texttt{SCPFramework/StatePointOperations}$: defines $f(\pi) \models_\text{strict} \gamma$ and $f(\pi) \models_\text{weak} \gamma$ determining if a given SCP meets a given set of output criteria.
+\item $\texttt{SCPFramework/truthTables}$: a set of truth tables for each operator defined in \texttt{basicLogic}.
+\item $\texttt{ScoringAlgorithms/SCP\_scoring}$: an implementation of the Needleman-Wunsch Algorithm for SCPs described in Chapter~\ref{chp:comparing}
+\item $\texttt{ScoringAlgorithms/SCP\_scoring\_improved}$: an implementation of the extended Needleman Wunsch Algorithm for SCPs described in Chapter~\ref{chp:comparing}
 \end{itemize}
 
 \subsection{Program Flow}
@@ -42,8 +43,9 @@ Diagram~\ref{fig:SCP_Use_Cases} illustrates the basic programmatic flow used to 
 
 \subsection{Modelled Experiments}
 \begin{itemize}
-\item \texttt{suppressionTask.py}: models the Suppression Task as discussed in Chapter~\ref{chp:model}.
-\item \texttt{WST.py}: models the Wason Selection Task as discussed in Chapter~\ref{chp:model}.
+\item \texttt{example\_wcs\_suppressionTask.py}: models the Suppression Task as discussed in Chapter~\ref{chp:model}.
+\item \texttt{example\_wcs\_wst.py}: models the Wason Selection Task as discussed in Chapter~\ref{chp:model}.
+\item \texttt{example\_default\_various}: models of the Suppression Task, Penguin Case, and Nixon Diamond implemented with a default-logic capable SCP.
 \end{itemize}
 
 \section{External Framework Integration}
