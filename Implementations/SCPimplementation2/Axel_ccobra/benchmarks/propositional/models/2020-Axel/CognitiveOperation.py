@@ -5,7 +5,9 @@ Created on Sat Jun 13 11:43:35 2020
 @author: Axel
 """
 import basicLogic
+import CTM
 import copy
+import StatePointOperations
 
 class CognitiveOperation(object):
     def __init__(self,name):
@@ -328,5 +330,216 @@ class m_dummyOperation(CognitiveOperation):
     def __init__(self,name="dummy"):
         CognitiveOperation.__init__(self,name=name)
 
-       
+  
+
+
+class m_th_simplified(CognitiveOperation):
+    def __init__(self,name="th", target='S'):
+        CognitiveOperation.__init__(self,name=name)
+        self.target=target
+        self.inputStructuralRequirements=[self.target,'V']
+        self.outputStructure=[self.target,'V']
+        
+    @staticmethod
+    def addVarAssignmentToV(li, name, val):
+        li=copy.deepcopy(li)
+        for variable in li:
+            if variable.getName()==name:
+                variable.setValue(val)
+        return li
+        
+    def evaluateEpistemicState(self,epi):
+        kb = epi[self.target]
+        v=epi['V']
+        basicLogic.setkbfromv(kb, v)
+        
+        # we are allowed to assume a monotonic logic base for this
+        for rule in kb:
+            if isinstance (rule, basicLogic.atom):
+                v=m_th_simplified.addVarAssignmentToV(v,rule.getName(),True)
+            elif isinstance(rule,basicLogic.operator_monotonic_negation):
+                if isinstance(rule.clause, basicLogic.atom):
+                    v=m_th_simplified.addVarAssignmentToV(v,rule.clause.getName(),False)  
+            elif isinstance(rule,basicLogic.operator_bitonic):
+                head = rule.clause1
+                body = rule.clause2
+                bodyVal = body.evaluate()
+                if isinstance (rule, basicLogic.operator_bitonic_implication):
+                    if isinstance (head, basicLogic.atom):
+                        if bodyVal!=None:
+                            v=m_th_simplified.addVarAssignmentToV(v,head.getName(),bodyVal)  
+                else:
+                    print ("unknown bitonic")
+            else:
+                print ("unknown operation")
+                    
+                    
+                    
+        epi['V']=v
+        epi[self.target]=kb
+        #remove all v assignments from this epi, th is not an evaluation function
+        for v in epi['V']:
+            for rule in epi[self.target]:
+                rule.deepSet(v.getName(), None)
+        return epi
+
+
+from itertools import permutations
+class m_default(CognitiveOperation):
+    def __init__(self,name="th", maxLength=3):
+        CognitiveOperation.__init__(self,name=name)
+        self.inputStructuralRequirements=['W','D','V']
+        self.outputStructure=['W','D','V']
+        self.maxLength=maxLength
+    @staticmethod
+    def isValidDefaultSubProcess (dp, W):
+        if len (dp)==0:
+            return True
+    @staticmethod
+    def addConclusionToEpi (d, epi):
+        epi['W'].append(d.clause3)
+        return epi
+    
+    #assumed to hold
+    @staticmethod
+    def INOUT (dp, epi):
+        IN_epi=copy.deepcopy(epi)
+        if len(dp)==0:
+            return epi['W'], []
+        #GET OUT SET
+        OUT = []
+        for proc in dp:
+            OUT+=basicLogic.negateRuleList(proc.clause2)
+        #print ("OUT:: ", OUT)
+        
+        
+        #GET IN SET
+        for proc in dp:
+            #basicLogic.setkbfromv(IN_epi['W'], IN_epi['V'])
+            IN_epi=m_default.getTh(IN_epi)
+            IN_epi = m_default.getTh(m_default.addConclusionToEpi(proc,IN_epi))
+            IN = IN_epi['W']
+            #print (">>>>>>>> is ",IN, "    :::   proc : ", proc)
+            if not proc.isApplicableToW(IN):
+                #@TODOthrowexception
+                return False
+        return IN, OUT
+        
+    @staticmethod
+    def isValidDefaultProcess (dp, epi):
+        #GET OUT SET
+        OUT = []
+        for proc in dp:
+            OUT+=basicLogic.negateRuleList(proc.clause2)
+        #print ("OUT:: ", OUT)
+        
+        IN_epi=copy.deepcopy(epi)
+        #GET IN SET
+        for proc in dp:
+            #basicLogic.setkbfromv(IN_epi['W'], IN_epi['V'])
+            IN_epi=m_default.getTh(IN_epi)
+            IN_epi = m_default.getTh(m_default.addConclusionToEpi(proc,IN_epi))
+            IN = IN_epi['W']
+            #print (">>>>>>>> is ",IN, "    :::   proc : ", proc)
+            if not proc.isApplicableToW(IN):
+                return False
+        return True
+            
+        
+        return True
+    @staticmethod
+    def getTh (epi):
+        tempCTM=CTM.CTM()
+        tempCTM.si=[epi]
+        tempCTM.appendm(m_th_simplified(target='W'))
+        #guaranteed to be monotonic
+        epi = StatePointOperations.flattenStatePoint(tempCTM.evaluate())[0]
+        # 2) generateProcesses
+        return epi
+    #very very inefficient, but suitable for a proof of concept
+    def evaluateEpistemicState(self,epi):
+        D = epi['D']
+        possibleProcesses=[]
+        for i in range(0, min(len(D)+1,self.maxLength)):  
+            possibleProcesses+= list(permutations(D,i))
+
+        validProcesses=[]
+        for dp in possibleProcesses: 
+            #print (dp)
+            isValid = m_default.isValidDefaultProcess(dp,epi)
+            if isValid:
+                validProcesses.append(dp)
+            else:
+                print(dp, " is invalid")
+        print (">>>>>>VALID PROCS<<<<<<<<<<<<<<<<<<")
+        for dp in validProcesses:
+            print ("DP is ", dp)
+            IN, OUT = m_default.INOUT(dp,epi)
+            print ("In is ", IN)
+            print ("Out is ", OUT)
+        successfulProcesses=[]
+        for dp in validProcesses:
+            #intersection in, out should be the empty set
+            IN, OUT = m_default.INOUT(dp,epi)
+            failed=False
+            for IN_rule in IN:
+                if IN_rule in OUT:
+                    print ("INVALID")
+                    failed=True
+            if not failed:
+                successfulProcesses.append(dp)
+        print ("+++++++++SUCCESSFUL PROCS+++++++++++++++")
+        for dp in successfulProcesses:
+            print ("DP is ", dp)
+            IN, OUT = m_default.INOUT(dp,epi)
+            print ("In is ", IN)
+            print ("Out is ", OUT)
+        closedSuccessfulProcesses= []
+        for dp in successfulProcesses:
+            dpHolds=True
+            for d in D:
+                IN, OUT = m_default.INOUT(dp,epi)
+                if d.isApplicableToW(IN):
+                    if not d in dp:
+                        dpHolds=False
+            if dpHolds:
+                closedSuccessfulProcesses.append(dp)
+            dpHolds=True
+        print ("+++++++++SUCCESSFUL CLOSED PROCS+++++++++++++++")
+        for dp in closedSuccessfulProcesses:
+            print ("DP is ", dp)
+            IN, OUT = m_default.INOUT(dp,epi)
+            print ("In is ", IN)
+            print ("Out is ", OUT)        
+        
+    
+        
+        #check each previous subprocess [0:D_n-1] was successful
+        # 3) repeat 1), 2)
+        return epi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
        

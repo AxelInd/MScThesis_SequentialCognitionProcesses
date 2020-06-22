@@ -68,7 +68,9 @@ class atom (object):
         return hash(self.__repr__())
     def __eq__(self, other):
         if isinstance(other, atom):
-            return ((self.name == other.name) and (self.getValue() == other.getValue()))
+            sameName=(self.getName() == other.getName())
+            sameVal = (self.getValue() == other.getValue())
+            return (sameName and sameVal)
         else:
             return False
     def getAtoms(self):
@@ -221,6 +223,14 @@ class operator_bitonic (operator):
     def deepSet(self, var, val):
         self.clause1.deepSet(var, val)
         self.clause2.deepSet(var, val)
+    def __eq__(self, o):
+        #simplest cases
+        if isinstance(o, type(self)):
+            if self.clause1==o.clause1:
+                if self.clause2==o.clause2:
+                    return True
+        #otherwise not equal
+        return False
     def __str__(self):
         return u"({} {} {})".format(self.clause1, self.name, self.clause2)
 
@@ -313,6 +323,7 @@ class operator_bitonic_bijection (operator_bitonic):
             return self.tbl_bijective[str(clauseVal1)][str(clauseVal2)]
         except:
             return None   
+
     
 
 
@@ -362,6 +373,21 @@ class operator_tritonic_defaultRule(operator_tritonic):
             for cl in c2:
                 c=c+cl.getAtoms()
         return self.clause1.getAtoms()+ c + self.clause3.getAtoms()
+    def isApplicableToW (self,W):
+        #assume W is deductively closed
+        #precondition is true
+        precondition = self.clause1
+        if precondition in W:
+            #check no justification is falsified
+            negJusts = negateRuleList(self.clause2)
+            for neg in negJusts:
+                if colapseNeg(neg) in W:
+                    return False
+            return True
+        else:
+            return False
+        #conclusion does not lead to a contradition
+        return False
 
 #@TODO needs a lot of work
 def testDerivableList(rules,der):
@@ -470,11 +496,17 @@ def compareVariableLists(li1,li2):
                 if not found:
                     return False
     return True
-
-
-
-
-
+def colapseNeg(neg):
+    clause=neg.clause
+    if isinstance (clause, operator_monotonic_negation):
+        return clause.clause
+    if isinstance(clause,operator_bitonic_implication):
+        if clause.clause2 == TRUE:
+            newNeg = operator_bitonic_implication(clause.clause1,FALSE)
+            return newNeg
+        if clause.clause2 == FALSE:
+            newNeg = operator_bitonic_implication(clause.clause1,TRUE)
+            return newNeg            
 
 
 
