@@ -25,9 +25,9 @@ After application of the semantic operator $l$ is true in the least model, and s
 Now the initial knowledge base $\text{KB}_\text{sup}$ includes the conditional $(l|o)$:
 \[\text{KB}_\text{sup}=(S=\{e \leftarrow \top\}, \Delta=\{(l|e),(l|o)\})\]
 And, when rewritten as a propositional knowledge base:
-\[\text{KB}_\text{sup}=\{e \leftarrow \top, l \leftarrow e \land \lnot \text{ab}_1, l \leftarrow o \land \lnot \text{ab}_2, \text{ab}_1\leftarrow \lnot o, \text{ab}_2\leftarrow \lnot e\})\]
+\[\text{KB}_\text{sup}=\{e \leftarrow \top, l \leftarrow e \land \lnot \text{ab}_1, l \leftarrow o \land \lnot \text{ab}_2, \text{ab}_1\leftarrow \lnot o, \text{ab}_2\leftarrow \lnot e\}\]
 Where the abnormalities added to the interpretation of conditionals ($\psi|\text{body}$) which share $\psi$ as a head are considered dependent on one another. Weakly completing this knowledge base results in:
-\[\text{WC KB}_\text{sup}=\{e \leftrightarrow \top, l \leftrightarrow (e \land \lnot \text{ab}_1) \land (o \land \lnot \text{ab}_2), \text{ab}_1\leftrightarrow \lnot o, \text{ab}_2\leftrightarrow \lnot e\})\]
+\[\text{WC KB}_\text{sup}=\{e \leftrightarrow \top, l \leftrightarrow (e \land \lnot \text{ab}_1) \land (o \land \lnot \text{ab}_2), \text{ab}_1\leftrightarrow \lnot o, \text{ab}_2\leftrightarrow \lnot e\}\]
 For which applying the semantic operator converges to the least model $\top=\{e\},\bot=\{ab_2\}$ after the first application.
 
 Now suppression has been displayed in the logic program and the variable $l$ remains unknown in the least model.
