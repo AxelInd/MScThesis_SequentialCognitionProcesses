@@ -32,7 +32,7 @@ For which applying the semantic operator converges to the least model $\top=\{e\
 
 Now suppression has been displayed in the logic program and the variable $l$ remains unknown in the least model.
 
-\subsection{Modelling the Suppression Task: Reiter's Default Logic}
+\subsection{Modelling the Suppression Task: Reiter's Default Logic} \label{ssec:supReit}
 \cite{ragni2017formal} showed that it was not possible to model the suppression task using Reiter's Default Logic. They created a default theory $(W, D'_P)$ as an illustration of Default Theory to illustrate this point.
 
 A naive Default Theory for the suppression task $(W,D_\text{naive})$ can be used to model the classical logic response to the suppression task (i.e. that she will study late in the library), by treating the conditional as an implication without an associated abnormality predicate.
@@ -45,7 +45,7 @@ D_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \bot}{l\leftarrow\
 \]
 \[
 D'_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top} ,
-\{\delta_2:\frac{o\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top}
+\delta_2:\frac{o\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top}
 \}
 \]
 The only closed and successful default process that can generated for this task is $\Pi_\text{naive}=(\delta_1)$, which results in the inset $\text{In}(\Pi_\text{naive})=\{e\leftarrow \top, l\leftarrow\top\}$. When the set of default rules is extended to create $D'_\text{naive}$ which describes information about if the library is open, then the inset $\text{In}(\Pi_\text{naive})=\{e\leftarrow \top, l\leftarrow\top\}$, and $\{\delta_1\}$ remains the only extension. Both theories assert that she will study late in the library and suppression is not observed.
@@ -57,11 +57,11 @@ D_P=\{\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\t
 \}
 \]
 \[
-D'_P=\{\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
+D'_P=\{\begin{matrix}\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
 \delta_2:\frac{o\leftarrow \top:\text{ab}_2 \leftarrow \bot}{l\leftarrow\top},
 \delta_3:\frac{o\leftarrow \bot:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top},
 \delta_4:\frac{e\leftarrow \bot:\text{ab}_2 \leftarrow \top}{\text{ab}_2\leftarrow\top}
-\}
+\end{matrix}\}
 \]
 
 For the theory $(W,D_P)$, the only closed and successful default processes which produce extensions are $\Pi_P^1=(\delta_1,\delta_2)$ and $\Pi^2_P=(\delta_2,\delta_1)$, with $(l\leftarrow \top)\in \text{In}(\Pi^1_P)$ and $(l\leftarrow \top)\in \text{In}(\Pi^2_P)$. For the theory $(W,D'_P)$ the only closed and successful default process is $\Pi'_P=(\delta_1)$ and $(l\leftarrow \top)\in \text{In}(\Pi'_P)$, thus neither theory demonstrates suppression.
@@ -72,7 +72,7 @@ For the theory $(W,D_P)$, the only closed and successful default processes which
 
 
 \begin{tabular}{ c c c c c}
-  & \textbf{$D$} & \textbf{$Dn3$} & \textbf{$Dn3n7$} & \textbf{$Dn7$}\\ 
+  & \textbf{$D$} & \textbf{$D,3$} & \textbf{$D,3,7$} & \textbf{$D,7$}\\ 
   \hline
  Abstract & 36 & 39 & 5 & 19\\  
 \end{tabular}

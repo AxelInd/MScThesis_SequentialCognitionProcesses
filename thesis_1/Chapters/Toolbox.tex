@@ -99,13 +99,13 @@ However, variations on the intuition of these two problems have real application
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
 {
-$\bar{p}[S]:=\bar{p}[S] \cup [(\text{atom name} \leftarrow \text{value}) |$ ($\text{atom name},\text{value}) \in \bar{p}[V]$ and $\text{value} \neq u$\;
-$\bar{p}[S]:=\bar{p}[S] \cup [A$ | clause $A$ would not make $\bar{p}[S]$ inconsistent$]$\;
-$\bar{p}[V]:=[B$ | $B \leftarrow body \in \bar{p}[S]$ and $ I(body)=\top$ or $I(body)=\bot$]\; 
+$\bar{p}[\textrm{`S'}]:=\bar{p}[\textrm{`S'}] \cup [(\text{atom name} \leftarrow \text{value}) |$ ($\text{atom name},\text{value}) \in \bar{p}[\textrm{`V'}]$ and $\text{value} \neq u$\;
+$\bar{p}[\textrm{`S'}]:=\bar{p}[\textrm{`S'}] \cup [A$ | clause $A$ would not make $\bar{p}[\textrm{`S'}]$ inconsistent$]$\;
+$\bar{p}[\textrm{`V'}]:=[B$ | $B \leftarrow body \in \bar{p}[\textrm{`S'}]$ and $ I(body)=\top$ or $I(body)=\bot$]\; 
 \Return $\bar{p}$
 }
 
-\caption{\texttt{th}$(\bar{p})$: generates the potentially infinite set of possible classical inferences from $\bar{p}[S]$.}
+\caption{\texttt{th}$(\bar{p})$: generates the potentially infinite set of possible classical inferences from $\bar{p}[\textrm{`S'}]$.}
 \end{algorithm}
 
 A realised SCP $r=(k=K[\pi],f())$ is said to \textit{model the classical inference}, if $f(k) = f(s_i \in \pi \longmapsto \texttt{th})$. An SCP $\pi$ is said to model the classical inference if some realised SCP generated from $\pi$ models the classical inference.
@@ -125,9 +125,9 @@ $v:= \alpha=(\text{atom name},\text{value})$\;
 \Fn{$e$($\bar{p}$)}
 {
 \tcc{Remove all possible assignments of the variable from the list of variables}
-$\bar{p}[V]:=\bar{p}[V] - [\text{atom name}, x \in \text{Domain}_\text{atom name}] $
+$\bar{p}[\textrm{`V'}]:=\bar{p}[\textrm{`V'}] - [\text{atom name}, x \in \text{Domain}_\text{atom name}] $
 \tcc{Add the new variable and its assignment to the list of variables}
-$\bar{p}[V]:=\bar{p}[V] \cup \alpha$\;
+$\bar{p}[\textrm{`V'}]:=\bar{p}[\textrm{`V'}] \cup \alpha$\;
 \Return $\bar{p}$
 }
 
@@ -159,32 +159,32 @@ $v:= \text{atom name}$\;
 \Fn{$e$($\bar{p}$)}
 {
 \tcc{Remove $\alpha$ from the possible world variables.}
-$\forall_{\alpha = (\text{v},\text{value}\in \text{domain}(v))} \bar{p}[V]:=\bar{p}[V] - \alpha$\;
-\For{$\text{rule}=(\text{head} \leftarrow \text{body}) \in \bar{p}[S]$}
+$\forall_{\alpha = (\text{v},\text{value}\in \text{domain}(v))} \bar{p}[\textrm{`V'}]:=\bar{p}[\textrm{`V'}] - \alpha$\;
+\For{$\text{rule}=(\text{head} \leftarrow \text{body}) \in \bar{p}[\textrm{`S'}]$}
 {
 \If{$\text{head}=v$}
 {
-$\bar{p}[S]:=\bar{p}[S]-\text{rule}$\;
+$\bar{p}[\textrm{`S'}]:=\bar{p}[\textrm{`S'}]-\text{rule}$\;
 }
 \If{$\text{v} \in \text{body}$}
 {
-replace all subclauses $(v \lor \phi)$, $(v \land \phi)\in \bar{p}[S]$ with $(\phi)$\;
+replace all subclauses $(v \lor \phi)$, $(v \land \phi)\in \bar{p}[\textrm{`S'}]$ with $(\phi)$\;
 }
 }
-\For{$\text{rule}=(\text{head}|\text{body}) \in \bar{p}[\Delta]$}
+\For{$\text{rule}=(\text{head}|\text{body}) \in \bar{p}[\textrm{`}\Delta\textrm{'}]$}
 {
 \If{$\text{head}=v$}
 {
-$\bar{p}[\Delta]:=\bar{p}[\Delta] - \text{rule}$\;
+$\bar{p}[\textrm{`}\Delta\textrm{'}]:=\bar{p}[\textrm{`}\Delta\textrm{'}] - \text{rule}$\;
 }
 \If{$\text{v} \in \text{body}$}
 {
-replace all subclauses $(v \lor \phi)$, $(v \land \phi)\in \bar{p}[\Delta]$ with $(\phi)$\;
+replace all subclauses $(v \lor \phi)$, $(v \land \phi)\in \bar{p}[\textrm{`}\Delta\textrm{'}]$ with $(\phi)$\;
 }
 }
 \tcc{This is where $\texttt{remove}_\bot V$ differs from $\texttt{remove}_\top V$, and  $\texttt{remove}_u V$ }
-replace all rules $\text{head} \leftarrow v \in \bar{p}[S]$ with $\bot$\;
-replace all rules $\text{head} \leftarrow \lnot v \in \bar{p}[S]$ with $\lnot \bot$\;
+replace all rules $\text{head} \leftarrow v \in \bar{p}[\textrm{`S'}]$ with $\bot$\;
+replace all rules $\text{head} \leftarrow \lnot v \in \bar{p}[\textrm{`S'}]$ with $\lnot \bot$\;
 replace all rules $(\text{head}|v)$ with $\bot$\;
 replace all rules $(\text{head}|\lnot v)$ with $\lnot \bot$\;
 
@@ -210,8 +210,8 @@ $v:= (\alpha = (\text{atom name}, \text{value}))$\;
 
 \Fn{$e$($\bar{p}$)}
 {
-$\bar{p}[V]:=\bar{p}[V] - (\text{atom name}, \text{value} \in \text{domain}) \in \bar{p}[V]) \cup \alpha$\;
-$\bar{p}[R][\text{fixed}]:= \bar{p}[R][\text{fixed}] \cup v$\;
+$\bar{p}[\textrm{`V'}]:=\bar{p}[\textrm{`V'}] - (\text{atom name}, \text{value} \in \text{domain}) \in \bar{p}[\textrm{`V'}]) \cup \alpha$\;
+$\bar{p}[\textrm{`R'}][\text{fixed}]:= \bar{p}[\textrm{`R'}][\text{fixed}] \cup v$\;
 \Return $\bar{p}$
 }
 
@@ -219,7 +219,7 @@ $\bar{p}[R][\text{fixed}]:= \bar{p}[R][\text{fixed}] \cup v$\;
 \end{algorithm}
 
 
-This algorithm removes `$\text{atom name}$' from the possible world $V$ and readds it with the value to which it is to be fixed. The atom is then added to the list of fixed variables kept by $\bar{p}[R]$. This list of fixed variables is used by other operations which evaluate state points later in the SCP or realised SCP, and, as per their encoding, they will not modify the assignment of this variable.
+This algorithm removes `$\text{atom name}$' from the possible world $V$ and readds it with the value to which it is to be fixed. The atom is then added to the list of fixed variables kept by $\bar{p}[\textrm{`R'}]$. This list of fixed variables is used by other operations which evaluate state points later in the SCP or realised SCP, and, as per their encoding, they will not modify the assignment of this variable.
 
 \subsection{Adding Abnormalities}
 
@@ -231,10 +231,10 @@ As discussed in Section~\ref{ssec:condInterpretation}, one way to interpret cond
 \Fn{$e$($\bar{p}$)}
 {
 \tcc{Variables for which an abnormality has already been created}
-\For{$(\psi|\phi) \in \bar{p}[\Delta]$}
+\For{$(\psi|\phi) \in \bar{p}[\textrm{`}\Delta]\textrm{'}$}
 {
-$k:=$ the lowest natural number for which $\text{ab}_k \notin \bar{p}[S]$\;
-$\text{all dependencies}:= [A | (\psi|A) \in \bar{p}[\Delta]]$\;
+$k:=$ the lowest natural number for which $\text{ab}_k \notin \bar{p}[\textrm{`S'}]$\;
+$\text{all dependencies}:= [A | (\psi|A) \in \bar{p}[\textrm{`}\Delta\textrm{'}]]$\;
 
 \For{$A \in \text{all dependencies}$}
 {
@@ -248,12 +248,12 @@ $\text{current dependencies}:=\bot$\;
 $\text{body}:=(\text{current dependencies}_1 \lor ... \lor \text{current dependencies}_n)$\;
 
 \tcc{Add the conditional as a license for implication to the set of rules.}
-$\bar{p}[S]:= \bar{p}[S] \cup (\text{head} \leftarrow A \land \lnot \text{ab}_k)$\;
-$\bar{p}[S]:= \text{ab}_k \leftarrow \lnot body$\;
+$\bar{p}[\textrm{`S'}]:= \bar{p}[\textrm{`S'}] \cup (\text{head} \leftarrow A \land \lnot \text{ab}_k)$\;
+$\bar{p}[\textrm{`S'}]:= \text{ab}_k \leftarrow \lnot body$\;
 
 }
 \tcc{Add the new abnormality to the possible world $V$.}
-$\bar{p}[V]:= \bar{p}[V] \cup (\text{ab}_k,u)$\;
+$\bar{p}[\textrm{`V'}]:= \bar{p}[\textrm{`V'}] \cup (\text{ab}_k,u)$\;
 }
 \tcc{Remove all conditionals now that they have been interpreted as licences for implication.}
 $\Delta:=\{\}$\;
@@ -272,8 +272,8 @@ Weak completion is an essential part of the WCS. Under the assumption that the W
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
 {
-Replace all rules $\in \bar{p}[S]$ of the form $A\leftarrow \text{body}_1,...,A\leftarrow \text{body}_n$ with $A\leftarrow \text{body}_1 \lor ... \lor \text{body}_n$ \;
-Replace all occurrences of $\leftarrow \in \bar{p}[S]$ with $\leftrightarrow$ \;
+Replace all rules $\in \bar{p}[\textrm{`S'}]$ of the form $A\leftarrow \text{body}_1,...,A\leftarrow \text{body}_n$ with $A\leftarrow \text{body}_1 \lor ... \lor \text{body}_n$ \;
+Replace all occurrences of $\leftarrow \in \bar{p}[\textrm{`S'}]$ with $\leftrightarrow$ \;
 \Return $\bar{p}$
 }
 
@@ -292,24 +292,24 @@ Another essential step in the WCS, the semantic operator is used to assign all v
 \Fn{$e$($\bar{p}$)}
 {
 \tcc{All least models that can achieved by applying the semantic operator to the current state point.}
-$p'= \{phi_{SvL}(\bar{p})\}$\;
+$p'= \{\phi_{SvL}(\bar{p})\}$\;
 \Return $p'$
 }
 
-\Fn{$\phi_{SvL}$($\bar{p}$}
+\Fn{$\phi_{SvL}$($\bar{p}$)}
 {
-\If{there exists a clause $A\leftarrow \text{body} \in \bar{p}[S]$ with $I_V(body)=\top$ }
-{
-\If { $\text{A} \not\in \bar{p}[\text{fixed}]$}
-{
-$\bar{p}[V][A]:=\top$
-}
-}
-\If{there exists a clause $A\leftarrow \text{body} \in \bar{p}[S]$ and for all clauses $A\leftarrow \text{body} \in \bar{p}[S]$ we find $I_V(body)=\bot$}
+\If{there exists a clause $A\leftarrow \text{body} \in \bar{p}[\textrm{`S'}]$ with $I_V(body)=\top$ }
 {
 \If { $\text{A} \not\in \bar{p}[\text{fixed}]$}
 {
-$\bar{p}[V][A]:=\bot$
+$\bar{p}[\textrm{`V'}][A]:=\top$
+}
+}
+\If{there exists a clause $A\leftarrow \text{body} \in \bar{p}[\textrm{`S'}]$ and for all clauses $A\leftarrow \text{body} \in \bar{p}[\textrm{`S'}]$ we find $I_V(body)=\bot$}
+{
+\If { $\text{A} \not\in \bar{p}[\textrm{`fixed'}]$}
+{
+$\bar{p}[\textrm{`V'}][A]:=\bot$
 }
 }
 \Return $\bar{p}$
@@ -326,13 +326,13 @@ Next, we define a cognitive operation which uses the set of possible abducibles,
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e(\bar{p})$}
 {
-abducibles:=$\bar{p}[\text{`abducibles'}]$\;
+abducibles:=$\bar{p}[\textrm{`abducibles'}]$\;
 $p':=[]$\;
 \For{every unique subset $A \in$ abducibles }
 {
 newP := $\bar{p}$\;
-$\text{newP}['S']=\text{newP}[\text{`S'}] \cup \{a \in A\leftarrow \top\}$\;
-$\text{newP}['\eta']=A$\;
+$\text{newP}[\textrm{'S'}]=\text{newP}[\textrm{`S'}] \cup \{a \in A\leftarrow \top\}$\;
+$\text{newP}[\textrm{'}\epsilon \textrm{'}]=A$\;
 $p':=p' \cup \text{newP}$\;
 }
 \Return $p'$
@@ -343,10 +343,36 @@ $p':=p' \cup \text{newP}$\;
 
 
 \subsection{Default Inferencing}
-If we assume that Reiter's default logic is a valid model of cognition for at least one task, it follows that an comprehensive formulation of $M$ must encode a cognitive operation for drawing inferences from a set of default rules. Figure~@TODOref illustrates the procedure for drawing such inferences from an epistemic state state of the form $s=(KB,V,D)$ where $KB$ is a set of inference rules, $V$ is mapping of variable names onto variable values, and $D$ is a set of default rules of the form $\frac{condition:exception}{conclusion}$ @TODOrewriteEquationWithStandardSymbols.
+If we assume that Reiter's default logic is a valid model of cognition for at least one task, it follows that an comprehensive formulation of $M$ must encode a cognitive operation for drawing inferences from a set of default rules. Algorithm~\ref{cogOp:di} describes the procedure for drawing such inferences from an epistemic state state of the form $s=(W,D)$ where $W$ is a deductively closed set of inference rules, and $D$ is a set of default rules of the form $\frac{\text{pre}(\delta):\text{just}(\delta)}{\text{cons}(\delta)}$.
 
+\begin{algorithm}[H] \label{cogOp:di}
+\SetAlgoLined
+\SetKwProg{Fn}{Function}{ is}{end}
+\Fn{$e$($\bar{p}$)}
+{
+Let $\textrm{theory}=(W,D)$, where $W=\bar{p}[\text{`W'}]$, and $D=\bar{p}[\textrm{`D'}]$\;
+Determine $\Pi$, the set of all closed, successful default processes for default theory $(W,D)$\;
+\Return \texttt{createP}($\bar{p}$,$\Pi$)
+}
+\Fn{\texttt{createP}($\bar{p}, \Pi$)}
+{
+$p'=[]$
+\For{$\pi \in \Pi$}
+{
+$\bar{p}':=\texttt{clone}(\bar{p})$\;
+$\bar{p}'[\textrm{`W'}]:=\bar{p}'[W]\cup \text{In}(\pi)$\;
+\tcc{If no default processes were previously applied, simply add the default process.}
+$\bar{p}'[\textrm{`R'}][\textrm{`}\delta\textrm{'}]:=\bar{p}'[\textrm{`R'}][\textrm{`}\delta\textrm{'}]\cup \delta$\;
+Add any inferences of the form $\text{head}\leftarrow \text{body}$, where head is an atomic name, and body is a truth value, as the pair $(\text{head},\text{body})$ to $\bar{p}'[\textrm{`V'}]$\;
+$p':=p'\cup \bar{p}'$\;
+\Return $p'$
+}
+}
 
+\caption{\texttt{default}$(\bar{p})$: encodes the inference of valid default processes.}
+\end{algorithm}
 
+As with the $\texttt{th}$ cognitive operation, $\texttt{default}$ is only a practically useful function if some approximation of the set of deductively closed inferences can be generated or evaluated.
 
 \section{Cognitive Operations as Aggregates}
 %talk about combining existing cognitive operations for which there is strong evidence
@@ -377,7 +403,7 @@ $p':=\texttt{semantic}(\bar{p'})$\;
 \caption{\texttt{wcs}$(\bar{p})$}
 \end{algorithm}
 
-They could even go a step further and define the cognitive operation $\texttt{abwcs}$ which first interprets the conditionals in $p[\Delta]$ and then applies the WCS to the result. This algorithm is as follows:
+They could even go a step further and define the cognitive operation $\texttt{abwcs}$ which first interprets the conditionals in $p[\textrm{`}\Delta\textrm{'}]$ and then applies the WCS to the result. This algorithm is as follows:
 
 \begin{algorithm}[H] \label{cogOp:abwcs}
 \SetAlgoLined
