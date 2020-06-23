@@ -40,11 +40,11 @@ A naive Default Theory for the suppression task $(W,D_\text{naive})$ can be used
 W=\{e\leftarrow \top\}
 \]
 \[
-D_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top} ,
+D_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \top}{l\leftarrow\top} ,
 \}
 \]
 \[
-D'_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top} ,
+D'_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \top}{l\leftarrow\top} ,
 \delta_2:\frac{o\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top}
 \}
 \]
@@ -53,7 +53,7 @@ The only closed and successful default process that can generated for this task 
 Even generalising our WCS approach to the Suppression Task and defining a set of defaults $D_P$ which capture intuition about abnormalities, fails to demonstrate suppression.
 \[
 D_P=\{\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
-\delta_2:\frac{:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top}
+\delta_2:\frac{\top:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top}
 \}
 \]
 \[
@@ -72,7 +72,7 @@ For the theory $(W,D_P)$, the only closed and successful default processes which
 
 
 \begin{tabular}{ c c c c c}
-  & \textbf{$D$} & \textbf{$D,3$} & \textbf{$D,3,7$} & \textbf{$D,7$}\\ 
+  & \textbf{$\{D\}$} & \textbf{$\{D,3\}$} & \textbf{$\{D,3,7\}$} & \textbf{$\{D,7\}$}\\ 
   \hline
  Abstract & 36 & 39 & 5 & 19\\  
 \end{tabular}

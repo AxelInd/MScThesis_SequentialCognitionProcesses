@@ -15,8 +15,6 @@ The remainder of this section is devoted to expressing the exact properties, lim
 %then SCP space is cog op space size ^^ scp length
 In principle, the number of cognitive operations available for use in an SCP is unlimited. We denote the space of all cognitive operations $\Omega$, and the space of all pCTMs $(A_0 \in \Omega \longmapsto ... \longmapsto A_n \in \Omega)$ with $\Omega^*$. There cannot and never will be an exhaustive search procedure to evaluate every possible way of manipulating an epistemic state (Proofs~\ref{proof:infiniteSCPs} and \ref{proof:infiniteSCPLength} illustrate the existence of valid SCPs for infinitely many different cognitive operations and valid SCPs of any length, respectively). However, there are ways of limiting the number of allowable cognitive operations. Lemma~\ref{lem:uniredundant} defines those cases in which there is redundancy in the set of all possible cognitive operations, Lemma~\ref{lem:taskredundant} focuses this concept on specific cognitive tasks which are to be modelled using SCPs.
 
-The total number of possible non-trivial SCPs of length $L$ for an SCP Task is given by $(|M|^L - R)$ where $|M|$ is the number of elements in the set of cognitive operations $M$, and $R$ is the number of possible non-overlapping task redundant SCPs for the task. @TODOdefineOverlappingRedundantSCPs
-
 
 \section{A Limited Set of Allowable Operations}
 In practice it is impossible compute the set of all candidate SCPs when the set of allowable cognitive operations $M$ in a planning task is $\Omega^*$ or even $\Omega$. Without a length constraint Proof~\ref{proof:infiniteSCPLength} shows that it is not even possible to compute all possible SCPs for many SCP tasks with a finite set of allowable operations. Table~\ref{tbl:solutionSpace} summarises the properties of solution space under different SCP task conditions.
@@ -44,7 +42,7 @@ Readers should recognize that using the space of all possible cognitive operatio
 
 But, beyond being just computationally infeasible, there are more empirical and philosophical objections to this approach. The first is that the human brain itself does not have infinite processing or space capabilities and so any model which allows for unrestricted data sizes in the set of allowable cognitive operations $M$ or in the number of resultant state points $M$ is not biologically well-founded\footnote{Because $\Omega$ is the set of all possible cogntive operations there must be at least one $m \in M$ such that, for any given input $x$, $x\longmapsto m$ results in a state point of information content greater than the capacity of any storage system to hold.}. 
 
-The second considerations is that there is considerable evidence in the literature that many problems can be modelled using logical frameworks which describe cognitive behaviour across a variety of tasks (for example, \cite{heit2005defending}'s Diversity Principle). These frameworks reflect a more generally philosophy in cognitive psychology which is the idea of consistent cognitive motifs in reasoning. Using an infinite $M$ shows no discrimination at the time of task-formulation between those operations for which there is significant evidence and those which are fundamentally improbable.
+The second considerations is that there is considerable evidence in the literature that many problems can be modelled using logical frameworks which describe cognitive behaviour across a variety of tasks (for example,\cite{heit2005defending}'s Diversity Principle). These frameworks reflect a more generally philosophy in cognitive psychology which is the idea of consistent cognitive motifs in reasoning. Using an infinite $M$ shows no discrimination at the time of task-formulation between those operations for which there is significant evidence and those which are fundamentally improbable.
 
 \subsection{A Limited SCP Length}
 As discussed in Section~\ref{ssec:limCogOp}, the human brain is constrained by a set of physical computational and storage limitation. In all case except those which are trivial or repetitive it would be computationally infeasible for the human mind to mimic an infinitely long SCPs. For this reason, SCPs of infinite length, though possible in a mathematical formulation, tend to violate the spirit of the SCP Framework which is to \textit{accurately} model human cognition processes, not simply their conclusions.
@@ -90,7 +88,7 @@ The output state point of a defined $J[\bar{p},m]$ is the returned value of $m[e
 %not computationaly valid, NP-complete is too hard for human brain
 An SCP for propositional logic must be able to take a set of rules and facts and draw the set of all valid inferences from that set using the standard propositional rules discussed in Section~\ref{ssec:propLog}. To that purpose, we introduce a cognitive operation called \texttt{th} which draws all classically valid inferences from a set of logical rules\footnote{The reason that we do not introduce the functionality of the \texttt{th} cognition operation in the external evaluation function $f()$ is that doing so would make it impossible to directly use the derived theorems as part of another SCP.}.
 
-\texttt{th} is by its nature a contrived cognitive operation and there is no expectation that it truly reflects human cognition. Instead, it serves as a benchmark operation with which to compare the results derived from knowledge base-driven logical approaches. Even a simpler congitive operation called \texttt{SAT} which determines if the given knowledge base it satisfiable still represents an \textit{NP-complete}  problem and is infeasible for any large knowledge base \citep{schaefer1978complexity}.
+\texttt{th} is by its nature a contrived cognitive operation and there is no expectation that it truly reflects human cognition. Instead, it serves as a benchmark operation with which to compare the results derived from knowledge base-driven logical approaches. Even a simpler congitive operation called \texttt{SAT} which determines if the given knowledge base it satisfiable still represents an \textit{NP-complete}  problem and is infeasible for any large knowledge base\citep{schaefer1978complexity}.
 
 However, variations on the intuition of these two problems have real applications in cognitive modelling with SCPs and will be discussed throughout this section.
 
@@ -198,7 +196,7 @@ The next case of a potential complex operation to add to the search space of our
 
 Consider a person who strongly doubts the effectiveness of vaccines, we will call her Karen. Karen started her day convinced that giving her child the MMR vaccine is more dangerous than the disease itself. Later that day Karen spoke to her doctor who strongly advised that she vaccinate her child. He offered her a variety of peer-reviewed papers and studies that showed the relative safety of the vaccination. Karen listened carefully to the trained medical professional, and then went home. After some thought Karen decided that he was wrong, and her opinion on vaccines didn't change.
 
-In this example Karen shows a very powerful type of cognitive bias, the unwillingness to change her opinions, despite powerful evidence to the contrary. This phenomenon has been observed across a great many fields of study, from medical psychology \citep{brown2010omission} \citep{wroe2005feeling} to political sciences\citep{tappin2017heart}. In the context of cognitive modelling with logics, it indicates that some mental rules or variables are immutable, regardless of new evidence or valid beliefs that would logically contradict them. Non-monotonic logics, as a class, are already capable of dealing with bias effects, as non-monotonic logics are built on the basis of a preference operation.
+In this example Karen shows a very powerful type of cognitive bias, the unwillingness to change her opinions, despite powerful evidence to the contrary. This phenomenon has been observed across a great many fields of study, from medical psychology\citep{brown2010omission}\citep{wroe2005feeling} to political sciences\citep{tappin2017heart}. In the context of cognitive modelling with logics, it indicates that some mental rules or variables are immutable, regardless of new evidence or valid beliefs that would logically contradict them. Non-monotonic logics, as a class, are already capable of dealing with bias effects, as non-monotonic logics are built on the basis of a preference operation.
 
 In order to implement this operation, we will make use of the categorization variable $R$ first discussed in Section~\ref{ssec:epiprops}.
 
@@ -376,7 +374,7 @@ As with the $\texttt{th}$ cognitive operation, $\texttt{default}$ is only a prac
 
 \section{Cognitive Operations as Aggregates}
 %talk about combining existing cognitive operations for which there is strong evidence
-An obvious and interesting idea follows from Proof~\ref{proof:aggregateValid} which is the idea of finding well-founded, uninterrupted epistemic operation sequences which are effective in modelling a variety of tasks and representing them as a single epistemic operation. We call this approach \textit{aggregating}, and it draws inspiration from recent advances in the field of reinforcement learning \citep{drummond2002accelerating} in which simple tasks previously achieved are used as allowable actions when attempting to solve complex tasks.
+An obvious and interesting idea follows from Proof~\ref{proof:aggregateValid} which is the idea of finding well-founded, uninterrupted epistemic operation sequences which are effective in modelling a variety of tasks and representing them as a single epistemic operation. We call this approach \textit{aggregating}, and it draws inspiration from recent advances in the field of reinforcement learning\citep{drummond2002accelerating} in which simple tasks previously achieved are used as allowable actions when attempting to solve complex tasks.
 
 This approach introduces the desirable property of shortening the total length of the SCP for a given set of cognitive tasks. However, it is evident from Proof~\ref{proof:aggregateExpressiveness} that any SCP task in which an aggregated subsequence of operations replaces those individual operations in $M$ may be less expressive than the same formulation in which the aggregated operations are still present.
 
@@ -441,21 +439,41 @@ Unfortunately, structural change by appending variables are not universal obviou
 In cases like this, it is up to the researcher to make several decisions: do I believe that the now empty set of variables $D$ no longer provides meaningful information? And how do I represent the change in the variables still present in the output state? These questions are very often task or function specific and cannot be answered in a general sense.
 
 \section{Two Approaches to Creating Cognitive Operations}
-\section{Theoretical Approximation}
+\subsection{Theoretical Approximation}
 %must have empirical basis, but focused on reproducing mechanisms that have been proposed and substantiated in literature
 %hand-curated
 It seems reasonable that, given our desire to accurately model reasoning in participants, researchers creating cognitive functions for SCPs would choose to limit the set of allowable cognitive operations to those for which there is a sound theoretical basis.
 
-The first approach to creating cognitive operations we will consider is the use of cognitive operations for which there is already evidence in our existing models of human cognition. This evidence can take a wide variety of forms: it may follow from our knowledge of physics (for example, the impossibility of storing a set of unrelated variables above a certain physical threshold); evolutionary biology (there cannot exist a class of organisms without some kind of reproductive drive); anatomy (there must exist cognitive processes that facilitate voluntary muscle activation); sociology (some neuronal connections seem to restrict the number of close friends a human can maintain \citep{gonccalves2011modeling}); or any other field of science. Using this information can allow researchers to predict what cognitive functions may play a role in observed empirical data. 
+The first approach to creating cognitive operations we will consider is the use of cognitive operations for which there is already evidence in our existing models of human cognition. This evidence can take a wide variety of forms: it may follow from our knowledge of physics (for example, the impossibility of storing a set of unrelated variables above a certain physical threshold); evolutionary biology (there cannot exist a class of organisms without some kind of reproductive drive); anatomy (there must exist cognitive processes that facilitate voluntary muscle activation); sociology (some neuronal connections seem to restrict the number of close friends a human can maintain\citep{gonccalves2011modeling}); or any other field of science. Using this information can allow researchers to predict what cognitive functions may play a role in observed empirical data. 
 
 For the most part, theoretical approximation is a very powerful and well-justified mechanism for determining which cognitive operation could plausibly considered in the cognitive toolbox for a given task. Restricting the space of other cognitive operations which may play a part is also enabled by all the scientific fields mentioned above, complexity theory tells us that humans are unlikely to apply exhaustive classical logic reasoning to a task when the set of variables and rules to be considered is large because of physical limitations related to solving \textit{NP-complete} or harder tasks efficiently.
 
 At present, the foundation of non-monotonic reasoning in cognitive modelling is this theoretical mindset, a well-founded explanation is found by borrowing from a relevent field (often psychology) and then tested against empirical evidence and across multiple cognitive tasks to show evidence that is a reasonable approximation of a mechanism in human cognition.
 
 
-\section{Empirical Appoximation}
+\subsection{Empirical Appoximation}
 %finding cognitive operations using machine learning
 %done by using search techniques to create and explore comparison space
 Contrasting theoretical approximation is the field of constrained empirical approximation. Techniques ranging from neural networks and Markov models genetical inspired techniques consistently outperform humans in a huge variety of fields. Drawing on enormous databases of empirical data, modern artificial intelligence researchers have come to view machine learning as the most plausible way to create the first real thinking machine.
 
-@TODOfinish
+A \textit{pseudo-cognitive operation} is a mathematical structure which meet the mathematical definition of a cognitive operations, but does not necessarily have empirical support for its existence in human cognition. The operation $\texttt{th}$ which outputs an epistemic state containing the deductive closure of its input states is one example of a pseudo-cognitive operation. 
+
+By utilizing a large set of simplistic pseudo-cognitive operations and using reinforcement learning techniques such as subtask learning\citep{drummond2002accelerating}, it may well be possible to generate complex aggregate operations from these simple building blocks. And aggregate operations which are shown to be viable across different cognitive tasks will have strong empirical, but not theoretical, support for their existence as motifs in human reasoning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
