@@ -1,12 +1,11 @@
 \chapter{Conclusions and Future Work} \label{chp:conclusion}
 \section{Conclusion}
+This thesis has introduced, and implemented, a new computational framework into the field of cognitive modelling which is able to capture much of the nuance of other non-monotonic frameworks, whilst still maintaining a consistent technique for task formulation and evaluation. The formalisation of SCP Plans, SCPs, and Realised SCPs has introduced three levels of granularity into the description of cognitive tasks.
+
 SCPs represent a novel and powerful framework for modelling non-monotonic logics. They have been shown capable of modelling the Suppression Task and Wason Selection under the WCS for both general and individual cases. SCPs provide a dynamic framework incorporating cognitive operations which are applicable across different logics, provided that those logics share structural features that are compatible with some subset of the known set of cognitive operations. Because the input and output epistemic states need not be structurally similar, SCPs may represent the first approach to modelling human cognition that is able to integrate multiple non-monotonic logic frameworks at run-time and at search-time. 
 
 SCPs represent a new frontier for Cognitive Modelling in non-monotonic logics and research into their capabilities and limitations may help create more robust and mathematically consistent explanations and predictions for human behaviour across an extensive array of cognitive tasks.
 
 \section{Future Work}
-First Order Logic
-Machine Learning
-nSCPs
-Extend the set of cognitive operations
-Heuristics for SCPs
+
+One of the most obvious extensions of the SCP framework, is the creation of cognitive operations which are able to model first-order logical systems, rather than the propositional systems to which this thesis has been restricted. The introduction of techniques from machine learning, artificial intelligence planning and reinforcement learning would allow for several desirable extensions of the SCP Framework, including but not limited to: more empirically well-founded score tables when comparing SCPs, the generation of heuristic techniques to search through SCPs with large branching factors, and the development of techniques to generate novel cognitive processes which are evidenced in SCPs across different cognitive tasks. From a more theoretical outlook, formal properties of SCPs which combine techniques from several cognitive models should be identified and described. From a practical perspective, integration of the implemented SCP framework with existing modelling tools like CCOBRA will make the framework far more accessible to researchers who wish to generate models for observed cognitive phenomena. 
