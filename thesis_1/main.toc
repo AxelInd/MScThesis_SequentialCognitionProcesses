@@ -71,26 +71,25 @@
 \contentsline {section}{\numberline {6.2}Suppression Task}{45}{section.139}%
 \contentsline {subsection}{\numberline {6.2.1}Suppression Task: WCS}{45}{subsection.140}%
 \contentsline {subsection}{\numberline {6.2.2}Suppression Task: Reiter's Default Logic}{48}{subsection.146}%
-\contentsline {section}{\numberline {6.3}Wason Selection Task}{48}{section.147}%
-\contentsline {section}{\numberline {6.4}Default Logic}{52}{section.156}%
-\contentsline {chapter}{\numberline {7}Comparing SCPs}{53}{chapter.157}%
-\contentsline {section}{\numberline {7.1}Why do we need to compare SCPs?}{53}{section.158}%
-\contentsline {section}{\numberline {7.2}Comparing Generated SCPs}{54}{section.161}%
-\contentsline {subsection}{\numberline {7.2.1}Scoring}{54}{subsection.162}%
-\contentsline {subsubsection}{SCP Length}{54}{section*.163}%
-\contentsline {section}{\numberline {7.3}Comparing External SCPs}{55}{section.165}%
-\contentsline {subsection}{\numberline {7.3.1}The Needleman-Wunsch Algorithm}{55}{subsection.166}%
-\contentsline {subsubsection}{Needleman-Wunsch for SCPs}{57}{section*.169}%
-\contentsline {subsubsection}{Extending Needleman-Wunsch for SCPs}{58}{section*.174}%
-\contentsline {subsection}{\numberline {7.3.2}Limitations of the Needleman-Wunsch Algorithm}{58}{subsection.175}%
-\contentsline {chapter}{\numberline {8}Program Design}{59}{chapter.176}%
-\contentsline {section}{\numberline {8.1}Implementing the SCP Framework}{59}{section.177}%
-\contentsline {section}{\numberline {8.2}A Modular Programming Approach}{59}{section.178}%
-\contentsline {subsection}{\numberline {8.2.1}Most Important Modules}{59}{subsection.179}%
-\contentsline {subsection}{\numberline {8.2.2}Program Flow}{61}{subsection.181}%
-\contentsline {subsection}{\numberline {8.2.3}Modelled Experiments}{61}{subsection.183}%
-\contentsline {section}{\numberline {8.3}External Framework Integration}{61}{section.184}%
-\contentsline {chapter}{\numberline {9}Conclusions and Future Work}{63}{chapter.185}%
-\contentsline {section}{\numberline {9.1}Conclusion}{63}{section.186}%
-\contentsline {section}{\numberline {9.2}Future Work}{63}{section.187}%
-\contentsline {chapter}{Bibliography}{65}{appendix*.188}%
+\contentsline {section}{\numberline {6.3}Wason Selection Task}{50}{section.149}%
+\contentsline {chapter}{\numberline {7}Comparing SCPs}{55}{chapter.158}%
+\contentsline {section}{\numberline {7.1}Why do we need to compare SCPs?}{55}{section.159}%
+\contentsline {section}{\numberline {7.2}Comparing Generated SCPs}{56}{section.162}%
+\contentsline {subsection}{\numberline {7.2.1}Scoring}{56}{subsection.163}%
+\contentsline {subsubsection}{SCP Length}{56}{section*.164}%
+\contentsline {section}{\numberline {7.3}Comparing External SCPs}{57}{section.166}%
+\contentsline {subsection}{\numberline {7.3.1}The Needleman-Wunsch Algorithm}{57}{subsection.167}%
+\contentsline {subsubsection}{Needleman-Wunsch for SCPs}{59}{section*.170}%
+\contentsline {subsubsection}{Extending Needleman-Wunsch for SCPs}{60}{section*.175}%
+\contentsline {subsection}{\numberline {7.3.2}Limitations of the Needleman-Wunsch Algorithm}{60}{subsection.176}%
+\contentsline {chapter}{\numberline {8}Program Design}{61}{chapter.177}%
+\contentsline {section}{\numberline {8.1}Implementing the SCP Framework}{61}{section.178}%
+\contentsline {section}{\numberline {8.2}A Modular Programming Approach}{61}{section.179}%
+\contentsline {subsection}{\numberline {8.2.1}Most Important Modules}{61}{subsection.180}%
+\contentsline {subsection}{\numberline {8.2.2}Program Flow}{63}{subsection.182}%
+\contentsline {subsection}{\numberline {8.2.3}Modelled Experiments}{63}{subsection.184}%
+\contentsline {section}{\numberline {8.3}External Framework Integration}{63}{section.185}%
+\contentsline {chapter}{\numberline {9}Conclusions and Future Work}{65}{chapter.186}%
+\contentsline {section}{\numberline {9.1}Conclusion}{65}{section.187}%
+\contentsline {section}{\numberline {9.2}Future Work}{65}{section.188}%
+\contentsline {chapter}{Bibliography}{67}{appendix*.189}%

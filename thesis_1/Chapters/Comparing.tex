@@ -24,11 +24,11 @@ f(x)= \left\{ \begin{split} cakeBaked \models \top & & & \textrm{True}\\ cakeBak
 Without specifying the precise details of the complex operations in $M$, and simply using our intuition of the effects of these actions, we can draw some candidate SCPs. Candidate SCPs such as $f(s_0 \longmapsto \texttt{mixIngredients})$ do not result in the cake being baked and so are discounted immediately. However, consider a case where the modelling algorithm being used has come up with two possible SCPs to explain the processes chosen by the participant:
 
 \begin{equation} \label{eq:bakeCake}
-\mu_1 = (\pi_1=s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients},f())
+\mu_1 = (\pi_1=(s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients}),f())
 \end{equation}
 
 \begin{equation} \label{eq:bakeCakeLaundry}
-\mu_2 = (\pi_2 = s_0 \longmapsto \texttt{mixIngredients} \longmapsto  \texttt{doTheLaundry} \longmapsto \texttt{bakeIngredients},f())
+\mu_2 = (\pi_2 = (s_0 \longmapsto \texttt{mixIngredients} \longmapsto  \texttt{doTheLaundry} \longmapsto \texttt{bakeIngredients}),f())
 \end{equation}
 
 Intuitively, both of these operational sequences would result in a cake being baked and $f(X)$ returning $true$, and thus, both are candidate solutions to the SCP task given. However, both of these solutions may not be equally \textit{plausible}. Why would someone need to do their laundry to make a cake? We can concoct wild scenarios in which the participant's house is so full of dirty laundry that access to the oven it restricted, but this seems implausible. Most readers would agree that Equation~\ref{eq:bakeCake} is more plausible that Equation~\ref{eq:bakeCakeLaundry}.
