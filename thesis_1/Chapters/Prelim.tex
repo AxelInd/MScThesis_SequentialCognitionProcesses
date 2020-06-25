@@ -127,11 +127,11 @@ $\Delta:=\{\}$\;
 
 \section{Logic Programming}
 \subsection{Knowledge Base} \label{ssec:kb}
-In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called \textit{consistent} only if there exists some possible world $w \in W$ such that every rule in $I_w(KB_{prop})$ evaluates to $\top$.
+In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called \textit{consistent} only if there exists some possible world $w \in W$ such that every rule in $I_w(\text{KB}_{prop})$ evaluates to $\top$.
 
-More generally, a non-monotonic knowledge base $KB=(S, \Delta)$ contains both a set of propositional rules ($S$) and a set of defeasible/conditional rules ($\Delta=\{\Delta_1,...,\Delta_m\}$). A non-monotonic knowledge base tolerates a conditional $(\psi|\phi)\in\Delta$ if and only if there exists some possible world $w\in W$ that verifies $(\psi|\phi)$ and does not falsify any conditional in $\Delta$. $KB$ is said to be consistent if and only if there exists of partition of $\Delta$, $(\Delta_0,...,\Delta_n)$ such that $\Delta_i$ is tolerated by $\Delta_{i+k}$, where $k$ is any natural number not greater than $m$. 
+More generally, a non-monotonic knowledge base $\text{KB}=(S, \Delta)$ contains both a set of propositional rules ($S$) and a set of defeasible/conditional rules ($\Delta=\{\Delta_1,...,\Delta_m\}$). A non-monotonic knowledge base tolerates a conditional $(\psi|\phi)\in\Delta$ if and only if there exists some possible world $w\in W$ that verifies $(\psi|\phi)$ and does not falsify any conditional in $\Delta$. $\text{KB}$ is said to be \textit{consistent} if and only if there exists of partition of $\Delta$, $(\Delta_0,...,\Delta_n)$ such that $\Delta_i$ is tolerated by $\Delta_{i+k}$, where $k$ is any natural number not greater than $m$. 
 
-When $KB=(S=\{\textrm{rule}_1,...,\textrm{rule}_n\},\Delta=\{\})$, we will sometimes ignore $\Delta$ and refer only to the value of $S$ whilst still using the term `$KB$'.
+When $\text{KB}=(S=\{\textrm{rule}_1,...,\textrm{rule}_n\},\Delta=\{\})$, we will sometimes ignore $\Delta$ and refer only to the value of $S$ whilst still using the term `$\text{KB}$'.
 %
 
 

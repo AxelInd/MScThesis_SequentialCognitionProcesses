@@ -120,7 +120,7 @@ T & -5 & -3 & -1 & 1 & 0 & 0 & 0
 \end{table}
 
 
-In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions) would be necessary to the genetic sequence of one of those animals into the other. \cite{needleman1970general} proposed a simple scoring algorithm to determine how similar two genetic sequences were to one another by computing how many insertions, deletions, and mutations the first sequence would have to undergo to become the second sequence, and assigned a quantitative penalty or reward to each of these events. 
+In the field of Bioinformatics, one of the earliest approaches to determine which two organisms from a set were more closely related was to directly estimate how many genetic mutations (insertions, deletions, and mutations) would be necessary to transform the genetic sequence of one of those animals into the other. \cite{needleman1970general} proposed a simple scoring algorithm to determine how similar two genetic sequences were to one another by computing how many insertions, deletions, and mutations the first sequence would have to undergo to become the second sequence, and assigning a quantitative penalty or reward to each of these events. 
 
 Needleman's recursion makes use of a dynamic programming approach and \textit{score matrix} $D$ to score two sequences efficiently ($O(nm)$ time and $O(nm)$ space complexity for sequences of length $n$ and $m$, respectively). The recursion for his algorithm for sequences $a$ and $b$ is as follows:
 \[

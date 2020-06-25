@@ -77,9 +77,9 @@
 \contentsline {subsection}{\numberline {7.2.1}Scoring}{51}{subsection.165}%
 \contentsline {subsubsection}{SCP Length}{51}{section*.166}%
 \contentsline {section}{\numberline {7.3}Comparing External SCPs}{52}{section.168}%
-\contentsline {subsection}{\numberline {7.3.1}The Needleman-Wunsch Algorithm}{52}{subsection.169}%
-\contentsline {subsubsection}{Needleman-Wunsch for SCPs}{53}{section*.172}%
-\contentsline {subsubsection}{Extending Needleman-Wunsch for SCPs}{54}{section*.177}%
+\contentsline {subsection}{\numberline {7.3.1}The Needleman-Wunsch Algorithm}{53}{subsection.169}%
+\contentsline {subsubsection}{Needleman-Wunsch for SCPs}{54}{section*.172}%
+\contentsline {subsubsection}{Extending Needleman-Wunsch for SCPs}{55}{section*.177}%
 \contentsline {subsection}{\numberline {7.3.2}Limitations of the Needleman-Wunsch Algorithm}{55}{subsection.178}%
 \contentsline {chapter}{\numberline {8}Program Design}{56}{chapter.179}%
 \contentsline {section}{\numberline {8.1}Implementing the SCP Framework}{56}{section.180}%
