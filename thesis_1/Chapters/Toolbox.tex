@@ -1,11 +1,11 @@
 \chapter{Cognitive Operations: The Cognitive Toolbox} \label{chp:toolbox}
 %reference that paper that shows the improvements in machine learning
 \section{Overview}
-As discussed in Section~\ref{ssec:intu},and illustrated in Figure~\ref{fig:scp_general} the simplest imaginable description of sequential human cognition consists of a single step transforming the initial task information (along with background information) into an epistemic state that can be externally interpreted to choose a response. That is, $\mu=(\pi=(S_i \longmapsto m),f())$ can model any cognitive task with a complex enough definition of $m$.
+As discussed in Section~\ref{ssec:intu}, and illustrated in Figure~\ref{fig:scp_general} the simplest imaginable description of sequential human cognition consists of a single step transforming the initial task information (along with background information) into an epistemic state that can be externally interpreted to choose a response. That is, $\mu=(\pi=(S_i \longmapsto m),f())$ can model any cognitive task with a complex enough definition of $m$.
 
-To understand why this is poor choice of SCP, consider a general limitation of the SCP framework: we can only change the output of an SCP by changing the initial epistemic state, or by inserting/deleting a cognitive operation at an existing state point. Consider a case where the initial epistemic state is immutable. Thus, for $f(x \longmapsto A)$, the only possible changes are: $f(x \longmapsto \bar{B} \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto \bar{B} \longmapsto A)$, $f(x \longmapsto \bar{B})$, and $f(x)$. Where $\bar{B}$ denotes the action of drawing some sequence of random, but valid cognitive state transitions. There is no way to change the operations that occur in $A$. Thus, even though Figure~\ref{fig:scp_general} may be an appropriate model for the general reasoner of a given task, it imposes the explicit assumption that all other test subjects who achieved differing results, achieved them only by either completely ignoring the black-box process the general reasoners used, or else by inserting new operations only at the very start or end of the processing task. In Section~\ref{sec:supSCP} and Section~\ref{sec:wstSCP} we will explore examples of cases where assumptions like that are simply not reflected by empirical data. 
+To understand why this is poor choice of SCP, consider a general limitation of the SCP framework: we can only change the output of an SCP by changing the initial epistemic state, or by inserting/deleting a cognitive operation at an existing state point. Consider a case where the initial epistemic state is immutable. Thus, for $f(x \longmapsto A)$, the only possible changes are: $f(x \longmapsto \bar{B} \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto \bar{B} \longmapsto A)$, $f(x \longmapsto \bar{B})$, and $f(x)$. Where $\bar{B}$ denotes the action of drawing some sequence of random, but valid cognitive state transitions. There is no way to change the operations that occur in $A$. Thus, even though Figure~\ref{fig:scp_general} may be an appropriate model for the general reasoner of a given task, it imposes the implicit assumption that all other test subjects who achieved differing results, achieved them only by either completely ignoring the black-box process the general reasoners used, or else by inserting new cognitive operations only at the very start or end of the processing task. In Section~\ref{sec:supSCP} and Section~\ref{sec:wstSCP} we will explore examples of cases where assumptions like that are simply not reflected by empirical data. 
 
-Instead of using a single black-box operation to describe all cognition, it follows logically to use multiple smaller black box operations, each taking a state point as input and resulting in a state point as output. Using this interpretation, cognitive operations for the general reasoner should be as extensive as possible, provided that they do not force implausible changes to describe deviant users or when used in other cognitive tasks. Figure~\ref{fig:scp_general} and Figure~\ref{fig:sfig2} in the previous chapter, captured this intuition as it applies to the Weak Completion Semantics. Indeed, as a non-monotonic logic that is already explicitly divided into discrete steps in the literature Section~\ref{ssec:wcs}, its individual steps are obvious candidate cognitive operations.
+Instead of using a single black-box operation to describe all cognition, it follows logically to use multiple smaller black box operations, each taking a state point as input and resulting in a state point as output. Using this interpretation, cognitive operations for the general reasoner should be as extensive as possible, provided that they do not force implausible changes to describe deviant users or when used in other cognitive tasks. Figure~\ref{fig:scp_general} and Figure~\ref{fig:sfig2} in the previous chapter, captured this intuition as it applies to the WCS. Indeed, as a non-monotonic logic that is already explicitly divided into discrete steps in the literature Section~\ref{ssec:wcs}, its individual steps are obvious candidate cognitive operations.
 
 It is worth noting that this increased ability to model deviant reasoners comes at the cost of forcing more state points into the SCP being used.
 
@@ -13,17 +13,18 @@ The remainder of this section is devoted to expressing the exact properties, lim
 
 \section{Cognitive Operation Space}
 %then SCP space is cog op space size ^^ scp length
-In principle, the number of cognitive operations available for use in an SCP is unlimited. We denote the space of all cognitive operations $\Omega$, and the space of all pCTMs $(A_0 \in \Omega \longmapsto ... \longmapsto A_n \in \Omega)$ with $\Omega^*$. There cannot and never will be an exhaustive search procedure to evaluate every possible way of manipulating an epistemic state (Proofs~\ref{proof:infiniteSCPs} and \ref{proof:infiniteSCPLength} illustrate the existence of valid SCPs for infinitely many different cognitive operations and valid SCPs of any length, respectively). However, there are ways of limiting the number of allowable cognitive operations. Lemma~\ref{lem:uniredundant} defines those cases in which there is redundancy in the set of all possible cognitive operations, Lemma~\ref{lem:taskredundant} focuses this concept on specific cognitive tasks which are to be modelled using SCPs.
+In principle, the number of cognitive operations available for use in an SCP is unlimited. We denote the space of all cognitive operations $\Omega$, and the space of all pCTMs $(m_0 \in \Omega \longmapsto ... \longmapsto m_n \in \Omega)$ with $\Omega^*$. Similarly, given the SCP Task $\Pi=(s_i,M,f() \gamma)$, $M$ denotes the set of allowable cognitive operations for that task and $M^*=\{(m_1 \longmapsto ... \longmapsto m_n| m_i \in M)\}$ is the space of all pCTMs for that task. There cannot and never will be an exhaustive search procedure to evaluate every possible way of manipulating an epistemic state (Proofs~\ref{proof:infiniteSCPs} and \ref{proof:infiniteSCPLength} illustrate the existence of valid SCPs for infinitely many different cognitive operations and valid SCPs of any length, respectively). However, there are ways of limiting the number of allowable cognitive operations. Definition~\ref{lem:uniredundant} defines those cases in which there is redundancy in the set of all possible cognitive operations, Definition~\ref{lem:taskredundant} focuses this concept on specific cognitive tasks which are to be modelled using SCPs for a given SCP Task $\Pi$, redundant cognitive operations can be removed from the set of allowable cognitive operations $M$ without changing the domain of $\{f(\pi)|\pi$ is a valid SCP of $\Pi\}$.
 
 
 \section{A Limited Set of Allowable Operations}
-In practice it is impossible compute the set of all candidate SCPs when the set of allowable cognitive operations $M$ in a planning task is $\Omega^*$ or even $\Omega$. Without a length constraint Proof~\ref{proof:infiniteSCPLength} shows that it is not even possible to compute all possible SCPs for many SCP tasks with a finite set of allowable operations. Table~\ref{tbl:scpSpace} summarises the properties of solution space under different SCP task conditions.
+In practice it is impossible compute the set of all candidate SCPs when the set of allowable cognitive operations $M$ in a planning task is $\Omega^*$ or even $\Omega$. Without a length constraint Proof~\ref{proof:infiniteSCPLength} shows that sometimes it is  not even possible to compute all possible SCPs for many SCP tasks with a finite set of allowable operations. Table~\ref{tbl:scpSpace} summarises the properties of solution space under different SCP task conditions.
 
 \begin{table}
 \begin{center}
 
-\begin{tabular}{ c c c c}
+\begin{tabular}{ c | c c c}
  \textbf{$M$} & \textbf{Finite Length Constraint} & \textbf{Finite Solution Space} & \textbf{Guaranteed Solution}\\ 
+ \hline
  $\Omega^*$ & None & \text{\sffamily X} & \checkmark \\ 
  $\Omega^*$ & Yes & \text{\sffamily X} & \checkmark \\ 
  $\Omega$ & None & \text{\sffamily X} & \checkmark \\ 
@@ -40,33 +41,34 @@ In practice it is impossible compute the set of all candidate SCPs when the set 
 \subsection{A Limited Set of Cognitive Operations}\label{ssec:limCogOp}
 Readers should recognize that using the space of all possible cognitive operations for $M$ results in a computationally impossible task. No matter the other conditions imposed there will be infinitely many solutions to the given SCP task which satisfy $f()$.
 
-But, beyond being just computationally infeasible, there are more empirical and philosophical objections to this approach. The first is that the human brain itself does not have infinite processing or space capabilities and so any model which allows for unrestricted data sizes in the set of allowable cognitive operations $M$ or in the number of resultant state points $M$ is not biologically well-founded\footnote{Because $\Omega$ is the set of all possible cogntive operations there must be at least one $m \in M$ such that, for any given input $x$, $x\longmapsto m$ results in a state point of information content greater than the capacity of any storage system to hold.}. 
+But, beyond being just computationally infeasible, there are more empirical and philosophical objections to this approach. The first is that the human brain itself does not have infinite processing or space capabilities and so any model which allows for unrestricted data sizes in the set of allowable cognitive operations $M$ or in the number of resultant state points $M$ is not biologically well-founded\footnote{Because $\Omega$ is the set of all possible cognitive operations there must be at least one $m \in M$ such that, for any given input $s_i$, $J[s_i,m]$ results in a state point of information content greater than the capacity of any storage system to hold.}. 
 
-The second considerations is that there is considerable evidence in the literature that many problems can be modelled using logical frameworks which describe cognitive behaviour across a variety of tasks (for example,\cite{heit2005defending}'s Diversity Principle). These frameworks reflect a more generally philosophy in cognitive psychology which is the idea of consistent cognitive motifs in reasoning. Using an infinite $M$ shows no discrimination at the time of task-formulation between those operations for which there is significant evidence and those which are fundamentally improbable.
+The second consideration is that there is considerable evidence in the literature that many problems can be modelled using logical frameworks which describe cognitive behaviour across a variety of tasks -- for example, the Diversity Principle\citep{heit2005defending}. These frameworks reflect a more generally philosophy in cognitive psychology which is the idea of consistent cognitive motifs in reasoning. Using an infinite $M$ shows no discrimination at the time of task-formulation between those operations for which there is significant evidence and those which are fundamentally improbable.
 
 \subsection{A Limited SCP Length}
-As discussed in Section~\ref{ssec:limCogOp}, the human brain is constrained by a set of physical computational and storage limitation. In all case except those which are trivial or repetitive it would be computationally infeasible for the human mind to mimic an infinitely long SCPs. For this reason, SCPs of infinite length, though possible in a mathematical formulation, tend to violate the spirit of the SCP Framework which is to \textit{accurately} model human cognition processes, not simply their conclusions.
+As discussed in Section~\ref{ssec:limCogOp}, the human brain is constrained by a set of physical, computational, and storage limitations. In all cases except those which are trivial or repetitive it would be computationally infeasible for the human mind to mimic an arbitrarily long SCP. For this reason, SCPs of infinite length, though possible in a mathematical formulation, tend to violate the spirit of the SCP Framework which is to \textit{accurately} model human cognition processes, not simply their conclusions.
 
-It is worth noting that SCPs containing infinite loops can exist and can be evaluated at any time point $n$, they simply cannot be evaluated in their entirety.
+It is worth noting that SCPs containing infinite loops can exist and can be evaluated at some time points $n$, they simply cannot be evaluated in their entirety. For example, the SCP $\mu=((s_i\longmapsto A),f())$, if the definition of cognitive operation $A$ includes a call to $A$ every time it is evaluated. 
 
 \section{Purpose-Selected Cognitive Operations} \label{sec:pso}
 \subsection{Overview}
 
-This section discusses the intuition and precise definition of several cognitive operations which will be used throughout the remainder of this paper. These operations allow the SCP Framework to mimic non-monotonic logics for the experiments discussed in Chapter~TODOchapter.
+This section discusses the intuition and precise definition of several cognitive operations which will be used throughout the remainder of this paper. These operations allow the SCP Framework to mimic non-monotonic logics for the experiments discussed in Chapter~\ref{chp:model}.
 
-A cognitive operation $m$ is always evaluated in terms of each base point of input state point, and each base point can be considered independent from the others. For these definitions, a base point $\bar{p}$ is assumed as input and a state point is returned as output. Function $\chi(\bar{p})$ determines the validity validity of the input base points. $\Sigma_\chi$ is called the input alphabet and defines the minimal set of an variables names which must be present in $\bar{p}$ for the operation to be allowable.
+A cognitive operation $m$ is always evaluated in terms of each base point $\bar{p} \in p$ of the input state point, and each base point can be evaluated independently of the others. For these definitions, a base point $\bar{p}$ is assumed as input and a state point is returned as output. Function $\texttt{functionName}_\chi(\bar{p})$ determines the validity of the input base points. $\Sigma_\chi$ is called the input alphabet and defines the minimal set of an variables names which must be present in $\bar{p}$ for the operation to be allowable.
 
 Accessing a specific element $\alpha_k$ in the structural variables of base point $\bar{p}=(\alpha_1,..,\alpha_n)$ is short-handed to $\bar{p}[\alpha_k]$. $\bar{p}[\alpha_k]$ returns $\alpha_k$ if and only if $\alpha_k \in \bar{p}$ and returns the empty set otherwise. This indexing notation is also used to append a structural variable to $\bar{p}$ and $\bar{p}[\alpha_j]:=t$ removes $\bar{p}[\alpha_j]$ from $\bar{p}$ if it already exists and creates a new structural variable $\alpha_j=t$ in the resulting state point $p'$.
 
 \subsection{Preconditions}
 
-The input alphabet $\Sigma_\chi=\{\alpha_1, ..., \alpha_k\}$ of a cognitive function $m$ describes the set of structural variables which must be present in the epistemic states $\bar{p}$ of the input state point $p$. The alphabet of structural variables in $p$ is given by $\Sigma_p$. Hybrid validity, as defined in Section~\ref{ssec:validity}, can be algorithmically illustrated as follows:
+The input alphabet $\Sigma_\chi=\{\alpha_1, ..., \alpha_k\}$ of a cognitive function $m$ describes the set of structural variables which must be present in the epistemic states $\bar{p} \in_S p$ of the input state point $p$. The alphabet of structural variables in $p$ is given by $\Sigma_p$. Hybrid validity, as defined in Section~\ref{ssec:validity}, can be algorithmically illustrated as follows:
 
 \begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\Sigma_{\chi}$ ($\bar{p}$)}
 {
+\tcc{Where each structural variable $\alpha_i$ must be present in $p$ to validate the precondition.}
 $\Sigma_{\chi}=\{\alpha_1,...,\alpha_n\}$\;
 \eIf{$\forall v \in \Sigma_\chi, v \in \Sigma_p$}
 {
@@ -77,17 +79,17 @@ $\Sigma_{\chi}=\{\alpha_1,...,\alpha_n\}$\;
 }
 }
 
-\caption{$\chi$($\bar{p}$): Hybrid validity requirements for $J[p,m]$ to be defined.}
+\caption{$\texttt{functionName}_\chi(\bar{p})$): Hybrid validity requirements for $J[p,m]$ to be defined.}
 \label{cogOp:precon}
 \end{algorithm}
 
-All cognitive operations which we define in this section will be assumed to have a known $Sigma_\chi$ and will only proceed to their effect $e$ if $\Sigma_{\chi}(p)=$ ``Defined''.
+All cognitive operations which we define in this section will be assumed to have a known $\Sigma_\chi$ and will only proceed to their effect $e$ if $\texttt{functionName}_\chi(\bar{p})=$ ``Defined''.
 The output state point of a defined $J[\bar{p},m]$ is the returned value of $m[e](\bar{p})$.
 
 \subsection{Propositional Logic}
 %no requirement of sequence, just exhaustive search
 %not computationaly valid, NP-complete is too hard for human brain
-An SCP for propositional logic must be able to take a set of rules and facts and draw the set of all valid inferences from that set using the standard propositional rules discussed in Section~\ref{ssec:propLog}. To that purpose, we introduce a cognitive operation called \texttt{th} which draws all classically valid inferences from a set of logical rules\footnote{The reason that we do not introduce the functionality of the \texttt{th} cognition operation in the external evaluation function $f()$ is that doing so would make it impossible to directly use the derived theorems as part of another SCP.}.
+An SCP for evaluating propositional logic programs, as defined in Section~\ref{ssec:propLog}, must be able to take a set of rules and facts and draw the set of all valid inferences from that set using the standard propositional rules discussed in Section~\ref{ssec:propLog}. To that purpose, we introduce a cognitive operation called \texttt{th} which draws all classically valid inferences from a set of logical rules\footnote{The reason that we do not introduce the functionality of the \texttt{th} cognition operation in the external evaluation function $f()$ is that doing so would make it impossible to directly use the derived theorems as part of another SCP.}.
 
 \texttt{th} is by its nature a contrived cognitive operation and there is no expectation that it truly reflects human cognition. Instead, it serves as a benchmark operation with which to compare the results derived from knowledge base-driven logical approaches. Even a simpler congitive operation called \texttt{SAT} which determines if the given knowledge base it satisfiable still represents an \textit{NP-complete}  problem and is infeasible for any large knowledge base\citep{schaefer1978complexity}.
 
@@ -108,7 +110,7 @@ $\bar{p}[\textrm{`V'}]:=[B$ | $B \leftarrow body \in \bar{p}[\textrm{`S'}]$ and 
 \label{cogOp:th}
 \end{algorithm}
 
-A realised SCP $r=(k=K[\pi],f())$ is said to \textit{model the classical inference}, if $f(k) = f(s_i \in \pi \longmapsto \texttt{th})$. An SCP $\pi$ is said to model the classical inference if some realised SCP generated from $\pi$ models the classical inference.
+A realised SCP $r=(k=K[\pi],f())$ is said to \textit{model the classical inference}, if $f(k) = f(s_i \longmapsto \texttt{th})$, where $s_i$ is the initial state point of the CTM $\pi$. An SCP $\pi$ is said to model the classical inference if some realised SCP generated from $\pi$ models the classical inference.
 
 
 \subsection{Variable Insertion}
