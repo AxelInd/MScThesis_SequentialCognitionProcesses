@@ -2,25 +2,25 @@
 \babel@toc {english}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Truth tables for standard operators in propositional logic.\relax }}{5}{table.caption.17}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Evaluation of conditional rules.\relax }}{6}{table.caption.20}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces A table showing the implication operator in 3-valued \L ukasiewicz logic.\relax }}{8}{table.caption.28}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Truth tables for standard operators in propositional logic.\relax }}{4}{table.caption.17}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Evaluation of conditional rules.\relax }}{5}{table.caption.20}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces A table showing the implication operator in 3-valued \L ukasiewicz logic.\relax }}{7}{table.caption.28}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces The canonical results of the Wason Selection Task for the Abstract case.\relax }}{13}{table.caption.38}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces The canonical results of the Wason Selection Task over the Abstract, Everyday, and Deontic Cases\relax }}{13}{table.caption.39}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Propositional evaluation of the implication $3 \leftarrow D$ for each possible truth value of $3$ and $D$.\relax }}{14}{table.caption.42}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces De-finetti evaluation of the conditional $(3|D)$ for each possible truth value of $3$ and $D$.\relax }}{14}{table.caption.43}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Dietz' computational logic approach to the abstract case of the WST.\relax }}{15}{table.caption.45}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Applying the Weak Completion Semantics and Contraposition to the $7$ card of the WST.\relax }}{16}{table.caption.50}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces The canonical results of the Wason Selection Task for the Abstract case.\relax }}{11}{table.caption.41}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces The canonical results of the Wason Selection Task over the Abstract, Everyday, and Deontic Cases\relax }}{11}{table.caption.42}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Propositional evaluation of the implication $3 \leftarrow D$ for each possible truth value of $3$ and $D$.\relax }}{12}{table.caption.45}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces De-finetti evaluation of the conditional $(3|D)$ for each possible truth value of $3$ and $D$.\relax }}{12}{table.caption.46}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Dietz' computational logic approach to the abstract case of the WST.\relax }}{13}{table.caption.48}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Applying the Weak Completion Semantics and Contraposition to the $7$ card of the WST.\relax }}{14}{table.caption.53}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces SCP property requirements for precondition types in cognitive operations.\relax }}{25}{table.caption.74}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces SCP property requirements for precondition types in cognitive operations.\relax }}{22}{table.caption.77}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.\relax }}{32}{table.caption.91}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.\relax }}{29}{table.caption.94}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.\relax }}{57}{table.caption.168}%
-\contentsline {table}{\numberline {7.2}{\ignorespaces Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref {tbl:simpleneed}.\relax }}{58}{table.caption.169}%
-\contentsline {table}{\numberline {7.3}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$\relax }}{59}{table.caption.171}%
-\contentsline {table}{\numberline {7.4}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$\relax }}{59}{table.caption.172}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.\relax }}{52}{table.caption.171}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref {tbl:simpleneed}.\relax }}{53}{table.caption.172}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$\relax }}{54}{table.caption.174}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$\relax }}{54}{table.caption.175}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,9 +1,9 @@
 \chapter{Cognitive Operations: The Cognitive Toolbox} \label{chp:toolbox}
 %reference that paper that shows the improvements in machine learning
 \section{Overview}
-As discussed in Section~\ref{ssec:intu},and illustrated in Figure~@TODOref the simplest imaginable description of sequential human cognition consists of a single step transforming the initial task information (along with background information) into an epistemic state that can be externally interpreted to choose a response. That is, $\mu=(\pi=(S_i \longmapsto m),f())$ can model any cognitive task with a complex enough definition of $m$.
+As discussed in Section~\ref{ssec:intu},and illustrated in Figure~\ref{fig:scp_general} the simplest imaginable description of sequential human cognition consists of a single step transforming the initial task information (along with background information) into an epistemic state that can be externally interpreted to choose a response. That is, $\mu=(\pi=(S_i \longmapsto m),f())$ can model any cognitive task with a complex enough definition of $m$.
 
-To understand why this is poor choice of SCP, consider a general limitation of the SCP framework: we can only change the output of an SCP by changing the initial epistemic state, or by inserting/deleting a cognitive operation at an existing state point. Consider a case where the initial epistemic state is immutable. Thus, for $f(x \longmapsto A)$, the only possible changes are: $f(x \longmapsto \bar{B} \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto \bar{B} \longmapsto A)$, $f(x \longmapsto \bar{B})$, and $f(x)$. Where $\bar{B}$ denotes the action of drawing some sequence of random, but valid cognitive state transitions. There is no way to change the operations that occur in $A$. Thus, even though Figure~@TODOref may be an appropriate model for the general reasoner of a given task, it imposes the explicit assumption that all other test subjects who achieved differing results, achieved only by completely ignoring the black-box process the general reasoners used, or else by inserting new operations only at the very start or end of the processing task. In Section~\ref{sec:supSCP} and Section~\ref{sec:wstSCP} we will explore examples of cases where assumptions like that are simply not reflected by empirical data. 
+To understand why this is poor choice of SCP, consider a general limitation of the SCP framework: we can only change the output of an SCP by changing the initial epistemic state, or by inserting/deleting a cognitive operation at an existing state point. Consider a case where the initial epistemic state is immutable. Thus, for $f(x \longmapsto A)$, the only possible changes are: $f(x \longmapsto \bar{B} \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto \bar{B} \longmapsto A)$, $f(x \longmapsto \bar{B})$, and $f(x)$. Where $\bar{B}$ denotes the action of drawing some sequence of random, but valid cognitive state transitions. There is no way to change the operations that occur in $A$. Thus, even though Figure~\ref{fig:scp_general} may be an appropriate model for the general reasoner of a given task, it imposes the explicit assumption that all other test subjects who achieved differing results, achieved them only by either completely ignoring the black-box process the general reasoners used, or else by inserting new operations only at the very start or end of the processing task. In Section~\ref{sec:supSCP} and Section~\ref{sec:wstSCP} we will explore examples of cases where assumptions like that are simply not reflected by empirical data. 
 
 Instead of using a single black-box operation to describe all cognition, it follows logically to use multiple smaller black box operations, each taking a state point as input and resulting in a state point as output. Using this interpretation, cognitive operations for the general reasoner should be as extensive as possible, provided that they do not force implausible changes to describe deviant users or when used in other cognitive tasks. Figure~\ref{fig:scp_general} and Figure~\ref{fig:sfig2} in the previous chapter, captured this intuition as it applies to the Weak Completion Semantics. Indeed, as a non-monotonic logic that is already explicitly divided into discrete steps in the literature Section~\ref{ssec:wcs}, its individual steps are obvious candidate cognitive operations.
 
@@ -62,7 +62,7 @@ Accessing a specific element $\alpha_k$ in the structural variables of base poin
 
 The input alphabet $\Sigma_\chi=\{\alpha_1, ..., \alpha_k\}$ of a cognitive function $m$ describes the set of structural variables which must be present in the epistemic states $\bar{p}$ of the input state point $p$. The alphabet of structural variables in $p$ is given by $\Sigma_p$. Hybrid validity, as defined in Section~\ref{ssec:validity}, can be algorithmically illustrated as follows:
 
-\begin{algorithm}[H] \label{cogOp:precon}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\Sigma_{\chi}$ ($\bar{p}$)}
@@ -78,6 +78,7 @@ $\Sigma_{\chi}=\{\alpha_1,...,\alpha_n\}$\;
 }
 
 \caption{$\chi$($\bar{p}$): Hybrid validity requirements for $J[p,m]$ to be defined.}
+\label{cogOp:precon}
 \end{algorithm}
 
 All cognitive operations which we define in this section will be assumed to have a known $Sigma_\chi$ and will only proceed to their effect $e$ if $\Sigma_{\chi}(p)=$ ``Defined''.
@@ -92,7 +93,7 @@ An SCP for propositional logic must be able to take a set of rules and facts and
 
 However, variations on the intuition of these two problems have real applications in cognitive modelling with SCPs and will be discussed throughout this section.
 
-\begin{algorithm}[H] \label{cogOp:th}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -104,6 +105,7 @@ $\bar{p}[\textrm{`V'}]:=[B$ | $B \leftarrow body \in \bar{p}[\textrm{`S'}]$ and 
 }
 
 \caption{\texttt{th}$(\bar{p})$: generates the potentially infinite set of possible classical inferences from $\bar{p}[\textrm{`S'}]$.}
+\label{cogOp:th}
 \end{algorithm}
 
 A realised SCP $r=(k=K[\pi],f())$ is said to \textit{model the classical inference}, if $f(k) = f(s_i \in \pi \longmapsto \texttt{th})$. An SCP $\pi$ is said to model the classical inference if some realised SCP generated from $\pi$ models the classical inference.
@@ -115,7 +117,7 @@ Variable insertion is a single cognitive operation with a highly intuitive inter
 
 It seems reasonable then that a cognitive operation \texttt{addV} which appends a variable to base point $V$ would be required to expand to the knowledge base to incorporate new facts.
 
-\begin{algorithm}[H] \label{cogOp:addV}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \tcc{The variable to be added, defined before SCP execution.}
 $v:= \alpha=(\text{atom name},\text{value})$\;
@@ -130,6 +132,7 @@ $\bar{p}[\textrm{`V'}]:=\bar{p}[\textrm{`V'}] \cup \alpha$\;
 }
 
 \caption{\texttt{addV}$(\bar{p})$: adds a variable $v$, defined \textit{a priori}}
+\label{cogOp:addV}
 \end{algorithm}
 
 In order to ensure that the SCP still acts as a pipeline of information, it is necessary that $\texttt{Add}\alpha$ for variable $\alpha=(\text{atom name, value})$ is defined as part of the allowable operations of the SCP Task $\Pi$ which generates the SCPs and realised SCPs that will make use of it. The core principle of this pipeline framework is that each usable component (cognitive operation) of that framework which is not the input value should not be modified.
@@ -149,7 +152,7 @@ Forgetting a variable in an SCP is not-trivial task, just as removing a variable
 
 In the first example, the presumed default position is that I will not hide in my bunker. In the second, the default position is that I will graduate. And in the third example there is no apparent default position. In the absence of the conditions in each each of these conditionals we would probably conclude that, I am probably not hiding in my bunker, I probably graduated, and that my gender is uncertain. This observation implies that a mechanism by which to determine the plausibility of default positions is needed to translate such default theories into a non-monotonic framework. In the absence of such a mechanism we will generally assume $\texttt{remove}_\bot V$, as with the closed-world assumption.
 
-\begin{algorithm}[H] \label{cogOp:removeuV}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \tcc{The variable to be deleted, defined before SCP execution.}
 $v:= \text{atom name}$\;
@@ -190,6 +193,7 @@ replace all rules $(\text{head}|\lnot v)$ with $\lnot \bot$\;
 }
 
 \caption{\texttt{remove}$_\bot$V$(\bar{p})$: removes a variable name $v$, defined \textit{a priori}}
+\label{cogOp:removeuV}
 \end{algorithm}
 \subsection{Variable Fixation} \label{ssec:variableFixing}
 The next case of a potential complex operation to add to the search space of our SCPs is the idea of Variable Fixing. The idea that some  conclusions can be fixed \textit{a priori}. This operation may prove contentious to those who are experienced with mathematical logic, but holds some merit when justified from a psychological perspective. 
@@ -200,7 +204,7 @@ In this example Karen shows a very powerful type of cognitive bias, the unwillin
 
 In order to implement this operation, we will make use of the categorization variable $R$ first discussed in Section~\ref{ssec:epiprops}.
 
-\begin{algorithm}[H] \label{cogOp:fixV}
+\begin{algorithm}[H]
 \SetAlgoLined
 \tcc{The variable to be fixed, defined before SCP execution.}
 $v:= (\alpha = (\text{atom name}, \text{value}))$\;
@@ -214,6 +218,7 @@ $\bar{p}[\textrm{`R'}][\text{fixed}]:= \bar{p}[\textrm{`R'}][\text{fixed}] \cup 
 }
 
 \caption{\texttt{FixV}$(\bar{p})$: fixes a variable name $v$, defined \textit{a priori}}
+ \label{cogOp:fixV}
 \end{algorithm}
 
 
@@ -223,7 +228,7 @@ This algorithm removes `$\text{atom name}$' from the possible world $V$ and read
 
 As discussed in Section~\ref{ssec:condInterpretation}, one way to interpret conditionals in reasoning tasks is as licenses for implication. One possible definition for a cognitive operation that performs this same task by transforming defeasible conditional facts to propositional logic rules is as given by Algorithm~\ref{cogOp:addAB}.
 
-\begin{algorithm}[H] \label{cogOp:addAB}
+\begin{algorithm}[H]
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -258,6 +263,7 @@ $\Delta:=\{\}$\;
 \Return $\bar{p}$
 }
 \caption{\texttt{addAB}$(\bar{p})$}
+ \label{cogOp:addAB}
 \end{algorithm}
 
 \subsection{Weakly Completing}
@@ -265,7 +271,7 @@ $\Delta:=\{\}$\;
 
 Weak completion is an essential part of the WCS. Under the assumption that the WCS is a valid representation of human cognition in at least one scenario, any comprehensive set of cognitive operations $M$ must be able to mimic the Weak Completion of a knowledge base. Algorithm~\ref{cogOp:wc} shows one way in which this can be achieved.
 
-\begin{algorithm}[H] \label{cogOp:wc}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -276,6 +282,7 @@ Replace all occurrences of $\leftarrow \in \bar{p}[\textrm{`S'}]$ with $\leftrig
 }
 
 \caption{\texttt{wc}$(\bar{p})$}
+\label{cogOp:wc}
 \end{algorithm}
 
 
@@ -284,7 +291,7 @@ Replace all occurrences of $\leftarrow \in \bar{p}[\textrm{`S'}]$ with $\leftrig
 
 Another essential step in the WCS, the semantic operator is used to assign all variables to either True or False (explictly), or to Unknown (implicitly). Algorithm~\ref{cogOp:semantic} illustrates one way in which this cognitive operation can be implemented for any epistemic state of the form $s=(KB,V,...)$.
 
-\begin{algorithm}[H] \label{cogOp:semantic}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -314,12 +321,13 @@ $\bar{p}[\textrm{`V'}][A]:=\bot$
 }
 
 \caption{\texttt{semantic}$(\bar{p})$}
+\label{cogOp:semantic}
 \end{algorithm}
 
 \subsection{Adding Abducibles} \label{ssec:abd}
 Next, we define a cognitive operation which uses the set of possible abducibles, given by $\bar{p}['R']['abducibles']$. We have already used the intuition of this operation to handle the WST and derive the general answer set. Later we will see that it can also be used to model individual reasoners in the Suppression Task. \texttt{AddExp} adds possible explanations $\eta$ to the set of rules $S$ in the epistemic state and is defined as follows:
 
-\begin{algorithm}[H] \label{cogOp:addExp}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e(\bar{p})$}
@@ -337,13 +345,14 @@ $p':=p' \cup \text{newP}$\;
 }
 
 \caption{$\texttt{addExp}$}
+\label{cogOp:addExp}
 \end{algorithm}
 
 
 \subsection{Default Inferencing}
 If we assume that Reiter's default logic is a valid model of cognition for at least one task, it follows that an comprehensive formulation of $M$ must encode a cognitive operation for drawing inferences from a set of default rules. Algorithm~\ref{cogOp:di} describes the procedure for drawing such inferences from an epistemic state state of the form $s=(W,D)$ where $W$ is a deductively closed set of inference rules, and $D$ is a set of default rules of the form $\frac{\text{pre}(\delta):\text{just}(\delta)}{\text{cons}(\delta)}$.
 
-\begin{algorithm}[H] \label{cogOp:di}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -368,6 +377,7 @@ $p':=p'\cup \bar{p}'$\;
 }
 
 \caption{\texttt{default}$(\bar{p})$: encodes the inference of valid default processes.}
+\label{cogOp:di}
 \end{algorithm}
 
 As with the $\texttt{th}$ cognitive operation, $\texttt{default}$ is only a practically useful function if some approximation of the set of deductively closed inferences can be generated or evaluated.
@@ -388,7 +398,7 @@ In many ways this compromise follows the philosophy of cognitive modelling in ge
 
 A researcher could decide that it is unreasonable to expect any cognitive operations to seperate \texttt{wc} and \texttt{semantic}, as the both form part of the same nonmonotonic logic. They might then create the new aggregate complex operation \texttt{wcs} which applies the WCS in its entirety as follows:
 
-\begin{algorithm}[H] \label{cogOp:wcs}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -399,11 +409,12 @@ $p':=\texttt{semantic}(\bar{p'})$\;
 }
 
 \caption{\texttt{wcs}$(\bar{p})$}
+\label{cogOp:wcs}
 \end{algorithm}
 
 They could even go a step further and define the cognitive operation $\texttt{abwcs}$ which first interprets the conditionals in $p[\textrm{`}\Delta\textrm{'}]$ and then applies the WCS to the result. This algorithm is as follows:
 
-\begin{algorithm}[H] \label{cogOp:abwcs}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -415,6 +426,7 @@ $p':=\texttt{semantic}(\bar{p'})$\;
 }
 
 \caption{\texttt{abwcs}$(\bar{p})$}
+\label{cogOp:abwcs}
 \end{algorithm}
 
 The reader will note that $\texttt{abwcs}$ now provides precisely the same functionality as the examples of the WCS we examined in Chapter~\ref{chp:experiments}, and Chapter~\ref{chp:model} will show that these three operations in sequence can indeed be modelled in the SCP framework and come to the same conclusions as when the WCS is applied in the original experiments.

@@ -185,7 +185,7 @@ th & -2 & 0 & -1 & -2 & -3 & -4
 
 The initial extension of the Needleman-Wunsch algorithm to the SCP framework is surprisingly simple. Because known SCPs are guaranteed to consist of a linear, finite sequence of cognitive operations, and comparison between cognitive operations is possible (two cognitive operations are equal if they have the same name), the only thing the SCP framework lacks is a way to represent insertions and deletions. To this end we define the \texttt{insert} cognitive operation. 
 
-\begin{algorithm}[H] \label{cogOp:insert}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -194,6 +194,7 @@ The initial extension of the Needleman-Wunsch algorithm to the SCP framework is 
 }
 
 \caption{\texttt{insert}$(\bar{p})$: an empty cognitive operation used as a place-holder for scoring.}
+\label{cogOp:insert}
 \end{algorithm}
 
 Like the $\texttt{th}$ operation, \texttt{insert} has no function in an SCP Task, and is not assumed to be a function with an analogue in human reasoning. Instead it is a placeholder function that represents some unknown function in the shared cognitive process from which both SCPs are assumed to originate.

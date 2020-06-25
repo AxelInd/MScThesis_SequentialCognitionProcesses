@@ -85,7 +85,7 @@ Thus, the conditional $(\psi|\phi)$ precisely means $\psi \leftarrow \phi \land 
 The choice of appropriate value assignments to the abnormality predicate is non-trivial and often requires expert knowledge to design. However, over the course of this thesis we will adopt an algorithmic approach to abnormality creation (Algorithm~\ref{alg:addAB}) that will serve to mimic the hand-designed abnormalities used by \cite{dietz2012computational}, and \cite{breu2019weak}.
 
 
-\begin{algorithm}[H] \label{alg:addAB}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{Create Abnormalities(KB)}
@@ -116,6 +116,7 @@ $\Delta:=\{\}$\;
 \Return $\text{KB}'$
 }
 \caption{\texttt{Conditional to License for Implication}}
+\label{alg:addAB}
 \end{algorithm}
 
 

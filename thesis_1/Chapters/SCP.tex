@@ -13,11 +13,11 @@
   \caption{WCS guaranteed to occur.}
   \label{fig:sfig2}
 \end{subfigure}
-\caption{The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.}
+\caption{The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. \textit{SP} nodes indicate state points.}
 \label{fig:scp_generalWCS}
 \end{figure*}
 
-Although there is evidence that the brain can perform several simultaneous operations when considering a task (such as when considering an image \citep{sigman2008brain}, the SCP framework assumes that at some points in reasoning about a given task, the mental processes of the agent converge to a set of epistemic states, called a \textit{state point}. Whatever happens between these points of convergence can contain any number of parallel processes. The collection of processes that occur between any two state points in a reasoning task is called a \textit{cognitive operation}. It follows that any cognitive operation is valid as long it takes a set of epistemic states as input and produces a set of epistemic states as output. Figure~\ref{fig:scp_general} outlines an SCP-like structure that is powerful enough to model any cognitive task that involves an epistemic state transition. However, it does not provide any useful information; the nature of the processes followed is completely undescribed. Suppose, instead, that some cognitive task is being modelled, and that researchers have reason to believe that The Weak Completion Semantics should play a part in their model. Under this new restriction, and assuming a sufficiently expressive epistemic state, Figure~\ref{fig:scp_general} is still an accurate model of the process, but now so is Figure~\ref{fig:sfig2}. By sacrificing some of the ambiguity -- and, thus, expressiveness -- of the model, the information content of the model description has increased. This trade-off is a feature of the SCP framework and finding the right depth of complexity to model the task accurately and still provide meaningful information is more art than science at present. 
+Although there is evidence that the brain can perform several simultaneous operations when considering a task (such as when considering an image \citep{sigman2008brain}, the SCP framework assumes that at some points in reasoning about a given task, the mental processes of the agent converge to a set of epistemic states, called a \textit{state point}. Whatever happens between these points of convergence can contain any number of parallel processes. The collection of processes that occur between any two state points in a reasoning task is called a \textit{cognitive operation}. It follows that a basic validity requirement for a cognitive operation is that it takes a set of epistemic states as input and produces a set of epistemic states as output. Figure~\ref{fig:scp_general} outlines an SCP-like structure that is powerful enough to model any cognitive task that involves an epistemic state transition. However, it does not provide any useful information; the nature of the processes followed is completely undescribed. Suppose, instead, that some cognitive task is being modelled, and that researchers have reason to believe that The Weak Completion Semantics should play a part in their model. Under this new restriction, and assuming a sufficiently expressive epistemic state, Figure~\ref{fig:scp_general} is still an accurate model of the process, but now so is Figure~\ref{fig:sfig2}. By sacrificing some of the ambiguity -- and, thus, expressiveness -- of the model, the information content of the model description has increased. This trade-off is a feature of the SCP framework and finding the right depth of complexity to model the task accurately and still provide meaningful information is more art than science at present. 
 
 \section{SCPs: Mathematical Formulation}
 An SCP Task $\Pi=(s_i, M, f(), \gamma)$ consists of an initial epistemic state point $s_i$, a known set of cognitive operations $M$, a desired final output $\gamma$, and an external function $f()$ which generates those final outputs by translating the final epistemic state into an empirically grounded set of possible responses. 
@@ -202,7 +202,7 @@ These two definitions of satisfaction for SCPs will be used later to motivate an
 
 Finally, we define the \textit{preferred response} $p()$ for the output of an external evaluation function $f()$ and CTM $\pi$ as follows:
 
-\begin{algorithm}[H] \label{alg:unpref}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$p(f(\pi),\text{pref})$}
@@ -224,6 +224,7 @@ finalResponses[category]=responses[category]
 
 }
 \caption{\texttt{p}$(f(\pi,\text{pref}))$: a method which removes unpreferred responses from a list and replaces them with the preferred response (if it was in the original list).}
+\label{alg:unpref}
 \end{algorithm}
 
 A preferred response allows us to specify a hierachy of achievable outputs from an SCP or realised SCP and a practical application will be shown for modelling individual reasoners in the WST (Section~\ref{sec:wstSCP}).
@@ -264,7 +265,7 @@ The insertion search modifies an existing SCP:
 to produce a new SCP:
 
 \[
-\mu'=(\pi'=\{(s_i \longmapsto B^*_0 \longmapsto A_0 \longmapsto \longmapsto B^*_1... \longmapsto  B^*_n \longmapsto A_n \longmapsto  B^*_{n+1}),f()\})
+\mu'=(\pi'=\{(s_i \longmapsto B^*_0 \longmapsto A_0 \longmapsto B^*_1 \longmapsto ... \longmapsto  B^*_n \longmapsto A_n \longmapsto  B^*_{n+1}),f()\})
 \] 
 
 Where $B^*_i = (B_0\longmapsto ...\longmapsto B_n)$, $B \in M$  or is the trivial operation $T$ which returns the input state point as output. When describing the SCP, $T$ operations are generally omitted.

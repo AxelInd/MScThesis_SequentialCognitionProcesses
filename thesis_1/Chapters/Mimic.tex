@@ -27,7 +27,7 @@ M=\{\texttt{addAB}, \texttt{semantic}, \texttt{wc}\}
 
 The external evaluation function should translate the SCP into a decision that can be compared with empirical data. In the Suppression Task we will treat $f_\text{sup}()$ as a function that makes a single choice from the set $\{$\textit{`she will study late in the library'},\textit{she will not study late in the library}, \textit{we are uncertain if she will study late in the library}$\}$. Under the assumption only the final state point $p_n$ determines whether she will study late, we might define $f_\text{sup}()$ as follows:
 
-\begin{algorithm}[H] \label{evaluation:f_sup}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\texttt{f}_\text{sup}(\pi)$}
@@ -68,6 +68,7 @@ $P_\text{elo}:=[\bar{p} \in P | \bar{p}[\text{`name'}]=\text{`elo'}$\;
 }
 
 \caption{$\texttt{f}_\text{sup}$}
+\label{evaluation:f_sup}
 \end{algorithm}
 
 It is worth noting that one could also define $f_\text{sup}$ in such a way that it iterates over every variable assignment for 'el' and 'elo' in the final state point and sees if any inference is drawn in 'el' that is not drawn in 'elo'. However, the purpose of the external evaluation function is to transform an SCP into an output from the set of empirically observed outputs, and in this case the empirical knowledge is a response to the question ``will she study late in the library?".
@@ -120,7 +121,7 @@ As with  Reiter's Default Logic as discussed in Section~\ref{ssec:supReit}, Reit
 In order to create this model, we introduce the new cognitive operation $\texttt{I}_W$. $\texttt{I}_W$ interprets the variable $\bar{p}[W]$ of input base point $\bar{p}$, and sets the variables  $\bar{p}[V]$ in a base point $\bar{p}'\in p'$ of the output state point $p'$ to a valid possible world configuration for those variables.
 
 
-\begin{algorithm}[H] \label{alg:I}
+\begin{algorithm}[H]
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -136,6 +137,7 @@ $p':=p' \cup \bar{p}'$\;
 \Return $p'$
 }
 \caption{$\texttt{I}_w$ generates possible world assignments for a propositional knowledge base $W$.}
+ \label{alg:I}
 \end{algorithm}
 
 Equipped with this new cognitive operation we might define the SCP Task $\Pi_\text{default}$ as follows:
@@ -201,7 +203,7 @@ For the purposes of readability, we will restrict examination of the abducibles 
 
 Next, we define the external evaluation function $f_\text{wcs}(\pi)$ as follows:
 
-\begin{algorithm}[H] \label{f:wst}
+\begin{algorithm}[H]
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\texttt{f}_\text{WST}(\pi)$}
@@ -242,6 +244,7 @@ Add $p_i$ to the explanations for $o$.
 }
 
 \caption{$\texttt{f}_\text{WST}$}
+ \label{f:wst}
 \end{algorithm}
 
 
@@ -293,7 +296,7 @@ The simplest of these case to model is  $\gamma_{D}$. This could done by creatin
 And defining $f_\text{WST, simple}$ precisely as $f_\text{WST}$ was defined, except that the \texttt{isExplanation} function in Algorithm~\ref{alg:outPutcondition} is changed to that of 
 Algorithm~\ref{alg:outPutconditionModified}.
 
-\begin{algorithm}[H] \label{alg:outPutcondition}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\texttt{isExplanation}(p_i)$}
@@ -305,9 +308,10 @@ Add $p_i$ to the explanations for $o$.
 }
 }
 \caption{\texttt{isExplanation} function as it appears in $\texttt{f}_\text{WST}$.}
+\label{alg:outPutcondition}
 \end{algorithm}
 
-\begin{algorithm}[H] \label{alg:outPutconditionModified}
+\begin{algorithm}[H] 
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\texttt{isExplanation}(p_i)$}
@@ -320,6 +324,7 @@ Add $p_i$ to the explanations for $o$.
 }
 }
 \caption{\texttt{isExplanation} function as it appears in $\texttt{f}_\text{WST, simple}$.}
+\label{alg:outPutconditionModified}
 \end{algorithm}
 
 This approach mimics the logic we used to create the Simple WCS Extension in Section~\ref{sec:sup}. However, there is an alternative approach which I prefer. 

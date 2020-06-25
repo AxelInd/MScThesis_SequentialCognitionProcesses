@@ -1,18 +1,20 @@
 \chapter{Experiments} \label{chp:experiments}
 \section{Suppression Task} \label{sec:sup}
 \subsection{Intuitive Overview} \label{ssec:sup_intuition}
-The Suppression Task refers to an experiment conducted by \cite{byrne1989suppressing} and is a classical example of the inadequacy of monotonic logics for modelling human reasoning. In classical logic, if our knowledge base $S$ is such that $I(S) \models \phi$, then it must be the case that $I(S \cup \psi) \models \phi$. However, in the suppression task participants no longer draw classically valid inferences when new information is added. The task is often formulated as follows:
+The Suppression Task refers to an experiment conducted by \cite{byrne1989suppressing} and is a classical example of the inadequacy of monotonic logics for modelling human reasoning. In classical logic, if our knowledge base $S$ is such that $I(S) \models \phi$, then it must be the case that $I(S \cup \theta) \models \phi$, for some new rule $\theta$. However, in the suppression task participants no longer draw classically valid inferences when new information is added. The task is described with three statements:
 
-\begin{itemize}
-\item $(l|e)$: If she has an essay to write ($e$), she will study late in the library ($l$).
-\item $(e \leftarrow \top)$: She has an essay to write ($e$).
-\item $(l|o)$: If the library is open ($o$), she will study late in the library ($l$).
-\end{itemize}
+\begin{enumerate}
+\item If she has an essay to write ($e$), she will study late in the library ($l$).
+\item If the library is open ($o$), she will study late in the library ($l$).
+\item She has an essay to write ($e$).
+\end{enumerate}
 
-Given only the rule $e\leftarrow \top$ and conditional $(l|e)$, the participants consistently concluded that she would study late in the library, seemingly interpreting $(l|e)$ as $l\leftarrow e$ and drawing the classical logic inference $\frac{l \leftarrow e, e}{l}$ with \textit{modus ponens}. But when given the additional conditional $(l|o)$, participants no longer believe that they have enough information to judge whether she will study late in the library, and a significant portion of them no longer draw the classical conclusion. This effect, called Suppression, demonstrates the need for something more than classical logic for modelling human reasoning.
+For the purposes of this thesis we will interpret the first and second statements as conditional rules the conditional rules $(l|e)$, and $(l|o)$. The final rule $(e \leftarrow \top)$ is regarded as a certain fact not subject to revision.
+
+Given only the rule $(e\leftarrow \top)$ and conditional $(l|e)$, the participants consistently concluded that she would study late in the library, seemingly interpreting the conditional $(l|e)$ as the implicative fact $(l\leftarrow e)$ and drawing the classical logic inference $\frac{l \leftarrow e, e}{l}$ with \textit{modus ponens}. But when given the additional conditional $(l|o)$, participants no longer believe that they have enough information to judge whether she will study late in the library, and a significant portion of them no longer draw the classical conclusion. This effect, called Suppression, demonstrates the need for something more than classical logic for modelling human reasoning.
 
 \subsection{Modelling the Suppression Task: WCS} \label{ssec:sup_mod}
-Work by \cite{dietz2014modeling} has shown that the WCS is an adequate non-monotonic logic for modelling the Suppression Task. Under the WCS and \L ukasiewicz 3-valued logic the task is usually modelled using an epistemic knowledge base $\text{KB}_\text{noSup}$, with:
+Work by \cite{dietz2014modeling} has shown that the WCS is an adequate non-monotonic logic for modelling the Suppression Task. Under the WCS and \L ukasiewicz 3-valued logic the task can be modelled using an epistemic knowledge base $\text{KB}_\text{noSup}$, with:
 \[\text{KB}_\text{noSup}=(S=\{e \leftarrow \top\}, \Delta=\{(l|e)\})\]
 Which represents the  task without the suppressing conditional $(l|o)$. Interpreting the conditional as a license for implication, as in Section~\ref{ssec:condInterpretation}, the knowledge base can be rewritten as a propositional knowledge base:
 \[\text{KB}_\text{noSup}=\{e \leftarrow \top, l \leftarrow e \land \lnot \text{ab}_1, \text{ab}_1\leftarrow \bot\})\]
@@ -27,13 +29,11 @@ Now the initial knowledge base $\text{KB}_\text{sup}$ includes the conditional $
 And, when rewritten as a propositional knowledge base:
 \[\text{KB}_\text{sup}=\{e \leftarrow \top, l \leftarrow e \land \lnot \text{ab}_1, l \leftarrow o \land \lnot \text{ab}_2, \text{ab}_1\leftarrow \lnot o, \text{ab}_2\leftarrow \lnot e\}\]
 Where the abnormalities added to the interpretation of conditionals ($\psi|\text{body}$) which share $\psi$ as a head are considered dependent on one another. Weakly completing this knowledge base results in:
-\[\text{WC KB}_\text{sup}=\{e \leftrightarrow \top, l \leftrightarrow (e \land \lnot \text{ab}_1) \land (o \land \lnot \text{ab}_2), \text{ab}_1\leftrightarrow \lnot o, \text{ab}_2\leftrightarrow \lnot e\}\]
-For which applying the semantic operator converges to the least model $\top=\{e\},\bot=\{ab_2\}$ after the first application.
-
-Now suppression has been displayed in the logic program and the variable $l$ remains unknown in the least model.
+\[\text{wc KB}_\text{sup}=\{e \leftrightarrow \top, l \leftrightarrow (e \land \lnot \text{ab}_1) \lor (o \land \lnot \text{ab}_2), \text{ab}_1\leftrightarrow \lnot o, \text{ab}_2\leftrightarrow \lnot e\}\]
+Applying the semantic operator to $\text{wc KB}_\text{sup}$ converges to the least model $\top=\{e\},\bot=\{ab_2\}$ after the first application. The variable $l$ remains unknown in the least model. Suppression has now been demonstrated because $l \not\in \text{lm wc KB}_\text{sup}$, even thought $l \in \text{lm wc KB}_\text{noSup}$.
 
 \subsection{Modelling the Suppression Task: Reiter's Default Logic} \label{ssec:supReit}
-\cite{ragni2017formal} showed that it was not possible to model the suppression task using Reiter's Default Logic. They created a default theory $(W, D'_P)$ as an illustration of Default Theory to illustrate this point.
+\cite{ragni2017formal} showed that it was not possible to model the suppression task using Reiter's Default Logic. They created a default theory $(W, D'_P)$ as an illustration of this point.
 
 A naive Default Theory for the suppression task $(W,D_\text{naive})$ can be used to model the classical logic response to the suppression task (i.e. that she will study late in the library), by treating the conditional as an implication without an associated abnormality predicate.
 \[
@@ -48,7 +48,7 @@ D'_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \top}{l\leftarrow
 \delta_2:\frac{o\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top}
 \}
 \]
-The only closed and successful default process that can generated for this task is $\Pi_\text{naive}=(\delta_1)$, which results in the inset $\text{In}(\Pi_\text{naive})=\{e\leftarrow \top, l\leftarrow\top\}$. When the set of default rules is extended to create $D'_\text{naive}$ which describes information about if the library is open, then the inset $\text{In}(\Pi_\text{naive})=\{e\leftarrow \top, l\leftarrow\top\}$, and $\{\delta_1\}$ remains the only extension. Both theories assert that she will study late in the library and suppression is not observed.
+The only closed and successful default process that can generated for this task is $\Pi_\text{naive}=(\delta_1)$, which results in the inset $\text{In}(\Pi_\text{naive})=\text{th}(\text{th}(\{e\leftarrow \top\})\cup\{l \leftarrow \top\})$. When the set of default rules is extended to create $D'_\text{naive}$, $\Pi_\text{naive}$ remains the only extension and has the inset $\text{In}(\Pi'_\text{naive})=\text{th}(\text{th}(\{e\leftarrow \top\})\cup\{l \leftarrow \top\})$. Thus, in every extension $e$ of $(W,D_\text{naive})$, we find that $(l \leftarrow \top)\in \text{In}(e)$, and in every extension $e'$ of $(W,D'_\text{naive})$ we find that $(l \leftarrow \top)\in \text{In}(e')$. This formulation has failed to show suppressing effect.
 
 Even generalising our WCS approach to the Suppression Task and defining a set of defaults $D_P$ which capture intuition about abnormalities, fails to demonstrate suppression.
 \[
@@ -95,7 +95,7 @@ For the theory $(W,D_P)$, the only closed and successful default processes which
 \end{center}
 \end{table}
 
-Another widely studied task in the psychological literature is the Wason Selection Task (WST), which asks participants to draw conclusions about which variables are able to falsify a given rule (\textit{Modus Tolens}\footnote{If $a\rightarrow b$, then $\lnot b \rightarrow \lnot a$}). The task has many formulations (including the Abstract, Everyday, and Deontic cases), but this thesis will exam one of the most mostly widely researched cases: the Abstract case. 
+Another widely studied task in the psychological literature is the Wason Selection Task (WST), which asks participants to draw conclusions about which variables are able to falsify a given rule -- a process captured in classical logic by the \textit{Modus Tolens}\footnote{If $a\rightarrow b$, then $\lnot b \rightarrow \lnot a$} deductive argument. The task has many formulations (including the Abstract, Everyday, and Deontic cases), but this thesis will exam one of the most mostly widely researched cases: the Abstract case. 
 
 \begin{figure}
 \begin{center}
@@ -117,7 +117,7 @@ The Abstract case of the WST presents the subject with four cards on a table as 
 
 
 \begin{tabular}{ c c c}
-  \textbf{$D$}&  \textbf{$3$}& \textbf{$3\leftarrow D$} \\ 
+  \textbf{$D$}&  \textbf{$3$}& \textbf{$(3\leftarrow D)$} \\ 
   \hline
  $\top$ & $\top$ & $\top$\\  
  $\top$ & $\bot$ & $\bot$\\  
@@ -157,7 +157,7 @@ This task requires the participants to find possible defeaters for the condition
 
 A great many cognitive theories have been applied to these results, with varying degrees of success \citep{ragni2017formal}. This paper will focus on the WCS interpretation of the task provided by \cite{ragni2017wason}. This approach assumed an initial knowledge base $\text{KB}$ containing only the conditional $(3|D)$ and an interpretation of the conditional as a license for implication.
 
-\cite{dietz2012computational} showed that the abstract case of the WST could be modelled using the WCS and 3-valued \L ukasiewicz logic. Using the conditional as the initial logic program, we write $KB=(S=\{\},\Delta=(3|D))$. Treating conditionals as licenses for implication $\text{KB}$ can be rewritten as $\text{KB}=(3\leftarrow D \land \lnot \text{ab}_1)$ where $\text{ab}_1$ is an abnormality predicate. Now $\textrm{lm wc}(KB)=\{\}\{ab\}$, and no information is obtained that could either verify or falsify the conditional. In order to adapt the WCS to the WST they introduced the concept of observation support.
+\cite{dietz2012computational} showed that the abstract case of the WST could be modelled using the WCS and 3-valued \L ukasiewicz logic. Using the conditional as the initial logic program, we write $\text{KB}=(S=\{\},\Delta=(3|D))$. Treating conditionals as licenses for implication, $\text{KB}$ can be rewritten as $\text{KB}=\{3\leftarrow D \land \lnot \text{ab}_1\}$ where $\text{ab}_1$ is an abnormality predicate. Now $\textrm{lm wc}(\text{KB})=\top=\{\},\bot=\{ab\}$, and no information is obtained that could either verify or falsify the conditional. In order to adapt the WCS to the WST they introduced the concept of observation support.
 
 \begin{table}
 \begin{center}
@@ -176,11 +176,11 @@ A great many cognitive theories have been applied to these results, with varying
 \end{center}
 \end{table}
 
-The set of abducibles $A$ corresponds to positive and negative facts which are not assigned in $KB$. For the WST as formulated here $A=\{D\leftarrow \top,D\leftarrow \bot,3\leftarrow \top,3\leftarrow \bot,K\leftarrow \top,K\leftarrow \bot,7\leftarrow \top,7\leftarrow \bot\}$.
- An observation $O$ is explained by a minimal explanation $\epsilon \in A$ if and only if $O$ holds in $\textrm{lm wc}(KB\cup\epsilon)$. Table~\ref{tbl:wst_lmwc} shows the least models that can be drawn for the observations $D$, $3$, $K$, and $7$. If a least model obtained in this way contains atoms and atomic assignments that could verify or falsify the conditional (i.e. make $I_{\textrm{lm wc}(KB\cup \epsilon)}(3|D)\neq$ non-applicability), then the observed card should be turned. Figure~\ref{wst_wcs} shows the derivation of $\textrm{lm wc}(KB\cup \epsilon)$ for $\epsilon=D, \epsilon=3, \epsilon=K$, and $\epsilon=7$.\footnote{This approach differs in description from the author's original one, in which a card was turned if the least model assigned non-$u$ values to every variable in the conditional (i.e. $3$ and $D$), but is identical in practice.}
+The set of abducibles $A$ corresponds to positive and negative facts which are not assigned in $\text{KB}$. For the WST as formulated here $A=\{D\leftarrow \top,D\leftarrow \bot,3\leftarrow \top,3\leftarrow \bot,K\leftarrow \top,K\leftarrow \bot,7\leftarrow \top,7\leftarrow \bot\}$.
+ An observation $O$ is \textit{explained} by a minimal explanation $\epsilon \in A$ if and only if $O$ holds in $\textrm{lm wc}(KB\cup\epsilon)$. Table~\ref{tbl:wst_lmwc} shows the least models that can be drawn for the observations $D$, $3$, $K$, and $7$. If a least model obtained in this way contains atoms and atomic assignments that could verify or falsify the conditional (i.e. make $I_{\textrm{lm wc}(\text{KB}\cup \epsilon)}(3|D)\neq$ non-applicability when using the \textit{de Finetti} truth table), then the observed card should be turned. Figure~\ref{wst_wcs} shows the derivation of $\textrm{lm wc}(\text{KB}\cup \epsilon)$ for $\epsilon=D, \epsilon=3, \epsilon=K$, and $\epsilon=7$.\footnote{This approach differs in description from the author's original one, in which a card was turned if the least model assigned non-$u$ values to every variable in the conditional (i.e. $3$ and $D$), but is identical in practice.}
 
 
-This simple interpretation of the WST which applies abduction to the initial knowledge base to derive observation is sufficient to model the general reasoner. It does not however explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant proportion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak}\footnote{My contribution to this paper was the initial proposal of the extensions, their integration, the silencing mechanism used for modelling individual reasoners, and the broad idea of the stochastic evaluation technique itself.} by including three simple processes: \textit{basic weak completion}, \textit{abduction} (as we have already discussed in this section), and \textit{contraposition}. By including these three processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical frequency results can also be drawn for all three cases of the WST (Table~\ref{tbl:can_full}).
+This simple interpretation of the WST which applies abduction to the initial knowledge base to derive the observation is sufficient to model the general reasoner. It does not, however, explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant proportion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak}\footnote{My contribution to this paper was the initial proposal of the extensions, their integration, the silencing mechanism used for modelling individual reasoners, and the broad idea of the stochastic evaluation technique itself.} by including three simple processes: \textit{basic weak completion}, \textit{abduction} (as we have already discussed in this section), and \textit{contraposition}. By including these three processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical frequency results can also be drawn for all three cases of the WST (Table~\ref{tbl:can_full}).
 
 \subsubsection*{Basic Weak Completion}
 
@@ -214,7 +214,7 @@ Contraposition is applied as follows for the initial knowledge base $KB$:
 \end{itemize}
 \item Interpret conditionals as licenses for implication.
 \item Apply the Abductive case of the WCS as normal.
-\item Turn the card if and only if some or $I_{\text{lm WC (KB} \cup \epsilon)}(\psi|\phi)\neq\textrm{non-applicability}$ or some $I_{\text{lm WC (KB} \cup \epsilon)}(\phi'|X)\neq\textrm{non-applicability}$, and $text{lm WC (KB} \cup \epsilon)$ explains $O$.
+\item Turn the card if and only if some or $I_{\text{lm WC (KB} \cup \epsilon)}(\psi|\phi)\neq\textrm{non-applicability}$ or some $I_{\text{lm WC (KB} \cup \epsilon)}(\phi'|X)\neq\textrm{non-applicability}$, and $\text{lm WC (KB} \cup \epsilon)$ explains $O$.
 \end{enumerate}
 
 Using this technique, and applying basic weak completion (i.e. only considering the case $\epsilon\leftrightarrow(O\leftarrow \top)$ it is possible to model the classical case of the WST. The resolution for the $7$ card is as follows:

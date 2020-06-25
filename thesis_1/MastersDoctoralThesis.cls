@@ -309,7 +309,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 \NewDocumentCommand{\setblankpagestyle}{ m }{\renewcommand{\blank@p@gestyle}{#1}}
 \NewDocumentCommand{\setchapterpagestyle}{ m }{\renewcommand{\chapter@p@gestyle}{#1}}
 
-\DeclareDocumentCommand\cleardoublepage{}{\clearpage\if@twoside \ifodd\c@page\else
+\DeclareDocumentCommand\cleardoublepage{}{\clearpage\iffalse \ifodd\c@page\else
 	\hbox{}
 	\thispagestyle{\blank@p@gestyle}
 	\newpage

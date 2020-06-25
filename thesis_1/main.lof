@@ -3,23 +3,23 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The Abstract case of the Wason Selection Task\relax }}{13}{figure.caption.41}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Application of the WCS to the abstract case of the WST for the basic weak completion approach.\relax }}{14}{figure.caption.44}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Using the abduction and contraposition extensions to derive all four canonical cases. Arrows indicate that the origin model produces a subset of the turn instructions of the endpoint.\relax }}{17}{figure.caption.58}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Abstract case of the Wason Selection Task\relax }}{11}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Application of the WCS to the abstract case of the WST for the basic weak completion approach.\relax }}{12}{figure.caption.47}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Using the abduction and contraposition extensions to derive all four canonical cases. Arrows indicate that the origin model produces a subset of the turn instructions of the endpoint.\relax }}{15}{figure.caption.61}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. $SP$ nodes indicate state points.\relax }}{19}{figure.caption.61}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces An SCP-like examination of a mental task, showing the relative levels of granularity of SCP Tasks, SCPs, and Realised SCPs.\relax }}{22}{figure.caption.65}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces A breadth-first search algorithm for De Novo SCP search with SCP Task $\Pi =(x,M,\gamma ,f())$.\relax }}{29}{figure.caption.85}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Suppression for the SCP $\mu _\text {sup}=(\pi =(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}),f())$\relax }}{47}{figure.caption.143}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Inhibition of Suppression for the SCP $\mu _del=(\pi ,f_\text {sup}()), \pi = (s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {remove}_\bot \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}).$\relax }}{48}{figure.caption.145}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Realised SCPs for the SCP interpretation of the WST where $\mu =(\pi _1,f_\text {WST})$, $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$. Results mimic those observed in \citep {holldobler2015weak}'s WST interpretation.\relax }}{50}{figure.caption.150}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The most general description on an SCP with and without guaranteeing the WCS is applied at least once. An agent transitions from one epistemic state to another and then uses it to make a decision. \textit {SP} nodes indicate state points.\relax }}{16}{figure.caption.64}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces An SCP-like examination of a mental task, showing the relative levels of granularity of SCP Tasks, SCPs, and Realised SCPs.\relax }}{19}{figure.caption.68}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces A breadth-first search algorithm for De Novo SCP search with SCP Task $\Pi =(x,M,\gamma ,f())$.\relax }}{26}{figure.caption.88}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Class diagram for the implementation of the SCP Framework.\relax }}{62}{figure.caption.181}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Two use cases for the implementation of the SCP framework\relax }}{63}{figure.caption.183}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Suppression for the SCP $\mu _\text {sup}=(\pi =(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}),f())$\relax }}{43}{figure.caption.146}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Inhibition of Suppression for the SCP $\mu _del=(\pi ,f_\text {sup}()), \pi = (s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {remove}_\bot \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}).$\relax }}{44}{figure.caption.148}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Realised SCPs for the SCP interpretation of the WST where $\mu =(\pi _1,f_\text {WST})$, $\pi _1=(s_i \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addAB} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {addExp} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {wc} \DOTSB \mapstochar \DOTSB \relbar \joinrel \rightarrow \texttt {semantic}))$. Results mimic those observed in \citep {holldobler2015weak}'s WST interpretation.\relax }}{46}{figure.caption.153}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part1.\relax }}{72}{figure.caption.215}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part2.\relax }}{73}{figure.caption.216}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Code snippet showing how the Suppression Task is modelled in the SCP Framework.\relax }}{74}{figure.caption.218}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Class diagram for the implementation of the SCP Framework.\relax }}{57}{figure.caption.184}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Two use cases for the implementation of the SCP framework\relax }}{58}{figure.caption.186}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part1.\relax }}{65}{figure.caption.218}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Epistemic states demonstrating that an \texttt {adEXP} can be used to model the individual case of the Suppression Task where Suppression is prevented. Part2.\relax }}{66}{figure.caption.219}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Code snippet showing how the Suppression Task is modelled in the SCP Framework.\relax }}{67}{figure.caption.221}%
