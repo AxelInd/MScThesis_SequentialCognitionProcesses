@@ -14,14 +14,14 @@ M=\{\texttt{mixIngredients}, \texttt{bakeIngredients}, \texttt{doTheLaundry}\}
 \]
 
 \[
-f(x)= \left\{ \begin{split} cakeBaked \models \top & & & \textrm{True}\\ cakeBaked \models \bot & & & \textrm{False} \end{split} \right\}
+f(x)= \left\{ \begin{matrix} cakeBaked \models \top & & & \textrm{True}\\ cakeBaked \models \bot & & & \textrm{False} \end{matrix} \right\}
 \]
 
 \[
 \gamma  = True
 \]
 
-Without specifying the precise details of the complex operations in $M$, and simply using our intuition of the effects of these actions, we can draw some candidate SCPs. Candidate SCPs such as $f(s_0 \longmapsto \texttt{mixIngredients})$ do not result in the cake being baked and so are discounted immediately. However, consider a case where the modelling algorithm being used has come up with two possible SCPs to explain the processes chosen by the participant:
+Without specifying the precise details of the complex operations in $M$, and simply using our intuition of the effects of these actions, we can draw some candidate SCPs. Candidate SCPs such as $\mu=(\pi=(s_0 \longmapsto \texttt{mixIngredients}), f())$ do not result in the cake being baked and so are discounted immediately. However, consider a case where the modelling algorithm being used has come up with two possible SCPs to explain the processes chosen by the participant:
 
 \begin{equation} \label{eq:bakeCake}
 \mu_1 = (\pi_1=(s_0\longmapsto \texttt{mixIngredients} \longmapsto \texttt{bakeIngredients}),f())
@@ -35,7 +35,7 @@ Intuitively, both of these operational sequences would result in a cake being ba
 
 This toy example is evidence that, in at least some cases, one can confidently prefer one SCP to another. The question now arises: how do we precisely, and consistently prefer one SCP over another? This question is not easy to answer, and this chapter is devoted to proposing candidate solutions which may be able to quantitatively score and select preferable SCPs.
 
-Section~\ref{ssec:compGen} discusses the question of how to compare different SCPs found using search for a single task. Section~\ref{ssec:compExt} discuses the more general problem of comparing SCPs even when the underlying SCPs tasks differ. Section~\ref{ssec:nw} introduces the Needleman-Wunsch Algorithm for string matching whose underlying principles have allowed us to quantify questions of homology and evolutionary relationships in biology, and Section~\ref{ssec:nw_mod} discusses and justifies and extension to this algorithm for use in SCP comparisons.
+Section~\ref{ssec:compGen} discusses the question of how to compare different SCPs found using search for a single task. Section~\ref{ssec:compExt} discuses the more general problem of comparing SCPs even when the underlying SCPs tasks differ. Section~\ref{ssec:nw} introduces the Needleman-Wunsch Algorithm for string matching whose underlying principles have allowed us to quantify questions of homology and evolutionary relationships in biology.
 
 \section{Comparing Generated SCPs} \label{ssec:compGen}
 \subsection{Scoring}

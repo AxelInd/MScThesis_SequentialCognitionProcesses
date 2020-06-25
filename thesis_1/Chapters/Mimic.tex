@@ -25,8 +25,7 @@ The second consideration $M$, denotes the set of possible cognitive operations w
 M=\{\texttt{addAB}, \texttt{semantic}, \texttt{wc}\}
 \]
 
-The external evaluation function should translate the SCP into a decision that can be compared with empirical data. In the Suppression Task we will treat $f_\text{sup}()$ as a function that makes a single choice from the set $\{\text{`she will strudy late in the library'},\text{she will not study late in the library}, \text{we are uncertain if she will study late in the library}\}$. Under the assumption only the final state point $p_n$
-determines whether she will study late, we might define $f_\text{sup}()$ as follows:
+The external evaluation function should translate the SCP into a decision that can be compared with empirical data. In the Suppression Task we will treat $f_\text{sup}()$ as a function that makes a single choice from the set $\{$\textit{`she will study late in the library'},\textit{she will not study late in the library}, \textit{we are uncertain if she will study late in the library}$\}$. Under the assumption only the final state point $p_n$ determines whether she will study late, we might define $f_\text{sup}()$ as follows:
 
 \begin{algorithm}[H] \label{evaluation:f_sup}
 \SetAlgoLined
@@ -99,14 +98,14 @@ Equipped with these two cognitive operations, there are several SCPs which can m
 
 Figure~\ref{fig:Suppression_SCP_del1} shows the realised SCPs for one satisfying SCP for $\Pi_\text{deviant}$. This example shows that deleting the variable $o$ from the epistemic state, prevents suppression from occurring because suppression the abnormality $(\text{ab}_1 \leftarrow \lnot o )$ is the cause of the suppression in $\Pi$, and in $\Pi'$ the abnormality is now given by $(\text{ab}_1 \leftarrow \lnot \top )$.
 
-In the Appendix, Figure~\ref{fig:suppression_python} shows that the non-monotonic cognitive operation \texttt{addExp} can prevent suppression by adding abducibles related to the  free variable $o$.\footnote{The output is too large to graph attractively, and should be viewed in its entirety to confirm that this approach is effective.} This is, as far as I can tell, the first use of \cite{holldobler2015weak}'s abducible approach to the WST to model the Suppression Task. By giving $o$ an assignment, the abnormality $\text{ab}_1\leftrightarrow \lnot o$ no longer evaluates to $u$, and across all responses epistemic states, the `elo' states now model every response \texttt{response} that `el' does.
+In the Appendix, Figure~\ref{fig:suppression_python} and Figure~\ref{fig:suppression_python2}  show that the non-monotonic cognitive operation \texttt{addExp} can prevent suppression by adding abducibles related to the  free variable $o$.\footnote{The output is too large to graph attractively, and should be viewed in its entirety to confirm that this approach is effective.} This is, as far as I can tell, the first use of \cite{holldobler2015weak}'s abducible approach to the WST to model the Suppression Task. By giving $o$ an assignment, the abnormality $\text{ab}_1\leftrightarrow \lnot o$ no longer evaluates to $u$, and across all responses epistemic states, the `elo' states now model every response \texttt{response} that `el' does.
 
 Both of these examples illustrate the derivation of the classical logical response to the suppression task as a modification of an SCP which did illustrate suppression. This evidences one of the core claims of the SCP Framework which is that it is a reasonable tool for modelling individual reasoners in a cognitive task. 
 
 The value of these examples lies in that they show that classical logic response to a cognitive task is not necessarily derived through the use of classical logic.
 
 \begin{figure}
-\centering \includegraphics[scale=0.4]{Suppression_SCP_del1}
+\centering \includegraphics[width=\linewidth]{Suppression_SCP_del1}
 \caption{Inhibition of Suppression for the SCP $\mu_del=(\pi,f_\text{sup}()), \pi = (s_i \longmapsto \texttt{remove}_\bot \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}).$}.
 \label{fig:Suppression_SCP_del1}
 \end{figure}
@@ -202,7 +201,7 @@ For the purposes of readability, we will restrict examination of the abducibles 
 
 Next, we define the external evaluation function $f_\text{wcs}(\pi)$ as follows:
 
-\begin{algorithm}[H] \label{cogOp:wcs}
+\begin{algorithm}[H] \label{f:wst}
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$\texttt{f}_\text{WST}(\pi)$}

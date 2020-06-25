@@ -3,7 +3,7 @@
 \section{Overview}
 As discussed in Section~\ref{ssec:intu},and illustrated in Figure~@TODOref the simplest imaginable description of sequential human cognition consists of a single step transforming the initial task information (along with background information) into an epistemic state that can be externally interpreted to choose a response. That is, $\mu=(\pi=(S_i \longmapsto m),f())$ can model any cognitive task with a complex enough definition of $m$.
 
-To understand why this is poor choice of SCP, consider a general limitation of the SCP framework: we can only change the output of an SCP by changing the initial epistemic state, or by inserting/deleting a cognitive operation at an existing state point. Consider a case where the initial epistemic state is immutable. Thus, for $f(x \longmapsto A)$, the only possible changes are: $f(x \longmapsto \bar{B} \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto \bar{B} \longmapsto A)$, $f(x \longmapsto \bar{B})$, and $f(x)$. Where $\bar{B}$ denotes the action of drawing some sequence of random, but valid cognitive state transitions. There is no way to change the operations that occur in $A$. Thus, even though Figure~@TODOref may be an appropriate model for the general reasoner of a given task, it imposes the explicit assumption that all other test subjects who achieved differing results, achieved only by completely ignoring the black-box process the general reasoners used, or else by inserting new operations only at the very start or end of the processing task. In Section~\ref{sec:supSCP} and Section~\ref{{sec:wstSCP}} we will explore examples of cases where assumptions like that are simply not reflected by empirical data. 
+To understand why this is poor choice of SCP, consider a general limitation of the SCP framework: we can only change the output of an SCP by changing the initial epistemic state, or by inserting/deleting a cognitive operation at an existing state point. Consider a case where the initial epistemic state is immutable. Thus, for $f(x \longmapsto A)$, the only possible changes are: $f(x \longmapsto \bar{B} \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto A \longmapsto \bar{B})$, $f(x \longmapsto \bar{B} \longmapsto A)$, $f(x \longmapsto \bar{B})$, and $f(x)$. Where $\bar{B}$ denotes the action of drawing some sequence of random, but valid cognitive state transitions. There is no way to change the operations that occur in $A$. Thus, even though Figure~@TODOref may be an appropriate model for the general reasoner of a given task, it imposes the explicit assumption that all other test subjects who achieved differing results, achieved only by completely ignoring the black-box process the general reasoners used, or else by inserting new operations only at the very start or end of the processing task. In Section~\ref{sec:supSCP} and Section~\ref{sec:wstSCP} we will explore examples of cases where assumptions like that are simply not reflected by empirical data. 
 
 Instead of using a single black-box operation to describe all cognition, it follows logically to use multiple smaller black box operations, each taking a state point as input and resulting in a state point as output. Using this interpretation, cognitive operations for the general reasoner should be as extensive as possible, provided that they do not force implausible changes to describe deviant users or when used in other cognitive tasks. Figure~\ref{fig:scp_general} and Figure~\ref{fig:sfig2} in the previous chapter, captured this intuition as it applies to the Weak Completion Semantics. Indeed, as a non-monotonic logic that is already explicitly divided into discrete steps in the literature Section~\ref{ssec:wcs}, its individual steps are obvious candidate cognitive operations.
 
@@ -17,7 +17,7 @@ In principle, the number of cognitive operations available for use in an SCP is 
 
 
 \section{A Limited Set of Allowable Operations}
-In practice it is impossible compute the set of all candidate SCPs when the set of allowable cognitive operations $M$ in a planning task is $\Omega^*$ or even $\Omega$. Without a length constraint Proof~\ref{proof:infiniteSCPLength} shows that it is not even possible to compute all possible SCPs for many SCP tasks with a finite set of allowable operations. Table~\ref{tbl:solutionSpace} summarises the properties of solution space under different SCP task conditions.
+In practice it is impossible compute the set of all candidate SCPs when the set of allowable cognitive operations $M$ in a planning task is $\Omega^*$ or even $\Omega$. Without a length constraint Proof~\ref{proof:infiniteSCPLength} shows that it is not even possible to compute all possible SCPs for many SCP tasks with a finite set of allowable operations. Table~\ref{tbl:scpSpace} summarises the properties of solution space under different SCP task conditions.
 
 \begin{table}
 \begin{center}
@@ -32,7 +32,7 @@ In practice it is impossible compute the set of all candidate SCPs when the set 
  finite &  Yes &  \checkmark & \text{\sffamily X}
 \end{tabular}
 \caption{Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.}
-\label{tbl:solutionSpace}
+\label{tbl:scpSpace}
 
 \end{center}
 \end{table}
@@ -265,7 +265,7 @@ $\Delta:=\{\}$\;
 
 Weak completion is an essential part of the WCS. Under the assumption that the WCS is a valid representation of human cognition in at least one scenario, any comprehensive set of cognitive operations $M$ must be able to mimic the Weak Completion of a knowledge base. Algorithm~\ref{cogOp:wc} shows one way in which this can be achieved.
 
-\begin{algorithm}[H] \label{cogOp:wcs}
+\begin{algorithm}[H] \label{cogOp:wc}
 \SetAlgoLined
 \SetKwProg{Fn}{Function}{ is}{end}
 \Fn{$e$($\bar{p}$)}
@@ -275,7 +275,7 @@ Replace all occurrences of $\leftarrow \in \bar{p}[\textrm{`S'}]$ with $\leftrig
 \Return $\bar{p}$
 }
 
-\caption{\texttt{wcs}$(\bar{p})$}
+\caption{\texttt{wc}$(\bar{p})$}
 \end{algorithm}
 
 
@@ -424,11 +424,9 @@ The question of how to generate appropriate complex operation aggregates is a co
 
 \section{Epistemic State Structure Changes with Cognitive Operations}
 %e.g. going to WCS to Default
-The conception and mathematics of cognitive operations which produce output epistemic states points which differ in structure from the epistemic input structure are fairly straightforward.
+The conception and mathematics of cognitive operations which produce output epistemic states points which differ in structure from the epistemic input structure are fairly straightforward. Some cognitive operation $A$ with input base point structure $\textrm{struct}(s_k)$ and output base point structure $\textrm{struct}(s_{k+1})$ is called a \textit{structural transformation operation} if and only if $\textrm{struct}(s_k) \ne \textrm{struct}(s_{k+1})$.
 
-Some cognitive operation $A$ with input base point structure $\textrm{struct}(s_k)$ and output base point structure $\textrm{struct}(s_{k+1})$ is called a \textit{structural transformation operation} if and only if $\textrm{struct}(s_k) \ne \textrm{struct}(s_{k+1})$.
-
-The intuition behind structural state changes goes back to Albert Einstein's quote that opened this thesis ``Everything should be made as simple as possible, but no simpler.". In theory there is no restriction on SCP structure that would prevent every epistemic state passing an arbitrarily large number of variables and arguments. An SCP meant to represent a cognitive task where participant responses are consistent with propositional logic, for exmaple, could be accurately represented with an initial state $s_x=(S)$ where $S$ is simply the knowledge base of facts and rules given; but a researcher might equally use an epistemic state $s_y=(S,V)$ where a variable $V$ is intended to store the values of each variable in $S$; or even $s_z=(S,V,D)$ where $D$ is a set of default rules. All three of these approaches would give an SCP the information required to evaluate the propositional task, but, if we know the task structure does not deal with uncertainty or show variation in reasoner responses, it becomes apparent that the set of default rules $D$ is unnecessary.
+The intuition behind structural state changes goes back to Albert Einstein's quote that opened this thesis ``Everything should be made as simple as possible, but no simpler.". In theory there is no restriction on SCP structure that would prevent every epistemic state passing an arbitrarily large number of variables and arguments. An SCP meant to represent a cognitive task where participant responses are consistent with propositional logic, for example, could be accurately represented with an initial state $s_x=(S)$ where $S$ is simply the knowledge base of facts and rules given; but a researcher might equally use an epistemic state $s_y=(S,V)$ where a variable $V$ is intended to store the values of each variable in $S$; or even $s_z=(S,V,D)$ where $D$ is a set of default rules. All three of these approaches would give an SCP the information required to evaluate the propositional task, but, if we know the task structure does not deal with uncertainty or show variation in reasoner responses, it becomes apparent that the set of default rules $D$ is unnecessary.
 
 All of the possibilities given hold for the propositional task because $s_y$ and $s_z$ are both supersets of $s_x$ and $s_x$ is sufficient to model the task. Thus, provided the researchers do not believe that the task will make use of cognitive operations which require more complex state structures, $s_x$ is the simplest solution which meets the requirements of the researchers.
 
