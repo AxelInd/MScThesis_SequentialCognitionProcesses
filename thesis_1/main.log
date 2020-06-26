@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  26 JUN 2020 19:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  26 JUN 2020 20:07
 entering extended mode
 **./main.tex
 (main.tex
@@ -1960,7 +1960,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 ### bottom level 
 Here is how much of TeX's memory you used:
  40398 strings out of 480799
- 834040 string characters out of 2896252
+ 834039 string characters out of 2896252
  1286306 words of memory out of 3000000
  55298 multiletter control sequences out of 15000+200000
  623907 words of font info for 206 fonts, out of 3000000 for 9000
@@ -1988,7 +1988,7 @@ uplbi8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/pa
 latino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 urw/palatino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (111 pages, 2621826 bytes).
+Output written on main.pdf (111 pages, 2622361 bytes).
 PDF statistics:
  1659 PDF objects out of 1728 (max. 8388607)
  387 named destinations out of 1000 (max. 500000)

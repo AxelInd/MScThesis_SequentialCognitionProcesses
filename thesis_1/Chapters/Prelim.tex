@@ -57,7 +57,9 @@ An interpretation of $\Sigma$, $I_w(\Sigma)$ assigns each $v_i\ \in \Sigma$ to o
 \section{Possible Worlds}
 A possible world $w\in W_\sigma$ from the set of all possible worlds $W$ over a language $\Sigma$ is $(v_0,w_0) \land ... \land I(v_n,w_n)$ and is the conjunction of each atom and an associated value from its domain. Possible worlds represent one setting of the variables in the alphabet that could hypothetically hold. A model of a propositional formula $\theta \in \zeta$ is a possible world $w$ in which $\theta$ is evaluated to $\top$ (also called satisfying) and is written $w \models \theta$. 
 
-$Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that is, $Mod(\theta)=\{w|w\models \theta\}$. The operator $\models$ is overloaded so that $\phi \models \psi$ if and only if $Mod(\phi) \subseteq Mod(\psi)$ for $\phi,\psi \in \zeta$.
+A model $Mod(\theta)$ denotes the set of possible worlds in which $\theta$ holds -- that is, $Mod(\theta)=\{w|w\models \theta\}$. The operator $\models$ is overloaded so that $\phi \models \psi$ if and only if $Mod(\phi) \subseteq Mod(\psi)$ for $\phi,\psi \in \zeta$.
+
+The \textit{least model} of a theory $\theta$ is model $M$ of $\theta$ such that there is  exists no other model $M'$ of $\theta$ such that $M \subset M'$.
 
 A set of propositional clauses $W$ is called \textit{deductively closed}, written $\text{th}(W)$ if it contains every formula $\phi$ that can be logically deduced from $W$. 
 
@@ -184,7 +186,7 @@ J^\bot = \{ &  A | \textrm{ there exists a clause } A \leftarrow Body \in P \\
 \]
 
 %this might not be right? Should it say I or J? @TODO
-Using $I=<\emptyset, \emptyset>$, the least model of $P$ ($\textrm{lm}_\textrm{\L}$wc$P$) can be calculated by iterating $\phi_{SvL,P}$.
+Using $I=<\emptyset, \emptyset>$, the least model of $P$ ($\textrm{lm}_\textrm{\L}$wc$P$) can be calculated by iterating $\phi_{SvL,P}$. The WCS guarantees a unique least model for a propositional knowledge base $P$ when interpreted with \L ukasiewicz logic.
 
 \section{Reiter's Default Logic} \label{ssec:reiter}
 Reteir's Default Logic \citep{reiter1980logic} is a non-monotonic framework which allows us to divide the inferential capabilities of a system into those facts and inference rules which are always true (as in classical logic) and those which are are usually true. The second type of inference is the eponymous default rule.
@@ -197,12 +199,12 @@ The set of default rules $D$ consists of a set of tritonic clauses of the form $
 
 A default $\delta$ is \textit{applicable} to a deductively closed set $\text{th}(W)$ if and only if $\text{pre}(\delta) \in \text{th}(W)$ and there exists no $\text{just}_i(\delta) \in \text{just}(\delta)$ such that $\lnot \text{just}(\delta) \in th(W)$.
 
-A default process $\Pi=(\delta_1,...,\delta_n)$ consists of a sequence of default rules, $\delta_i\in D\}$. Following \cite{ragni2017formal}, we define the sets $\text{In}(\Pi)=\{\text{th}(W \cup \text{cons}(\delta)|\delta \in \Pi)$ and $\text{Out}(\Pi)=\{\lnot A|A \in \text{just}(\delta), \delta \in \Pi\}$. A default process is called \textit{successful} if and only if $\text{In}(\Pi)\cap \text{Out}(\Pi)=\emptyset$. A default process if called \textit{closed} if and only if there exists no $\delta \in D$, where $\delta$ is applicable to $\text{In}(\Pi)$ and $\delta \not\in \Pi$. The set $E$ is called an extension of default process $D$ if and only if $E=\text{In}(\Pi)$, for some successful closed process $\Pi$. 
+A default process $\Pi=(\delta_1,...,\delta_n)$ consists of a sequence of default rules, $\delta_i\in D$. Following \cite{ragni2017formal}, we define the sets $\text{In}(\Pi)=\{\text{th}(W \cup \text{cons}(\delta)|\delta \in \Pi)\}$ and $\text{Out}(\Pi)=\{\lnot A|A \in \text{just}(\delta), \delta \in \Pi\}$. A default process is called \textit{successful} if and only if $\text{In}(\Pi)\cap \text{Out}(\Pi)=\emptyset$. A default process if called \textit{closed} if and only if there exists no $\delta \in D$, where $\delta$ is applicable to $\text{In}(\Pi)$ and $\delta \not\in \Pi$. The set $E$ is called an extension of default process $D$ if and only if $E=\text{In}(\Pi)$, for some successful closed process $\Pi$. 
 
 We write $W\models_\text{D}^\text{Reiter} \psi$ if and only if $\psi \in \bigcap \epsilon$, where $\epsilon$ is the set of all valid extensions of the default theory $(W,D)$.
 
 
-It should be immediately apparent form this formulation that, for many possible sets of rules in default theories, the number of extensions is non-monotonic as it is dependent on the number of orders in which default rules are applied successfully. A very significant restriction on reiter's default logic is the complexity of computing deductively closed sets.
+It should be immediately apparent from this formulation that, for many possible sets of rules in default theories, the number of extensions is non-monotonic as it is dependent on the number of orders in which default rules are applied successfully. A very significant restriction on Reiter's default logic is the complexity of computing deductively closed sets.
 
 The closed world assumption $\frac{: \lnot \bot}{\bot}$ states that all information which is not known to be true is assumed to be false. The closed world assumption can be used to ensure that, for every variable $v_i \in \Sigma$, $I_w(v_i) \models \top$ or $I_w(v_i) \models \bot$.
 

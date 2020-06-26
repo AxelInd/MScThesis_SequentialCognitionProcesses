@@ -1,7 +1,7 @@
 \chapter{Experiments} \label{chp:experiments}
 \section{Suppression Task} \label{sec:sup}
 \subsection{Intuitive Overview} \label{ssec:sup_intuition}
-The Suppression Task refers to an experiment conducted by \cite{byrne1989suppressing} and is a classical example of the inadequacy of monotonic logics for modelling human reasoning. In classical logic, if our knowledge base $S$ is such that $I(S) \models \phi$, then it must be the case that $I(S \cup \theta) \models \phi$, for some new rule $\theta$. However, in the suppression task participants no longer draw classically valid inferences when new information is added. The task is described with three statements:
+The Suppression Task refers to an experiment conducted by \cite{byrne1989suppressing} and is a classical example of the inadequacy of monotonic logics for modelling human reasoning. In classical logic, if our knowledge base $S$ is such that $I(S) \models \phi$, then it must be the case that $I(S \cup \theta) \models \phi$, for some new rule $\theta$. However, in the Suppression Task, participants no longer draw classically valid inferences when new information is added. The task is described with three statements:
 
 \begin{enumerate}
 \item If she has an essay to write ($e$), she will study late in the library ($l$).
@@ -9,12 +9,12 @@ The Suppression Task refers to an experiment conducted by \cite{byrne1989suppres
 \item She has an essay to write ($e$).
 \end{enumerate}
 
-For the purposes of this thesis we will interpret the first and second statements as conditional rules the conditional rules $(l|e)$, and $(l|o)$. The final rule $(e \leftarrow \top)$ is regarded as a certain fact not subject to revision.
+For the purposes of this thesis we will interpret the first and second statements as the conditional rules $(l|e)$, and $(l|o)$. The final rule $(e \leftarrow \top)$ is regarded as a certain fact not subject to revision.
 
 Given only the rule $(e\leftarrow \top)$ and conditional $(l|e)$, the participants consistently concluded that she would study late in the library, seemingly interpreting the conditional $(l|e)$ as the implicative fact $(l\leftarrow e)$ and drawing the classical logic inference $\frac{l \leftarrow e, e}{l}$ with \textit{modus ponens}. But when given the additional conditional $(l|o)$, participants no longer believe that they have enough information to judge whether she will study late in the library, and a significant portion of them no longer draw the classical conclusion. This effect, called Suppression, demonstrates the need for something more than classical logic for modelling human reasoning.
 
 \subsection{Modelling the Suppression Task: WCS} \label{ssec:sup_mod}
-Work by \cite{dietz2014modeling} has shown that the WCS is an adequate non-monotonic logic for modelling the Suppression Task. Under the WCS and \L ukasiewicz 3-valued logic the task can be modelled using an epistemic knowledge base $\text{KB}_\text{noSup}$, with:
+Work by \cite{dietz2014modeling} has shown that the WCS is an adequate non-monotonic logic for modelling the Suppression Task. Under the WCS and \L ukasiewicz 3-valued logic, the task can be modelled using an epistemic knowledge base $\text{KB}_\text{noSup}$, with:
 \[\text{KB}_\text{noSup}=(S=\{e \leftarrow \top\}, \Delta=\{(l|e)\})\]
 Which represents the  task without the suppressing conditional $(l|o)$. Interpreting the conditional as a license for implication, as in Section~\ref{ssec:condInterpretation}, the knowledge base can be rewritten as a propositional knowledge base:
 \[\text{KB}_\text{noSup}=\{e \leftarrow \top, l \leftarrow e \land \lnot \text{ab}_1, \text{ab}_1\leftarrow \bot\})\]

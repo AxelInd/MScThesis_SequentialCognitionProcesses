@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {2.4.1}Knowledge Base}{8}{subsection.24}%
 \contentsline {section}{\numberline {2.5}Non-Monotonic Logics}{9}{section.25}%
 \contentsline {section}{\numberline {2.6}The Weak Completion Semantics}{9}{section.26}%
-\contentsline {section}{\numberline {2.7}Reiter's Default Logic}{10}{section.30}%
+\contentsline {section}{\numberline {2.7}Reiter's Default Logic}{11}{section.30}%
 \contentsline {chapter}{\numberline {3}Experiments}{12}{chapter.31}%
 \contentsline {section}{\numberline {3.1}Suppression Task}{12}{section.32}%
 \contentsline {subsection}{\numberline {3.1.1}Intuitive Overview}{12}{subsection.33}%
