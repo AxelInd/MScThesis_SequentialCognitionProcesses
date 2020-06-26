@@ -262,12 +262,12 @@ Add $\bar{p}_i$ to the explanations for $o$.
  \label{f:wst}
 \end{algorithm}
 
-\begin{figure}
+\begin{sidewaysfigure}
 \centering{\includegraphics[width=\linewidth]{realisedSCPsWST}}
 
 \caption{Realised SCPs for the SCP interpretation of the WST where $\mu_{D,3}=(\pi,f_\text{WST})$, and $\mu_D=(\pi,f_\text{WST}^\text{pref})$, with $\pi=(s_i \longmapsto \texttt{addAB} \longmapsto \texttt{addExp}  \longmapsto \texttt{wc} \longmapsto \texttt{semantic})$. Results for $\mu_\{D,3\}$ mimic those observed in \cite{holldobler2015weak}'s WST interpretation which concludes the canonical case $D,3$. Results for $\mu_{D}$ conclude the canonical case $D$. }
 \label{fig:rSCP_WST}
-\end{figure}
+\end{sidewaysfigure}
 
 Next we create our goals. We will make one goal for each of the canonical cases of the WST. The structure of the goal associates a turn function with every possible observation that needs to be explained.
 \[\gamma_{D,3}=\{(\text{D}:\text{turn card}),(\text{3}:\text{turn card}),(\text{K}:\text{do not turn}),(\text{7}:\text{do not turn})\}\]
@@ -366,12 +366,12 @@ Now it is clear that $p(f_\text{WST}(\pi),\text{pref})= \gamma_D$. To return thi
 %------------------Contraposition-----------------------------------
 
 
-\begin{figure}
+\begin{sidewaysfigure}
 \centering{\includegraphics[width=\linewidth]{realisedSCPsWST_mod}}
 
-\caption{Realised SCPs for the SCP interpretation of the WST where $\mu_{D,3,7}=(\pi',f_\text{WST})$, and $\mu_{D,7}=(\pi',f_\text{WST}^\text{pref})$, with $\pi=(s_i' \longmapsto \texttt{addAB} \longmapsto \texttt{addExp}  \longmapsto \texttt{wc} \longmapsto \texttt{semantic})$.  Results for $\mu_{D,3,7}$, $\mu_{D,7}$ conclude the canonical cases $\{D,3,7\}$ and $\{D,7\}$, respectively. The case for $\eta=\{K\}$ is omitted, for reasons of readability.}
+\caption{Realised SCPs for the SCP interpretation of the WST where $\mu_{D,3,7}=(\pi',f_\text{WST})$, and $\mu_{D,7}=(\pi',f_\text{WST}^\text{pref})$, with $\pi=(s_i' \longmapsto \texttt{addAB} \longmapsto \texttt{addExp}  \longmapsto \texttt{wc} \longmapsto \texttt{semantic})$.  Results for $\mu_{D,3,7}$, $\mu_{D,7}$ conclude the canonical cases $\{D,3,7\}$ and $\{D,7\}$, respectively. The case for $\epsilon=\{K\}$ is omitted, for reasons of readability.}
 \label{fig:realisedSCPsWST_mod}
-\end{figure}
+\end{sidewaysfigure}
 
 
 Implementing contraposition in the SCP framework we have defined is surprisingly simple. We simply need to define a new SCP Task $\Pi_\text{D,3,7}$ as follows:

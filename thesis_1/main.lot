@@ -18,9 +18,9 @@
 \contentsline {table}{\numberline {5.1}{\ignorespaces Solution space considerations of SCPs tasks as determined by length constraints and choice of cognitive operations.\relax }}{39}{table.caption.93}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.\relax }}{78}{table.caption.171}%
-\contentsline {table}{\numberline {7.2}{\ignorespaces Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref {tbl:simpleneed}.\relax }}{78}{table.caption.172}%
-\contentsline {table}{\numberline {7.3}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$\relax }}{80}{table.caption.174}%
-\contentsline {table}{\numberline {7.4}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$\relax }}{80}{table.caption.175}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.\relax }}{79}{table.caption.171}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref {tbl:simpleneed}.\relax }}{79}{table.caption.172}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$\relax }}{81}{table.caption.174}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$\relax }}{81}{table.caption.175}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
