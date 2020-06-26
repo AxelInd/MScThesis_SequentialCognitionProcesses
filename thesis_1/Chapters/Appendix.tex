@@ -8,6 +8,30 @@ The expansion operation \textbf{exp} operation precisely substitutes a pCTM for 
 \end{enumerate}
 \end{definition}
 
+\begin{definition} \label{lem:uniredundant}
+Given a cognitive operation sequence $A \in \Omega^*$, a final state dependant external evaluation function $f()$, and goal $\gamma$, $A$ is \textbf{redundant} iff one of the following holds:
+\begin{itemize}
+\item $f(s_i \longmapsto \text{exp}(B) \longmapsto \text{exp}(C)) \models x'$ and $f(s_i \longmapsto \text{exp}(A)) \models x'$ for every viable epistemic state $x$, $B \in \Omega^*$, $C \in \Omega^*$, where neither $B$ nor $C$ is the empty set or the trivial operation $T$ (See Definition~\ref{def:exp}, for a definition of the exp operation). 
+\item $f(s_i \longmapsto \text{exp}(A)) = f(s_i)$ for every viable state point $s_i$.
+\item $f(s_i \longmapsto \text{exp}(B))=c$ for all $B \in \Omega^*$, where $c$ is constant.
+\end{itemize}
+\end{definition}
+
+\begin{definition} \label{lem:taskredundant}
+Given a limited set of cognitive operations $M=\{A_0, ..., A_n\}, A_i \in \Omega^*$, a final state dependant external evaluation function  $f()$, and goal $\gamma$, $A \in M^*$ is \textbf{task redundant} iff one of the following holds:
+\begin{itemize}
+\item $f(s_i \longmapsto \text{exp}(B) \longmapsto \text{exp}(C)) \models x'$ and $f(s_i \longmapsto \text{exp}(A)) \models x'$ for every viable epistemic state $x$, $B \in M^*$, $C \in M^*$, where neither $B$ nor $C$ is the empty set or the trivial operation $T$ (See Definition~\ref{def:exp}, for a definition of the exp operation). . 
+\item $f(s_i \longmapsto \text{exp}(A)) = f(s_i)$ for every viable state point $s_i$.
+\item $f(s_i \longmapsto \text{exp}(B))=c$ for all $B \in M^*$, where $c$ is constant.
+\item There exists no sequences $B \in M^*$, $C \in M^*$, and state point $s_i$ such that $\mu=(\pi,f())$ is a valid SCP, with $\pi=\{s_i \longmapsto B \longmapsto A \longmapsto C)\}$.
+\end{itemize}
+\end{definition}
+
+
+
+
+
+
 \begin{proof} \label{proof:insertionSearch}
 Given a set of cognitive operations $M$, an external activation function $f()$, an initially valid CTM $\pi=\{s_i \longmapsto m_0\in M \longmapsto ... \longmapsto m_n\in M\}$, and a valid SCP $\mu=(\pi,f)$, inserting multiple operations into $\pi$ to create the CTM $\pi''$ may result in a valid SCP $\mu''=(\pi'',f())$, when inserting only one operation to create $\mu'=(\pi',f())$ would result in an invalid SCP.
 
@@ -65,77 +89,59 @@ There are an infinite number of possible, valid SCPs, that can meet any goal con
 
 \begin{proof} \label{proof:infiniteSCPLength}
 If there exists an SCP which meets a goal condition $\gamma$ of length $n$, using a final state dependant external evaluation function $f()$ then there exists an SCP that meets $\gamma$ of length $n+k$ where $k$ is any natural number.
-\begin{itemize}
 
+\begin{itemize}
 \item Proof~\ref{proof:infiniteSCPs} states that if $f(s_i \longmapsto A)\models \gamma$ then $f(s_i \longmapsto m^\text{add}_i \longmapsto m^\text{rem}_i \longmapsto A) \models \gamma$ for all $(m^\text{add}_i, m^\text{rem}_i) \in M^\text{addRem}$.
 \item Let $X$ be a pCTM of the form $X=(m^\text{add}_0 \longmapsto m^\text{rem}_0 \longmapsto ... \longmapsto m^\text{add}_N \longmapsto m^\text{rem}_{N})$ where $(m^\text{add}_i, m^\text{rem}_i) \in M^\text{addRem}$.
 \item For odd lengths:
-\begin{itemize}
+\begin{enumerate}
 \item  It follows that if $f(s_i \longmapsto A)\models \gamma$ then $f(x \longmapsto A \longmapsto \textrm{exp}(X))\models \gamma$ (Definition~\ref{def:exp}).
 \item Because $X$ always contains an even number of cognitive operations, the length of the resulting SCP must be $n' = 1+v$ where $v$ is any even number.
-\end{itemize}
+\end{enumerate}
 \item For even lengths:
-\begin{itemize}
+\begin{enumerate}
 \item Let $T \in \Omega$ be the trivial operation, that is, it returns the input state point as output.
 \item Notice that $f(x \longmapsto A \longmapsto T) \models \gamma$ iff $f(x \longmapsto A) \models \gamma$.
 \item Thus, $f(x \longmapsto A \longmapsto \textrm{exp}(X) \longmapsto T )\models \gamma$ and is of length $n' = 2+v$, where $v$ is any even number.
-\end{itemize}
+\end{enumerate}
 \end{itemize}
 
 \end{proof}
 
-\begin{definition} \label{lem:uniredundant}
-Given a cognitive operation sequence $A \in \Omega^*$, a final state dependant external evaluation function $f()$, and goal $\gamma$, $A$ is \textbf{redundant} iff one of the following holds:
-\begin{itemize}
-\item $f(s_i \longmapsto \text{exp}(B) \longmapsto \text{exp}(C)) \models x'$ and $f(s_i \longmapsto \text{exp}(A)) \models x'$ for every viable epistemic state $x$, $B \in \Omega^*$, $C \in \Omega^*$, where neither $B$ nor $C$ is the empty set or the trivial operation $T$ (See Definition~\ref{def:exp}, for a definition of the exp operation). 
-\item $f(s_i \longmapsto \text{exp}(A)) = f(s_i)$ for every viable state point $s_i$.
-\item $f(s_i \longmapsto \text{exp}(B))=c$ for all $B \in \Omega^*$, where $c$ is constant.
-\end{itemize}
-\end{definition}
-
-\begin{definition} \label{lem:taskredundant}
-Given a limited set of cognitive operations $M=\{A_0, ..., A_n\}, A_i \in \Omega^*$, a final state dependant external evaluation function  $f()$, and goal $\gamma$, $A \in M^*$ is \textbf{task redundant} iff one of the following holds:
-\begin{itemize}
-\item $f(s_i \longmapsto \text{exp}(B) \longmapsto \text{exp}(C)) \models x'$ and $f(s_i \longmapsto \text{exp}(A)) \models x'$ for every viable epistemic state $x$, $B \in M^*$, $C \in M^*$, where neither $B$ nor $C$ is the empty set or the trivial operation $T$ (See Definition~\ref{def:exp}, for a definition of the exp operation). . 
-\item $f(s_i \longmapsto \text{exp}(A)) = f(s_i)$ for every viable state point $s_i$.
-\item $f(s_i \longmapsto \text{exp}(B))=c$ for all $B \in M^*$, where $c$ is constant.
-\item There exists no sequences $B \in M^*$, $C \in M^*$, and state point $s_i$ such that $\mu=(\pi,f())$ is a valid SCP, with $\pi=\{s_i \longmapsto B \longmapsto A \longmapsto C)\}$.
-\end{itemize}
-\end{definition}
 
 
 \begin{proof} \label{proof:aggregateValid}
 Given an SCP $\mu=(\pi,f())$, $\pi= (s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n)$, where $f()$ is a final state dependant external evaluation function, $s_i$ is a state point, and $A_i \in \Omega^*$, any subsequence $A'=(A_k \longmapsto ... \longmapsto A_{k+l})$, $(k+l)<n$ of the cognitive operations in $\pi$ is a valid pCTM and, thus, a valid aggregate cognitive operation.
-\begin{itemize}
+\begin{enumerate}
 \item Let $p_i=J[p_{i-1},A_{i-1}]$, when $i\geq 1$.
 \item Let $p_0=s_i$.
 \item Given that $\mu$ is a valid SCP, every $J[p_i,A_i]$ must take a valid state point as input $p_i$ and result in a valid state point as output $p_{i+1}$.
 \item It follows that $A'$ takes a valid state point as input, because $A_k$ took a valid state point as input.
 \item It follows that $A'$ produces a valid state point as output, because $A_{k+l}$ produced a valid state point as output.
 \item Therefore, $A'$ is a valid cognitive operation.
-\end{itemize}
+\end{enumerate}
 \end{proof}
 
 
 \begin{proof} \label{proof:aggregateExpressiveness}
-Given a cognitive task $\Pi=(s_i,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$, $A\in\Omega^*$ and a second cognitive planing task $\Pi'=(s_i,M',f(),\gamma)$ in which $M'= (M \smallsetminus \{A_k,...,A_m\} \cup A')$, where $A'=(A_k \longmapsto... \longmapsto A_m)$ is a pCTM, then some ordering of the other operations in $(\Pi \smallsetminus \Pi')$, $\Pi'$ is as expressive or less expressive than $\Pi$.
+Given an SCP Task $\Pi=(s_i,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$, $A\in\Omega^*$ and a second SCP Task $\Pi'=(s_i,M',f(),\gamma)$ in which $M'= (M \smallsetminus \{A_k,...,A_m\} \cup A')$, where $A'=(A_k \longmapsto... \longmapsto A_m)$ is a pCTM, then some ordering of the other operations in $(\Pi \smallsetminus \Pi')$, $\Pi'$ is as expressive or less expressive than $\Pi$.
 
 \item No more expressive:
-\begin{itemize}
+\begin{enumerate}
 \item Let $\mu'=(\pi',f())$, with $\pi' = (s_i\longmapsto A_p \longmapsto ... \longmapsto A' \longmapsto ... \longmapsto A_q)$, be a solution to $\Pi'$.
 \item Let $\mu''=(\pi'',f())$, with $\pi'' = (s_i\longmapsto A_p \longmapsto ... \longmapsto \text{exp}(A')] \longmapsto ... \longmapsto A_q)$.
 \item Then $\mu''$ is a solution to $\Pi'$ (Definition~\ref{def:exp}).
 \item $\mu''$ is a valid solution to $\Pi$ because $\pi''$ uses only cognitive operations which occur in $\Pi$, $s_i$ is the initial epistemic state, and $f(\pi'') \models \gamma$. 
-\end{itemize}
+\end{enumerate}
 \item Less Expressive: Proof by counterexample
-\begin{itemize}
+\begin{enumerate}
 \item If we assume that $\Pi'$ is strictly as expressive or more expressive than $\Pi$, then there exist no cases in which $\Pi'$ is less expressive.
 \item Let $\gamma = \top$, and $f(s_i)=\top$ for all valid input $\pi$ in which no cognitive operation occurs more than once.
 \item Let $s_i=\{\}$, $M=\{A_0,A_1\}$, $M'=\{A'\}$, $A'=\{A_0\longmapsto A_1\}$.
 \item Then satisfying SCPs of $\Pi$ are $((s_i),f())$, $((s_i \longmapsto A_0),f())$, $((s_i \longmapsto A_1),f())$, $((s_i \longmapsto A_0\longmapsto A_1),f())$ and $((s_i \longmapsto A_1\longmapsto A_0),f())$.
 \item Satisfying SCPs of $\Pi'$ are $((s_i),f())$, and $((s_i \longmapsto A'),f())$.
 \item Thus, $\Pi'$ has fewer solutions that $\Pi$. A contradiction.
-\end{itemize}
+\end{enumerate}
 \end{proof}
 
 
