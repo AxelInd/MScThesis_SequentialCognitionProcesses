@@ -200,6 +200,8 @@ We say that an SCP, $\mu=(\pi,f())$, \textit{weakly satisfies} a goal $\gamma$, 
 
 These two definitions of satisfaction for SCPs will be used later to motivate an alternate method for modelling individual reasoners in the Wason Selection Task using SCPs (Section~\ref{sec:wstSCP}). When an SCP is monotonic, strict and weak satisfaction are identical and we simply write $f(\pi)\models_\text{weak} \gamma$.
 
+An external evaluation function $f()$ is said to be \textit{final state dependent} if the only decision criteria $f(\pi)$, with $\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n )$, uses are those of the final epistemic state $p_n$, where $p_i=J[p_{i-1},m_i]$, $i\geq 1$ and $p_0=s_i$. In final state dependent external evaluation function, the structural properties of the SCP or rSCP being evaluated cannot affect the output of $f$. In Chapter~\ref{chp:model} we will only concern ourselves with these types of evaluation functions, but it is important to note that other kinds may have practical usefulness.
+
 Finally, we define the \textit{preferred response} $p()$ for the output of an external evaluation function $f()$ and CTM $\pi$ as follows:
 
 \begin{algorithm}[H] 

@@ -100,9 +100,9 @@ def f_turn(pi,observation):
         allCondApplicable=True
         #this is done later
         basicLogic.setkbfromv(conditional,mini)
-        print ("mini is : ", mini)
+        #print ("mini is : ", mini)
         for cond in conditional:
-            print (cond, "Evaluates to ", cond.evaluate())
+            #print (cond, "Evaluates to ", cond.evaluate())
             if cond.evaluate()==None:
                 
                 #print ("evaluation was ", cond.evaluate())
@@ -194,7 +194,7 @@ task = SCP_Task.SCP_Task(s_i,M,f,gamma)
 ADDAB = CognitiveOperation.m_addAB()
 WC = CognitiveOperation.m_wc()
 SEMANTIC = CognitiveOperation.m_semantic()
-ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=4)
+ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=2)
 
 #test ctm
 c = CTM.CTM()
@@ -217,7 +217,6 @@ print (predictions)
 
 print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
 print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
-
 
 
 

@@ -70,12 +70,12 @@ A set of propositional clauses $W$ is called \textit{deductively closed}, writte
   $\psi\models u$ & verification &  non-applicability & non-applicability \\ 
  $\psi \models \bot$ & falsification &  non-applicability & non-applicability
 \end{tabular}
-\caption{Evaluation of conditional rules.}
+\caption{Evaluation of conditional rules using a 3-valued \textit{de Finetti} truth table.}
 \label{tbl:cond}
 \end{center}
 \end{table}
 
-Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following \cite{wason1968reasoning} we do not use the implication $\leftarrow$ to represent a conditional, and instead opt for a three-valued interpretation of what \cite{baratgin2014new} called a \textit{deFinetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ or $\phi \models u$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
+Defeasible knowledge is information which is assumed, but not guaranteed, to hold. Many non-monotonic logics treat this notion as a form of typicality. A condition $(\psi|\phi)$ is used to represent the defeasible rule ``if $\phi$ then $\psi$". Following \cite{wason1968reasoning} we do not use the implication $\leftarrow$ to represent a conditional, and instead opt for a three-valued interpretation of what \cite{baratgin2014new} called a \textit{de Finetti truth table} (Table~\ref{tbl:cond}). This truth table for conditionals differs from the standard implication in that it treats rules of the form $(\psi|\phi)$ as inapplicable when $\phi \models \bot$ or $\phi \models u$ and more closely follows human intuition about how rules are evidenced in the absence of their antecedent.
 
 \subsection{Interpretation of conditionals} \label{ssec:condInterpretation}
 The precise interpretation of conditionals is a topic for philosophical and logical debate. Approaches, both probabilistic and logical, can be used to define precisely what a conditional means in the context of a logical system. In this thesis we adopt adopt \cite{stenning2008interpretation}'s interpretation of conditionals as licenses for implication. 

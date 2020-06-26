@@ -104,7 +104,9 @@ class m_addAB (CognitiveOperation):
             resolvedDependencies=resolvedDependencies+allDependencies
         #all conditionals have now been interpreted
         epi['Delta']=[]
-        
+        print (">>>>>>>epi is ")
+        print (epi)
+        print("=================++++++++++++++++++++++++++")
         return epi
                 
                 
