@@ -169,10 +169,10 @@ Optimality is not defined for SCP Tasks.
 
 Formally, an SCP $\pi=(\pi_0 \longmapsto ... \longmapsto \pi_n)$ generated from SCP Task $\Pi=(s_i, M, \gamma, f())$ with evaluation function $h()$ is optimal if and only if $f(\pi)$ is satisfying and there exists no SCP $\pi'$ such that $g(\pi)<g(\pi')$.
 
-In an SCP context a solution may be optimal for a given task or set of empirical data, but only globally valid or satisfying. A significant part of the appeal of the SCP framework is the potential to use high-scoring local solutions to several tasks or from several reasoners and to predict which are most likely by searching for evidence of repeated structures in the disparate solutions.
+In an SCP context a solution may be optimal for a given task or set of empirical data, but only globally valid or satisfying. A significant part of the appeal of the SCP framework is the potential to use high-scoring local solutions to several tasks, or from several reasoners, to predict which are most likely by searching for evidence of common structural motifs in the disparate solutions.
 \subsection{Credulous and Skeptical Validity}
 
-A planning task may permit an SCP in which all or only some of the associated realised SCPs are valid, satisfying, or optimal. An SCP is called \textit{credulously valid} if $f(\pi)$ is valid for \textit{at least one} epistemic state in the final state $p_n$. An SCP is called \textit{sceptically valid} if $f(\pi)$ is valid.for \textit{every} epistemic state in the final state. In cases where all operations are monotonic, sceptical validity is the same as credulous validity. Similar logic applies the concepts of sceptical satisfaction, credulous satisfaction, sceptical optimality, and credulous optimality.
+A planning task may permit an SCP in which all or only some of the associated realised SCPs are valid, satisfying, or optimal. An SCP is called \textit{credulously valid} if $f(\pi)$ is valid for \textit{at least one} epistemic state in the final state $p_n$. An SCP is called \textit{sceptically valid} if $f(\pi)$ is valid for \textit{every} epistemic state in the final state. In cases where all operations are monotonic, sceptical validity is the same as credulous validity. Similar logic to applies the concepts of sceptical satisfaction, credulous satisfaction, sceptical optimality, and credulous optimality.
 
 
 
@@ -180,17 +180,15 @@ A planning task may permit an SCP in which all or only some of the associated re
 \section{External Evaluation Functions}\label{ssec:f}
 The external evaluation function $f()$ is responsible for evaluating an SCP or reaslised SCP in order to map it to the observed or predicted empirical data observed in respondents. The $f()$ function in general is an unbounded tool for making a decision with a CTM.
 
-As a function, defining $f()$ forces researchers to specify what information in the epistemic state corresponds to empirical data. The exact procedure by which $f()$ makes this decision should correspond to researcher's chosen criteria for decision making.
+The process of defining $f()$ forces researchers to specify what information in the epistemic state corresponds to empirical data. The exact procedure by which $f()$ makes this decision should correspond to the researcher's chosen criteria for decision making.
 
-All external evaluation functions that we examine in this paper will use the final state point $p_n$ which results from evaluating the state point returned by applying the penultimate state point to the last cognitive operation $J[p_{n-1},m_{n-1}]$. But other external functions which take into account aspects of the structure of $\pi$ or intermediate epistemic states can be formulated.
-
-The question of how to select the right external evaluation function is not a focus of this thesis, but, where necessary, all used evaluation functions will be justified with respect to either common-sense reasoning, or evidence will be given that such a function is already used in a more informal way in the existing literature for that experiment. External evaluation functions will be provided using pseudocode.
+The question of how to select the most appropriate external evaluation function is not a focus of this thesis, but, where necessary, all used evaluation functions will be justified with respect to either common-sense reasoning, or evidence will be given that such a function is already used in a more informal way in the existing literature for that experiment. External evaluation functions will be provided using pseudocode.
 
 A goal $\gamma=\{P_1:\{\alpha_1,...\alpha_m\},...,P_n:\{\beta_1,...\beta_p\}$ is a labelled set of properties, each of which correspond to some empirically observed response to the task at hand. For example, in the Suppression Task (Section~\ref{sec:sup}) we might define:
 \[
 \gamma_\text{sup}=\{\text{'conclusion'}:\text{'we are unsure if she will study late in the library'}\}
-\].
-The precise mechanism by which the conclusions in $\gamma_\text{sup}$ is reached is assumed to be unknown, and it is the purpose of the SCP framework to find a well-founded cognitive process, and corresponding external evaluation function, which matches this empirical answer set.
+\]
+The precise mechanism by which the conclusions in $\gamma_\text{sup}$ are reached is assumed to be unknown, and it is the purpose of the SCP framework to find a well-founded cognitive process, and corresponding external evaluation function, which matches this empirical answer set.
 
 We say that a realised SCP, $r=(k,f())$, \textit{satisfies} a goal $\gamma=\{P_1:\{\alpha_1,...\alpha_m\},...,P_n:\{\beta_1,...\beta_p\}$, written $f(k)\models \gamma$, if and only if for every property label $P_i \in f(k)$, we also find that $P_i \in \gamma$, and $f(k)[P_i]\in \gamma[P_i]$.
 
@@ -200,7 +198,7 @@ We say that an SCP, $\mu=(\pi,f())$, \textit{weakly satisfies} a goal $\gamma$, 
 
 These two definitions of satisfaction for SCPs will be used later to motivate an alternate method for modelling individual reasoners in the Wason Selection Task using SCPs (Section~\ref{sec:wstSCP}). When an SCP is monotonic, strict and weak satisfaction are identical and we simply write $f(\pi)\models_\text{weak} \gamma$.
 
-An external evaluation function $f()$ is said to be \textit{final state dependent} if the only decision criteria $f(\pi)$, with $\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n )$, uses are those of the final epistemic state $p_n$, where $p_i=J[p_{i-1},m_i]$, $i\geq 1$ and $p_0=s_i$. In final state dependent external evaluation function, the structural properties of the SCP or rSCP being evaluated cannot affect the output of $f$. In Chapter~\ref{chp:model} we will only concern ourselves with these types of evaluation functions, but it is important to note that other kinds may have practical usefulness.
+An external evaluation function $f()$ is said to be \textit{final state dependent} if the only decision criteria $f(\pi)$, with $\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n )$, uses are those of the final epistemic state $p_n$, where $p_i=J[p_{i-1},m_i]$, $i\geq 1$ and $p_0=s_i$. In final state dependent external evaluation function, the structural properties of the SCP or rSCP being evaluated cannot affect the output of $f$. In Chapter~\ref{chp:model} we will only concern ourselves with final state dependent external evaluation functions, but it is important to note that other kinds may have practical usefulness.
 
 Finally, we define the \textit{preferred response} $p()$ for the output of an external evaluation function $f()$ and CTM $\pi$ as follows:
 
@@ -232,22 +230,22 @@ finalResponses[category]=responses[category]
 A preferred response allows us to specify a hierachy of achievable outputs from an SCP or realised SCP and a practical application will be shown for modelling individual reasoners in the WST (Section~\ref{sec:wstSCP}).
 
 \section{Search in SCP-Space}\label{ssec:scpSearch}
-As with any data structure in which one input can produce one or multiple outputs, it is possible to search through SCP space in order to find those SCPs which meet certain criteria. Those criteria might be \textit{validity} (Section~\ref{ssec:precond}), \textit{satisfaction} (conditions in $\gamma$ are satisfied), or \textit{optimality} (there exists no better solution to this problem).
+As with any process in which one input can produce one or multiple outputs, it is possible to search through SCP space in order to find those SCPs which meet certain criteria. Those criteria might be \textit{validity}, \textit{satisfaction} (conditions in $\gamma$ are satisfied), or \textit{optimality} (there exists no better solution to this problem) as defined in Section~\ref{ssec:validity}.
 
 SCPs lend themselves particularly well to forward search techniques \citep{korf1996artificial}  but also have some potential using backwards or biderectional search \citep{de1983bidirectional}. 
 
-Searching through solutions to an SCP task takes one of two forms \textit{De Novo search}, and \textit{Insertion search}. De Novo search generates an SCP that meets the optimality, satisfaction, or validity requirements of the researcher from scratch, using only the information contained in the planning task. Insertion Search changes an existing SCP which models a particular response in order to model a reasoner with differing responses. Section~\ref{ssec:denovo} and Section~\ref{ssec:insertion} discuss the philosophy, applications and mechanical considerations of these two search approaches.
+Searching through solutions to an SCP task takes one of two forms: \textit{De Novo search}, and \textit{Insertion search}. De Novo search generates a set of solution SCPs that meet the optimality, satisfaction, or validity requirements of the researcher from scratch, using only the information contained in the planning task. Insertion Search changes an existing SCP which models a particular response in order to model a reasoner with differing responses. Section~\ref{ssec:denovo} and Section~\ref{ssec:insertion} discuss the philosophy, applications and mechanical considerations of these two search approaches.
 
 
 
 
 
-\subsection{De-Novo SCP Searching} \label{ssec:denovo}
-De Novo (from new) search is a search technique in which a final desirable world state is achieved by generating a sequence of cognitive operations and using a known initial state as the input to the first cognitive function. An SCP Task contains all the information required to conduct a de Novo search through the space of allowable SCPs for a given cognitive task. The exact search techniques used can be easily varied, but we will consider de Novo search in terms of a breadth-first traversal \cite{zhou2006breadth}. 
+\subsection{De Novo SCP Searching} \label{ssec:denovo}
+De Novo (from new) search is a search technique in which a final desirable world state is achieved by generating a sequence of cognitive operations and using a known initial state as the input prior to the first cognitive function. An SCP Task contains all the information required to conduct a de Novo search through the space of allowable SCPs for a given cognitive task. The exact search techniques used can be easily varied, but we will consider de Novo search in terms of a breadth-first traversal \cite{zhou2006breadth}. 
 
-Figure~\ref{fig:deNovo} illustrates the process by which breadth first search over an SCP task $\Pi=(x,M,\gamma,f())$ can be conducted. Search terminates if a structural inconsistency between two states in $\pi=(x\longmapsto A_0 \longmapsto ... \longmapsto A_n)$ occurs (e.g. output state point structure of $A_k$ does not match expected input structure of $A_{k+1}$). Operator sequences are added to the list of solutions if and only if they meet the validity requirements of the search being used, as discussed in Section~\ref{ssec:validity}. 
+Figure~\ref{fig:deNovo} illustrates the process by which breadth first search over an SCP task $\Pi=(x,M,\gamma,f())$ can be conducted. The search terminates if a structural inconsistency between two states in $\pi=(x\longmapsto A_0 \longmapsto ... \longmapsto A_n)$ occurs (e.g. output state point structure of $A_k$ does not match expected input structure of $A_{k+1}$). Operator sequences are added to the list of solutions if and only if they meet the validity requirements of the search being used. 
 
-In practice it becomes necessary to limit the search depth of the algorithm to search tractable in most cases, and in some cases, search space and solution space may both be infinitly large, as suggested by Lemma~\ref{lemma:infiniteSCPLength}.
+In practice it becomes necessary to limit the search depth of the algorithm to search tractable in most cases, because, in some cases, search space and solution space may both be infinitely large, as suggested by Lemma~\ref{lemma:infiniteSCPLength}.
 
 \begin{figure}
 \begin{center}

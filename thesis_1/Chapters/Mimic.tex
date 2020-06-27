@@ -2,12 +2,18 @@
 \section{Overview}
 As with any cognitive framework, the most important metric for judging the success of SCPs comes from testing how well SCPs can approximate empirical data across tasks. This chapter will show the suitability of SCPs with a common set of allowable cognitive operations for modelling several well-studied experiments in cognitive modelling.
 
-In particular, we will show that the Wason Selection Task, and Suppression Task and can be modelled at both the general and individual reasoner level with SCPs in a formulation that is both intuitive and consistent with the WCS approach already described in Chapter~\ref{chp:experiments}. For the Suppression Task we also show that an SCP interpretation using Reiter's Default Logic remains unable to show Suppression in the default theory from \ref{ssec:supReit}.
+In particular, we will show that the Wason Selection Task, and Suppression Task can be modelled at both the general and individual reasoner level with SCPs in a formulation that is both intuitive and consistent with the WCS approach already described in Chapter~\ref{chp:experiments}. For the Suppression Task we also show that an SCP interpretation using Reiter's Default Logic remains unable to show Suppression in the default theory from Section~\ref{ssec:supReit}.
 
 \section{Suppression Task} \label{sec:supSCP}
 
 \subsection{Suppression Task: WCS}
+Whilst modelling the Suprression Task in this section, we will continue to use the notation and variables defined in Section~\ref{sec:sup}. Below is a brief restatement of the phrasing of the problem:
 
+\begin{enumerate}
+\item If she has an essay to write ($e$), she will study late in the library ($l$).
+\item If the library is open ($o$), she will study late in the library ($l$).
+\item She has an essay to write ($e$).
+\end{enumerate}
 
 To model the Suppression Task in the SCP framework, we must first define the SCP Task $\Pi_{sup}=(s_i,M,f_\text{sup}(),\gamma)$ which outlines the restrictions and goals of the model. The structure of $s_i$ must be robust enough to capture information regarding a set of rules, variable assignments in the possible world, and conditionals. To this end we define:
 
@@ -74,14 +80,14 @@ $P_\text{elo}:=\{\bar{p} \in P | \bar{p}[\text{`name'}]=\text{`elo'}\}$\;
 \label{evaluation:f_sup}
 \end{algorithm}
 
-It is worth noting that one could also define $f_\text{sup}$ in such a way that it iterates over every variable assignment for $P_{el}$ and $P_{elo}$ in the final state point and sees if any inference is drawn in $P_{el}$ that is not drawn in $P_{elo}$. However, the purpose of the external evaluation function is to transform an SCP into an output from the set of \textit{empirically observed} outputs, and in this case the empirical knowledge is a response to the question ``will she study late in the library?".
+It is worth noting that one could also define $f_\text{sup}$ in such a way that it iterates over every variable assignment for $P_{el}$ and $P_{elo}$ in the final state point and checks if any inference is drawn in $P_{el}$ that is not drawn in $P_{elo}$. However, the purpose of the external evaluation function is to transform an SCP into an output from the set of \textit{empirically observed} outputs, and in this case the empirical knowledge is a response to the question ``will she study late in the library?".
 
 Next, we define the empirical result we wish to emulate $\gamma$. In this case we will define $\gamma_\text{noSup}$ to model cases where no suppression is observed, and $\gamma_{\text{sup}}$ to model cases where suppression is observed.
 \[\gamma_{\text{noSup}} = \text{no suppression} \]
 \[\gamma_{\text{sup}} = \text{suppression observed} \]
 Armed with these definitions, it is possible to model the task $\Pi$ as follows:
 \[\Pi=(s_i,M,f(),\gamma_{\text{sup}})\]
-De Novo search on $\Pi$ returns the satisfying SCP $\mu_\text{sup}$:
+Applying De Novo search to $\Pi$ returns the satisfying SCP $\mu_\text{sup}$:
 \[\mu_\text{sup}=(\pi=(s_i \longmapsto \texttt{addAB} \longmapsto \texttt{wc} \longmapsto \texttt{semantic}),f())\]
 Figure~\ref{fig:Suppression_SCP} illustrates the realised SCPs for $\mu_\text{sup}$ and illustrates that $\mu_\text{sup} \models \gamma$. This example has served to show that suppression can modelled in the SCP framework.
 
@@ -111,9 +117,9 @@ Equipped with these two cognitive operations, there are several SCPs which can m
 
 Figure~\ref{fig:Suppression_SCP_del1} shows the realised SCPs for one satisfying SCP for $\Pi_\text{deviant}$. This example shows that deleting the variable $o$ from the epistemic state, prevents Suppression from occurring because the abnormality $(\text{ab}_1 \leftarrow \lnot o )$ is the cause of Suppression in $\Pi$, and in $\Pi'$ the abnormality is now given by $(\text{ab}_1 \leftarrow \lnot \top )$.
 
-In the Appendix, Figure~\ref{fig:suppression_python} and Figure~\ref{fig:suppression_python2}  show that the non-monotonic cognitive operation \texttt{addExp} can prevent suppression by adding abducibles related to the  free variable $o$.\footnote{The output is too large to graph attractively, and should be viewed in its entirety to confirm that this approach is effective.} This is, as far as I can tell, the first use of \cite{holldobler2015weak}'s abducible approach to the WST to model the Suppression Task. By giving $o$ an assignment, the abnormality $(\text{ab}_1\leftrightarrow \lnot o)$ no longer evaluates to $u$, and across all final epistemic states. Together, the combined `elo' epistemic states now return every \texttt{response}() that the combined `el' epistemic states do. 
+In the Appendix, Figure~\ref{fig:suppression_python} and Figure~\ref{fig:suppression_python2}  show that the non-monotonic cognitive operation \texttt{addExp} can prevent suppression by adding abducibles related to the  free variable $o$.\footnote{The output is too large to graph attractively, and should be viewed in its entirety to confirm that this approach is effective.} This is, as far as the author of this thesis is aware, the first use of \cite{holldobler2015weak}'s abducible approach to the WST to model the Suppression Task. By giving $o$ an assignment, the abnormality $(\text{ab}_1\leftrightarrow \lnot o)$ no longer evaluates to $u$, and across all final epistemic states. Together, the combined `elo' epistemic states now return every \texttt{response}() that the combined `el' epistemic states do. 
 
-Interestingly, using $f_\text{sup()}$, the case where the abducible $(o \leftarrow \bot)$ is added added results in the previous unseen response `she will not study late in the library' to be returned in $\texttt{responses}(P_\text{elo})$ but not in $\texttt{responses}(P_\text{el})$. This is not an instance of suppression because the new response is only generated from the initial epistemic state $s_\text{dev}^\text{elo}$ whose information is a superset of the information in $s_\text{dev}^\text{el}$.
+Interestingly, using $f_\text{sup()}$, the case where the abducible $(o \leftarrow \bot)$ is added, results in the previous unseen response `she will not study late in the library' to be returned in $\texttt{responses}(P_\text{elo})$ but not in $\texttt{responses}(P_\text{el})$. This is not an instance of suppression because the new response is only generated from the initial epistemic state $s_\text{dev}^\text{elo}$ whose information is a superset of the information in $s_\text{dev}^\text{el}$.
 
 Both of these examples illustrate the derivation of the classical logical response to the suppression task as a modification of an SCP which did illustrate suppression. This evidences one of the core claims of the SCP Framework which is that it is a reasonable tool for modelling individual reasoners in a cognitive task. 
 
@@ -159,7 +165,7 @@ Equipped with this new cognitive operation we might define the SCP Task $\Pi_\te
 \[s_d=\{s_d^{el}, s_d^{elo}\}\]
 \[s_d^{el}=(W,D_{el},V_{el})\]
 \[s_d^{elo}=(W,D_{elo},V_{elo})\]
-Where the initial state $s_d$ consists of epistemic states containing the initial information that she will study late in the library, as well as extra conditional information interpreted as a set of defaults, as in Section~\ref{ssec:supReit}, and a possible world variable. Each epistemic state in the initial state point encodes the information required for to form a default theory of the form $(W,D)$.
+Where the initial state $s_d$ consists of epistemic states containing the initial information that she will study late in the library, as well as extra conditional information interpreted as a set of defaults, as in Section~\ref{ssec:supReit}, and a possible world variable. Each epistemic state in the initial state point encodes the information required to form a default theory of the form $(W,D)$.
 \[W=\{e\leftarrow \top\}\]
 \[
 D_{el}=\{\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
@@ -181,9 +187,9 @@ De Novo search reveals no satisfying SCPs for $\Pi_\text{default}$, as we would 
 
 \[\mu'_d=(\pi'_d, f_\text{noSup})\]
 \[\pi'_d=(s_d \longmapsto \texttt{default} \longmapsto \texttt{I}_W)\]
-We find that suppression is not observed. We define the final state points of the epistemic states $s_d^{el}$ and $s_d^{elo}$ which we will call $P^{el}$ and $P^{elo}$, respectively. we find that $(l, \top) \in P^{el}_i$, and $(l, \top) \in P^{elo}_j$ for every base point $P^{el}_i \in_S P^{el}$ and $P^{elo}_i \in_S P^{elo}$. For this reason, $f_\text{sup}(\pi'_d) \models \gamma$. 
+We find that suppression is not observed. We define the final state points of the epistemic states $s_d^{el}$ and $s_d^{elo}$ which we will call $P^{el}$ and $P^{elo}$, respectively. We find that $(l, \top) \in P^{el}_i$, and $(l, \top) \in P^{elo}_j$ for every base point $P^{el}_i \in_S P^{el}$ and $P^{elo}_i \in_S P^{elo}$. For this reason, $f_\text{sup}(\pi'_d) \models \gamma$. 
 
-These results mimic the intuition and data transformations steps used in Section~\ref{ssec:supReit}, but do so in a more structured. When considered in conjunction with the SCP generated for the WST interpretation of the Suppression Task, the simplicity of the SCP framework for modelling cognitive tasks across different logics is evident.
+These results mimic the intuition and data transformations steps used in Section~\ref{ssec:supReit}, but do so in a more structured way. When considered in conjunction with the SCP generated for the WST interpretation of the Suppression Task, the simplicity of the SCP framework for modelling cognitive tasks across different logics is evident.
 
 \section{Wason Selection Task}\label{sec:wstSCP}
 
@@ -351,7 +357,7 @@ Add $\bar{p}_i$ to the explanations for $o$.
 \label{alg:outPutconditionModified}
 \end{algorithm}
 
-This approach mimics the logic we used to create the Simple WCS Extension in Section~\ref{sec:sup}. However, there is an alternative approach which I prefer. 
+This approach mimics the logic we used to create the Simple WCS Extension in Section~\ref{sec:sup}. However, there is an alternative approach which the author prefers. 
 
 One should note that, while $\mu_{D,3}\models_\text{weak} \gamma_{D,3}$, it is also the case that that `do not turn' occurs in $f_\text{WST}(\pi)[K]$, $f_\text{WST}(\pi)[3]$, and $ f_\text{WST}(\pi)[7]$, but is not in $ f_\text{WST}(\pi)[D]$. If we treat $f_\text{WST}(\pi)$ sceptically and assume that we only turn a card if there is \textit{no reason not to turn it}, we arrive at the conclusion that only $D$ should be turned.
 
