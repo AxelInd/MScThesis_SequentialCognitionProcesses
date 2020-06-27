@@ -7,10 +7,14 @@ Created on Sat Jun 13 11:43:35 2020
 import sys
 sys.path.append("/SCPFramework") 
 import copy
-
+"""
 from SCPFramework import basicLogic
 from SCPFramework import CTM
 from SCPFramework import StatePointOperations
+"""
+import basicLogic
+import CTM
+import StatePointOperations
 
 class CognitiveOperation(object):
     def __init__(self,name):
@@ -148,7 +152,24 @@ class m_wc (CognitiveOperation):
         #step 1, find all 
         return epi
         
+class m_wcs (CognitiveOperation):
+    
+    def __init__(self):
+        CognitiveOperation.__init__(self,name="wcs")
+        self.inputStructuralRequirements=['S','V']
+        self.outputStructure=['S','V']
+    def evaluateEpistemicState(self,epi):
+        tempCTM=CTM.CTM()
+        tempCTM.si=[epi]
+        tempCTM.appendm(m_wc())
+        tempCTM.appendm(m_semantic())
+        
+        #epi = StatePointOperations.flattenStatePoint(tempCTM.evaluate())[0]
+        p = tempCTM.evaluate()
+        # 2) generateProcesses
+        return p
 
+        
 class m_semantic (CognitiveOperation):
     def __init__(self):
         CognitiveOperation.__init__(self,name="semantic")

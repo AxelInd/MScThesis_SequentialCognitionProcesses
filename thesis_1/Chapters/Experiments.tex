@@ -48,23 +48,23 @@ D'_\text{naive}=\{\delta_1:\frac{e\leftarrow \top:l \leftarrow \top}{l\leftarrow
 \delta_2:\frac{o\leftarrow \top:l \leftarrow \bot}{l\leftarrow\top}
 \}
 \]
-The only closed and successful default process that can generated for this task is $\Pi_\text{naive}=(\delta_1)$, which results in the inset $\text{In}(\Pi_\text{naive})=\text{th}(\text{th}(\{e\leftarrow \top\})\cup\{l \leftarrow \top\})$. When the set of default rules is extended to create $D'_\text{naive}$, $\Pi_\text{naive}$ remains the only extension and has the inset $\text{In}(\Pi'_\text{naive})=\text{th}(\text{th}(\{e\leftarrow \top\})\cup\{l \leftarrow \top\})$. Thus, in every extension $e$ of $(W,D_\text{naive})$, we find that $(l \leftarrow \top)\in \text{In}(e)$, and in every extension $e'$ of $(W,D'_\text{naive})$ we find that $(l \leftarrow \top)\in \text{In}(e')$. This formulation has failed to show suppressing effect.
+The only closed and successful default process that can generated for this task is $\Pi_\text{naive}=(\delta_1)$, which results in the inset $\text{In}(\Pi_\text{naive})=\text{th}(\text{th}(\{e\leftarrow \top\})\cup\{l \leftarrow \top\})$. When the set of default rules is extended to create $D'_\text{naive}$, $\Pi_\text{naive}$ remains the only extension and has the inset $\text{In}(\Pi'_\text{naive})=\text{th}(\text{th}(\{e\leftarrow \top\})\cup\{l \leftarrow \top\})$. Thus, in every extension $e$ of $(W,D_\text{naive})$, we find that $(l \leftarrow \top)\in \text{In}(e)$, and in every extension $e'$ of $(W,D'_\text{naive})$ we find that $(l \leftarrow \top)\in \text{In}(e')$. Thus, the extension of the set of default rules in $(W,D)$ to create $(W,D')$ has failed to demonstrate a suppressing effect on the variable $l$.
 
-Even generalising our WCS approach to the Suppression Task and defining a set of defaults $D_P$ which capture intuition about abnormalities, fails to demonstrate suppression.
+Even generalising our WCS approach to the Suppression Task and defining the sets of defaults $D_P$, and $D_P'$ which capture intuition about abnormalities, fails to demonstrate suppression.
 \[
 D_P=\{\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
 \delta_2:\frac{\top:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top}
 \}
 \]
 \[
-D'_P=\{\begin{matrix}\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,
-\delta_2:\frac{o\leftarrow \top:\text{ab}_2 \leftarrow \bot}{l\leftarrow\top},
-\delta_3:\frac{o\leftarrow \bot:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top},
+D'_P=\left\lbrace \begin{matrix}\delta_1:\frac{e\leftarrow \top:\text{ab}_1 \leftarrow \bot}{l\leftarrow\top} ,&
+\delta_2:\frac{o\leftarrow \top:\text{ab}_2 \leftarrow \bot}{l\leftarrow\top},\\
+\delta_3:\frac{o\leftarrow \bot:\text{ab}_1 \leftarrow \top}{\text{ab}_1\leftarrow\top},&
 \delta_4:\frac{e\leftarrow \bot:\text{ab}_2 \leftarrow \top}{\text{ab}_2\leftarrow\top}
-\end{matrix}\}
+\end{matrix}\right\rbrace
 \]
 
-For the theory $(W,D_P)$, the only closed and successful default processes which produce extensions are $\Pi_P^1=(\delta_1,\delta_2)$ and $\Pi^2_P=(\delta_2,\delta_1)$, with $(l\leftarrow \top)\in \text{In}(\Pi^1_P)$ and $(l\leftarrow \top)\in \text{In}(\Pi^2_P)$. For the theory $(W,D'_P)$ the only closed and successful default process is $\Pi'_P=(\delta_1)$ and $(l\leftarrow \top)\in \text{In}(\Pi'_P)$, thus neither theory demonstrates suppression.
+For the theory $(W,D_P)$, the only closed and successful default processes which produce extensions are $\Pi_P^1=(\delta_1,\delta_2)$ and $\Pi^2_P=(\delta_2,\delta_1)$, with $(l\leftarrow \top)\in \text{In}(\Pi^1_P)$ and $(l\leftarrow \top)\in \text{In}(\Pi^2_P)$. For the theory $(W,D'_P)$ the only closed and successful default process is $\Pi'_P=(\delta_1)$ and ${(l\leftarrow \top)\in \text{In}(\Pi'_P)}$, thus neither theory demonstrates suppression.
 
 \section{Wason Selection Task}\label{ssec:wst}
 \begin{table}
@@ -95,7 +95,7 @@ For the theory $(W,D_P)$, the only closed and successful default processes which
 \end{center}
 \end{table}
 
-Another widely studied task in the psychological literature is the Wason Selection Task (WST), which asks participants to draw conclusions about which variables are able to falsify a given rule -- a process captured in classical logic by the \textit{Modus Tolens}\footnote{If $a\rightarrow b$, then $\lnot b \rightarrow \lnot a$} deductive argument. The task has many formulations (including the Abstract, Everyday, and Deontic cases), but this thesis will exam one of the most mostly widely researched cases: the Abstract case. 
+Another widely studied task in the psychological literature is the Wason Selection Task (WST), which asks participants to draw conclusions about which variables are able to falsify a given rule -- a process captured in classical logic by the \textit{Modus Tolens}\footnote{If $a\rightarrow b$, then $\lnot b \rightarrow \lnot a$} deductive argument. The WST has many formulations (including the Abstract, Everyday, and Deontic cases), and this thesis will examine one of the most mostly widely researched cases: the Abstract case. 
 
 \begin{figure}
 \begin{center}
@@ -106,8 +106,7 @@ Another widely studied task in the psychological literature is the Wason Selecti
 
 \end{figure}
 
-The Abstract case of the WST presents the subject with four cards on a table as shown in Figure~\ref{fig:wst}. Their face-up sides read $D, K, 3,$ and $7$. Participants are told that each card has a number on one side and a letter on the other. They are then asked which cards must be turned over to test the rule:
-
+The Abstract case of the WST presents the subject with four cards laid out on a table as shown in Figure~\ref{fig:wst}. Their face-up sides read $D, K, 3,$ and $7$. Participants are told that each card has a number on one side and a letter on the other. They are then asked which cards must be turned over to test the rule:
 \begin{center}
 ``If there is a $D$ on one side of the card, then the other side shows $3$."
 \end{center} 
@@ -153,11 +152,13 @@ The Abstract case of the WST presents the subject with four cards on a table as 
 \label{wst_wcs}
 \end{figure}
 
-This task requires the participants to find possible defeaters for the conditional rule. Assuming the \textit{de Finetti} truth table from Section~\ref{ssec:condi} for the interpretation of conditionals of the form ``If $\psi$ then $\phi$", Table~\ref{tbl:wst_impl} shows that the cards pairs $(D,3)$ and $(D,7)$ are both possible defeaters to the rule $(3 \leftarrow D)$ because the rule $(3|D)$ is only verified or falsified when the interpretation maps $(D,\top)$ and $(3, \lnot u)$. Any observed card which allows a possible world with both of those assignments is a possible defeater. If a participant were to turn the $D$ card and find a number that was not $3$, or were to a turn the card $7$ and find the letter $D$ on the other side, the classical interpretation of conditional would not hold. Thus these two cards must be turned to check the rule. However, human subjects very seldom choose this classical answer set and instead overwhelmingly prefer to turn the cards $D$ and $3$. Table~\ref{tbl:can} shows the most common card selection sets for participants.
+This task requires the participants to find possible defeaters for the conditional rule. If we assume a classical interpretation of conditionals of the form ``If $\psi$ then $\phi$", Table~\ref{tbl:wst_impl} shows that the cards pairs $(D,3)$ and $(D,7)$ are both possible defeaters to the rule $(3 \leftarrow D)$ because it can only be falsified when the interpretation maps $(D,\top)$. Any observed card which allows a possible world with both of those assignments is a possible defeater. If a participant were to turn the $D$ card and find a number that was not $3$, or were to a turn the card $7$ and find the letter $D$ on the other side, the classical interpretation of conditional would not hold. Thus these two cards must be turned to check the rule. However, human subjects very seldom choose this classical answer set and instead overwhelmingly prefer to turn the cards $D$ and $3$. Table~\ref{tbl:can} shows the most common card selection sets for participants.
 
-A great many cognitive theories have been applied to these results, with varying degrees of success \citep{ragni2017formal}. This paper will focus on the WCS interpretation of the task provided by \cite{ragni2017wason}. This approach assumed an initial knowledge base $\text{KB}$ containing only the conditional $(3|D)$ and an interpretation of the conditional as a license for implication.
+A great many cognitive theories have been applied to these results, with varying degrees of success \citep{ragni2017formal}. This paper will focus on the WCS interpretation of the task provided by \cite{ragni2017wason}. This approach assumes an initial knowledge base $\text{KB}$ containing only the conditional $(3|D)$ and an interpretation of the conditional as a license for implication.
 
-\cite{dietz2012computational} showed that the abstract case of the WST could be modelled using the WCS and 3-valued \L ukasiewicz logic. Using the conditional as the initial logic program, we write $\text{KB}=(S=\{\},\Delta=(3|D))$. Treating conditionals as licenses for implication, $\text{KB}$ can be rewritten as $\text{KB}=\{3\leftarrow D \land \lnot \text{ab}_1\}$ where $\text{ab}_1$ is an abnormality predicate. Now $\textrm{lm wc}(\text{KB})=\top=\{\},\bot=\{ab\}$, and no information is obtained that could either verify or falsify the conditional. In order to adapt the WCS to the WST they introduced the concept of observation support.
+As a general strategy for deciding whether to turn a card $C$, given a possible world $w$, we will turn the card $C$ if $I_w((3|D))\neq \text{non-applicability}$ under the \textit{de Finetti} truth table from Section~\ref{ssec:condi}. Table~\ref{tbl:wst_classical} shows how the conditional $(3|D)$ is evaluated under this interpretation. This interpretation intentionally leaves the relationship between $C$ and $w$ vague and does not define what constitutes a valid possible world.
+
+\cite{dietz2012computational} showed that the abstract case of the WST could be modelled using the WCS and 3-valued \L ukasiewicz logic. Using the conditional as the initial logic program, we write $\text{KB}=(S=\{\},\Delta=(3|D))$. Treating conditionals as licenses for implication, $\text{KB}$ can be rewritten as $\text{KB}=\{3\leftarrow D \land \lnot \text{ab}_1\}$ where $\text{ab}_1$ is an abnormality predicate. Now $\textrm{lm wc}(\text{KB})=\{\top=\{\},\bot=\{ab\}\}$. Using the least model $\textrm{lm wc}(\text{KB})$ as possible world $I_{\textrm{lm wc}(\text{KB})}((3|D))=\text{non-applicability}$ and we do not turn the card. In order to adapt the WCS to the WST they introduced the concept of observation support.
 
 \begin{table}
 \begin{center}
@@ -177,7 +178,7 @@ A great many cognitive theories have been applied to these results, with varying
 \end{table}
 
 The set of abducibles $A$ corresponds to positive and negative facts which are not assigned in $\text{KB}$. For the WST as formulated here $A=\{D\leftarrow \top,D\leftarrow \bot,3\leftarrow \top,3\leftarrow \bot,K\leftarrow \top,K\leftarrow \bot,7\leftarrow \top,7\leftarrow \bot\}$.
- An observation $O$ is \textit{explained} by a minimal explanation $\epsilon \in A$ if and only if $O$ holds in $\textrm{lm wc}(KB\cup\epsilon)$. Table~\ref{tbl:wst_lmwc} shows the least models that can be drawn for the observations $D$, $3$, $K$, and $7$. If a least model obtained in this way contains atoms and atomic assignments that could verify or falsify the conditional (i.e. make $I_{\textrm{lm wc}(\text{KB}\cup \epsilon)}(3|D)\neq$ non-applicability when using the \textit{de Finetti} truth table), then the observed card should be turned. Figure~\ref{wst_wcs} shows the derivation of $\textrm{lm wc}(\text{KB}\cup \epsilon)$ for $\epsilon=D, \epsilon=3, \epsilon=K$, and $\epsilon=7$.\footnote{This approach differs in description from the author's original one, in which a card was turned if the least model assigned non-$u$ values to every variable in the conditional (i.e. $3$ and $D$), but is identical in practice.}
+ An observation $O$ is \textit{explained} by a minimal explanation $\epsilon \in A$ if and only if $O$ holds in $\textrm{lm wc}(KB\cup\epsilon)$. Table~\ref{tbl:wst_lmwc} shows the least models that can be drawn for the observations $D$, $3$, $K$, and $7$. If a least model obtained in this way contains atoms and atomic assignments that could verify or falsify the conditional (i.e. make $I_{\textrm{lm wc}(\text{KB}\cup \epsilon)}(3|D)\neq$ non-applicability when using the \textit{de Finetti} truth table), then the observed card should be turned. Figure~\ref{wst_wcs} shows the derivation of $\textrm{lm wc}(\text{KB}\cup \epsilon)$ for $\epsilon=D, \epsilon=3, \epsilon=K$, and $\epsilon=7$.\footnote{This approach differs in description from Dietz' original one, in which an observed card $o$ was turned if the least model assigned non-$u$ values to every variable in the conditional and explained $o$, but this formulation is identical in practice.}
 
 
 This simple interpretation of the WST which applies abduction to the initial knowledge base to derive the observation is sufficient to model the general reasoner. It does not, however, explain any of the other deviant cases which are observed in Table~\ref{tbl:can}. Why, for example, should it be considered accurate if it gives no information about the classically accurate choice of the $D$ and $7$ cards, chosen by 19 participants, a significant proportion? Instead, consider how these aberrant reasoners could be modelled. Perhaps they use extra computational steps or omit steps? This author has previously shown that the WCS is able to model these individual reasoners \citep{breu2019weak}\footnote{My contribution to this paper was the initial proposal of the extensions, their integration, the silencing mechanism used for modelling individual reasoners, and the broad idea of the stochastic evaluation technique itself.} by including three simple processes: \textit{basic weak completion}, \textit{abduction} (as we have already discussed in this section), and \textit{contraposition}. By including these three processes, and stochastically controlling when they are activated or silenced, it has been shown that not only is this extended framework able to model the major cases of the WCS, but very close approximations to empirical frequency results can also be drawn for all three cases of the WST (Table~\ref{tbl:can_full}).

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  27 JUN 2020 13:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  27 JUN 2020 16:53
 entering extended mode
 **./main.tex
 (main.tex
@@ -1545,7 +1545,7 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
  Declaration of Authorship
 --------------------
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
-80.
+83.
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1ppl.fd"
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
@@ -1631,7 +1631,7 @@ Chapter 1.
 
 
 ] [2])
-Overfull \hbox (2.92195pt too wide) in paragraph at lines 33--263
+Overfull \hbox (2.92195pt too wide) in paragraph at lines 33--266
 \T1/ppl/m/n/10.95 gram-ming and non-monotonic log-ics - par-tic-u-larly the WCS
  and Re-iter's de-fault logic (Chap-
  []
@@ -1676,29 +1676,30 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.29405pt on input line 98.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 98.
-<../figs/wasonAbstract.png, id=749, 487.8225pt x 191.9672pt>
+<../figs/wasonAbstract.png, id=750, 487.8225pt x 191.9672pt>
 File: ../figs/wasonAbstract.png Graphic file (type png)
 <use ../figs/wasonAbstract.png>
 Package pdftex.def Info: ../figs/wasonAbstract.png  used on input line 102.
 (pdftex.def)             Requested size: 243.91064pt x 95.98335pt.
+ [11 <../figs/wasonAbstract.png>]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 127.
+(Font)              scaled to size 10.42007pt on input line 126.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 127.
+(Font)              scaled to size 7.91925pt on input line 126.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 127.
+(Font)              scaled to size 10.42007pt on input line 126.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 127.
-<../figs/WST_WCS.png, id=751, 1130.7846pt x 273.4215pt>
+(Font)              scaled to size 7.91925pt on input line 126.
+<../figs/WST_WCS.png, id=757, 1130.7846pt x 273.4215pt>
 File: ../figs/WST_WCS.png Graphic file (type png)
 <use ../figs/WST_WCS.png>
-Package pdftex.def Info: ../figs/WST_WCS.png  used on input line 151.
+Package pdftex.def Info: ../figs/WST_WCS.png  used on input line 150.
 (pdftex.def)             Requested size: 441.01775pt x 106.63394pt.
- [11 <../figs/wasonAbstract.png>] [12 <../figs/WST_WCS.png>] [13] [14]
-<../figs/wst_cano.png, id=797, 686.565pt x 310.761pt>
+ [12 <../figs/WST_WCS.png>] [13] [14]
+<../figs/wst_cano.png, id=799, 686.565pt x 310.761pt>
 File: ../figs/wst_cano.png Graphic file (type png)
 <use ../figs/wst_cano.png>
-Package pdftex.def Info: ../figs/wst_cano.png  used on input line 253.
+Package pdftex.def Info: ../figs/wst_cano.png  used on input line 254.
 (pdftex.def)             Requested size: 411.94218pt x 186.45804pt.
 )
 [15 <../figs/wst_cano.png>]
@@ -1706,12 +1707,12 @@ Package pdftex.def Info: ../figs/wst_cano.png  used on input line 253.
 
  (Chapters/SCP.tex
 Chapter 4.
-<../figs/general.png, id=805, 307.1475pt x 75.8835pt>
+<../figs/general.png, id=807, 307.1475pt x 75.8835pt>
 File: ../figs/general.png Graphic file (type png)
 <use ../figs/general.png>
 Package pdftex.def Info: ../figs/general.png  used on input line 6.
 (pdftex.def)             Requested size: 149.72832pt x 36.99217pt.
-<../figs/generalWCS.png, id=806, 554.67226pt x 73.62506pt>
+<../figs/generalWCS.png, id=808, 554.67226pt x 73.62506pt>
 File: ../figs/generalWCS.png Graphic file (type png)
 <use ../figs/generalWCS.png>
 Package pdftex.def Info: ../figs/generalWCS.png  used on input line 12.
@@ -1722,7 +1723,7 @@ Package pdftex.def Info: ../figs/generalWCS.png  used on input line 12.
 
 
  <../figs/general.png> <../figs/generalWCS.png>] [17]
-<../figs/Exam_SCP.png, id=828, 1086.30844pt x 1400.23125pt>
+<../figs/Exam_SCP.png, id=830, 1086.30844pt x 1400.23125pt>
 File: ../figs/Exam_SCP.png Graphic file (type png)
 <use ../figs/Exam_SCP.png>
 Package pdftex.def Info: ../figs/Exam_SCP.png  used on input line 73.
@@ -1735,7 +1736,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
 File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 [22] [23] [24] [25]
-<../figs/deNovo.png, id=896, 843.3909pt x 641.5167pt>
+<../figs/deNovo.png, id=898, 843.3909pt x 641.5167pt>
 File: ../figs/deNovo.png Graphic file (type png)
 <use ../figs/deNovo.png>
 Package pdftex.def Info: ../figs/deNovo.png  used on input line 254.
@@ -1762,13 +1763,13 @@ Chapter 6.
 
 
 ] [43]
-<../figs/Suppression_SCP.png, id=1066, 2214.62381pt x 1028.94412pt>
+<../figs/Suppression_SCP.png, id=1068, 2214.62381pt x 1028.94412pt>
 File: ../figs/Suppression_SCP.png Graphic file (type png)
 <use ../figs/Suppression_SCP.png>
 Package pdftex.def Info: ../figs/Suppression_SCP.png  used on input line 89.
 (pdftex.def)             Requested size: 441.01775pt x 204.89024pt.
  [44 <../figs/Suppression_SCP.png>]
-<../figs/Suppression_SCP_del1.png, id=1081, 1196.5503pt x 684.156pt>
+<../figs/Suppression_SCP_del1.png, id=1083, 1196.5503pt x 684.156pt>
 File: ../figs/Suppression_SCP_del1.png Graphic file (type png)
 <use ../figs/Suppression_SCP_del1.png>
 Package pdftex.def Info: ../figs/Suppression_SCP_del1.png  used on input line 1
@@ -1784,13 +1785,13 @@ $\T1/ppl/m/n/10.95 .
  []
 
 [47]
-<../figs/realisedSCPsWST.png, id=1105, 1375.539pt x 675.0018pt>
+<../figs/realisedSCPsWST.png, id=1107, 1375.539pt x 675.0018pt>
 File: ../figs/realisedSCPsWST.png Graphic file (type png)
 <use ../figs/realisedSCPsWST.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 266.
 (pdftex.def)             Requested size: 693.49821pt x 340.31189pt.
  [48] [49 <../figs/realisedSCPsWST.png>] [50]
-<../figs/realisedSCPsWST_mod.png, id=1131, 1299.6555pt x 714.5094pt>
+<../figs/realisedSCPsWST_mod.png, id=1133, 1299.6555pt x 714.5094pt>
 File: ../figs/realisedSCPsWST_mod.png Graphic file (type png)
 <use ../figs/realisedSCPsWST_mod.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST_mod.png  used on input line 37
@@ -1811,7 +1812,7 @@ Chapter 7.
 
  (Chapters/Program.tex
 Chapter 8.
-<../figs/scpClassDiagram.png, id=1215, 772.38562pt x 601.64775pt>
+<../figs/scpClassDiagram.png, id=1217, 772.38562pt x 601.64775pt>
 File: ../figs/scpClassDiagram.png Graphic file (type png)
 <use ../figs/scpClassDiagram.png>
 Package pdftex.def Info: ../figs/scpClassDiagram.png  used on input line 16.
@@ -1827,7 +1828,7 @@ Overfull \hbox (14.6129pt too wide) in paragraph at lines 30--31
 []$[]$\T1/ppl/m/n/10.95 : an im-ple-men-ta-tion of the ex-tended Needle-
  []
 
-<../figs/SCP_Use_Cases.png, id=1218, 1120.185pt x 758.835pt>
+<../figs/SCP_Use_Cases.png, id=1220, 1120.185pt x 758.835pt>
 File: ../figs/SCP_Use_Cases.png Graphic file (type png)
 <use ../figs/SCP_Use_Cases.png>
 Package pdftex.def Info: ../figs/SCP_Use_Cases.png  used on input line 35.
@@ -1855,7 +1856,7 @@ Chapter 9.
 
 
 ]
-Overfull \hbox (4.63652pt too wide) in paragraph at lines 289--289
+Overfull \hbox (4.63652pt too wide) in paragraph at lines 292--292
 [][]\T1/ppl/m/n/10.95 Reiter, Ray-mond (1980).   A logic for de-fault rea-son-
 ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 .1-2, pp. 81
@@ -1870,17 +1871,17 @@ ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 
 
 ] [69] [70] [71]
-<../figs/output1.jpg, id=1316, 614.295pt x 794.97pt>
+<../figs/output1.jpg, id=1318, 614.295pt x 794.97pt>
 File: ../figs/output1.jpg Graphic file (type jpg)
 <use ../figs/output1.jpg>
 Package pdftex.def Info: ../figs/output1.jpg  used on input line 223.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/output2.jpg, id=1317, 614.295pt x 794.97pt>
+<../figs/output2.jpg, id=1319, 614.295pt x 794.97pt>
 File: ../figs/output2.jpg Graphic file (type jpg)
 <use ../figs/output2.jpg>
 Package pdftex.def Info: ../figs/output2.jpg  used on input line 228.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/suppression_python.png, id=1318, 470.50781pt x 553.31718pt>
+<../figs/suppression_python.png, id=1320, 470.50781pt x 553.31718pt>
 File: ../figs/suppression_python.png Graphic file (type png)
 <use ../figs/suppression_python.png>
 Package pdftex.def Info: ../figs/suppression_python.png  used on input line 234
@@ -1888,15 +1889,15 @@ Package pdftex.def Info: ../figs/suppression_python.png  used on input line 234
 (pdftex.def)             Requested size: 441.01775pt x 518.6407pt.
  [72] [73 <../figs/output1.jpg>] [74 <../figs/output2.jpg>]
 [75 <../figs/suppression_python.png>]) [76]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 303.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 303.
  (main.aux
 (Chapters/Introduction.aux) (Chapters/Prelim.aux) (Chapters/Experiments.aux)
 (Chapters/SCP.aux) (Chapters/Toolbox.aux) (Chapters/Mimic.aux)
 (Chapters/Comparing.aux) (Chapters/Program.aux) (Chapters/Conclusion.aux)
 (Chapters/Appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 300.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 300.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 303.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 303.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D6EC67D9E6BCF72A87D97990D7830A0F;16117.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -1938,9 +1939,9 @@ palatino/uplbi8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
 e1/urw/palatino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/urw/palatino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (87 pages, 2620243 bytes).
+Output written on main.pdf (87 pages, 2622069 bytes).
 PDF statistics:
- 1587 PDF objects out of 1728 (max. 8388607)
+ 1589 PDF objects out of 1728 (max. 8388607)
  371 named destinations out of 1000 (max. 500000)
  829 words of extra memory for PDF output out of 10000 (max. 10000000)
 

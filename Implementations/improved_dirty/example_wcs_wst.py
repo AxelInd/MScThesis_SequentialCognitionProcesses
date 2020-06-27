@@ -2,7 +2,7 @@ import sys
 sys.path.append("/SCPFramework") 
 import copy
 
-
+"""
 from SCPFramework import SCP_Task
 from SCPFramework import scpNotationParser
 from SCPFramework import CTM
@@ -10,7 +10,14 @@ from SCPFramework import CognitiveOperation
 from SCPFramework import basicLogic
 from SCPFramework import epistemicState
 from SCPFramework import StatePointOperations
-
+"""
+import SCP_Task
+import scpNotationParser
+import CTM
+import CognitiveOperation
+import basicLogic
+import epistemicState
+import StatePointOperations
 
 
 #INSTANTIATE EACH <cognitiveOperation> object which might be used later
@@ -18,23 +25,28 @@ ADDAB = CognitiveOperation.m_addAB()
 WC = CognitiveOperation.m_wc()
 SEMANTIC = CognitiveOperation.m_semantic()
 ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=2)
-
+WCS = CognitiveOperation.m_wcs()
 
 # Minimal subsets which verify/falsify the conditional and explain the observation o
 # Are vallid iff and only 
-
+"""
+==================================================================================================
+==========================================TURN FUNCTION===========================================
+"""  
+#corresponds to f_WST in the thesis
 def f_turnFunction(pi,observations= ['D','K','3','7']):
     decisions={}
     for obs in observations:
-        print ("observation is ", obs)
         for i in obs:
-            decisions[obs]=f_turn(pi,obs)
-            
-            
+            decisions[obs]=f_turn(pi,obs)     
     return decisions
+#corresponds to f_WST^pref in the thesis
+def f_turnFunction_prefDoNoTurn(pi,observations= ['D','K','3','7']):
+    #prefer to turn the card if any realised SCP would cause the card to be turned
+    prefDontTurn = {'D':'Do Not Turn','K':'Do Not Turn','3':'Do Not Turn','7':'Do Not Turn'}  
+    return pref_f(f_turnFunction(pi,observations= ['D','K','3','7']),prefDontTurn)    
         
-        
-        
+#Determine if pi explains a specific observation      
 def f_turn(pi,observation):
 
     finalStructures=pi.evaluate()
@@ -42,13 +54,7 @@ def f_turn(pi,observation):
     
     if not isinstance(finalStates,list):
         finalStates=[finalStates]
-    #print("Final states")
-    #print(finalStates)
-    
-    #severe problem using interpetation of conditionals with de-finnetti truth table
-    # @TODO how do we resolve????
-    # maybe determine if the conditional CAN be falsified?
-    #@TODO parser struggles with ( ( a | b) or ( c | d ) )
+
     conditional = scpNotationParser.stringListToBasicLogic(["( ( 3 | D ) or ( D' | 7 ) )"])
     # we are willing to turn the card if either the (3 | D) or the contrapositive case ( D' | 7 ) holds
     obs = scpNotationParser.stringListToBasicLogic(['( {} <- T )'.format(observation)])
@@ -72,11 +78,6 @@ def f_turn(pi,observation):
             responses.append('observations hold')
         else:
             responses.append('observations do not')
-
-              
-        
-        
-            
     #now we need to find the minimal set of abducibles to turn the cards
     turnResponses=[]
     #WE PREFER MINIMAL EXPLANATIONS
@@ -86,8 +87,7 @@ def f_turn(pi,observation):
     minimalSubset = []
      
     for epi in turnResponses:
-        print ("epi is ", epi)
-        #print ("we made it here")
+        #print ("epi is ", epi)
         #print (epi['R']['abducibles'])
         #print ("and then here")
         x = [StatePointOperations.properSubset(ot['R']['abducibles'],epi['R']['abducibles'])  for ot in turnResponses]
@@ -132,6 +132,20 @@ def pref_f(responses,pref):
         else:
             preferedResonses[card]=responses[card]
     return preferedResonses
+
+def strSCPLi(mu):    
+    f_aliases={f_turnFunction:"f_WST",f_turnFunction_prefDoNoTurn:"f_pref"}
+    scps=[]
+    for s in mu:
+        for al in f_aliases:
+            if s[1]==al:
+                scps.append((s[0].__repr__(), f_aliases[al]))
+    return scps
+            
+"""
+==================================================================================================
+=============================================CREATE Si============================================
+"""  
 #creates the initial state point with only the conditional (3|D)
 def create_si_noContra():
     #define the initial atomic name in the WCS: one for each observed card
@@ -156,6 +170,7 @@ def create_si_noContra():
     #the set of abducibles, any subset of which might be an explanation
     abducibs = ['( D <- T )', '( D <- F )', '( K <- T )', '( K <- F )', 
                 '( 3 <- T )', '( 3 <- F )', '( 7 <- T )', '( 7 <- F )']
+    abducibs = ['( D <- T )',  '( K <- T )', '( 3 <- T )', '( 7 <- T )']
     #transform the set of abducibles to a set of <basicLogic> clauses
     logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
 
@@ -190,6 +205,7 @@ def create_si_contra():
     #the set of abducibles, any subset of which might be an explanation
     abducibs = ['( D <- T )', '( D <- F )', '( K <- T )', '( K <- F )', 
                 '( 3 <- T )', '( 3 <- F )', '( 7 <- T )', '( 7 <- F )']
+    abducibs = ['( D <- T )',  '( K <- T )', '( 3 <- T )', '( 7 <- T )']
     #transform the set of abducibles to a set of <basicLogic> clauses
     logAbducibs =  scpNotationParser.stringListToBasicLogic(abducibs)
 
@@ -199,9 +215,99 @@ def create_si_contra():
     basePointContra['V']=[D, K, three, seven, Dprime]
     basePointContra['R']={'abducibles':logAbducibs}   
     return [basePointContra]
-    
+
+
+
+"""
+==================================================================================================
+=============================================SCP SEARCH===========================================
+"""    
 #The most common case of the WST, where the cards D and 3 are turned
 def mu_D3 ():
+    print ("Searching through SCP space to find: D, 3...")
+    #create initial base point which has only a single epistemic state in it
+    s_i=create_si_noContra()
+    
+    #the set of cognitive operations which we believe might model this case of the WST
+    M=[ABDUCIBLES, ADDAB, WCS]
+    #The final state dependent external evaluation function
+    f=f_turnFunction
+    #the turn responses which would we would like to achieve
+    gamma_D3={'D':'Turn Card','K':'Do Not Turn','3':'Turn Card','7':'Do Not Turn'}    
+    
+    #The SCP task which states what is required from a solution SCP or realised SCP
+    task_D3 = SCP_Task.SCP_Task(s_i,M,f,gamma_D3)   
+    
+    searchRes = task_D3.deNoveSearch(depth = 3, searchType="satisfying")
+    
+    print ("search results are ", strSCPLi(searchRes))
+    return (searchRes)
+    
+    
+#The a case of the WST where only D is turned
+def mu_D ():
+    print ("Searching through SCP space to find: D...")
+    #create initial base point which has only a single epistemic state in it
+    s_i=create_si_noContra()
+    
+    #the set of cognitive operations which we believe might model this case of the WST
+    M=[ABDUCIBLES, ADDAB, WCS]
+    #The final state dependent external evaluation function
+    f=f_turnFunction_prefDoNoTurn
+    #the turn responses which would we would like to achieve
+    gamma_D={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Do Not Turn'}  
+
+    #The SCP task which states what is required from a solution SCP or realised SCP
+    task_D = SCP_Task.SCP_Task(s_i,M,f,gamma_D)   
+    
+    searchRes = task_D.deNoveSearch(depth = 3, searchType="satisfying")
+    print ("search results are ", strSCPLi(searchRes))
+    return searchRes
+
+#The classical logic response to the WST, turning the cards D and 7
+def mu_D7 ():
+    print ("Searching through SCP space to find: D, 7...")
+    #create initial base point which has only a single epistemic state in it
+    s_i=create_si_contra()
+    
+    #the set of cognitive operations which we believe might model this case of the WST
+    M=[ABDUCIBLES, ADDAB, WCS]
+    #The final state dependent external evaluation function
+    f=f_turnFunction_prefDoNoTurn
+
+    #the turn responses which would we would like to achieve
+    gamma_D7={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Turn Card'}  
+
+    #The SCP task which states what is required from a solution SCP or realised SCP
+    task_D7 = SCP_Task.SCP_Task(s_i,M,f,gamma_D7)   
+    
+    searchRes = task_D7.deNoveSearch(depth = 3, searchType="satisfying")
+    print ("search results are ", strSCPLi(searchRes))
+    return searchRes
+
+#The individual case of the WST, where the cards D, 3, and 7 are turned
+def mu_D37 ():
+    print ("Searching through SCP space to find: D, 3, 7...")
+    #create initial base point which has only a single epistemic state in it
+    s_i=create_si_contra()
+    
+    #the set of cognitive operations which we believe might model this case of the WST
+    M=[ABDUCIBLES, ADDAB, WCS]
+    #The final state dependent external evaluation function
+    f=f_turnFunction
+    #the turn responses which would we would like to achieve
+    gamma_D37={'D':'Turn Card','K':'Do Not Turn','3':'Turn Card','7':'Turn Card'}    
+    
+    #The SCP task which states what is required from a solution SCP or realised SCP
+    task_D37 = SCP_Task.SCP_Task(s_i,M,f,gamma_D37)   
+    
+    searchRes = task_D37.deNoveSearch(depth = 3, searchType="satisfying")
+    print ("search results are ", strSCPLi(searchRes))
+    return searchRes
+
+#The most common case of the WST, where the cards D and 3 are turned
+#Shown for mu=(si => addAB => addExp => WC => semantic,f_turn)
+def mu_D3_example ():
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_noContra()
     
@@ -215,12 +321,6 @@ def mu_D3 ():
     #The SCP task which states what is required from a solution SCP or realised SCP
     task_D3 = SCP_Task.SCP_Task(s_i,M,f,gamma_D3)   
     
-    searchRes = task_D3.deNoveSearch(depth = 3, searchType="satisfying")
-    
-    print ("search results are ", searchRes)
-    #This is a test SCP mu=(c,f()) which is known to work
-    
-    """
     c = CTM.CTM()
     c.setSi(s_i)
     c.appendm(ADDAB)
@@ -239,87 +339,11 @@ def mu_D3 ():
     print ("Responses: ",predictions)
     print ("Lenient: mu|=gamma_D3 :", StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma_D3))
     print ("Strict:  mu|=gamma_D3 :", StatePointOperations.predictionsModelsGamma_strict(predictions,gamma_D3))
-    """
     
-#The most common case of the WST, where the cards D and 3 are turned
-def mu_D ():
-    #create initial base point which has only a single epistemic state in it
-    s_i=create_si_noContra()
     
-    #the set of cognitive operations which we believe might model this case of the WST
-    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
-    #The final state dependent external evaluation function
-    f=f_turn
-    #prefer to turn the card if any realised SCP would cause the card to be turned
-    prefDontTurn = {'D':'Do Not Turn','K':'Do Not Turn','3':'Do Not Turn','7':'Do Not Turn'}  
-    #the turn responses which would we would like to achieve
-    gamma_D={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Do Not Turn'}  
-
-    #The SCP task which states what is required from a solution SCP or realised SCP
-    task_D = SCP_Task.SCP_Task(s_i,M,f,gamma_D)   
-    
-    #This is a test SCP mu=(c,f()) which is known to work
-    c = CTM.CTM()
-    c.setSi(s_i)
-    c.appendm(ADDAB)
-    c.appendm(ABDUCIBLES)
-    c.appendm(WC)
-    c.appendm(SEMANTIC)
-
-    #the set of possible observations which might need to be explained to see if we should 
-    # turn a card
-    observations = ['D','K','3','7']
-    
-    #use the turn function to evaluate the ctm and see if the card should be turned
-    # we prefer the 'Do Not Turn' response in this case
-    predictions=pref_f(f_turnFunction(c,observations), prefDontTurn)   
-    
-    #print True if mu|=gamma_D3
-    print ("Responses: ",predictions)
-    print ("Lenient: mu|=gamma_D :", StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma_D))
-    print ("Strict:  mu|=gamma_D :", StatePointOperations.predictionsModelsGamma_strict(predictions,gamma_D))
-
-#The classical logic response to the WST, turning the cards D and 7
-def mu_D7 ():
-    #create initial base point which has only a single epistemic state in it
-    s_i=create_si_contra()
-    
-    #the set of cognitive operations which we believe might model this case of the WST
-    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
-    #The final state dependent external evaluation function
-    f=f_turn
-    #prefer to turn the card if any realised SCP would cause the card to be turned
-    prefDontTurn = {'D':'Do Not Turn','K':'Do Not Turn','3':'Do Not Turn','7':'Do Not Turn'}  
-    #the turn responses which would we would like to achieve
-    gamma_D7={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Turn Card'}  
-
-    #The SCP task which states what is required from a solution SCP or realised SCP
-    task_D7 = SCP_Task.SCP_Task(s_i,M,f,gamma_D7)   
-    
-    #This is a test SCP mu=(c,f()) which is known to work
-    c = CTM.CTM()
-    c.setSi(s_i)
-    c.appendm(ADDAB)
-    c.appendm(ABDUCIBLES)
-    c.appendm(WC)
-    c.appendm(SEMANTIC)
-
-    #the set of possible observations which might need to be explained to see if we should 
-    # turn a card
-    observations = ['D','K','3','7']
-    
-    #use the turn function to evaluate the ctm and see if the card should be turned
-    # we prefer the 'Do Not Turn' response in this case
-    predictions=pref_f(f_turnFunction(c,observations), prefDontTurn)   
-    
-    #print True if mu|=gamma_D3
-    print ("Responses: ",predictions)
-    print ("Lenient: mu|=gamma_D7 :", StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma_D7))
-    print ("Strict:  mu|=gamma_D7 :", StatePointOperations.predictionsModelsGamma_strict(predictions,gamma_D7))
-
-
 #The individual case of the WST, where the cards D, 3, and 7 are turned
-def mu_D37 ():
+#Shown for mu=(si => addAB => addExp => WC => semantic,f_turn)
+def mu_D37_example ():
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_contra()
     
@@ -352,18 +376,100 @@ def mu_D37 ():
     print ("Responses: ",predictions)
     print ("Lenient: mu|=gamma_D37 :", StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma_D37))
     print ("Strict:  mu|=gamma_D37 :", StatePointOperations.predictionsModelsGamma_strict(predictions,gamma_D37))
+    
+#The classical logic response to the WST, turning the cards D and 7
+#Shown for mu=(si => addAB => addExp => WC => semantic,f_turn)
+def mu_D7_example ():
+    #create initial base point which has only a single epistemic state in it
+    s_i=create_si_contra()
+    
+    #the set of cognitive operations which we believe might model this case of the WST
+    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
+    #The final state dependent external evaluation function
+    f=f_turnFunction_prefDoNoTurn
 
+    #the turn responses which would we would like to achieve
+    gamma_D7={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Turn Card'}  
+
+    #The SCP task which states what is required from a solution SCP or realised SCP
+    task_D7 = SCP_Task.SCP_Task(s_i,M,f,gamma_D7)   
+    
+    #This is a test SCP mu=(c,f()) which is known to work
+    c = CTM.CTM()
+    c.setSi(s_i)
+    c.appendm(ADDAB)
+    c.appendm(ABDUCIBLES)
+    c.appendm(WC)
+    c.appendm(SEMANTIC)
+
+    #the set of possible observations which might need to be explained to see if we should 
+    # turn a card
+    observations = ['D','K','3','7']
+    
+    #use the turn function to evaluate the ctm and see if the card should be turned
+    # we prefer the 'Do Not Turn' response in this case
+    predictions=f(c,observations)
+    
+    #print True if mu|=gamma_D3
+    print ("Responses: ",predictions)
+    print ("Lenient: mu|=gamma_D7 :", StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma_D7))
+    print ("Strict:  mu|=gamma_D7 :", StatePointOperations.predictionsModelsGamma_strict(predictions,gamma_D7))
+    
+ 
+#The a case of the WST where only D is turned
+#Shown for mu=(si => addAB => addExp => WC => semantic,f_turn)  
+def mu_D_example ():
+    #create initial base point which has only a single epistemic state in it
+    s_i=create_si_noContra()
+    
+    #the set of cognitive operations which we believe might model this case of the WST
+    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
+    #The final state dependent external evaluation function
+    f=f_turnFunction_prefDoNoTurn
+    #the turn responses which would we would like to achieve
+    gamma_D={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Do Not Turn'}  
+
+    #The SCP task which states what is required from a solution SCP or realised SCP
+    task_D = SCP_Task.SCP_Task(s_i,M,f,gamma_D)   
+    
+    #This is a test SCP mu=(c,f()) which is known to work
+    c = CTM.CTM()
+    c.setSi(s_i)
+    c.appendm(ADDAB)
+    c.appendm(ABDUCIBLES)
+    c.appendm(WC)
+    c.appendm(SEMANTIC)
+
+    #the set of possible observations which might need to be explained to see if we should 
+    # turn a card
+    observations = ['D','K','3','7']
+    
+    #use the turn function to evaluate the ctm and see if the card should be turned
+    # we prefer the 'Do Not Turn' response in this case
+    predictions=f(c,observations)
+    
+    #print True if mu|=gamma_D3
+    print ("Responses: ",predictions)
+    print ("Lenient: mu|=gamma_D :", StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma_D))
+    print ("Strict:  mu|=gamma_D :", StatePointOperations.predictionsModelsGamma_strict(predictions,gamma_D))
+
+#active search to find SCPs which model results
 mu_D3()
-#mu_D37()
+mu_D37()
 
-#mu_D()
-#mu_D7()
-
-
+mu_D()
+mu_D7()
 
 
 
+#examples of an scp for each case of the WST, see code for comments.
+#these searches are fairly slow, but very comprehensive.
+#mu_D3_example()
 
+#mu_D37_example()
+#mu_D_example()
+
+#mu_D7_example()
 
 
 
