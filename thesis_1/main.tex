@@ -73,6 +73,7 @@ oneside]{MastersDoctoralThesis} % The class file specifying the document structu
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 \usepackage{comment} 
+\usepackage{eso-pic} 
 \usepackage{placeins}
 \newenvironment{bulletProof}[1][\proofname]{%
   \begin{proof}[#1]$ $\par\nobreak\ignorespaces
@@ -131,7 +132,7 @@ oneside]{MastersDoctoralThesis} % The class file specifying the document structu
 
 \begin{titlepage}
 \begin{center}
-
+\AddToShipoutPicture*{\put(245,275){\includegraphics[scale=0.65]{logo-grundversion-01}}}
 \vspace*{.06\textheight}
 {\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
 \textsc{\Large Master's Thesis}\\[0.5cm] % Thesis type
@@ -143,7 +144,7 @@ oneside]{MastersDoctoralThesis} % The class file specifying the document structu
 \begin{minipage}[t]{0.4\textwidth}
 \begin{flushleft} \large
 \emph{Author:}\\
-\href{http://www.johnsmith.com}{\authorname} % Author name - remove the \href bracket to remove the link
+{\authorname} % Author name - remove the \href bracket to remove the link
 \end{flushleft}
 \end{minipage}
 \begin{minipage}[t]{0.4\textwidth}
@@ -152,9 +153,9 @@ oneside]{MastersDoctoralThesis} % The class file specifying the document structu
 \href{http://www.cc.uni-freiburg.de/staff/marco-ragni}{\supname} % Supervisor name - remove the \href bracket to remove the link  
 
 \emph{Examiner:} \\
-\href{https://www.fernuni-hagen.de/wbs/people.html}{Prof. Dr. Christoph BEIERLE} % Supervisor name - remove the \href bracket to remove the link  
+\href{https://www.fernuni-hagen.de/wbs/people.html}{Prof. Dr. Christoph \textsc{Beierle}} % Supervisor name - remove the \href bracket to remove the link  
 \end{flushright}
-\end{minipage}\\[3cm]
+\end{minipage}\\[5cm]
  
 \vfill
 
