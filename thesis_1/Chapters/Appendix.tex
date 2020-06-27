@@ -162,3 +162,41 @@ Given an SCP Task $\Pi=(s_i,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$, $A\in
 \label{fig:sup_snippet}
 \end{figure}
 
+\section*{Additional Tables}
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{c | c c c c c c }
+ & & $s_\text{WST}$ & \texttt{addAB} & \texttt{AddExp} & \texttt{wc} & \texttt{semantic}\\
+\hline
+ & 0 & -1 & -2 & -3 & -4 & -5\\
+$s_\text{WST}$ & -1 & 3 & 2 & 1 & 0 & -1\\
+\texttt{th} & -6 & -2 & 0.0 & -1.0 & -2.0 & -3.0
+\end{tabular}
+\caption{Extended Needleman-Wunsch comparison of $\mu_{D,3}$ to $\mu'_{D,7}$.}
+\label{tbl:extal1}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{c | c c c c c c }
+ & & $s_\text{WST}$ & \texttt{addAB} & \texttt{AddExp} & \texttt{wc} & \texttt{semantic}\\
+\hline
+ & 0 & -1 & -2 & -3 & -4 & -5\\
+$s_\text{WST}$ & -1 & 3 & 2 & 1 & 0 & -1\\
+\texttt{addAB} & -2 & 2 & 4 & 3 & 2 & 1\\
+\texttt{addExp} & -3 & 1 & 3 & 5 & 4 & 3\\
+\texttt{wc} & -4 & 0 & 2 & 4 & 6 & 5\\
+\texttt{semantic} & -5 & -1 & 1 & 3 & 5 & 7
+\end{tabular}
+\caption{Extended Needleman-Wunsch comparison of $\mu_{D,3}$ to $\mu_{D,7}$.}
+\label{tbl:extal2}
+\end{center}
+\end{table}

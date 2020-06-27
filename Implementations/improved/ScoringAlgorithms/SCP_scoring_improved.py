@@ -66,15 +66,7 @@ insertionCosts={CognitiveOperation.m_addAB: -1,
                 CognitiveOperation.m_semantic: -1,
                 CognitiveOperation.m_addAbducibles: -1,
                 CognitiveOperation.m_deleteo:-1,
-                CognitiveOperation.m_dummyOperation:-1,
-                list: -1
-                }
-mismatchCosts={CognitiveOperation.m_addAB: -1,
-                CognitiveOperation.m_wc: -1,
-                CognitiveOperation.m_semantic: -1,
-                CognitiveOperation.m_addAbducibles: -1,
-                CognitiveOperation.m_deleteo:-1,
-                CognitiveOperation.m_dummyOperation:-1,
+                CognitiveOperation.m_dummyOperation:-5,
                 list: -1
                 }
 matchRewards={CognitiveOperation.m_addAB: 1,
@@ -82,8 +74,8 @@ matchRewards={CognitiveOperation.m_addAB: 1,
                 CognitiveOperation.m_semantic:1,
                 CognitiveOperation.m_addAbducibles: 1,
                 CognitiveOperation.m_deleteo:1,
-                CognitiveOperation.m_dummyOperation:1,
-                list: 1}
+                CognitiveOperation.m_dummyOperation:5,
+                list: 3}
 
 # A function for making a matrix of zeroes
 def zeros(rows, cols):
@@ -115,7 +107,7 @@ def match_score(alpha, beta):
     elif isinstance(beta,CognitiveOperation.m_insertionOperation):
         return insertionCosts[type(alpha)]
     else:
-        return  mismatchCosts[type(alpha)]+ mismatchCosts[type(beta)]
+        return  (insertionCosts[type(alpha)]+ insertionCosts[type(beta)])/2
 
 
 
@@ -274,12 +266,12 @@ print(output2)
 for i in scoreMatrix:
     print (i)
 """
-output1, output2, scoreMatrix = needleman_wunsch(e, d)
+output1, output2, scoreMatrix = needleman_wunsch(d, d)
 
 print ("score for alignment:", maxScore(scoreMatrix))
 
 printAlignment(output1,output2)
 
-print (matrixAsLatexRC(scoreMatrix,e,d))
+print (matrixAsLatexRC(scoreMatrix,d,d))
 
 

@@ -76,19 +76,19 @@
 \contentsline {section}{\numberline {7.2}Comparing Generated SCPs}{76}{section.165}%
 \contentsline {subsection}{\numberline {7.2.1}Scoring}{76}{subsection.166}%
 \contentsline {subsubsection}{SCP Length}{77}{section*.167}%
-\contentsline {section}{\numberline {7.3}Comparing External SCPs}{78}{section.169}%
+\contentsline {section}{\numberline {7.3}Comparing Related SCPs}{78}{section.169}%
 \contentsline {subsection}{\numberline {7.3.1}The Needleman-Wunsch Algorithm}{79}{subsection.170}%
 \contentsline {subsubsection}{Needleman-Wunsch for SCPs}{80}{section*.173}%
 \contentsline {subsubsection}{Extending Needleman-Wunsch for SCPs}{82}{section*.178}%
-\contentsline {subsection}{\numberline {7.3.2}Limitations of the Needleman-Wunsch Algorithm}{82}{subsection.179}%
-\contentsline {chapter}{\numberline {8}Program Design}{84}{chapter.180}%
-\contentsline {section}{\numberline {8.1}Implementing the SCP Framework}{84}{section.181}%
-\contentsline {section}{\numberline {8.2}A Modular Programming Approach}{84}{section.182}%
-\contentsline {subsection}{\numberline {8.2.1}Most Important Modules}{84}{subsection.183}%
-\contentsline {subsection}{\numberline {8.2.2}Program Flow}{87}{subsection.185}%
-\contentsline {subsection}{\numberline {8.2.3}Modelled Experiments}{87}{subsection.187}%
-\contentsline {section}{\numberline {8.3}External Framework Integration}{87}{section.188}%
-\contentsline {chapter}{\numberline {9}Conclusions and Future Work}{88}{chapter.189}%
-\contentsline {section}{\numberline {9.1}Conclusion}{88}{section.190}%
-\contentsline {section}{\numberline {9.2}Future Work}{89}{section.191}%
-\contentsline {chapter}{Bibliography}{90}{appendix*.192}%
+\contentsline {subsection}{\numberline {7.3.2}Limitations of the Needleman-Wunsch Algorithm}{83}{subsection.181}%
+\contentsline {chapter}{\numberline {8}Program Design}{85}{chapter.182}%
+\contentsline {section}{\numberline {8.1}Implementing the SCP Framework}{85}{section.183}%
+\contentsline {section}{\numberline {8.2}A Modular Programming Approach}{85}{section.184}%
+\contentsline {subsection}{\numberline {8.2.1}Most Important Modules}{85}{subsection.185}%
+\contentsline {subsection}{\numberline {8.2.2}Program Flow}{88}{subsection.187}%
+\contentsline {subsection}{\numberline {8.2.3}Modelled Experiments}{88}{subsection.189}%
+\contentsline {section}{\numberline {8.3}External Framework Integration}{88}{section.190}%
+\contentsline {chapter}{\numberline {9}Conclusions and Future Work}{89}{chapter.191}%
+\contentsline {section}{\numberline {9.1}Conclusion}{89}{section.192}%
+\contentsline {section}{\numberline {9.2}Future Work}{90}{section.193}%
+\contentsline {chapter}{Bibliography}{91}{appendix*.194}%

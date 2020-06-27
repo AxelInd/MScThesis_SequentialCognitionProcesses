@@ -22,5 +22,8 @@
 \contentsline {table}{\numberline {7.2}{\ignorespaces Scoring matrix for the sequences $a=ATTACA$ and $b=ATGCT$ using the scoring properties defined in Table~\ref {tbl:simpleneed}.\relax }}{79}{table.caption.172}%
 \contentsline {table}{\numberline {7.3}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$\relax }}{81}{table.caption.174}%
 \contentsline {table}{\numberline {7.4}{\ignorespaces Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$\relax }}{81}{table.caption.175}%
+\contentsline {table}{\numberline {7.5}{\ignorespaces A very simple table for scoring SCPs with the Needleman-Wunsch algorithm for inputs $x$ and $y$.\relax }}{82}{table.caption.179}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {1}{\ignorespaces Extended Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu '_{D,7}$.\relax }}{101}{table.caption.246}%
+\contentsline {table}{\numberline {2}{\ignorespaces Extended Needleman-Wunsch comparison of $\mu _{D,3}$ to $\mu _{D,7}$.\relax }}{101}{table.caption.247}%
