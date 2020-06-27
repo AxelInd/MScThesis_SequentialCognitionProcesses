@@ -29,18 +29,18 @@
 \contentsline {section}{\numberline {4.2}SCPs: Mathematical Formulation}{16}{section.64}%
 \contentsline {section}{\numberline {4.3}SCP Tasks vs. SCPs vs. Realised SCPs}{18}{section.66}%
 \contentsline {section}{\numberline {4.4}Epistemic States}{18}{section.68}%
-\contentsline {subsection}{\numberline {4.4.1}Common State Point Properties}{20}{subsection.69}%
+\contentsline {subsection}{\numberline {4.4.1}Common State Point Structural Variables}{20}{subsection.69}%
 \contentsline {subsection}{\numberline {4.4.2}The Categorization Variable}{20}{subsection.73}%
 \contentsline {section}{\numberline {4.5}Cognitive Operations}{21}{section.74}%
 \contentsline {subsection}{\numberline {4.5.1}Pre-conditions and Effects}{21}{subsection.75}%
-\contentsline {subsection}{\numberline {4.5.2}Optimality, Satisfaction, Validity}{22}{subsection.77}%
+\contentsline {subsection}{\numberline {4.5.2}Validity, Satisfaction, and Optimality}{22}{subsection.77}%
 \contentsline {subsubsection}{Validity}{22}{section*.78}%
 \contentsline {subsubsection}{Satisfaction}{23}{section*.79}%
 \contentsline {subsubsection}{Optimality}{23}{section*.80}%
 \contentsline {subsection}{\numberline {4.5.3}Credulous and Skeptical Validity}{23}{subsection.81}%
 \contentsline {section}{\numberline {4.6}External Evaluation Functions}{24}{section.82}%
 \contentsline {section}{\numberline {4.7}Search in SCP-Space}{25}{section.85}%
-\contentsline {subsection}{\numberline {4.7.1}De-Novo SCP Searching}{25}{subsection.86}%
+\contentsline {subsection}{\numberline {4.7.1}De Novo SCP Searching}{25}{subsection.86}%
 \contentsline {subsection}{\numberline {4.7.2}Insertion Search}{26}{subsection.88}%
 \contentsline {chapter}{\numberline {5}Cognitive Operations: The Cognitive Toolbox}{28}{chapter.89}%
 \contentsline {section}{\numberline {5.1}Overview}{28}{section.90}%
@@ -69,26 +69,26 @@
 \contentsline {section}{\numberline {6.1}Overview}{42}{section.140}%
 \contentsline {section}{\numberline {6.2}Suppression Task}{42}{section.141}%
 \contentsline {subsection}{\numberline {6.2.1}Suppression Task: WCS}{42}{subsection.142}%
-\contentsline {subsection}{\numberline {6.2.2}Suppression Task: Reiter's Default Logic}{46}{subsection.148}%
-\contentsline {section}{\numberline {6.3}Wason Selection Task}{47}{section.151}%
-\contentsline {chapter}{\numberline {7}Comparing SCPs}{54}{chapter.161}%
-\contentsline {section}{\numberline {7.1}Why do we need to compare SCPs?}{54}{section.162}%
-\contentsline {section}{\numberline {7.2}Comparing Generated SCPs}{55}{section.165}%
-\contentsline {subsection}{\numberline {7.2.1}Scoring}{55}{subsection.166}%
-\contentsline {subsubsection}{SCP Length}{55}{section*.167}%
-\contentsline {section}{\numberline {7.3}Comparing Related SCPs}{56}{section.169}%
-\contentsline {subsection}{\numberline {7.3.1}The Needleman-Wunsch Algorithm}{57}{subsection.170}%
-\contentsline {subsubsection}{Needleman-Wunsch for SCPs}{58}{section*.173}%
-\contentsline {subsubsection}{Extending Needleman-Wunsch for SCPs}{59}{section*.178}%
-\contentsline {subsection}{\numberline {7.3.2}Limitations of the Needleman-Wunsch Algorithm}{60}{subsection.181}%
-\contentsline {chapter}{\numberline {8}Program Design}{61}{chapter.182}%
-\contentsline {section}{\numberline {8.1}Implementing the SCP Framework}{61}{section.183}%
-\contentsline {section}{\numberline {8.2}A Modular Programming Approach}{61}{section.184}%
-\contentsline {subsection}{\numberline {8.2.1}Most Important Modules}{61}{subsection.185}%
-\contentsline {subsection}{\numberline {8.2.2}Program Flow}{63}{subsection.187}%
-\contentsline {subsection}{\numberline {8.2.3}Modelled Experiments}{63}{subsection.189}%
-\contentsline {section}{\numberline {8.3}External Framework Integration}{63}{section.190}%
-\contentsline {chapter}{\numberline {9}Conclusions and Future Work}{64}{chapter.191}%
-\contentsline {section}{\numberline {9.1}Conclusion}{64}{section.192}%
-\contentsline {section}{\numberline {9.2}Future Work}{64}{section.193}%
-\contentsline {chapter}{Bibliography}{66}{appendix*.194}%
+\contentsline {subsection}{\numberline {6.2.2}Suppression Task: Reiter's Default Logic}{45}{subsection.151}%
+\contentsline {section}{\numberline {6.3}Wason Selection Task}{47}{section.154}%
+\contentsline {chapter}{\numberline {7}Comparing SCPs}{55}{chapter.164}%
+\contentsline {section}{\numberline {7.1}Why do we need to compare SCPs?}{55}{section.165}%
+\contentsline {section}{\numberline {7.2}Comparing Generated SCPs}{56}{section.168}%
+\contentsline {subsection}{\numberline {7.2.1}Scoring}{56}{subsection.169}%
+\contentsline {subsubsection}{SCP Length}{56}{section*.170}%
+\contentsline {section}{\numberline {7.3}Comparing Related SCPs}{57}{section.172}%
+\contentsline {subsection}{\numberline {7.3.1}The Needleman-Wunsch Algorithm}{57}{subsection.173}%
+\contentsline {subsubsection}{Needleman-Wunsch for SCPs}{59}{section*.176}%
+\contentsline {subsubsection}{Extending Needleman-Wunsch for SCPs}{60}{section*.181}%
+\contentsline {subsection}{\numberline {7.3.2}Limitations of the Needleman-Wunsch Algorithm}{61}{subsection.184}%
+\contentsline {chapter}{\numberline {8}Program Design}{62}{chapter.185}%
+\contentsline {section}{\numberline {8.1}Implementing the SCP Framework}{62}{section.186}%
+\contentsline {section}{\numberline {8.2}A Modular Programming Approach}{62}{section.187}%
+\contentsline {subsection}{\numberline {8.2.1}Most Important Modules}{62}{subsection.188}%
+\contentsline {subsection}{\numberline {8.2.2}Program Flow}{64}{subsection.190}%
+\contentsline {subsection}{\numberline {8.2.3}Modelled Experiments}{64}{subsection.192}%
+\contentsline {section}{\numberline {8.3}External Framework Integration}{64}{section.193}%
+\contentsline {chapter}{\numberline {9}Conclusions and Future Work}{65}{chapter.194}%
+\contentsline {section}{\numberline {9.1}Conclusion}{65}{section.195}%
+\contentsline {section}{\numberline {9.2}Future Work}{65}{section.196}%
+\contentsline {chapter}{Bibliography}{67}{appendix*.197}%

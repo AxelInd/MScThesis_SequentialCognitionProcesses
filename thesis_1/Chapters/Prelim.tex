@@ -43,7 +43,7 @@
 
 Propositional logic is one of the simplest classical logics and concerns itself with binary truth values. $\top$ denotes a tautology, and $\bot$ denotes a contradiction. An alphabet $\Sigma=\{v_1,...,v_n\}$ defines the set of atoms available to the language. Every atom $v_i \in \Sigma$ has the domain $\{v_i, \bar{v_i}\}$. An (atom, domain) pair which associates an atom with a value in its domain is called a literal.
 
-A formula $\theta \in \zeta$ from set of all formuli $\zeta$ is defined recursively over all conjunction $\land$, disjunction $\lor$, and negation $\lnot$ operations as follows:
+A formula $\theta \in \zeta$ from the set of all formuli $\zeta$ is defined recursively over all conjunction $\land$, disjunction $\lor$, and negation $\lnot$ operations as follows:
 
 \[
 \theta = \{ v_i \in \Sigma | \lnot \theta | \theta \lor \theta | \theta \land \theta \}
@@ -129,7 +129,7 @@ $\Delta:=\{\}$\;
 
 \section{Logic Programming}
 \subsection{Knowledge Base} \label{ssec:kb}
-In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encoded certain knowledge and relationships about the world. $S$ is called \textit{consistent} only if there exists some possible world $w \in W$ such that every rule in $I_w(\text{KB}_{prop})$ evaluates to $\top$.
+In propositional logic, a knowledge base $S=\{\phi_1,...,\phi_n\}$ for the language $\Sigma$ is a set of propositional rules from the set of formula $\zeta_\Sigma$. A propositional knowledge base is used to encode certain knowledge and relationships about the world. $S$ is called \textit{consistent} only if there exists some possible world $w \in W$ such that every rule in $I_w(\text{KB}_{prop})$ evaluates to $\top$.
 
 More generally, a non-monotonic knowledge base $\text{KB}=(S, \Delta)$ contains both a set of propositional rules ($S$) and a set of defeasible/conditional rules ($\Delta=\{\Delta_1,...,\Delta_m\}$). A non-monotonic knowledge base tolerates a conditional $(\psi|\phi)\in\Delta$ if and only if there exists some possible world $w\in W$ that verifies $(\psi|\phi)$ and does not falsify any conditional in $\Delta$. $\text{KB}$ is said to be \textit{consistent} if and only if there exists of partition of $\Delta$, $(\Delta_0,...,\Delta_n)$ such that $\Delta_i$ is tolerated by $\Delta_{i+k}$, where $k$ is any natural number not greater than $m$. 
 

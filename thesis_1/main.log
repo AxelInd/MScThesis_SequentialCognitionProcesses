@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  27 JUN 2020 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  27 JUN 2020 22:40
 entering extended mode
 **./main.tex
 (main.tex
@@ -1723,25 +1723,29 @@ Package pdftex.def Info: ../figs/generalWCS.png  used on input line 12.
 
 
  <../figs/general.png> <../figs/generalWCS.png>] [17]
-<../figs/Exam_SCP.png, id=830, 1086.30844pt x 1400.23125pt>
+<../figs/Exam_SCP.png, id=831, 1086.30844pt x 1400.23125pt>
 File: ../figs/Exam_SCP.png Graphic file (type png)
 <use ../figs/Exam_SCP.png>
 Package pdftex.def Info: ../figs/Exam_SCP.png  used on input line 73.
 (pdftex.def)             Requested size: 434.51569pt x 560.08258pt.
- [18] [19 <../figs/Exam_SCP.png>] [20] [21]
+ [18] [19 <../figs/Exam_SCP.png>]
+
+LaTeX Warning: Reference `ssec:poss' on page 20 undefined on input line 88.
+
+[20] [21]
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
 24.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmss.fd"
 File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-[22] [23] [24] [25]
-<../figs/deNovo.png, id=898, 843.3909pt x 641.5167pt>
+[22] [23] [24]
+<../figs/deNovo.png, id=888, 843.3909pt x 641.5167pt>
 File: ../figs/deNovo.png Graphic file (type png)
 <use ../figs/deNovo.png>
-Package pdftex.def Info: ../figs/deNovo.png  used on input line 254.
+Package pdftex.def Info: ../figs/deNovo.png  used on input line 252.
 (pdftex.def)             Requested size: 337.35039pt x 256.60213pt.
- [26 <../figs/deNovo.png>]) [27]
+ [25] [26 <../figs/deNovo.png>]) [27]
 \openout2 = `Chapters/Toolbox.aux'.
 
  (Chapters/Toolbox.tex
@@ -1751,7 +1755,11 @@ Chapter 5.
 
 
 
-] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40]) [41]
+] [29]
+
+LaTeX Warning: Reference `ssec:precon' on page 30 undefined on input line 62.
+
+[30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40]) [41]
 \openout2 = `Chapters/Mimic.aux'.
 
 
@@ -1763,20 +1771,26 @@ Chapter 6.
 
 
 ] [43]
-<../figs/Suppression_SCP.png, id=1068, 2214.62381pt x 1028.94412pt>
+<../figs/Suppression_SCP.png, id=1071, 2214.62381pt x 1028.94412pt>
 File: ../figs/Suppression_SCP.png Graphic file (type png)
 <use ../figs/Suppression_SCP.png>
-Package pdftex.def Info: ../figs/Suppression_SCP.png  used on input line 89.
+Package pdftex.def Info: ../figs/Suppression_SCP.png  used on input line 95.
 (pdftex.def)             Requested size: 441.01775pt x 204.89024pt.
  [44 <../figs/Suppression_SCP.png>]
-<../figs/Suppression_SCP_del1.png, id=1083, 1196.5503pt x 684.156pt>
+Overfull \hbox (19.49902pt too wide) in paragraph at lines 122--123
+\T1/ppl/m/n/10.95 pre-vi-ous un-seen re-sponse `she will not study late in the 
+li-brary' to be re-turned in $[]\OT1/zplm/m/n/10.95 (\OML/zplm/m/it/10.95 P[]\O
+T1/zplm/m/n/10.95 )$
+ []
+
+<../figs/Suppression_SCP_del1.png, id=1087, 1196.5503pt x 684.156pt>
 File: ../figs/Suppression_SCP_del1.png Graphic file (type png)
 <use ../figs/Suppression_SCP_del1.png>
 Package pdftex.def Info: ../figs/Suppression_SCP_del1.png  used on input line 1
-23.
+29.
 (pdftex.def)             Requested size: 441.01775pt x 252.16289pt.
- [45 <../figs/Suppression_SCP_del1.png>] [46]
-Overfull \hbox (0.27612pt too wide) in paragraph at lines 192--193
+[45] [46 <../figs/Suppression_SCP_del1.png>]
+Overfull \hbox (0.27612pt too wide) in paragraph at lines 198--199
 \T1/ppl/m/n/10.95 In or-der to model the ab-stract case of the WST, we de-fine 
 the SCP Task $\OT1/zplm/m/n/10.95  = (\OML/zplm/m/it/10.95 s[]\OT1/ppl/m/n/10.
 95 , \OML/zplm/m/it/10.95 M\OT1/ppl/m/n/10.95 , \OML/zplm/m/it/10.95 f[]\OT1/zp
@@ -1785,34 +1799,34 @@ $\T1/ppl/m/n/10.95 .
  []
 
 [47]
-<../figs/realisedSCPsWST.png, id=1107, 1375.539pt x 675.0018pt>
+<../figs/realisedSCPsWST.png, id=1114, 1375.539pt x 675.0018pt>
 File: ../figs/realisedSCPsWST.png Graphic file (type png)
 <use ../figs/realisedSCPsWST.png>
-Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 266.
+Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 272.
 (pdftex.def)             Requested size: 693.49821pt x 340.31189pt.
- [48] [49 <../figs/realisedSCPsWST.png>] [50]
-<../figs/realisedSCPsWST_mod.png, id=1133, 1299.6555pt x 714.5094pt>
+ [48] [49] [50 <../figs/realisedSCPsWST.png>] [51]
+<../figs/realisedSCPsWST_mod.png, id=1145, 1299.6555pt x 714.5094pt>
 File: ../figs/realisedSCPsWST_mod.png Graphic file (type png)
 <use ../figs/realisedSCPsWST_mod.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST_mod.png  used on input line 37
-0.
+6.
 (pdftex.def)             Requested size: 693.49821pt x 381.26117pt.
- [51] [52 <../figs/realisedSCPsWST_mod.png>]) [53]
+ [52] [53 <../figs/realisedSCPsWST_mod.png>]) [54]
 \openout2 = `Chapters/Comparing.aux'.
 
  (Chapters/Comparing.tex
 Chapter 7.
 1: section
-[54
+[55
 
 
 
-] [55] [56] [57] [58] [59]) [60]
+] [56] [57] [58] [59] [60]) [61]
 \openout2 = `Chapters/Program.aux'.
 
  (Chapters/Program.tex
 Chapter 8.
-<../figs/scpClassDiagram.png, id=1217, 772.38562pt x 601.64775pt>
+<../figs/scpClassDiagram.png, id=1245, 772.38562pt x 601.64775pt>
 File: ../figs/scpClassDiagram.png Graphic file (type png)
 <use ../figs/scpClassDiagram.png>
 Package pdftex.def Info: ../figs/scpClassDiagram.png  used on input line 16.
@@ -1828,17 +1842,17 @@ Overfull \hbox (14.6129pt too wide) in paragraph at lines 30--31
 []$[]$\T1/ppl/m/n/10.95 : an im-ple-men-ta-tion of the ex-tended Needle-
  []
 
-<../figs/SCP_Use_Cases.png, id=1220, 1120.185pt x 758.835pt>
+<../figs/SCP_Use_Cases.png, id=1248, 1120.185pt x 758.835pt>
 File: ../figs/SCP_Use_Cases.png Graphic file (type png)
 <use ../figs/SCP_Use_Cases.png>
 Package pdftex.def Info: ../figs/SCP_Use_Cases.png  used on input line 35.
 (pdftex.def)             Requested size: 441.01775pt x 298.75813pt.
 1: section
-[61
+[62
 
 
 
-] [62 <../figs/scpClassDiagram.png>]) [63 <../figs/SCP_Use_Cases.png>]
+] [63 <../figs/scpClassDiagram.png>]) [64 <../figs/SCP_Use_Cases.png>]
 \openout2 = `Chapters/Conclusion.aux'.
 
 
@@ -1846,13 +1860,13 @@ Package pdftex.def Info: ../figs/SCP_Use_Cases.png  used on input line 35.
 Chapter 9.
 )
 1: section
-[64
+[65
 
 
 
-] [65]
+] [66]
 1: section
-[66
+[67
 
 
 ]
@@ -1862,33 +1876,33 @@ ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 .1-2, pp. 81
  []
 
-[67]
+[68]
 \openout2 = `Chapters/Appendix.aux'.
 
  (Chapters/Appendix.tex
 1: section
-[68
+[69
 
 
-] [69] [70] [71]
-<../figs/output1.jpg, id=1318, 614.295pt x 794.97pt>
+] [70] [71] [72]
+<../figs/output1.jpg, id=1367, 614.295pt x 794.97pt>
 File: ../figs/output1.jpg Graphic file (type jpg)
 <use ../figs/output1.jpg>
 Package pdftex.def Info: ../figs/output1.jpg  used on input line 223.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/output2.jpg, id=1319, 614.295pt x 794.97pt>
+<../figs/output2.jpg, id=1368, 614.295pt x 794.97pt>
 File: ../figs/output2.jpg Graphic file (type jpg)
 <use ../figs/output2.jpg>
 Package pdftex.def Info: ../figs/output2.jpg  used on input line 228.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/suppression_python.png, id=1320, 470.50781pt x 553.31718pt>
+<../figs/suppression_python.png, id=1369, 470.50781pt x 553.31718pt>
 File: ../figs/suppression_python.png Graphic file (type png)
 <use ../figs/suppression_python.png>
 Package pdftex.def Info: ../figs/suppression_python.png  used on input line 234
 .
 (pdftex.def)             Requested size: 441.01775pt x 518.6407pt.
- [72] [73 <../figs/output1.jpg>] [74 <../figs/output2.jpg>]
-[75 <../figs/suppression_python.png>]) [76]
+ [73] [74 <../figs/output1.jpg>] [75 <../figs/output2.jpg>]
+[76 <../figs/suppression_python.png>]) [77]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 303.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 303.
  (main.aux
@@ -1898,50 +1912,208 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 303.
 (Chapters/Appendix.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 303.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 303.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D6EC67D9E6BCF72A87D97990D7830A0F;16117.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: D6EC67D9E6BCF72A87D97990D7830A0F;16117
+(rerunfilecheck)             After:  5DF4F1802DEA8025E59FEFD1F1A8D3CF;16196.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 403 ({)
+### simple group (level 1) entered at line 405 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 40477 strings out of 480799
- 835671 string characters out of 2896252
+ 40530 strings out of 480799
+ 836355 string characters out of 2896252
  1292203 words of memory out of 3000000
- 55385 multiletter control sequences out of 15000+200000
+ 55387 multiletter control sequences out of 15000+200000
  623907 words of font info for 206 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,22n,89p,1832b,2669s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
-s/base/8r.enc} <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
-/ec/dpi600\ectt0800.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/
-pk/ljfour/jknappen/ec/dpi600\ecit1095.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2
-.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\Axel\AppData\Local
-\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\Axel\AppD
-ata\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk><C:/Users/A
-xel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb
-><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/Axel/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Axel/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users
-/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msb
-m10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palati
-no/uplb8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/
-palatino/uplbi8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/urw/palatino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/urw/palatino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (87 pages, 2622069 bytes).
+pdfTeX warning (dest): name{lemma.203} has been referenced but 
+does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{definition.197} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.164} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{equation.163} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{algocf.159} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{lemma.233} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{lemma.226} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{definition.201} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{lemma.215} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{lemma.204} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{lemma.220} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{lemma.202} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.249} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.248} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.179} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.172} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.171} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.246} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.245} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.244} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.188} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.186} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.160} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.155} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.147} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.145} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{appendix*.194} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.192} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.191} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.190} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.189} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.187} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.185} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.184} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.183} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.182} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.181} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section*.178} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{section*.173} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.170} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.169} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section*.167} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.166} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.162} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.161} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.151} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.148} has been referenced but does not ex
+ist, replaced by a fixed one
+
+{C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <
+C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0
+800.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi
+600\ectt1000.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecit1095.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\font
+s/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\Axel\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk><C:/Users/Axel/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Axel/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
+/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/mathpazo/fplmr.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/mathpazo/fplmri.pfb><C:/Users/Axel/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/Axel/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/User
+s/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C
+:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplbi8a
+.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/
+uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/pal
+atino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/u
+rw/palatino/uplri8a.pfb>
+Output written on main.pdf (88 pages, 2628434 bytes).
 PDF statistics:
- 1589 PDF objects out of 1728 (max. 8388607)
- 371 named destinations out of 1000 (max. 500000)
+ 1653 PDF objects out of 1728 (max. 8388607)
+ 422 named destinations out of 1000 (max. 500000)
  829 words of extra memory for PDF output out of 10000 (max. 10000000)
 
