@@ -146,42 +146,6 @@ task = SCP_Task.SCP_Task(s_i,M,f,gamma)
 
 
 
-
-
-#test ctm
-c = CTM.CTM()
-c.setSi(s_i)
-c.appendm(ADDAB)
-#c.appendm(ABDUCIBLES)
-c.appendm(DELETE)
-c.appendm(WC)
-
-c.appendm(SEMANTIC)
-
-predictions = f(c)
-print ('predictions: ', predictions)
-
-
-print ("Lenient Interp")
-print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
-print("Strict Interp")
-print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
-
-#print (c.evaluate())
-"""
-searchResult = task.deNoveSearch()
-print ("\nSEARCH RESULTS:")
-print(searchResult)
-print("\n")
-
-result1=searchResult[0]
-
-print ("RESULT 1: IS\n",result1)
-"""
-"""
-
-"""
-
 def standardSuppression():
     print ("===========================================================")
     print ("================STANDARD SUPPRESSION========================")
@@ -356,6 +320,39 @@ abducibleSuppression()
 
 
 
+
+
+
+
+#test ctm
+c = CTM.CTM()
+c.setSi(s_i)
+c.appendm(ADDAB)
+#c.appendm(ABDUCIBLES)
+c.appendm(DELETE)
+c.appendm(WC)
+
+c.appendm(SEMANTIC)
+
+predictions = f(c)
+print ('predictions: ', predictions)
+
+
+print ("Lenient Interp")
+print (StatePointOperations.predictionsModelsGamma_lenient(predictions,gamma))
+print("Strict Interp")
+print (StatePointOperations.predictionsModelsGamma_strict(predictions,gamma))
+
+#print (c.evaluate())
+
+searchResult = task.deNoveSearch()
+print ("\nSEARCH RESULTS:")
+print(searchResult)
+print("\n")
+
+result1=searchResult[0]
+
+print ("RESULT 1: IS\n",result1)
 
 
 
