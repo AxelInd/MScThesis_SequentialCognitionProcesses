@@ -210,35 +210,37 @@ Contraposition is applied as follows for the initial knowledge base $KB$:
 \item For each conditional $(\psi|\phi)\in KB'$ :
 \begin{itemize}
 \item Add the conditional $(\phi'|X)$ to $\Delta$, where $X$ is the other possible value for that card face\footnote{$(D,K),(3,7)$}.
-\item Add the fact $\phi\leftarrow \lnot \phi'$ to $S$.
+\item Add the fact $(\phi\leftarrow \lnot \phi')$ to $S$.
 \end{itemize}
 \item Interpret conditionals as licenses for implication.
 \item Apply the Abductive case of the WCS as normal.
 \item Turn the card if and only if some or $I_{\text{lm WC (KB} \cup \epsilon)}(\psi|\phi)\neq\textrm{non-applicability}$ or some $I_{\text{lm WC (KB} \cup \epsilon)}(\phi'|X)\neq\textrm{non-applicability}$, and $\text{lm WC (KB} \cup \epsilon)$ explains $O$.
 \end{enumerate}
 
-Using this technique, and applying basic weak completion (i.e. only considering the case $\epsilon\leftrightarrow(O\leftarrow \top)$ it is possible to model the classical case of the WST. The resolution for the $7$ card is as follows:
+Using this technique, and applying basic weak completion -- i.e. only considering the case $\epsilon\leftrightarrow(O\leftarrow \top)$ -- it is possible to model the classical case of the WST. The resolution for the $7$ card is as follows:
 
 \[
-KB = (S=\{\},\Delta=\{(3|D)\})
+\text{KB} = (S=\{\},\Delta=\{(3|D)\})
 \]
 \[
-KB' = (S=\{D \leftarrow  \lnot D'\},\Delta\{=(3|D),(D'|7)\})
+\text{KB}' = (S=\{D \leftarrow  \lnot D'\},\Delta=\{(3|D),(D'|7)\})
 \]
 \[
-KB' = \{3 \leftarrow D \land \lnot \text{ab}_1, D' \leftarrow 7 \land \lnot \text{ab}_2, \text{ab}_1 \leftarrow \bot, \text{ab}_2 \leftarrow \bot\}\}
+\text{KB}' = \{3 \leftarrow D \land \lnot \text{ab}_1, D' \leftarrow 7 \land \lnot \text{ab}_2, D \leftarrow \lnot D', \text{ab}_1 \leftarrow \bot, \text{ab}_2 \leftarrow \bot\}
 \]
 \[
-KB'\cup (7\leftarrow\top) = \{3 \leftarrow D \land \lnot \text{ab}_1, D' \leftarrow 7 \land \lnot \text{ab}_2, \text{ab}_1 \leftarrow \bot, \text{ab}_2 \leftarrow \bot, 7 \leftarrow \top\}\}
+(\text{KB}'\cup (7\leftarrow\top)) = \{3 \leftarrow D \land \lnot \text{ab}_1, D' \leftarrow 7 \land \lnot \text{ab}_2, D \leftarrow \lnot D', \text{ab}_1 \leftarrow \bot, \text{ab}_2 \leftarrow \bot, 7 \leftarrow \top\}
 \]
-\[
-\text{wc}KB'\cup (7\leftarrow\top) = \{3 \leftrightarrow D \land \lnot \text{ab}_1, D' \leftrightarrow 7 \land \lnot \text{ab}_2, \text{ab}_1 \leftrightarrow \bot, \text{ab}_2 \leftrightarrow \bot, 7 \leftrightarrow \top\}\}
-\]
-\begin{equation} \label{eqn:wst_contra}
-\textrm{wc} (KB'\cup (7\leftarrow\top)) = \{3 \leftrightarrow D \land \lnot ab_1, D' \leftrightarrow (\lnot 3 \land ab_2) \lor (\lnot D),  ab_2\leftrightarrow \bot, ab_1\leftrightarrow \bot, 7\leftrightarrow\top \}
+\begin{equation}
+\text{wc (KB}' \cup (7\leftarrow\top)) = \left\lbrace
+\begin{matrix}
+3 \leftrightarrow D \land \lnot \text{ab}_1, & D' \leftrightarrow 7 \land \lnot \text{ab}_2,& D \leftrightarrow \lnot D',\\
+ \text{ab}_1 \leftarrow \bot,& \text{ab}_2 \leftarrow \bot,& 7 \leftrightarrow \top
+\end{matrix}
+\right\rbrace
 \end{equation}
 
-Table~\ref{tbl:7cont} shows the computation of $\textrm{lm wc} (KB'\cup (7\leftarrow\top))$. From this, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
+Table~\ref{tbl:7cont} shows the computation of $\textrm{lm wc} (KB'\cup (7\leftarrow\top))$. Because adding explanation $(7 \leftarrow \top)$ leads to a least model which can falsify the conditional using our \textit{de Finetti} truth table, it is possible to deduce that the card $7$ must be turned. Figure~\ref{fig:wstcano} illustrates the use of these extensions to derive all four of the canonical cases of the WST.
 
  
 \subsubsection*{Combined Model}

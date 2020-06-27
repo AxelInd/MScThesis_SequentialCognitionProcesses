@@ -801,6 +801,34 @@
     \field{year}{1980}
   \endentry
 
+  \entry{saad2004information}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SD}{%
+         family={Saad},
+         familyi={S\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Sigma XI-The Scientific Research Society}%
+    }
+    \strng{namehash}{SD1}
+    \strng{fullhash}{SD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2004}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{6}
+    \field{pages}{578}
+    \field{title}{Information theory, inference, and learning algorithms}
+    \field{volume}{92}
+    \field{journaltitle}{American Scientist}
+    \field{year}{2004}
+  \endentry
+
   \entry{saldanha2017weak}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=SEAD}{%

@@ -32,8 +32,84 @@ Given a limited set of cognitive operations $M=\{A_0, ..., A_n\}, A_i \in \Omega
 
 
 
-\begin{proof} \label{proof:insertionSearch}
+
+
+
+
+
+
+
+
+\begin{lemma}\label{lemma:monorealisedandback}
+Let $\mu=(\pi,f())$ be a monotonic SCP, with $\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n)$, $m_i\in \Omega^*$. $r=(k \in K[\pi],f())$ is the only realised SCP of $\mu$, with $K[\pi]=\{s_i \longmapsto (m_1,\bar{p}_1) \longmapsto ... \longmapsto (m_n,\bar{p}_n)\}$, and for every pair $(m_i,\bar{p}_i)$, $\bar{p}_i \in_s J[\bar{p}_{i-1},m_i]$. Then it is trivially easy to derive $\mu$ from $r$, and \textit{vice versa}.
+\end{lemma}
+
+\begin{bulletProof} \label{proof:monorealisedandback}
+\begin{itemize}
+\item Determining $r$ from $\mu$:
+\begin{itemize}
+\item Let $R'=\{k \in K[\pi],f()\}$ be the set of all realised SCPs of $\mu$.
+\item $\mu$ is monotonic and, by definition, $R'$ is either the empty set $\emptyset$ or contains only single realised SCP $r'=(k,f())$ with known structure for $\pi$.
+\item Because every realised SCP for $\mu$ must be in $R'$, and $r$ is realised SCP for $\mu$, it follows that $r \in R'$.
+\item Now, $r \in R'$, $r' \in R'$, and $R'$ contains only a single realised SCP.
+\item Thus, $r=r'$. And because the structure of $r'$ is known, the structure of $r$ is known.
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Determining $\mu$ from $r$:
+\begin{itemize}
+\item The realised SCP $r$, by definition, contains both the details and relative location of each $m_i \in \pi$ which occurs in the SCP which created it.
+\item if $(m_i,\cdot) \prec (m_j,\cdot)$ in $k$, then $m_i \prec m_j$ in $\pi$.
+\item The initial state point $s_i$ is given by the first element in $k$.
+\item Thus, all information needed to generate $\pi$ is present in $r$.
+\item The external activation, $f()$, of $r$ is, by definition, the same as that of the SCP which generated it.
+\item Thus $f()$ and $\pi$ are known for the SCP $\mu$.
+\item $\therefore \mu=(\pi,f())$ has been determined from $r$.
+\end{itemize}
+\item Determining $\mu$ from $r$:
+\begin{itemize}
+\item Proof~\ref{proof:realisedToMonotonic} shows that $\mu$ can be determined from any realised SCP that can be generated from $\pi$, this remains true when there is only one realised SCP.
+\end{itemize}
+\end{itemize}
+
+\end{bulletProof}
+
+\begin{lemma}\label{lemma:realisedToMonotonic}
+Let $\mu=(\pi,f())$ be an SCP, with $\pi=(s_i \longmapsto m_1 \longmapsto ... \longmapsto m_n)$, $m_i\in \Omega^*$. $R=\{k \in K[\pi],f()\}$ is the set of realised SCP of $\mu$, with $K[\pi]=\{s_i \longmapsto (m_1,\bar{p}_1) \longmapsto ... \longmapsto (m_n,\bar{p}_n)\}$ and for every pair $(m_i,\bar{p}_i)$, $\bar{p}_i \in_s J[\bar{p}_{i-1},m_i]$. Then it is trivially easy to derive $\mu$ from $R$.
+
+\end{lemma}
+\begin{bulletProof} \label{proof:realisedToMonotonic}
+\begin{itemize}
+\item Let some $r \in R$ be a realised SCP of $\pi$.
+\item The realised SCP $r$, by definition, contains both the details and relative location of each $m_i \in \pi$ which occurs in the SCP which created it.
+\item if $(m_i,\cdot) \prec (m_j,\cdot)$ in $k$, then $m_i \prec m_j$ in $\pi$.
+\item The initial state point $s_i$ is given by the first element in $k$.
+\item Thus, all information needed to generate $\pi$ is present in $r$.
+\item The external activation, $f()$, of $r$ is, by definition, the same as that of the SCP which generated it.
+\item Thus $f()$ and $\pi$ are known for the SCP $\mu$.
+\item $\therefore \mu=(\pi,f())$ has been determined from $r$.
+\end{itemize}
+
+\end{bulletProof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{lemma}\label{lemma:insertionSearch}
 Given a set of cognitive operations $M$, an external activation function $f()$, an initially valid CTM $\pi=\{s_i \longmapsto m_0\in M \longmapsto ... \longmapsto m_n\in M\}$, and a valid SCP $\mu=(\pi,f)$, inserting multiple operations into $\pi$ to create the CTM $\pi''$ may result in a valid SCP $\mu''=(\pi'',f())$, when inserting only one operation to create $\mu'=(\pi',f())$ would result in an invalid SCP.
+\end{lemma}
+
+\begin{bulletProof} \label{proof:insertionSearch}
 
 \begin{enumerate}
 \item Assume hybrid validity (Section~\ref{ssec:precond}).
@@ -47,7 +123,7 @@ Given a set of cognitive operations $M$, an external activation function $f()$, 
 \item Then $\mu'=(\pi',f()), \pi'=(s_i \longmapsto m_1)$ is not a valid SCP.
 \item However, $\mu''=(\pi'',f()), \pi''=(s_i \longmapsto m_2 \longmapsto m_1)$ is a valid SCP.
 \end{enumerate}
-\end{proof}
+\end{bulletProof}
 
 
 
@@ -55,16 +131,18 @@ Given a set of cognitive operations $M$, an external activation function $f()$, 
 
 
 
-
-\begin{proof} \label{proof:infiniteSCPs}
+\begin{lemma}\label{lemma:infiniteSCPs}
 There are an infinite number of possible, valid SCPs, that can meet any goal condition $\gamma$ from input $s_i$ provided that at least one SCP exists that can reach a final state dependent goal condition $\gamma$ from input $s_i$.
+\end{lemma}
+\begin{bulletProof} \label{proof:infiniteSCPs}
+
 \begin{enumerate}
 \item There exists an infinite set  $M^\text{add} \in \Omega$ of unique cognitive operations which add a new variable from the set of all possible variable names $p \in \Sigma$.
 \item There exists an infinite set $M^\text{rem} \in \Omega$ of unique cognitive operations  which remove a variable from the set of all possible variable names  $p \in \Sigma$.
 \item It follows that there exist infinite set of pairs $M^\text{addRem}$, with $(m^\text{add}_i \in M^\text{add}, m^\text{rem}_i \in M^\text{rem}) \in W$ where $m^\text{add}_i$ adds a variable $p \in \Sigma$ to the resulting state point, and $m^\text{rem}_i$ removes that variable from the resulting statepoint.
 \item Then $f(x \longmapsto A) = f(s_i \longmapsto m^\text{add}_i \longmapsto m^\text{rem}_i \longmapsto A)$ for all $(m^\text{add}_i, m^\text{rem}_i) \in M^\text{addRem}$.
 \end{enumerate}
-\end{proof}
+\end{bulletProof}
 
 
 
@@ -78,17 +156,10 @@ There are an infinite number of possible, valid SCPs, that can meet any goal con
 
 
 
-
-
-
-
-
-
-
-
-
-\begin{proof} \label{proof:infiniteSCPLength}
+\begin{lemma}\label{lemma:infiniteSCPLength}
 If there exists an SCP which meets a goal condition $\gamma$ of length $n$, using a final state dependant external evaluation function $f()$ then there exists an SCP that meets $\gamma$ of length $n+k$ where $k$ is any natural number.
+\end{lemma}
+\begin{bulletProof} \label{proof:infiniteSCPLength}
 
 \begin{itemize}
 \item Proof~\ref{proof:infiniteSCPs} states that if $f(s_i \longmapsto A)\models \gamma$ then $f(s_i \longmapsto m^\text{add}_i \longmapsto m^\text{rem}_i \longmapsto A) \models \gamma$ for all $(m^\text{add}_i, m^\text{rem}_i) \in M^\text{addRem}$.
@@ -106,12 +177,14 @@ If there exists an SCP which meets a goal condition $\gamma$ of length $n$, usin
 \end{enumerate}
 \end{itemize}
 
-\end{proof}
+\end{bulletProof}
 
 
-
-\begin{proof} \label{proof:aggregateValid}
+\begin{lemma}\label{lemma:aggregateValid}
 Given an SCP $\mu=(\pi,f())$, $\pi= (s_i \longmapsto A_0 \longmapsto ... \longmapsto A_n)$, where $f()$ is a final state dependant external evaluation function, $s_i$ is a state point, and $A_i \in \Omega^*$, any subsequence $A'=(A_k \longmapsto ... \longmapsto A_{k+l})$, $(k+l)<n$ of the cognitive operations in $\pi$ is a valid pCTM and, thus, a valid aggregate cognitive operation.
+\end{lemma}
+\begin{bulletProof} \label{proof:aggregateValid}
+
 \begin{enumerate}
 \item Let $p_i=J[p_{i-1},A_{i-1}]$, when $i\geq 1$.
 \item Let $p_0=s_i$.
@@ -120,12 +193,13 @@ Given an SCP $\mu=(\pi,f())$, $\pi= (s_i \longmapsto A_0 \longmapsto ... \longma
 \item It follows that $A'$ produces a valid state point as output, because $A_{k+l}$ produced a valid state point as output.
 \item Therefore, $A'$ is a valid cognitive operation.
 \end{enumerate}
-\end{proof}
+\end{bulletProof}
 
-
-\begin{proof} \label{proof:aggregateExpressiveness}
+\begin{lemma}\label{lemma:aggregateExpressiveness}
 Given an SCP Task $\Pi=(s_i,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$, $A\in\Omega^*$ and a second SCP Task $\Pi'=(s_i,M',f(),\gamma)$ in which $M'= (M \smallsetminus \{A_k,...,A_m\} \cup A')$, where $A'=(A_k \longmapsto... \longmapsto A_m)$ is a pCTM, then some ordering of the other operations in $(\Pi \smallsetminus \Pi')$, $\Pi'$ is as expressive or less expressive than $\Pi$.
+\end{lemma}
 
+\begin{bulletProof} \label{proof:aggregateExpressiveness}
 \item No more expressive:
 \begin{enumerate}
 \item Let $\mu'=(\pi',f())$, with $\pi' = (s_i\longmapsto A_p \longmapsto ... \longmapsto A' \longmapsto ... \longmapsto A_q)$, be a solution to $\Pi'$.
@@ -142,7 +216,7 @@ Given an SCP Task $\Pi=(s_i,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$, $A\in
 \item Satisfying SCPs of $\Pi'$ are $((s_i),f())$, and $((s_i \longmapsto A'),f())$.
 \item Thus, $\Pi'$ has fewer solutions that $\Pi$. A contradiction.
 \end{enumerate}
-\end{proof}
+\end{bulletProof}
 
 
 \begin{figure}
@@ -162,8 +236,10 @@ Given an SCP Task $\Pi=(s_i,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$, $A\in
 \label{fig:sup_snippet}
 \end{figure}
 
+\FloatBarrier
+
 \section*{Additional Tables}
-\begin{table}[h!]
+\begin{table}[!htbp]
 \begin{center}
 \begin{tabular}{c | c c c c c c }
  & & $s_\text{WST}$ & \texttt{addAB} & \texttt{AddExp} & \texttt{wc} & \texttt{semantic}\\

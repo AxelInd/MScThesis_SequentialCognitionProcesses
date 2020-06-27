@@ -48,15 +48,15 @@ A \textit{cognitive transition model} (CTM) describes an ordered procession of c
 
 The CTM $\pi = (s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$, for SCP task $\Pi=(s_i, M, f(), \gamma)$ is \textit{defined} if and only if $J[p_k,m_k]$ is defined for $p_k = J[p_{k-1},m_k]$, $k>2$, and $J[s_i,m_1]$ is defined. The set of possible CTMs for SCP task $\Pi$ is given by $L[\Pi]=\{\pi\}$, where $\pi$ is a defined CTM for $\Pi$.
 
-An SCP $\mu=(\pi,f())$  pairs a CTM $\pi$ with an external activation function $f()$ (\ref{ssec:f}). An SCP $\mu=(\pi,f())$ is defined for SCP task $\Pi=(s_i, M, f(), \gamma)$ if and only if $\pi \in L[\Pi]$.
+An SCP $\mu=(\pi,f())$  pairs a CTM $\pi$ with an external activation function $f()$ (Section~\ref{ssec:f}). An SCP $\mu=(\pi,f())$ is defined for SCP task $\Pi=(s_i, M, f(), \gamma)$ if and only if $\pi \in L[\Pi]$.
 
 
 
 Finally, we define a \textit{realised SCP} $r = (k, f())$ where $k \in K[\pi]$, and $K[\pi]=\{s_i \longmapsto (m_1,\bar{p}_1) \longmapsto ... \longmapsto (m_n,\bar{p}_n)\}$ where, for every pair $(m_i,\bar{p}_i)$, $\bar{p}_i \in_s J[\bar{p}_{i-1},m_i]$. Realised SCPs describe a single agent's interpretation of an SCP and associate only a single epistemic state, rather than a state point to the output each cognitive operation in an SCP. 
 
-$r=(k, f())$ is a realised SCP for SCP $\mu=(\pi,f())$, with $\pi=(s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$ and is given by $k=(s_i \longmapsto (m_i, \bar{p_1} \in J[\bar{p}_{0},m]) \longmapsto ... \longmapsto (m_n, \bar{p_n} \in J[\bar{p}_{n-1},m]))$.
+$r=(k, f())$ is a realised SCP for SCP $\mu=(\pi,f())$, with $\pi=(s_i\longmapsto m_1 \longmapsto ...\longmapsto m_n)$ and $k$ is given by $k=(s_i \longmapsto (m_i, \bar{p_1} \in J[\bar{p}_{0},m]) \longmapsto ... \longmapsto (m_n, \bar{p_n} \in J[\bar{p}_{n-1},m]))$.
 
-A cognitive operation is called \textit{monotonic} if it is guaranteed to produce only one base point as output for each base point passed as input. When every cognitive operation in $M$ is monotonic, it is trivially easy to transform an SCP into a realised SCP and vice versa @TODOproof. In cases where SCPs are monotonic, we will use the SCP and its realised SCP interchangeably. The number of realised SCPs for an SCP is the same as the number of base points in the final state point of that SCP.
+A cognitive operation is called \textit{monotonic} if it is guaranteed to produce only one base point as output for each base point passed as input. When every cognitive operation in $M$ is monotonic, it is trivially easy to transform an SCP into a realised SCP and vice versa (Lemma~\ref{lemma:monorealisedandback}). In cases where SCPs are monotonic, we will use the SCP and its realised SCP interchangeably. The number of realised SCPs for an SCP is the same as the number of base points in the final state point of that SCP.
 
 
 
@@ -247,7 +247,7 @@ De Novo (from new) search is a search technique in which a final desirable world
 
 Figure~\ref{fig:deNovo} illustrates the process by which breadth first search over an SCP task $\Pi=(x,M,\gamma,f())$ can be conducted. Search terminates if a structural inconsistency between two states in $\pi=(x\longmapsto A_0 \longmapsto ... \longmapsto A_n)$ occurs (e.g. output state point structure of $A_k$ does not match expected input structure of $A_{k+1}$). Operator sequences are added to the list of solutions if and only if they meet the validity requirements of the search being used, as discussed in Section~\ref{ssec:validity}. 
 
-In practice it becomes necessary to limit the search depth of the algorithm to search tractable in most cases, and in some cases, search space and solution space may both be infinitly large, as suggested by Proof~\ref{proof:infiniteSCPLength}.
+In practice it becomes necessary to limit the search depth of the algorithm to search tractable in most cases, and in some cases, search space and solution space may both be infinitly large, as suggested by Lemma~\ref{lemma:infiniteSCPLength}.
 
 \begin{figure}
 \begin{center}
@@ -272,7 +272,7 @@ to produce a new SCP:
 
 Where $B^*_i = (B_0\longmapsto ...\longmapsto B_n)$, $B \in M$  or is the trivial operation $T$ which returns the input state point as output. When describing the SCP, $T$ operations are generally omitted.
 
-In general, Insertion Search is a more difficult search type than De-Novo Search (which is equivalent to an Insertion Search in which the initial SCP is empty). The reason for this is that it is possible for a single insertion to result in an invalid SCP, but adding additional cognitive states may revalidate the SCP (Proof~\ref{proof:insertionSearch}).
+In general, Insertion Search is a more difficult search type than De-Novo Search (which is equivalent to an Insertion Search in which the initial SCP is empty). The reason for this is that it is possible for a single insertion to result in an invalid SCP, but adding additional cognitive states may revalidate the SCP (Lemma~\ref{lemma:insertionSearch}).
 
 This consideration means that it is potentially necessary to insert an unbounded number of new cognitive operations at each point in $\pi$ to find those insertions which are valid. When the total number of new cognitive operations to insert is bounded by $N$, however, it becomes possible to generate every possible subsequence of operation insertions of length $\geq N-k$, where $k$ is the number of insertions already used in the search, for each position $B^*_i$ and determine for which of the resulting SCP cognitive operations sequences $f(\pi')$ is valid.
 

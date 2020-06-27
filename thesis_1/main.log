@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  27 JUN 2020 11:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.9)  27 JUN 2020 13:08
 entering extended mode
 **./main.tex
 (main.tex
@@ -706,6 +706,18 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
+("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amscls\amsthm.sty"
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks27
+\thm@bodyfont=\toks28
+\thm@headfont=\toks29
+\thm@notefont=\toks30
+\thm@headpunct=\toks31
+\thm@preskip=\skip85
+\thm@postskip=\skip86
+\thm@headsep=\skip87
+\dth@everypar=\toks32
+)
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.st
 y"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -729,7 +741,7 @@ Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
 hm2e.sty"
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
 \c@AlgoLine=\count425
-\algocf@hangindent=\skip85
+\algocf@hangindent=\skip88
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ifoddpage\ifoddpage
 .sty"
@@ -743,36 +755,36 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 "
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip86
-\skiplinenumber=\skip87
-\skiprule=\skip88
-\skiphlne=\skip89
-\skiptext=\skip90
-\skiplength=\skip91
-\algomargin=\skip92
-\skipalgocfslide=\skip93
+\skiptotal=\skip89
+\skiplinenumber=\skip90
+\skiprule=\skip91
+\skiphlne=\skip92
+\skiptext=\skip93
+\skiplength=\skip94
+\algomargin=\skip95
+\skipalgocfslide=\skip96
 \algowidth=\dimen190
 \inoutsize=\dimen191
 \inoutindent=\dimen192
 \interspacetitleruled=\dimen193
 \interspacealgoruled=\dimen194
 \interspacetitleboxruled=\dimen195
-\algocf@ruledwidth=\skip94
+\algocf@ruledwidth=\skip97
 \algocf@inoutbox=\box61
 \algocf@inputbox=\box62
-\AlCapSkip=\skip95
-\AlCapHSkip=\skip96
-\algoskipindent=\skip97
+\AlCapSkip=\skip98
+\AlCapHSkip=\skip99
+\algoskipindent=\skip100
 \algocf@nlbox=\box63
 \algocf@hangingbox=\box64
 \algocf@untilbox=\box65
-\algocf@skipuntil=\skip98
+\algocf@skipuntil=\skip101
 \algocf@capbox=\box66
-\algocf@lcaptionbox=\skip99
-\algoheightruledefault=\skip100
-\algoheightrule=\skip101
-\algotitleheightruledefault=\skip102
-\algotitleheightrule=\skip103
+\algocf@lcaptionbox=\skip102
+\algoheightruledefault=\skip103
+\algoheightrule=\skip104
+\algotitleheightruledefault=\skip105
+\algotitleheightrule=\skip106
 \c@algocfline=\count427
 \c@algocfproc=\count428
 \c@algocf=\count429
@@ -791,13 +803,13 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \c@ALG@line=\count430
 \c@ALG@rem=\count431
 \c@ALG@nested=\count432
-\ALG@tlm=\skip104
-\ALG@thistlm=\skip105
+\ALG@tlm=\skip107
+\ALG@thistlm=\skip108
 \c@ALG@Lnr=\count433
 \c@ALG@blocknr=\count434
 \c@ALG@storecount=\count435
 \c@ALG@tmpcounter=\count436
-\ALG@tmplength=\skip106
+\ALG@tmplength=\skip109
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
@@ -887,7 +899,7 @@ Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
 Package scrhack Info: hyperref hack deactivated because of
 (scrhack)             detection of hyperref version, that doesn't
-(scrhack)             need that hack, on input line 63.
+(scrhack)             need that hack, on input line 66.
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hpdftex.de
@@ -912,16 +924,16 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
-\Hy@SectionHShift=\skip107
+\Hy@SectionHShift=\skip110
 )
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\rotating.s
 ty"
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 \c@r@tfl@t=\count447
-\rotFPtop=\skip108
-\rotFPbot=\skip109
+\rotFPtop=\skip111
+\rotFPbot=\skip112
 \rot@float@box=\box69
-\rot@mess@toks=\toks27
+\rot@mess@toks=\toks33
 )
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/frontendlayer\t
 ikz.sty"
@@ -931,7 +943,7 @@ sty"
 s.sty"
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 util-common.tex"
-\pgfutil@everybye=\toks28
+\pgfutil@everybye=\toks34
 \pgfutil@tempdima=\dimen256
 \pgfutil@tempdimb=\dimen257
 
@@ -962,12 +974,12 @@ Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 keys.code.tex"
-\pgfkeys@pathtoks=\toks29
-\pgfkeys@temptoks=\toks30
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 keysfiltered.code.tex"
-\pgfkeys@tmptoks=\toks31
+\pgfkeys@tmptoks=\toks37
 ))
 \pgf@x=\dimen258
 \pgf@y=\dimen259
@@ -985,9 +997,9 @@ keysfiltered.code.tex"
 \c@pgf@countb=\count449
 \c@pgf@countc=\count450
 \c@pgf@countd=\count451
-\t@pgf@toka=\toks32
-\t@pgf@tokb=\toks33
-\t@pgf@tokc=\toks34
+\t@pgf@toka=\toks38
+\t@pgf@tokb=\toks39
+\t@pgf@tokc=\toks40
 \pgf@sys@id@count=\count452
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\p
@@ -1029,9 +1041,9 @@ arser.code.tex"
 \pgfmath@dimen=\dimen268
 \pgfmath@count=\count455
 \pgfmath@box=\box71
-\pgfmath@toks=\toks35
-\pgfmath@stack@operand=\toks36
-\pgfmath@stack@operation=\toks37
+\pgfmath@toks=\toks41
+\pgfmath@stack@operand=\toks42
+\pgfmath@stack@operation=\toks43
 )
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmathf
 unctions.code.tex"
@@ -1193,8 +1205,8 @@ Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
 code.tex")
 \pgffor@iter=\dimen295
 \pgffor@skip=\dimen296
-\pgffor@stack=\toks38
-\pgffor@toks=\toks39
+\pgffor@stack=\toks44
+\pgffor@toks=\toks45
 ))
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlayer
 /tikz\tikz.code.tex"
@@ -1250,8 +1262,8 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \page@free=\dimen308
 \premulticols=\dimen309
 \postmulticols=\dimen310
-\multicolsep=\skip110
-\multicolbaselineskip=\skip111
+\multicolsep=\skip113
+\multicolbaselineskip=\skip114
 \partial@page=\box82
 \last@line=\box83
 \maxbalancingoverflow=\dimen311
@@ -1306,25 +1318,28 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \colbreak@box=\box126
 \mc@col@check@num=\count478
 )
-\c@proof=\count479
-\c@lemma=\count480
-\c@definition=\count481
+\c@lemma=\count479
+\c@definition=\count480
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/comment\comment.sty
 "
 \CommentStream=\write5
  Excluding comment 'comment')
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 111.
-Package hyperref Info: Option `hypertexnames' set `false' on input line 111.
-Package hyperref Info: Option `colorlinks' set `true' on input line 111.
-Package hyperref Info: Option `unicode' set `true' on input line 111.
+("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/placeins\placeins.s
+ty"
+Package: placeins 2005/04/18  v 2.2
+)
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 122.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 122.
+Package hyperref Info: Option `colorlinks' set `true' on input line 122.
+Package hyperref Info: Option `unicode' set `true' on input line 122.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\puenc.def"
 File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 111.
+Package hyperref Info: Option `breaklinks' set `true' on input line 122.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
  (main.aux (Chapters/Introduction.aux) (Chapters/Prelim.aux)
@@ -1333,26 +1348,26 @@ Package csquotes Info: ... found 'babel' package.
 (Chapters/Conclusion.aux) (Chapters/Appendix.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Trying to load font information for T1+ppl on input line 11
-1.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Trying to load font information for T1+ppl on input line 12
+2.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\t1ppl.fd"
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
@@ -1368,17 +1383,17 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pd
 f.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count482
+\scratchcounter=\count481
 \scratchdimen=\dimen315
 \scratchbox=\box127
-\nofMPsegments=\count483
-\nofMParguments=\count484
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count485
+\nofMPsegments=\count482
+\nofMParguments=\count483
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count484
 \MPscratchDim=\dimen316
-\MPnumerator=\count486
-\makeMPintoPDFobject=\count487
-\everyMPtoPDFconversion=\toks41
+\MPnumerator=\count485
+\makeMPintoPDFobject=\count486
+\everyMPtoPDFconversion=\toks47
 )
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epstop
 df-base.sty"
@@ -1427,27 +1442,14 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package scrlayer Info: Setting magic \footheight to \baselineskip while
-(scrlayer)             \begin{document} on input line 111.
-
-Package scrlayer-scrpage Warning: Very small head height detected!
-(scrlayer-scrpage)                Using scrlayer-scrpage the head height
-(scrlayer-scrpage)                should be at least \baselineskip, which is
-(scrlayer-scrpage)                21.89601pt currently.
-(scrlayer-scrpage)                But head height is currently 18.85364pt only.
-
-(scrlayer-scrpage)                You may use
-(scrlayer-scrpage)                geometry option `head=21.89601pt'
-(scrlayer-scrpage)                or load package `scrlayer-scrpage' with
-(scrlayer-scrpage)                option `singlespacing=true'
-(scrlayer-scrpage)                to avoid this warning.
-
-Package scrbase Info: activating english \abbrevname on input line 111.
-Package scrbase Info: activating english \byname on input line 111.
-Package scrbase Info: activating english \acknowledgementname on input line 111
+(scrlayer)             \begin{document} on input line 122.
+Package scrbase Info: activating english \abbrevname on input line 122.
+Package scrbase Info: activating english \byname on input line 122.
+Package scrbase Info: activating english \acknowledgementname on input line 122
 .
-Package scrbase Info: activating english \authorshipname on input line 111.
-Package scrbase Info: activating english \constantsname on input line 111.
-Package scrbase Info: activating english \symbolsname on input line 111.
+Package scrbase Info: activating english \authorshipname on input line 122.
+Package scrbase Info: activating english \constantsname on input line 122.
+Package scrbase Info: activating english \symbolsname on input line 122.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1466,10 +1468,10 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 111.
-Package biblatex Info: Reference segment=0 on input line 111.
+Package biblatex Info: Reference section=0 on input line 122.
+Package biblatex Info: Reference segment=0 on input line 122.
 \AtBeginShipoutBox=\box128
-Package hyperref Info: Link coloring ON on input line 111.
+Package hyperref Info: Link coloring ON on input line 122.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.st
 y"
@@ -1483,11 +1485,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ttitlestring.sty"
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count488
+\c@section@level=\count487
 )
-LaTeX Info: Redefining \ref on input line 111.
-LaTeX Info: Redefining \pageref on input line 111.
-LaTeX Info: Redefining \nameref on input line 111.
+LaTeX Info: Redefining \ref on input line 122.
+LaTeX Info: Redefining \pageref on input line 122.
+LaTeX Info: Redefining \nameref on input line 122.
  (main.out) (main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
@@ -1495,44 +1497,44 @@ LaTeX Info: Redefining \nameref on input line 111.
 
 ABD: EveryShipout initializing macros
 LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 1
-11.
+22.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ppl.fd"
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-111.
+122.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omlzplm.fd"
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-111.
+122.
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omszplm.fd"
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-111.
+122.
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omxzplm.fd"
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-111.
+122.
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1zplm.fd"
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 111.
+(Font)              scaled to size 11.40997pt on input line 122.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 111.
+(Font)              scaled to size 8.33606pt on input line 122.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 111.
+(Font)              scaled to size 6.25204pt on input line 122.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 111.
+(Font)              scaled to size 11.40997pt on input line 122.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 111.
+(Font)              scaled to size 8.33606pt on input line 122.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 111.
+(Font)              scaled to size 6.25204pt on input line 122.
 1: section
 [1
 
@@ -1543,30 +1545,11 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
  Declaration of Authorship
 --------------------
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
-69.
+80.
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ts1ppl.fd"
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
-
- []
-
 1: section
-
-Package scrlayer-scrpage Warning: \headheight to low.
-(scrlayer-scrpage)                At least 21.896pt needed,
-(scrlayer-scrpage)                but only 18.85364pt found.
-(scrlayer-scrpage)                I'll enlarge \headheight, for further
-(scrlayer-scrpage)                processing, but you should do this yourself,
-(scrlayer-scrpage)                e.g., setting geometry's option
-(scrlayer-scrpage)                `head=21.896pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 1
-84.
-
-
-Overfull \vbox (3.04236pt too high) has occurred while \output is active []
-
-
 [1
 
 ] [2
@@ -1589,11 +1572,11 @@ Overfull \vbox (3.04236pt too high) has occurred while \output is active []
 1: section
 [5
 
-] [6] [7])
+] [6])
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
- [8] (main.lof
+ [7] (main.lof
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 5.
 
@@ -1616,24 +1599,25 @@ he WST where $\OML/zplm/m/it/10.95 [] \OT1/zplm/m/n/10.95 = (\OML/zplm/m/it/10
 pl/m/n/10.95 , 
  []
 
-1: section
-[9
-
-])
+)
 \tf@lof=\write8
 \openout8 = `main.lof'.
 
- [10] (main.lot
-1: section
-[11
 
-])
+1: section
+[8
+
+] (main.lot)
 \tf@lot=\write9
 \openout9 = `main.lot'.
 
- [12]
+
 1: section
-[13
+[9
+
+]
+1: section
+[10
 
 ]
 1: section
@@ -1646,40 +1630,40 @@ Chapter 1.
 
 
 
-] [2] [3])
-Overfull \hbox (2.92195pt too wide) in paragraph at lines 33--252
+] [2])
+Overfull \hbox (2.92195pt too wide) in paragraph at lines 33--263
 \T1/ppl/m/n/10.95 gram-ming and non-monotonic log-ics - par-tic-u-larly the WCS
  and Re-iter's de-fault logic (Chap-
  []
 
-[4]
+[3]
 \openout2 = `Chapters/Prelim.aux'.
 
  (Chapters/Prelim.tex
 Chapter 2.
 1: section
-[5
+[4
 
 
 
-] [6] [7] [8] [9] [10]) [11]
+] [5] [6] [7]) [8]
 \openout2 = `Chapters/Experiments.aux'.
 
  (Chapters/Experiments.tex
 Chapter 3.
 1: section
-[12
+[9
 
 
 
-] [13]
+]
 Overfull \hbox (18.47342pt too wide) in paragraph at lines 32--34
 \T1/ppl/m/n/10.95 pres-sion has now been demon-strated be-cause $\OML/zplm/m/it
 /10.95 l \OMS/zplm/m/n/10.95 62 [][]$\T1/ppl/m/n/10.95 , even thought $\OML/zpl
 m/m/it/10.95 l \OMS/zplm/m/n/10.95 2 [][]$\T1/ppl/m/n/10.95 . 
  []
 
-[14]
+[10]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 9.37807pt on input line 98.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -1692,12 +1676,11 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.29405pt on input line 98.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 98.
-<../figs/wasonAbstract.png, id=778, 487.8225pt x 191.9672pt>
+<../figs/wasonAbstract.png, id=749, 487.8225pt x 191.9672pt>
 File: ../figs/wasonAbstract.png Graphic file (type png)
 <use ../figs/wasonAbstract.png>
 Package pdftex.def Info: ../figs/wasonAbstract.png  used on input line 102.
 (pdftex.def)             Requested size: 243.91064pt x 95.98335pt.
- [15]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 10.42007pt on input line 127.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -1706,106 +1689,92 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 10.42007pt on input line 127.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 127.
-<../figs/WST_WCS.png, id=785, 1130.7846pt x 273.4215pt>
+<../figs/WST_WCS.png, id=751, 1130.7846pt x 273.4215pt>
 File: ../figs/WST_WCS.png Graphic file (type png)
 <use ../figs/WST_WCS.png>
 Package pdftex.def Info: ../figs/WST_WCS.png  used on input line 151.
 (pdftex.def)             Requested size: 441.01775pt x 106.63394pt.
- [16 <../figs/wasonAbstract.png>] [17 <../figs/WST_WCS.png>] [18]
-[19]
-<../figs/wst_cano.png, id=830, 686.565pt x 310.761pt>
+ [11 <../figs/wasonAbstract.png>] [12 <../figs/WST_WCS.png>] [13] [14]
+<../figs/wst_cano.png, id=797, 686.565pt x 310.761pt>
 File: ../figs/wst_cano.png Graphic file (type png)
 <use ../figs/wst_cano.png>
-Package pdftex.def Info: ../figs/wst_cano.png  used on input line 251.
+Package pdftex.def Info: ../figs/wst_cano.png  used on input line 253.
 (pdftex.def)             Requested size: 411.94218pt x 186.45804pt.
-) [20 <../figs/wst_cano.png>]
+)
+[15 <../figs/wst_cano.png>]
 \openout2 = `Chapters/SCP.aux'.
 
  (Chapters/SCP.tex
 Chapter 4.
-<../figs/general.png, id=838, 307.1475pt x 75.8835pt>
+<../figs/general.png, id=805, 307.1475pt x 75.8835pt>
 File: ../figs/general.png Graphic file (type png)
 <use ../figs/general.png>
 Package pdftex.def Info: ../figs/general.png  used on input line 6.
 (pdftex.def)             Requested size: 149.72832pt x 36.99217pt.
-<../figs/generalWCS.png, id=839, 554.67226pt x 73.62506pt>
+<../figs/generalWCS.png, id=806, 554.67226pt x 73.62506pt>
 File: ../figs/generalWCS.png Graphic file (type png)
 <use ../figs/generalWCS.png>
 Package pdftex.def Info: ../figs/generalWCS.png  used on input line 12.
 (pdftex.def)             Requested size: 278.0594pt x 36.90904pt.
 1: section
-[21
+[16
 
 
 
- <../figs/general.png> <../figs/generalWCS.png>] [22] [23]
-<../figs/Exam_SCP.png, id=865, 1086.30844pt x 1400.23125pt>
+ <../figs/general.png> <../figs/generalWCS.png>] [17]
+<../figs/Exam_SCP.png, id=828, 1086.30844pt x 1400.23125pt>
 File: ../figs/Exam_SCP.png Graphic file (type png)
 <use ../figs/Exam_SCP.png>
 Package pdftex.def Info: ../figs/Exam_SCP.png  used on input line 73.
 (pdftex.def)             Requested size: 434.51569pt x 560.08258pt.
- [24] [25 <../figs/Exam_SCP.png>] [26] [27] [28] [29]
+ [18] [19 <../figs/Exam_SCP.png>] [20] [21]
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
 24.
 
 ("C:\Users\Axel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmss.fd"
 File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-[30] [31] [32] [33] [34]
-<../figs/deNovo.png, id=943, 843.3909pt x 641.5167pt>
+[22] [23] [24] [25]
+<../figs/deNovo.png, id=896, 843.3909pt x 641.5167pt>
 File: ../figs/deNovo.png Graphic file (type png)
 <use ../figs/deNovo.png>
 Package pdftex.def Info: ../figs/deNovo.png  used on input line 254.
 (pdftex.def)             Requested size: 337.35039pt x 256.60213pt.
- [35]) [36 <../figs/deNovo.png>]
+ [26 <../figs/deNovo.png>]) [27]
 \openout2 = `Chapters/Toolbox.aux'.
 
  (Chapters/Toolbox.tex
 Chapter 5.
 1: section
-[37
+[28
 
 
 
-] [38] [39] [40] [41] [42] [43] [44]
-Overfull \vbox (86.46193pt too high) has occurred while \output is active []
-
-
-[45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56]
-
-LaTeX Warning: Citation 'saad2004information' on page 57 undefined on input lin
-e 480.
-
-
-Overfull \hbox (46.21852pt too wide) in paragraph at lines 480--481
-\T1/ppl/m/n/10.95 tion-ary al-go-rithms con-sis-tently out-per-form hu-mans in 
-a huge va-ri-ety of fields ([]).
- []
-
-) [57]
+] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40]) [41]
 \openout2 = `Chapters/Mimic.aux'.
 
- (Chapters/Mimic.tex
+
+(Chapters/Mimic.tex
 Chapter 6.
 1: section
-[58
+[42
 
 
 
-] [59] [60]
-<../figs/Suppression_SCP.png, id=1146, 2214.62381pt x 1028.94412pt>
+] [43]
+<../figs/Suppression_SCP.png, id=1066, 2214.62381pt x 1028.94412pt>
 File: ../figs/Suppression_SCP.png Graphic file (type png)
 <use ../figs/Suppression_SCP.png>
 Package pdftex.def Info: ../figs/Suppression_SCP.png  used on input line 89.
 (pdftex.def)             Requested size: 441.01775pt x 204.89024pt.
- [61 <../figs/Suppression_SCP.png>] [62]
-<../figs/Suppression_SCP_del1.png, id=1165, 1196.5503pt x 684.156pt>
+ [44 <../figs/Suppression_SCP.png>]
+<../figs/Suppression_SCP_del1.png, id=1081, 1196.5503pt x 684.156pt>
 File: ../figs/Suppression_SCP_del1.png Graphic file (type png)
 <use ../figs/Suppression_SCP_del1.png>
 Package pdftex.def Info: ../figs/Suppression_SCP_del1.png  used on input line 1
 23.
 (pdftex.def)             Requested size: 441.01775pt x 252.16289pt.
- [63 <../figs/Suppression_SCP_del1.png>] [64]
+ [45 <../figs/Suppression_SCP_del1.png>] [46]
 Overfull \hbox (0.27612pt too wide) in paragraph at lines 192--193
 \T1/ppl/m/n/10.95 In or-der to model the ab-stract case of the WST, we de-fine 
 the SCP Task $\OT1/zplm/m/n/10.95  = (\OML/zplm/m/it/10.95 s[]\OT1/ppl/m/n/10.
@@ -1814,49 +1783,40 @@ lm/m/n/10.95 ()\OT1/ppl/m/n/10.95 , \OML/zplm/m/it/10.95 \OT1/zplm/m/n/10.95 )
 $\T1/ppl/m/n/10.95 .
  []
 
-[65] [66]
-<../figs/realisedSCPsWST.png, id=1193, 1375.539pt x 675.0018pt>
+[47]
+<../figs/realisedSCPsWST.png, id=1105, 1375.539pt x 675.0018pt>
 File: ../figs/realisedSCPsWST.png Graphic file (type png)
 <use ../figs/realisedSCPsWST.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST.png  used on input line 266.
 (pdftex.def)             Requested size: 693.49821pt x 340.31189pt.
- [67]
-Overfull \vbox (41.91418pt too high) has occurred while \output is active []
-
-
-[68] [69 <../figs/realisedSCPsWST.png>] [70] [71] [72]
-<../figs/realisedSCPsWST_mod.png, id=1235, 1299.6555pt x 714.5094pt>
+ [48] [49 <../figs/realisedSCPsWST.png>] [50]
+<../figs/realisedSCPsWST_mod.png, id=1131, 1299.6555pt x 714.5094pt>
 File: ../figs/realisedSCPsWST_mod.png Graphic file (type png)
 <use ../figs/realisedSCPsWST_mod.png>
 Package pdftex.def Info: ../figs/realisedSCPsWST_mod.png  used on input line 37
 0.
 (pdftex.def)             Requested size: 693.49821pt x 381.26117pt.
-) [73] [74 <../figs/realisedSCPsWST_mod.png>]
+ [51] [52 <../figs/realisedSCPsWST_mod.png>]) [53]
 \openout2 = `Chapters/Comparing.aux'.
 
  (Chapters/Comparing.tex
 Chapter 7.
 1: section
-[75
+[54
 
 
 
-] [76] [77] [78] [79] [80] [81] [82] [83]) [84]
+] [55] [56] [57] [58] [59]) [60]
 \openout2 = `Chapters/Program.aux'.
 
  (Chapters/Program.tex
 Chapter 8.
-<../figs/scpClassDiagram.png, id=1324, 772.38562pt x 601.64775pt>
+<../figs/scpClassDiagram.png, id=1215, 772.38562pt x 601.64775pt>
 File: ../figs/scpClassDiagram.png Graphic file (type png)
 <use ../figs/scpClassDiagram.png>
 Package pdftex.def Info: ../figs/scpClassDiagram.png  used on input line 16.
 (pdftex.def)             Requested size: 520.12366pt x 405.14912pt.
-1: section
-[85
 
-
-
-] [86 <../figs/scpClassDiagram.png>]
 Overfull \hbox (12.98145pt too wide) in paragraph at lines 28--29
 []$[]$\T1/ppl/m/n/10.95 : a set of truth ta-bles for each op-er-a-tor de-fined 
 in \T1/cmtt/m/n/10.95 basicLogic\T1/ppl/m/n/10.95 . 
@@ -1867,80 +1827,78 @@ Overfull \hbox (14.6129pt too wide) in paragraph at lines 30--31
 []$[]$\T1/ppl/m/n/10.95 : an im-ple-men-ta-tion of the ex-tended Needle-
  []
 
-<../figs/SCP_Use_Cases.png, id=1336, 1120.185pt x 758.835pt>
+<../figs/SCP_Use_Cases.png, id=1218, 1120.185pt x 758.835pt>
 File: ../figs/SCP_Use_Cases.png Graphic file (type png)
 <use ../figs/SCP_Use_Cases.png>
 Package pdftex.def Info: ../figs/SCP_Use_Cases.png  used on input line 35.
 (pdftex.def)             Requested size: 441.01775pt x 298.75813pt.
-[87 <../figs/SCP_Use_Cases.png>]) [88]
+1: section
+[61
+
+
+
+] [62 <../figs/scpClassDiagram.png>]) [63 <../figs/SCP_Use_Cases.png>]
 \openout2 = `Chapters/Conclusion.aux'.
 
- (Chapters/Conclusion.tex
+
+(Chapters/Conclusion.tex
 Chapter 9.
+)
 1: section
-[89
+[64
 
 
 
-]) [90]
+] [65]
 1: section
-[91
+[66
 
 
 ]
-Overfull \hbox (4.63652pt too wide) in paragraph at lines 278--278
+Overfull \hbox (4.63652pt too wide) in paragraph at lines 289--289
 [][]\T1/ppl/m/n/10.95 Reiter, Ray-mond (1980).   A logic for de-fault rea-son-
 ing. In: \T1/ppl/m/it/10.95 Ar-ti-fi-cial in-tel-li-gence \T1/ppl/m/n/10.95 13
 .1-2, pp. 81
  []
 
-[92] [93]
+[67]
 \openout2 = `Chapters/Appendix.aux'.
 
  (Chapters/Appendix.tex
 1: section
-[94
+[68
 
 
-] [95] [96]
-<../figs/output1.jpg, id=1419, 614.295pt x 794.97pt>
+] [69] [70] [71]
+<../figs/output1.jpg, id=1316, 614.295pt x 794.97pt>
 File: ../figs/output1.jpg Graphic file (type jpg)
 <use ../figs/output1.jpg>
-Package pdftex.def Info: ../figs/output1.jpg  used on input line 149.
+Package pdftex.def Info: ../figs/output1.jpg  used on input line 223.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/output2.jpg, id=1420, 614.295pt x 794.97pt>
+<../figs/output2.jpg, id=1317, 614.295pt x 794.97pt>
 File: ../figs/output2.jpg Graphic file (type jpg)
 <use ../figs/output2.jpg>
-Package pdftex.def Info: ../figs/output2.jpg  used on input line 154.
+Package pdftex.def Info: ../figs/output2.jpg  used on input line 228.
 (pdftex.def)             Requested size: 441.01775pt x 570.72826pt.
-<../figs/suppression_python.png, id=1421, 470.50781pt x 553.31718pt>
+<../figs/suppression_python.png, id=1318, 470.50781pt x 553.31718pt>
 File: ../figs/suppression_python.png Graphic file (type png)
 <use ../figs/suppression_python.png>
-Package pdftex.def Info: ../figs/suppression_python.png  used on input line 160
+Package pdftex.def Info: ../figs/suppression_python.png  used on input line 234
 .
 (pdftex.def)             Requested size: 441.01775pt x 518.6407pt.
- [97] [98 <../figs/output1.jpg>] [99 <../figs/output2.jpg>]
-[100 <../figs/suppression_python.png>]) [101]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 289.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 289.
+ [72] [73 <../figs/output1.jpg>] [74 <../figs/output2.jpg>]
+[75 <../figs/suppression_python.png>]) [76]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
  (main.aux
 (Chapters/Introduction.aux) (Chapters/Prelim.aux) (Chapters/Experiments.aux)
 (Chapters/SCP.aux) (Chapters/Toolbox.aux) (Chapters/Mimic.aux)
 (Chapters/Comparing.aux) (Chapters/Program.aux) (Chapters/Conclusion.aux)
 (Chapters/Appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 289.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 289.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 300.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 300.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D6EC67D9E6BCF72A87D97990D7830A0F;16117.
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run BibTeX on the file(s):
-(biblatex)                main
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
@@ -1950,13 +1908,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 ### simple group (level 1) entered at line 403 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 40413 strings out of 480799
- 834199 string characters out of 2896252
- 1288835 words of memory out of 3000000
- 55304 multiletter control sequences out of 15000+200000
+ 40477 strings out of 480799
+ 835671 string characters out of 2896252
+ 1292203 words of memory out of 3000000
+ 55385 multiletter control sequences out of 15000+200000
  623907 words of font info for 206 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,22n,87p,1832b,3046s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,22n,89p,1832b,2669s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
 s/base/8r.enc} <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
 /ec/dpi600\ectt0800.pk> <C:\Users\Axel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -1980,9 +1938,9 @@ palatino/uplbi8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
 e1/urw/palatino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/urw/palatino/uplr8a.pfb><C:/Users/Axel/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (115 pages, 2645220 bytes).
+Output written on main.pdf (87 pages, 2620238 bytes).
 PDF statistics:
- 1703 PDF objects out of 1728 (max. 8388607)
- 396 named destinations out of 1000 (max. 500000)
+ 1587 PDF objects out of 1728 (max. 8388607)
+ 371 named destinations out of 1000 (max. 500000)
  829 words of extra memory for PDF output out of 10000 (max. 10000000)
 
