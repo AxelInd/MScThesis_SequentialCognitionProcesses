@@ -5,19 +5,21 @@ Created on Sat Jun 13 09:09:55 2020
 @author: Axel
 """
 
-import sys
-sys.path.append("/SCPFramework") 
 import copy
 #an implementation of 3-valued logic
 #used to deepcopy complex objects
-import scpError
-import StatePointOperations
-import CTM
-"""
-from SCPFramework import scpError
-from SCPFramework import StatePointOperations
-from SCPFramework import CTM
-"""
+folderStructure=False
+if folderStructure:
+    import sys
+    sys.path.append("/SCPFramework") 
+    from SCPFramework import scpError
+    from SCPFramework import StatePointOperations
+    from SCPFramework import CTM
+else:  
+    import scpError
+    import StatePointOperations
+    import CTM
+
 
 #used to create complex epistemic actions in the seuqence
 #used to throw exceptions for improper use

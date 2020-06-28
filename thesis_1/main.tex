@@ -27,7 +27,8 @@
 %oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
 english, % ngerman for German
 %doublespacing, 
-singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+onehalfspacing,
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
 %nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
 %liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
@@ -132,7 +133,7 @@ oneside]{MastersDoctoralThesis} % The class file specifying the document structu
 
 \begin{titlepage}
 \begin{center}
-\AddToShipoutPicture*{\put(245,275){\includegraphics[scale=0.65]{logo-grundversion-01}}}
+\AddToShipoutPicture*{\put(245,255){\includegraphics[scale=0.65]{logo-grundversion-01}}}
 \vspace*{.06\textheight}
 {\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
 \textsc{\Large Master's Thesis}\\[0.5cm] % Thesis type
@@ -155,7 +156,7 @@ oneside]{MastersDoctoralThesis} % The class file specifying the document structu
 \emph{Examiner:} \\
 \href{https://www.fernuni-hagen.de/wbs/people.html}{Prof. Dr. Christoph \textsc{Beierle}} % Supervisor name - remove the \href bracket to remove the link  
 \end{flushright}
-\end{minipage}\\[5cm]
+\end{minipage}\\[4.5cm]
  
 \vfill
 
@@ -217,20 +218,7 @@ oneside]{MastersDoctoralThesis} % The class file specifying the document structu
 Approaches to cognitive modelling with non-monotonic logics have thus far been largely \textit{ad hoc} and poorly standardised, making inter-model comparisons difficult. As an attempt to systematically represent non-monotonic logics in a framework that standardises cognitive modelling under these logics without sacrificing their expressiveness, we introduce the Sequential Cognition Process (SCP). Under the assumption that human reasoning can be represented as a sequence of distinct cognitive operations on an initial knowledge base, SCPs provide a consistent framework for generating and evaluating models of human cognition. Using an adapted interpretation of the Weak Completion Semantics (WCS) and Reiter's Default Logic, SCPs are able to accurately model several classical experiments in cognitive modelling. We use the SCP framework to model both general case reasoners -- which arrive at the most frequently observed conclusions -- and poorly-studied individual case reasoners -- which do not. We illustrate the use of the SCP framework through examination of the Wason Selection Task and Suppression Task.
 \end{abstract}
 
-%----------------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS
-%----------------------------------------------------------------------------------------
 
-\begin{acknowledgements}
-\addchaptertocentry{\acknowledgementname} % Add the  acknowledgements to the table of contents
-I would like to extend my heartfelt thanks to the following people:
-\begin{itemize}
-\item Dr. Marco Ragni, for his enthusiastic supervision of my ongoing academic studies.
-\item Raymond Ind, Julie Ind, and Schae Ind, for their emotional and financial support.
-\item Anastasia Sushich, for her tireless support and inquisitiveness.
-\item Caitlin Krause, for being who she is, each and every day.
-\end{itemize}
-\end{acknowledgements}
 
 %----------------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES PAGES
@@ -299,6 +287,19 @@ I would like to extend my heartfelt thanks to the following people:
 %\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
 
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
 
+\begin{acknowledgements}
+\addchaptertocentry{\acknowledgementname} % Add the  acknowledgements to the table of contents
+I would like to extend my heartfelt thanks to the following people, without whom this thesis would not have been possible:
+\begin{itemize}
+\item Dr. Marco Ragni, for his enthusiastic supervision of my ongoing academic studies.
+\item Raymond Ind, Julie Ind, and Schae Ind, for their emotional and financial support.
+\item Anastasia Sushich, for her tireless support and inquisitiveness.
+\item Caitlin Krause, for being who she is, each and every day.
+\end{itemize}
+\end{acknowledgements}
 
 \end{document}  

@@ -1,23 +1,22 @@
-import sys
-sys.path.append("/SCPFramework") 
-import copy
-
-"""
-from SCPFramework import SCP_Task
-from SCPFramework import scpNotationParser
-from SCPFramework import CTM
-from SCPFramework import CognitiveOperation
-from SCPFramework import basicLogic
-from SCPFramework import epistemicState
-from SCPFramework import StatePointOperations
-"""
-import SCP_Task
-import scpNotationParser
-import CTM
-import CognitiveOperation
-import basicLogic
-import epistemicState
-import StatePointOperations
+folderStructure=False
+if folderStructure:
+    import sys
+    sys.path.append("/SCPFramework") 
+    from SCPFramework import SCP_Task
+    from SCPFramework import scpNotationParser
+    from SCPFramework import CTM
+    from SCPFramework import CognitiveOperation
+    from SCPFramework import basicLogic
+    from SCPFramework import epistemicState
+    from SCPFramework import StatePointOperations
+else:
+    import SCP_Task
+    import scpNotationParser
+    import CTM
+    import CognitiveOperation
+    import basicLogic
+    import epistemicState
+    import StatePointOperations
 
 
 #INSTANTIATE EACH <cognitiveOperation> object which might be used later
@@ -27,8 +26,6 @@ SEMANTIC = CognitiveOperation.m_semantic()
 ABDUCIBLES=CognitiveOperation.m_addAbducibles(maxLength=2)
 WCS = CognitiveOperation.m_wcs()
 
-# Minimal subsets which verify/falsify the conditional and explain the observation o
-# Are vallid iff and only 
 """
 ==================================================================================================
 ==========================================TURN FUNCTION===========================================
@@ -224,6 +221,7 @@ def create_si_contra():
 """    
 #The most common case of the WST, where the cards D and 3 are turned
 def mu_D3 ():
+    print ("")
     print ("Searching through SCP space to find: D, 3...")
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_noContra()
@@ -246,6 +244,7 @@ def mu_D3 ():
     
 #The a case of the WST where only D is turned
 def mu_D ():
+    print ("")
     print ("Searching through SCP space to find: D...")
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_noContra()
@@ -266,6 +265,7 @@ def mu_D ():
 
 #The classical logic response to the WST, turning the cards D and 7
 def mu_D7 ():
+    print ("")
     print ("Searching through SCP space to find: D, 7...")
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_contra()
@@ -287,6 +287,7 @@ def mu_D7 ():
 
 #The individual case of the WST, where the cards D, 3, and 7 are turned
 def mu_D37 ():
+    print ("")
     print ("Searching through SCP space to find: D, 3, 7...")
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_contra()
@@ -304,22 +305,19 @@ def mu_D37 ():
     searchRes = task_D37.deNoveSearch(depth = 3, searchType="satisfying")
     print ("search results are ", strSCPLi(searchRes))
     return searchRes
-
+"""
+==================================================================================================
+===========================================SCP EXAMPLES===========================================
+"""  
 #The most common case of the WST, where the cards D and 3 are turned
 #Shown for mu=(si => addAB => addExp => WC => semantic,f_turn)
 def mu_D3_example ():
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_noContra()
-    
-    #the set of cognitive operations which we believe might model this case of the WST
-    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
     #The final state dependent external evaluation function
     f=f_turnFunction
     #the turn responses which would we would like to achieve
-    gamma_D3={'D':'Turn Card','K':'Do Not Turn','3':'Turn Card','7':'Do Not Turn'}    
-    
-    #The SCP task which states what is required from a solution SCP or realised SCP
-    task_D3 = SCP_Task.SCP_Task(s_i,M,f,gamma_D3)   
+    gamma_D3={'D':'Turn Card','K':'Do Not Turn','3':'Turn Card','7':'Do Not Turn'}     
     
     c = CTM.CTM()
     c.setSi(s_i)
@@ -333,7 +331,7 @@ def mu_D3_example ():
     observations = ['D','K','3','7']
     
     #use the turn function to evaluate the ctm and see if the card should be turned
-    predictions=f_turnFunction(c,observations)    
+    predictions=f(c,observations)    
     
     #print True if mu|=gamma_D3
     print ("Responses: ",predictions)
@@ -346,16 +344,10 @@ def mu_D3_example ():
 def mu_D37_example ():
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_contra()
-    
-    #the set of cognitive operations which we believe might model this case of the WST
-    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
     #The final state dependent external evaluation function
-    f=f_turn
+    f=f_turnFunction
     #the turn responses which would we would like to achieve
     gamma_D37={'D':'Turn Card','K':'Do Not Turn','3':'Turn Card','7':'Turn Card'}    
-    
-    #The SCP task which states what is required from a solution SCP or realised SCP
-    task_D37 = SCP_Task.SCP_Task(s_i,M,f,gamma_D37)   
     
     #This is a test SCP mu=(c,f()) which is known to work
     c = CTM.CTM()
@@ -370,7 +362,7 @@ def mu_D37_example ():
     observations = ['D','K','3','7']
     
     #use the turn function to evaluate the ctm and see if the card should be turned
-    predictions=f_turnFunction(c,observations)    
+    predictions=f(c,observations)    
     
     #print True if mu|=gamma_D37
     print ("Responses: ",predictions)
@@ -382,17 +374,12 @@ def mu_D37_example ():
 def mu_D7_example ():
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_contra()
-    
-    #the set of cognitive operations which we believe might model this case of the WST
-    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
+
     #The final state dependent external evaluation function
     f=f_turnFunction_prefDoNoTurn
 
     #the turn responses which would we would like to achieve
-    gamma_D7={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Turn Card'}  
-
-    #The SCP task which states what is required from a solution SCP or realised SCP
-    task_D7 = SCP_Task.SCP_Task(s_i,M,f,gamma_D7)   
+    gamma_D7={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Turn Card'}   
     
     #This is a test SCP mu=(c,f()) which is known to work
     c = CTM.CTM()
@@ -421,16 +408,10 @@ def mu_D7_example ():
 def mu_D_example ():
     #create initial base point which has only a single epistemic state in it
     s_i=create_si_noContra()
-    
-    #the set of cognitive operations which we believe might model this case of the WST
-    M=[ABDUCIBLES, ADDAB, SEMANTIC, WC]
     #The final state dependent external evaluation function
     f=f_turnFunction_prefDoNoTurn
     #the turn responses which would we would like to achieve
     gamma_D={'D':'Turn Card','K':'Do Not Turn','3':'Do Not Turn','7':'Do Not Turn'}  
-
-    #The SCP task which states what is required from a solution SCP or realised SCP
-    task_D = SCP_Task.SCP_Task(s_i,M,f,gamma_D)   
     
     #This is a test SCP mu=(c,f()) which is known to work
     c = CTM.CTM()
@@ -454,22 +435,19 @@ def mu_D_example ():
     print ("Strict:  mu|=gamma_D :", StatePointOperations.predictionsModelsGamma_strict(predictions,gamma_D))
 
 #active search to find SCPs which model results
-mu_D3()
-mu_D37()
-
-mu_D()
-mu_D7()
-
-
+#mu_D3()
+#mu_D37()
+#mu_D()
+#mu_D7()
 
 #examples of an scp for each case of the WST, see code for comments.
 #these searches are fairly slow, but very comprehensive.
-#mu_D3_example()
-
-#mu_D37_example()
-#mu_D_example()
-
-#mu_D7_example()
+#the <m_addabducibles> operation can occur multiple times and introduces a vary large branching factor
+#if not intentionally limitted
+mu_D3_example()
+mu_D37_example()
+mu_D_example()
+mu_D7_example()
 
 
 

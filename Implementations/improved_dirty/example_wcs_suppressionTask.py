@@ -7,22 +7,23 @@ Created on Sat Jan 18 09:41:08 2020
 import sys
 sys.path.append("/SCPFramework") 
 import copy
-"""
-from SCPFramework import basicLogic
-from SCPFramework import epistemicState
-from SCPFramework import SCP_Task
-from SCPFramework import scpNotationParser
-from SCPFramework import CTM
-from SCPFramework import CognitiveOperation
-from SCPFramework import StatePointOperations
-"""
-import basicLogic
-import epistemicState
-import SCP_Task
-import scpNotationParser
-import CTM
-import CognitiveOperation
-import StatePointOperations
+folderStructure=False
+if folderStructure:
+    from SCPFramework import basicLogic
+    from SCPFramework import epistemicState
+    from SCPFramework import SCP_Task
+    from SCPFramework import scpNotationParser
+    from SCPFramework import CTM
+    from SCPFramework import CognitiveOperation
+    from SCPFramework import StatePointOperations
+else:
+    import basicLogic
+    import epistemicState
+    import SCP_Task
+    import scpNotationParser
+    import CTM
+    import CognitiveOperation
+    import StatePointOperations
 print ("=================THE SUPPRESSION TASK=========================")
 print (">>> 1) If she has an essay to write she will study late in the library (l|e).")
 print (">>> 2) If the library is open she will study late in the library (l|o).")

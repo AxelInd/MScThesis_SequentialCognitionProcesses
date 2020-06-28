@@ -1,19 +1,21 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 22 10:14:11 2020
+folderStructure=False
+if folderStructure:
+    import sys
+    sys.path.append("/SCPFramework") 
+    
+    from SCPFramework import basicLogic
+    from SCPFramework import scpNotationParser as no
+    from SCPFramework import epistemicState
+    from SCPFramework import CTM
+    from SCPFramework import CognitiveOperation as cop
+else:
+    import basicLogic
+    import scpNotationParser as no
+    import epistemicState
+    import CTM
+    import CognitiveOperation as cop
 
-@author: Axel
-"""
-import sys
-sys.path.append("/SCPFramework") 
-
-from SCPFramework import basicLogic
-from SCPFramework import scpNotationParser as no
-from SCPFramework import epistemicState
-from SCPFramework import CTM
-from SCPFramework import CognitiveOperation as cop
-
-
+#the operaton on a default theory <W,D> to find extensions
 DEFAULT = cop.m_default()
 
 def example_birds():

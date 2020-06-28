@@ -94,12 +94,6 @@ def zeros(rows, cols):
 
 # A function for determining the score between any two bases in alignment
 def match_score(alpha, beta):
-    """
-    print ("alpha is ", alpha)
-    print ("alpha", type(alpha))
-    print ("beta", type(beta))
-    print ("beta is ",beta)
-    """
     if type(alpha) == type(beta):
         return matchRewards[type(alpha)]
     elif isinstance(alpha,CognitiveOperation.m_insertionOperation):
@@ -108,11 +102,6 @@ def match_score(alpha, beta):
         return insertionCosts[type(alpha)]
     else:
         return  (insertionCosts[type(alpha)]+ insertionCosts[type(beta)])/2
-
-
-
-
-
 
 
 def needleman_wunsch(seq1, seq2):
@@ -200,7 +189,9 @@ def needleman_wunsch(seq1, seq2):
     al2.NMTransformation()
     return(al1, al2, score)
 
-
+"""
+the bottom right entry in the table
+"""
 def maxScore(matrix):
     #optimal global alignment is always last entry
     return matrix[-1][-1]
@@ -212,7 +203,9 @@ def printAlignment(align1,align2):
         return []
     for i in range(0, len(align1)):
         print ("{}{:>20}".format(str(align1[i]),str(align2[i])))
-        
+"""
+Transform a matrix into a latex table with the first row given by r, and the first col given by c
+"""
 def matrixAsLatexRC(matrix, r, c):
     s='\\begin{table}\n'
     s+='\\begin{center}\n'
@@ -225,7 +218,6 @@ def matrixAsLatexRC(matrix, r, c):
     s+="\\\\\n"
     s+="\\hline\n"
     for i in range (0,len(matrix)):
-        print (i)
         if i>=1:
             s+= str(c[i-1])+' & '
         else:
@@ -266,12 +258,14 @@ print(output2)
 for i in scoreMatrix:
     print (i)
 """
+
 output1, output2, scoreMatrix = needleman_wunsch(d, d)
 
 print ("score for alignment:", maxScore(scoreMatrix))
 
 printAlignment(output1,output2)
 
-print (matrixAsLatexRC(scoreMatrix,d,d))
+#uncomment to see the socring matrix as a LaTex table
+#print (matrixAsLatexRC(scoreMatrix,d,d))
 
 
