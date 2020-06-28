@@ -220,18 +220,7 @@ Given an SCP Task $\Pi=(s_i,f(), M, \gamma)$ in which $M=\{A_0,...,A_n\}$, $A\in
 
 
 \begin{figure}
-\centering \includegraphics[width=\linewidth]{output1}
-\caption{Epistemic states demonstrating that \texttt{addExp} can be used to model the individual case of the Suppression Task where Suppression is prevented. Shown for SCP $\mu=(\pi,f_\text{sup}())$, $\pi = (s_\text{dev} \longmapsto \texttt{addAB} \longmapsto \texttt{addExp} \longmapsto \texttt{wc} \longmapsto \texttt{semantic} )$. Part1.}
-\label{fig:suppression_python}
-\end{figure}
-\begin{figure}
-\centering \includegraphics[width=\linewidth]{output2}
-\caption{Epistemic states demonstrating that \texttt{addExp} can be used to model the individual case of the Suppression Task where Suppression is prevented. Shown for SCP $\mu=(\pi,f_\text{sup}())$, $\pi = (s_\text{dev} \longmapsto \texttt{addAB} \longmapsto \texttt{addExp} \longmapsto \texttt{wc} \longmapsto \texttt{semantic} )$. Part2.}
-\label{fig:suppression_python2}
-\end{figure}
-
-\begin{figure}
-\centering \includegraphics[width=\linewidth]{suppression_python}
+\centering \includegraphics[width=1.3\linewidth]{suppression_python}
 \caption{Code snippet showing how the Suppression Task is modelled in the SCP Framework.}
 \label{fig:sup_snippet}
 \end{figure}
@@ -276,3 +265,182 @@ $s_\text{WST}$ & -1 & 3 & 2 & 1 & 0 & -1\\
 \label{tbl:extal2}
 \end{center}
 \end{table}
+
+\newpage
+
+
+
+
+
+
+\subsection*{SCP Abduction Results}\label{ssec:scpabres}
+Epistemic states demonstrating that \texttt{addExp} can be used to model the individual case of the Suppression Task where Suppression is prevented. Shown for SCP:
+\[\mu=(\pi,f_\text{sup}())\]
+\[\pi = (s_\text{dev} \longmapsto \texttt{addAB} \longmapsto \texttt{addExp} \longmapsto \texttt{wc} \longmapsto \texttt{semantic} )\]
+
+\subsubsection*{SCP Abduction Results for the Suppression Task: Inital State Point}
+
+
+
+
+
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'el'}$ \\
+$S$ : & $[(e \leftarrow  \top )]$\\
+$Delta$ : & $[(l | e)]$\\
+$V$ : & $[(e:u), (l:u)]$\\
+$R[abducibles]$ : & ${'abducibles': [(o \leftarrow  \top ), (o \leftarrow  \bot )]}$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'elo'}$ \\
+$S$ : & $[(e \leftarrow  \top )]$\\
+$Delta$ : & $[(l | e), (l | o)]$\\
+$V$ : & $[(e:u), (l:u), (o:u)]$\\
+$R[abducibles]$ : & ${'abducibles': [(o \leftarrow  \top ), (o \leftarrow  \bot )]}$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection*{SCP Abduction Results for the Suppression Task: Final State Point}
+
+\FloatBarrier
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'el'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  (e \land  (\lnot  ab_1))), (ab_1 \leftrightarrow  \bot )]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:\top), (ab_1:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'el'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  (e \land  (\lnot  ab_1))), (ab_1 \leftrightarrow  \bot ), (o \leftrightarrow  \top )]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:\top), (ab_1:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[(o \leftarrow  \top )]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'el'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  (e \land  (\lnot  ab_1))), (ab_1 \leftrightarrow  \bot ), (o \leftrightarrow  \bot )]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:\top), (ab_1:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[(o \leftarrow  \bot )]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'el'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  (e \land  (\lnot  ab_1))), (ab_1 \leftrightarrow  \bot ), (o \leftrightarrow  (\top  \lor  \bot ))]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:\top), (ab_1:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'elo'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  ((e \land  (\lnot  ab_1)) \lor  (o \land  (\lnot  ab_2)))),$\\
+&$ (ab_1 \leftrightarrow  (\lnot  o)), (ab_2 \leftrightarrow  (\lnot  e))]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:u), (o:u), (ab_1:u), (ab_2:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'elo'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  ((e \land  (\lnot  ab_1)) \lor  (o \land  (\lnot  ab_2))))$\\
+&$, (ab_1 \leftrightarrow  (\lnot  o)), (ab_2 \leftrightarrow  (\lnot  e)), (o \leftrightarrow  \top )]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:\top), (o:\top), (ab_1:\bot), (ab_2:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[(o \leftarrow  \top )]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'elo'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  ((e \land  (\lnot  ab_1)) \lor  (o \land  (\lnot  ab_2)))),$\\
+& $(ab_1 \leftrightarrow  (\lnot  o)), (ab_2 \leftrightarrow  (\lnot  e)), (o \leftrightarrow  \bot )]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:\bot), (o:\bot), (ab_1:\top), (ab_2:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[(o \leftarrow  \bot )]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| c | c | }
+\hline
+name: &$\textbf{'elo'}$ \\
+$S$ : & $[(e \leftrightarrow  \top ), (l \leftrightarrow  ((e \land  (\lnot  ab_1)) \lor  (o \land  (\lnot  ab_2)))),$\\
+&$(ab_1 \leftrightarrow  (\lnot  o)), (ab_2 \leftrightarrow  (\lnot  e)), (o \leftrightarrow  (\top  \lor  \bot ))]$\\
+$Delta$ : & $[]$\\
+$V$ : & $[(e:\top), (l:\top), (o:\top), (ab_1:\bot), (ab_2:\bot)]$\\
+$R[abducibles]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+$R[explanation]$ : & $[(o \leftarrow  \top ), (o \leftarrow  \bot )]$\\
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+
+
