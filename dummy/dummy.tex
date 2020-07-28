@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amstext}
+\begin{document}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c | c c c }
+ & & $s_\text{sup}$ & th\\
+\hline
+ & 0 & -1 & -6\\
+$s_\text{sup}$ & -1 & 3 & -2\\
+addAB & -2 & 2 & 0.0\\
+wc & -3 & 1 & -1.0\\
+semantic & -4 & 0 & -2.0
+\end{tabular}
+\caption{no caption}
+\label{tbl:needsAName}
+\end{center}
+\end{table}
+
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c | c c c c c c }
+ & & $s_\text{sup}$ & addAB & delete & wc & semantic\\
+\hline
+ & 0 & -1 & -2 & -3 & -4 & -5\\
+$s_\text{sup}$ & -1 & 3 & 2 & 1 & 0 & -1\\
+addAB & -2 & 2 & 4 & 3 & 2 & 1\\
+wc & -3 & 1 & 3 & 3.0 & 4 & 3\\
+semantic & -4 & 0 & 2 & 2.0 & 3 & 5
+\end{tabular}
+\caption{no caption}
+\label{tbl:needsAName}
+\end{center}
+\end{table}
+
+\end{document}
